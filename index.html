@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ExpatGuideME | Simple guides and free tools for expats in the Gulf</title>
-  <meta name="description" content="Free tools and simple guides for expats in Saudi Arabia, Kuwait, Qatar, Oman and Bahrain. Exchange rates, money transfer, ID and residency, end-of-service and more. In English, Arabic, Hindi and Malayalam.">
+  <meta name="description" content="Free tools and simple guides for expats in Saudi Arabia, Kuwait, Qatar, Oman and Bahrain. Exchange rates, money transfer, ID and residency, end-of-service and more. In English, Arabic, Hindi, Malayalam and Nepali.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,7 +29,7 @@
       line-height: 1.6;
     }
     html[lang="ar"] body { font-family: "Cairo", "Inter", Tahoma, sans-serif; line-height: 1.8; }
-    html[lang="hi"] body { font-family: "Noto Sans Devanagari", "Inter", sans-serif; line-height: 1.8; }
+    html[lang="hi"] body, html[lang="ne"] body { font-family: "Noto Sans Devanagari", "Inter", sans-serif; line-height: 1.8; }
     html[lang="ml"] body { font-family: "Noto Sans Malayalam", "Inter", sans-serif; line-height: 1.8; }
 
     .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
@@ -45,7 +45,7 @@
       border: 1px solid var(--line); background: var(--card); color: var(--ink);
     }
     .langs button[lang="ar"] { font-family: "Cairo", sans-serif; }
-    .langs button[lang="hi"] { font-family: "Noto Sans Devanagari", sans-serif; }
+    .langs button[lang="hi"], .langs button[lang="ne"] { font-family: "Noto Sans Devanagari", sans-serif; }
     .langs button[lang="ml"] { font-family: "Noto Sans Malayalam", sans-serif; }
     .langs button.active { background: var(--brand); color: #fff; border-color: var(--brand); }
 
@@ -105,6 +105,7 @@
         <button type="button" data-lang="ar" lang="ar">العربية</button>
         <button type="button" data-lang="hi" lang="hi">हिन्दी</button>
         <button type="button" data-lang="ml" lang="ml">മലയാളം</button>
+        <button type="button" data-lang="ne" lang="ne">नेपाली</button>
       </div>
     </div>
   </header>
@@ -176,6 +177,16 @@
           soon: "ഉടൻ വരുന്നു",
           ad: "പരസ്യം",
           disclaimer: "ഇതൊരു സ്വതന്ത്ര വെബ്സൈറ്റാണ്. ഏതെങ്കിലും സർക്കാർ വകുപ്പുമായോ ബാങ്കുമായോ ഇതിന് ബന്ധമില്ല."
+        },
+        ne: {
+          tagline: "खाडीमा बस्ने प्रवासीहरूका लागि सजिलो गाइड र निःशुल्क टुलहरू",
+          intro: "तपाईंकै भाषामा। साउदी अरब, कुवेत, कतार, ओमान र बहराइन।",
+          toolsHeading: "टुल र गाइडहरू",
+          countriesHeading: "देशहरू",
+          live: "खोल्नुहोस्",
+          soon: "छिट्टै आउँदैछ",
+          ad: "विज्ञापन",
+          disclaimer: "यो एक स्वतन्त्र वेबसाइट हो। यसको कुनै पनि सरकारी कार्यालय वा बैंकसँग सम्बन्ध छैन।"
         }
       };
 
@@ -185,51 +196,57 @@
           en: ["Exchange rate today", "Riyal and dinar to rupee, taka, peso and more."],
           ar: ["سعر الصرف اليوم", "الريال والدينار إلى الروبية والتاكا والبيزو وغيرها."],
           hi: ["आज का एक्सचेंज रेट", "रियाल और दीनार से रुपया, टका, पेसो और अन्य।"],
-          ml: ["ഇന്നത്തെ വിനിമയ നിരക്ക്", "റിയാൽ, ദിനാർ എന്നിവ രൂപ, ടാക്ക, പെസോ തുടങ്ങിയവയിലേക്ക്."]
+          ml: ["ഇന്നത്തെ വിനിമയ നിരക്ക്", "റിയാൽ, ദിനാർ എന്നിവ രൂപ, ടാക്ക, പെസോ തുടങ്ങിയവയിലേക്ക്."],
+          ne: ["आजको विनिमय दर", "रियाल र दिनारबाट रुपैयाँ, टाका, पेसो र अन्य मुद्रामा।"]
         },
         {
           icon: "💸", href: null,
           en: ["Best way to send money home", "Compare transfer apps and banks."],
           ar: ["أفضل طريقة لتحويل الأموال", "قارن تطبيقات التحويل والبنوك."],
           hi: ["घर पैसे भेजने का सबसे अच्छा तरीका", "ट्रांसफ़र ऐप और बैंकों की तुलना करें।"],
-          ml: ["നാട്ടിലേക്ക് പണം അയക്കാൻ മികച്ച വഴി", "ട്രാൻസ്ഫർ ആപ്പുകളും ബാങ്കുകളും താരതമ്യം ചെയ്യുക."]
+          ml: ["നാട്ടിലേക്ക് പണം അയക്കാൻ മികച്ച വഴി", "ട്രാൻസ്ഫർ ആപ്പുകളും ബാങ്കുകളും താരതമ്യം ചെയ്യുക."],
+          ne: ["घर पैसा पठाउने उत्तम तरिका", "ट्रान्सफर एप र बैंकहरूको तुलना गर्नुहोस्।"]
         },
         {
           icon: "🪪", href: null,
           en: ["ID card & residency guide", "Iqama, Civil ID, QID, Resident Card and CPR: check, renew, fees."],
           ar: ["دليل الإقامة والهوية", "الإقامة والبطاقة المدنية وغيرها: الاستعلام والتجديد والرسوم."],
           hi: ["आईडी कार्ड और रेज़िडेंसी गाइड", "इक़ामा, सिविल आईडी, क्यूआईडी: जाँच, नवीनीकरण और फ़ीस।"],
-          ml: ["ഐഡി കാർഡ്, റെസിഡൻസി ഗൈഡ്", "ഇഖാമ, സിവിൽ ഐഡി, ക്യുഐഡി: പരിശോധന, പുതുക്കൽ, ഫീസ്."]
+          ml: ["ഐഡി കാർഡ്, റെസിഡൻസി ഗൈഡ്", "ഇഖാമ, സിവിൽ ഐഡി, ക്യുഐഡി: പരിശോധന, പുതുക്കൽ, ഫീസ്."],
+          ne: ["परिचयपत्र र रेसिडेन्सी गाइड", "इकामा, सिभिल आईडी, क्यूआईडी: जाँच, नवीकरण र शुल्क।"]
         },
         {
           icon: "🧮", href: null,
           en: ["End-of-service benefit", "Estimate what you should receive."],
           ar: ["مكافأة نهاية الخدمة", "قدّر المبلغ المستحق لك."],
           hi: ["सेवा समाप्ति लाभ", "अनुमान लगाएँ कि आपको कितना मिलना चाहिए।"],
-          ml: ["സേവനാന്ത ആനുകൂല്യം", "നിങ്ങൾക്ക് ലഭിക്കേണ്ട തുക കണക്കാക്കുക."]
+          ml: ["സേവനാന്ത ആനുകൂല്യം", "നിങ്ങൾക്ക് ലഭിക്കേണ്ട തുക കണക്കാക്കുക."],
+          ne: ["सेवा समाप्ति सुविधा", "तपाईंले कति पाउनुपर्छ भनेर अनुमान गर्नुहोस्।"]
         },
         {
           icon: "👨‍👩‍👧", href: null,
           en: ["Family monthly cost", "Rent, school, fees and bills in one place."],
           ar: ["تكلفة العائلة الشهرية", "الإيجار والمدارس والرسوم والفواتير في مكان واحد."],
           hi: ["परिवार का मासिक खर्च", "किराया, स्कूल, फ़ीस और बिल एक जगह।"],
-          ml: ["കുടുംബത്തിന്റെ മാസച്ചെലവ്", "വാടക, സ്കൂൾ, ഫീസ്, ബില്ലുകൾ ഒരിടത്ത്."]
+          ml: ["കുടുംബത്തിന്റെ മാസച്ചെലവ്", "വാടക, സ്കൂൾ, ഫീസ്, ബില്ലുകൾ ഒരിടത്ത്."],
+          ne: ["परिवारको मासिक खर्च", "भाडा, स्कूल, शुल्क र बिलहरू एकै ठाउँमा।"]
         },
         {
           icon: "🛂", href: null,
           en: ["Embassy services", "Passport renewal, PCC, OCI and attestation."],
           ar: ["خدمات السفارات", "تجديد الجواز وشهادة حسن السيرة والتصديق."],
           hi: ["दूतावास सेवाएँ", "पासपोर्ट नवीनीकरण, पीसीसी, ओसीआई और सत्यापन।"],
-          ml: ["എംബസി സേവനങ്ങൾ", "പാസ്പോർട്ട് പുതുക്കൽ, പിസിസി, ഒസിഐ, അറ്റസ്റ്റേഷൻ."]
+          ml: ["എംബസി സേവനങ്ങൾ", "പാസ്പോർട്ട് പുതുക്കൽ, പിസിസി, ഒസിഐ, അറ്റസ്റ്റേഷൻ."],
+          ne: ["दूतावास सेवाहरू", "राहदानी नवीकरण, प्रहरी प्रमाणपत्र र प्रमाणीकरण।"]
         }
       ];
 
       var COUNTRIES = [
-        { flag: "🇸🇦", en: "Saudi Arabia", ar: "السعودية", hi: "सऊदी अरब", ml: "സൗദി അറേബ്യ" },
-        { flag: "🇰🇼", en: "Kuwait", ar: "الكويت", hi: "कुवैत", ml: "കുവൈത്ത്" },
-        { flag: "🇶🇦", en: "Qatar", ar: "قطر", hi: "क़तर", ml: "ഖത്തർ" },
-        { flag: "🇴🇲", en: "Oman", ar: "عُمان", hi: "ओमान", ml: "ഒമാൻ" },
-        { flag: "🇧🇭", en: "Bahrain", ar: "البحرين", hi: "बहरीन", ml: "ബഹ്‌റൈൻ" }
+        { flag: "🇸🇦", en: "Saudi Arabia", ar: "السعودية", hi: "सऊदी अरब", ml: "സൗദി അറേബ്യ", ne: "साउदी अरब" },
+        { flag: "🇰🇼", en: "Kuwait", ar: "الكويت", hi: "कुवैत", ml: "കുവൈത്ത്", ne: "कुवेत" },
+        { flag: "🇶🇦", en: "Qatar", ar: "قطر", hi: "क़तर", ml: "ഖത്തർ", ne: "कतार" },
+        { flag: "🇴🇲", en: "Oman", ar: "عُمان", hi: "ओमान", ml: "ഒമാൻ", ne: "ओमान" },
+        { flag: "🇧🇭", en: "Bahrain", ar: "البحرين", hi: "बहरीन", ml: "ബഹ്‌റൈൻ", ne: "बहराइन" }
       ];
 
       var lang = "en";
