@@ -3,26 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy policy | ExpatGuideME</title>
-  <meta name="description" content="How ExpatGuideME handles your data: what is stored in your browser, what our forms collect, and which outside services the site uses.">
-  <link rel="canonical" href="https://expatguideme.com/privacy.html">
+  <title>Page not found | ExpatGuideME</title>
+  <meta name="description" content="This page could not be found. Go back to the ExpatGuideME home page or search our tools and guides.">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://expatguideme.com/404.html">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <script>(function(){try{var t=localStorage.getItem('expatguideme_theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Cairo:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Malayalam:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Cairo:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Malayalam:wght@400;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/site.css">
   <style>
-    .policy { max-width: 760px; }
-    .policy article h2 { font-size: 1.15rem; margin: 26px 0 8px; }
-    .policy article p, .policy article li { margin-bottom: 10px; }
-    .policy article ul { padding-inline-start: 22px; }
-    .lang-note { background: var(--warn-bg); color: var(--warn-ink); padding: 10px 12px; border-radius: 8px; font-size: 0.9rem; margin-bottom: 18px; }
+    .nf { text-align: center; padding: 48px 0 24px; max-width: 620px; }
+    .nf-code {
+      font-family: "Inter", sans-serif; font-size: clamp(5rem, 20vw, 8rem); font-weight: 700; line-height: 1;
+      color: var(--brand); letter-spacing: -0.04em;
+    }
+    .nf-code span { display: inline-block; animation: bob 2.4s ease-in-out infinite; }
+    @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .nf h1 { margin-top: 12px; }
+    .nf .lead { margin-left: auto; margin-right: auto; max-width: 480px; }
+    .nf-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 8px; }
   </style>
 
 </head>
-<body data-page="privacy">
+<body data-page="notfound">
   <a class="skip-link" href="#main" data-s="skip">Skip to content</a>
   <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
 
@@ -46,6 +52,7 @@
             <button type="button" data-lang="hi" lang="hi">हिन्दी</button>
             <button type="button" data-lang="ml" lang="ml">മലയാളം</button>
             <button type="button" data-lang="ne" lang="ne">नेपाली</button>
+            <button type="button" data-lang="ur" lang="ur">اردو</button>
           </div>
         </div>
         <button type="button" class="icon-btn" data-open-search data-s-aria="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
@@ -56,49 +63,15 @@
   </header>
 
   <main id="main" tabindex="-1">
-    <div class="wrap policy">
+    <div class="wrap nf reveal">
+      <div class="nf-code" aria-hidden="true">4<span>0</span>4</div>
       <h1 data-t="title"></h1>
-      <p class="lang-note" data-t="langNote" hidden></p>
-
-      <article class="card reveal" lang="en" dir="ltr">
-        <p>This policy explains what information ExpatGuideME (expatguideme.com) uses and why. We keep it short and plain.</p>
-
-        <h2>What is stored in your browser</h2>
-        <p>The site saves a few small settings in your browser's local storage so it works the way you left it:</p>
-        <ul>
-          <li>your chosen language and light or dark mode;</li>
-          <li>the currencies you last picked and a copy of the latest exchange rates, so the page loads faster;</li>
-          <li>that you clicked "OK" on the cookie notice.</li>
-        </ul>
-        <p>These settings stay on your device. We cannot see them, and you can remove them at any time by clearing your browser's site data.</p>
-
-        <h2>Forms: newsletter and contact</h2>
-        <p>If you subscribe to our newsletter, we receive your email address. If you use the contact form, we receive your name, email address and message. We use this only to send you updates you asked for or to reply to you. We never sell or share it for marketing.</p>
-        <p>Form submissions are processed and stored by our hosting provider, Netlify. To unsubscribe or ask us to delete your details, send a message through the contact page.</p>
-        <p>Please do not send passwords, ID numbers or bank details through any form.</p>
-
-        <h2>Outside services the site uses</h2>
-        <ul>
-          <li><strong>Netlify</strong> hosts the website. Like any web server, it processes technical data such as your IP address to deliver pages and keep the site secure.</li>
-          <li><strong>Google Fonts</strong> provides the fonts. Your browser downloads them from Google's servers.</li>
-          <li><strong>ExchangeRate-API</strong> provides the exchange rates. On the exchange rate page, your browser requests the latest rates directly from their servers.</li>
-        </ul>
-        <p>Each of these services has its own privacy policy.</p>
-
-        <h2>Advertising and cookies</h2>
-        <p>The site does not use advertising or tracking cookies today. In future we may show ads, for example from Google AdSense, to keep the site free. If we do, those ad services may use cookies, and we will update this page and the cookie notice before that happens.</p>
-
-        <h2>Links to other websites</h2>
-        <p>We link to official websites and other useful services. Links to other websites include a tag that tells them the visit came from ExpatGuideME. Their privacy practices are their own.</p>
-
-        <h2>Children</h2>
-        <p>The site is meant for adults. We do not knowingly collect information from children.</p>
-
-        <h2>Changes and contact</h2>
-        <p>If this policy changes, we will update this page and the date below. For any privacy question, please use the <a href="/contact.html">contact page</a>.</p>
-      </article>
-
-      <p class="last-updated" data-updated="2026-11-13"></p>
+      <p class="lead" data-t="text"></p>
+      <div class="nf-actions">
+        <a class="btn btn-primary" href="/" data-t="home"></a>
+        <a class="btn btn-ghost" href="/exchange-rate.html" data-s="navExchange"></a>
+        <button type="button" class="btn btn-ghost" data-open-search data-s="search"></button>
+      </div>
     </div>
   </main>
 
@@ -119,13 +92,24 @@
           <span class="check" aria-hidden="true">✓</span><span data-s="nlSuccess"></span>
         </div>
       </section>
-      <nav class="footer-links" aria-label="Footer">
-        <a href="/" data-s="navHome"></a>
-        <a href="/exchange-rate.html" data-s="navExchange"></a>
-        <a href="/send-money.html" data-s="navSend"></a>
-        <a href="/contact.html" data-s="navContact"></a>
-        <a href="/privacy.html" data-s="navPrivacy"></a>
-      </nav>
+      <div class="footer-cols">
+        <div>
+          <h3 data-s="footerTools"></h3>
+          <nav class="footer-links" aria-label="Tools">
+            <a href="/exchange-rate.html" data-s="navExchange"></a>
+            <a href="/send-money.html" data-s="navSend"></a>
+            <a href="/end-of-service.html" data-s="navEos"></a>
+          </nav>
+        </div>
+        <div>
+          <h3 data-s="footerSite"></h3>
+          <nav class="footer-links" aria-label="Footer">
+            <a href="/" data-s="navHome"></a>
+            <a href="/contact.html" data-s="navContact"></a>
+            <a href="/privacy.html" data-s="navPrivacy"></a>
+          </nav>
+        </div>
+      </div>
       <p class="disclaimer" data-s="disclaimer"></p>
     </div>
   </footer>
@@ -157,16 +141,16 @@
     (function () {
       "use strict";
       var T = {
-        en: { title: "Privacy policy", langNote: "" },
-        ar: { title: "سياسة الخصوصية", langNote: "هذه الصفحة متاحة حاليًا باللغة الإنجليزية فقط." },
-        hi: { title: "गोपनीयता नीति", langNote: "यह पेज अभी केवल अंग्रेज़ी में उपलब्ध है।" },
-        ml: { title: "സ്വകാര്യതാ നയം", langNote: "ഈ പേജ് ഇപ്പോൾ ഇംഗ്ലീഷിൽ മാത്രമാണ് ലഭ്യമായിട്ടുള്ളത്." },
-        ne: { title: "गोपनीयता नीति", langNote: "यो पृष्ठ अहिले अंग्रेजीमा मात्र उपलब्ध छ।" }
+        en: { title: "Page not found", text: "This page has moved or never existed. These links will get you back on track.", home: "Go to home page" },
+        ar: { title: "الصفحة غير موجودة", text: "ربما نُقلت هذه الصفحة أو لم تكن موجودة. هذه الروابط ستعيدك إلى المسار.", home: "الذهاب إلى الصفحة الرئيسية" },
+        hi: { title: "पेज नहीं मिला", text: "यह पेज हट गया है या कभी था ही नहीं। ये लिंक आपको सही जगह पहुँचा देंगे।", home: "होम पेज पर जाएँ" },
+        ml: { title: "പേജ് കണ്ടെത്തിയില്ല", text: "ഈ പേജ് മാറ്റിയിരിക്കാം, അല്ലെങ്കിൽ നിലവിലില്ല. ഈ ലിങ്കുകൾ നിങ്ങളെ ശരിയായ സ്ഥലത്ത് എത്തിക്കും.", home: "ഹോം പേജിലേക്ക് പോകുക" },
+        ne: { title: "पृष्ठ फेला परेन", text: "यो पृष्ठ सारिएको छ वा कहिल्यै थिएन। यी लिङ्कहरूले तपाईंलाई सही ठाउँमा पुर्याउँछन्।", home: "गृहपृष्ठमा जानुहोस्" },
+        ur: { title: "صفحہ نہیں ملا", text: "یہ صفحہ منتقل ہو گیا ہے یا کبھی موجود ہی نہیں تھا۔ یہ لنکس آپ کو صحیح جگہ پہنچا دیں گے۔", home: "ہوم پیج پر جائیں" }
       };
       window.ExpatSite.onLang(function (lang) {
         var L = T[lang] || T.en;
         document.querySelectorAll("[data-t]").forEach(function (el) { el.textContent = L[el.getAttribute("data-t")] || ""; });
-        document.querySelector(".lang-note").hidden = !L.langNote;
       });
     })();
   </script>

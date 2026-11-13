@@ -17,7 +17,8 @@
     ar: { name: "العربية", dir: "rtl", locale: "ar" },
     hi: { name: "हिन्दी", dir: "ltr", locale: "hi-IN" },
     ml: { name: "മലയാളം", dir: "ltr", locale: "ml-IN" },
-    ne: { name: "नेपाली", dir: "ltr", locale: "ne-NP" }
+    ne: { name: "नेपाली", dir: "ltr", locale: "ne-NP" },
+    ur: { name: "اردو", dir: "rtl", locale: "ur-PK" }
   };
 
   var S = {
@@ -31,10 +32,10 @@
       nlEmail: "Your email address", nlButton: "Subscribe", sending: "Sending…",
       nlSuccess: "Thank you! You're subscribed.", invalidEmail: "Please enter a valid email address.",
       formRequired: "Please fill in all fields.", formError: "Something went wrong. Please try again.",
-      cookieText: "We use your browser's storage to remember your language and settings. Ads may use cookies in future.",
+      cookieText: "We use your browser's storage to remember your language and settings. Our advertising partners, including Google, may use cookies to show ads.",
       cookieLearn: "Privacy policy", cookieOk: "OK", lastUpdated: "Last updated:",
       disclaimer: "This is an independent website. It is not connected to any government office or bank.",
-      copy: "Copy", copied: "Copied ✓"
+      copy: "Copy", copied: "Copied ✓", navEos: "End of service", navId: "ID & residency", navFamily: "Family cost", navEmbassy: "Embassy services", navAbout: "About us", navTerms: "Terms of use", navAffiliate: "Affiliate disclosure", footerTools: "Tools", footerSite: "Website"
     },
     ar: {
       skip: "انتقل إلى المحتوى", navHome: "الرئيسية", navExchange: "سعر الصرف", navSend: "تحويل الأموال", navContact: "اتصل بنا", navPrivacy: "الخصوصية",
@@ -46,10 +47,10 @@
       nlEmail: "بريدك الإلكتروني", nlButton: "اشترك", sending: "جارٍ الإرسال…",
       nlSuccess: "شكرًا لك! تم اشتراكك.", invalidEmail: "يرجى إدخال بريد إلكتروني صحيح.",
       formRequired: "يرجى تعبئة جميع الحقول.", formError: "حدث خطأ. يرجى المحاولة مرة أخرى.",
-      cookieText: "نستخدم تخزين المتصفح لتذكّر لغتك وإعداداتك، وقد تستخدم الإعلانات ملفات تعريف الارتباط مستقبلًا.",
+      cookieText: "نستخدم تخزين المتصفح لتذكّر لغتك وإعداداتك، وقد يستخدم شركاؤنا في الإعلانات، ومنهم جوجل، ملفات تعريف الارتباط لعرض الإعلانات.",
       cookieLearn: "سياسة الخصوصية", cookieOk: "موافق", lastUpdated: "آخر تحديث:",
       disclaimer: "هذا موقع مستقل، ولا علاقة له بأي جهة حكومية أو بنك.",
-      copy: "نسخ", copied: "تم النسخ ✓"
+      copy: "نسخ", copied: "تم النسخ ✓", navEos: "نهاية الخدمة", navId: "الهوية والإقامة", navFamily: "تكلفة العائلة", navEmbassy: "خدمات السفارات", navAbout: "من نحن", navTerms: "شروط الاستخدام", navAffiliate: "الإفصاح عن روابط الشراكة", footerTools: "الأدوات", footerSite: "الموقع"
     },
     hi: {
       skip: "मुख्य सामग्री पर जाएँ", navHome: "होम", navExchange: "एक्सचेंज रेट", navSend: "पैसे भेजें", navContact: "संपर्क", navPrivacy: "गोपनीयता",
@@ -61,10 +62,10 @@
       nlEmail: "आपका ईमेल पता", nlButton: "सब्सक्राइब करें", sending: "भेजा जा रहा है…",
       nlSuccess: "धन्यवाद! आपका सब्सक्रिप्शन हो गया।", invalidEmail: "कृपया सही ईमेल पता लिखें।",
       formRequired: "कृपया सभी जानकारी भरें।", formError: "कुछ गड़बड़ हो गई। कृपया दोबारा कोशिश करें।",
-      cookieText: "हम आपकी भाषा और सेटिंग्स याद रखने के लिए ब्राउज़र स्टोरेज का उपयोग करते हैं। भविष्य में विज्ञापन कुकीज़ का उपयोग कर सकते हैं।",
+      cookieText: "हम आपकी भाषा और सेटिंग्स याद रखने के लिए ब्राउज़र स्टोरेज का उपयोग करते हैं। Google समेत हमारे विज्ञापन पार्टनर विज्ञापन दिखाने के लिए कुकीज़ का उपयोग कर सकते हैं।",
       cookieLearn: "गोपनीयता नीति", cookieOk: "ठीक है", lastUpdated: "आख़िरी अपडेट:",
       disclaimer: "यह एक स्वतंत्र वेबसाइट है। इसका किसी सरकारी विभाग या बैंक से कोई संबंध नहीं है।",
-      copy: "कॉपी करें", copied: "कॉपी हो गया ✓"
+      copy: "कॉपी करें", copied: "कॉपी हो गया ✓", navEos: "सर्विस समाप्ति", navId: "आईडी और रेज़िडेंसी", navFamily: "परिवार का ख़र्च", navEmbassy: "दूतावास सेवाएँ", navAbout: "हमारे बारे में", navTerms: "उपयोग की शर्तें", navAffiliate: "एफ़िलिएट जानकारी", footerTools: "टूल", footerSite: "वेबसाइट"
     },
     ml: {
       skip: "പ്രധാന ഉള്ളടക്കത്തിലേക്ക് പോകുക", navHome: "ഹോം", navExchange: "വിനിമയ നിരക്ക്", navSend: "പണം അയക്കൽ", navContact: "ബന്ധപ്പെടുക", navPrivacy: "സ്വകാര്യത",
@@ -76,10 +77,10 @@
       nlEmail: "നിങ്ങളുടെ ഇമെയിൽ വിലാസം", nlButton: "സബ്സ്ക്രൈബ് ചെയ്യുക", sending: "അയക്കുന്നു…",
       nlSuccess: "നന്ദി! നിങ്ങൾ സബ്സ്ക്രൈബ് ചെയ്തു.", invalidEmail: "ശരിയായ ഇമെയിൽ വിലാസം നൽകുക.",
       formRequired: "എല്ലാ വിവരങ്ങളും പൂരിപ്പിക്കുക.", formError: "എന്തോ പിശക് സംഭവിച്ചു. വീണ്ടും ശ്രമിക്കുക.",
-      cookieText: "നിങ്ങളുടെ ഭാഷയും ക്രമീകരണങ്ങളും ഓർത്തുവയ്ക്കാൻ ഞങ്ങൾ ബ്രൗസർ സ്റ്റോറേജ് ഉപയോഗിക്കുന്നു. ഭാവിയിൽ പരസ്യങ്ങൾ കുക്കികൾ ഉപയോഗിച്ചേക്കാം.",
+      cookieText: "നിങ്ങളുടെ ഭാഷയും ക്രമീകരണങ്ങളും ഓർത്തുവയ്ക്കാൻ ഞങ്ങൾ ബ്രൗസർ സ്റ്റോറേജ് ഉപയോഗിക്കുന്നു. Google ഉൾപ്പെടെയുള്ള ഞങ്ങളുടെ പരസ്യ പങ്കാളികൾ പരസ്യങ്ങൾ കാണിക്കാൻ കുക്കികൾ ഉപയോഗിച്ചേക്കാം.",
       cookieLearn: "സ്വകാര്യതാ നയം", cookieOk: "ശരി", lastUpdated: "അവസാനം പുതുക്കിയത്:",
       disclaimer: "ഇതൊരു സ്വതന്ത്ര വെബ്സൈറ്റാണ്. ഏതെങ്കിലും സർക്കാർ വകുപ്പുമായോ ബാങ്കുമായോ ഇതിന് ബന്ധമില്ല.",
-      copy: "കോപ്പി ചെയ്യുക", copied: "കോപ്പി ചെയ്തു ✓"
+      copy: "കോപ്പി ചെയ്യുക", copied: "കോപ്പി ചെയ്തു ✓", navEos: "സർവീസ് ആനുകൂല്യം", navId: "ഐഡി, റെസിഡൻസി", navFamily: "കുടുംബച്ചെലവ്", navEmbassy: "എംബസി സേവനങ്ങൾ", navAbout: "ഞങ്ങളെക്കുറിച്ച്", navTerms: "ഉപയോഗ നിബന്ധനകൾ", navAffiliate: "അഫിലിയേറ്റ് വെളിപ്പെടുത്തൽ", footerTools: "ടൂളുകൾ", footerSite: "വെബ്സൈറ്റ്"
     },
     ne: {
       skip: "मुख्य सामग्रीमा जानुहोस्", navHome: "गृहपृष्ठ", navExchange: "विनिमय दर", navSend: "पैसा पठाउनुहोस्", navContact: "सम्पर्क", navPrivacy: "गोपनीयता",
@@ -91,10 +92,25 @@
       nlEmail: "तपाईंको इमेल ठेगाना", nlButton: "सदस्यता लिनुहोस्", sending: "पठाउँदै…",
       nlSuccess: "धन्यवाद! तपाईंको सदस्यता भयो।", invalidEmail: "कृपया सही इमेल ठेगाना लेख्नुहोस्।",
       formRequired: "कृपया सबै विवरण भर्नुहोस्।", formError: "केही गडबड भयो। कृपया फेरि प्रयास गर्नुहोस्।",
-      cookieText: "हामी तपाईंको भाषा र सेटिङहरू सम्झन ब्राउजर स्टोरेज प्रयोग गर्छौं। भविष्यमा विज्ञापनले कुकीज प्रयोग गर्न सक्छन्।",
+      cookieText: "हामी तपाईंको भाषा र सेटिङहरू सम्झन ब्राउजर स्टोरेज प्रयोग गर्छौं। Google सहित हाम्रा विज्ञापन साझेदारहरूले विज्ञापन देखाउन कुकीज प्रयोग गर्न सक्छन्।",
       cookieLearn: "गोपनीयता नीति", cookieOk: "ठीक छ", lastUpdated: "पछिल्लो अपडेट:",
       disclaimer: "यो एक स्वतन्त्र वेबसाइट हो। यसको कुनै पनि सरकारी कार्यालय वा बैंकसँग सम्बन्ध छैन।",
-      copy: "कपी गर्नुहोस्", copied: "कपी भयो ✓"
+      copy: "कपी गर्नुहोस्", copied: "कपी भयो ✓", navEos: "सेवा समाप्ति", navId: "परिचयपत्र र रेसिडेन्सी", navFamily: "परिवार खर्च", navEmbassy: "दूतावास सेवा", navAbout: "हाम्रोबारे", navTerms: "प्रयोगका सर्तहरू", navAffiliate: "एफिलिएट जानकारी", footerTools: "टुलहरू", footerSite: "वेबसाइट"
+    },
+    ur: {
+      skip: "مواد پر جائیں", navHome: "ہوم", navExchange: "شرحِ تبادلہ", navSend: "رقم بھیجیں", navContact: "رابطہ", navPrivacy: "رازداری",
+      menu: "مینو", close: "بند کریں", search: "تلاش", searchPh: "ٹولز اور گائیڈز تلاش کریں…",
+      noResults: "کوئی نتیجہ نہیں ملا۔ کوئی اور لفظ آزمائیں۔", language: "زبان",
+      themeDark: "ڈارک موڈ پر جائیں", themeLight: "لائٹ موڈ پر جائیں",
+      toTop: "اوپر جائیں", contactUs: "ہم سے رابطہ کریں",
+      nlTitle: "نئی گائیڈز ای میل پر حاصل کریں", nlText: "نیا ٹول یا گائیڈ شامل ہونے پر صرف ایک مختصر ای میل۔ کوئی اسپام نہیں۔",
+      nlEmail: "آپ کا ای میل ایڈریس", nlButton: "سبسکرائب کریں", sending: "بھیجا جا رہا ہے…",
+      nlSuccess: "شکریہ! آپ نے سبسکرائب کر لیا ہے۔", invalidEmail: "براہِ کرم درست ای میل ایڈریس لکھیں۔",
+      formRequired: "براہِ کرم تمام خانے پُر کریں۔", formError: "کچھ غلط ہو گیا۔ براہِ کرم دوبارہ کوشش کریں۔",
+      cookieText: "ہم آپ کی زبان اور سیٹنگز یاد رکھنے کے لیے براؤزر اسٹوریج استعمال کرتے ہیں۔ Google سمیت ہمارے اشتہاری شراکت دار اشتہارات دکھانے کے لیے کوکیز استعمال کر سکتے ہیں۔",
+      cookieLearn: "رازداری کی پالیسی", cookieOk: "ٹھیک ہے", lastUpdated: "آخری اپ ڈیٹ:",
+      disclaimer: "یہ ایک آزاد ویب سائٹ ہے۔ اس کا کسی سرکاری دفتر یا بینک سے کوئی تعلق نہیں۔",
+      copy: "کاپی کریں", copied: "کاپی ہو گیا ✓", navEos: "اختتامِ ملازمت", navId: "شناختی کارڈ و اقامہ", navFamily: "خاندانی خرچ", navEmbassy: "سفارت خانے کی خدمات", navAbout: "ہمارے بارے میں", navTerms: "استعمال کی شرائط", navAffiliate: "ایفیلیئٹ انکشاف", footerTools: "ٹولز", footerSite: "ویب سائٹ"
     }
   };
 
@@ -102,97 +118,183 @@
   var SEARCH = [
     {
       url: "/",
-      t: { en: "Home", ar: "الرئيسية", hi: "होम", ml: "ഹോം", ne: "गृहपृष्ठ" },
+      t: { en: "Home", ar: "الرئيسية", hi: "होम", ml: "ഹോം", ne: "गृहपृष्ठ", ur: "ہوم" },
       d: {
         en: "Simple guides and free tools for expats in the Gulf",
         ar: "أدلة بسيطة وأدوات مجانية للمقيمين في الخليج",
         hi: "खाड़ी में रहने वाले प्रवासियों के लिए आसान गाइड और मुफ़्त टूल",
         ml: "ഗൾഫിലെ പ്രവാസികൾക്ക് ലളിതമായ ഗൈഡുകളും സൗജന്യ ടൂളുകളും",
-        ne: "खाडीमा बस्ने प्रवासीहरूका लागि सजिलो गाइड र निःशुल्क टुलहरू"
+        ne: "खाडीमा बस्ने प्रवासीहरूका लागि सजिलो गाइड र निःशुल्क टुलहरू",
+        ur: "خلیج میں رہنے والے تارکینِ وطن کے لیے آسان گائیڈز اور مفت ٹولز"
       },
       k: "home expat gulf guide tools saudi kuwait qatar oman bahrain"
     },
     {
       url: "/exchange-rate.html",
-      t: { en: "Exchange rate today", ar: "سعر الصرف اليوم", hi: "आज का एक्सचेंज रेट", ml: "ഇന്നത്തെ വിനിമയ നിരക്ക്", ne: "आजको विनिमय दर" },
+      t: { en: "Exchange rate today", ar: "سعر الصرف اليوم", hi: "आज का एक्सचेंज रेट", ml: "ഇന്നത്തെ വിനിമയ നിരക്ക്", ne: "आजको विनिमय दर", ur: "آج کی شرحِ تبادلہ" },
       d: {
         en: "Riyal and dinar to rupee, taka, peso and more",
         ar: "الريال والدينار إلى الروبية والتاكا والبيزو وغيرها",
         hi: "रियाल और दीनार से रुपया, टका, पेसो और अन्य",
         ml: "റിയാൽ, ദിനാർ എന്നിവ രൂപ, ടാക്ക, പെസോ തുടങ്ങിയവയിലേക്ക്",
-        ne: "रियाल र दिनारबाट रुपैयाँ, टाका, पेसो र अन्य मुद्रामा"
+        ne: "रियाल र दिनारबाट रुपैयाँ, टाका, पेसो र अन्य मुद्रामा",
+        ur: "ریال اور دینار سے روپیہ، ٹکا، پیسو اور دیگر کرنسیاں"
       },
       k: "exchange rate currency converter convert riyal rial dinar rupee rupiah taka peso pound dollar euro sar kwd qar omr bhd inr pkr bdt npr lkr php idr egp usd gbp eur remittance send money transfer صرف ريال دينار روبية रुपया रियाल दीनार विनिमय रुपैयाँ രൂപ റിയാൽ"
     },
     {
       url: "/send-money.html",
-      t: { en: "Best way to send money home", ar: "أفضل طريقة لتحويل الأموال", hi: "घर पैसे भेजने का सबसे अच्छा तरीका", ml: "നാട്ടിലേക്ക് പണം അയക്കാൻ മികച്ച വഴി", ne: "घर पैसा पठाउने उत्तम तरिका" },
+      t: { en: "Best way to send money home", ar: "أفضل طريقة لتحويل الأموال", hi: "घर पैसे भेजने का सबसे अच्छा तरीका", ml: "നാട്ടിലേക്ക് പണം അയക്കാൻ മികച്ച വഴി", ne: "घर पैसा पठाउने उत्तम तरिका", ur: "گھر رقم بھیجنے کا بہترین طریقہ" },
       d: {
         en: "Compare STC Bank, urpay, Tahweel Al Rajhi, Enjaz, LuLu Money, Al Mulla, BFC and more",
         ar: "قارن بين خدمات التحويل في السعودية والكويت وقطر وعُمان والبحرين",
         hi: "सऊदी, कुवैत, क़तर, ओमान और बहरीन की ट्रांसफ़र सेवाओं की तुलना",
         ml: "സൗദി, കുവൈത്ത്, ഖത്തർ, ഒമാൻ, ബഹ്‌റൈൻ എന്നിവിടങ്ങളിലെ സേവനങ്ങൾ താരതമ്യം ചെയ്യുക",
-        ne: "साउदी, कुवेत, कतार, ओमान र बहराइनका सेवाहरूको तुलना"
+        ne: "साउदी, कुवेत, कतार, ओमान र बहराइनका सेवाहरूको तुलना",
+        ur: "سعودی، کویت، قطر، عمان اور بحرین کی ترسیلِ زر سروسز کا موازنہ"
       },
       k: "send money home remittance transfer compare cheapest app bank exchange stc bank stc pay urpay tahweel al rajhi enjaz albilad western union al mulla lulu money lulu exchange bfc global pay hawala تحويل حوالة पैसे भेजें പണം അയക്കൽ पैसा पठाउने"
     },
     {
       url: "/end-of-service.html",
-      t: { en: "End-of-service benefit calculator", ar: "حاسبة مكافأة نهاية الخدمة", hi: "एंड-ऑफ़-सर्विस बेनिफ़िट कैलकुलेटर", ml: "എൻഡ് ഓഫ് സർവീസ് ആനുകൂല്യ കാൽക്കുലേറ്റർ", ne: "सेवा समाप्ति सुविधा क्यालकुलेटर" },
+      t: { en: "End-of-service benefit calculator", ar: "حاسبة مكافأة نهاية الخدمة", hi: "एंड-ऑफ़-सर्विस बेनिफ़िट कैलकुलेटर", ml: "എൻഡ് ഓഫ് സർവീസ് ആനുകൂല്യ കാൽക്കുലേറ്റർ", ne: "सेवा समाप्ति सुविधा क्यालकुलेटर", ur: "اختتامِ ملازمت فائدہ کیلکولیٹر" },
       d: {
         en: "Gratuity for Saudi Arabia, UAE, Kuwait, Qatar, Oman and Bahrain",
         ar: "مكافأة نهاية الخدمة في السعودية والإمارات والكويت وقطر وعُمان والبحرين",
         hi: "सऊदी, यूएई, कुवैत, क़तर, ओमान और बहरीन की ग्रेच्युटी",
         ml: "സൗദി, യുഎഇ, കുവൈത്ത്, ഖത്തർ, ഒമാൻ, ബഹ്‌റൈൻ ഗ്രാറ്റുവിറ്റി",
-        ne: "साउदी, युएई, कुवेत, कतार, ओमान र बहराइनको ग्र्याच्युटी"
+        ne: "साउदी, युएई, कुवेत, कतार, ओमान र बहराइनको ग्र्याच्युटी",
+        ur: "سعودی، امارات، کویت، قطر، عمان اور بحرین کی گریجویٹی"
       },
       k: "end of service benefit gratuity eosb esb indemnity final settlement resign resignation termination calculator article 84 85 labour law labor law مكافأة نهاية الخدمة ग्रेच्युटी ഗ്രാറ്റുവിറ്റി ग्र्याच्युटी"
     },
     {
+      url: "/id-residency.html",
+      t: { en: "ID card & residency guide", ar: "دليل الهوية والإقامة", hi: "आईडी कार्ड और रेज़िडेंसी गाइड", ml: "ഐഡി കാർഡ്, റെസിഡൻസി ഗൈഡ്", ne: "परिचयपत्र र रेसिडेन्सी गाइड", ur: "شناختی کارڈ اور اقامہ گائیڈ" },
+      d: {
+        en: "Iqama, Civil ID, QID, Resident Card and CPR: check, renew, fees",
+        ar: "الإقامة والبطاقة المدنية وبطاقة المقيم: الاستعلام والتجديد والرسوم",
+        hi: "इक़ामा, सिविल आईडी, क्यूआईडी, रेज़िडेंट कार्ड, सीपीआर: जाँच, नवीनीकरण, फ़ीस",
+        ml: "ഇഖാമ, സിവിൽ ഐഡി, ക്യുഐഡി, റസിഡന്റ് കാർഡ്, സിപിആർ: പരിശോധന, പുതുക്കൽ, ഫീസ്",
+        ne: "इकामा, सिभिल आईडी, क्यूआईडी, रेसिडेन्ट कार्ड, सीपीआर: जाँच, नवीकरण, शुल्क",
+        ur: "اقامہ، سول آئی ڈی، کیو آئی ڈی، ریزیڈنٹ کارڈ، سی پی آر: چیک، تجدید، فیس"
+      },
+      k: "iqama civil id qid resident card cpr residence permit renew renewal check expiry fee fine absher muqeem sahel paci metrash rop iga lmra إقامة البطاقة المدنية इक़ामा ഇഖാമ इकामा اقامہ"
+    },
+    {
+      url: "/family-cost.html",
+      t: { en: "Family monthly cost calculator", ar: "حاسبة تكلفة العائلة الشهرية", hi: "परिवार का मासिक ख़र्च कैलकुलेटर", ml: "കുടുംബത്തിന്റെ മാസച്ചെലവ് കാൽക്കുലേറ്റർ", ne: "परिवारको मासिक खर्च क्यालकुलेटर", ur: "خاندان کا ماہانہ خرچ کیلکولیٹر" },
+      d: {
+        en: "Rent, school, dependent fees and bills: what is left to save",
+        ar: "الإيجار والمدارس ورسوم المرافقين والفواتير: ما يتبقى للادخار",
+        hi: "किराया, स्कूल, डिपेंडेंट फ़ीस और बिल: बचत कितनी बचेगी",
+        ml: "വാടക, സ്കൂൾ, ഡിപെൻഡന്റ് ഫീസ്, ബില്ലുകൾ: എത്ര ബാക്കി",
+        ne: "भाडा, स्कूल, आश्रित शुल्क र बिल: कति बचत हुन्छ",
+        ur: "کرایہ، اسکول، ڈیپنڈنٹ فیس اور بل: بچت کتنی ہوگی"
+      },
+      k: "family cost budget monthly expenses rent school fees dependent levy dependant fee utilities groceries savings salary calculator ميزانية تكلفة العائلة बजट ख़र्च ബജറ്റ് ചെലവ് बजेट खर्च بجٹ خرچ"
+    },
+    {
+      url: "/embassy-services.html",
+      t: { en: "Embassy services guide", ar: "دليل خدمات السفارات", hi: "दूतावास सेवाएँ गाइड", ml: "എംബസി സേവന ഗൈഡ്", ne: "दूतावास सेवा गाइड", ur: "سفارت خانے کی خدمات کی گائیڈ" },
+      d: {
+        en: "Passport renewal, PCC, OCI, NICOP and attestation for Indians, Pakistanis and Nepalis",
+        ar: "تجديد الجواز وشهادة حسن السيرة والتصديق للهنود والباكستانيين والنيباليين",
+        hi: "भारतीय, पाकिस्तानी और नेपाली नागरिकों के लिए पासपोर्ट, पीसीसी, ओसीआई और सत्यापन",
+        ml: "ഇന്ത്യ, പാകിസ്ഥാൻ, നേപ്പാൾ പൗരന്മാർക്ക് പാസ്പോർട്ട്, പിസിസി, ഒസിഐ, അറ്റസ്റ്റേഷൻ",
+        ne: "भारतीय, पाकिस्तानी र नेपालीका लागि राहदानी, प्रहरी प्रमाणपत्र र प्रमाणीकरण",
+        ur: "بھارتی، پاکستانی اور نیپالی شہریوں کے لیے پاسپورٹ، پی سی سی، نائیکوپ اور تصدیق"
+      },
+      k: "embassy consulate passport renewal pcc police clearance oci nicop pak id attestation vfs bls madad india pakistan nepal سفارة جواز दूतावास पासपोर्ट എംബസി പാസ്പോർട്ട് दूतावास राहदानी سفارت خانہ پاسپورٹ"
+    },
+    {
+      url: "/about.html",
+      t: { en: "About us", ar: "من نحن", hi: "हमारे बारे में", ml: "ഞങ്ങളെക്കുറിച്ച്", ne: "हाम्रोबारे", ur: "ہمارے بارے میں" },
+      d: {
+        en: "Who runs ExpatGuideME and how we check information",
+        ar: "من يدير الموقع وكيف نتحقق من المعلومات",
+        hi: "ExpatGuideME कौन चलाता है और जानकारी कैसे जाँची जाती है",
+        ml: "ExpatGuideME ആരാണ് നടത്തുന്നത്, വിവരങ്ങൾ എങ്ങനെ പരിശോധിക്കുന്നു",
+        ne: "ExpatGuideME कसले चलाउँछ र जानकारी कसरी जाँचिन्छ",
+        ur: "ExpatGuideME کون چلاتا ہے اور معلومات کیسے جانچی جاتی ہیں"
+      },
+      k: "about who team mission editorial sources independent من نحن हमारे बारे में ഞങ്ങളെക്കുറിച്ച് हाम्रोबारे ہمارے بارے میں"
+    },
+    {
+      url: "/terms.html",
+      t: { en: "Terms of use", ar: "شروط الاستخدام", hi: "उपयोग की शर्तें", ml: "ഉപയോഗ നിബന്ധനകൾ", ne: "प्रयोगका सर्तहरू", ur: "استعمال کی شرائط" },
+      d: {
+        en: "Rules for using this website",
+        ar: "قواعد استخدام هذا الموقع",
+        hi: "इस वेबसाइट के उपयोग के नियम",
+        ml: "ഈ വെബ്സൈറ്റ് ഉപയോഗിക്കാനുള്ള നിയമങ്ങൾ",
+        ne: "यो वेबसाइट प्रयोग गर्ने नियम",
+        ur: "اس ویب سائٹ کے استعمال کے اصول"
+      },
+      k: "terms conditions terms of use legal disclaimer شروط शर्तें നിബന്ധനകൾ सर्त شرائط"
+    },
+    {
+      url: "/affiliate-disclosure.html",
+      t: { en: "Affiliate disclosure", ar: "الإفصاح عن روابط الشراكة", hi: "एफ़िलिएट जानकारी", ml: "അഫിലിയേറ്റ് വെളിപ്പെടുത്തൽ", ne: "एफिलिएट जानकारी", ur: "ایفیلیئٹ انکشاف" },
+      d: {
+        en: "How we earn money from ads and partner links",
+        ar: "كيف نكسب من الإعلانات وروابط الشراكة",
+        hi: "हम विज्ञापन और पार्टनर लिंक से कैसे कमाते हैं",
+        ml: "പരസ്യങ്ങളിൽ നിന്നും പങ്കാളി ലിങ്കുകളിൽ നിന്നും ഞങ്ങൾ എങ്ങനെ വരുമാനം നേടുന്നു",
+        ne: "हामी विज्ञापन र साझेदार लिङ्कबाट कसरी कमाउँछौं",
+        ur: "ہم اشتہارات اور پارٹنر لنکس سے کیسے کماتے ہیں"
+      },
+      k: "affiliate disclosure partner sponsored commission advertising ads إفصاح एफ़िलिएट അഫിലിയേറ്റ് एफिलिएट ایفیلیئٹ"
+    },
+    {
       url: "/exchange-rate.html#faq",
-      t: { en: "Exchange rate questions (FAQ)", ar: "أسئلة عن سعر الصرف", hi: "एक्सचेंज रेट से जुड़े सवाल", ml: "വിനിമയ നിരക്ക്: പതിവ് ചോദ്യങ്ങൾ", ne: "विनिमय दरसम्बन्धी प्रश्नहरू" },
+      t: { en: "Exchange rate questions (FAQ)", ar: "أسئلة عن سعر الصرف", hi: "एक्सचेंज रेट से जुड़े सवाल", ml: "വിനിമയ നിരക്ക്: പതിവ് ചോദ്യങ്ങൾ", ne: "विनिमय दरसम्बन्धी प्रश्नहरू", ur: "شرحِ تبادلہ کے سوالات" },
       d: {
         en: "Bank rates, daily updates, the riyal's dollar peg",
         ar: "أسعار البنوك والتحديث اليومي وربط الريال بالدولار",
         hi: "बैंक रेट, रोज़ाना अपडेट, रियाल और डॉलर",
         ml: "ബാങ്ക് നിരക്ക്, ദിവസേന പുതുക്കൽ, റിയാലും ഡോളറും",
-        ne: "बैंक दर, दैनिक अपडेट, रियाल र डलर"
+        ne: "बैंक दर, दैनिक अपडेट, रियाल र डलर",
+        ur: "بینک ریٹ، روزانہ اپ ڈیٹ، ریال اور ڈالر"
       },
       k: "faq question bank margin fee peg pegged dollar update updated official"
     },
     {
       url: "/#faq",
-      t: { en: "About ExpatGuideME (FAQ)", ar: "عن الموقع (أسئلة شائعة)", hi: "ExpatGuideME के बारे में (सवाल)", ml: "ExpatGuideME നെക്കുറിച്ച് (ചോദ്യങ്ങൾ)", ne: "ExpatGuideME बारे (प्रश्नहरू)" },
+      t: { en: "About ExpatGuideME (FAQ)", ar: "عن الموقع (أسئلة شائعة)", hi: "ExpatGuideME के बारे में (सवाल)", ml: "ExpatGuideME നെക്കുറിച്ച് (ചോദ്യങ്ങൾ)", ne: "ExpatGuideME बारे (प्रश्नहरू)", ur: "ExpatGuideME کے بارے میں (سوالات)" },
       d: {
         en: "Is it free, which languages and countries",
         ar: "هل الموقع مجاني، وما اللغات والدول",
         hi: "क्या यह मुफ़्त है, कौन-सी भाषाएँ और देश",
         ml: "സൗജന്യമാണോ, ഏതൊക്കെ ഭാഷകളും രാജ്യങ്ങളും",
-        ne: "निःशुल्क छ कि, कुन भाषा र देशहरू"
+        ne: "निःशुल्क छ कि, कुन भाषा र देशहरू",
+        ur: "کیا یہ مفت ہے، کون سی زبانیں اور ممالک"
       },
       k: "faq about free languages countries official government"
     },
     {
       url: "/contact.html",
-      t: { en: "Contact us", ar: "اتصل بنا", hi: "संपर्क करें", ml: "ഞങ്ങളെ ബന്ധപ്പെടുക", ne: "सम्पर्क गर्नुहोस्" },
+      t: { en: "Contact us", ar: "اتصل بنا", hi: "संपर्क करें", ml: "ഞങ്ങളെ ബന്ധപ്പെടുക", ne: "सम्पर्क गर्नुहोस्", ur: "ہم سے رابطہ کریں" },
       d: {
         en: "Send a message, report a mistake, request a guide",
         ar: "أرسل رسالة أو أبلغ عن خطأ أو اطلب دليلًا",
         hi: "संदेश भेजें, गलती बताएँ, गाइड माँगें",
         ml: "സന്ദേശം അയക്കുക, തെറ്റ് അറിയിക്കുക, ഗൈഡ് ആവശ്യപ്പെടുക",
-        ne: "सन्देश पठाउनुहोस्, गल्ती जानकारी दिनुहोस्, गाइड माग्नुहोस्"
+        ne: "सन्देश पठाउनुहोस्, गल्ती जानकारी दिनुहोस्, गाइड माग्नुहोस्",
+        ur: "پیغام بھیجیں، غلطی بتائیں، نئی گائیڈ کی درخواست کریں"
       },
       k: "contact email message help mistake feedback request"
     },
     {
       url: "/privacy.html",
-      t: { en: "Privacy policy", ar: "سياسة الخصوصية", hi: "गोपनीयता नीति", ml: "സ്വകാര്യതാ നയം", ne: "गोपनीयता नीति" },
+      t: { en: "Privacy policy", ar: "سياسة الخصوصية", hi: "गोपनीयता नीति", ml: "സ്വകാര്യതാ നയം", ne: "गोपनीयता नीति", ur: "رازداری کی پالیسی" },
       d: {
         en: "What we store and why",
         ar: "ما الذي نحفظه ولماذا",
         hi: "हम क्या सहेजते हैं और क्यों",
         ml: "ഞങ്ങൾ എന്ത് സൂക്ഷിക്കുന്നു, എന്തിന്",
-        ne: "हामी के राख्छौं र किन"
+        ne: "हामी के राख्छौं र किन",
+        ur: "ہم کیا محفوظ کرتے ہیں اور کیوں"
       },
       k: "privacy cookies data storage newsletter policy"
     }

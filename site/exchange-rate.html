@@ -11,7 +11,7 @@
   <script>(function(){try{var t=localStorage.getItem('expatguideme_theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Cairo:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Malayalam:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Cairo:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Malayalam:wght@400;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/site.css">
   <style>
     .fx { max-width: 720px; }
@@ -94,6 +94,7 @@
             <button type="button" data-lang="hi" lang="hi">हिन्दी</button>
             <button type="button" data-lang="ml" lang="ml">മലയാളം</button>
             <button type="button" data-lang="ne" lang="ne">नेपाली</button>
+            <button type="button" data-lang="ur" lang="ur">اردو</button>
           </div>
         </div>
         <button type="button" class="icon-btn" data-open-search data-s-aria="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
@@ -180,13 +181,24 @@
           <span class="check" aria-hidden="true">✓</span><span data-s="nlSuccess"></span>
         </div>
       </section>
-      <nav class="footer-links" aria-label="Footer">
-        <a href="/" data-s="navHome"></a>
-        <a href="/exchange-rate.html" data-s="navExchange"></a>
-        <a href="/send-money.html" data-s="navSend"></a>
-        <a href="/contact.html" data-s="navContact"></a>
-        <a href="/privacy.html" data-s="navPrivacy"></a>
-      </nav>
+      <div class="footer-cols">
+        <div>
+          <h3 data-s="footerTools"></h3>
+          <nav class="footer-links" aria-label="Tools">
+            <a href="/exchange-rate.html" data-s="navExchange"></a>
+            <a href="/send-money.html" data-s="navSend"></a>
+            <a href="/end-of-service.html" data-s="navEos"></a>
+          </nav>
+        </div>
+        <div>
+          <h3 data-s="footerSite"></h3>
+          <nav class="footer-links" aria-label="Footer">
+            <a href="/" data-s="navHome"></a>
+            <a href="/contact.html" data-s="navContact"></a>
+            <a href="/privacy.html" data-s="navPrivacy"></a>
+          </nav>
+        </div>
+      </div>
       <p class="disclaimer" data-s="disclaimer"></p>
       <p class="credit"><a href="https://www.exchangerate-api.com">Rates By Exchange Rate API</a></p>
     </div>
@@ -342,6 +354,25 @@
           a3: "हो। साउदी रियाल १ अमेरिकी डलर = ३.७५ रियालमा स्थिर छ। कतारी रियाल, ओमानी रियाल र बहराइनी दिनार पनि डलरसँग जोडिएका छन्, तर कुवेती दिनार विभिन्न मुद्राहरूको समूहमा आधारित छ। त्यसैले देखिने परिवर्तन प्रायः तपाईंको देशको मुद्रा बदलिँदा हुन्छ।",
           q4: "के यो सरकारी वा बैंकको वेबसाइट हो?",
           a4: "होइन। ExpatGuideME एक स्वतन्त्र वेबसाइट हो। पैसा पठाउन आफ्नो बैंक वा इजाजतप्राप्त ट्रान्सफर सेवा प्रयोग गर्नुहोस्, र पठाउनुअघि उनीहरूको दर र शुल्क जाँच्नुहोस्।"
+        },
+        ur: {
+          title: "آج کی خلیجی شرحِ تبادلہ",
+          lead: "سعودی ریال، کویتی دینار، قطری ریال، عمانی ریال اور بحرینی دینار کو اپنے ملک کی کرنسی میں تبدیل کریں۔",
+          amount: "رقم", from: "سے", to: "میں", swap: "کرنسیاں بدلیں", quick: "فوری جدول",
+          note: "یہ مارکیٹ ریٹ ہے۔ بینک اور ٹرانسفر ایپس تھوڑا کم ریٹ دیتی ہیں۔ رقم بھیجنے سے پہلے موازنہ کریں۔",
+          updated: "آخری اپ ڈیٹ:", loading: "ریٹ لوڈ ہو رہے ہیں…",
+          error: "اس وقت ریٹ لوڈ نہیں ہو سکے۔ براہِ کرم انٹرنیٹ چیک کر کے دوبارہ کوشش کریں۔",
+          offline: "محفوظ شدہ ریٹ دکھائے جا رہے ہیں۔ آخری اپ ڈیٹ:", retry: "دوبارہ کوشش کریں", ad: "اشتہار",
+          marketRate: "مارکیٹ ریٹ",
+          faqTitle: "اکثر پوچھے جانے والے سوالات",
+          q1: "میرا بینک یا ٹرانسفر ایپ مختلف ریٹ کیوں دیتی ہے؟",
+          a1: "یہ صفحہ مارکیٹ کا درمیانی ریٹ دکھاتا ہے۔ بینک اور ٹرانسفر ایپس تھوڑا مارجن اور کبھی کبھی فیس شامل کرتی ہیں، اس لیے آپ کو تھوڑا کم ملتا ہے۔ ہمیشہ وہ آخری رقم دیکھیں جو آپ کے گھر والوں کو ملے گی۔",
+          q2: "ریٹ کتنی بار اپ ڈیٹ ہوتے ہیں؟",
+          a2: "ریٹ ایک بین الاقوامی ایکسچینج ریٹ سروس سے آتے ہیں اور تقریباً دن میں ایک بار اپ ڈیٹ ہوتے ہیں۔ آخری اپ ڈیٹ کا وقت نتیجے کے نیچے دکھایا جاتا ہے۔",
+          q3: "کیا سعودی ریال امریکی ڈالر سے جڑا ہوا ہے؟",
+          a3: "جی ہاں۔ سعودی ریال 3.75 ریال فی امریکی ڈالر پر مقرر ہے۔ قطری ریال، عمانی ریال اور بحرینی دینار بھی ڈالر سے جڑے ہیں، جبکہ کویتی دینار کرنسیوں کی ایک ٹوکری کے مطابق چلتا ہے۔ اس لیے جو تبدیلی آپ دیکھتے ہیں وہ عموماً آپ کے ملک کی کرنسی میں ہوتی ہے۔",
+          q4: "کیا یہ سرکاری یا بینک کی ویب سائٹ ہے؟",
+          a4: "نہیں۔ ExpatGuideME ایک آزاد ویب سائٹ ہے۔ رقم بھیجنے کے لیے اپنا بینک یا لائسنس یافتہ ٹرانسفر سروس استعمال کریں، اور بھیجنے سے پہلے ان کا ریٹ اور فیس چیک کریں۔"
         }
       };
 

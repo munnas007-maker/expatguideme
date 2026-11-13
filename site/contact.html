@@ -11,7 +11,7 @@
   <script>(function(){try{var t=localStorage.getItem('expatguideme_theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Cairo:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Malayalam:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Cairo:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Malayalam:wght@400;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/site.css">
   <style>
     .contact { max-width: 640px; }
@@ -45,6 +45,7 @@
             <button type="button" data-lang="hi" lang="hi">हिन्दी</button>
             <button type="button" data-lang="ml" lang="ml">മലയാളം</button>
             <button type="button" data-lang="ne" lang="ne">नेपाली</button>
+            <button type="button" data-lang="ur" lang="ur">اردو</button>
           </div>
         </div>
         <button type="button" class="icon-btn" data-open-search data-s-aria="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
@@ -107,13 +108,24 @@
           <span class="check" aria-hidden="true">✓</span><span data-s="nlSuccess"></span>
         </div>
       </section>
-      <nav class="footer-links" aria-label="Footer">
-        <a href="/" data-s="navHome"></a>
-        <a href="/exchange-rate.html" data-s="navExchange"></a>
-        <a href="/send-money.html" data-s="navSend"></a>
-        <a href="/contact.html" data-s="navContact"></a>
-        <a href="/privacy.html" data-s="navPrivacy"></a>
-      </nav>
+      <div class="footer-cols">
+        <div>
+          <h3 data-s="footerTools"></h3>
+          <nav class="footer-links" aria-label="Tools">
+            <a href="/exchange-rate.html" data-s="navExchange"></a>
+            <a href="/send-money.html" data-s="navSend"></a>
+            <a href="/end-of-service.html" data-s="navEos"></a>
+          </nav>
+        </div>
+        <div>
+          <h3 data-s="footerSite"></h3>
+          <nav class="footer-links" aria-label="Footer">
+            <a href="/" data-s="navHome"></a>
+            <a href="/contact.html" data-s="navContact"></a>
+            <a href="/privacy.html" data-s="navPrivacy"></a>
+          </nav>
+        </div>
+      </div>
       <p class="disclaimer" data-s="disclaimer"></p>
     </div>
   </footer>
@@ -179,6 +191,13 @@
           name: "तपाईंको नाम", email: "तपाईंको इमेल", message: "तपाईंको सन्देश", send: "सन्देश पठाउनुहोस्",
           note: "कृपया पासवर्ड, परिचयपत्र नम्बर वा बैंक विवरण नपठाउनुहोस्।",
           success: "धन्यवाद! तपाईंको सन्देश पठाइयो। हामी प्रायः केही दिनभित्र जवाफ दिन्छौं।"
+        },
+        ur: {
+          title: "ہم سے رابطہ کریں",
+          lead: "کوئی غلطی نظر آئی، یا اپنے ملک یا زبان کے لیے گائیڈ چاہیے؟ ہمیں پیغام بھیجیں۔",
+          name: "آپ کا نام", email: "آپ کا ای میل", message: "آپ کا پیغام", send: "پیغام بھیجیں",
+          note: "براہِ کرم پاس ورڈ، شناختی نمبر یا بینک کی تفصیلات نہ بھیجیں۔",
+          success: "شکریہ! آپ کا پیغام بھیج دیا گیا ہے۔ ہم عام طور پر چند دنوں میں جواب دیتے ہیں۔"
         }
       };
       window.ExpatSite.onLang(function (lang) {

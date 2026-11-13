@@ -1,73 +1,78 @@
 <!--META
-title: Best Way to Send Money Home from Saudi Arabia, Kuwait, Qatar, Oman &amp; Bahrain | ExpatGuideME
-description: Compare money transfer services in the Gulf: STC Bank, urpay, Tahweel Al Rajhi, Enjaz, Western Union, Al Mulla Exchange, LuLu Money, BFC and Global Pay. Simple tips to get more money home, in English, Arabic, Hindi, Malayalam and Nepali.
+title: Send Money Home: Compare Remittance Rates from Saudi Arabia, UAE, Kuwait, Qatar, Oman &amp; Bahrain | ExpatGuideME
+description: Pick your route, for example Saudi Arabia to India, and compare the live market rate with rates shared by expats for STC Bank, urpay, Enjaz, Al Ansari, LuLu, Al Mulla, BFC and more. Calculator, history graph and WhatsApp sharing in English, Arabic, Hindi, Malayalam, Nepali and Urdu.
 path: /send-money.html
 active: send
+credit: yes
 META-->
 <!--STYLE-->
   <style>
-    .sm { max-width: 960px; }
-    .cta-rate {
-      display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;
-      background: var(--brand-soft); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; margin: 4px 0 8px;
-    }
-    .cta-rate p { font-weight: 600; }
-    .country-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 16px; }
-    .country-tabs button {
-      font: inherit; font-weight: 600; font-size: 0.95rem; padding: 8px 16px; border-radius: 999px; cursor: pointer;
-      border: 1px solid var(--line); background: var(--card); color: var(--ink);
-      transition: background 0.15s, border-color 0.15s, color 0.15s;
-    }
-    .country-tabs button:hover { border-color: var(--brand); color: var(--brand); }
-    .country-tabs button[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: var(--on-brand); }
-    .from-label { font-weight: 600; color: var(--muted); font-size: 0.9rem; }
-
-    .providers { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
-    .providers th, .providers td { padding: 14px; text-align: start; vertical-align: top; border-bottom: 1px solid var(--line); }
-    .providers thead th { background: var(--bg); font-size: 0.8rem; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
-    html[lang="ar"] .providers thead th, html[lang="hi"] .providers thead th, html[lang="ml"] .providers thead th, html[lang="ne"] .providers thead th { text-transform: none; letter-spacing: 0; font-size: 0.85rem; }
-    .providers tbody tr { transition: background 0.12s; }
-    .providers tbody tr:hover { background: var(--brand-soft); }
-    .providers tbody tr:last-child td { border-bottom: none; }
-    .p-name { font-weight: 700; font-size: 1.02rem; }
-    .p-type { color: var(--muted); font-size: 0.85rem; margin-top: 2px; }
-    .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .sm { max-width: 980px; }
+    .picker { max-width: 560px; }
+    .picker .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+    .picker .btn { width: 100%; }
+    .corridor-bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; background: var(--brand-soft); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; margin-bottom: 14px; }
+    .corridor-name { font-weight: 800; font-size: 1.15rem; }
+    .corridor-rate { font-size: 1.6rem; font-weight: 800; color: var(--brand); line-height: 1.3; }
+    .corridor-meta { font-size: 0.85rem; color: var(--muted); }
+    .actions { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-bottom: 14px; }
+    .act { font: inherit; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 12px 6px; border-radius: 14px; border: 1px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer; font-size: 0.85rem; font-weight: 600; text-align: center; transition: border-color 0.15s, background 0.15s, transform 0.15s; }
+    .act:hover { border-color: var(--brand); transform: translateY(-1px); }
+    .act[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: var(--on-brand); }
+    .act .ico { font-size: 1.4rem; line-height: 1; }
+    .panel { margin-bottom: 18px; }
+    .panel h2 { margin-top: 0; }
+    .amount-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; margin-bottom: 12px; }
+    .amount-row > div { flex: 1 1 220px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 12px; }
     .chip { font-size: 0.78rem; font-weight: 600; padding: 3px 9px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line); white-space: nowrap; }
-    .p-why { color: var(--ink); font-size: 0.93rem; max-width: 380px; }
-    .p-action { white-space: nowrap; }
-    .p-action .btn { padding: 9px 14px; font-size: 0.9rem; }
-    .partner { display: inline-block; margin-bottom: 6px; font-size: 0.72rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: var(--warn-bg); color: var(--warn-ink); }
+    .chips .lbl { font-size: 0.85rem; color: var(--muted); font-weight: 600; margin-inline-end: 4px; }
+    .top-box { border: 2px solid var(--brand); border-radius: 14px; padding: 14px 16px; margin-bottom: 14px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+    .top-label { font-size: 0.8rem; font-weight: 700; color: var(--muted); }
+    .top-main { font-size: 1.15rem; font-weight: 800; }
+    .top-sub { font-size: 0.88rem; color: var(--muted); }
+    .btn-wa { background: #25d366; border-color: #25d366; color: #fff; }
+    .btn-wa:hover { background: #1ebe5b; border-color: #1ebe5b; color: #fff; }
+    .rates { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+    .rates th, .rates td { padding: 12px; text-align: start; vertical-align: middle; border-bottom: 1px solid var(--line); }
+    .rates thead th { background: var(--bg); font-size: 0.8rem; color: var(--muted); font-weight: 700; }
+    .rates tbody tr:last-child td { border-bottom: none; }
+    .rates tbody tr:hover { background: var(--brand-soft); }
+    .rates tr.market td { background: var(--bg); font-style: italic; }
+    .p-name { font-weight: 700; }
+    .p-type { color: var(--muted); font-size: 0.8rem; }
+    .num { font-variant-numeric: tabular-nums; font-weight: 700; white-space: nowrap; }
+    .muted-cell { color: var(--muted); font-weight: 400; }
+    .best { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: var(--brand); color: var(--on-brand); margin-inline-start: 6px; }
+    .row-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+    .row-actions .btn { padding: 7px 10px; font-size: 0.82rem; }
     .table-note { font-size: 0.85rem; color: var(--muted); margin-top: 10px; }
-
-    .tips { counter-reset: tip; list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .tips li {
-      counter-increment: tip; position: relative; background: var(--card); border: 1px solid var(--line);
-      border-radius: 12px; padding: 14px 14px 14px 52px; transition: border-color 0.15s;
-    }
-    html[dir="rtl"] .tips li { padding: 14px 52px 14px 14px; }
-    .tips li:hover { border-color: var(--brand); }
-    .tips li::before {
-      content: counter(tip); position: absolute; inset-inline-start: 14px; top: 13px;
-      width: 26px; height: 26px; border-radius: 50%; background: var(--brand); color: var(--on-brand);
-      font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; justify-content: center;
-    }
+    .status { font-size: 0.9rem; color: var(--warn-ink); background: var(--warn-bg); border-radius: 10px; padding: 8px 12px; margin-bottom: 12px; }
+    .chart-wrap { width: 100%; }
+    .chart-wrap svg { width: 100%; height: auto; display: block; }
+    .chart-stats { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.9rem; margin-top: 8px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    .form-ok { color: var(--brand); font-weight: 700; }
+    .form-err { color: #b42318; font-weight: 600; }
+    html[data-theme="dark"] .form-err { color: #ff8a80; }
+    .share-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tips { counter-reset: tip; list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 0; }
+    .tips li { counter-increment: tip; position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px; padding-inline-start: 52px; }
+    .tips li::before { content: counter(tip); position: absolute; inset-inline-start: 14px; top: 13px; width: 26px; height: 26px; border-radius: 50%; background: var(--brand); color: var(--on-brand); font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; }
     .disclosure { font-size: 0.85rem; color: var(--muted); border-inline-start: 3px solid var(--line); padding-inline-start: 10px; margin: 18px 0; }
-
+    .ad-note { font-size: 0.75rem; color: var(--muted); text-align: center; margin: -8px 0 14px; }
+    @media (max-width: 860px) { .actions { grid-template-columns: repeat(3, 1fr); } .form-grid { grid-template-columns: 1fr; } }
     @media (max-width: 760px) {
       .tips { grid-template-columns: 1fr; }
-      .providers, .providers tbody, .providers tr, .providers td { display: block; width: 100%; }
-      .providers { border: 0; background: transparent; }
-      .providers thead { display: none; }
-      .providers tbody tr { background: var(--card); border: 1px solid var(--line); border-radius: 14px; margin-bottom: 12px; padding: 4px 0; }
-      .providers td { border-bottom: 0; padding: 8px 14px; }
-      .providers td[data-label]::before { content: attr(data-label); display: block; font-size: 0.75rem; font-weight: 700; color: var(--muted); margin-bottom: 4px; }
-      .p-why { max-width: none; }
-      .p-action .btn { width: 100%; }
+      .picker .row2 { grid-template-columns: 1fr; }
+      .rates, .rates tbody, .rates tr, .rates td { display: block; width: 100%; }
+      .rates { border: 0; background: transparent; }
+      .rates thead { display: none; }
+      .rates tbody tr { background: var(--card); border: 1px solid var(--line); border-radius: 14px; margin-bottom: 10px; padding: 4px 0; }
+      .rates td { border-bottom: 0; padding: 6px 14px; }
+      .rates td[data-label]::before { content: attr(data-label); display: block; font-size: 0.72rem; font-weight: 700; color: var(--muted); }
     }
-    @media print {
-      .providers tbody tr:hover { background: none; }
-      .country-tabs, .cta-rate { display: none !important; }
-    }
+    @media print { .actions, .picker, .share-row, .row-actions, #pUpdate, #pFeedback, #pShare { display: none !important; } }
   </style>
 <!--/STYLE-->
 <!--BODY-->
@@ -76,30 +81,140 @@ META-->
       <h1 data-t="title"></h1>
       <p class="lead" data-t="lead"></p>
 
-      <div class="cta-rate reveal">
-        <p data-t="ctaText"></p>
-        <a class="btn btn-primary" href="/exchange-rate.html" data-t="ctaBtn"></a>
-      </div>
+      <section class="card picker" id="picker" aria-labelledby="pickTitle">
+        <h2 id="pickTitle" data-t="step1Title"></h2>
+        <div class="row2">
+          <div>
+            <label class="field-label" for="srcSel" data-t="fromLabel"></label>
+            <select id="srcSel"></select>
+          </div>
+          <div>
+            <label class="field-label" for="dstSel" data-t="toLabel"></label>
+            <select id="dstSel"></select>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary" id="nextBtn" data-t="next"></button>
+      </section>
 
-      <div class="ad-slot" data-ad-slot="send-money-top" data-t="ad"></div>
+      <section id="hub" hidden aria-live="polite">
+        <div class="corridor-bar">
+          <div>
+            <div class="corridor-name" id="corName"></div>
+            <div class="corridor-meta"><span data-t="marketLabel"></span></div>
+            <div class="corridor-rate" id="corRate">…</div>
+            <div class="corridor-meta" id="corMeta"></div>
+          </div>
+          <button type="button" class="btn btn-ghost" id="changeBtn" data-t="change"></button>
+        </div>
 
-      <section aria-labelledby="compareTitle">
-        <h2 id="compareTitle" data-t="compareTitle"></h2>
-        <p class="from-label" id="fromLabel" data-t="sendingFrom"></p>
-        <div class="country-tabs" id="countryTabs" role="group" aria-labelledby="fromLabel"></div>
+        <div class="actions" role="group" aria-label="Actions">
+          <button type="button" class="act" data-act="rates"><span class="ico" aria-hidden="true">📋</span><span data-t="aRates"></span></button>
+          <button type="button" class="act" data-act="graph"><span class="ico" aria-hidden="true">📈</span><span data-t="aGraph"></span></button>
+          <button type="button" class="act" data-act="update"><span class="ico" aria-hidden="true">✏️</span><span data-t="aUpdate"></span></button>
+          <button type="button" class="act" data-act="calc"><span class="ico" aria-hidden="true">🧮</span><span data-t="aCalc"></span></button>
+          <button type="button" class="act" data-act="share"><span class="ico" aria-hidden="true">🔗</span><span data-t="aShare"></span></button>
+          <button type="button" class="act" data-act="feedback"><span class="ico" aria-hidden="true">💬</span><span data-t="aFeedback"></span></button>
+        </div>
 
-        <table class="providers" id="providers">
-          <thead>
-            <tr>
-              <th scope="col" data-t="colService"></th>
-              <th scope="col" data-t="colDelivery"></th>
-              <th scope="col" data-t="colWhy"></th>
-              <th scope="col"><span class="sr-only" data-t="colAction"></span></th>
-            </tr>
-          </thead>
-          <tbody id="providerRows"></tbody>
-        </table>
-        <p class="table-note" data-t="tableNote"></p>
+        <div class="ad-slot" data-ad-slot="send-money-hub" data-t="ad"></div>
+        <p class="ad-note" data-t="adNote"></p>
+
+        <section class="card panel" id="pRates" aria-labelledby="ratesTitle">
+          <h2 id="ratesTitle" data-t="ratesTitle"></h2>
+          <p class="status" id="ratesStatus" hidden></p>
+          <div class="amount-row">
+            <div>
+              <label class="field-label" for="amount" id="amountLabel"></label>
+              <input type="number" id="amount" inputmode="decimal" min="0" step="any" value="1000">
+            </div>
+          </div>
+          <div class="chips" id="fundChips"></div>
+          <div class="top-box" id="topBox">
+            <div>
+              <div class="top-label" data-t="topRate"></div>
+              <div class="top-main" id="topMain"></div>
+              <div class="top-sub" id="topSub"></div>
+            </div>
+            <a class="btn btn-wa" id="waBtn" href="https://wa.me/" target="_blank" rel="noopener" data-t="waBtn"></a>
+          </div>
+          <table class="rates">
+            <thead>
+              <tr>
+                <th scope="col" data-t="colProvider"></th>
+                <th scope="col" data-t="colRate"></th>
+                <th scope="col" data-t="colFee"></th>
+                <th scope="col" data-t="colGet"></th>
+                <th scope="col" data-t="colUpdated"></th>
+                <th scope="col" data-t="colAction"></th>
+              </tr>
+            </thead>
+            <tbody id="rateRows"></tbody>
+          </table>
+          <p class="table-note" data-t="sortNote"></p>
+          <p class="table-note" data-t="tableNote"></p>
+        </section>
+
+        <section class="card panel" id="pGraph" hidden aria-labelledby="graphTitle">
+          <h2 id="graphTitle" data-t="graphTitle"></h2>
+          <div class="chart-wrap" id="chart"></div>
+          <div class="chart-stats" id="chartStats"></div>
+          <p class="table-note" id="chartNote"></p>
+        </section>
+
+        <section class="card panel" id="pUpdate" hidden aria-labelledby="updTitle">
+          <h2 id="updTitle" data-t="updateTitle"></h2>
+          <form id="updForm" novalidate>
+            <div class="form-grid">
+              <div>
+                <label class="field-label" for="updProvider" data-t="updProvider"></label>
+                <select id="updProvider"></select>
+              </div>
+              <div>
+                <label class="field-label" for="updRate" id="updRateLabel"></label>
+                <input type="number" id="updRate" inputmode="decimal" min="0" step="any" required>
+              </div>
+              <div>
+                <label class="field-label" for="updFee" id="updFeeLabel"></label>
+                <input type="number" id="updFee" inputmode="decimal" min="0" step="any">
+              </div>
+            </div>
+            <p class="hp"><label>Leave this empty <input id="updWebsite" tabindex="-1" autocomplete="off"></label></p>
+            <p class="table-note" data-t="updNote"></p>
+            <p id="updMsg" role="alert"></p>
+            <button type="submit" class="btn btn-primary" id="updSubmit" data-t="updSubmit"></button>
+          </form>
+        </section>
+
+        <section class="card panel" id="pShare" hidden aria-labelledby="shareTitle">
+          <h2 id="shareTitle" data-t="shareTitle"></h2>
+          <div class="share-row">
+            <a class="btn btn-wa" id="waBtn2" href="https://wa.me/" target="_blank" rel="noopener" data-t="shareWhatsapp"></a>
+            <button type="button" class="btn btn-ghost" id="copyLink" data-copy-text="https://expatguideme.com/send-money.html" data-t="shareCopy"></button>
+            <button type="button" class="btn btn-ghost" id="nativeShare" hidden data-t="shareNative"></button>
+          </div>
+        </section>
+
+        <section class="card panel" id="pFeedback" hidden aria-labelledby="fbTitle">
+          <h2 id="fbTitle" data-t="feedbackTitle"></h2>
+          <form name="feedback" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" data-ajax data-success="fbSuccess" novalidate>
+            <input type="hidden" name="form-name" value="feedback">
+            <input type="hidden" name="route" id="fbRoute" value="">
+            <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+            <div class="field">
+              <label class="field-label" for="fbMessage" data-t="fbMessage"></label>
+              <textarea id="fbMessage" name="message" required></textarea>
+            </div>
+            <div class="field">
+              <label class="field-label" for="fbEmail" data-t="fbEmail"></label>
+              <input type="email" id="fbEmail" name="email" autocomplete="email" inputmode="email">
+            </div>
+            <p class="form-msg" role="alert" aria-live="polite"></p>
+            <button type="submit" class="btn btn-primary" data-t="fbSend"></button>
+          </form>
+          <div class="success-box" id="fbSuccess" tabindex="-1" role="status" hidden>
+            <span class="check" aria-hidden="true">✓</span><span data-t="fbSuccess"></span>
+          </div>
+        </section>
       </section>
 
       <div class="ad-slot" data-ad-slot="send-money-middle" data-t="ad"></div>
@@ -119,14 +234,14 @@ META-->
       <section class="faq" id="faq" aria-labelledby="faqTitle">
         <h2 id="faqTitle" data-t="faqTitle"></h2>
         <details><summary data-t="q1"></summary><div class="answer"><p data-t="a1"></p></div></details>
+        <details><summary data-t="q2n"></summary><div class="answer"><p data-t="a2n"></p></div></details>
         <details><summary data-t="q2"></summary><div class="answer"><p data-t="a2"></p></div></details>
         <details><summary data-t="q3"></summary><div class="answer"><p data-t="a3"></p></div></details>
-        <details><summary data-t="q4"></summary><div class="answer"><p data-t="a4"></p></div></details>
       </section>
 
       <div class="ad-slot" data-ad-slot="send-money-bottom" data-t="ad"></div>
 
-      <p class="disclosure" data-t="disclosure"></p>
+      <p class="disclosure"><span data-t="disclosure"></span></p>
       <p class="last-updated" data-updated="2026-11-13"></p>
     </div>
   </main>
@@ -136,352 +251,367 @@ META-->
     (function () {
       "use strict";
 
-      var PREF_KEY = "expatguideme_sendfrom_v1";
+      var T = {"en": {"title": "Send money home: compare rates", "lead": "Pick where you send from and where your family lives. See the live market rate, rates shared by other expats for every bank, exchange and wallet, and what your family receives.", "step1Title": "Choose your money transfer route", "fromLabel": "I am sending from", "toLabel": "My family receives in", "next": "Next", "change": "Change route", "marketLabel": "Market rate", "marketNote": "The market rate is the reference. Banks and apps give a little less.", "aRates": "View rates", "aGraph": "Graph / history", "aUpdate": "Update rate", "aCalc": "Calculator", "aShare": "Share", "aFeedback": "Give feedback", "ratesTitle": "Rates in this route", "colProvider": "Provider", "colRate": "Rate", "colUpdated": "Last updated", "colGet": "Your family gets", "colAction": "Actions", "noRate": "No rate yet", "updateBtn": "Update", "visit": "Website", "marketRow": "Market rate (reference)", "updates": "{n} updates", "update1": "1 update", "justNow": "Just now", "agoMin": "{n} min ago", "agoHr": "{n} h ago", "agoDay": "{n} days ago", "tableNote": "Rates are shared by visitors and checked against the live market rate. Always confirm the final amount in the app before you send.", "loading": "Loading rates…", "loadError": "Shared rates could not be loaded right now. The market rate still works.", "calcTitle": "Calculator", "amountLabel": "Amount to send ({cur})", "calcNote": "Shows what your family receives at each rate, before any transfer fee.", "best": "Best rate", "graphTitle": "Rate history", "graphFrank": "Market rate from European Central Bank data (Frankfurter), last 30 days.", "graphOwn": "Market rate recorded once a day by ExpatGuideME.", "graphEmpty": "History will appear here as we record the rate each day.", "high": "High", "low": "Low", "now": "Today", "updateTitle": "Share today's rate", "updProvider": "Provider", "updRate": "Rate: 1 {from} = how many {to}?", "updSubmit": "Share rate", "updOk": "Thank you! The rate is updated for everyone.", "errRange": "This rate is too far from the market rate ({mid}). Please check the number.", "errWait": "You updated this provider a few minutes ago. Please try again later.", "errGeneric": "The rate could not be saved. Please try again.", "updNote": "Share only the rate you see today in the official app, website or branch. Do not enter any account or card details.", "shareTitle": "Share this route", "shareText": "Compare money transfer rates from {from} to {to} on ExpatGuideME", "shareWhatsapp": "Share on WhatsApp", "shareCopy": "Copy link", "shareNative": "Share…", "feedbackTitle": "Give feedback", "fbMessage": "Your message", "fbEmail": "Email (optional, if you want a reply)", "fbSend": "Send feedback", "fbSuccess": "Thank you for your feedback!", "adNote": "Ads keep this tool free.", "q2n": "How do the rates on this page work?", "a2n": "The market rate updates automatically from an international exchange-rate service. The rate for each bank, exchange and wallet is shared by visitors like you. We only accept a shared rate if it is close to the live market rate, and we show when it was last updated, so you can judge how fresh it is.", "colFee": "Fee", "fundLabel": "Pay with:", "sortNote": "Sorted by highest payout. Your family gets = (amount − fee) × rate.", "topRate": "Top rate today", "waBtn": "Share on WhatsApp", "updFee": "Transfer fee in {cur} (optional)", "errFee": "Please check the fee.", "waMsg": "Best rate today from {from} to {to}: 1 {fc} = {rate} {tc} with {provider} (updated {time}). {amt} {fc} ≈ {payout} {tc}. Compare all rates:", "waMarket": "Market rate today from {from} to {to}: 1 {fc} = {rate} {tc}. {amt} {fc} ≈ {payout} {tc}. Compare money transfer rates:", "tipsTitle": "6 ways to get more money home", "tip1": "Compare the final amount your family receives, not only the fee. A zero-fee transfer can still give a worse rate.", "tip2": "Check today's market rate first, then see how close each app gets to it.", "tip3": "Sending one larger amount usually costs less than many small transfers.", "tip4": "Open two or three apps and enter the same amount. It takes two minutes and often saves real money.", "tip5": "Use only licensed banks and exchange companies. Never send money through agents on social media.", "tip6": "Double-check the name and account number before you confirm. Transfers are hard to reverse.", "faqTitle": "Frequently asked questions", "q1": "Which service is the cheapest?", "a1": "It changes every day. Fees and exchange rates move, and offers come and go. Open two or three apps, enter the same amount, and choose the one where your family receives the most.", "disclosure": "ExpatGuideME is independent and is not connected to any bank or exchange company. Information was checked from public sources on the date below; services can change their fees and features at any time.", "ad": "Advertisement", "q2": "Is it safe to send money through these apps?", "a2": "The services listed here are banks and exchange companies licensed in their country. Stay safe by using their official apps, websites or branches, and never send money through unknown agents or social media offers.", "q3": "What do I need to send money?", "a3": "A valid residence ID (such as Iqama, Civil ID, QID, Resident Card or CPR), your recipient's full name, and their bank account or wallet details. Licensed providers cannot send money for people without a valid residence ID."}, "ar": {"title": "حوّل الأموال إلى بلدك: قارن الأسعار", "lead": "اختر الدولة التي ترسل منها والدولة التي تعيش فيها عائلتك. اطّلع على سعر السوق المباشر، والأسعار التي يشاركها المقيمون لكل بنك وشركة صرافة ومحفظة، وما تستلمه عائلتك.", "step1Title": "اختر مسار التحويل", "fromLabel": "أرسل من", "toLabel": "تستلم عائلتي في", "next": "التالي", "change": "تغيير المسار", "marketLabel": "سعر السوق", "marketNote": "سعر السوق هو المرجع، وتعطي البنوك والتطبيقات سعرًا أقل قليلًا.", "aRates": "عرض الأسعار", "aGraph": "الرسم البياني والسجل", "aUpdate": "تحديث السعر", "aCalc": "الحاسبة", "aShare": "مشاركة", "aFeedback": "أرسل ملاحظاتك", "ratesTitle": "الأسعار في هذا المسار", "colProvider": "الجهة", "colRate": "السعر", "colUpdated": "آخر تحديث", "colGet": "تستلم عائلتك", "colAction": "إجراءات", "noRate": "لا يوجد سعر بعد", "updateBtn": "تحديث", "visit": "الموقع", "marketRow": "سعر السوق (مرجعي)", "updates": "{n} تحديثات", "update1": "تحديث واحد", "justNow": "الآن", "agoMin": "قبل {n} دقيقة", "agoHr": "قبل {n} ساعة", "agoDay": "قبل {n} يوم", "tableNote": "يشارك الزوار هذه الأسعار، ونقارنها بسعر السوق المباشر. تأكّد دائمًا من المبلغ النهائي في التطبيق قبل التحويل.", "loading": "جارٍ تحميل الأسعار…", "loadError": "تعذّر تحميل الأسعار المشتركة الآن، وما زال سعر السوق متاحًا.", "calcTitle": "الحاسبة", "amountLabel": "المبلغ المراد تحويله ({cur})", "calcNote": "يوضح ما تستلمه عائلتك بكل سعر قبل رسوم التحويل.", "best": "أفضل سعر", "graphTitle": "سجل الأسعار", "graphFrank": "سعر السوق من بيانات البنك المركزي الأوروبي (فرانكفورتر) لآخر ٣٠ يومًا.", "graphOwn": "سعر السوق يسجّله الموقع مرة يوميًا.", "graphEmpty": "سيظهر السجل هنا مع تسجيل السعر يوميًا.", "high": "الأعلى", "low": "الأدنى", "now": "اليوم", "updateTitle": "شارك سعر اليوم", "updProvider": "الجهة", "updRate": "السعر: ١ {from} = كم {to}؟", "updSubmit": "شارك السعر", "updOk": "شكرًا لك! تم تحديث السعر للجميع.", "errRange": "هذا السعر بعيد جدًا عن سعر السوق ({mid}). يرجى التحقق من الرقم.", "errWait": "حدّثت سعر هذه الجهة قبل دقائق. يرجى المحاولة لاحقًا.", "errGeneric": "تعذّر حفظ السعر. يرجى المحاولة مرة أخرى.", "updNote": "شارك فقط السعر الذي تراه اليوم في التطبيق الرسمي أو الموقع أو الفرع. لا تُدخل أي بيانات حساب أو بطاقة.", "shareTitle": "شارك هذا المسار", "shareText": "قارن أسعار تحويل الأموال من {from} إلى {to} على ExpatGuideME", "shareWhatsapp": "مشاركة عبر واتساب", "shareCopy": "نسخ الرابط", "shareNative": "مشاركة…", "feedbackTitle": "أرسل ملاحظاتك", "fbMessage": "رسالتك", "fbEmail": "البريد الإلكتروني (اختياري إن أردت ردًا)", "fbSend": "إرسال الملاحظات", "fbSuccess": "شكرًا على ملاحظاتك!", "adNote": "الإعلانات تُبقي هذه الأداة مجانية.", "q2n": "كيف تعمل الأسعار في هذه الصفحة؟", "a2n": "يتحدّث سعر السوق تلقائيًا من خدمة دولية لأسعار الصرف. أما سعر كل بنك وشركة صرافة ومحفظة فيشاركه زوار مثلك. لا نقبل السعر المشترك إلا إذا كان قريبًا من سعر السوق المباشر، ونعرض وقت آخر تحديث حتى تحكم على حداثته.", "colFee": "الرسوم", "fundLabel": "طرق الدفع:", "sortNote": "مرتبة من الأعلى مبلغًا. ما تستلمه عائلتك = (المبلغ − الرسوم) × السعر.", "topRate": "أفضل سعر اليوم", "waBtn": "مشاركة عبر واتساب", "updFee": "رسوم التحويل بـ{cur} (اختياري)", "errFee": "يرجى التحقق من الرسوم.", "waMsg": "أفضل سعر اليوم من {from} إلى {to}: ١ {fc} = {rate} {tc} عبر {provider} (تحديث {time}). {amt} {fc} ≈ {payout} {tc}. قارن جميع الأسعار:", "waMarket": "سعر السوق اليوم من {from} إلى {to}: ١ {fc} = {rate} {tc}. {amt} {fc} ≈ {payout} {tc}. قارن أسعار التحويل:", "tipsTitle": "٦ طرق لإيصال مبلغ أكبر إلى عائلتك", "tip1": "قارن المبلغ النهائي الذي تستلمه عائلتك، وليس الرسوم فقط. فالتحويل بلا رسوم قد يأتي بسعر صرف أسوأ.", "tip2": "تحقّق من سعر السوق اليوم أولًا، ثم انظر مدى اقتراب كل تطبيق منه.", "tip3": "تحويل مبلغ واحد أكبر يكلّف عادةً أقل من عدة تحويلات صغيرة.", "tip4": "افتح تطبيقين أو ثلاثة وأدخل المبلغ نفسه. يستغرق ذلك دقيقتين وغالبًا يوفّر مالًا حقيقيًا.", "tip5": "استخدم البنوك وشركات الصرافة المرخّصة فقط، ولا تحوّل أموالك عبر وسطاء في وسائل التواصل الاجتماعي.", "tip6": "راجع الاسم ورقم الحساب جيدًا قبل التأكيد، فإلغاء التحويل صعب.", "faqTitle": "الأسئلة الشائعة", "q1": "ما أرخص خدمة؟", "a1": "يتغير ذلك يوميًا؛ فالرسوم وأسعار الصرف تتحرك والعروض تتبدل. افتح تطبيقين أو ثلاثة، وأدخل المبلغ نفسه، واختر الذي تستلم فيه عائلتك أكبر مبلغ.", "disclosure": "هذا موقع مستقل ولا علاقة له بأي بنك أو شركة صرافة. تم التحقق من المعلومات من مصادر عامة في التاريخ أدناه، وقد تغيّر الخدمات رسومها ومزاياها في أي وقت.", "ad": "مساحة إعلانية", "q2": "هل التحويل عبر هذه التطبيقات آمن؟", "a2": "الخدمات المذكورة هنا بنوك وشركات صرافة مرخّصة في بلدانها. حافظ على أمانك باستخدام تطبيقاتها ومواقعها وفروعها الرسمية فقط، ولا تحوّل أموالك عبر وسطاء مجهولين أو عروض في وسائل التواصل.", "q3": "ماذا أحتاج لتحويل الأموال؟", "a3": "هوية إقامة سارية (مثل الإقامة أو البطاقة المدنية أو بطاقة المقيم)، والاسم الكامل للمستلم، وبيانات حسابه البنكي أو محفظته. ولا تستطيع الجهات المرخّصة التحويل لمن لا يملك هوية إقامة سارية."}, "hi": {"title": "घर पैसे भेजें: रेट की तुलना करें", "lead": "चुनें कि आप कहाँ से भेज रहे हैं और परिवार कहाँ रहता है। लाइव मार्केट रेट, हर बैंक, एक्सचेंज और वॉलेट के लिए दूसरे प्रवासियों द्वारा साझा रेट, और परिवार को मिलने वाली रक़म देखें।", "step1Title": "अपना ट्रांसफ़र रूट चुनें", "fromLabel": "मैं यहाँ से भेज रहा/रही हूँ", "toLabel": "मेरा परिवार यहाँ पाता है", "next": "आगे", "change": "रूट बदलें", "marketLabel": "मार्केट रेट", "marketNote": "मार्केट रेट एक संदर्भ है। बैंक और ऐप थोड़ा कम देते हैं।", "aRates": "रेट देखें", "aGraph": "ग्राफ़ / इतिहास", "aUpdate": "रेट अपडेट करें", "aCalc": "कैलकुलेटर", "aShare": "शेयर करें", "aFeedback": "फ़ीडबैक दें", "ratesTitle": "इस रूट के रेट", "colProvider": "सेवा", "colRate": "रेट", "colUpdated": "आख़िरी अपडेट", "colGet": "परिवार को मिलेगा", "colAction": "विकल्प", "noRate": "अभी कोई रेट नहीं", "updateBtn": "अपडेट", "visit": "वेबसाइट", "marketRow": "मार्केट रेट (संदर्भ)", "updates": "{n} अपडेट", "update1": "1 अपडेट", "justNow": "अभी", "agoMin": "{n} मिनट पहले", "agoHr": "{n} घंटे पहले", "agoDay": "{n} दिन पहले", "tableNote": "ये रेट विज़िटर साझा करते हैं और लाइव मार्केट रेट से जाँचे जाते हैं। भेजने से पहले ऐप में आख़िरी रक़म ज़रूर देखें।", "loading": "रेट लोड हो रहे हैं…", "loadError": "अभी साझा रेट लोड नहीं हो सके। मार्केट रेट अब भी काम कर रहा है।", "calcTitle": "कैलकुलेटर", "amountLabel": "भेजने की रक़म ({cur})", "calcNote": "ट्रांसफ़र फ़ीस से पहले, हर रेट पर परिवार को कितना मिलेगा, यह दिखाता है।", "best": "सबसे अच्छा रेट", "graphTitle": "रेट का इतिहास", "graphFrank": "यूरोपीय सेंट्रल बैंक डेटा (Frankfurter) से पिछले 30 दिनों का मार्केट रेट।", "graphOwn": "ExpatGuideME द्वारा रोज़ एक बार दर्ज मार्केट रेट।", "graphEmpty": "रोज़ रेट दर्ज होने के साथ यहाँ इतिहास दिखेगा।", "high": "सबसे ऊँचा", "low": "सबसे नीचा", "now": "आज", "updateTitle": "आज का रेट साझा करें", "updProvider": "सेवा", "updRate": "रेट: 1 {from} = कितने {to}?", "updSubmit": "रेट साझा करें", "updOk": "धन्यवाद! रेट सबके लिए अपडेट हो गया।", "errRange": "यह रेट मार्केट रेट ({mid}) से बहुत दूर है। कृपया नंबर जाँचें।", "errWait": "आपने कुछ मिनट पहले इस सेवा का रेट अपडेट किया था। कृपया बाद में कोशिश करें।", "errGeneric": "रेट सेव नहीं हो सका। कृपया दोबारा कोशिश करें।", "updNote": "सिर्फ़ वही रेट साझा करें जो आज आधिकारिक ऐप, वेबसाइट या ब्रांच में दिख रहा है। कोई खाता या कार्ड जानकारी न लिखें।", "shareTitle": "यह रूट शेयर करें", "shareText": "ExpatGuideME पर {from} से {to} के ट्रांसफ़र रेट की तुलना करें", "shareWhatsapp": "WhatsApp पर शेयर करें", "shareCopy": "लिंक कॉपी करें", "shareNative": "शेयर करें…", "feedbackTitle": "फ़ीडबैक दें", "fbMessage": "आपका संदेश", "fbEmail": "ईमेल (वैकल्पिक, जवाब चाहिए तो)", "fbSend": "फ़ीडबैक भेजें", "fbSuccess": "आपके फ़ीडबैक के लिए धन्यवाद!", "adNote": "विज्ञापन इस टूल को मुफ़्त रखते हैं।", "q2n": "इस पेज पर रेट कैसे काम करते हैं?", "a2n": "मार्केट रेट एक अंतरराष्ट्रीय एक्सचेंज रेट सेवा से अपने-आप अपडेट होता है। हर बैंक, एक्सचेंज और वॉलेट का रेट आप जैसे विज़िटर साझा करते हैं। हम साझा रेट तभी स्वीकार करते हैं जब वह लाइव मार्केट रेट के क़रीब हो, और आख़िरी अपडेट का समय दिखाते हैं ताकि आप समझ सकें वह कितना ताज़ा है।", "colFee": "फ़ीस", "fundLabel": "भुगतान के तरीक़े:", "sortNote": "सबसे ज़्यादा रक़म के क्रम में। परिवार को मिलेगा = (रक़म − फ़ीस) × रेट।", "topRate": "आज का सबसे अच्छा रेट", "waBtn": "WhatsApp पर शेयर करें", "updFee": "ट्रांसफ़र फ़ीस {cur} में (वैकल्पिक)", "errFee": "कृपया फ़ीस जाँचें।", "waMsg": "{from} से {to} आज का सबसे अच्छा रेट: 1 {fc} = {rate} {tc}, {provider} पर ({time} अपडेट)। {amt} {fc} ≈ {payout} {tc}। सारे रेट की तुलना करें:", "waMarket": "{from} से {to} आज का मार्केट रेट: 1 {fc} = {rate} {tc}। {amt} {fc} ≈ {payout} {tc}। ट्रांसफ़र रेट की तुलना करें:", "tipsTitle": "घर ज़्यादा पैसे पहुँचाने के 6 तरीक़े", "tip1": "सिर्फ़ फ़ीस नहीं, परिवार को मिलने वाली अंतिम राशि की तुलना करें। ज़ीरो-फ़ीस ट्रांसफ़र में भी रेट ख़राब हो सकता है।", "tip2": "पहले आज का बाज़ार रेट देखें, फिर देखें कि हर ऐप उसके कितने क़रीब है।", "tip3": "कई छोटे ट्रांसफ़र के बजाय एक बड़ा ट्रांसफ़र आमतौर पर सस्ता पड़ता है।", "tip4": "दो-तीन ऐप खोलकर एक ही राशि डालें। इसमें दो मिनट लगते हैं और अक्सर अच्छी बचत होती है।", "tip5": "केवल लाइसेंसधारी बैंक और एक्सचेंज कंपनियों का उपयोग करें। सोशल मीडिया के एजेंटों से कभी पैसे न भेजें।", "tip6": "पुष्टि करने से पहले नाम और खाता नंबर दोबारा जाँचें। ट्रांसफ़र वापस लेना मुश्किल होता है।", "faqTitle": "अक्सर पूछे जाने वाले सवाल", "q1": "सबसे सस्ती सेवा कौन-सी है?", "a1": "यह रोज़ बदलता है। फ़ीस और रेट ऊपर-नीचे होते हैं और ऑफ़र आते-जाते रहते हैं। दो-तीन ऐप खोलें, एक ही राशि डालें और वह चुनें जिसमें परिवार को सबसे ज़्यादा मिले।", "disclosure": "ExpatGuideME एक स्वतंत्र वेबसाइट है और किसी बैंक या एक्सचेंज कंपनी से जुड़ी नहीं है। जानकारी नीचे दी गई तारीख़ को सार्वजनिक स्रोतों से जाँची गई थी; सेवाएँ कभी भी अपनी फ़ीस और सुविधाएँ बदल सकती हैं।", "ad": "विज्ञापन", "q2": "क्या इन ऐप से पैसे भेजना सुरक्षित है?", "a2": "यहाँ दी गई सेवाएँ अपने देश में लाइसेंसधारी बैंक और एक्सचेंज कंपनियाँ हैं। सुरक्षित रहने के लिए केवल उनके आधिकारिक ऐप, वेबसाइट या ब्रांच का उपयोग करें, और अनजान एजेंटों या सोशल मीडिया ऑफ़र से कभी पैसे न भेजें।", "q3": "पैसे भेजने के लिए क्या चाहिए?", "a3": "वैध रेज़िडेंस आईडी (जैसे इक़ामा, सिविल आईडी, क्यूआईडी, रेज़िडेंट कार्ड या सीपीआर), प्राप्तकर्ता का पूरा नाम और उसका बैंक खाता या वॉलेट विवरण। वैध रेज़िडेंस आईडी के बिना लाइसेंसधारी कंपनियाँ पैसे नहीं भेज सकतीं।"}, "ml": {"title": "നാട്ടിലേക്ക് പണം അയക്കൂ: നിരക്കുകൾ താരതമ്യം ചെയ്യൂ", "lead": "എവിടെ നിന്ന് അയക്കുന്നു, കുടുംബം എവിടെ താമസിക്കുന്നു എന്ന് തിരഞ്ഞെടുക്കൂ. ലൈവ് മാർക്കറ്റ് നിരക്ക്, ഓരോ ബാങ്ക്, എക്സ്ചേഞ്ച്, വാലറ്റ് എന്നിവയ്ക്കായി മറ്റ് പ്രവാസികൾ പങ്കുവച്ച നിരക്ക്, കുടുംബത്തിന് ലഭിക്കുന്ന തുക എന്നിവ കാണാം.", "step1Title": "നിങ്ങളുടെ ട്രാൻസ്ഫർ റൂട്ട് തിരഞ്ഞെടുക്കൂ", "fromLabel": "ഞാൻ അയക്കുന്നത്", "toLabel": "കുടുംബത്തിന് ലഭിക്കുന്നത്", "next": "അടുത്തത്", "change": "റൂട്ട് മാറ്റുക", "marketLabel": "മാർക്കറ്റ് നിരക്ക്", "marketNote": "മാർക്കറ്റ് നിരക്ക് ഒരു റഫറൻസാണ്. ബാങ്കുകളും ആപ്പുകളും അൽപം കുറവ് നൽകും.", "aRates": "നിരക്കുകൾ കാണുക", "aGraph": "ഗ്രാഫ് / ചരിത്രം", "aUpdate": "നിരക്ക് പുതുക്കുക", "aCalc": "കാൽക്കുലേറ്റർ", "aShare": "ഷെയർ ചെയ്യുക", "aFeedback": "അഭിപ്രായം അറിയിക്കുക", "ratesTitle": "ഈ റൂട്ടിലെ നിരക്കുകൾ", "colProvider": "സേവനം", "colRate": "നിരക്ക്", "colUpdated": "അവസാനം പുതുക്കിയത്", "colGet": "കുടുംബത്തിന് ലഭിക്കും", "colAction": "ഓപ്ഷനുകൾ", "noRate": "ഇതുവരെ നിരക്കില്ല", "updateBtn": "പുതുക്കുക", "visit": "വെബ്സൈറ്റ്", "marketRow": "മാർക്കറ്റ് നിരക്ക് (റഫറൻസ്)", "updates": "{n} അപ്ഡേറ്റുകൾ", "update1": "1 അപ്ഡേറ്റ്", "justNow": "ഇപ്പോൾ", "agoMin": "{n} മിനിറ്റ് മുമ്പ്", "agoHr": "{n} മണിക്കൂർ മുമ്പ്", "agoDay": "{n} ദിവസം മുമ്പ്", "tableNote": "സന്ദർശകർ പങ്കുവയ്ക്കുന്ന നിരക്കുകൾ ലൈവ് മാർക്കറ്റ് നിരക്കുമായി ഒത്തുനോക്കുന്നു. അയക്കുന്നതിന് മുമ്പ് ആപ്പിലെ അന്തിമ തുക ഉറപ്പാക്കുക.", "loading": "നിരക്കുകൾ ലോഡ് ചെയ്യുന്നു…", "loadError": "പങ്കുവച്ച നിരക്കുകൾ ഇപ്പോൾ ലോഡ് ചെയ്യാനായില്ല. മാർക്കറ്റ് നിരക്ക് ലഭ്യമാണ്.", "calcTitle": "കാൽക്കുലേറ്റർ", "amountLabel": "അയക്കുന്ന തുക ({cur})", "calcNote": "ട്രാൻസ്ഫർ ഫീസിന് മുമ്പ് ഓരോ നിരക്കിലും കുടുംബത്തിന് എത്ര ലഭിക്കും എന്ന് കാണിക്കുന്നു.", "best": "മികച്ച നിരക്ക്", "graphTitle": "നിരക്കിന്റെ ചരിത്രം", "graphFrank": "യൂറോപ്യൻ സെൻട്രൽ ബാങ്ക് ഡാറ്റയിൽ (Frankfurter) നിന്നുള്ള കഴിഞ്ഞ 30 ദിവസത്തെ മാർക്കറ്റ് നിരക്ക്.", "graphOwn": "ExpatGuideME ദിവസവും ഒരിക്കൽ രേഖപ്പെടുത്തുന്ന മാർക്കറ്റ് നിരക്ക്.", "graphEmpty": "ദിവസവും നിരക്ക് രേഖപ്പെടുത്തുന്നതിനനുസരിച്ച് ചരിത്രം ഇവിടെ കാണാം.", "high": "ഉയർന്നത്", "low": "താഴ്ന്നത്", "now": "ഇന്ന്", "updateTitle": "ഇന്നത്തെ നിരക്ക് പങ്കുവയ്ക്കൂ", "updProvider": "സേവനം", "updRate": "നിരക്ക്: 1 {from} = എത്ര {to}?", "updSubmit": "നിരക്ക് പങ്കുവയ്ക്കുക", "updOk": "നന്ദി! എല്ലാവർക്കുമായി നിരക്ക് പുതുക്കി.", "errRange": "ഈ നിരക്ക് മാർക്കറ്റ് നിരക്കിൽ ({mid}) നിന്ന് വളരെ അകലെയാണ്. സംഖ്യ പരിശോധിക്കുക.", "errWait": "കുറച്ച് മിനിറ്റ് മുമ്പ് നിങ്ങൾ ഈ സേവനത്തിന്റെ നിരക്ക് പുതുക്കി. പിന്നീട് ശ്രമിക്കുക.", "errGeneric": "നിരക്ക് സേവ് ചെയ്യാനായില്ല. വീണ്ടും ശ്രമിക്കുക.", "updNote": "ഔദ്യോഗിക ആപ്പിലോ വെബ്സൈറ്റിലോ ബ്രാഞ്ചിലോ ഇന്ന് കാണുന്ന നിരക്ക് മാത്രം പങ്കുവയ്ക്കുക. അക്കൗണ്ട്, കാർഡ് വിവരങ്ങൾ നൽകരുത്.", "shareTitle": "ഈ റൂട്ട് ഷെയർ ചെയ്യുക", "shareText": "ExpatGuideME-ൽ {from} മുതൽ {to} വരെയുള്ള ട്രാൻസ്ഫർ നിരക്കുകൾ താരതമ്യം ചെയ്യൂ", "shareWhatsapp": "WhatsApp-ൽ ഷെയർ ചെയ്യുക", "shareCopy": "ലിങ്ക് കോപ്പി ചെയ്യുക", "shareNative": "ഷെയർ ചെയ്യുക…", "feedbackTitle": "അഭിപ്രായം അറിയിക്കുക", "fbMessage": "നിങ്ങളുടെ സന്ദേശം", "fbEmail": "ഇമെയിൽ (മറുപടി വേണമെങ്കിൽ മാത്രം)", "fbSend": "അയക്കുക", "fbSuccess": "നിങ്ങളുടെ അഭിപ്രായത്തിന് നന്ദി!", "adNote": "പരസ്യങ്ങൾ ഈ ടൂൾ സൗജന്യമായി നിലനിർത്തുന്നു.", "q2n": "ഈ പേജിലെ നിരക്കുകൾ എങ്ങനെ പ്രവർത്തിക്കുന്നു?", "a2n": "മാർക്കറ്റ് നിരക്ക് ഒരു അന്താരാഷ്ട്ര വിനിമയ നിരക്ക് സേവനത്തിൽ നിന്ന് സ്വയം പുതുക്കപ്പെടുന്നു. ഓരോ ബാങ്ക്, എക്സ്ചേഞ്ച്, വാലറ്റ് എന്നിവയുടെ നിരക്ക് നിങ്ങളെപ്പോലുള്ള സന്ദർശകർ പങ്കുവയ്ക്കുന്നതാണ്. ലൈവ് മാർക്കറ്റ് നിരക്കിനോട് അടുത്താണെങ്കിൽ മാത്രമേ ഞങ്ങൾ അത് സ്വീകരിക്കൂ, അവസാനം പുതുക്കിയ സമയവും കാണിക്കും.", "colFee": "ഫീസ്", "fundLabel": "പണമടയ്ക്കാനുള്ള വഴികൾ:", "sortNote": "ഏറ്റവും കൂടുതൽ തുക ലഭിക്കുന്ന ക്രമത്തിൽ. കുടുംബത്തിന് ലഭിക്കുന്നത് = (തുക − ഫീസ്) × നിരക്ക്.", "topRate": "ഇന്നത്തെ മികച്ച നിരക്ക്", "waBtn": "WhatsApp-ൽ ഷെയർ ചെയ്യുക", "updFee": "ട്രാൻസ്ഫർ ഫീസ് {cur}-ൽ (ആവശ്യമെങ്കിൽ)", "errFee": "ഫീസ് പരിശോധിക്കുക.", "waMsg": "{from} മുതൽ {to} വരെ ഇന്നത്തെ മികച്ച നിരക്ക്: 1 {fc} = {rate} {tc}, {provider} വഴി ({time} പുതുക്കിയത്). {amt} {fc} ≈ {payout} {tc}. എല്ലാ നിരക്കുകളും താരതമ്യം ചെയ്യൂ:", "waMarket": "{from} മുതൽ {to} വരെ ഇന്നത്തെ മാർക്കറ്റ് നിരക്ക്: 1 {fc} = {rate} {tc}. {amt} {fc} ≈ {payout} {tc}. ട്രാൻസ്ഫർ നിരക്കുകൾ താരതമ്യം ചെയ്യൂ:", "tipsTitle": "നാട്ടിലേക്ക് കൂടുതൽ പണം എത്തിക്കാൻ 6 വഴികൾ", "tip1": "ഫീസ് മാത്രമല്ല, കുടുംബത്തിന് ലഭിക്കുന്ന അന്തിമ തുക താരതമ്യം ചെയ്യുക. ഫീസ് ഇല്ലാത്ത ട്രാൻസ്ഫറിലും നിരക്ക് മോശമായിരിക്കാം.", "tip2": "ആദ്യം ഇന്നത്തെ വിപണി നിരക്ക് നോക്കുക, പിന്നെ ഓരോ ആപ്പും അതിനോട് എത്ര അടുത്താണെന്ന് നോക്കുക.", "tip3": "പല ചെറിയ ട്രാൻസ്ഫറുകളേക്കാൾ ഒരു വലിയ തുക അയക്കുന്നതാണ് സാധാരണ ചെലവ് കുറവ്.", "tip4": "രണ്ടോ മൂന്നോ ആപ്പുകൾ തുറന്ന് ഒരേ തുക നൽകി നോക്കുക. രണ്ട് മിനിറ്റ് മതി, പലപ്പോഴും നല്ലൊരു തുക ലാഭിക്കാം.", "tip5": "ലൈസൻസുള്ള ബാങ്കുകളും എക്സ്ചേഞ്ച് കമ്പനികളും മാത്രം ഉപയോഗിക്കുക. സോഷ്യൽ മീഡിയയിലെ ഏജന്റുമാർ വഴി ഒരിക്കലും പണം അയക്കരുത്.", "tip6": "സ്ഥിരീകരിക്കുന്നതിന് മുമ്പ് പേരും അക്കൗണ്ട് നമ്പറും വീണ്ടും പരിശോധിക്കുക. അയച്ച പണം തിരികെ കിട്ടാൻ പ്രയാസമാണ്.", "faqTitle": "പതിവ് ചോദ്യങ്ങൾ", "q1": "ഏറ്റവും ചെലവ് കുറഞ്ഞ സേവനം ഏതാണ്?", "a1": "അത് ദിവസവും മാറും. ഫീസും നിരക്കും മാറിക്കൊണ്ടിരിക്കും, ഓഫറുകളും വന്നുപോകും. രണ്ടോ മൂന്നോ ആപ്പുകൾ തുറന്ന് ഒരേ തുക നൽകി, കുടുംബത്തിന് ഏറ്റവും കൂടുതൽ ലഭിക്കുന്നത് തിരഞ്ഞെടുക്കുക.", "disclosure": "ExpatGuideME ഒരു സ്വതന്ത്ര വെബ്സൈറ്റാണ്, ഒരു ബാങ്കുമായോ എക്സ്ചേഞ്ച് കമ്പനിയുമായോ ബന്ധമില്ല. താഴെ കാണുന്ന തീയതിയിൽ പൊതു സ്രോതസ്സുകളിൽ നിന്ന് വിവരങ്ങൾ പരിശോധിച്ചതാണ്; സേവനങ്ങൾക്ക് ഏത് സമയത്തും ഫീസും സൗകര്യങ്ങളും മാറ്റാം.", "ad": "പരസ്യം", "q2": "ഈ ആപ്പുകൾ വഴി പണം അയക്കുന്നത് സുരക്ഷിതമാണോ?", "a2": "ഇവിടെ നൽകിയിരിക്കുന്ന സേവനങ്ങൾ അതത് രാജ്യത്ത് ലൈസൻസുള്ള ബാങ്കുകളും എക്സ്ചേഞ്ച് കമ്പനികളുമാണ്. അവരുടെ ഔദ്യോഗിക ആപ്പ്, വെബ്സൈറ്റ്, ബ്രാഞ്ച് എന്നിവ മാത്രം ഉപയോഗിക്കുക; അപരിചിത ഏജന്റുമാർ വഴിയോ സോഷ്യൽ മീഡിയ ഓഫറുകൾ വഴിയോ പണം അയക്കരുത്.", "q3": "പണം അയക്കാൻ എന്തൊക്കെ വേണം?", "a3": "സാധുവായ റെസിഡൻസ് ഐഡി (ഇഖാമ, സിവിൽ ഐഡി, ക്യുഐഡി, റെസിഡന്റ് കാർഡ് അല്ലെങ്കിൽ സിപിആർ), സ്വീകരിക്കുന്നയാളുടെ മുഴുവൻ പേര്, അവരുടെ ബാങ്ക് അക്കൗണ്ട് അല്ലെങ്കിൽ വാലറ്റ് വിവരങ്ങൾ. സാധുവായ റെസിഡൻസ് ഐഡി ഇല്ലാത്തവർക്ക് വേണ്ടി ലൈസൻസുള്ള സ്ഥാപനങ്ങൾക്ക് പണം അയക്കാൻ കഴിയില്ല."}, "ne": {"title": "घर पैसा पठाउनुहोस्: दर तुलना गर्नुहोस्", "lead": "कहाँबाट पठाउँदै हुनुहुन्छ र परिवार कहाँ बस्छ छान्नुहोस्। प्रत्यक्ष बजार दर, हरेक बैंक, मनी एक्सचेन्ज र वालेटका लागि अरू प्रवासीले साझा गरेका दर, र परिवारले पाउने रकम हेर्नुहोस्।", "step1Title": "आफ्नो ट्रान्सफर रुट छान्नुहोस्", "fromLabel": "म यहाँबाट पठाउँदैछु", "toLabel": "मेरो परिवारले यहाँ पाउँछ", "next": "अर्को", "change": "रुट बदल्नुहोस्", "marketLabel": "बजार दर", "marketNote": "बजार दर सन्दर्भ हो। बैंक र एपहरूले अलि कम दिन्छन्।", "aRates": "दर हेर्नुहोस्", "aGraph": "ग्राफ / इतिहास", "aUpdate": "दर अपडेट गर्नुहोस्", "aCalc": "क्यालकुलेटर", "aShare": "सेयर गर्नुहोस्", "aFeedback": "प्रतिक्रिया दिनुहोस्", "ratesTitle": "यस रुटका दरहरू", "colProvider": "सेवा", "colRate": "दर", "colUpdated": "पछिल्लो अपडेट", "colGet": "परिवारले पाउने", "colAction": "विकल्प", "noRate": "अहिलेसम्म दर छैन", "updateBtn": "अपडेट", "visit": "वेबसाइट", "marketRow": "बजार दर (सन्दर्भ)", "updates": "{n} अपडेट", "update1": "१ अपडेट", "justNow": "भर्खरै", "agoMin": "{n} मिनेटअघि", "agoHr": "{n} घण्टाअघि", "agoDay": "{n} दिनअघि", "tableNote": "यी दर आगन्तुकहरूले साझा गर्छन् र प्रत्यक्ष बजार दरसँग जाँचिन्छन्। पठाउनुअघि एपमा अन्तिम रकम सधैँ जाँच्नुहोस्।", "loading": "दरहरू लोड हुँदैछन्…", "loadError": "अहिले साझा दरहरू लोड हुन सकेनन्। बजार दर भने चलिरहेको छ।", "calcTitle": "क्यालकुलेटर", "amountLabel": "पठाउने रकम ({cur})", "calcNote": "ट्रान्सफर शुल्कअघि हरेक दरमा परिवारले कति पाउँछ देखाउँछ।", "best": "उत्तम दर", "graphTitle": "दरको इतिहास", "graphFrank": "युरोपेली केन्द्रीय बैंकको डाटा (Frankfurter) बाट पछिल्ला ३० दिनको बजार दर।", "graphOwn": "ExpatGuideME ले दिनको एक पटक रेकर्ड गर्ने बजार दर।", "graphEmpty": "दैनिक दर रेकर्ड हुँदै जाँदा इतिहास यहाँ देखिनेछ।", "high": "उच्च", "low": "न्यून", "now": "आज", "updateTitle": "आजको दर साझा गर्नुहोस्", "updProvider": "सेवा", "updRate": "दर: १ {from} = कति {to}?", "updSubmit": "दर साझा गर्नुहोस्", "updOk": "धन्यवाद! सबैका लागि दर अपडेट भयो।", "errRange": "यो दर बजार दर ({mid}) भन्दा धेरै टाढा छ। कृपया अंक जाँच्नुहोस्।", "errWait": "तपाईंले केही मिनेटअघि यो सेवाको दर अपडेट गर्नुभयो। कृपया पछि प्रयास गर्नुहोस्।", "errGeneric": "दर सेभ हुन सकेन। कृपया फेरि प्रयास गर्नुहोस्।", "updNote": "आज आधिकारिक एप, वेबसाइट वा शाखामा देखेको दर मात्र साझा गर्नुहोस्। कुनै खाता वा कार्ड विवरण नलेख्नुहोस्।", "shareTitle": "यो रुट सेयर गर्नुहोस्", "shareText": "ExpatGuideME मा {from} देखि {to} सम्मका ट्रान्सफर दर तुलना गर्नुहोस्", "shareWhatsapp": "WhatsApp मा सेयर गर्नुहोस्", "shareCopy": "लिङ्क कपी गर्नुहोस्", "shareNative": "सेयर गर्नुहोस्…", "feedbackTitle": "प्रतिक्रिया दिनुहोस्", "fbMessage": "तपाईंको सन्देश", "fbEmail": "इमेल (जवाफ चाहिए मात्र)", "fbSend": "प्रतिक्रिया पठाउनुहोस्", "fbSuccess": "तपाईंको प्रतिक्रियाका लागि धन्यवाद!", "adNote": "विज्ञापनले यो टुल निःशुल्क राख्छ।", "q2n": "यस पृष्ठका दरहरू कसरी काम गर्छन्?", "a2n": "बजार दर अन्तर्राष्ट्रिय विनिमय दर सेवाबाट आफैँ अपडेट हुन्छ। हरेक बैंक, मनी एक्सचेन्ज र वालेटको दर तपाईंजस्ता आगन्तुकले साझा गर्छन्। साझा दर प्रत्यक्ष बजार दरको नजिक भए मात्र हामी स्वीकार्छौं, र पछिल्लो अपडेटको समय देखाउँछौं।", "colFee": "शुल्क", "fundLabel": "भुक्तानी तरिका:", "sortNote": "सबैभन्दा बढी रकमको क्रममा। परिवारले पाउने = (रकम − शुल्क) × दर।", "topRate": "आजको उत्तम दर", "waBtn": "WhatsApp मा सेयर गर्नुहोस्", "updFee": "ट्रान्सफर शुल्क {cur} मा (ऐच्छिक)", "errFee": "कृपया शुल्क जाँच्नुहोस्।", "waMsg": "{from} देखि {to} आजको उत्तम दर: १ {fc} = {rate} {tc}, {provider} मार्फत ({time} अपडेट)। {amt} {fc} ≈ {payout} {tc}। सबै दर तुलना गर्नुहोस्:", "waMarket": "{from} देखि {to} आजको बजार दर: १ {fc} = {rate} {tc}। {amt} {fc} ≈ {payout} {tc}। ट्रान्सफर दर तुलना गर्नुहोस्:", "tipsTitle": "घर धेरै पैसा पुर्याउने ६ तरिका", "tip1": "शुल्क मात्र होइन, परिवारले पाउने अन्तिम रकम तुलना गर्नुहोस्। शुल्क नलाग्ने ट्रान्सफरमा पनि दर खराब हुन सक्छ।", "tip2": "पहिले आजको बजार दर हेर्नुहोस्, अनि हरेक एप त्यसको कति नजिक छ हेर्नुहोस्।", "tip3": "धेरै साना ट्रान्सफरभन्दा एउटै ठूलो रकम पठाउँदा प्रायः सस्तो पर्छ।", "tip4": "दुई-तीनवटा एप खोलेर एउटै रकम हाल्नुहोस्। यसमा दुई मिनेट लाग्छ र प्रायः राम्रो बचत हुन्छ।", "tip5": "इजाजतप्राप्त बैंक र मनी एक्सचेन्ज मात्र प्रयोग गर्नुहोस्। सामाजिक सञ्जालका एजेन्टमार्फत कहिल्यै पैसा नपठाउनुहोस्।", "tip6": "पुष्टि गर्नुअघि नाम र खाता नम्बर फेरि जाँच्नुहोस्। पठाएको पैसा फिर्ता ल्याउन गाह्रो हुन्छ।", "faqTitle": "बारम्बार सोधिने प्रश्नहरू", "q1": "सबैभन्दा सस्तो सेवा कुन हो?", "a1": "यो दैनिक बदलिन्छ। शुल्क र दर घटबढ हुन्छन्, अफरहरू आउँछन्-जान्छन्। दुई-तीनवटा एप खोल्नुहोस्, एउटै रकम हाल्नुहोस्, र परिवारले सबैभन्दा धेरै पाउने छान्नुहोस्।", "disclosure": "ExpatGuideME एक स्वतन्त्र वेबसाइट हो र कुनै बैंक वा मनी एक्सचेन्जसँग सम्बन्धित छैन। तल दिइएको मितिमा सार्वजनिक स्रोतबाट जानकारी जाँचिएको हो; सेवाहरूले जुनसुकै बेला शुल्क र सुविधा बदल्न सक्छन्।", "ad": "विज्ञापन", "q2": "के यी एपबाट पैसा पठाउनु सुरक्षित छ?", "a2": "यहाँ दिइएका सेवाहरू आफ्नो देशमा इजाजतप्राप्त बैंक र मनी एक्सचेन्ज हुन्। सुरक्षित रहन उनीहरूको आधिकारिक एप, वेबसाइट वा शाखा मात्र प्रयोग गर्नुहोस्, र अपरिचित एजेन्ट वा सामाजिक सञ्जालका अफरमार्फत कहिल्यै पैसा नपठाउनुहोस्।", "q3": "पैसा पठाउन के-के चाहिन्छ?", "a3": "मान्य रेसिडेन्स परिचयपत्र (जस्तै इकामा, सिभिल आईडी, क्यूआईडी, रेसिडेन्ट कार्ड वा सीपीआर), प्रापकको पूरा नाम, र उसको बैंक खाता वा वालेट विवरण। मान्य रेसिडेन्स परिचयपत्र नभएकाहरूका लागि इजाजतप्राप्त संस्थाहरूले पैसा पठाउन सक्दैनन्।"}, "ur": {"title": "گھر رقم بھیجیں: ریٹ کا موازنہ کریں", "lead": "چنیں کہ آپ کہاں سے بھیج رہے ہیں اور آپ کا خاندان کہاں رہتا ہے۔ لائیو مارکیٹ ریٹ، ہر بینک، ایکسچینج اور والیٹ کے لیے دوسرے تارکینِ وطن کے شیئر کیے گئے ریٹ، اور خاندان کو ملنے والی رقم دیکھیں۔", "step1Title": "اپنا ٹرانسفر روٹ چنیں", "fromLabel": "میں یہاں سے بھیج رہا/رہی ہوں", "toLabel": "میرے خاندان کو یہاں ملتی ہے", "next": "اگلا", "change": "روٹ بدلیں", "marketLabel": "مارکیٹ ریٹ", "marketNote": "مارکیٹ ریٹ ایک حوالہ ہے۔ بینک اور ایپس تھوڑا کم دیتی ہیں۔", "aRates": "ریٹ دیکھیں", "aGraph": "گراف / تاریخ", "aUpdate": "ریٹ اپ ڈیٹ کریں", "aCalc": "کیلکولیٹر", "aShare": "شیئر کریں", "aFeedback": "رائے دیں", "ratesTitle": "اس روٹ کے ریٹ", "colProvider": "سروس", "colRate": "ریٹ", "colUpdated": "آخری اپ ڈیٹ", "colGet": "خاندان کو ملے گا", "colAction": "اختیارات", "noRate": "ابھی کوئی ریٹ نہیں", "updateBtn": "اپ ڈیٹ", "visit": "ویب سائٹ", "marketRow": "مارکیٹ ریٹ (حوالہ)", "updates": "{n} اپ ڈیٹس", "update1": "1 اپ ڈیٹ", "justNow": "ابھی", "agoMin": "{n} منٹ پہلے", "agoHr": "{n} گھنٹے پہلے", "agoDay": "{n} دن پہلے", "tableNote": "یہ ریٹ وزیٹرز شیئر کرتے ہیں اور لائیو مارکیٹ ریٹ سے چیک کیے جاتے ہیں۔ بھیجنے سے پہلے ایپ میں آخری رقم ضرور دیکھیں۔", "loading": "ریٹ لوڈ ہو رہے ہیں…", "loadError": "اس وقت شیئر کیے گئے ریٹ لوڈ نہیں ہو سکے۔ مارکیٹ ریٹ اب بھی کام کر رہا ہے۔", "calcTitle": "کیلکولیٹر", "amountLabel": "بھیجنے کی رقم ({cur})", "calcNote": "ٹرانسفر فیس سے پہلے ہر ریٹ پر خاندان کو کتنا ملے گا، یہ دکھاتا ہے۔", "best": "بہترین ریٹ", "graphTitle": "ریٹ کی تاریخ", "graphFrank": "یورپی مرکزی بینک کے ڈیٹا (Frankfurter) سے پچھلے 30 دن کا مارکیٹ ریٹ۔", "graphOwn": "ExpatGuideME کی طرف سے روزانہ ایک بار درج کیا گیا مارکیٹ ریٹ۔", "graphEmpty": "روزانہ ریٹ درج ہونے کے ساتھ یہاں تاریخ نظر آئے گی۔", "high": "سب سے زیادہ", "low": "سب سے کم", "now": "آج", "updateTitle": "آج کا ریٹ شیئر کریں", "updProvider": "سروس", "updRate": "ریٹ: 1 {from} = کتنے {to}؟", "updSubmit": "ریٹ شیئر کریں", "updOk": "شکریہ! ریٹ سب کے لیے اپ ڈیٹ ہو گیا۔", "errRange": "یہ ریٹ مارکیٹ ریٹ ({mid}) سے بہت دور ہے۔ براہِ کرم نمبر چیک کریں۔", "errWait": "آپ نے چند منٹ پہلے اس سروس کا ریٹ اپ ڈیٹ کیا تھا۔ براہِ کرم بعد میں کوشش کریں۔", "errGeneric": "ریٹ محفوظ نہیں ہو سکا۔ براہِ کرم دوبارہ کوشش کریں۔", "updNote": "صرف وہی ریٹ شیئر کریں جو آج سرکاری ایپ، ویب سائٹ یا برانچ میں نظر آ رہا ہے۔ کوئی اکاؤنٹ یا کارڈ کی تفصیل نہ لکھیں۔", "shareTitle": "یہ روٹ شیئر کریں", "shareText": "ExpatGuideME پر {from} سے {to} تک ٹرانسفر ریٹ کا موازنہ کریں", "shareWhatsapp": "WhatsApp پر شیئر کریں", "shareCopy": "لنک کاپی کریں", "shareNative": "شیئر کریں…", "feedbackTitle": "رائے دیں", "fbMessage": "آپ کا پیغام", "fbEmail": "ای میل (اختیاری، اگر جواب چاہیے)", "fbSend": "رائے بھیجیں", "fbSuccess": "آپ کی رائے کا شکریہ!", "adNote": "اشتہارات اس ٹول کو مفت رکھتے ہیں۔", "q2n": "اس صفحے پر ریٹ کیسے کام کرتے ہیں؟", "a2n": "مارکیٹ ریٹ ایک بین الاقوامی ایکسچینج ریٹ سروس سے خود بخود اپ ڈیٹ ہوتا ہے۔ ہر بینک، ایکسچینج اور والیٹ کا ریٹ آپ جیسے وزیٹرز شیئر کرتے ہیں۔ ہم شیئر کیا گیا ریٹ صرف تب قبول کرتے ہیں جب وہ لائیو مارکیٹ ریٹ کے قریب ہو، اور آخری اپ ڈیٹ کا وقت دکھاتے ہیں تاکہ آپ اندازہ لگا سکیں کہ وہ کتنا تازہ ہے۔", "colFee": "فیس", "fundLabel": "ادائیگی کے طریقے:", "sortNote": "سب سے زیادہ رقم کی ترتیب سے۔ خاندان کو ملے گا = (رقم − فیس) × ریٹ۔", "topRate": "آج کا بہترین ریٹ", "waBtn": "WhatsApp پر شیئر کریں", "updFee": "ٹرانسفر فیس {cur} میں (اختیاری)", "errFee": "براہِ کرم فیس چیک کریں۔", "waMsg": "{from} سے {to} آج کا بہترین ریٹ: 1 {fc} = {rate} {tc}، {provider} کے ذریعے ({time} اپ ڈیٹ)۔ {amt} {fc} ≈ {payout} {tc}۔ تمام ریٹ کا موازنہ کریں:", "waMarket": "{from} سے {to} آج کا مارکیٹ ریٹ: 1 {fc} = {rate} {tc}۔ {amt} {fc} ≈ {payout} {tc}۔ ٹرانسفر ریٹ کا موازنہ کریں:", "tipsTitle": "گھر زیادہ رقم پہنچانے کے 6 طریقے", "tip1": "صرف فیس نہیں، وہ آخری رقم دیکھیں جو گھر والوں کو ملے گی۔ بغیر فیس والے ٹرانسفر میں بھی ریٹ کم ہو سکتا ہے۔", "tip2": "پہلے آج کا مارکیٹ ریٹ دیکھیں، پھر دیکھیں ہر ایپ اس کے کتنے قریب ہے۔", "tip3": "کئی چھوٹے ٹرانسفرز کے بجائے ایک بڑی رقم بھیجنا عموماً سستا پڑتا ہے۔", "tip4": "دو تین ایپس کھولیں اور ایک ہی رقم ڈالیں۔ اس میں دو منٹ لگتے ہیں اور اکثر اچھی بچت ہوتی ہے۔", "tip5": "صرف لائسنس یافتہ بینک اور ایکسچینج کمپنیاں استعمال کریں۔ سوشل میڈیا کے ایجنٹوں کے ذریعے کبھی رقم نہ بھیجیں۔", "tip6": "تصدیق سے پہلے نام اور اکاؤنٹ نمبر دوبارہ چیک کریں۔ بھیجی گئی رقم واپس لانا مشکل ہوتا ہے۔", "faqTitle": "اکثر پوچھے جانے والے سوالات", "q1": "سب سے سستی سروس کون سی ہے؟", "a1": "یہ روز بدلتا ہے۔ فیس اور ریٹ اوپر نیچے ہوتے ہیں اور آفرز آتی جاتی رہتی ہیں۔ دو تین ایپس کھولیں، ایک ہی رقم ڈالیں، اور وہ چنیں جس میں گھر والوں کو سب سے زیادہ ملے۔", "disclosure": "ExpatGuideME ایک آزاد ویب سائٹ ہے اور کسی بینک یا ایکسچینج کمپنی سے منسلک نہیں۔ معلومات نیچے دی گئی تاریخ پر عوامی ذرائع سے چیک کی گئیں؛ سروسز کسی بھی وقت فیس اور سہولیات بدل سکتی ہیں۔", "ad": "اشتہار", "q2": "کیا ان ایپس سے رقم بھیجنا محفوظ ہے؟", "a2": "یہاں دی گئی سروسز اپنے ملک میں لائسنس یافتہ بینک اور ایکسچینج کمپنیاں ہیں۔ محفوظ رہنے کے لیے صرف ان کی سرکاری ایپ، ویب سائٹ یا برانچ استعمال کریں، اور نامعلوم ایجنٹوں یا سوشل میڈیا آفرز کے ذریعے کبھی رقم نہ بھیجیں۔", "q3": "رقم بھیجنے کے لیے کیا چاہیے؟", "a3": "درست ریزیڈنس آئی ڈی (جیسے اقامہ، سول آئی ڈی، کیو آئی ڈی، ریزیڈنٹ کارڈ یا سی پی آر)، وصول کنندہ کا پورا نام، اور اس کے بینک اکاؤنٹ یا والیٹ کی تفصیل۔ درست ریزیڈنس آئی ڈی کے بغیر لائسنس یافتہ ادارے رقم نہیں بھیج سکتے۔"}};
+      var TYPES = {"en": {"digitalBank": "Digital bank", "wallet": "Digital wallet", "bankRemit": "Bank remittance service", "exchange": "Exchange company", "bank": "Bank", "global": "Global transfer network"}, "ar": {"digitalBank": "بنك رقمي", "wallet": "محفظة رقمية", "bankRemit": "خدمة تحويل بنكية", "exchange": "شركة صرافة", "bank": "بنك", "global": "شبكة تحويل عالمية"}, "hi": {"digitalBank": "डिजिटल बैंक", "wallet": "डिजिटल वॉलेट", "bankRemit": "बैंक की रेमिटेंस सेवा", "exchange": "एक्सचेंज कंपनी", "bank": "बैंक", "global": "ग्लोबल ट्रांसफ़र नेटवर्क"}, "ml": {"digitalBank": "ഡിജിറ്റൽ ബാങ്ക്", "wallet": "ഡിജിറ്റൽ വാലറ്റ്", "bankRemit": "ബാങ്കിന്റെ റെമിറ്റൻസ് സേവനം", "exchange": "എക്സ്ചേഞ്ച് കമ്പനി", "bank": "ബാങ്ക്", "global": "ആഗോള ട്രാൻസ്ഫർ നെറ്റ്‌വർക്ക്"}, "ne": {"digitalBank": "डिजिटल बैंक", "wallet": "डिजिटल वालेट", "bankRemit": "बैंकको रेमिट्यान्स सेवा", "exchange": "मनी एक्सचेन्ज", "bank": "बैंक", "global": "विश्वव्यापी ट्रान्सफर नेटवर्क"}, "ur": {"digitalBank": "ڈیجیٹل بینک", "wallet": "ڈیجیٹل والیٹ", "bankRemit": "بینک کی ترسیلِ زر سروس", "exchange": "ایکسچینج کمپنی", "bank": "بینک", "global": "عالمی ٹرانسفر نیٹ ورک"}};
+      var FUND = {"en": {"Bank transfer": "Bank transfer", "Cash at branch": "Cash at branch", "Debit card": "Debit card", "Debit card (NAPS)": "Debit card (NAPS)"}, "ar": {"Bank transfer": "تحويل بنكي", "Cash at branch": "نقدًا في الفرع", "Debit card": "بطاقة خصم", "Debit card (NAPS)": "بطاقة خصم (نابس)"}, "hi": {"Bank transfer": "बैंक ट्रांसफ़र", "Cash at branch": "ब्रांच में नक़द", "Debit card": "डेबिट कार्ड", "Debit card (NAPS)": "डेबिट कार्ड (NAPS)"}, "ml": {"Bank transfer": "ബാങ്ക് ട്രാൻസ്ഫർ", "Cash at branch": "ബ്രാഞ്ചിൽ പണമായി", "Debit card": "ഡെബിറ്റ് കാർഡ്", "Debit card (NAPS)": "ഡെബിറ്റ് കാർഡ് (NAPS)"}, "ne": {"Bank transfer": "बैंक ट्रान्सफर", "Cash at branch": "शाखामा नगद", "Debit card": "डेबिट कार्ड", "Debit card (NAPS)": "डेबिट कार्ड (NAPS)"}, "ur": {"Bank transfer": "بینک ٹرانسفر", "Cash at branch": "برانچ میں نقد", "Debit card": "ڈیبٹ کارڈ", "Debit card (NAPS)": "ڈیبٹ کارڈ (NAPS)"}};
+      var SOURCES = [{"code": "sa", "cur": "SAR", "flag": "🇸🇦", "dec": 2, "n": {"en": "Saudi Arabia", "ar": "السعودية", "hi": "सऊदी अरब", "ml": "സൗദി അറേബ്യ", "ne": "साउदी अरब", "ur": "سعودی عرب"}, "fund": ["mada", "SADAD", "Apple Pay", "Bank transfer"]}, {"code": "ae", "cur": "AED", "flag": "🇦🇪", "dec": 2, "n": {"en": "UAE", "ar": "الإمارات", "hi": "यूएई", "ml": "യുഎഇ", "ne": "युएई", "ur": "امارات"}, "fund": ["Debit card", "Apple Pay", "Bank transfer", "Cash at branch"]}, {"code": "kw", "cur": "KWD", "flag": "🇰🇼", "dec": 3, "n": {"en": "Kuwait", "ar": "الكويت", "hi": "कुवैत", "ml": "കുവൈത്ത്", "ne": "कुवेत", "ur": "کویت"}, "fund": ["KNET", "Apple Pay", "Cash at branch"]}, {"code": "qa", "cur": "QAR", "flag": "🇶🇦", "dec": 2, "n": {"en": "Qatar", "ar": "قطر", "hi": "क़तर", "ml": "ഖത്തർ", "ne": "कतार", "ur": "قطر"}, "fund": ["Debit card (NAPS)", "Apple Pay", "Cash at branch"]}, {"code": "om", "cur": "OMR", "flag": "🇴🇲", "dec": 3, "n": {"en": "Oman", "ar": "عُمان", "hi": "ओमान", "ml": "ഒമാൻ", "ne": "ओमान", "ur": "عمان"}, "fund": ["Debit card", "Bank transfer", "Cash at branch"]}, {"code": "bh", "cur": "BHD", "flag": "🇧🇭", "dec": 3, "n": {"en": "Bahrain", "ar": "البحرين", "hi": "बहरीन", "ml": "ബഹ്‌റൈൻ", "ne": "बहराइन", "ur": "بحرین"}, "fund": ["BenefitPay", "Debit card", "Cash at branch"]}];
+      var DESTS = [{"code": "in", "cur": "INR", "flag": "🇮🇳", "n": {"en": "India", "ar": "الهند", "hi": "भारत", "ml": "ഇന്ത്യ", "ne": "भारत", "ur": "بھارت"}}, {"code": "pk", "cur": "PKR", "flag": "🇵🇰", "n": {"en": "Pakistan", "ar": "باكستان", "hi": "पाकिस्तान", "ml": "പാകിസ്ഥാൻ", "ne": "पाकिस्तान", "ur": "پاکستان"}}, {"code": "np", "cur": "NPR", "flag": "🇳🇵", "n": {"en": "Nepal", "ar": "نيبال", "hi": "नेपाल", "ml": "നേപ്പാൾ", "ne": "नेपाल", "ur": "نیپال"}}, {"code": "bd", "cur": "BDT", "flag": "🇧🇩", "n": {"en": "Bangladesh", "ar": "بنغلاديش", "hi": "बांग्लादेश", "ml": "ബംഗ്ലാദേശ്", "ne": "बंगलादेश", "ur": "بنگلہ دیش"}}, {"code": "ph", "cur": "PHP", "flag": "🇵🇭", "n": {"en": "Philippines", "ar": "الفلبين", "hi": "फ़िलीपींस", "ml": "ഫിലിപ്പീൻസ്", "ne": "फिलिपिन्स", "ur": "فلپائن"}}, {"code": "lk", "cur": "LKR", "flag": "🇱🇰", "n": {"en": "Sri Lanka", "ar": "سريلانكا", "hi": "श्रीलंका", "ml": "ശ്രീലങ്ക", "ne": "श्रीलंका", "ur": "سری لنکا"}}, {"code": "id", "cur": "IDR", "flag": "🇮🇩", "n": {"en": "Indonesia", "ar": "إندونيسيا", "hi": "इंडोनेशिया", "ml": "ഇന്തോനേഷ്യ", "ne": "इन्डोनेसिया", "ur": "انڈونیشیا"}}, {"code": "eg", "cur": "EGP", "flag": "🇪🇬", "n": {"en": "Egypt", "ar": "مصر", "hi": "मिस्र", "ml": "ഈജിപ്ത്", "ne": "इजिप्ट", "ur": "مصر"}}];
+      var PROVIDERS = {"sa": [{"id": "stcbank", "name": "STC Bank", "type": "digitalBank", "url": "https://www.stcbank.com.sa/"}, {"id": "urpay", "name": "urpay", "type": "wallet", "url": "https://www.urpay.com.sa/"}, {"id": "barq", "name": "Barq", "type": "wallet", "url": ""}, {"id": "enjaz", "name": "Enjaz (Bank AlBilad)", "type": "bankRemit", "url": "https://www.enjaz.com/"}, {"id": "tahweel", "name": "Tahweel Al Rajhi", "type": "bankRemit", "url": "https://www.tahweelalrajhi.com.sa/"}, {"id": "snbquickpay", "name": "SNB QuickPay", "type": "bankRemit", "url": "https://www.alahli.com/"}, {"id": "tiqmo", "name": "Tiqmo", "type": "wallet", "url": "https://tiqmo.com/"}, {"id": "mobilypay", "name": "Mobily Pay", "type": "wallet", "url": "https://www.mobily.com.sa/"}, {"id": "fawri", "name": "Fawri (Bank AlJazira)", "type": "bankRemit", "url": "https://www.bankaljazira.com/"}, {"id": "wu", "name": "Western Union (Ersal)", "type": "global", "url": "https://www.westernunion.com/"}], "ae": [{"id": "alansari", "name": "Al Ansari Exchange", "type": "exchange", "url": "https://alansariexchange.com/"}, {"id": "lulu", "name": "LuLu Exchange", "type": "exchange", "url": "https://luluexchange.com/"}, {"id": "alfardan", "name": "Al Fardan Exchange", "type": "exchange", "url": "https://alfardanexchange.com/"}, {"id": "gccexchange", "name": "GCC Exchange", "type": "exchange", "url": "https://gccexchange.com/"}, {"id": "wallstreet", "name": "Wall Street Exchange", "type": "exchange", "url": ""}, {"id": "wu", "name": "Western Union", "type": "global", "url": "https://www.westernunion.com/"}, {"id": "remitly", "name": "Remitly", "type": "global", "url": "https://www.remitly.com/"}, {"id": "wise", "name": "Wise", "type": "global", "url": "https://wise.com/"}], "kw": [{"id": "almulla", "name": "Al Mulla Exchange", "type": "exchange", "url": "https://www.almullaexchange.com/"}, {"id": "bec", "name": "Bahrain Exchange Company (BEC)", "type": "exchange", "url": "https://www.bec.com.kw/"}, {"id": "uaeexchangekw", "name": "UAE Exchange Kuwait", "type": "exchange", "url": ""}, {"id": "lulu", "name": "LuLu Exchange Kuwait", "type": "exchange", "url": "https://luluexchange.com/"}, {"id": "wu", "name": "Western Union", "type": "global", "url": "https://www.westernunion.com/"}], "qa": [{"id": "aldar", "name": "Al Dar for Exchange Works", "type": "exchange", "url": ""}, {"id": "alzaman", "name": "Al Zaman Exchange", "type": "exchange", "url": ""}, {"id": "lulu", "name": "LuLu Exchange Qatar", "type": "exchange", "url": "https://luluexchange.com/"}, {"id": "alfardan", "name": "Alfardan Exchange Qatar", "type": "exchange", "url": "https://www.alfardanexchange.com.qa/"}, {"id": "ooredoo", "name": "Ooredoo Money", "type": "wallet", "url": "https://www.ooredoo.qa/"}, {"id": "wu", "name": "Western Union", "type": "global", "url": "https://www.westernunion.com/"}], "om": [{"id": "lulu", "name": "LuLu Exchange Oman", "type": "exchange", "url": "https://luluexchange.com/"}, {"id": "unimoni", "name": "Unimoni Oman", "type": "exchange", "url": ""}, {"id": "modern", "name": "Modern Exchange", "type": "exchange", "url": ""}, {"id": "purshottam", "name": "Purshottam Kanji Exchange", "type": "exchange", "url": ""}, {"id": "omantel", "name": "Omantel Money", "type": "wallet", "url": ""}, {"id": "wu", "name": "Western Union", "type": "global", "url": "https://www.westernunion.com/"}], "bh": [{"id": "bfc", "name": "Bahrain Financing Company (BFC)", "type": "exchange", "url": "https://www.bfc.com.bh/"}, {"id": "lulu", "name": "LuLu Exchange Bahrain", "type": "exchange", "url": "https://luluexchange.com/"}, {"id": "beyon", "name": "Beyon Money", "type": "wallet", "url": ""}, {"id": "nec", "name": "NEC Remit", "type": "exchange", "url": ""}, {"id": "wu", "name": "Western Union", "type": "global", "url": "https://www.westernunion.com/"}]};
 
-      var T = {
-        en: {
-          title: "Best way to send money home",
-          lead: "Compare the money transfer services expats use in Saudi Arabia, Kuwait, Qatar, Oman and Bahrain, and learn how to get more money to your family.",
-          ctaText: "Check today's market rate first, then see which app gets closest to it.",
-          ctaBtn: "Check today's rate",
-          compareTitle: "Compare money transfer services", sendingFrom: "I am sending from:",
-          colService: "Service", colDelivery: "Your family receives by", colWhy: "Why people use it", colAction: "Website",
-          visit: "Visit website", partner: "Partner",
-          tableNote: "Fees and exchange rates change every day. Always check the final amount in the app before you send.",
-          tipsTitle: "6 ways to get more money home",
-          tip1: "Compare the final amount your family receives, not only the fee. A zero-fee transfer can still give a worse rate.",
-          tip2: "Check today's market rate first, then see how close each app gets to it.",
-          tip3: "Sending one larger amount usually costs less than many small transfers.",
-          tip4: "Open two or three apps and enter the same amount. It takes two minutes and often saves real money.",
-          tip5: "Use only licensed banks and exchange companies. Never send money through agents on social media.",
-          tip6: "Double-check the name and account number before you confirm. Transfers are hard to reverse.",
-          faqTitle: "Frequently asked questions",
-          q1: "Which service is the cheapest?",
-          a1: "It changes every day. Fees and exchange rates move, and offers come and go. Open two or three apps, enter the same amount, and choose the one where your family receives the most.",
-          q2: "Is it safe to send money through these apps?",
-          a2: "The services listed here are banks and exchange companies licensed in their country. Stay safe by using their official apps, websites or branches, and never send money through unknown agents or social media offers.",
-          q3: "What do I need to send money?",
-          a3: "A valid residence ID (such as Iqama, Civil ID, QID, Resident Card or CPR), your recipient's full name, and their bank account or wallet details. Licensed providers cannot send money for people without a valid residence ID.",
-          q4: "Do you earn money from these links?",
-          a4: "Some links may become partner links in future. A partner link is always marked \"Partner\", and it never changes the information we show.",
-          disclosure: "ExpatGuideME is independent and is not connected to any bank or exchange company. Information was checked from public sources on the date below; services can change their fees and features at any time.",
-          ad: "Advertisement",
-          types: { digitalBank: "Digital bank", wallet: "Digital wallet", bankRemit: "Bank remittance service", exchange: "Exchange company", global: "Global transfer network" },
-          delivery: { bank: "Bank account", cash: "Cash pickup", wallet: "Mobile wallet" }
-        },
-        ar: {
-          title: "أفضل طريقة لتحويل الأموال إلى بلدك",
-          lead: "قارن خدمات تحويل الأموال التي يستخدمها المقيمون في السعودية والكويت وقطر وعُمان والبحرين، وتعرّف على طرق إيصال مبلغ أكبر إلى عائلتك.",
-          ctaText: "تحقّق من سعر السوق اليوم أولًا، ثم انظر أي تطبيق يقترب منه أكثر.",
-          ctaBtn: "سعر الصرف اليوم",
-          compareTitle: "قارن خدمات تحويل الأموال", sendingFrom: "أحوّل من:",
-          colService: "الخدمة", colDelivery: "طريقة الاستلام", colWhy: "لماذا يستخدمها الناس", colAction: "الموقع",
-          visit: "زيارة الموقع", partner: "شريك",
-          tableNote: "تتغير الرسوم وأسعار الصرف يوميًا. تحقّق دائمًا من المبلغ النهائي في التطبيق قبل التحويل.",
-          tipsTitle: "٦ طرق لإيصال مبلغ أكبر إلى عائلتك",
-          tip1: "قارن المبلغ النهائي الذي تستلمه عائلتك، وليس الرسوم فقط. فالتحويل بلا رسوم قد يأتي بسعر صرف أسوأ.",
-          tip2: "تحقّق من سعر السوق اليوم أولًا، ثم انظر مدى اقتراب كل تطبيق منه.",
-          tip3: "تحويل مبلغ واحد أكبر يكلّف عادةً أقل من عدة تحويلات صغيرة.",
-          tip4: "افتح تطبيقين أو ثلاثة وأدخل المبلغ نفسه. يستغرق ذلك دقيقتين وغالبًا يوفّر مالًا حقيقيًا.",
-          tip5: "استخدم البنوك وشركات الصرافة المرخّصة فقط، ولا تحوّل أموالك عبر وسطاء في وسائل التواصل الاجتماعي.",
-          tip6: "راجع الاسم ورقم الحساب جيدًا قبل التأكيد، فإلغاء التحويل صعب.",
-          faqTitle: "الأسئلة الشائعة",
-          q1: "ما أرخص خدمة؟",
-          a1: "يتغير ذلك يوميًا؛ فالرسوم وأسعار الصرف تتحرك والعروض تتبدل. افتح تطبيقين أو ثلاثة، وأدخل المبلغ نفسه، واختر الذي تستلم فيه عائلتك أكبر مبلغ.",
-          q2: "هل التحويل عبر هذه التطبيقات آمن؟",
-          a2: "الخدمات المذكورة هنا بنوك وشركات صرافة مرخّصة في بلدانها. حافظ على أمانك باستخدام تطبيقاتها ومواقعها وفروعها الرسمية فقط، ولا تحوّل أموالك عبر وسطاء مجهولين أو عروض في وسائل التواصل.",
-          q3: "ماذا أحتاج لتحويل الأموال؟",
-          a3: "هوية إقامة سارية (مثل الإقامة أو البطاقة المدنية أو بطاقة المقيم)، والاسم الكامل للمستلم، وبيانات حسابه البنكي أو محفظته. ولا تستطيع الجهات المرخّصة التحويل لمن لا يملك هوية إقامة سارية.",
-          q4: "هل تربحون من هذه الروابط؟",
-          a4: "قد تصبح بعض الروابط روابط شراكة مستقبلًا. ويُشار إلى رابط الشراكة دائمًا بكلمة «شريك»، ولا يغيّر ذلك المعلومات التي نعرضها.",
-          disclosure: "هذا موقع مستقل ولا علاقة له بأي بنك أو شركة صرافة. تم التحقق من المعلومات من مصادر عامة في التاريخ أدناه، وقد تغيّر الخدمات رسومها ومزاياها في أي وقت.",
-          ad: "مساحة إعلانية",
-          types: { digitalBank: "بنك رقمي", wallet: "محفظة رقمية", bankRemit: "خدمة تحويل تابعة لبنك", exchange: "شركة صرافة", global: "شبكة تحويل عالمية" },
-          delivery: { bank: "حساب بنكي", cash: "استلام نقدي", wallet: "محفظة جوال" }
-        },
-        hi: {
-          title: "घर पैसे भेजने का सबसे अच्छा तरीका",
-          lead: "सऊदी अरब, कुवैत, क़तर, ओमान और बहरीन में प्रवासी जिन मनी ट्रांसफ़र सेवाओं का इस्तेमाल करते हैं, उनकी तुलना करें और जानें कि परिवार तक ज़्यादा पैसे कैसे पहुँचें।",
-          ctaText: "पहले आज का बाज़ार रेट देखें, फिर देखें कि कौन-सा ऐप उसके सबसे क़रीब है।",
-          ctaBtn: "आज का रेट देखें",
-          compareTitle: "मनी ट्रांसफ़र सेवाओं की तुलना करें", sendingFrom: "मैं यहाँ से भेज रहा/रही हूँ:",
-          colService: "सेवा", colDelivery: "परिवार को कैसे मिलेगा", colWhy: "लोग इसे क्यों चुनते हैं", colAction: "वेबसाइट",
-          visit: "वेबसाइट देखें", partner: "पार्टनर",
-          tableNote: "फ़ीस और एक्सचेंज रेट रोज़ बदलते हैं। भेजने से पहले ऐप में अंतिम राशि ज़रूर देखें।",
-          tipsTitle: "घर ज़्यादा पैसे पहुँचाने के 6 तरीक़े",
-          tip1: "सिर्फ़ फ़ीस नहीं, परिवार को मिलने वाली अंतिम राशि की तुलना करें। ज़ीरो-फ़ीस ट्रांसफ़र में भी रेट ख़राब हो सकता है।",
-          tip2: "पहले आज का बाज़ार रेट देखें, फिर देखें कि हर ऐप उसके कितने क़रीब है।",
-          tip3: "कई छोटे ट्रांसफ़र के बजाय एक बड़ा ट्रांसफ़र आमतौर पर सस्ता पड़ता है।",
-          tip4: "दो-तीन ऐप खोलकर एक ही राशि डालें। इसमें दो मिनट लगते हैं और अक्सर अच्छी बचत होती है।",
-          tip5: "केवल लाइसेंसधारी बैंक और एक्सचेंज कंपनियों का उपयोग करें। सोशल मीडिया के एजेंटों से कभी पैसे न भेजें।",
-          tip6: "पुष्टि करने से पहले नाम और खाता नंबर दोबारा जाँचें। ट्रांसफ़र वापस लेना मुश्किल होता है।",
-          faqTitle: "अक्सर पूछे जाने वाले सवाल",
-          q1: "सबसे सस्ती सेवा कौन-सी है?",
-          a1: "यह रोज़ बदलता है। फ़ीस और रेट ऊपर-नीचे होते हैं और ऑफ़र आते-जाते रहते हैं। दो-तीन ऐप खोलें, एक ही राशि डालें और वह चुनें जिसमें परिवार को सबसे ज़्यादा मिले।",
-          q2: "क्या इन ऐप से पैसे भेजना सुरक्षित है?",
-          a2: "यहाँ दी गई सेवाएँ अपने देश में लाइसेंसधारी बैंक और एक्सचेंज कंपनियाँ हैं। सुरक्षित रहने के लिए केवल उनके आधिकारिक ऐप, वेबसाइट या ब्रांच का उपयोग करें, और अनजान एजेंटों या सोशल मीडिया ऑफ़र से कभी पैसे न भेजें।",
-          q3: "पैसे भेजने के लिए क्या चाहिए?",
-          a3: "वैध रेज़िडेंस आईडी (जैसे इक़ामा, सिविल आईडी, क्यूआईडी, रेज़िडेंट कार्ड या सीपीआर), प्राप्तकर्ता का पूरा नाम और उसका बैंक खाता या वॉलेट विवरण। वैध रेज़िडेंस आईडी के बिना लाइसेंसधारी कंपनियाँ पैसे नहीं भेज सकतीं।",
-          q4: "क्या आप इन लिंक से पैसे कमाते हैं?",
-          a4: "भविष्य में कुछ लिंक पार्टनर लिंक बन सकते हैं। पार्टनर लिंक पर हमेशा \"पार्टनर\" लिखा होगा, और इससे हमारी जानकारी नहीं बदलती।",
-          disclosure: "ExpatGuideME एक स्वतंत्र वेबसाइट है और किसी बैंक या एक्सचेंज कंपनी से जुड़ी नहीं है। जानकारी नीचे दी गई तारीख़ को सार्वजनिक स्रोतों से जाँची गई थी; सेवाएँ कभी भी अपनी फ़ीस और सुविधाएँ बदल सकती हैं।",
-          ad: "विज्ञापन",
-          types: { digitalBank: "डिजिटल बैंक", wallet: "डिजिटल वॉलेट", bankRemit: "बैंक की रेमिटेंस सेवा", exchange: "एक्सचेंज कंपनी", global: "वैश्विक ट्रांसफ़र नेटवर्क" },
-          delivery: { bank: "बैंक खाता", cash: "कैश पिकअप", wallet: "मोबाइल वॉलेट" }
-        },
-        ml: {
-          title: "നാട്ടിലേക്ക് പണം അയക്കാൻ മികച്ച വഴി",
-          lead: "സൗദി അറേബ്യ, കുവൈത്ത്, ഖത്തർ, ഒമാൻ, ബഹ്‌റൈൻ എന്നിവിടങ്ങളിലെ പ്രവാസികൾ ഉപയോഗിക്കുന്ന പണമയക്കൽ സേവനങ്ങൾ താരതമ്യം ചെയ്യുക, കുടുംബത്തിന് കൂടുതൽ തുക എത്തിക്കാനുള്ള വഴികൾ അറിയുക.",
-          ctaText: "ആദ്യം ഇന്നത്തെ വിപണി നിരക്ക് നോക്കുക, പിന്നെ ഏത് ആപ്പാണ് അതിനോട് ഏറ്റവും അടുത്തതെന്ന് നോക്കുക.",
-          ctaBtn: "ഇന്നത്തെ നിരക്ക് നോക്കുക",
-          compareTitle: "പണമയക്കൽ സേവനങ്ങൾ താരതമ്യം ചെയ്യുക", sendingFrom: "ഞാൻ അയക്കുന്നത്:",
-          colService: "സേവനം", colDelivery: "കുടുംബത്തിന് ലഭിക്കുന്ന വഴി", colWhy: "ആളുകൾ തിരഞ്ഞെടുക്കുന്നത് എന്തുകൊണ്ട്", colAction: "വെബ്സൈറ്റ്",
-          visit: "വെബ്സൈറ്റ് സന്ദർശിക്കുക", partner: "പങ്കാളി",
-          tableNote: "ഫീസും വിനിമയ നിരക്കും ദിവസവും മാറും. അയക്കുന്നതിന് മുമ്പ് ആപ്പിൽ അന്തിമ തുക എപ്പോഴും പരിശോധിക്കുക.",
-          tipsTitle: "നാട്ടിലേക്ക് കൂടുതൽ പണം എത്തിക്കാൻ 6 വഴികൾ",
-          tip1: "ഫീസ് മാത്രമല്ല, കുടുംബത്തിന് ലഭിക്കുന്ന അന്തിമ തുക താരതമ്യം ചെയ്യുക. ഫീസ് ഇല്ലാത്ത ട്രാൻസ്ഫറിലും നിരക്ക് മോശമായിരിക്കാം.",
-          tip2: "ആദ്യം ഇന്നത്തെ വിപണി നിരക്ക് നോക്കുക, പിന്നെ ഓരോ ആപ്പും അതിനോട് എത്ര അടുത്താണെന്ന് നോക്കുക.",
-          tip3: "പല ചെറിയ ട്രാൻസ്ഫറുകളേക്കാൾ ഒരു വലിയ തുക അയക്കുന്നതാണ് സാധാരണ ചെലവ് കുറവ്.",
-          tip4: "രണ്ടോ മൂന്നോ ആപ്പുകൾ തുറന്ന് ഒരേ തുക നൽകി നോക്കുക. രണ്ട് മിനിറ്റ് മതി, പലപ്പോഴും നല്ലൊരു തുക ലാഭിക്കാം.",
-          tip5: "ലൈസൻസുള്ള ബാങ്കുകളും എക്സ്ചേഞ്ച് കമ്പനികളും മാത്രം ഉപയോഗിക്കുക. സോഷ്യൽ മീഡിയയിലെ ഏജന്റുമാർ വഴി ഒരിക്കലും പണം അയക്കരുത്.",
-          tip6: "സ്ഥിരീകരിക്കുന്നതിന് മുമ്പ് പേരും അക്കൗണ്ട് നമ്പറും വീണ്ടും പരിശോധിക്കുക. അയച്ച പണം തിരികെ കിട്ടാൻ പ്രയാസമാണ്.",
-          faqTitle: "പതിവ് ചോദ്യങ്ങൾ",
-          q1: "ഏറ്റവും ചെലവ് കുറഞ്ഞ സേവനം ഏതാണ്?",
-          a1: "അത് ദിവസവും മാറും. ഫീസും നിരക്കും മാറിക്കൊണ്ടിരിക്കും, ഓഫറുകളും വന്നുപോകും. രണ്ടോ മൂന്നോ ആപ്പുകൾ തുറന്ന് ഒരേ തുക നൽകി, കുടുംബത്തിന് ഏറ്റവും കൂടുതൽ ലഭിക്കുന്നത് തിരഞ്ഞെടുക്കുക.",
-          q2: "ഈ ആപ്പുകൾ വഴി പണം അയക്കുന്നത് സുരക്ഷിതമാണോ?",
-          a2: "ഇവിടെ നൽകിയിരിക്കുന്ന സേവനങ്ങൾ അതത് രാജ്യത്ത് ലൈസൻസുള്ള ബാങ്കുകളും എക്സ്ചേഞ്ച് കമ്പനികളുമാണ്. അവരുടെ ഔദ്യോഗിക ആപ്പ്, വെബ്സൈറ്റ്, ബ്രാഞ്ച് എന്നിവ മാത്രം ഉപയോഗിക്കുക; അപരിചിത ഏജന്റുമാർ വഴിയോ സോഷ്യൽ മീഡിയ ഓഫറുകൾ വഴിയോ പണം അയക്കരുത്.",
-          q3: "പണം അയക്കാൻ എന്തൊക്കെ വേണം?",
-          a3: "സാധുവായ റെസിഡൻസ് ഐഡി (ഇഖാമ, സിവിൽ ഐഡി, ക്യുഐഡി, റെസിഡന്റ് കാർഡ് അല്ലെങ്കിൽ സിപിആർ), സ്വീകരിക്കുന്നയാളുടെ മുഴുവൻ പേര്, അവരുടെ ബാങ്ക് അക്കൗണ്ട് അല്ലെങ്കിൽ വാലറ്റ് വിവരങ്ങൾ. സാധുവായ റെസിഡൻസ് ഐഡി ഇല്ലാത്തവർക്ക് വേണ്ടി ലൈസൻസുള്ള സ്ഥാപനങ്ങൾക്ക് പണം അയക്കാൻ കഴിയില്ല.",
-          q4: "ഈ ലിങ്കുകളിൽ നിന്ന് നിങ്ങൾക്ക് വരുമാനം ലഭിക്കുന്നുണ്ടോ?",
-          a4: "ഭാവിയിൽ ചില ലിങ്കുകൾ പങ്കാളി ലിങ്കുകളായേക്കാം. പങ്കാളി ലിങ്കിൽ എപ്പോഴും \"പങ്കാളി\" എന്ന് രേഖപ്പെടുത്തും; ഞങ്ങൾ നൽകുന്ന വിവരങ്ങളെ അത് മാറ്റില്ല.",
-          disclosure: "ExpatGuideME ഒരു സ്വതന്ത്ര വെബ്സൈറ്റാണ്, ഒരു ബാങ്കുമായോ എക്സ്ചേഞ്ച് കമ്പനിയുമായോ ബന്ധമില്ല. താഴെ കാണുന്ന തീയതിയിൽ പൊതു സ്രോതസ്സുകളിൽ നിന്ന് വിവരങ്ങൾ പരിശോധിച്ചതാണ്; സേവനങ്ങൾക്ക് ഏത് സമയത്തും ഫീസും സൗകര്യങ്ങളും മാറ്റാം.",
-          ad: "പരസ്യം",
-          types: { digitalBank: "ഡിജിറ്റൽ ബാങ്ക്", wallet: "ഡിജിറ്റൽ വാലറ്റ്", bankRemit: "ബാങ്കിന്റെ റെമിറ്റൻസ് സേവനം", exchange: "എക്സ്ചേഞ്ച് കമ്പനി", global: "ആഗോള ട്രാൻസ്ഫർ ശൃംഖല" },
-          delivery: { bank: "ബാങ്ക് അക്കൗണ്ട്", cash: "പണമായി കൈപ്പറ്റൽ", wallet: "മൊബൈൽ വാലറ്റ്" }
-        },
-        ne: {
-          title: "घर पैसा पठाउने उत्तम तरिका",
-          lead: "साउदी अरब, कुवेत, कतार, ओमान र बहराइनमा प्रवासीहरूले प्रयोग गर्ने पैसा पठाउने सेवाहरूको तुलना गर्नुहोस्, र परिवारसम्म धेरै रकम कसरी पुर्याउने जान्नुहोस्।",
-          ctaText: "पहिले आजको बजार दर हेर्नुहोस्, अनि कुन एप त्यसको सबैभन्दा नजिक छ हेर्नुहोस्।",
-          ctaBtn: "आजको दर हेर्नुहोस्",
-          compareTitle: "पैसा पठाउने सेवाहरूको तुलना गर्नुहोस्", sendingFrom: "म यहाँबाट पठाउँदैछु:",
-          colService: "सेवा", colDelivery: "परिवारले कसरी पाउँछ", colWhy: "मानिसहरूले किन रोज्छन्", colAction: "वेबसाइट",
-          visit: "वेबसाइट हेर्नुहोस्", partner: "साझेदार",
-          tableNote: "शुल्क र विनिमय दर दैनिक बदलिन्छन्। पठाउनुअघि एपमा अन्तिम रकम सधैँ जाँच्नुहोस्।",
-          tipsTitle: "घर धेरै पैसा पुर्याउने ६ तरिका",
-          tip1: "शुल्क मात्र होइन, परिवारले पाउने अन्तिम रकम तुलना गर्नुहोस्। शुल्क नलाग्ने ट्रान्सफरमा पनि दर खराब हुन सक्छ।",
-          tip2: "पहिले आजको बजार दर हेर्नुहोस्, अनि हरेक एप त्यसको कति नजिक छ हेर्नुहोस्।",
-          tip3: "धेरै साना ट्रान्सफरभन्दा एउटै ठूलो रकम पठाउँदा प्रायः सस्तो पर्छ।",
-          tip4: "दुई-तीनवटा एप खोलेर एउटै रकम हाल्नुहोस्। यसमा दुई मिनेट लाग्छ र प्रायः राम्रो बचत हुन्छ।",
-          tip5: "इजाजतप्राप्त बैंक र मनी एक्सचेन्ज मात्र प्रयोग गर्नुहोस्। सामाजिक सञ्जालका एजेन्टमार्फत कहिल्यै पैसा नपठाउनुहोस्।",
-          tip6: "पुष्टि गर्नुअघि नाम र खाता नम्बर फेरि जाँच्नुहोस्। पठाएको पैसा फिर्ता ल्याउन गाह्रो हुन्छ।",
-          faqTitle: "बारम्बार सोधिने प्रश्नहरू",
-          q1: "सबैभन्दा सस्तो सेवा कुन हो?",
-          a1: "यो दैनिक बदलिन्छ। शुल्क र दर घटबढ हुन्छन्, अफरहरू आउँछन्-जान्छन्। दुई-तीनवटा एप खोल्नुहोस्, एउटै रकम हाल्नुहोस्, र परिवारले सबैभन्दा धेरै पाउने छान्नुहोस्।",
-          q2: "के यी एपबाट पैसा पठाउनु सुरक्षित छ?",
-          a2: "यहाँ दिइएका सेवाहरू आफ्नो देशमा इजाजतप्राप्त बैंक र मनी एक्सचेन्ज हुन्। सुरक्षित रहन उनीहरूको आधिकारिक एप, वेबसाइट वा शाखा मात्र प्रयोग गर्नुहोस्, र अपरिचित एजेन्ट वा सामाजिक सञ्जालका अफरमार्फत कहिल्यै पैसा नपठाउनुहोस्।",
-          q3: "पैसा पठाउन के-के चाहिन्छ?",
-          a3: "मान्य रेसिडेन्स परिचयपत्र (जस्तै इकामा, सिभिल आईडी, क्यूआईडी, रेसिडेन्ट कार्ड वा सीपीआर), प्रापकको पूरा नाम, र उसको बैंक खाता वा वालेट विवरण। मान्य रेसिडेन्स परिचयपत्र नभएकाहरूका लागि इजाजतप्राप्त संस्थाहरूले पैसा पठाउन सक्दैनन्।",
-          q4: "के तपाईंले यी लिङ्कबाट पैसा कमाउनुहुन्छ?",
-          a4: "भविष्यमा केही लिङ्कहरू साझेदार लिङ्क बन्न सक्छन्। साझेदार लिङ्कमा सधैँ \"साझेदार\" लेखिएको हुन्छ, र यसले हामीले दिने जानकारी बदल्दैन।",
-          disclosure: "ExpatGuideME एक स्वतन्त्र वेबसाइट हो र कुनै बैंक वा मनी एक्सचेन्जसँग सम्बन्धित छैन। तल दिइएको मितिमा सार्वजनिक स्रोतबाट जानकारी जाँचिएको हो; सेवाहरूले जुनसुकै बेला शुल्क र सुविधा बदल्न सक्छन्।",
-          ad: "विज्ञापन",
-          types: { digitalBank: "डिजिटल बैंक", wallet: "डिजिटल वालेट", bankRemit: "बैंकको रेमिट्यान्स सेवा", exchange: "मनी एक्सचेन्ज", global: "विश्वव्यापी ट्रान्सफर नेटवर्क" },
-          delivery: { bank: "बैंक खाता", cash: "नगद भुक्तानी", wallet: "मोबाइल वालेट" }
-        }
-      };
+      var PREF_KEY = "expatguideme_route_v1";
+      var MKT_KEY = "expatguideme_mkt_v1";
+      var SITE = "https://expatguideme.com/send-money.html";
+      var USD_PEG = { SAR: 3.75, AED: 3.6725, QAR: 3.64, OMR: 0.3845, BHD: 0.376 };
+      var FRANK_DIRECT = { INR: "INR", PHP: "PHP", IDR: "IDR", NPR: "INR" };
 
-      var COUNTRIES = [
-        { code: "sa", flag: "🇸🇦", en: "Saudi Arabia", ar: "السعودية", hi: "सऊदी अरब", ml: "സൗദി അറേബ്യ", ne: "साउदी अरब" },
-        { code: "kw", flag: "🇰🇼", en: "Kuwait", ar: "الكويت", hi: "कुवैत", ml: "കുവൈത്ത്", ne: "कुवेत" },
-        { code: "qa", flag: "🇶🇦", en: "Qatar", ar: "قطر", hi: "क़तर", ml: "ഖത്തർ", ne: "कतार" },
-        { code: "om", flag: "🇴🇲", en: "Oman", ar: "عُمان", hi: "ओमान", ml: "ഒമാൻ", ne: "ओमान" },
-        { code: "bh", flag: "🇧🇭", en: "Bahrain", ar: "البحرين", hi: "बहरीन", ml: "ബഹ്‌റൈൻ", ne: "बहराइन" }
-      ];
+      var state = { src: "sa", dst: "in", amount: 1000, panel: "rates", market: null, marketAt: null, providers: {}, history: [], loadFailed: false };
+      var loadSeq = 0;
 
-      /* Provider list. "affiliate" holds a partner tracking link once a
-         partnership is approved; while empty, the button opens the
-         provider's official website and no "Partner" label is shown. */
-      var PROVIDERS = [
-        {
-          name: "STC Bank", countries: ["sa"], type: "digitalBank", delivery: ["bank"],
-          url: "https://www.stcbank.com.sa/", affiliate: "",
-          why: {
-            en: "Saudi digital bank that replaced stc pay. Published fees from SAR 15 to India, Bangladesh, the Philippines and Egypt, and no transfer fee to Pakistan from SAR 375 (fees exclude VAT).",
-            ar: "بنك رقمي سعودي حلّ محل «إس تي سي باي». رسوم معلنة تبدأ من ١٥ ريالًا إلى الهند وبنغلاديش والفلبين ومصر، وبلا رسوم تحويل إلى باكستان من ٣٧٥ ريالًا (الرسوم دون ضريبة القيمة المضافة).",
-            hi: "सऊदी डिजिटल बैंक, जिसने stc pay की जगह ली। भारत, बांग्लादेश, फ़िलीपींस और मिस्र के लिए घोषित फ़ीस SAR 15 से, और SAR 375 से ज़्यादा पर पाकिस्तान के लिए ट्रांसफ़र फ़ीस नहीं (फ़ीस में VAT शामिल नहीं)।",
-            ml: "stc pay-ക്ക് പകരം വന്ന സൗദി ഡിജിറ്റൽ ബാങ്ക്. ഇന്ത്യ, ബംഗ്ലാദേശ്, ഫിലിപ്പീൻസ്, ഈജിപ്ത് എന്നിവിടങ്ങളിലേക്ക് SAR 15 മുതലുള്ള പ്രഖ്യാപിത ഫീസ്; SAR 375 മുതൽ പാകിസ്ഥാനിലേക്ക് ട്രാൻസ്ഫർ ഫീസ് ഇല്ല (ഫീസിൽ VAT ഉൾപ്പെടില്ല).",
-            ne: "stc pay को सट्टा आएको साउदी डिजिटल बैंक। भारत, बंगलादेश, फिलिपिन्स र इजिप्टका लागि SAR 15 देखि घोषित शुल्क, र SAR 375 देखि पाकिस्तानका लागि ट्रान्सफर शुल्क छैन (शुल्कमा VAT समावेश छैन)।"
-          }
-        },
-        {
-          name: "urpay", countries: ["sa"], type: "wallet", delivery: ["bank", "cash"],
-          url: "https://www.urpay.com.sa/", affiliate: "",
-          why: {
-            en: "Wallet app from the Al Rajhi group. Send through the Tahweel Al Rajhi or Western Union networks from one app.",
-            ar: "محفظة رقمية من مجموعة الراجحي. التحويل عبر شبكة تحويل الراجحي أو ويسترن يونيون من تطبيق واحد.",
-            hi: "अल राजही समूह का वॉलेट ऐप। एक ही ऐप से तहवील अल राजही या वेस्टर्न यूनियन नेटवर्क के ज़रिए भेजें।",
-            ml: "അൽ റാജ്ഹി ഗ്രൂപ്പിന്റെ വാലറ്റ് ആപ്പ്. ഒരേ ആപ്പിൽ നിന്ന് തഹ്‌വീൽ അൽ റാജ്ഹി അല്ലെങ്കിൽ വെസ്റ്റേൺ യൂണിയൻ വഴി അയക്കാം.",
-            ne: "अल राझी समूहको वालेट एप। एउटै एपबाट तहवील अल राझी वा वेस्टर्न युनियन नेटवर्कमार्फत पठाउनुहोस्।"
-          }
-        },
-        {
-          name: "Tahweel Al Rajhi", countries: ["sa"], type: "bankRemit", delivery: ["bank", "cash", "wallet"],
-          url: "https://www.tahweelalrajhi.com.sa/", affiliate: "",
-          why: {
-            en: "Al Rajhi Bank's remittance arm. More than 135 dedicated centres, plus the Al Rajhi app and ATMs. Includes free remittance insurance.",
-            ar: "ذراع التحويلات في مصرف الراجحي. أكثر من ١٣٥ مركزًا مخصصًا، إضافة إلى تطبيق الراجحي والصرافات الآلية، مع تأمين مجاني على الحوالات.",
-            hi: "अल राजही बैंक की रेमिटेंस सेवा। 135 से ज़्यादा विशेष सेंटर, साथ में अल राजही ऐप और एटीएम। मुफ़्त रेमिटेंस बीमा भी।",
-            ml: "അൽ റാജ്ഹി ബാങ്കിന്റെ റെമിറ്റൻസ് വിഭാഗം. 135-ലധികം പ്രത്യേക കേന്ദ്രങ്ങൾ, കൂടാതെ അൽ റാജ്ഹി ആപ്പും എടിഎമ്മുകളും. സൗജന്യ റെമിറ്റൻസ് ഇൻഷുറൻസും ഉണ്ട്.",
-            ne: "अल राझी बैंकको रेमिट्यान्स सेवा। १३५ भन्दा बढी विशेष केन्द्र, साथै अल राझी एप र एटीएम। निःशुल्क रेमिट्यान्स बीमा पनि।"
-          }
-        },
-        {
-          name: "Enjaz", countries: ["sa"], type: "bankRemit", delivery: ["bank", "cash", "wallet"],
-          url: "https://www.enjaz.com/", affiliate: "",
-          why: {
-            en: "Bank Albilad's remittance arm. The app is available in Hindi, Malayalam, Bengali, Urdu and more. No transfer fee for instant transfers to Pakistan through the Enjaz and Albilad apps.",
-            ar: "ذراع التحويلات في بنك البلاد. التطبيق متاح بالهندية والمالايالامية والبنغالية والأردية وغيرها، وبلا رسوم للتحويل الفوري إلى باكستان عبر تطبيقي إنجاز والبلاد.",
-            hi: "बैंक अलबिलाद की रेमिटेंस सेवा। ऐप हिन्दी, मलयालम, बांग्ला, उर्दू और अन्य भाषाओं में। एंजाज़ और अलबिलाद ऐप से पाकिस्तान के लिए इंस्टेंट ट्रांसफ़र पर कोई फ़ीस नहीं।",
-            ml: "ബാങ്ക് അൽബിലാദിന്റെ റെമിറ്റൻസ് വിഭാഗം. ആപ്പ് ഹിന്ദി, മലയാളം, ബംഗാളി, ഉറുദു തുടങ്ങിയ ഭാഷകളിൽ ലഭ്യമാണ്. എൻജാസ്, അൽബിലാദ് ആപ്പുകൾ വഴി പാകിസ്ഥാനിലേക്കുള്ള ഇൻസ്റ്റന്റ് ട്രാൻസ്ഫറിന് ഫീസ് ഇല്ല.",
-            ne: "बैंक अलबिलादको रेमिट्यान्स सेवा। एप हिन्दी, मलयालम, बङ्गाली, उर्दू लगायत भाषामा उपलब्ध। एन्जाज र अलबिलाद एपबाट पाकिस्तानका लागि तुरुन्त ट्रान्सफरमा शुल्क छैन।"
-          }
-        },
-        {
-          name: "Western Union", countries: ["sa", "kw", "qa", "bh"], type: "global", delivery: ["bank", "cash"],
-          url: "https://www.westernunion.com/", affiliate: "",
-          why: {
-            en: "Cash pickup in more than 200 countries and territories. In the Gulf it works through local partners: Bank Albilad and urpay in Saudi Arabia, BEC in Kuwait, Al Fardan Exchange in Qatar and BFC in Bahrain.",
-            ar: "استلام نقدي في أكثر من ٢٠٠ دولة وإقليم. تعمل في الخليج عبر شركاء محليين: بنك البلاد ويو آر باي في السعودية، وشركة البحرين للصرافة في الكويت، والفردان للصرافة في قطر، وبي إف سي في البحرين.",
-            hi: "200 से ज़्यादा देशों और क्षेत्रों में कैश पिकअप। खाड़ी में स्थानीय पार्टनर के ज़रिए: सऊदी में बैंक अलबिलाद और urpay, कुवैत में BEC, क़तर में अल फ़रदान एक्सचेंज और बहरीन में BFC।",
-            ml: "200-ലധികം രാജ്യങ്ങളിലും പ്രദേശങ്ങളിലും പണമായി കൈപ്പറ്റാം. ഗൾഫിൽ പ്രാദേശിക പങ്കാളികൾ വഴി: സൗദിയിൽ ബാങ്ക് അൽബിലാദ്, urpay; കുവൈത്തിൽ BEC; ഖത്തറിൽ അൽ ഫർദാൻ എക്സ്ചേഞ്ച്; ബഹ്‌റൈനിൽ BFC.",
-            ne: "२०० भन्दा बढी देश र क्षेत्रमा नगद भुक्तानी। खाडीमा स्थानीय साझेदारमार्फत: साउदीमा बैंक अलबिलाद र urpay, कुवेतमा BEC, कतारमा अल फर्दान एक्सचेन्ज र बहराइनमा BFC।"
-          }
-        },
-        {
-          name: "Al Mulla Exchange", countries: ["kw"], type: "exchange", delivery: ["bank"],
-          url: "https://www.almullaexchange.com/", affiliate: "",
-          why: {
-            en: "One of Kuwait's largest exchange networks with more than 112 branches. The app works in 8 languages including Hindi, Malayalam and Tagalog, and can pay several family members in one transfer.",
-            ar: "من أكبر شبكات الصرافة في الكويت بأكثر من ١١٢ فرعًا. التطبيق متاح بثماني لغات منها الهندية والمالايالامية والتاغالوغية، ويمكنه الدفع لعدة أفراد من العائلة في تحويل واحد.",
-            hi: "कुवैत के सबसे बड़े एक्सचेंज नेटवर्क में से एक, 112 से ज़्यादा ब्रांच। ऐप हिन्दी, मलयालम और तागालोग समेत 8 भाषाओं में, और एक ही ट्रांसफ़र में परिवार के कई लोगों को भेज सकता है।",
-            ml: "112-ലധികം ശാഖകളുള്ള കുവൈത്തിലെ ഏറ്റവും വലിയ എക്സ്ചേഞ്ച് ശൃംഖലകളിൽ ഒന്ന്. ഹിന്ദി, മലയാളം, ടാഗലോഗ് ഉൾപ്പെടെ 8 ഭാഷകളിൽ ആപ്പ്; ഒരൊറ്റ ട്രാൻസ്ഫറിൽ കുടുംബത്തിലെ പലർക്കും അയക്കാം.",
-            ne: "११२ भन्दा बढी शाखासहित कुवेतको सबैभन्दा ठूला एक्सचेन्ज नेटवर्कमध्ये एक। हिन्दी, मलयालम र तागालोगसहित ८ भाषामा एप, र एउटै ट्रान्सफरमा परिवारका धेरै जनालाई पठाउन सकिन्छ।"
-          }
-        },
-        {
-          name: "LuLu Money", countries: ["kw", "qa", "om", "bh"], type: "exchange", delivery: ["bank", "cash", "wallet"],
-          url: "https://luluexchange.com/", affiliate: "",
-          why: {
-            en: "App from LuLu Exchange that sends from Kuwait, Qatar, Oman and Bahrain. Choose bank, cash or mobile wallet delivery, with branches if you need help in person.",
-            ar: "تطبيق من لولو للصرافة يحوّل من الكويت وقطر وعُمان والبحرين. اختر الإيداع البنكي أو الاستلام النقدي أو المحفظة، مع فروع إذا احتجت مساعدة شخصية.",
-            hi: "लुलु एक्सचेंज का ऐप, जो कुवैत, क़तर, ओमान और बहरीन से भेजता है। बैंक, कैश या मोबाइल वॉलेट में भेजें, और ज़रूरत हो तो ब्रांच में मदद लें।",
-            ml: "കുവൈത്ത്, ഖത്തർ, ഒമാൻ, ബഹ്‌റൈൻ എന്നിവിടങ്ങളിൽ നിന്ന് അയക്കാവുന്ന ലുലു എക്സ്ചേഞ്ചിന്റെ ആപ്പ്. ബാങ്ക്, പണം, മൊബൈൽ വാലറ്റ് എന്നിവയിൽ ഏത് വഴിയും തിരഞ്ഞെടുക്കാം; നേരിട്ട് സഹായം വേണമെങ്കിൽ ശാഖകളുമുണ്ട്.",
-            ne: "लुलु एक्सचेन्जको एप, जसले कुवेत, कतार, ओमान र बहराइनबाट पठाउँछ। बैंक, नगद वा मोबाइल वालेटमा पठाउन सकिन्छ, र आवश्यक परे शाखामा सहयोग पाइन्छ।"
-          }
-        },
-        {
-          name: "Global Pay (Global Money Exchange)", countries: ["om"], type: "exchange", delivery: ["bank", "cash", "wallet"],
-          url: "https://apps.apple.com/app/id6621208103", affiliate: "",
-          why: {
-            en: "App from Global Money Exchange in Oman. Send to bank accounts, mobile wallets or for cash pickup, and see live rates before you send.",
-            ar: "تطبيق من شركة جلوبال للصرافة في عُمان. حوّل إلى حسابات بنكية أو محافظ جوال أو للاستلام النقدي، واطّلع على الأسعار المباشرة قبل التحويل.",
-            hi: "ओमान की ग्लोबल मनी एक्सचेंज का ऐप। बैंक खाते, मोबाइल वॉलेट या कैश पिकअप के लिए भेजें, और भेजने से पहले लाइव रेट देखें।",
-            ml: "ഒമാനിലെ ഗ്ലോബൽ മണി എക്സ്ചേഞ്ചിന്റെ ആപ്പ്. ബാങ്ക് അക്കൗണ്ടിലേക്കോ മൊബൈൽ വാലറ്റിലേക്കോ പണമായി കൈപ്പറ്റാനോ അയക്കാം; അയക്കുന്നതിന് മുമ്പ് തത്സമയ നിരക്ക് കാണാം.",
-            ne: "ओमानको ग्लोबल मनी एक्सचेन्जको एप। बैंक खाता, मोबाइल वालेट वा नगद भुक्तानीका लागि पठाउनुहोस्, र पठाउनुअघि लाइभ दर हेर्नुहोस्।"
-          }
-        },
-        {
-          name: "BFC", countries: ["bh"], type: "exchange", delivery: ["bank", "cash"],
-          url: "https://www.bfc.com.bh/", affiliate: "",
-          why: {
-            en: "Bahrain's long-established exchange company, founded in 1917, with 54 branches, online transfers and the BFC Pay app. Announced a Western Union partnership in 2026.",
-            ar: "شركة صرافة عريقة في البحرين تأسست عام ١٩١٧، لديها ٥٤ فرعًا وتحويلات إلكترونية وتطبيق «بي إف سي باي»، وأعلنت شراكة مع ويسترن يونيون في ٢٠٢٦.",
-            hi: "बहरीन की पुरानी एक्सचेंज कंपनी (1917 से), 54 ब्रांच, ऑनलाइन ट्रांसफ़र और BFC Pay ऐप। 2026 में वेस्टर्न यूनियन के साथ साझेदारी की घोषणा की।",
-            ml: "1917-ൽ സ്ഥാപിതമായ ബഹ്‌റൈനിലെ പഴക്കമുള്ള എക്സ്ചേഞ്ച് കമ്പനി; 54 ശാഖകൾ, ഓൺലൈൻ ട്രാൻസ്ഫർ, BFC Pay ആപ്പ്. 2026-ൽ വെസ്റ്റേൺ യൂണിയനുമായി പങ്കാളിത്തം പ്രഖ്യാപിച്ചു.",
-            ne: "सन् १९१७ देखि सञ्चालित बहराइनको पुरानो एक्सचेन्ज कम्पनी; ५४ शाखा, अनलाइन ट्रान्सफर र BFC Pay एप। सन् २०२६ मा वेस्टर्न युनियनसँग साझेदारी घोषणा गरेको।"
-          }
-        }
-      ];
+      function $(id) { return document.getElementById(id); }
+      function lang() { return window.ExpatSite.lang(); }
+      function L(k) { var d = T[lang()] || T.en; return d[k] != null ? d[k] : T.en[k]; }
+      function fill(str, v) { return String(str).replace(/\{(\w+)\}/g, function (m, k) { return v[k] != null ? v[k] : m; }); }
+      function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+      function src() { return SOURCES.filter(function (s) { return s.code === state.src; })[0]; }
+      function dst() { return DESTS.filter(function (d) { return d.code === state.dst; })[0]; }
+      function nm(o) { return o.n[lang()] || o.n.en; }
+      function storeGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+      function storeSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+      function fmt(n, dec) { return Number(n).toLocaleString("en-US", { minimumFractionDigits: dec, maximumFractionDigits: dec }); }
+      function fmtRate(r) { return r >= 100 ? fmt(r, 2) : r >= 1 ? fmt(r, 4) : fmt(r, 6); }
+      function ago(ts) {
+        var m = Math.max(0, Math.round((Date.now() - ts) / 60000));
+        if (m < 1) return L("justNow");
+        if (m < 60) return fill(L("agoMin"), { n: m });
+        var h = Math.round(m / 60);
+        if (h < 24) return fill(L("agoHr"), { n: h });
+        return fill(L("agoDay"), { n: Math.round(h / 24) });
+      }
+      function routeHash() { return "#" + state.src + "-" + state.dst; }
+      function routeUrl() { return SITE + routeHash(); }
 
-      var current = "sa";
-      try {
-        var saved = localStorage.getItem(PREF_KEY);
-        if (saved && COUNTRIES.some(function (c) { return c.code === saved; })) current = saved;
-      } catch (e) {}
-
-      function el(tag, cls, text) {
-        var e = document.createElement(tag);
-        if (cls) e.className = cls;
-        if (text != null) e.textContent = text;
-        return e;
+      /* ---------- Data ---------- */
+      function marketFromCache(fromCur, toCur) {
+        try {
+          var c = JSON.parse(storeGet(MKT_KEY) || "null");
+          if (c && c.rates && c.rates[fromCur] && c.rates[toCur]) return { rate: c.rates[toCur] / c.rates[fromCur], at: c.at, fresh: Date.now() - c.saved < 6 * 3600000 };
+        } catch (e) {}
+        return null;
+      }
+      function loadMarketDirect(fromCur, toCur) {
+        var cached = marketFromCache(fromCur, toCur);
+        if (cached && cached.fresh) return Promise.resolve(cached);
+        return fetch("https://open.er-api.com/v6/latest/USD").then(function (r) { return r.json(); }).then(function (d) {
+          if (!d || d.result !== "success") throw new Error("rates");
+          storeSet(MKT_KEY, JSON.stringify({ rates: d.rates, at: d.time_last_update_unix * 1000, saved: Date.now() }));
+          return { rate: d.rates[toCur] / d.rates[fromCur], at: d.time_last_update_unix * 1000 };
+        }).catch(function () { return cached; });
       }
 
-      function renderTabs(lang) {
-        var wrap = document.getElementById("countryTabs");
-        wrap.innerHTML = "";
-        COUNTRIES.forEach(function (c) {
-          var b = el("button", null, c.flag + " " + (c[lang] || c.en));
-          b.type = "button";
-          b.setAttribute("aria-pressed", c.code === current ? "true" : "false");
-          b.addEventListener("click", function () {
-            current = c.code;
-            try { localStorage.setItem(PREF_KEY, current); } catch (e) {}
-            render(window.ExpatSite.lang());
-          });
-          wrap.appendChild(b);
+      function load() {
+        var seq = ++loadSeq, s = src(), d = dst();
+        state.market = null; state.providers = {}; state.history = []; state.loadFailed = false;
+        renderHub();
+        fetch("/api/rates?from=" + s.cur + "&to=" + d.cur, { headers: { "Accept": "application/json" } })
+          .then(function (r) { if (!r.ok) throw new Error("api"); return r.json(); })
+          .then(function (data) {
+            if (seq !== loadSeq) return;
+            state.providers = data.providers || {};
+            state.history = data.history || [];
+            if (data.market) { state.market = data.market.rate; state.marketAt = data.market.at; return; }
+            return loadMarketDirect(s.cur, d.cur).then(function (m) { if (m && seq === loadSeq) { state.market = m.rate; state.marketAt = m.at; } });
+          })
+          .catch(function () {
+            if (seq !== loadSeq) return;
+            state.loadFailed = true;
+            return loadMarketDirect(s.cur, d.cur).then(function (m) { if (m && seq === loadSeq) { state.market = m.rate; state.marketAt = m.at; } });
+          })
+          .then(function () { if (seq === loadSeq) { renderHub(); if (state.panel === "graph") renderGraph(); } });
+      }
+
+      /* ---------- Rows ---------- */
+      function rows() {
+        var list = PROVIDERS[state.src].map(function (p, i) {
+          var c = state.providers[p.id];
+          var rate = c && c.rate ? c.rate : null;
+          var fee = c && c.fee != null ? c.fee : null;
+          var payout = rate ? Math.max(0, state.amount - (fee || 0)) * rate : null;
+          return { p: p, i: i, rate: rate, fee: fee, at: c ? c.at : null, n: c ? c.n : 0, payout: payout };
         });
+        list.sort(function (a, b) {
+          if (a.payout != null && b.payout != null) return b.payout - a.payout;
+          if (a.payout != null) return -1;
+          if (b.payout != null) return 1;
+          return a.i - b.i;
+        });
+        return list;
       }
 
-      function renderRows(lang) {
-        var L = T[lang] || T.en;
-        var body = document.getElementById("providerRows");
+      function waText() {
+        var s = src(), d = dst(), list = rows(), top = list[0];
+        var base = { from: nm(s), to: nm(d), fc: s.cur, tc: d.cur, amt: fmt(state.amount, 0) };
+        if (top && top.payout != null) {
+          base.rate = fmtRate(top.rate); base.provider = top.p.name; base.time = ago(top.at); base.payout = fmt(top.payout, 2);
+          return fill(L("waMsg"), base) + " " + routeUrl();
+        }
+        if (state.market) {
+          base.rate = fmtRate(state.market); base.payout = fmt(state.amount * state.market, 2);
+          return fill(L("waMarket"), base) + " " + routeUrl();
+        }
+        return fill(L("shareText"), { from: nm(s), to: nm(d) }) + " " + routeUrl();
+      }
+
+      function renderRows() {
+        var s = src(), d = dst(), body = $("rateRows");
         body.innerHTML = "";
-        PROVIDERS.filter(function (p) { return p.countries.indexOf(current) !== -1; }).forEach(function (p, i) {
-          var tr = el("tr", "reveal");
-          tr.style.setProperty("--i", i);
+        var list = rows();
+        var bestPayout = list.length && list[0].payout != null ? list[0].payout : null;
 
-          var tdName = el("td");
-          tdName.setAttribute("data-label", L.colService);
-          tdName.appendChild(el("div", "p-name", p.name));
-          tdName.appendChild(el("div", "p-type", L.types[p.type]));
-          tr.appendChild(tdName);
+        if (state.market) {
+          var mt = el("tr", "market");
+          var c1 = el("td"); c1.setAttribute("data-label", L("colProvider")); c1.appendChild(el("div", "p-name", L("marketRow"))); mt.appendChild(c1);
+          var c2 = el("td", "num", fmtRate(state.market)); c2.setAttribute("data-label", L("colRate")); mt.appendChild(c2);
+          var c3 = el("td", "num muted-cell", "–"); c3.setAttribute("data-label", L("colFee")); mt.appendChild(c3);
+          var c4 = el("td", "num", fmt(state.amount * state.market, 2) + " " + d.cur); c4.setAttribute("data-label", L("colGet")); mt.appendChild(c4);
+          var c5 = el("td", "muted-cell", state.marketAt ? ago(state.marketAt) : ""); c5.setAttribute("data-label", L("colUpdated")); mt.appendChild(c5);
+          mt.appendChild(el("td"));
+          body.appendChild(mt);
+        }
 
-          var tdDel = el("td");
-          tdDel.setAttribute("data-label", L.colDelivery);
-          var chips = el("div", "chips");
-          p.delivery.forEach(function (d) { chips.appendChild(el("span", "chip", L.delivery[d])); });
-          tdDel.appendChild(chips);
-          tr.appendChild(tdDel);
+        list.forEach(function (r) {
+          var tr = el("tr");
+          var tdN = el("td"); tdN.setAttribute("data-label", L("colProvider"));
+          var name = el("div", "p-name", r.p.name);
+          if (bestPayout != null && r.payout === bestPayout) name.appendChild(el("span", "best", L("best")));
+          tdN.appendChild(name);
+          tdN.appendChild(el("div", "p-type", TYPES[lang()] ? TYPES[lang()][r.p.type] : TYPES.en[r.p.type]));
+          tr.appendChild(tdN);
 
-          var tdWhy = el("td", "p-why", p.why[lang] || p.why.en);
-          tdWhy.setAttribute("data-label", L.colWhy);
-          tr.appendChild(tdWhy);
+          var tdR = el("td", r.rate ? "num" : "num muted-cell", r.rate ? fmtRate(r.rate) : L("noRate")); tdR.setAttribute("data-label", L("colRate")); tr.appendChild(tdR);
+          var tdF = el("td", r.fee != null ? "num" : "num muted-cell", r.fee != null ? fmt(r.fee, s.dec) + " " + s.cur : "–"); tdF.setAttribute("data-label", L("colFee")); tr.appendChild(tdF);
+          var tdP = el("td", r.payout != null ? "num" : "num muted-cell", r.payout != null ? fmt(r.payout, 2) + " " + d.cur : "–"); tdP.setAttribute("data-label", L("colGet")); tr.appendChild(tdP);
+          var tdU = el("td", "muted-cell", r.at ? ago(r.at) + " · " + (r.n === 1 ? L("update1") : fill(L("updates"), { n: r.n })) : "–"); tdU.setAttribute("data-label", L("colUpdated")); tr.appendChild(tdU);
 
-          var tdAct = el("td", "p-action");
-          var isPartner = !!p.affiliate;
-          if (isPartner) tdAct.appendChild(el("span", "partner", L.partner));
-          var a = el("a", "btn " + (isPartner ? "btn-primary" : "btn-ghost"), L.visit);
-          a.href = isPartner ? p.affiliate : p.url;
-          a.target = "_blank";
-          a.rel = isPartner ? "sponsored noopener" : "noopener";
-          a.setAttribute("aria-label", L.visit + ": " + p.name);
-          tdAct.appendChild(a);
-          tr.appendChild(tdAct);
-
+          var tdA = el("td"); tdA.setAttribute("data-label", L("colAction"));
+          var wrap = el("div", "row-actions");
+          var up = el("button", "btn btn-ghost", L("updateBtn")); up.type = "button";
+          up.addEventListener("click", function () { $("updProvider").value = r.p.id; showPanel("update"); $("updRate").focus(); });
+          wrap.appendChild(up);
+          if (r.p.url) { var a = el("a", "btn btn-ghost", L("visit")); a.href = r.p.url; a.target = "_blank"; a.rel = "noopener"; wrap.appendChild(a); }
+          tdA.appendChild(wrap); tr.appendChild(tdA);
           body.appendChild(tr);
         });
         window.ExpatSite.tagOutbound(body);
+
+        var top = list[0];
+        if (top && top.payout != null) {
+          $("topMain").textContent = top.p.name + " · 1 " + s.cur + " = " + fmtRate(top.rate) + " " + d.cur;
+          $("topSub").textContent = fmt(state.amount, 0) + " " + s.cur + " → " + fmt(top.payout, 2) + " " + d.cur + " · " + ago(top.at);
+        } else if (state.market) {
+          $("topMain").textContent = L("marketRow") + " · 1 " + s.cur + " = " + fmtRate(state.market) + " " + d.cur;
+          $("topSub").textContent = fmt(state.amount, 0) + " " + s.cur + " → " + fmt(state.amount * state.market, 2) + " " + d.cur;
+        } else {
+          $("topMain").textContent = L("loading");
+          $("topSub").textContent = "";
+        }
+        var wa = "https://wa.me/?text=" + encodeURIComponent(waText());
+        $("waBtn").href = wa; $("waBtn2").href = wa;
       }
 
-      function render(lang) {
-        var L = T[lang] || T.en;
-        document.querySelectorAll("[data-t]").forEach(function (n) { n.textContent = L[n.getAttribute("data-t")] || T.en[n.getAttribute("data-t")] || ""; });
-        renderTabs(lang);
-        renderRows(lang);
+      /* ---------- Hub ---------- */
+      function renderHub() {
+        var s = src(), d = dst();
+        $("corName").textContent = s.flag + " " + nm(s) + "  →  " + d.flag + " " + nm(d);
+        $("corRate").textContent = state.market ? "1 " + s.cur + " = " + fmtRate(state.market) + " " + d.cur : "…";
+        $("corMeta").textContent = state.market ? L("marketNote") : L("loading");
+        $("amountLabel").textContent = fill(L("amountLabel"), { cur: s.cur });
+        $("updRateLabel").textContent = fill(L("updRate"), { from: s.cur, to: d.cur });
+        $("updFeeLabel").textContent = fill(L("updFee"), { cur: s.cur });
+        var st = $("ratesStatus");
+        st.hidden = !state.loadFailed;
+        st.textContent = state.loadFailed ? L("loadError") : "";
+
+        var chips = $("fundChips"); chips.innerHTML = "";
+        chips.appendChild(el("span", "lbl", L("fundLabel")));
+        s.fund.forEach(function (f) { chips.appendChild(el("span", "chip", (FUND[lang()] && FUND[lang()][f]) || f)); });
+
+        var sel = $("updProvider"), keep = sel.value; sel.innerHTML = "";
+        PROVIDERS[state.src].forEach(function (p) { var o = el("option", null, p.name); o.value = p.id; sel.appendChild(o); });
+        if (keep && PROVIDERS[state.src].some(function (p) { return p.id === keep; })) sel.value = keep;
+
+        $("fbRoute").value = s.cur + "-" + d.cur;
+        $("copyLink").setAttribute("data-copy-text", routeUrl());
+        renderRows();
       }
 
-      window.ExpatSite.onLang(render);
+      function showPanel(name) {
+        if (name === "calc") { state.panel = "rates"; } else { state.panel = name; }
+        ["rates", "graph", "update", "share", "feedback"].forEach(function (p) {
+          $("p" + p.charAt(0).toUpperCase() + p.slice(1)).hidden = p !== state.panel;
+        });
+        document.querySelectorAll(".act").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-act") === name || (name === "rates" && false))); });
+        if (name === "calc") { $("amount").focus(); $("amount").select(); }
+        if (name === "graph") renderGraph();
+        var panel = $("p" + state.panel.charAt(0).toUpperCase() + state.panel.slice(1));
+        if (panel && panel.scrollIntoView && name !== "rates") panel.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      /* ---------- Graph ---------- */
+      function drawChart(points, note) {
+        var box = $("chart"), stats = $("chartStats");
+        box.innerHTML = ""; stats.innerHTML = "";
+        $("chartNote").textContent = note || "";
+        if (!points || points.length < 2) { box.appendChild(el("p", "table-note", L("graphEmpty"))); return; }
+        var W = 640, H = 240, P = 36;
+        var vals = points.map(function (p) { return p.r; });
+        var min = Math.min.apply(null, vals), max = Math.max.apply(null, vals);
+        if (max === min) { max += max * 0.001; min -= min * 0.001; }
+        var x = function (i) { return P + (i * (W - P * 2)) / (points.length - 1); };
+        var y = function (v) { return H - P - ((v - min) * (H - P * 2)) / (max - min); };
+        var ns = "http://www.w3.org/2000/svg";
+        var svg = document.createElementNS(ns, "svg");
+        svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+        svg.setAttribute("role", "img");
+        svg.setAttribute("aria-label", L("graphTitle"));
+        var d = points.map(function (p, i) { return (i ? "L" : "M") + x(i).toFixed(1) + " " + y(p.r).toFixed(1); }).join(" ");
+        var area = document.createElementNS(ns, "path");
+        area.setAttribute("d", d + " L" + x(points.length - 1).toFixed(1) + " " + (H - P) + " L" + x(0).toFixed(1) + " " + (H - P) + " Z");
+        area.setAttribute("fill", "var(--brand-soft)");
+        svg.appendChild(area);
+        var line = document.createElementNS(ns, "path");
+        line.setAttribute("d", d); line.setAttribute("fill", "none"); line.setAttribute("stroke", "var(--brand)"); line.setAttribute("stroke-width", "2.5");
+        svg.appendChild(line);
+        [[min, H - P], [max, P]].forEach(function (pair) {
+          var t = document.createElementNS(ns, "text");
+          t.setAttribute("x", "4"); t.setAttribute("y", String(pair[1] + 4)); t.setAttribute("font-size", "11"); t.setAttribute("fill", "var(--muted)");
+          t.textContent = fmtRate(pair[0]); svg.appendChild(t);
+        });
+        [[0, "start"], [points.length - 1, "end"]].forEach(function (pair) {
+          var t = document.createElementNS(ns, "text");
+          t.setAttribute("x", String(x(pair[0]))); t.setAttribute("y", String(H - 8)); t.setAttribute("font-size", "11"); t.setAttribute("fill", "var(--muted)");
+          t.setAttribute("text-anchor", pair[1]); t.setAttribute("direction", "ltr");
+          t.textContent = points[pair[0]].d; svg.appendChild(t);
+        });
+        var dot = document.createElementNS(ns, "circle");
+        dot.setAttribute("cx", String(x(points.length - 1))); dot.setAttribute("cy", String(y(vals[vals.length - 1]))); dot.setAttribute("r", "4"); dot.setAttribute("fill", "var(--brand)");
+        svg.appendChild(dot);
+        box.appendChild(svg);
+        [["high", max], ["low", min], ["now", vals[vals.length - 1]]].forEach(function (p) {
+          var span = el("span"); span.appendChild(el("strong", null, L(p[0]) + ": ")); span.appendChild(document.createTextNode(fmtRate(p[1]))); stats.appendChild(span);
+        });
+      }
+
+      function renderGraph() {
+        var s = src(), d = dst();
+        var usdTo = FRANK_DIRECT[d.cur], peg = USD_PEG[s.cur];
+        if (usdTo && peg) {
+          var end = new Date(), start = new Date(Date.now() - 30 * 86400000);
+          var iso = function (t) { return t.toISOString().slice(0, 10); };
+          drawChart([], L("loading"));
+          fetch("https://api.frankfurter.app/" + iso(start) + ".." + iso(end) + "?from=USD&to=" + usdTo)
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+              var pts = Object.keys(data.rates || {}).sort().map(function (k) {
+                var v = data.rates[k][usdTo] / peg;
+                if (d.cur === "NPR") v = v * 1.6;
+                return { d: k, r: v };
+              });
+              if (src() !== s || dst() !== d) return;
+              if (pts.length >= 2) drawChart(pts, L("graphFrank"));
+              else drawChart(state.history, L("graphOwn"));
+            })
+            .catch(function () { drawChart(state.history, L("graphOwn")); });
+        } else {
+          drawChart(state.history, L("graphOwn"));
+        }
+      }
+
+      /* ---------- Static text ---------- */
+      function renderText() {
+        document.querySelectorAll("[data-t]").forEach(function (n) { n.textContent = L(n.getAttribute("data-t")) || ""; });
+        var ss = $("srcSel"), ds = $("dstSel");
+        ss.innerHTML = ""; ds.innerHTML = "";
+        SOURCES.forEach(function (s) { var o = el("option", null, s.flag + " " + nm(s) + " (" + s.cur + ")"); o.value = s.code; ss.appendChild(o); });
+        DESTS.forEach(function (d) { var o = el("option", null, d.flag + " " + nm(d) + " (" + d.cur + ")"); o.value = d.code; ds.appendChild(o); });
+        ss.value = state.src; ds.value = state.dst;
+        $("nativeShare").hidden = !navigator.share;
+      }
+
+      /* ---------- Routing ---------- */
+      function validRoute(s, d) {
+        return SOURCES.some(function (x) { return x.code === s; }) && DESTS.some(function (x) { return x.code === d; });
+      }
+      function openRoute(push) {
+        storeSet(PREF_KEY, JSON.stringify({ src: state.src, dst: state.dst }));
+        $("picker").hidden = true;
+        $("hub").hidden = false;
+        if (push && location.hash !== routeHash()) { try { history.replaceState(null, "", routeHash()); } catch (e) { location.hash = routeHash(); } }
+        showPanel("rates");
+        load();
+      }
+      function readHash() {
+        var m = /^#([a-z]{2})-([a-z]{2})$/.exec(location.hash || "");
+        if (m && validRoute(m[1], m[2])) { state.src = m[1]; state.dst = m[2]; return true; }
+        return false;
+      }
+
+      /* ---------- Events ---------- */
+      $("srcSel").addEventListener("change", function () { state.src = this.value; });
+      $("dstSel").addEventListener("change", function () { state.dst = this.value; });
+      $("nextBtn").addEventListener("click", function () { state.src = $("srcSel").value; state.dst = $("dstSel").value; openRoute(true); });
+      $("changeBtn").addEventListener("click", function () {
+        $("hub").hidden = true; $("picker").hidden = false;
+        $("srcSel").value = state.src; $("dstSel").value = state.dst; $("srcSel").focus();
+      });
+      document.querySelectorAll(".act").forEach(function (b) { b.addEventListener("click", function () { showPanel(b.getAttribute("data-act")); }); });
+      $("amount").addEventListener("input", function () {
+        var v = parseFloat(this.value); state.amount = isFinite(v) && v > 0 ? v : 0; renderRows();
+      });
+      $("nativeShare").addEventListener("click", function () {
+        if (navigator.share) navigator.share({ title: document.title, text: waText(), url: routeUrl() }).catch(function () {});
+      });
+      window.addEventListener("hashchange", function () { if (readHash()) { $("srcSel").value = state.src; $("dstSel").value = state.dst; openRoute(false); } });
+
+      $("updForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        var msg = $("updMsg"); msg.className = ""; msg.textContent = "";
+        var rate = parseFloat($("updRate").value), feeRaw = $("updFee").value.trim(), fee = feeRaw === "" ? null : parseFloat(feeRaw);
+        if (!isFinite(rate) || rate <= 0) { msg.className = "form-err"; msg.textContent = fill(L("errRange"), { mid: state.market ? fmtRate(state.market) : "–" }); $("updRate").focus(); return; }
+        if (fee != null && (!isFinite(fee) || fee < 0)) { msg.className = "form-err"; msg.textContent = L("errFee"); $("updFee").focus(); return; }
+        var btn = $("updSubmit"); btn.disabled = true;
+        var payload = { from: src().cur, to: dst().cur, provider: $("updProvider").value, rate: rate, fee: fee, website: $("updWebsite").value };
+        fetch("/api/rates", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) })
+          .then(function (r) { return r.json().then(function (j) { return { status: r.status, body: j }; }); })
+          .then(function (res) {
+            if (res.status === 200 && res.body.ok) {
+              if (res.body.provider) state.providers[payload.provider] = res.body.provider;
+              msg.className = "form-ok"; msg.textContent = L("updOk");
+              $("updRate").value = ""; $("updFee").value = "";
+              renderRows();
+            } else if (res.body.error === "range") {
+              msg.className = "form-err"; msg.textContent = fill(L("errRange"), { mid: fmtRate(res.body.market) });
+            } else if (res.body.error === "fee") {
+              msg.className = "form-err"; msg.textContent = L("errFee");
+            } else if (res.body.error === "wait") {
+              msg.className = "form-err"; msg.textContent = L("errWait");
+            } else { throw new Error("save"); }
+          })
+          .catch(function () { msg.className = "form-err"; msg.textContent = L("errGeneric"); })
+          .then(function () { btn.disabled = false; });
+      });
+
+      /* ---------- Start ---------- */
+      var startHub = readHash();
+      if (!startHub) {
+        try { var saved = JSON.parse(storeGet(PREF_KEY) || "null"); if (saved && validRoute(saved.src, saved.dst)) { state.src = saved.src; state.dst = saved.dst; } } catch (e) {}
+      }
+      var firstLang = true;
+      window.ExpatSite.onLang(function () {
+        renderText();
+        if (firstLang) { firstLang = false; if (startHub) openRoute(false); return; }
+        if (!$("hub").hidden) { renderHub(); if (state.panel === "graph") renderGraph(); }
+      });
+      window.ExpatSendMoney = { state: state, rows: rows, waText: waText };
     })();
   </script>
 <!--/SCRIPT-->

@@ -1,0 +1,12 @@
+[build]
+  publish = "site"
+  command = "echo 'Static site: pages are pre-built by _src/build.py'"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Cache-Control = "no-store"

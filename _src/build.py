@@ -10,7 +10,7 @@ Usage (from the repository root):
     python3 _src/build.py
 
 Edit the page bodies in _src/pages/*.html, then run the script.
-The generated .html files at the repository root are what Netlify serves.
+The generated .html files in site/ are what Netlify serves.
 """
 import os
 import re
@@ -54,7 +54,7 @@ def head(meta):
   {THEME_BOOT}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Cairo:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Malayalam:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Cairo:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Malayalam:wght@400;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/site.css">
 {meta.get("style", "")}
 </head>"""
@@ -89,6 +89,7 @@ def header(active):
             <button type="button" data-lang="hi" lang="hi">हिन्दी</button>
             <button type="button" data-lang="ml" lang="ml">മലയാളം</button>
             <button type="button" data-lang="ne" lang="ne">नेपाली</button>
+            <button type="button" data-lang="ur" lang="ur">اردو</button>
           </div>
         </div>
         <button type="button" class="icon-btn" data-open-search data-s-aria="search">{ICON["search"]}</button>
@@ -98,6 +99,17 @@ def header(active):
     </div>
   </header>
 """
+
+
+def _exists(href):
+    name = "index.html" if href == "/" else href.lstrip("/")
+    return os.path.exists(os.path.join(SRC, name))
+
+
+def _links(items):
+    return "\n".join(
+        f'            <a href="{h}" data-s="{k}"></a>' for h, k in items if _exists(h)
+    )
 
 
 def footer(credit):
@@ -123,13 +135,20 @@ def footer(credit):
           <span class="check" aria-hidden="true">✓</span><span data-s="nlSuccess"></span>
         </div>
       </section>
-      <nav class="footer-links" aria-label="Footer">
-        <a href="/" data-s="navHome"></a>
-        <a href="/exchange-rate.html" data-s="navExchange"></a>
-        <a href="/send-money.html" data-s="navSend"></a>
-        <a href="/contact.html" data-s="navContact"></a>
-        <a href="/privacy.html" data-s="navPrivacy"></a>
-      </nav>
+      <div class="footer-cols">
+        <div>
+          <h3 data-s="footerTools"></h3>
+          <nav class="footer-links" aria-label="Tools">
+{_links([("/exchange-rate.html", "navExchange"), ("/send-money.html", "navSend"), ("/end-of-service.html", "navEos"), ("/id-residency.html", "navId"), ("/family-cost.html", "navFamily"), ("/embassy-services.html", "navEmbassy")])}
+          </nav>
+        </div>
+        <div>
+          <h3 data-s="footerSite"></h3>
+          <nav class="footer-links" aria-label="Footer">
+{_links([("/", "navHome"), ("/about.html", "navAbout"), ("/contact.html", "navContact"), ("/privacy.html", "navPrivacy"), ("/terms.html", "navTerms"), ("/affiliate-disclosure.html", "navAffiliate")])}
+          </nav>
+        </div>
+      </div>
       <p class="disclaimer" data-s="disclaimer"></p>{credit_html}
     </div>
   </footer>
@@ -197,7 +216,7 @@ def build():
             + (script.rstrip() + "\n" if script.strip() else "")
             + "</body>\n</html>\n"
         )
-        out = os.path.join(ROOT, name)
+        out = os.path.join(ROOT, "site", name)
         with open(out, "w", encoding="utf-8") as f:
             f.write(html)
         print("built", name)

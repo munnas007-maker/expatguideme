@@ -1,0 +1,9 @@
+{
+  "name": "expatguideme",
+  "private": true,
+  "type": "module",
+  "description": "ExpatGuideME static site with a small community-rates function",
+  "dependencies": {
+    "@netlify/blobs": "^11.1.9"
+  }
+}

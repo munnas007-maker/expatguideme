@@ -11,7 +11,7 @@
   <script>(function(){try{var t=localStorage.getItem('expatguideme_theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Cairo:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Malayalam:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Cairo:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Malayalam:wght@400;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/site.css">
   <style>
     .eos { max-width: 960px; }
@@ -97,6 +97,7 @@
             <button type="button" data-lang="hi" lang="hi">हिन्दी</button>
             <button type="button" data-lang="ml" lang="ml">മലയാളം</button>
             <button type="button" data-lang="ne" lang="ne">नेपाली</button>
+            <button type="button" data-lang="ur" lang="ur">اردو</button>
           </div>
         </div>
         <button type="button" class="icon-btn" data-open-search data-s-aria="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
@@ -229,13 +230,24 @@
           <span class="check" aria-hidden="true">✓</span><span data-s="nlSuccess"></span>
         </div>
       </section>
-      <nav class="footer-links" aria-label="Footer">
-        <a href="/" data-s="navHome"></a>
-        <a href="/exchange-rate.html" data-s="navExchange"></a>
-        <a href="/send-money.html" data-s="navSend"></a>
-        <a href="/contact.html" data-s="navContact"></a>
-        <a href="/privacy.html" data-s="navPrivacy"></a>
-      </nav>
+      <div class="footer-cols">
+        <div>
+          <h3 data-s="footerTools"></h3>
+          <nav class="footer-links" aria-label="Tools">
+            <a href="/exchange-rate.html" data-s="navExchange"></a>
+            <a href="/send-money.html" data-s="navSend"></a>
+            <a href="/end-of-service.html" data-s="navEos"></a>
+          </nav>
+        </div>
+        <div>
+          <h3 data-s="footerSite"></h3>
+          <nav class="footer-links" aria-label="Footer">
+            <a href="/" data-s="navHome"></a>
+            <a href="/contact.html" data-s="navContact"></a>
+            <a href="/privacy.html" data-s="navPrivacy"></a>
+          </nav>
+        </div>
+      </div>
       <p class="disclaimer" data-s="disclaimer"></p>
     </div>
   </footer>
@@ -273,22 +285,22 @@
       var DAY = 86400000;
 
       var COUNTRIES = [
-        { code: "sa", flag: "🇸🇦", cur: "SAR", dec: 2, en: "Saudi Arabia", ar: "السعودية", hi: "सऊदी अरब", ml: "സൗദി അറേബ്യ", ne: "साउदी अरब",
+        { code: "sa", flag: "🇸🇦", cur: "SAR", dec: 2, en: "Saudi Arabia", ar: "السعودية", hi: "सऊदी अरब", ml: "സൗദി അറേബ്യ", ne: "साउदी अरब", ur: "سعودی عرب",
           curAr: "ر.س", url: "https://www.hrsd.gov.sa/en/knowledge-centre/articles/317",
           auth: { en: "Ministry of Human Resources and Social Development (HRSD)", ar: "وزارة الموارد البشرية والتنمية الاجتماعية" } },
-        { code: "ae", flag: "🇦🇪", cur: "AED", dec: 2, en: "UAE", ar: "الإمارات", hi: "यूएई", ml: "യുഎഇ", ne: "युएई",
+        { code: "ae", flag: "🇦🇪", cur: "AED", dec: 2, en: "UAE", ar: "الإمارات", hi: "यूएई", ml: "യുഎഇ", ne: "युएई", ur: "امارات",
           curAr: "د.إ", url: "https://www.mohre.gov.ae",
           auth: { en: "Ministry of Human Resources and Emiratisation (MOHRE)", ar: "وزارة الموارد البشرية والتوطين" } },
-        { code: "kw", flag: "🇰🇼", cur: "KWD", dec: 3, en: "Kuwait", ar: "الكويت", hi: "कुवैत", ml: "കുവൈത്ത്", ne: "कुवेत",
+        { code: "kw", flag: "🇰🇼", cur: "KWD", dec: 3, en: "Kuwait", ar: "الكويت", hi: "कुवैत", ml: "കുവൈത്ത്", ne: "कुवेत", ur: "کویت",
           curAr: "د.ك", url: "https://www.manpower.gov.kw",
           auth: { en: "Public Authority for Manpower (PAM)", ar: "الهيئة العامة للقوى العاملة" } },
-        { code: "qa", flag: "🇶🇦", cur: "QAR", dec: 2, en: "Qatar", ar: "قطر", hi: "क़तर", ml: "ഖത്തർ", ne: "कतार",
+        { code: "qa", flag: "🇶🇦", cur: "QAR", dec: 2, en: "Qatar", ar: "قطر", hi: "क़तर", ml: "ഖത്തർ", ne: "कतार", ur: "قطر",
           curAr: "ر.ق", url: "https://www.mol.gov.qa",
           auth: { en: "Ministry of Labour, Qatar", ar: "وزارة العمل في قطر" } },
-        { code: "om", flag: "🇴🇲", cur: "OMR", dec: 3, en: "Oman", ar: "عُمان", hi: "ओमान", ml: "ഒമാൻ", ne: "ओमान",
+        { code: "om", flag: "🇴🇲", cur: "OMR", dec: 3, en: "Oman", ar: "عُمان", hi: "ओमान", ml: "ഒമാൻ", ne: "ओमान", ur: "عمان",
           curAr: "ر.ع", url: "https://www.mol.gov.om",
           auth: { en: "Ministry of Labour, Oman", ar: "وزارة العمل في سلطنة عُمان" } },
-        { code: "bh", flag: "🇧🇭", cur: "BHD", dec: 3, en: "Bahrain", ar: "البحرين", hi: "बहरीन", ml: "ബഹ്‌റൈൻ", ne: "बहराइन",
+        { code: "bh", flag: "🇧🇭", cur: "BHD", dec: 3, en: "Bahrain", ar: "البحرين", hi: "बहरीन", ml: "ബഹ്‌റൈൻ", ne: "बहराइन", ur: "بحرین",
           curAr: "د.ب", url: "https://www.sio.gov.bh",
           auth: { en: "Social Insurance Organization (SIO), Bahrain", ar: "الهيئة العامة للتأمين الاجتماعي في البحرين" } }
       ];
@@ -603,6 +615,68 @@
           q5: "के यो रकम ठ्याक्कै सही हो?",
           a5: "यो कानुनमा आधारित नजिकको अनुमान हो। तपाईंको सम्झौता, कम्पनीले दिन गन्ने तरिका, बिना तलबको बिदा वा विशेष अवस्थाका कारण वास्तविक रकम फरक हुन सक्छ। आफूलाई दिइएको हिसाब जाँच्न यसलाई प्रयोग गर्नुहोस् र कम्पनीलाई उनीहरूको हिसाब देखाउन भन्नुहोस्।",
           disclaimer: "यो क्यालकुलेटरले हरेक देशको निजी क्षेत्र श्रम कानुनमा आधारित अनुमान दिन्छ। यसमा सरकारी जागिर, घरेलु कामदार, DIFC र ADGM जस्ता आफ्नै नियम भएका फ्री जोन वा विशेष अवस्था समेटिएका छैनन्। तपाईंको सम्झौताले बढी दिन सक्छ। ठ्याक्कै रकमका लागि आफ्नो कम्पनी वा आधिकारिक श्रम निकायसँग पुष्टि गर्नुहोस्।"
+        },
+        ur: {
+          title: "اختتامِ ملازمت فائدہ کیلکولیٹر",
+          lead: "سعودی عرب، امارات، کویت، قطر، عمان یا بحرین میں ملازمت ختم ہونے پر ملنے والی گریجویٹی کا اندازہ لگائیں۔ اپنا ملک چنیں، تنخواہ اور مدتِ ملازمت لکھیں، اور قانون کے ساتھ رقم دیکھیں۔",
+          ad: "اشتہار",
+          calcTitle: "اپنا اختتامِ ملازمت فائدہ معلوم کریں",
+          countryLabel: "میں یہاں کام کرتا/کرتی ہوں:",
+          reasonLabel: "آپ کی ملازمت کیسے ختم ہو رہی ہے؟",
+          reasonEnd: "معاہدہ ختم ہوا یا کمپنی نے ختم کیا",
+          reasonResign: "میں نے استعفیٰ دیا",
+          modeLabel: "مدتِ ملازمت",
+          modeYears: "سال اور مہینے",
+          modeDates: "درست تاریخیں",
+          yearsLabel: "سال", monthsLabel: "مہینے",
+          startLabel: "کام کا پہلا دن", endLabel: "کام کا آخری دن",
+          basicLabel: "ماہانہ بنیادی تنخواہ ({cur})",
+          allowLabel: "ماہانہ مقررہ الاؤنسز ({cur})",
+          allowUsed: "ہاؤسنگ، ٹرانسپورٹ اور دیگر مقررہ الاؤنسز۔ {country} میں یہ بنیادی تنخواہ میں شامل کیے جاتے ہیں۔",
+          allowNotUsed: "ہاؤسنگ، ٹرانسپورٹ اور دیگر مقررہ الاؤنسز۔ {country} میں یہ شمار نہیں ہوتے، صرف بنیادی تنخواہ لی جاتی ہے۔",
+          unpaidLabel: "بغیر تنخواہ چھٹی کے دن (اختیاری)",
+          unpaidHint: "بغیر تنخواہ چھٹی کے دن مدتِ ملازمت میں شمار نہیں ہوتے۔",
+          resultTitle: "آپ کا اندازہ",
+          resultHint: "اندازہ دیکھنے کے لیے اپنی ماہانہ بنیادی تنخواہ لکھیں۔",
+          totalLabel: "اندازاً اختتامِ ملازمت فائدہ",
+          serviceLabel: "شمار شدہ مدت", wageLabel: "استعمال شدہ ماہانہ تنخواہ", fullLabel: "کٹوتی سے پہلے پوری رقم",
+          unitY: "سال", unitM: "مہینے", unitD: "دن",
+          lineFmt: "{y} سال × {rate}",
+          rHalf: "آدھے مہینے کی تنخواہ", rMonth: "ایک مہینے کی تنخواہ", r21: "21 دن کی بنیادی تنخواہ", r30: "30 دن کی بنیادی تنخواہ", rMonthBasic: "ایک مہینے کی بنیادی تنخواہ",
+          oldLaw: "31 جولائی 2023 سے پہلے", newLaw: "31 جولائی 2023 سے",
+          nUnder1: "مدتِ ملازمت ایک سال سے کم ہے، اس لیے ابھی اختتامِ ملازمت فائدہ نہیں بنتا۔",
+          nResignNone: "آپ نے {n} سال کی ملازمت پوری ہونے سے پہلے استعفیٰ دیا، اس لیے کوئی فائدہ نہیں بنتا۔",
+          nShare: "استعفیٰ دینے کی وجہ سے آپ کو پوری رقم کا {share} ملے گا۔",
+          third: "ایک تہائی", twoThirds: "دو تہائی", half: "آدھا",
+          nResignFull: "آپ نے 10 سال یا اس سے زیادہ کے بعد استعفیٰ دیا، اس لیے پوری رقم ملے گی۔",
+          nCap: "قانون کے مطابق کل رقم {n} مہینے کی تنخواہ سے زیادہ نہیں ہو سکتی، اس لیے رقم {amt} تک محدود ہے۔",
+          nOmanSavings: "عمان تارکینِ وطن کی گریجویٹی کی جگہ ایک بچت فنڈ لا رہا ہے جس میں کمپنی رقم جمع کرے گی، زیادہ سے زیادہ 19 جولائی 2027 تک۔ اس سے پہلے کی گریجویٹی آپ کا حق ہے۔",
+          nBahrainSplit: "یکم مارچ 2024 سے پہلے کی ملازمت کے لیے کمپنی ادا کرے گی: {a}۔ یکم مارچ 2024 سے کی ملازمت کے لیے SIO ادا کرے گا: {b}۔",
+          nDates: "کام کا آخری دن پہلے دن کے بعد ہونا چاہیے۔",
+          copy: "نتیجہ کاپی کریں",
+          copyHead: "اختتامِ ملازمت اندازہ ({country})",
+          ruleTitle: "{country} میں حساب کیسے ہوتا ہے",
+          official: "سرکاری ذریعہ: {auth}",
+          rule: {
+            sa: "سعودی لیبر لا کی دفعہ 84: پہلے پانچ سال میں ہر سال کے لیے آدھے مہینے کی تنخواہ، اور اس کے بعد ہر سال کے لیے ایک مہینے کی تنخواہ، مقررہ الاؤنسز سمیت آخری تنخواہ پر۔ استعفیٰ کی صورت میں (دفعہ 85): 2 سال سے کم پر کچھ نہیں، 2 سے 5 سال پر ایک تہائی، 5 سے 10 سال پر دو تہائی، اور 10 سال کے بعد پوری رقم۔ اگر کمپنی معاہدہ ختم کرے تو پوری رقم ملتی ہے۔",
+            ae: "امارات کے لیبر لا کی دفعہ 51: کم از کم ایک سال ملازمت کے بعد، پہلے پانچ سال میں ہر سال کے لیے 21 دن کی بنیادی تنخواہ اور اس کے بعد ہر سال کے لیے 30 دن کی بنیادی تنخواہ۔ سال کا حصہ تناسب سے شمار ہوتا ہے۔ کل رقم دو سال کی تنخواہ سے زیادہ نہیں ہو سکتی۔ استعفیٰ سے رقم کم نہیں ہوتی۔",
+            kw: "کویت لیبر لا نمبر 6/2010 کی دفعہ 51: ماہانہ تنخواہ والوں کے لیے پہلے پانچ سال میں ہر سال کے لیے 15 دن کی تنخواہ اور اس کے بعد ہر سال کے لیے ایک مہینے کی تنخواہ، کل 18 مہینے کی تنخواہ تک۔ استعفیٰ کی صورت میں (دفعہ 53): 3 سال سے کم پر کچھ نہیں، 3 سے 5 سال پر آدھا، 5 سے 10 سال پر دو تہائی، اور 10 سال کے بعد پوری رقم۔",
+            qa: "قطر لیبر لا کی دفعہ 54: کم از کم ایک سال ملازمت کے بعد، ہر سال کے لیے کم از کم تین ہفتے کی بنیادی تنخواہ، سال کا حصہ تناسب سے۔ آپ کا معاہدہ اس سے زیادہ دے سکتا ہے۔ کوئی بالائی حد نہیں اور استعفیٰ سے رقم کم نہیں ہوتی۔",
+            om: "عمان لیبر لا (2023) کی دفعہ 61: ملازمت کے ہر سال کے لیے کم از کم ایک مہینے کی بنیادی تنخواہ۔ 31 جولائی 2023 سے پہلے کی ملازمت پرانے قانون کے مطابق: پہلے تین سال میں ہر سال کے لیے 15 دن کی تنخواہ، پھر ہر سال کے لیے ایک مہینہ۔ تارکینِ وطن کے لیے بچت فنڈ زیادہ سے زیادہ 19 جولائی 2027 تک گریجویٹی کی جگہ لے لے گا۔",
+            bh: "بحرین لیبر لا کی دفعہ 116: کم از کم ایک سال ملازمت کے بعد، پہلے تین سال میں ہر سال کے لیے 15 دن کی تنخواہ اور اس کے بعد ہر سال کے لیے ایک مہینے کی تنخواہ۔ یکم مارچ 2024 سے، اس تاریخ کے بعد کمایا گیا حصہ کمپنی کی بجائے سوشل انشورنس آرگنائزیشن (SIO) ادا کرتی ہے۔ استعفیٰ سے رقم کم نہیں ہوتی۔"
+          },
+          faqTitle: "اکثر پوچھے جانے والے سوالات",
+          q1: "حساب بنیادی تنخواہ پر ہوتا ہے یا کل تنخواہ پر؟",
+          a1: "یہ ملک پر منحصر ہے۔ سعودی عرب اور کویت ہاؤسنگ جیسے مقررہ الاؤنسز سمیت آخری پوری تنخواہ لیتے ہیں۔ امارات، قطر، عمان اور بحرین بنیادی تنخواہ لیتے ہیں۔ آپ کی پے سلپ یا معاہدے میں بنیادی تنخواہ لکھی ہوتی ہے۔",
+          q2: "کیا استعفیٰ دینے سے فائدہ ختم ہو جاتا ہے؟",
+          a2: "صرف سعودی عرب اور کویت میں، اور وہ بھی جزوی طور پر۔ سعودی عرب میں 2 سال سے کم پر کچھ نہیں، 5 سال تک ایک تہائی اور 10 سال تک دو تہائی۔ کویت میں 3 سال سے کم پر کچھ نہیں، 5 سال تک آدھا اور 10 سال تک دو تہائی۔ امارات، قطر، عمان اور بحرین میں استعفیٰ سے رقم کم نہیں ہوتی۔",
+          q3: "کمپنی کو یہ کب تک ادا کرنا ہوتا ہے؟",
+          a3: "سعودی عرب میں ملازمت ختم ہونے کے ایک ہفتے میں، یا استعفیٰ کی صورت میں دو ہفتے میں۔ امارات میں 14 دن میں۔ قطر میں اگلے کام کے دن تک۔ کویت اور عمان میں فائنل سیٹلمنٹ کے ساتھ۔ بحرین میں یکم مارچ 2024 سے پہلے کا حصہ کمپنی دیتی ہے اور بعد کا حصہ آپ SIO سے کلیم کرتے ہیں۔",
+          q4: "کیا کمپنی اس میں کٹوتی یا انکار کر سکتی ہے؟",
+          a4: "کمپنی وہ رقم کاٹ سکتی ہے جو آپ پر واقعی واجب ہو، جیسے نہ لوٹایا گیا قرض۔ قانون میں درج سنگین بدانتظامی پر برطرفی کی صورت میں فائدہ ختم ہو سکتا ہے۔ اگر آپ فائنل سیٹلمنٹ سے متفق نہیں تو کچھ بھی دستخط کرنے سے پہلے اپنے ملک کی وزارتِ محنت سے رابطہ کریں۔",
+          q5: "کیا یہ رقم بالکل درست ہے؟",
+          a5: "یہ قانون پر مبنی ایک قریبی اندازہ ہے۔ آپ کے معاہدے، کمپنی کے دن گننے کے طریقے، بغیر تنخواہ چھٹی یا خاص حالات کی وجہ سے اصل رقم مختلف ہو سکتی ہے۔ اسے اپنی سیٹلمنٹ چیک کرنے کے لیے استعمال کریں اور کمپنی سے ان کا حساب دکھانے کو کہیں۔",
+          disclaimer: "یہ کیلکولیٹر ہر ملک کے نجی شعبے کے لیبر لا پر مبنی اندازہ دیتا ہے۔ اس میں سرکاری ملازمتیں، گھریلو ملازمین، DIFC اور ADGM جیسے اپنے قوانین والے فری زون، یا خاص حالات شامل نہیں۔ آپ کا معاہدہ زیادہ دے سکتا ہے۔ درست رقم کے لیے اپنی کمپنی یا سرکاری محنت کے ادارے سے تصدیق کریں۔"
         }
       };
 

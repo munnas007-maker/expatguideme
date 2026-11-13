@@ -52,6 +52,8 @@ body {
   transition: background-color 0.2s, color 0.2s;
 }
 html[lang="ar"] body { font-family: "Cairo", "Inter", Tahoma, sans-serif; line-height: 1.8; }
+html[lang="ur"] body { font-family: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Cairo", Tahoma, sans-serif; line-height: 2.2; }
+html[lang="ur"] h1, html[lang="ur"] h2, html[lang="ur"] h3 { line-height: 1.9; }
 html[lang="hi"] body,
 html[lang="ne"] body { font-family: "Noto Sans Devanagari", "Inter", sans-serif; line-height: 1.8; }
 html[lang="ml"] body { font-family: "Noto Sans Malayalam", "Inter", sans-serif; line-height: 1.8; }
@@ -157,6 +159,7 @@ html:not([data-theme="dark"]) .i-sun { display: none; }
 .langs button:hover { background: var(--brand-soft); color: var(--brand); }
 .langs button.active { background: var(--brand); color: var(--on-brand); }
 .langs button[lang="ar"] { font-family: "Cairo", sans-serif; }
+.langs button[lang="ur"] { font-family: "Noto Nastaliq Urdu", "Cairo", sans-serif; }
 .langs button[lang="hi"], .langs button[lang="ne"] { font-family: "Noto Sans Devanagari", sans-serif; }
 .langs button[lang="ml"] { font-family: "Noto Sans Malayalam", sans-serif; }
 
@@ -360,3 +363,11 @@ body[data-page="contact"] .to-top { bottom: calc(16px + var(--cookie-h, 0px) + v
   main a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.8em; color: #555; word-break: break-all; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* ---------- Footer columns ---------- */
+.footer-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 18px 0 6px; }
+.footer-cols h3 { font-size: 0.85rem; color: var(--muted); margin-bottom: 8px; }
+.footer-cols .footer-links { margin: 0; }
+@media (max-width: 520px) { .footer-cols { grid-template-columns: 1fr; } }
+.footer-cols .footer-links { text-align: start; display: flex; flex-direction: column; gap: 6px; }
+.footer-cols .footer-links a { margin: 0; }
