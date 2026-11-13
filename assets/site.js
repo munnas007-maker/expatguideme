@@ -137,6 +137,18 @@
       k: "send money home remittance transfer compare cheapest app bank exchange stc bank stc pay urpay tahweel al rajhi enjaz albilad western union al mulla lulu money lulu exchange bfc global pay hawala تحويل حوالة पैसे भेजें പണം അയക്കൽ पैसा पठाउने"
     },
     {
+      url: "/end-of-service.html",
+      t: { en: "End-of-service benefit calculator", ar: "حاسبة مكافأة نهاية الخدمة", hi: "एंड-ऑफ़-सर्विस बेनिफ़िट कैलकुलेटर", ml: "എൻഡ് ഓഫ് സർവീസ് ആനുകൂല്യ കാൽക്കുലേറ്റർ", ne: "सेवा समाप्ति सुविधा क्यालकुलेटर" },
+      d: {
+        en: "Gratuity for Saudi Arabia, UAE, Kuwait, Qatar, Oman and Bahrain",
+        ar: "مكافأة نهاية الخدمة في السعودية والإمارات والكويت وقطر وعُمان والبحرين",
+        hi: "सऊदी, यूएई, कुवैत, क़तर, ओमान और बहरीन की ग्रेच्युटी",
+        ml: "സൗദി, യുഎഇ, കുവൈത്ത്, ഖത്തർ, ഒമാൻ, ബഹ്‌റൈൻ ഗ്രാറ്റുവിറ്റി",
+        ne: "साउदी, युएई, कुवेत, कतार, ओमान र बहराइनको ग्र्याच्युटी"
+      },
+      k: "end of service benefit gratuity eosb esb indemnity final settlement resign resignation termination calculator article 84 85 labour law labor law مكافأة نهاية الخدمة ग्रेच्युटी ഗ്രാറ്റുവിറ്റി ग्र्याच्युटी"
+    },
+    {
       url: "/exchange-rate.html#faq",
       t: { en: "Exchange rate questions (FAQ)", ar: "أسئلة عن سعر الصرف", hi: "एक्सचेंज रेट से जुड़े सवाल", ml: "വിനിമയ നിരക്ക്: പതിവ് ചോദ്യങ്ങൾ", ne: "विनिमय दरसम्बन्धी प्रश्नहरू" },
       d: {
