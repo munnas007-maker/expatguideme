@@ -22,7 +22,7 @@
 
   var S = {
     en: {
-      skip: "Skip to content", navHome: "Home", navExchange: "Exchange rate", navContact: "Contact", navPrivacy: "Privacy",
+      skip: "Skip to content", navHome: "Home", navExchange: "Exchange rate", navSend: "Send money", navContact: "Contact", navPrivacy: "Privacy",
       menu: "Menu", close: "Close", search: "Search", searchPh: "Search tools and guides…",
       noResults: "No results. Try another word.", language: "Language",
       themeDark: "Switch to dark mode", themeLight: "Switch to light mode",
@@ -37,7 +37,7 @@
       copy: "Copy", copied: "Copied ✓"
     },
     ar: {
-      skip: "انتقل إلى المحتوى", navHome: "الرئيسية", navExchange: "سعر الصرف", navContact: "اتصل بنا", navPrivacy: "الخصوصية",
+      skip: "انتقل إلى المحتوى", navHome: "الرئيسية", navExchange: "سعر الصرف", navSend: "تحويل الأموال", navContact: "اتصل بنا", navPrivacy: "الخصوصية",
       menu: "القائمة", close: "إغلاق", search: "بحث", searchPh: "ابحث في الأدوات والأدلة…",
       noResults: "لا توجد نتائج. جرّب كلمة أخرى.", language: "اللغة",
       themeDark: "التبديل إلى الوضع الداكن", themeLight: "التبديل إلى الوضع الفاتح",
@@ -52,7 +52,7 @@
       copy: "نسخ", copied: "تم النسخ ✓"
     },
     hi: {
-      skip: "मुख्य सामग्री पर जाएँ", navHome: "होम", navExchange: "एक्सचेंज रेट", navContact: "संपर्क", navPrivacy: "गोपनीयता",
+      skip: "मुख्य सामग्री पर जाएँ", navHome: "होम", navExchange: "एक्सचेंज रेट", navSend: "पैसे भेजें", navContact: "संपर्क", navPrivacy: "गोपनीयता",
       menu: "मेनू", close: "बंद करें", search: "खोजें", searchPh: "टूल और गाइड खोजें…",
       noResults: "कोई परिणाम नहीं। कोई दूसरा शब्द आज़माएँ।", language: "भाषा",
       themeDark: "डार्क मोड चालू करें", themeLight: "लाइट मोड चालू करें",
@@ -67,7 +67,7 @@
       copy: "कॉपी करें", copied: "कॉपी हो गया ✓"
     },
     ml: {
-      skip: "പ്രധാന ഉള്ളടക്കത്തിലേക്ക് പോകുക", navHome: "ഹോം", navExchange: "വിനിമയ നിരക്ക്", navContact: "ബന്ധപ്പെടുക", navPrivacy: "സ്വകാര്യത",
+      skip: "പ്രധാന ഉള്ളടക്കത്തിലേക്ക് പോകുക", navHome: "ഹോം", navExchange: "വിനിമയ നിരക്ക്", navSend: "പണം അയക്കൽ", navContact: "ബന്ധപ്പെടുക", navPrivacy: "സ്വകാര്യത",
       menu: "മെനു", close: "അടയ്ക്കുക", search: "തിരയുക", searchPh: "ടൂളുകളും ഗൈഡുകളും തിരയുക…",
       noResults: "ഫലങ്ങളൊന്നുമില്ല. മറ്റൊരു വാക്ക് ശ്രമിക്കുക.", language: "ഭാഷ",
       themeDark: "ഡാർക്ക് മോഡിലേക്ക് മാറുക", themeLight: "ലൈറ്റ് മോഡിലേക്ക് മാറുക",
@@ -82,7 +82,7 @@
       copy: "കോപ്പി ചെയ്യുക", copied: "കോപ്പി ചെയ്തു ✓"
     },
     ne: {
-      skip: "मुख्य सामग्रीमा जानुहोस्", navHome: "गृहपृष्ठ", navExchange: "विनिमय दर", navContact: "सम्पर्क", navPrivacy: "गोपनीयता",
+      skip: "मुख्य सामग्रीमा जानुहोस्", navHome: "गृहपृष्ठ", navExchange: "विनिमय दर", navSend: "पैसा पठाउनुहोस्", navContact: "सम्पर्क", navPrivacy: "गोपनीयता",
       menu: "मेनु", close: "बन्द गर्नुहोस्", search: "खोज्नुहोस्", searchPh: "टुल र गाइडहरू खोज्नुहोस्…",
       noResults: "कुनै नतिजा भेटिएन। अर्को शब्द प्रयास गर्नुहोस्।", language: "भाषा",
       themeDark: "डार्क मोडमा बदल्नुहोस्", themeLight: "लाइट मोडमा बदल्नुहोस्",
@@ -123,6 +123,18 @@
         ne: "रियाल र दिनारबाट रुपैयाँ, टाका, पेसो र अन्य मुद्रामा"
       },
       k: "exchange rate currency converter convert riyal rial dinar rupee rupiah taka peso pound dollar euro sar kwd qar omr bhd inr pkr bdt npr lkr php idr egp usd gbp eur remittance send money transfer صرف ريال دينار روبية रुपया रियाल दीनार विनिमय रुपैयाँ രൂപ റിയാൽ"
+    },
+    {
+      url: "/send-money.html",
+      t: { en: "Best way to send money home", ar: "أفضل طريقة لتحويل الأموال", hi: "घर पैसे भेजने का सबसे अच्छा तरीका", ml: "നാട്ടിലേക്ക് പണം അയക്കാൻ മികച്ച വഴി", ne: "घर पैसा पठाउने उत्तम तरिका" },
+      d: {
+        en: "Compare STC Bank, urpay, Tahweel Al Rajhi, Enjaz, LuLu Money, Al Mulla, BFC and more",
+        ar: "قارن بين خدمات التحويل في السعودية والكويت وقطر وعُمان والبحرين",
+        hi: "सऊदी, कुवैत, क़तर, ओमान और बहरीन की ट्रांसफ़र सेवाओं की तुलना",
+        ml: "സൗദി, കുവൈത്ത്, ഖത്തർ, ഒമാൻ, ബഹ്‌റൈൻ എന്നിവിടങ്ങളിലെ സേവനങ്ങൾ താരതമ്യം ചെയ്യുക",
+        ne: "साउदी, कुवेत, कतार, ओमान र बहराइनका सेवाहरूको तुलना"
+      },
+      k: "send money home remittance transfer compare cheapest app bank exchange stc bank stc pay urpay tahweel al rajhi enjaz albilad western union al mulla lulu money lulu exchange bfc global pay hawala تحويل حوالة पैसे भेजें പണം അയക്കൽ पैसा पठाउने"
     },
     {
       url: "/exchange-rate.html#faq",

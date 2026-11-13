@@ -75,6 +75,7 @@ def header(active):
       <nav class="site-nav" id="siteNav" aria-label="Main">
         {link("/", "navHome", "home")}
         {link("/exchange-rate.html", "navExchange", "exchange")}
+        {link("/send-money.html", "navSend", "send")}
         {link("/contact.html", "navContact", "contact")}
       </nav>
       <div class="header-actions">
@@ -125,6 +126,7 @@ def footer(credit):
       <nav class="footer-links" aria-label="Footer">
         <a href="/" data-s="navHome"></a>
         <a href="/exchange-rate.html" data-s="navExchange"></a>
+        <a href="/send-money.html" data-s="navSend"></a>
         <a href="/contact.html" data-s="navContact"></a>
         <a href="/privacy.html" data-s="navPrivacy"></a>
       </nav>
