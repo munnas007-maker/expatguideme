@@ -41,7 +41,8 @@ META-->
     .rates tr.market td { background: var(--bg); font-style: italic; }
     .p-name { font-weight: 700; }
     .p-type { color: var(--muted); font-size: 0.8rem; }
-    .num { font-variant-numeric: tabular-nums; font-weight: 700; white-space: nowrap; }
+    .corridor-rate, .top-main bdi, .top-sub bdi { unicode-bidi: isolate; direction: ltr; }
+    .num { direction: ltr; unicode-bidi: isolate; font-variant-numeric: tabular-nums; font-weight: 700; white-space: nowrap; }
     .muted-cell { color: var(--muted); font-weight: 400; }
     .best { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: var(--brand); color: var(--on-brand); margin-inline-start: 6px; }
     .row-actions { display: flex; gap: 6px; flex-wrap: wrap; }
@@ -241,7 +242,7 @@ META-->
 
       <div class="ad-slot" data-ad-slot="send-money-bottom" data-t="ad"></div>
 
-      <p class="disclosure"><span data-t="disclosure"></span></p>
+      <p class="disclosure"><span data-t="disclosure"></span> <a href="/affiliate-disclosure.html" data-s="navAffiliate"></a></p>
       <p class="last-updated" data-updated="2026-11-13"></p>
     </div>
   </main>
@@ -287,6 +288,8 @@ META-->
         if (h < 24) return fill(L("agoHr"), { n: h });
         return fill(L("agoDay"), { n: Math.round(h / 24) });
       }
+      function iso(t) { return "\u2066" + t + "\u2069"; }
+      function rtl() { return document.documentElement.dir === "rtl"; }
       function routeHash() { return "#" + state.src + "-" + state.dst; }
       function routeUrl() { return SITE + routeHash(); }
 
@@ -351,11 +354,11 @@ META-->
         var s = src(), d = dst(), list = rows(), top = list[0];
         var base = { from: nm(s), to: nm(d), fc: s.cur, tc: d.cur, amt: fmt(state.amount, 0) };
         if (top && top.payout != null) {
-          base.rate = fmtRate(top.rate); base.provider = top.p.name; base.time = ago(top.at); base.payout = fmt(top.payout, 2);
+          base.rate = iso(fmtRate(top.rate)); base.provider = top.p.name; base.time = ago(top.at); base.payout = fmt(top.payout, 2);
           return fill(L("waMsg"), base) + " " + routeUrl();
         }
         if (state.market) {
-          base.rate = fmtRate(state.market); base.payout = fmt(state.amount * state.market, 2);
+          base.rate = iso(fmtRate(state.market)); base.payout = fmt(state.amount * state.market, 2);
           return fill(L("waMarket"), base) + " " + routeUrl();
         }
         return fill(L("shareText"), { from: nm(s), to: nm(d) }) + " " + routeUrl();
@@ -405,11 +408,11 @@ META-->
 
         var top = list[0];
         if (top && top.payout != null) {
-          $("topMain").textContent = top.p.name + " · 1 " + s.cur + " = " + fmtRate(top.rate) + " " + d.cur;
-          $("topSub").textContent = fmt(state.amount, 0) + " " + s.cur + " → " + fmt(top.payout, 2) + " " + d.cur + " · " + ago(top.at);
+          $("topMain").textContent = top.p.name + " · " + iso("1 " + s.cur + " = " + fmtRate(top.rate) + " " + d.cur);
+          $("topSub").textContent = iso(fmt(state.amount, 0) + " " + s.cur + " → " + fmt(top.payout, 2) + " " + d.cur) + " · " + ago(top.at);
         } else if (state.market) {
-          $("topMain").textContent = L("marketRow") + " · 1 " + s.cur + " = " + fmtRate(state.market) + " " + d.cur;
-          $("topSub").textContent = fmt(state.amount, 0) + " " + s.cur + " → " + fmt(state.amount * state.market, 2) + " " + d.cur;
+          $("topMain").textContent = L("marketRow") + " · " + iso("1 " + s.cur + " = " + fmtRate(state.market) + " " + d.cur);
+          $("topSub").textContent = iso(fmt(state.amount, 0) + " " + s.cur + " → " + fmt(state.amount * state.market, 2) + " " + d.cur);
         } else {
           $("topMain").textContent = L("loading");
           $("topSub").textContent = "";
@@ -421,7 +424,8 @@ META-->
       /* ---------- Hub ---------- */
       function renderHub() {
         var s = src(), d = dst();
-        $("corName").textContent = s.flag + " " + nm(s) + "  →  " + d.flag + " " + nm(d);
+        $("corName").textContent = s.flag + " " + nm(s) + (rtl() ? "  ←  " : "  →  ") + d.flag + " " + nm(d);
+        $("corRate").dir = "ltr";
         $("corRate").textContent = state.market ? "1 " + s.cur + " = " + fmtRate(state.market) + " " + d.cur : "…";
         $("corMeta").textContent = state.market ? L("marketNote") : L("loading");
         $("amountLabel").textContent = fill(L("amountLabel"), { cur: s.cur });
