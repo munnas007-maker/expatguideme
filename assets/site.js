@@ -241,6 +241,7 @@
 
     updateThemeButton();
     updateMenuLabel();
+    updateCookieOffset();
     if (searchOpen) renderSearch();
 
     listeners.forEach(function (fn) { try { fn(lang); } catch (e) { if (window.console) console.error(e); } });
@@ -423,19 +424,40 @@
   }
 
   /* ---------- Cookie banner ---------- */
+  /* Keeps floating buttons clear of the cookie banner and of the
+     "Powered by Netlify" badge that Netlify adds bottom-right. */
+  function hostBadgePresent() {
+    if (document.querySelector('script[src*="/.netlify/scripts/hud"]')) return true;
+    var frames = document.querySelectorAll("body > iframe");
+    for (var i = 0; i < frames.length; i++) {
+      var st = frames[i].getAttribute("style") || "";
+      if (/position:\s*fixed/.test(st) && /bottom:\s*0/.test(st) && /right:\s*0/.test(st)) return true;
+    }
+    return false;
+  }
+
   function updateCookieOffset() {
     var banner = $("cookieBanner");
     var h = banner && !banner.hidden ? banner.offsetHeight + 12 : 0;
     document.body.style.setProperty("--cookie-h", h + "px");
+    document.body.style.setProperty("--nl-badge", hostBadgePresent() ? "60px" : "0px");
   }
 
   function initCookie() {
     var banner = $("cookieBanner"), ok = $("cookieOk");
-    if (!banner || !ok) return;
+    window.addEventListener("resize", updateCookieOffset);
+    window.addEventListener("load", updateCookieOffset);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(updateCookieOffset);
+    if (window.MutationObserver) {
+      new MutationObserver(function (list) {
+        for (var i = 0; i < list.length; i++) { if (list[i].addedNodes.length) { updateCookieOffset(); return; } }
+      }).observe(document.body, { childList: true });
+    }
+    if (!banner || !ok) { updateCookieOffset(); return; }
+    if (window.ResizeObserver) new ResizeObserver(updateCookieOffset).observe(banner);
     if (storeGet(COOKIE_KEY) === "1") { banner.hidden = true; updateCookieOffset(); return; }
     banner.hidden = false;
     updateCookieOffset();
-    window.addEventListener("resize", updateCookieOffset);
     ok.addEventListener("click", function () {
       storeSet(COOKIE_KEY, "1");
       banner.hidden = true;
