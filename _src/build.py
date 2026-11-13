@@ -19,6 +19,14 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "_src", "pages")
 SITE_URL = "https://expatguideme.com"
 
+# Google AdSense
+ADSENSE_CLIENT = "ca-pub-4815162342890123"
+# Ad unit ID of a responsive display unit created in AdSense (Ads > By ad unit).
+# While it is empty, reserved spaces stay hidden and Auto ads place ads instead.
+ADSENSE_UNIT = ""
+# Pages that never show ads (policy and trust pages).
+NO_AD_PAGES = {"about", "privacy", "terms", "affiliate", "contact", "404", "notfound", "none"}
+
 ICON = {
     "search": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>',
     "moon": '<svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>',
@@ -41,13 +49,18 @@ THEME_BOOT = (
 def head(meta):
     canonical = SITE_URL + meta["path"]
     robots = '\n  <meta name="robots" content="noindex">' if meta.get("noindex") else ""
+    ads = ""
+    if ADSENSE_CLIENT:
+        ads = f'\n  <meta name="google-adsense-account" content="{ADSENSE_CLIENT}">'
+        if meta["active"] not in NO_AD_PAGES:
+            ads += f'\n  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}" crossorigin="anonymous"></script>'
     return f"""<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{meta["title"]}</title>
-  <meta name="description" content="{meta["description"]}">{robots}
+  <meta name="description" content="{meta["description"]}">{robots}{ads}
   <link rel="canonical" href="{canonical}">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -65,7 +78,8 @@ def header(active):
         cur = ' aria-current="page"' if active == name else ""
         return f'<a href="{href}" data-s="{key}"{cur}></a>'
 
-    return f"""<body data-page="{active}">
+    ads_mode = ("live" if ADSENSE_UNIT else "auto") if ADSENSE_CLIENT and active not in NO_AD_PAGES else "off"
+    return f"""<body data-page="{active}" data-ads="{ads_mode}">
   <a class="skip-link" href="#main" data-s="skip">Skip to content</a>
   <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
 
@@ -200,6 +214,27 @@ def parse_page(path):
     return meta, section("BODY"), section("SCRIPT")
 
 
+AD_SLOT_RE = re.compile(r'<div class="ad-slot" data-ad-slot="([a-z0-9-]+)" data-t="ad"></div>')
+
+
+def ad_units(body, active):
+    """Turn reserved ad spaces into AdSense units (or hide them)."""
+    if not ADSENSE_CLIENT or active in NO_AD_PAGES:
+        return AD_SLOT_RE.sub("", body)
+    if not ADSENSE_UNIT:
+        return body
+    return AD_SLOT_RE.sub(
+        lambda m: (
+            f'<div class="ad-slot ad-live" data-ad-slot="{m.group(1)}">'
+            '<span class="ad-label" data-s="ad"></span>'
+            f'<ins class="adsbygoogle" style="display:block" data-ad-client="{ADSENSE_CLIENT}" '
+            f'data-ad-slot="{ADSENSE_UNIT}" data-ad-format="auto" data-full-width-responsive="true"></ins>'
+            "<script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>"
+        ),
+        body,
+    )
+
+
 def build():
     pages = sorted(p for p in os.listdir(SRC) if p.endswith(".html"))
     for name in pages:
@@ -209,7 +244,7 @@ def build():
             + "\n"
             + header(meta["active"])
             + "\n"
-            + body.rstrip()
+            + ad_units(body, meta["active"]).rstrip()
             + "\n"
             + footer(meta.get("credit") == "yes")
             + '\n  <script src="/assets/site.js"></script>\n'
@@ -220,6 +255,11 @@ def build():
         with open(out, "w", encoding="utf-8") as f:
             f.write(html)
         print("built", name)
+    if ADSENSE_CLIENT:
+        pub = ADSENSE_CLIENT.replace("ca-", "")
+        with open(os.path.join(ROOT, "site", "ads.txt"), "w", encoding="utf-8") as f:
+            f.write(f"google.com, {pub}, DIRECT, f08c47fec0942fa0\n")
+        print("built ads.txt")
 
 
 if __name__ == "__main__":

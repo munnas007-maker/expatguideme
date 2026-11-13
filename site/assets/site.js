@@ -35,7 +35,7 @@
       cookieText: "We use your browser's storage to remember your language and settings. Our advertising partners, including Google, may use cookies to show ads.",
       cookieLearn: "Privacy policy", cookieOk: "OK", lastUpdated: "Last updated:",
       disclaimer: "This is an independent website. It is not connected to any government office or bank.",
-      copy: "Copy", copied: "Copied ✓", navEos: "End of service", navId: "ID & residency", navFamily: "Family cost", navEmbassy: "Embassy services", navAbout: "About us", navTerms: "Terms of use", navAffiliate: "Affiliate disclosure", footerTools: "Tools", footerSite: "Website"
+      copy: "Copy", copied: "Copied ✓", navEos: "End of service", navId: "ID & residency", navFamily: "Family cost", navEmbassy: "Embassy services", navAbout: "About us", navTerms: "Terms of use", navAffiliate: "Affiliate disclosure", footerTools: "Tools", footerSite: "Website", ad: "Advertisement"
     },
     ar: {
       skip: "انتقل إلى المحتوى", navHome: "الرئيسية", navExchange: "سعر الصرف", navSend: "تحويل الأموال", navContact: "اتصل بنا", navPrivacy: "الخصوصية",
@@ -50,7 +50,7 @@
       cookieText: "نستخدم تخزين المتصفح لتذكّر لغتك وإعداداتك، وقد يستخدم شركاؤنا في الإعلانات، ومنهم جوجل، ملفات تعريف الارتباط لعرض الإعلانات.",
       cookieLearn: "سياسة الخصوصية", cookieOk: "موافق", lastUpdated: "آخر تحديث:",
       disclaimer: "هذا موقع مستقل، ولا علاقة له بأي جهة حكومية أو بنك.",
-      copy: "نسخ", copied: "تم النسخ ✓", navEos: "نهاية الخدمة", navId: "الهوية والإقامة", navFamily: "تكلفة العائلة", navEmbassy: "خدمات السفارات", navAbout: "من نحن", navTerms: "شروط الاستخدام", navAffiliate: "الإفصاح عن روابط الشراكة", footerTools: "الأدوات", footerSite: "الموقع"
+      copy: "نسخ", copied: "تم النسخ ✓", navEos: "نهاية الخدمة", navId: "الهوية والإقامة", navFamily: "تكلفة العائلة", navEmbassy: "خدمات السفارات", navAbout: "من نحن", navTerms: "شروط الاستخدام", navAffiliate: "الإفصاح عن روابط الشراكة", footerTools: "الأدوات", footerSite: "الموقع", ad: "إعلان"
     },
     hi: {
       skip: "मुख्य सामग्री पर जाएँ", navHome: "होम", navExchange: "एक्सचेंज रेट", navSend: "पैसे भेजें", navContact: "संपर्क", navPrivacy: "गोपनीयता",
@@ -65,7 +65,7 @@
       cookieText: "हम आपकी भाषा और सेटिंग्स याद रखने के लिए ब्राउज़र स्टोरेज का उपयोग करते हैं। Google समेत हमारे विज्ञापन पार्टनर विज्ञापन दिखाने के लिए कुकीज़ का उपयोग कर सकते हैं।",
       cookieLearn: "गोपनीयता नीति", cookieOk: "ठीक है", lastUpdated: "आख़िरी अपडेट:",
       disclaimer: "यह एक स्वतंत्र वेबसाइट है। इसका किसी सरकारी विभाग या बैंक से कोई संबंध नहीं है।",
-      copy: "कॉपी करें", copied: "कॉपी हो गया ✓", navEos: "सर्विस समाप्ति", navId: "आईडी और रेज़िडेंसी", navFamily: "परिवार का ख़र्च", navEmbassy: "दूतावास सेवाएँ", navAbout: "हमारे बारे में", navTerms: "उपयोग की शर्तें", navAffiliate: "एफ़िलिएट जानकारी", footerTools: "टूल", footerSite: "वेबसाइट"
+      copy: "कॉपी करें", copied: "कॉपी हो गया ✓", navEos: "सर्विस समाप्ति", navId: "आईडी और रेज़िडेंसी", navFamily: "परिवार का ख़र्च", navEmbassy: "दूतावास सेवाएँ", navAbout: "हमारे बारे में", navTerms: "उपयोग की शर्तें", navAffiliate: "एफ़िलिएट जानकारी", footerTools: "टूल", footerSite: "वेबसाइट", ad: "विज्ञापन"
     },
     ml: {
       skip: "പ്രധാന ഉള്ളടക്കത്തിലേക്ക് പോകുക", navHome: "ഹോം", navExchange: "വിനിമയ നിരക്ക്", navSend: "പണം അയക്കൽ", navContact: "ബന്ധപ്പെടുക", navPrivacy: "സ്വകാര്യത",
@@ -80,7 +80,7 @@
       cookieText: "നിങ്ങളുടെ ഭാഷയും ക്രമീകരണങ്ങളും ഓർത്തുവയ്ക്കാൻ ഞങ്ങൾ ബ്രൗസർ സ്റ്റോറേജ് ഉപയോഗിക്കുന്നു. Google ഉൾപ്പെടെയുള്ള ഞങ്ങളുടെ പരസ്യ പങ്കാളികൾ പരസ്യങ്ങൾ കാണിക്കാൻ കുക്കികൾ ഉപയോഗിച്ചേക്കാം.",
       cookieLearn: "സ്വകാര്യതാ നയം", cookieOk: "ശരി", lastUpdated: "അവസാനം പുതുക്കിയത്:",
       disclaimer: "ഇതൊരു സ്വതന്ത്ര വെബ്സൈറ്റാണ്. ഏതെങ്കിലും സർക്കാർ വകുപ്പുമായോ ബാങ്കുമായോ ഇതിന് ബന്ധമില്ല.",
-      copy: "കോപ്പി ചെയ്യുക", copied: "കോപ്പി ചെയ്തു ✓", navEos: "സർവീസ് ആനുകൂല്യം", navId: "ഐഡി, റെസിഡൻസി", navFamily: "കുടുംബച്ചെലവ്", navEmbassy: "എംബസി സേവനങ്ങൾ", navAbout: "ഞങ്ങളെക്കുറിച്ച്", navTerms: "ഉപയോഗ നിബന്ധനകൾ", navAffiliate: "അഫിലിയേറ്റ് വെളിപ്പെടുത്തൽ", footerTools: "ടൂളുകൾ", footerSite: "വെബ്സൈറ്റ്"
+      copy: "കോപ്പി ചെയ്യുക", copied: "കോപ്പി ചെയ്തു ✓", navEos: "സർവീസ് ആനുകൂല്യം", navId: "ഐഡി, റെസിഡൻസി", navFamily: "കുടുംബച്ചെലവ്", navEmbassy: "എംബസി സേവനങ്ങൾ", navAbout: "ഞങ്ങളെക്കുറിച്ച്", navTerms: "ഉപയോഗ നിബന്ധനകൾ", navAffiliate: "അഫിലിയേറ്റ് വെളിപ്പെടുത്തൽ", footerTools: "ടൂളുകൾ", footerSite: "വെബ്സൈറ്റ്", ad: "പരസ്യം"
     },
     ne: {
       skip: "मुख्य सामग्रीमा जानुहोस्", navHome: "गृहपृष्ठ", navExchange: "विनिमय दर", navSend: "पैसा पठाउनुहोस्", navContact: "सम्पर्क", navPrivacy: "गोपनीयता",
@@ -95,7 +95,7 @@
       cookieText: "हामी तपाईंको भाषा र सेटिङहरू सम्झन ब्राउजर स्टोरेज प्रयोग गर्छौं। Google सहित हाम्रा विज्ञापन साझेदारहरूले विज्ञापन देखाउन कुकीज प्रयोग गर्न सक्छन्।",
       cookieLearn: "गोपनीयता नीति", cookieOk: "ठीक छ", lastUpdated: "पछिल्लो अपडेट:",
       disclaimer: "यो एक स्वतन्त्र वेबसाइट हो। यसको कुनै पनि सरकारी कार्यालय वा बैंकसँग सम्बन्ध छैन।",
-      copy: "कपी गर्नुहोस्", copied: "कपी भयो ✓", navEos: "सेवा समाप्ति", navId: "परिचयपत्र र रेसिडेन्सी", navFamily: "परिवार खर्च", navEmbassy: "दूतावास सेवा", navAbout: "हाम्रोबारे", navTerms: "प्रयोगका सर्तहरू", navAffiliate: "एफिलिएट जानकारी", footerTools: "टुलहरू", footerSite: "वेबसाइट"
+      copy: "कपी गर्नुहोस्", copied: "कपी भयो ✓", navEos: "सेवा समाप्ति", navId: "परिचयपत्र र रेसिडेन्सी", navFamily: "परिवार खर्च", navEmbassy: "दूतावास सेवा", navAbout: "हाम्रोबारे", navTerms: "प्रयोगका सर्तहरू", navAffiliate: "एफिलिएट जानकारी", footerTools: "टुलहरू", footerSite: "वेबसाइट", ad: "विज्ञापन"
     },
     ur: {
       skip: "مواد پر جائیں", navHome: "ہوم", navExchange: "شرحِ تبادلہ", navSend: "رقم بھیجیں", navContact: "رابطہ", navPrivacy: "رازداری",
@@ -110,7 +110,7 @@
       cookieText: "ہم آپ کی زبان اور سیٹنگز یاد رکھنے کے لیے براؤزر اسٹوریج استعمال کرتے ہیں۔ Google سمیت ہمارے اشتہاری شراکت دار اشتہارات دکھانے کے لیے کوکیز استعمال کر سکتے ہیں۔",
       cookieLearn: "رازداری کی پالیسی", cookieOk: "ٹھیک ہے", lastUpdated: "آخری اپ ڈیٹ:",
       disclaimer: "یہ ایک آزاد ویب سائٹ ہے۔ اس کا کسی سرکاری دفتر یا بینک سے کوئی تعلق نہیں۔",
-      copy: "کاپی کریں", copied: "کاپی ہو گیا ✓", navEos: "اختتامِ ملازمت", navId: "شناختی کارڈ و اقامہ", navFamily: "خاندانی خرچ", navEmbassy: "سفارت خانے کی خدمات", navAbout: "ہمارے بارے میں", navTerms: "استعمال کی شرائط", navAffiliate: "ایفیلیئٹ انکشاف", footerTools: "ٹولز", footerSite: "ویب سائٹ"
+      copy: "کاپی کریں", copied: "کاپی ہو گیا ✓", navEos: "اختتامِ ملازمت", navId: "شناختی کارڈ و اقامہ", navFamily: "خاندانی خرچ", navEmbassy: "سفارت خانے کی خدمات", navAbout: "ہمارے بارے میں", navTerms: "استعمال کی شرائط", navAffiliate: "ایفیلیئٹ انکشاف", footerTools: "ٹولز", footerSite: "ویب سائٹ", ad: "اشتہار"
     }
   };
 
