@@ -1,0 +1,440 @@
+<!--META
+title: Gulf Exchange Rate Today: Riyal &amp; Dinar to Rupee, Taka, Peso | ExpatGuideME
+description: Free live exchange rates from Saudi Riyal, Kuwaiti Dinar, Qatari Riyal, Omani Rial and Bahraini Dinar to Indian Rupee, Pakistani Rupee, Bangladeshi Taka, Nepali Rupee, Philippine Peso and more. In English, Arabic, Hindi, Malayalam and Nepali.
+path: /exchange-rate.html
+active: exchange
+credit: yes
+META-->
+<!--STYLE-->
+  <style>
+    .fx { max-width: 720px; }
+    .fx label.field-label { margin-top: 0; }
+    #amount { font-size: 1.4rem; font-weight: 600; direction: ltr; font-family: "Inter", sans-serif; }
+    .fx select { font-family: "Inter", sans-serif; font-weight: 600; }
+    .row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; align-items: end; margin-top: 14px; }
+    .swap {
+      font: inherit; font-size: 1.3rem; width: 48px; height: 48px; border-radius: 50%;
+      border: 1px solid var(--line); background: var(--bg); color: var(--brand); cursor: pointer;
+      transition: background 0.15s, border-color 0.15s, transform 0.2s;
+    }
+    .swap:hover { background: var(--brand-soft); border-color: var(--brand); transform: rotate(180deg); }
+    .result { margin-top: 18px; padding: 18px; border-radius: 12px; background: var(--brand-soft); text-align: center; }
+    .result .from-line, .result .unit { color: var(--muted); direction: ltr; font-family: "Inter", sans-serif; }
+    .result .big {
+      font-size: 2.2rem; font-weight: 700; color: var(--brand); direction: ltr;
+      font-family: "Inter", sans-serif; line-height: 1.3; word-break: break-word;
+    }
+    .result .unit { font-size: 0.95rem; margin-top: 4px; }
+    .result.loading .big .skeleton { width: 220px; max-width: 80%; height: 2.2rem; vertical-align: middle; }
+    .result.loading .unit .skeleton { width: 260px; max-width: 90%; height: 1rem; }
+    .result-actions { margin-top: 12px; display: flex; justify-content: center; }
+    .result-actions .btn { padding: 8px 14px; font-size: 0.9rem; }
+    .status { margin-top: 14px; font-size: 0.85rem; color: var(--muted); }
+    .status.warn { background: var(--warn-bg); color: var(--warn-ink); padding: 8px 12px; border-radius: 8px; }
+    .status.err { background: var(--err-bg); color: var(--err-ink); padding: 8px 12px; border-radius: 8px; }
+    .retry {
+      font: inherit; font-size: 0.85rem; font-weight: 600; margin-top: 8px; padding: 6px 14px;
+      border-radius: 8px; border: 1px solid var(--err-ink); background: var(--card); color: var(--err-ink); cursor: pointer;
+      transition: background 0.15s;
+    }
+    .retry:hover { background: var(--err-bg); }
+    .note { margin-top: 14px; padding: 10px 12px; border-radius: 8px; background: var(--warn-bg); color: var(--warn-ink); font-size: 0.9rem; }
+    .fx table { width: 100%; border-collapse: collapse; font-family: "Inter", sans-serif; direction: ltr; }
+    .fx th, .fx td { padding: 10px 8px; border-bottom: 1px solid var(--line); text-align: left; }
+    .fx th { font-size: 0.8rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+    .fx td.num, .fx th.num { text-align: right; }
+    .fx td.num { font-weight: 600; }
+    .fx tbody tr { transition: background 0.12s; }
+    .fx tbody tr:hover { background: var(--brand-soft); }
+    .fx tr:last-child td { border-bottom: none; }
+    @media (max-width: 520px) {
+      h1 { font-size: 1.45rem; }
+      .row { grid-template-columns: 1fr; }
+      .swap { justify-self: center; transform: rotate(90deg); }
+      .swap:hover { transform: rotate(270deg); }
+      .result .big { font-size: 1.9rem; }
+    }
+    @media print {
+      .result { background: #fff !important; border: 1px solid #bbb; }
+      .result .big { color: #000 !important; }
+      .note, .status { background: #fff !important; color: #333 !important; border: 1px solid #ccc; }
+      #amount, .fx select { border: 1px solid #bbb !important; }
+    }
+  </style>
+<!--/STYLE-->
+<!--BODY-->
+  <main id="main" tabindex="-1">
+    <div class="wrap fx">
+      <h1 data-t="title"></h1>
+      <p class="lead" data-t="lead"></p>
+
+      <section class="card reveal" aria-labelledby="amountLabel">
+        <label class="field-label" id="amountLabel" for="amount" data-t="amount"></label>
+        <input id="amount" type="number" inputmode="decimal" min="0" step="any" value="1000">
+
+        <div class="row">
+          <div>
+            <label class="field-label" for="fromCur" data-t="from"></label>
+            <select id="fromCur"></select>
+          </div>
+          <button class="swap" id="swapBtn" type="button" data-t-aria="swap">⇄</button>
+          <div>
+            <label class="field-label" for="toCur" data-t="to"></label>
+            <select id="toCur"></select>
+          </div>
+        </div>
+
+        <div class="result loading" id="result" aria-live="polite" aria-busy="true">
+          <div class="from-line" id="fromLine">—</div>
+          <div class="big" id="bigResult"><span class="skeleton">&nbsp;</span></div>
+          <div class="unit" id="unitRate"><span class="skeleton">&nbsp;</span></div>
+          <div class="result-actions">
+            <button type="button" class="btn btn-ghost" id="copyResult" data-copy="copyText" disabled>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+              <span data-s="copy"></span>
+            </button>
+          </div>
+          <span class="sr-only" id="copyText"></span>
+        </div>
+
+        <div class="status" id="status"></div>
+        <div class="note" data-t="note"></div>
+      </section>
+
+      <div class="ad-slot" data-t="ad"></div>
+
+      <section class="card" aria-labelledby="quickTitle">
+        <h2 id="quickTitle" data-t="quick" style="margin-top:0"></h2>
+        <table>
+          <thead><tr><th scope="col" id="qHeadFrom">—</th><th scope="col" class="num" id="qHeadTo">—</th></tr></thead>
+          <tbody id="quickBody"></tbody>
+        </table>
+      </section>
+
+      <section class="faq" id="faq" aria-labelledby="faqTitle">
+        <h2 id="faqTitle" data-t="faqTitle"></h2>
+        <details><summary data-t="q1"></summary><div class="answer"><p data-t="a1"></p></div></details>
+        <details><summary data-t="q2"></summary><div class="answer"><p data-t="a2"></p></div></details>
+        <details><summary data-t="q3"></summary><div class="answer"><p data-t="a3"></p></div></details>
+        <details><summary data-t="q4"></summary><div class="answer"><p data-t="a4"></p></div></details>
+      </section>
+
+      <p class="last-updated" data-updated="2026-11-13"></p>
+    </div>
+  </main>
+<!--/BODY-->
+<!--SCRIPT-->
+  <script>
+    (function () {
+      "use strict";
+
+      var API_URL = "https://open.er-api.com/v6/latest/USD";
+      var CACHE_KEY = "expatguideme_rates_v1";
+      var FX_KEY = "expatguideme_fx_v1";
+      var CACHE_MAX_AGE = 6 * 60 * 60 * 1000;
+      var QUICK_AMOUNTS = [100, 500, 1000, 5000, 10000];
+
+      var GULF = [
+        { code: "SAR", flag: "🇸🇦", name: "Saudi Riyal" },
+        { code: "KWD", flag: "🇰🇼", name: "Kuwaiti Dinar" },
+        { code: "QAR", flag: "🇶🇦", name: "Qatari Riyal" },
+        { code: "OMR", flag: "🇴🇲", name: "Omani Rial" },
+        { code: "BHD", flag: "🇧🇭", name: "Bahraini Dinar" }
+      ];
+      var HOME = [
+        { code: "INR", flag: "🇮🇳", name: "Indian Rupee" },
+        { code: "PKR", flag: "🇵🇰", name: "Pakistani Rupee" },
+        { code: "BDT", flag: "🇧🇩", name: "Bangladeshi Taka" },
+        { code: "NPR", flag: "🇳🇵", name: "Nepali Rupee" },
+        { code: "LKR", flag: "🇱🇰", name: "Sri Lankan Rupee" },
+        { code: "PHP", flag: "🇵🇭", name: "Philippine Peso" },
+        { code: "IDR", flag: "🇮🇩", name: "Indonesian Rupiah" },
+        { code: "EGP", flag: "🇪🇬", name: "Egyptian Pound" },
+        { code: "USD", flag: "🇺🇸", name: "US Dollar" },
+        { code: "GBP", flag: "🇬🇧", name: "British Pound" },
+        { code: "EUR", flag: "🇪🇺", name: "Euro" }
+      ];
+      var ALL = GULF.concat(HOME);
+
+      var T = {
+        en: {
+          title: "Gulf Exchange Rate Today",
+          lead: "Convert Saudi Riyal, Kuwaiti Dinar, Qatari Riyal, Omani Rial and Bahraini Dinar to your home currency.",
+          amount: "Amount", from: "From", to: "To", swap: "Swap currencies", quick: "Quick table",
+          note: "This is the market rate. Banks and transfer apps give a slightly lower rate. Compare before you send money.",
+          updated: "Last updated:", loading: "Loading rates…",
+          error: "Rates could not be loaded right now. Please check your internet and try again.",
+          offline: "Showing saved rates. Last updated:", retry: "Try again", ad: "Advertisement",
+          marketRate: "market rate",
+          faqTitle: "Frequently asked questions",
+          q1: "Why does my bank or transfer app give a different rate?",
+          a1: "This page shows the market (mid) rate. Banks and transfer apps add a small margin and sometimes a fee, so you receive a little less. Always compare the final amount your family will receive.",
+          q2: "How often are the rates updated?",
+          a2: "The rates come from an international exchange-rate service and update about once a day. The time of the last update is shown under the result.",
+          q3: "Is the Saudi riyal fixed to the US dollar?",
+          a3: "Yes. The Saudi riyal is pegged at 3.75 riyals to 1 US dollar. The Qatari riyal, Omani rial and Bahraini dinar are also pegged to the dollar, while the Kuwaiti dinar follows a basket of currencies. So the changes you see usually come from your home currency moving.",
+          q4: "Is this an official or bank website?",
+          a4: "No. ExpatGuideME is an independent website. For sending money, use your bank or a licensed transfer service, and check their rate and fee before you send."
+        },
+        ar: {
+          title: "سعر الصرف اليوم في الخليج",
+          lead: "حوّل الريال السعودي والدينار الكويتي والريال القطري والريال العماني والدينار البحريني إلى عملة بلدك.",
+          amount: "المبلغ", from: "من", to: "إلى", swap: "تبديل العملتين", quick: "جدول سريع",
+          note: "هذا سعر السوق. البنوك وتطبيقات التحويل تعطي سعرًا أقل قليلًا، فقارن قبل التحويل.",
+          updated: "آخر تحديث:", loading: "جارٍ تحميل الأسعار…",
+          error: "تعذّر تحميل الأسعار الآن. تحقّق من الاتصال بالإنترنت وحاول مرة أخرى.",
+          offline: "تُعرض أسعار محفوظة. آخر تحديث:", retry: "إعادة المحاولة", ad: "مساحة إعلانية",
+          marketRate: "سعر السوق",
+          faqTitle: "الأسئلة الشائعة",
+          q1: "لماذا يعطي البنك أو تطبيق التحويل سعرًا مختلفًا؟",
+          a1: "تعرض هذه الصفحة سعر السوق المتوسط. تضيف البنوك وتطبيقات التحويل هامشًا صغيرًا وأحيانًا رسومًا، فتحصل على مبلغ أقل قليلًا. قارن دائمًا المبلغ النهائي الذي ستستلمه عائلتك.",
+          q2: "كم مرة يتم تحديث الأسعار؟",
+          a2: "تأتي الأسعار من خدمة أسعار صرف عالمية وتُحدَّث مرة واحدة يوميًا تقريبًا، ويظهر وقت آخر تحديث أسفل النتيجة.",
+          q3: "هل الريال السعودي مربوط بالدولار الأمريكي؟",
+          a3: "نعم. الريال السعودي مربوط بسعر ٣٫٧٥ ريال لكل دولار أمريكي. والريال القطري والريال العماني والدينار البحريني مربوطة أيضًا بالدولار، أما الدينار الكويتي فيتبع سلة من العملات. لذلك فإن التغيّر الذي تراه يأتي غالبًا من تحرّك عملة بلدك.",
+          q4: "هل هذا موقع رسمي أو تابع لبنك؟",
+          a4: "لا. هذا موقع مستقل. لتحويل الأموال استخدم بنكك أو خدمة تحويل مرخّصة، وتحقّق من السعر والرسوم قبل التحويل."
+        },
+        hi: {
+          title: "आज का खाड़ी एक्सचेंज रेट",
+          lead: "सऊदी रियाल, कुवैती दीनार, क़तरी रियाल, ओमानी रियाल और बहरीनी दीनार को अपने देश की मुद्रा में बदलें।",
+          amount: "राशि", from: "से", to: "में", swap: "मुद्राएँ बदलें", quick: "झटपट तालिका",
+          note: "यह बाज़ार दर है। बैंक और ट्रांसफ़र ऐप थोड़ी कम दर देते हैं। पैसे भेजने से पहले तुलना करें।",
+          updated: "आख़िरी अपडेट:", loading: "दरें लोड हो रही हैं…",
+          error: "अभी दरें लोड नहीं हो सकीं। कृपया इंटरनेट जाँचें और दोबारा कोशिश करें।",
+          offline: "सहेजी गई दरें दिखाई जा रही हैं। आख़िरी अपडेट:", retry: "दोबारा कोशिश करें", ad: "विज्ञापन",
+          marketRate: "बाज़ार दर",
+          faqTitle: "अक्सर पूछे जाने वाले सवाल",
+          q1: "मेरा बैंक या ट्रांसफ़र ऐप अलग रेट क्यों देता है?",
+          a1: "यह पेज बाज़ार की मध्य दर दिखाता है। बैंक और ट्रांसफ़र ऐप थोड़ा मार्जिन और कभी-कभी फ़ीस जोड़ते हैं, इसलिए आपको थोड़ा कम मिलता है। हमेशा उस अंतिम राशि की तुलना करें जो आपके परिवार को मिलेगी।",
+          q2: "रेट कितनी बार अपडेट होते हैं?",
+          a2: "रेट एक अंतरराष्ट्रीय एक्सचेंज-रेट सेवा से आते हैं और लगभग दिन में एक बार अपडेट होते हैं। आख़िरी अपडेट का समय नतीजे के नीचे दिखता है।",
+          q3: "क्या सऊदी रियाल अमेरिकी डॉलर से जुड़ा है?",
+          a3: "हाँ। सऊदी रियाल 1 अमेरिकी डॉलर = 3.75 रियाल पर तय है। क़तरी रियाल, ओमानी रियाल और बहरीनी दीनार भी डॉलर से जुड़े हैं, जबकि कुवैती दीनार कई मुद्राओं की टोकरी पर चलता है। इसलिए जो बदलाव दिखता है, वह आमतौर पर आपके देश की मुद्रा के बदलने से होता है।",
+          q4: "क्या यह कोई सरकारी या बैंक की वेबसाइट है?",
+          a4: "नहीं। ExpatGuideME एक स्वतंत्र वेबसाइट है। पैसे भेजने के लिए अपने बैंक या किसी लाइसेंसधारी ट्रांसफ़र सेवा का उपयोग करें और भेजने से पहले उनका रेट और फ़ीस जाँच लें।"
+        },
+        ml: {
+          title: "ഇന്നത്തെ ഗൾഫ് വിനിമയ നിരക്ക്",
+          lead: "സൗദി റിയാൽ, കുവൈത്ത് ദിനാർ, ഖത്തർ റിയാൽ, ഒമാൻ റിയാൽ, ബഹ്‌റൈൻ ദിനാർ എന്നിവ നിങ്ങളുടെ നാട്ടിലെ കറൻസിയിലേക്ക് മാറ്റൂ.",
+          amount: "തുക", from: "നിന്ന്", to: "ലേക്ക്", swap: "കറൻസികൾ മാറ്റുക", quick: "പെട്ടെന്നുള്ള പട്ടിക",
+          note: "ഇത് വിപണി നിരക്കാണ്. ബാങ്കുകളും ട്രാൻസ്ഫർ ആപ്പുകളും അൽപം കുറഞ്ഞ നിരക്കാണ് നൽകുക. പണം അയക്കുന്നതിന് മുമ്പ് താരതമ്യം ചെയ്യുക.",
+          updated: "അവസാനം പുതുക്കിയത്:", loading: "നിരക്കുകൾ ലോഡ് ചെയ്യുന്നു…",
+          error: "ഇപ്പോൾ നിരക്കുകൾ ലഭ്യമല്ല. ഇന്റർനെറ്റ് പരിശോധിച്ച് വീണ്ടും ശ്രമിക്കുക.",
+          offline: "സേവ് ചെയ്ത നിരക്കുകൾ കാണിക്കുന്നു. അവസാനം പുതുക്കിയത്:", retry: "വീണ്ടും ശ്രമിക്കുക", ad: "പരസ്യം",
+          marketRate: "വിപണി നിരക്ക്",
+          faqTitle: "പതിവ് ചോദ്യങ്ങൾ",
+          q1: "എന്റെ ബാങ്കോ ട്രാൻസ്ഫർ ആപ്പോ വ്യത്യസ്ത നിരക്ക് നൽകുന്നത് എന്തുകൊണ്ട്?",
+          a1: "ഈ പേജ് വിപണിയിലെ ശരാശരി നിരക്കാണ് കാണിക്കുന്നത്. ബാങ്കുകളും ട്രാൻസ്ഫർ ആപ്പുകളും ചെറിയൊരു മാർജിനും ചിലപ്പോൾ ഫീസും ചേർക്കും, അതിനാൽ അൽപം കുറവ് ലഭിക്കും. നിങ്ങളുടെ കുടുംബത്തിന് ലഭിക്കുന്ന അന്തിമ തുക എപ്പോഴും താരതമ്യം ചെയ്യുക.",
+          q2: "നിരക്കുകൾ എത്ര തവണ പുതുക്കും?",
+          a2: "നിരക്കുകൾ ഒരു അന്താരാഷ്ട്ര വിനിമയ നിരക്ക് സേവനത്തിൽ നിന്നാണ് എടുക്കുന്നത്, ഏകദേശം ദിവസം ഒരിക്കൽ പുതുക്കും. അവസാനം പുതുക്കിയ സമയം ഫലത്തിന് താഴെ കാണാം.",
+          q3: "സൗദി റിയാൽ അമേരിക്കൻ ഡോളറുമായി ബന്ധിപ്പിച്ചതാണോ?",
+          a3: "അതെ. 1 അമേരിക്കൻ ഡോളറിന് 3.75 റിയാൽ എന്ന നിരക്കിൽ സൗദി റിയാൽ സ്ഥിരപ്പെടുത്തിയിരിക്കുന്നു. ഖത്തർ റിയാൽ, ഒമാൻ റിയാൽ, ബഹ്‌റൈൻ ദിനാർ എന്നിവയും ഡോളറുമായി ബന്ധിപ്പിച്ചതാണ്; കുവൈത്ത് ദിനാർ ഒരു കൂട്ടം കറൻസികളെ അടിസ്ഥാനമാക്കിയാണ്. അതിനാൽ നിങ്ങൾ കാണുന്ന മാറ്റം സാധാരണയായി നാട്ടിലെ കറൻസിയുടെ മാറ്റം മൂലമാണ്.",
+          q4: "ഇതൊരു ഔദ്യോഗിക വെബ്സൈറ്റോ ബാങ്കിന്റെ വെബ്സൈറ്റോ ആണോ?",
+          a4: "അല്ല. ExpatGuideME ഒരു സ്വതന്ത്ര വെബ്സൈറ്റാണ്. പണം അയക്കാൻ നിങ്ങളുടെ ബാങ്കോ ലൈസൻസുള്ള ട്രാൻസ്ഫർ സേവനമോ ഉപയോഗിക്കുക, അയക്കുന്നതിന് മുമ്പ് അവരുടെ നിരക്കും ഫീസും പരിശോധിക്കുക."
+        },
+        ne: {
+          title: "आजको खाडी विनिमय दर",
+          lead: "साउदी रियाल, कुवेती दिनार, कतारी रियाल, ओमानी रियाल र बहराइनी दिनारलाई आफ्नो देशको मुद्रामा बदल्नुहोस्।",
+          amount: "रकम", from: "बाट", to: "मा", swap: "मुद्रा साट्नुहोस्", quick: "छिटो तालिका",
+          note: "यो बजार दर हो। बैंक र ट्रान्सफर एपहरूले अलि कम दर दिन्छन्। पैसा पठाउनुअघि तुलना गर्नुहोस्।",
+          updated: "पछिल्लो अपडेट:", loading: "दरहरू लोड हुँदैछन्…",
+          error: "अहिले दरहरू लोड हुन सकेनन्। कृपया इन्टरनेट जाँचेर फेरि प्रयास गर्नुहोस्।",
+          offline: "सुरक्षित गरिएका दरहरू देखाइँदैछ। पछिल्लो अपडेट:", retry: "फेरि प्रयास गर्नुहोस्", ad: "विज्ञापन",
+          marketRate: "बजार दर",
+          faqTitle: "बारम्बार सोधिने प्रश्नहरू",
+          q1: "मेरो बैंक वा ट्रान्सफर एपले किन फरक दर दिन्छ?",
+          a1: "यो पृष्ठले बजारको मध्य दर देखाउँछ। बैंक र ट्रान्सफर एपहरूले सानो मार्जिन र कहिलेकाहीँ शुल्क थप्छन्, त्यसैले तपाईंले अलि कम पाउनुहुन्छ। तपाईंको परिवारले पाउने अन्तिम रकम सधैँ तुलना गर्नुहोस्।",
+          q2: "दरहरू कति पटक अपडेट हुन्छन्?",
+          a2: "दरहरू एक अन्तर्राष्ट्रिय विनिमय दर सेवाबाट आउँछन् र लगभग दिनको एक पटक अपडेट हुन्छन्। पछिल्लो अपडेटको समय नतिजामुनि देखिन्छ।",
+          q3: "के साउदी रियाल अमेरिकी डलरसँग जोडिएको छ?",
+          a3: "हो। साउदी रियाल १ अमेरिकी डलर = ३.७५ रियालमा स्थिर छ। कतारी रियाल, ओमानी रियाल र बहराइनी दिनार पनि डलरसँग जोडिएका छन्, तर कुवेती दिनार विभिन्न मुद्राहरूको समूहमा आधारित छ। त्यसैले देखिने परिवर्तन प्रायः तपाईंको देशको मुद्रा बदलिँदा हुन्छ।",
+          q4: "के यो सरकारी वा बैंकको वेबसाइट हो?",
+          a4: "होइन। ExpatGuideME एक स्वतन्त्र वेबसाइट हो। पैसा पठाउन आफ्नो बैंक वा इजाजतप्राप्त ट्रान्सफर सेवा प्रयोग गर्नुहोस्, र पठाउनुअघि उनीहरूको दर र शुल्क जाँच्नुहोस्।"
+        }
+      };
+
+      var state = { from: "SAR", to: "INR", rates: null, updatedUnix: null, stale: false, error: false };
+
+      function $(id) { return document.getElementById(id); }
+      function lang() { return window.ExpatSite.lang(); }
+      function t(key) { var L = T[lang()] || T.en; return L[key] || T.en[key] || ""; }
+      function find(code) {
+        for (var i = 0; i < ALL.length; i++) if (ALL[i].code === code) return ALL[i];
+        return null;
+      }
+      function fmt(n) {
+        if (!isFinite(n)) return "—";
+        var abs = Math.abs(n);
+        var d = abs !== 0 && abs < 1 ? 4 : 2;
+        return n.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
+      }
+      function fmtAmount(n) { return n.toLocaleString("en-US", { maximumFractionDigits: 2 }); }
+      function fmtDate(unix) {
+        if (!unix) return "";
+        try {
+          return new Date(unix * 1000).toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" });
+        } catch (e) { return ""; }
+      }
+      function storeGet(k) { try { var r = localStorage.getItem(k); return r ? JSON.parse(r) : null; } catch (e) { return null; } }
+      function storeSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+      function rate(from, to) {
+        if (!state.rates || !state.rates[from] || !state.rates[to]) return NaN;
+        return state.rates[to] / state.rates[from];
+      }
+
+      function buildSelect(sel, selected) {
+        sel.innerHTML = "";
+        [{ label: "Gulf", items: GULF }, { label: "Home", items: HOME }].forEach(function (g) {
+          var og = document.createElement("optgroup");
+          og.label = g.label;
+          g.items.forEach(function (c) {
+            var o = document.createElement("option");
+            o.value = c.code;
+            o.textContent = c.flag + " " + c.code + " – " + c.name;
+            if (c.code === selected) o.selected = true;
+            og.appendChild(o);
+          });
+          sel.appendChild(og);
+        });
+      }
+
+      function renderTexts() {
+        document.querySelectorAll("[data-t]").forEach(function (el) { el.textContent = t(el.getAttribute("data-t")); });
+        document.querySelectorAll("[data-t-aria]").forEach(function (el) {
+          var v = t(el.getAttribute("data-t-aria"));
+          el.setAttribute("aria-label", v);
+          el.setAttribute("title", v);
+        });
+      }
+
+      function renderStatus() {
+        var el = $("status");
+        el.className = "status";
+        el.innerHTML = "";
+        if (state.error && !state.rates) {
+          el.classList.add("err");
+          el.appendChild(document.createTextNode(t("error")));
+          el.appendChild(document.createElement("br"));
+          var btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "retry";
+          btn.textContent = t("retry");
+          btn.addEventListener("click", function () { state.error = false; renderAll(); loadRates(true); });
+          el.appendChild(btn);
+          return;
+        }
+        if (!state.rates) { el.textContent = t("loading"); return; }
+        if (state.stale) {
+          el.classList.add("warn");
+          el.textContent = t("offline") + " " + fmtDate(state.updatedUnix);
+          return;
+        }
+        el.textContent = t("updated") + " " + fmtDate(state.updatedUnix);
+      }
+
+      function renderResult() {
+        var amt = parseFloat($("amount").value);
+        if (!isFinite(amt) || amt < 0) amt = 0;
+        var f = find(state.from), to = find(state.to);
+        var r = rate(state.from, state.to);
+        var box = $("result");
+        var loading = !state.rates && !state.error;
+
+        box.classList.toggle("loading", loading);
+        box.setAttribute("aria-busy", loading ? "true" : "false");
+        $("fromLine").textContent = fmtAmount(amt) + " " + f.code + " =";
+
+        if (isFinite(r)) {
+          $("bigResult").textContent = fmt(amt * r) + " " + to.code;
+          $("unitRate").textContent = "1 " + f.code + " = " + fmt(r) + " " + to.code + "   ·   1 " + to.code + " = " + fmt(1 / r) + " " + f.code;
+          $("copyText").textContent = fmtAmount(amt) + " " + f.code + " = " + fmt(amt * r) + " " + to.code + " (" + t("marketRate") + ", " + fmtDate(state.updatedUnix) + ")";
+          $("copyResult").disabled = false;
+        } else if (loading) {
+          $("bigResult").innerHTML = '<span class="skeleton">&nbsp;</span>';
+          $("unitRate").innerHTML = '<span class="skeleton">&nbsp;</span>';
+          $("copyResult").disabled = true;
+        } else {
+          $("bigResult").textContent = "—";
+          $("unitRate").textContent = "";
+          $("copyResult").disabled = true;
+        }
+
+        $("qHeadFrom").textContent = f.flag + " " + f.code;
+        $("qHeadTo").textContent = to.flag + " " + to.code;
+        var body = $("quickBody");
+        body.innerHTML = "";
+        QUICK_AMOUNTS.forEach(function (q) {
+          var tr = document.createElement("tr");
+          var td1 = document.createElement("td");
+          td1.textContent = fmtAmount(q) + " " + f.code;
+          var td2 = document.createElement("td");
+          td2.className = "num";
+          if (isFinite(r)) td2.textContent = fmt(q * r) + " " + to.code;
+          else if (loading) td2.innerHTML = '<span class="skeleton" style="width:110px">&nbsp;</span>';
+          else td2.textContent = "—";
+          tr.appendChild(td1);
+          tr.appendChild(td2);
+          body.appendChild(tr);
+        });
+
+        document.title = fmtAmount(amt) + " " + f.code + " to " + to.code + " | ExpatGuideME";
+      }
+
+      function renderAll() { renderTexts(); renderStatus(); renderResult(); }
+
+      function saveFx() { storeSet(FX_KEY, { from: state.from, to: state.to }); }
+
+      function applyData(data, stale) {
+        state.rates = data.rates;
+        state.updatedUnix = data.time_last_update_unix || Math.floor(Date.now() / 1000);
+        state.stale = !!stale;
+        state.error = false;
+      }
+
+      function loadRates(force) {
+        var cached = storeGet(CACHE_KEY);
+        var fresh = cached && cached.data && cached.data.rates && (Date.now() - cached.fetchedAt < CACHE_MAX_AGE);
+        if (fresh && !force) { applyData(cached.data, false); renderAll(); return; }
+
+        fetch(API_URL, { cache: "no-store" })
+          .then(function (res) { if (!res.ok) throw new Error("HTTP " + res.status); return res.json(); })
+          .then(function (data) {
+            if (!data || data.result !== "success" || !data.rates) throw new Error("Bad data");
+            storeSet(CACHE_KEY, { fetchedAt: Date.now(), data: { rates: data.rates, time_last_update_unix: data.time_last_update_unix } });
+            applyData(data, false);
+            renderAll();
+          })
+          .catch(function () {
+            if (cached && cached.data && cached.data.rates) applyData(cached.data, true);
+            else state.error = true;
+            renderAll();
+          });
+      }
+
+      $("amount").addEventListener("input", renderResult);
+      $("fromCur").addEventListener("change", function (e) { state.from = e.target.value; saveFx(); renderResult(); });
+      $("toCur").addEventListener("change", function (e) { state.to = e.target.value; saveFx(); renderResult(); });
+      $("swapBtn").addEventListener("click", function () {
+        var tmp = state.from;
+        state.from = state.to;
+        state.to = tmp;
+        $("fromCur").value = state.from;
+        $("toCur").value = state.to;
+        saveFx();
+        renderResult();
+      });
+
+      var saved = storeGet(FX_KEY);
+      if (saved) {
+        if (find(saved.from)) state.from = saved.from;
+        if (find(saved.to)) state.to = saved.to;
+      }
+      buildSelect($("fromCur"), state.from);
+      buildSelect($("toCur"), state.to);
+
+      window.ExpatSite.onLang(renderAll);
+      loadRates(false);
+    })();
+  </script>
+<!--/SCRIPT-->

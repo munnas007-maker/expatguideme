@@ -1,0 +1,53 @@
+<!--META
+title: Page not found | ExpatGuideME
+description: This page could not be found. Go back to the ExpatGuideME home page or search our tools and guides.
+path: /404.html
+active: notfound
+noindex: yes
+META-->
+<!--STYLE-->
+  <style>
+    .nf { text-align: center; padding: 48px 0 24px; max-width: 620px; }
+    .nf-code {
+      font-family: "Inter", sans-serif; font-size: clamp(5rem, 20vw, 8rem); font-weight: 700; line-height: 1;
+      color: var(--brand); letter-spacing: -0.04em;
+    }
+    .nf-code span { display: inline-block; animation: bob 2.4s ease-in-out infinite; }
+    @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .nf h1 { margin-top: 12px; }
+    .nf .lead { margin-left: auto; margin-right: auto; max-width: 480px; }
+    .nf-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 8px; }
+  </style>
+<!--/STYLE-->
+<!--BODY-->
+  <main id="main" tabindex="-1">
+    <div class="wrap nf reveal">
+      <div class="nf-code" aria-hidden="true">4<span>0</span>4</div>
+      <h1 data-t="title"></h1>
+      <p class="lead" data-t="text"></p>
+      <div class="nf-actions">
+        <a class="btn btn-primary" href="/" data-t="home"></a>
+        <a class="btn btn-ghost" href="/exchange-rate.html" data-s="navExchange"></a>
+        <button type="button" class="btn btn-ghost" data-open-search data-s="search"></button>
+      </div>
+    </div>
+  </main>
+<!--/BODY-->
+<!--SCRIPT-->
+  <script>
+    (function () {
+      "use strict";
+      var T = {
+        en: { title: "Page not found", text: "This page has moved or never existed. These links will get you back on track.", home: "Go to home page" },
+        ar: { title: "الصفحة غير موجودة", text: "ربما نُقلت هذه الصفحة أو لم تكن موجودة. هذه الروابط ستعيدك إلى المسار.", home: "الذهاب إلى الصفحة الرئيسية" },
+        hi: { title: "पेज नहीं मिला", text: "यह पेज हट गया है या कभी था ही नहीं। ये लिंक आपको सही जगह पहुँचा देंगे।", home: "होम पेज पर जाएँ" },
+        ml: { title: "പേജ് കണ്ടെത്തിയില്ല", text: "ഈ പേജ് മാറ്റിയിരിക്കാം, അല്ലെങ്കിൽ നിലവിലില്ല. ഈ ലിങ്കുകൾ നിങ്ങളെ ശരിയായ സ്ഥലത്ത് എത്തിക്കും.", home: "ഹോം പേജിലേക്ക് പോകുക" },
+        ne: { title: "पृष्ठ फेला परेन", text: "यो पृष्ठ सारिएको छ वा कहिल्यै थिएन। यी लिङ्कहरूले तपाईंलाई सही ठाउँमा पुर्याउँछन्।", home: "गृहपृष्ठमा जानुहोस्" }
+      };
+      window.ExpatSite.onLang(function (lang) {
+        var L = T[lang] || T.en;
+        document.querySelectorAll("[data-t]").forEach(function (el) { el.textContent = L[el.getAttribute("data-t")] || ""; });
+      });
+    })();
+  </script>
+<!--/SCRIPT-->

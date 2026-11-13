@@ -1,0 +1,99 @@
+<!--META
+title: Contact ExpatGuideME | Report a mistake or request a guide
+description: Send a message to ExpatGuideME. Report a mistake, suggest a tool, or ask for a guide for your country or language.
+path: /contact.html
+active: contact
+META-->
+<!--STYLE-->
+  <style>
+    .contact { max-width: 640px; }
+    .contact form .field { margin-bottom: 14px; }
+    .contact .privacy-note { font-size: 0.85rem; color: var(--muted); margin: 4px 0 14px; }
+    .contact .success-box { justify-content: flex-start; text-align: start; padding: 20px; }
+  </style>
+<!--/STYLE-->
+<!--BODY-->
+  <main id="main" tabindex="-1">
+    <div class="wrap contact">
+      <h1 data-t="title"></h1>
+      <p class="lead" data-t="lead"></p>
+
+      <section class="card reveal">
+        <form name="contact" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" data-ajax data-success="contactSuccess" novalidate>
+          <input type="hidden" name="form-name" value="contact">
+          <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+          <div class="field">
+            <label class="field-label" for="cName" data-t="name"></label>
+            <input id="cName" type="text" name="name" required autocomplete="name" maxlength="100">
+          </div>
+          <div class="field">
+            <label class="field-label" for="cEmail" data-t="email"></label>
+            <input id="cEmail" type="email" name="email" required autocomplete="email" inputmode="email" maxlength="200">
+          </div>
+          <div class="field">
+            <label class="field-label" for="cMessage" data-t="message"></label>
+            <textarea id="cMessage" name="message" required maxlength="5000"></textarea>
+          </div>
+          <p class="privacy-note" data-t="note"></p>
+          <button type="submit" class="btn btn-primary" data-t="send"></button>
+          <p class="form-msg" role="alert" aria-live="polite"></p>
+        </form>
+
+        <div class="success-box" id="contactSuccess" tabindex="-1" role="status" hidden>
+          <span class="check" aria-hidden="true">✓</span><span data-t="success"></span>
+        </div>
+      </section>
+
+      <p class="last-updated" data-updated="2026-11-13"></p>
+    </div>
+  </main>
+<!--/BODY-->
+<!--SCRIPT-->
+  <script>
+    (function () {
+      "use strict";
+      var T = {
+        en: {
+          title: "Contact us",
+          lead: "Found a mistake, or want a guide for your country or language? Send us a message.",
+          name: "Your name", email: "Your email", message: "Your message", send: "Send message",
+          note: "Please don't send passwords, ID numbers or bank details.",
+          success: "Thank you! Your message has been sent. We usually reply within a few days."
+        },
+        ar: {
+          title: "اتصل بنا",
+          lead: "وجدت خطأ، أو تريد دليلًا لبلدك أو لغتك؟ أرسل لنا رسالة.",
+          name: "اسمك", email: "بريدك الإلكتروني", message: "رسالتك", send: "إرسال الرسالة",
+          note: "يرجى عدم إرسال كلمات المرور أو أرقام الهوية أو بيانات البنك.",
+          success: "شكرًا لك! تم إرسال رسالتك، وعادةً نرد خلال أيام قليلة."
+        },
+        hi: {
+          title: "संपर्क करें",
+          lead: "कोई गलती मिली, या अपने देश या भाषा के लिए गाइड चाहिए? हमें संदेश भेजें।",
+          name: "आपका नाम", email: "आपका ईमेल", message: "आपका संदेश", send: "संदेश भेजें",
+          note: "कृपया पासवर्ड, आईडी नंबर या बैंक विवरण न भेजें।",
+          success: "धन्यवाद! आपका संदेश भेज दिया गया है। हम आमतौर पर कुछ दिनों में जवाब देते हैं।"
+        },
+        ml: {
+          title: "ഞങ്ങളെ ബന്ധപ്പെടുക",
+          lead: "തെറ്റ് കണ്ടോ, അല്ലെങ്കിൽ നിങ്ങളുടെ രാജ്യത്തിനോ ഭാഷയ്ക്കോ ഒരു ഗൈഡ് വേണോ? ഞങ്ങൾക്ക് സന്ദേശം അയക്കൂ.",
+          name: "നിങ്ങളുടെ പേര്", email: "നിങ്ങളുടെ ഇമെയിൽ", message: "നിങ്ങളുടെ സന്ദേശം", send: "സന്ദേശം അയക്കുക",
+          note: "പാസ്‌വേഡ്, ഐഡി നമ്പർ, ബാങ്ക് വിവരങ്ങൾ എന്നിവ അയക്കരുത്.",
+          success: "നന്ദി! നിങ്ങളുടെ സന്ദേശം അയച്ചു. സാധാരണയായി ഏതാനും ദിവസത്തിനുള്ളിൽ മറുപടി നൽകും."
+        },
+        ne: {
+          title: "हामीलाई सम्पर्क गर्नुहोस्",
+          lead: "कुनै गल्ती भेट्नुभयो, वा आफ्नो देश वा भाषाका लागि गाइड चाहिन्छ? हामीलाई सन्देश पठाउनुहोस्।",
+          name: "तपाईंको नाम", email: "तपाईंको इमेल", message: "तपाईंको सन्देश", send: "सन्देश पठाउनुहोस्",
+          note: "कृपया पासवर्ड, परिचयपत्र नम्बर वा बैंक विवरण नपठाउनुहोस्।",
+          success: "धन्यवाद! तपाईंको सन्देश पठाइयो। हामी प्रायः केही दिनभित्र जवाफ दिन्छौं।"
+        }
+      };
+      window.ExpatSite.onLang(function (lang) {
+        var L = T[lang] || T.en;
+        document.querySelectorAll("[data-t]").forEach(function (el) { el.textContent = L[el.getAttribute("data-t")] || T.en[el.getAttribute("data-t")]; });
+      });
+    })();
+  </script>
+<!--/SCRIPT-->

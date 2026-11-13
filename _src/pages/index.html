@@ -1,0 +1,230 @@
+<!--META
+title: ExpatGuideME | Simple guides and free tools for expats in the Gulf
+description: Free tools and simple guides for expats in Saudi Arabia, Kuwait, Qatar, Oman and Bahrain. Exchange rates, money transfer, ID and residency, end-of-service and more. In English, Arabic, Hindi, Malayalam and Nepali.
+path: /
+active: home
+META-->
+<!--STYLE-->
+  <style>
+    .hero { padding: 36px 0 12px; }
+    .hero h1 { font-size: 2rem; margin-top: 0; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .tool {
+      display: flex; flex-direction: column; gap: 6px;
+      background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+      padding: 18px; text-decoration: none; color: var(--ink); min-height: 160px;
+      transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+    }
+    a.tool:hover { border-color: var(--brand); box-shadow: var(--shadow); transform: translateY(-2px); color: var(--ink); }
+    .tool .icon { font-size: 1.6rem; line-height: 1; }
+    .tool h3 { font-size: 1.05rem; line-height: 1.4; }
+    .tool p { color: var(--muted); font-size: 0.92rem; flex: 1; }
+    .tag { align-self: flex-start; font-size: 0.75rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; }
+    .tag.live { background: var(--brand); color: var(--on-brand); }
+    .tag.soon { background: var(--bg); color: var(--muted); border: 1px solid var(--line); }
+    .tool.disabled { opacity: 0.8; }
+    .countries { display: flex; flex-wrap: wrap; gap: 10px; }
+    .country {
+      background: var(--card); border: 1px solid var(--line); border-radius: 999px;
+      padding: 8px 16px; font-weight: 600; font-size: 0.95rem;
+    }
+    @media (max-width: 820px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) {
+      .grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 1.6rem; }
+      .tool { min-height: 0; }
+    }
+  </style>
+<!--/STYLE-->
+<!--BODY-->
+  <main id="main" tabindex="-1">
+    <div class="wrap">
+      <section class="hero reveal">
+        <h1 data-t="tagline"></h1>
+        <p class="lead" data-t="intro"></p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/exchange-rate.html" data-s="navExchange"></a>
+          <button type="button" class="btn btn-ghost" data-open-search data-s="search"></button>
+        </div>
+      </section>
+
+      <h2 data-t="toolsHeading"></h2>
+      <div class="grid" id="tools"></div>
+
+      <h2 data-t="countriesHeading"></h2>
+      <div class="countries" id="countries"></div>
+
+      <div class="ad-slot" data-t="ad"></div>
+
+      <section class="faq" id="faq" aria-labelledby="faqTitle">
+        <h2 id="faqTitle" data-t="faqTitle"></h2>
+        <details><summary data-t="q1"></summary><div class="answer"><p data-t="a1"></p></div></details>
+        <details><summary data-t="q2"></summary><div class="answer"><p data-t="a2"></p></div></details>
+        <details><summary data-t="q3"></summary><div class="answer"><p data-t="a3"></p></div></details>
+      </section>
+
+      <p class="last-updated" data-updated="2026-11-13"></p>
+    </div>
+  </main>
+<!--/BODY-->
+<!--SCRIPT-->
+  <script>
+    (function () {
+      "use strict";
+
+      var T = {
+        en: {
+          tagline: "Simple guides and free tools for expats in the Gulf",
+          intro: "In your own language. Saudi Arabia, Kuwait, Qatar, Oman and Bahrain.",
+          toolsHeading: "Tools & guides", countriesHeading: "Countries",
+          live: "Open", soon: "Coming soon", ad: "Advertisement",
+          faqTitle: "Frequently asked questions",
+          q1: "Is ExpatGuideME free?",
+          a1: "Yes. All tools and guides are free to use. The site may show ads to cover its costs.",
+          q2: "Which languages and countries do you cover?",
+          a2: "English, Arabic, Hindi, Malayalam and Nepali, with more languages coming. We cover Saudi Arabia, Kuwait, Qatar, Oman and Bahrain.",
+          q3: "Is this an official government website?",
+          a3: "No. ExpatGuideME is independent. We explain things simply and link to the official website for every final answer."
+        },
+        ar: {
+          tagline: "أدلة بسيطة وأدوات مجانية للمقيمين في الخليج",
+          intro: "بلغتك. السعودية والكويت وقطر وعُمان والبحرين.",
+          toolsHeading: "الأدوات والأدلة", countriesHeading: "الدول",
+          live: "افتح", soon: "قريبًا", ad: "مساحة إعلانية",
+          faqTitle: "الأسئلة الشائعة",
+          q1: "هل الموقع مجاني؟",
+          a1: "نعم. جميع الأدوات والأدلة مجانية، وقد يعرض الموقع إعلانات لتغطية تكاليفه.",
+          q2: "ما اللغات والدول التي يغطيها الموقع؟",
+          a2: "العربية والإنجليزية والهندية والمالايالامية والنيبالية، ولغات أخرى قريبًا. ونغطي السعودية والكويت وقطر وعُمان والبحرين.",
+          q3: "هل هذا موقع حكومي رسمي؟",
+          a3: "لا. هذا موقع مستقل؛ نشرح الأمور ببساطة ونضع رابط الموقع الرسمي للحصول على الإجابة النهائية."
+        },
+        hi: {
+          tagline: "खाड़ी में रहने वाले प्रवासियों के लिए आसान गाइड और मुफ़्त टूल",
+          intro: "आपकी अपनी भाषा में। सऊदी अरब, कुवैत, क़तर, ओमान और बहरीन।",
+          toolsHeading: "टूल और गाइड", countriesHeading: "देश",
+          live: "खोलें", soon: "जल्द आ रहा है", ad: "विज्ञापन",
+          faqTitle: "अक्सर पूछे जाने वाले सवाल",
+          q1: "क्या ExpatGuideME मुफ़्त है?",
+          a1: "हाँ। सभी टूल और गाइड मुफ़्त हैं। खर्च निकालने के लिए साइट पर विज्ञापन दिख सकते हैं।",
+          q2: "आप कौन-सी भाषाएँ और देश कवर करते हैं?",
+          a2: "अंग्रेज़ी, अरबी, हिन्दी, मलयालम और नेपाली, और जल्द ही और भाषाएँ। हम सऊदी अरब, कुवैत, क़तर, ओमान और बहरीन को कवर करते हैं।",
+          q3: "क्या यह कोई सरकारी वेबसाइट है?",
+          a3: "नहीं। ExpatGuideME स्वतंत्र है। हम बातें आसान भाषा में समझाते हैं और अंतिम जानकारी के लिए आधिकारिक वेबसाइट का लिंक देते हैं।"
+        },
+        ml: {
+          tagline: "ഗൾഫിലെ പ്രവാസികൾക്ക് ലളിതമായ ഗൈഡുകളും സൗജന്യ ടൂളുകളും",
+          intro: "നിങ്ങളുടെ സ്വന്തം ഭാഷയിൽ. സൗദി അറേബ്യ, കുവൈത്ത്, ഖത്തർ, ഒമാൻ, ബഹ്‌റൈൻ.",
+          toolsHeading: "ടൂളുകളും ഗൈഡുകളും", countriesHeading: "രാജ്യങ്ങൾ",
+          live: "തുറക്കുക", soon: "ഉടൻ വരുന്നു", ad: "പരസ്യം",
+          faqTitle: "പതിവ് ചോദ്യങ്ങൾ",
+          q1: "ExpatGuideME സൗജന്യമാണോ?",
+          a1: "അതെ. എല്ലാ ടൂളുകളും ഗൈഡുകളും സൗജന്യമാണ്. ചെലവ് കണ്ടെത്താൻ സൈറ്റിൽ പരസ്യങ്ങൾ കാണിച്ചേക്കാം.",
+          q2: "ഏതൊക്കെ ഭാഷകളും രാജ്യങ്ങളുമാണ് ഉള്ളത്?",
+          a2: "ഇംഗ്ലീഷ്, അറബി, ഹിന്ദി, മലയാളം, നേപ്പാളി എന്നിവ; കൂടുതൽ ഭാഷകൾ ഉടൻ വരും. സൗദി അറേബ്യ, കുവൈത്ത്, ഖത്തർ, ഒമാൻ, ബഹ്‌റൈൻ എന്നീ രാജ്യങ്ങൾ ഉൾപ്പെടുന്നു.",
+          q3: "ഇതൊരു ഔദ്യോഗിക സർക്കാർ വെബ്സൈറ്റാണോ?",
+          a3: "അല്ല. ExpatGuideME ഒരു സ്വതന്ത്ര വെബ്സൈറ്റാണ്. കാര്യങ്ങൾ ലളിതമായി വിശദീകരിക്കുകയും അന്തിമ വിവരത്തിനായി ഔദ്യോഗിക വെബ്സൈറ്റിന്റെ ലിങ്ക് നൽകുകയും ചെയ്യുന്നു."
+        },
+        ne: {
+          tagline: "खाडीमा बस्ने प्रवासीहरूका लागि सजिलो गाइड र निःशुल्क टुलहरू",
+          intro: "तपाईंकै भाषामा। साउदी अरब, कुवेत, कतार, ओमान र बहराइन।",
+          toolsHeading: "टुल र गाइडहरू", countriesHeading: "देशहरू",
+          live: "खोल्नुहोस्", soon: "छिट्टै आउँदैछ", ad: "विज्ञापन",
+          faqTitle: "बारम्बार सोधिने प्रश्नहरू",
+          q1: "के ExpatGuideME निःशुल्क छ?",
+          a1: "हो। सबै टुल र गाइडहरू निःशुल्क छन्। खर्च धान्न साइटमा विज्ञापन देखिन सक्छ।",
+          q2: "तपाईं कुन भाषा र देशहरू समेट्नुहुन्छ?",
+          a2: "अंग्रेजी, अरबी, हिन्दी, मलयालम र नेपाली, र छिट्टै थप भाषाहरू। हामी साउदी अरब, कुवेत, कतार, ओमान र बहराइन समेट्छौं।",
+          q3: "के यो सरकारी आधिकारिक वेबसाइट हो?",
+          a3: "होइन। ExpatGuideME स्वतन्त्र छ। हामी कुराहरू सजिलो भाषामा बुझाउँछौं र अन्तिम जानकारीका लागि आधिकारिक वेबसाइटको लिङ्क दिन्छौं।"
+        }
+      };
+
+      var TOOLS = [
+        { icon: "💱", href: "/exchange-rate.html",
+          en: ["Exchange rate today", "Riyal and dinar to rupee, taka, peso and more."],
+          ar: ["سعر الصرف اليوم", "الريال والدينار إلى الروبية والتاكا والبيزو وغيرها."],
+          hi: ["आज का एक्सचेंज रेट", "रियाल और दीनार से रुपया, टका, पेसो और अन्य।"],
+          ml: ["ഇന്നത്തെ വിനിമയ നിരക്ക്", "റിയാൽ, ദിനാർ എന്നിവ രൂപ, ടാക്ക, പെസോ തുടങ്ങിയവയിലേക്ക്."],
+          ne: ["आजको विनिमय दर", "रियाल र दिनारबाट रुपैयाँ, टाका, पेसो र अन्य मुद्रामा।"] },
+        { icon: "💸", href: null,
+          en: ["Best way to send money home", "Compare transfer apps and banks."],
+          ar: ["أفضل طريقة لتحويل الأموال", "قارن تطبيقات التحويل والبنوك."],
+          hi: ["घर पैसे भेजने का सबसे अच्छा तरीका", "ट्रांसफ़र ऐप और बैंकों की तुलना करें।"],
+          ml: ["നാട്ടിലേക്ക് പണം അയക്കാൻ മികച്ച വഴി", "ട്രാൻസ്ഫർ ആപ്പുകളും ബാങ്കുകളും താരതമ്യം ചെയ്യുക."],
+          ne: ["घर पैसा पठाउने उत्तम तरिका", "ट्रान्सफर एप र बैंकहरूको तुलना गर्नुहोस्।"] },
+        { icon: "🪪", href: null,
+          en: ["ID card & residency guide", "Iqama, Civil ID, QID, Resident Card and CPR: check, renew, fees."],
+          ar: ["دليل الإقامة والهوية", "الإقامة والبطاقة المدنية وغيرها: الاستعلام والتجديد والرسوم."],
+          hi: ["आईडी कार्ड और रेज़िडेंसी गाइड", "इक़ामा, सिविल आईडी, क्यूआईडी: जाँच, नवीनीकरण और फ़ीस।"],
+          ml: ["ഐഡി കാർഡ്, റെസിഡൻസി ഗൈഡ്", "ഇഖാമ, സിവിൽ ഐഡി, ക്യുഐഡി: പരിശോധന, പുതുക്കൽ, ഫീസ്."],
+          ne: ["परिचयपत्र र रेसिडेन्सी गाइड", "इकामा, सिभिल आईडी, क्यूआईडी: जाँच, नवीकरण र शुल्क।"] },
+        { icon: "🧮", href: null,
+          en: ["End-of-service benefit", "Estimate what you should receive."],
+          ar: ["مكافأة نهاية الخدمة", "قدّر المبلغ المستحق لك."],
+          hi: ["सेवा समाप्ति लाभ", "अनुमान लगाएँ कि आपको कितना मिलना चाहिए।"],
+          ml: ["സേവനാന്ത ആനുകൂല്യം", "നിങ്ങൾക്ക് ലഭിക്കേണ്ട തുക കണക്കാക്കുക."],
+          ne: ["सेवा समाप्ति सुविधा", "तपाईंले कति पाउनुपर्छ भनेर अनुमान गर्नुहोस्।"] },
+        { icon: "👨‍👩‍👧", href: null,
+          en: ["Family monthly cost", "Rent, school, fees and bills in one place."],
+          ar: ["تكلفة العائلة الشهرية", "الإيجار والمدارس والرسوم والفواتير في مكان واحد."],
+          hi: ["परिवार का मासिक खर्च", "किराया, स्कूल, फ़ीस और बिल एक जगह।"],
+          ml: ["കുടുംബത്തിന്റെ മാസച്ചെലവ്", "വാടക, സ്കൂൾ, ഫീസ്, ബില്ലുകൾ ഒരിടത്ത്."],
+          ne: ["परिवारको मासिक खर्च", "भाडा, स्कूल, शुल्क र बिलहरू एकै ठाउँमा।"] },
+        { icon: "🛂", href: null,
+          en: ["Embassy services", "Passport renewal, PCC, OCI and attestation."],
+          ar: ["خدمات السفارات", "تجديد الجواز وشهادة حسن السيرة والتصديق."],
+          hi: ["दूतावास सेवाएँ", "पासपोर्ट नवीनीकरण, पीसीसी, ओसीआई और सत्यापन।"],
+          ml: ["എംബസി സേവനങ്ങൾ", "പാസ്പോർട്ട് പുതുക്കൽ, പിസിസി, ഒസിഐ, അറ്റസ്റ്റേഷൻ."],
+          ne: ["दूतावास सेवाहरू", "राहदानी नवीकरण, प्रहरी प्रमाणपत्र र प्रमाणीकरण।"] }
+      ];
+
+      var COUNTRIES = [
+        { flag: "🇸🇦", en: "Saudi Arabia", ar: "السعودية", hi: "सऊदी अरब", ml: "സൗദി അറേബ്യ", ne: "साउदी अरब" },
+        { flag: "🇰🇼", en: "Kuwait", ar: "الكويت", hi: "कुवैत", ml: "കുവൈത്ത്", ne: "कुवेत" },
+        { flag: "🇶🇦", en: "Qatar", ar: "قطر", hi: "क़तर", ml: "ഖത്തർ", ne: "कतार" },
+        { flag: "🇴🇲", en: "Oman", ar: "عُمان", hi: "ओमान", ml: "ഒമാൻ", ne: "ओमान" },
+        { flag: "🇧🇭", en: "Bahrain", ar: "البحرين", hi: "बहरीन", ml: "ബഹ്‌റൈൻ", ne: "बहराइन" }
+      ];
+
+      function el(tag, cls, text) {
+        var e = document.createElement(tag);
+        if (cls) e.className = cls;
+        if (text != null) e.textContent = text;
+        return e;
+      }
+
+      var firstRender = true;
+
+      function render(lang) {
+        var L = T[lang] || T.en;
+        document.querySelectorAll("[data-t]").forEach(function (n) { n.textContent = L[n.getAttribute("data-t")] || ""; });
+
+        var grid = document.getElementById("tools");
+        grid.innerHTML = "";
+        TOOLS.forEach(function (t, i) {
+          var text = t[lang] || t.en;
+          var card = el(t.href ? "a" : "div", "tool" + (t.href ? "" : " disabled") + (firstRender ? " reveal" : ""));
+          if (firstRender) card.style.setProperty("--i", i);
+          if (t.href) card.href = t.href;
+          var icon = el("div", "icon", t.icon);
+          icon.setAttribute("aria-hidden", "true");
+          card.appendChild(icon);
+          card.appendChild(el("h3", null, text[0]));
+          card.appendChild(el("p", null, text[1]));
+          card.appendChild(el("span", "tag " + (t.href ? "live" : "soon"), t.href ? L.live : L.soon));
+          grid.appendChild(card);
+        });
+
+        var cl = document.getElementById("countries");
+        cl.innerHTML = "";
+        COUNTRIES.forEach(function (c) { cl.appendChild(el("span", "country", c.flag + " " + (c[lang] || c.en))); });
+
+        firstRender = false;
+      }
+
+      window.ExpatSite.onLang(render);
+    })();
+  </script>
+<!--/SCRIPT-->
