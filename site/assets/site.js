@@ -459,10 +459,56 @@
   /* Fill a status element: "Updated <time>", or a visible warning when showing saved data. */
   function rateNote(el, ts, fallback) {
     if (!el) return;
+    var key = String(ts || "") + (fallback ? "f" : "");
+    var fresh = ts && !fallback && el.__egmTs !== key;
+    el.__egmTs = key;
+    if (fresh) setTimeout(function () { livePulse(el); }, 80);
     el.classList.toggle("rate-warn", !!fallback);
     el.setAttribute("role", fallback ? "alert" : "status");
     el.textContent = ts ? t(fallback ? "rFallback" : "rUpdated").replace("{time}", stamp(ts)) : "";
   }
+  /* Fresh rates arrived: glow the "Updated" badge and the rate cells near it, and let the
+     numbers glide into place. Transform/opacity only, so nothing shifts. */
+  function livePulse(el) {
+    var scope = (el.closest && el.closest(".card, section")) || document;
+    var gold = document.body.getAttribute("data-page") === "gold-rate" || /gold/.test(location.pathname);
+    var seen = [], list = [el];
+    [scope.querySelectorAll("td, .big, .all-v, [data-live]"), document.querySelectorAll("[data-live], #quickBody td, .all-v, #bigResult")]
+      .forEach(function (nl) { for (var i = 0; i < nl.length && list.length < 90; i++) list.push(nl[i]); });
+    list.forEach(function (n) {
+      if (seen.indexOf(n) > -1) return; seen.push(n);
+      n.classList.remove("live-hl", "live-in", "is-gold"); void n.offsetWidth;
+      n.classList.add("live-hl"); if (gold) n.classList.add("is-gold");
+      if (n !== el) n.classList.add("live-in");
+      setTimeout(function () { n.classList.remove("live-hl", "live-in", "is-gold"); }, 1500);
+    });
+  }
+
+  /* Slim top bar: on load/refresh, before leaving the page (links, language) and on country switch */
+  var pageBar = null;
+  function bar(state) {
+    if (!pageBar) {
+      pageBar = document.createElement("div"); pageBar.className = "page-bar"; pageBar.setAttribute("aria-hidden", "true");
+      pageBar.appendChild(document.createElement("span")); document.body.appendChild(pageBar);
+    }
+    if (state === "start") { pageBar.className = "page-bar"; void pageBar.offsetWidth; pageBar.className = "page-bar run"; }
+    else { pageBar.className = "page-bar run done"; }
+  }
+  function initPageBar() {
+    bar("start");
+    if (document.readyState === "complete") setTimeout(function () { bar("done"); }, 250);
+    else window.addEventListener("load", function () { bar("done"); });
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest("a[href]");
+      if (!a || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || a.target === "_blank" || a.hasAttribute("download")) return;
+      var u; try { u = new URL(a.href, location.href); } catch (x) { return; }
+      if (u.origin !== location.origin || (u.pathname === location.pathname && u.hash)) return;
+      bar("start");
+    });
+    window.addEventListener("pageshow", function (e) { if (e.persisted) bar("done"); });
+    if (window.ExpatSite && window.ExpatSite.onCountry) window.ExpatSite.onCountry(function () { bar("start"); setTimeout(function () { bar("done"); }, 380); });
+  }
+
   /* Elements baked at build time: <time data-ts="ISO" [data-ts-label="key"]> */
   function renderStamps(root) {
     root.querySelectorAll("[data-ts]").forEach(function (el) {
@@ -653,6 +699,7 @@
       if (q) {
         var sp = new URLSearchParams(location.search); sp.set("q", q); search = "?" + sp.toString();
       }
+      bar("start");
       location.href = langUrl(l) + search + location.hash;
       return;
     }
@@ -1268,6 +1315,7 @@
     openSearchFromUrl();
     tagOutbound();
     onScroll();
+    setTimeout(initPageBar, 0);
   }
 
   window.ExpatSite = {
