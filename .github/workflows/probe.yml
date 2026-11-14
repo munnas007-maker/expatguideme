@@ -3,7 +3,7 @@ name: Probe rate pages
 on:
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   probe:
     runs-on: ubuntu-latest
@@ -14,8 +14,10 @@ jobs:
         with:
           python-version: "3.12"
       - run: python3 scripts/probe_rate_pages.py
-      - uses: actions/upload-artifact@v4
-        with:
-          name: probe
-          path: probe/
-          retention-days: 3
+      - name: Save results to the probe-results branch (not part of the site)
+        run: |
+          cd probe
+          git init -q -b probe-results
+          git config user.name "ExpatGuideME robot"; git config user.email "actions@users.noreply.github.com"
+          git add -A && git commit -qm "Probe $(date -u +%F' '%H:%M)"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe-results

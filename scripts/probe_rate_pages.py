@@ -69,7 +69,7 @@ def main():
             except Exception as e:
                 row["status"] = f"error: {e}"
             report.append(row)
-            print(json.dumps(row)[:300])
+            print(json.dumps({k: row.get(k) for k in ("cc", "url", "status", "bytes")}))
     json.dump(report, open(os.path.join(OUT, "report.json"), "w"), indent=1)
 
 
