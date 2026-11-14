@@ -418,6 +418,7 @@ META-->
           var name = el("div", "p-name", r.p.name);
           if (bestPayout != null && !r.est && r.payout === bestPayout) name.appendChild(el("span", "best", L("best")));
           if (r.est) name.appendChild(el("span", "est", L("est")));
+          if (PARTNERS[r.p.id] && PARTNERS[r.p.id].sponsored) { name.appendChild(el("span", "sponsored", window.ExpatSite.t("sponsoredBadge"))); tr.classList.add("sponsored-row"); }
           tdN.appendChild(name);
           tdN.appendChild(el("div", "p-type", TYPES[lang()] ? TYPES[lang()][r.p.type] : TYPES.en[r.p.type]));
           tr.appendChild(tdN);
@@ -432,7 +433,8 @@ META-->
           var up = el("button", "btn btn-ghost", L("updateBtn")); up.type = "button";
           up.addEventListener("click", function () { $("updProvider").value = r.p.id; showPanel("update"); $("updRate").focus(); });
           wrap.appendChild(up);
-          var pl = PARTNERS[r.p.id];
+          var pc = PARTNERS[r.p.id] || {};
+          var pl = typeof pc === "string" ? pc : pc.url;
           if (pl && /^https:\/\//.test(pl)) {
             var sv = el("a", "btn btn-primary send-via", window.ExpatSite.t("sendVia").replace("{name}", r.p.name.replace(/\s*\(.*\)$/, "")));
             sv.href = pl; sv.target = "_blank"; sv.rel = "sponsored nofollow noopener";

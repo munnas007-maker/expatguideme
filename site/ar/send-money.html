@@ -219,7 +219,7 @@
           <p class="table-note" data-t="sortNote">مرتبة من الأعلى مبلغًا. ما تستلمه عائلتك = (المبلغ − الرسوم) × السعر.</p>
           <p class="table-note" data-t="estNote">الصفوف المعلَّمة «تقديري» تستخدم سعر السوق المباشر ناقص هامش معتاد قدره ٠٫٥٪، لأن أحدًا لم يشارك السعر الفعلي لهذه الجهة بعد. اضغط «تحديث» لإضافة السعر والرسوم الفعلية التي تراها في التطبيق.</p>
           <p class="table-note" data-t="tableNote">يشارك الزوار هذه الأسعار، ونقارنها بسعر السوق المباشر. تأكّد دائمًا من المبلغ النهائي في التطبيق قبل التحويل.</p>
-          <p class="table-note aff-note" id="affNote" hidden=""><span data-s="affNote">بعض أزرار «حوّل عبر» روابط شراكة، وقد نحصل على عمولة دون أي تكلفة إضافية عليك، ولا تغيّر أبدًا ترتيب هذا الجدول.</span> <a href="/ar/affiliate-disclosure.html" data-s="affLink">الإفصاح عن روابط الشراكة</a></p>
+          <p class="table-note aff-note" id="affNote" hidden=""><span data-s="affNote">بعض الجهات شركاء ممولون أو لديها روابط شراكة («حوّل عبر»)، وقد نحصل على عمولة دون أي تكلفة إضافية عليك، ولا يغيّر ذلك أبدًا ترتيب هذا الجدول.</span> <a href="/ar/affiliate-disclosure.html" data-s="affLink">الإفصاح عن روابط الشراكة</a></p>
         </section>
 
         <section class="card panel" id="pGraph" hidden="" aria-labelledby="graphTitle">
@@ -364,6 +364,8 @@
           <h3 data-s="footerSite">الموقع</h3>
           <nav class="footer-links" aria-label="Footer">
             <a href="/ar/" data-s="navHome">الرئيسية</a>
+            <a href="/ar/legal-consult.html" data-s="navConsult">اسأل مختصًا</a>
+            <a href="/ar/financial-playbook.html" data-s="navPlaybook">الدليل المالي</a>
             <a href="/ar/mobile-app.html" data-s="navApp">تطبيق الجوال</a>
             <a href="/ar/about.html" data-s="navAbout">من نحن</a>
             <a href="/ar/contact.html" data-s="navContact">اتصل بنا</a>
@@ -373,6 +375,7 @@
           </nav>
         </div>
       </div>
+
       <div class="footer-app">
         <h3 data-s="appGet">حمّل التطبيق</h3>
         <div class="store-pills">
@@ -556,6 +559,7 @@
           var name = el("div", "p-name", r.p.name);
           if (bestPayout != null && !r.est && r.payout === bestPayout) name.appendChild(el("span", "best", L("best")));
           if (r.est) name.appendChild(el("span", "est", L("est")));
+          if (PARTNERS[r.p.id] && PARTNERS[r.p.id].sponsored) { name.appendChild(el("span", "sponsored", window.ExpatSite.t("sponsoredBadge"))); tr.classList.add("sponsored-row"); }
           tdN.appendChild(name);
           tdN.appendChild(el("div", "p-type", TYPES[lang()] ? TYPES[lang()][r.p.type] : TYPES.en[r.p.type]));
           tr.appendChild(tdN);
@@ -570,7 +574,8 @@
           var up = el("button", "btn btn-ghost", L("updateBtn")); up.type = "button";
           up.addEventListener("click", function () { $("updProvider").value = r.p.id; showPanel("update"); $("updRate").focus(); });
           wrap.appendChild(up);
-          var pl = PARTNERS[r.p.id];
+          var pc = PARTNERS[r.p.id] || {};
+          var pl = typeof pc === "string" ? pc : pc.url;
           if (pl && /^https:\/\//.test(pl)) {
             var sv = el("a", "btn btn-primary send-via", window.ExpatSite.t("sendVia").replace("{name}", r.p.name.replace(/\s*\(.*\)$/, "")));
             sv.href = pl; sv.target = "_blank"; sv.rel = "sponsored nofollow noopener";

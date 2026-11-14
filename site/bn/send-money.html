@@ -219,7 +219,7 @@
           <p class="table-note" data-t="sortNote">সবচেয়ে বেশি টাকা পাওয়ার ক্রমে সাজানো। পরিবার পাবে = (পরিমাণ − ফি) × রেট।</p>
           <p class="table-note" data-t="estNote">'আনুমানিক' চিহ্নিত সারিগুলো লাইভ মার্কেট রেট থেকে সাধারণ ০.৫% মার্জিন বাদ দিয়ে দেখানো হয়, কারণ এখনও কেউ ওই সেবার আসল রেট শেয়ার করেননি। অ্যাপে দেখা আসল রেট ও ফি যোগ করতে 'আপডেট' চাপুন।</p>
           <p class="table-note" data-t="tableNote">এই রেটগুলো ভিজিটররা শেয়ার করেন এবং লাইভ মার্কেট রেটের সাথে মিলিয়ে দেখা হয়। পাঠানোর আগে অবশ্যই অ্যাপে চূড়ান্ত টাকার পরিমাণ দেখে নিন।</p>
-          <p class="table-note aff-note" id="affNote" hidden=""><span data-s="affNote">কিছু “… দিয়ে পাঠান” বোতাম পার্টনার লিংক: আপনার কোনো বাড়তি খরচ ছাড়াই আমরা কমিশন পেতে পারি, আর এতে এই টেবিলের ক্রম কখনো বদলায় না।</span> <a href="/bn/affiliate-disclosure.html" data-s="affLink">অ্যাফিলিয়েট তথ্য</a></p>
+          <p class="table-note aff-note" id="affNote" hidden=""><span data-s="affNote">কিছু সেবা স্পনসর পার্টনার বা তাদের পার্টনার (“… দিয়ে পাঠান”) লিংক আছে: আপনার কোনো বাড়তি খরচ ছাড়াই আমরা কমিশন পেতে পারি, আর এতে এই টেবিলের ক্রম কখনো বদলায় না।</span> <a href="/bn/affiliate-disclosure.html" data-s="affLink">অ্যাফিলিয়েট তথ্য</a></p>
         </section>
 
         <section class="card panel" id="pGraph" hidden="" aria-labelledby="graphTitle">
@@ -364,6 +364,8 @@
           <h3 data-s="footerSite">ওয়েবসাইট</h3>
           <nav class="footer-links" aria-label="Footer">
             <a href="/bn/" data-s="navHome">হোম</a>
+            <a href="/bn/legal-consult.html" data-s="navConsult">বিশেষজ্ঞকে জিজ্ঞেস করুন</a>
+            <a href="/bn/financial-playbook.html" data-s="navPlaybook">আর্থিক প্লেবুক</a>
             <a href="/bn/mobile-app.html" data-s="navApp">মোবাইল অ্যাপ</a>
             <a href="/bn/about.html" data-s="navAbout">আমাদের সম্পর্কে</a>
             <a href="/bn/contact.html" data-s="navContact">যোগাযোগ</a>
@@ -373,6 +375,7 @@
           </nav>
         </div>
       </div>
+
       <div class="footer-app">
         <h3 data-s="appGet">অ্যাপ নিন</h3>
         <div class="store-pills">
@@ -556,6 +559,7 @@
           var name = el("div", "p-name", r.p.name);
           if (bestPayout != null && !r.est && r.payout === bestPayout) name.appendChild(el("span", "best", L("best")));
           if (r.est) name.appendChild(el("span", "est", L("est")));
+          if (PARTNERS[r.p.id] && PARTNERS[r.p.id].sponsored) { name.appendChild(el("span", "sponsored", window.ExpatSite.t("sponsoredBadge"))); tr.classList.add("sponsored-row"); }
           tdN.appendChild(name);
           tdN.appendChild(el("div", "p-type", TYPES[lang()] ? TYPES[lang()][r.p.type] : TYPES.en[r.p.type]));
           tr.appendChild(tdN);
@@ -570,7 +574,8 @@
           var up = el("button", "btn btn-ghost", L("updateBtn")); up.type = "button";
           up.addEventListener("click", function () { $("updProvider").value = r.p.id; showPanel("update"); $("updRate").focus(); });
           wrap.appendChild(up);
-          var pl = PARTNERS[r.p.id];
+          var pc = PARTNERS[r.p.id] || {};
+          var pl = typeof pc === "string" ? pc : pc.url;
           if (pl && /^https:\/\//.test(pl)) {
             var sv = el("a", "btn btn-primary send-via", window.ExpatSite.t("sendVia").replace("{name}", r.p.name.replace(/\s*\(.*\)$/, "")));
             sv.href = pl; sv.target = "_blank"; sv.rel = "sponsored nofollow noopener";

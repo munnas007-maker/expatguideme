@@ -1,9 +1,9 @@
 {
-  "_help": "Paste each partner's tracking link between the quotes (must start with https://). Leave a link empty to hide that provider's Send button. Keys match the provider ids used on send-money.html.",
-  "wise": "",
-  "remitly": "",
-  "wu": "",
-  "stcbank": "",
-  "barq": "",
-  "urpay": ""
+  "_help": "For each provider: url = your partner/tracking link (must start with https://, leave empty to hide the Send button). sponsored = true only if the provider pays for a Sponsored partner placement (adds a label and highlighted row; the table order never changes). Keys match the provider ids on send-money.html.",
+  "wise": { "url": "", "sponsored": false },
+  "remitly": { "url": "", "sponsored": false },
+  "wu": { "url": "", "sponsored": false },
+  "stcbank": { "url": "", "sponsored": false },
+  "barq": { "url": "", "sponsored": false },
+  "urpay": { "url": "", "sponsored": false }
 }

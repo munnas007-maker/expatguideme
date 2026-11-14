@@ -1,0 +1,8 @@
+{
+  "_help": "Financial Playbook checkout. Paste your Lemon Squeezy or Stripe payment link (https://) and price. While checkout_url is empty, the page shows a waitlist form instead of a Buy button.",
+  "playbook": {
+    "checkout_url": "",
+    "price": "",
+    "provider": "Lemon Squeezy"
+  }
+}

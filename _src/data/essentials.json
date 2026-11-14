@@ -1,0 +1,8 @@
+{
+  "_help": "Expat essentials card shown in the footer of every page. Paste a partner link (https://) for each item you have a partner for. Items with an empty url are hidden; if all are empty, the whole card is hidden. All links are marked sponsored.",
+  "items": [
+    { "key": "esim", "icon": "📶", "url": "" },
+    { "key": "insurance", "icon": "🩺", "url": "" },
+    { "key": "relocation", "icon": "📦", "url": "" }
+  ]
+}

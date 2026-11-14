@@ -33,7 +33,7 @@ ADSENSE_CLIENT = "ca-pub-4815162342890123"
 # While it is empty, reserved spaces stay hidden and Auto ads place ads instead.
 ADSENSE_UNIT = ""
 # Pages that never show ads (policy and trust pages).
-NO_AD_PAGES = {"app", "about", "privacy", "terms", "affiliate", "contact", "404", "notfound", "none"}
+NO_AD_PAGES = {"app", "consult", "playbook", "about", "privacy", "terms", "affiliate", "contact", "404", "notfound", "none"}
 
 ICON = {
     "search": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>',
@@ -188,10 +188,11 @@ def footer(credit):
         <div>
           <h3 data-s="footerSite"></h3>
           <nav class="footer-links" aria-label="Footer">
-{_links([("/", "navHome"), ("/mobile-app.html", "navApp"), ("/about.html", "navAbout"), ("/contact.html", "navContact"), ("/privacy.html", "navPrivacy"), ("/terms.html", "navTerms"), ("/affiliate-disclosure.html", "navAffiliate")])}
+{_links([("/", "navHome"), ("/legal-consult.html", "navConsult"), ("/financial-playbook.html", "navPlaybook"), ("/mobile-app.html", "navApp"), ("/about.html", "navAbout"), ("/contact.html", "navContact"), ("/privacy.html", "navPrivacy"), ("/terms.html", "navTerms"), ("/affiliate-disclosure.html", "navAffiliate")])}
           </nav>
         </div>
       </div>
+{ESSENTIALS}
       <div class="footer-app">
         <h3 data-s="appGet"></h3>
         <div class="store-pills">
@@ -359,31 +360,99 @@ def summary_block(key, rates, when):
             f'      </section>')
 
 
+HTTPS_RE = re.compile(r"^https://[^\s\"'<>]+$")
+
+
+def _url(v, label):
+    v = (v or "").strip()
+    if v and not HTTPS_RE.match(v):
+        print("WARNING:", label, "link ignored (must start with https://)")
+        return ""
+    return v
+
+
 def load_partners():
-    """PARTNER_LINKS: provider id -> tracking URL, from _src/data/partners.json.
-    Empty or non-https values are dropped, so no button (and no broken link) is shown."""
+    """PARTNER_LINKS: provider id -> {"url", "sponsored"}, from _src/data/partners.json.
+    A provider appears only if it has a valid https link or is marked sponsored."""
     with open(os.path.join(ROOT, "_src", "data", "partners.json"), encoding="utf-8") as f:
         raw = json.load(f)
     links = {}
     for k, v in raw.items():
-        if k.startswith("_") or not isinstance(v, str):
+        if k.startswith("_"):
             continue
-        v = v.strip()
-        if v and re.match(r"^https://[^\s\"'<>]+$", v):
-            links[k] = v
-        elif v:
-            print("WARNING: partner link for", k, "ignored (must start with https://)")
+        if isinstance(v, str):
+            v = {"url": v}
+        if not isinstance(v, dict):
+            continue
+        url = _url(v.get("url"), "partner " + k)
+        sponsored = v.get("sponsored") is True
+        if url or sponsored:
+            links[k] = {"url": url, "sponsored": sponsored}
     return links
+
+
+def essentials_html():
+    """Footer 'Expat essentials' card from _src/data/essentials.json (sponsored links only)."""
+    with open(os.path.join(ROOT, "_src", "data", "essentials.json"), encoding="utf-8") as f:
+        items = json.load(f).get("items", [])
+    keys = {"esim": "esim", "insurance": "ins", "relocation": "move"}
+    cards = []
+    for it in items:
+        k = keys.get(it.get("key"))
+        url = _url(it.get("url"), "essentials " + str(it.get("key")))
+        if not k or not url:
+            continue
+        cards.append(
+            f'<a class="ess-item" href="{url}" target="_blank" rel="sponsored nofollow noopener">'
+            f'<span class="ess-ico" aria-hidden="true">{it.get("icon", "")}</span>'
+            f'<span><strong data-s="{k}T"></strong><span class="ess-d" data-s="{k}D"></span></span></a>'
+        )
+    if not cards:
+        return ""
+    return ('\n      <section class="essentials" aria-labelledby="essT">\n'
+            '        <h3 id="essT" data-s="essT"></h3>\n'
+            f'        <div class="ess-grid">{"".join(cards)}</div>\n'
+            '        <p class="ess-note" data-s="essNote"></p>\n      </section>')
+
+
+def checkout_html():
+    """Playbook buy button when a checkout link is configured, otherwise a waitlist form."""
+    with open(os.path.join(ROOT, "_src", "data", "products.json"), encoding="utf-8") as f:
+        pb = json.load(f).get("playbook", {})
+    url = _url(pb.get("checkout_url"), "playbook checkout")
+    if url:
+        price = (pb.get("price") or "").strip()
+        provider = (pb.get("provider") or "").strip() or "our payment partner"
+        price_html = f'<p class="pb-price"><span data-t="priceLabel"></span>: <strong dir="ltr">{price}</strong></p>' if price else ""
+        return (f'<div class="pb-buy">{price_html}'
+                f'<a class="btn btn-primary btn-lg" href="{url}" target="_blank" rel="noopener" data-t="buyBtn"></a>'
+                f'<p class="pb-secure" data-provider="{provider}" data-t="secure"></p></div>')
+    return ('<div class="pb-soon"><h2 data-t="soonT"></h2><p data-t="soonText"></p>'
+            '<form class="app-form" name="playbook-waitlist" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" data-ajax data-success="pbOk" novalidate>'
+            '<input type="hidden" name="form-name" value="playbook-waitlist">'
+            '<input type="hidden" name="language" value="en" data-lang-field>'
+            '<p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>'
+            '<label class="sr-only" for="pbEmail" data-t="email"></label>'
+            '<input id="pbEmail" type="email" name="email" required autocomplete="email" inputmode="email" data-t-ph="email">'
+            '<button type="submit" class="btn btn-primary" data-t="notifyBtn"></button>'
+            '<p class="form-msg" role="alert" aria-live="polite"></p></form>'
+            '<div class="success-box" id="pbOk" tabindex="-1" role="status" hidden><span class="check" aria-hidden="true">✓</span><span data-t="ok"></span></div></div>')
+
+
+ESSENTIALS = ""
 
 
 def build():
     pages = sorted(p for p in os.listdir(SRC) if p.endswith(".html"))
+    global ESSENTIALS
     PARTNER_LINKS = load_partners()
+    ESSENTIALS = essentials_html()
     rates, when = load_rates()
     public = []
     for name in pages:
         meta, body, script = parse_page(os.path.join(SRC, name))
         body = re.sub(r"<!--SUMMARY:([a-z]+)-->", lambda m: summary_block(m.group(1), rates, when), body)
+        body = body.replace("<!--CHECKOUT-->", checkout_html())
         script = script.replace("/*PARTNERS*/{}", json.dumps(PARTNER_LINKS))
         html = (
             head(meta)
@@ -405,7 +474,7 @@ def build():
             m = re.search(r'data-updated="(\d{4}-\d{2}-\d{2})"', body)
             public.append({"file": name, "path": meta["path"], "lastmod": m.group(1) if m else "2026-11-13"})
     order = ["/", "/exchange-rate.html", "/send-money.html", "/end-of-service.html", "/vacation-calculator.html", "/id-residency.html",
-             "/family-cost.html", "/embassy-services.html", "/mobile-app.html", "/about.html", "/contact.html", "/privacy.html",
+             "/family-cost.html", "/embassy-services.html", "/legal-consult.html", "/financial-playbook.html", "/mobile-app.html", "/about.html", "/contact.html", "/privacy.html",
              "/terms.html", "/affiliate-disclosure.html"]
     public.sort(key=lambda e: order.index(e["path"]) if e["path"] in order else 99)
     subprocess.run(

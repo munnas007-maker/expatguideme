@@ -423,3 +423,17 @@ body[data-ads="auto"] .ad-slot, body[data-ads="auto"] .ad-note { display: none; 
 .send-via { white-space: nowrap; }
 .aff-note a { font-weight: 600; }
 .app-priv { border-inline-start: 4px solid var(--brand); }
+
+/* ---------- Sponsored rows, essentials card ---------- */
+.sponsored { display: inline-block; margin-inline-start: 6px; padding: 1px 8px; border-radius: 999px; font-size: .72rem; font-weight: 700; background: #fff4d6; color: #7a5200; border: 1px solid #f0d68a; vertical-align: middle; }
+[data-theme="dark"] .sponsored { background: #3a2f12; color: #f3d27a; border-color: #5c4a1a; }
+tr.sponsored-row td { background: rgba(240, 214, 138, .12); }
+.xlink-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.essentials { margin: 18px 0 6px; padding: 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); }
+.essentials h3 { margin: 0 0 10px; font-size: 1rem; }
+.ess-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+.ess-item { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; text-decoration: none; color: var(--ink); }
+.ess-item:hover { border-color: var(--brand); }
+.ess-ico { font-size: 1.3rem; line-height: 1; }
+.ess-d { display: block; color: var(--muted); font-size: .85rem; }
+.ess-note { color: var(--muted); font-size: .8rem; margin: 8px 0 0; }
