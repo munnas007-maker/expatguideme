@@ -7,6 +7,13 @@ credit: yes
 META-->
 <!--STYLE-->
   <style>
+    .all-title { margin: 22px 0 10px; font-size: 1.05rem; }
+    .all-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+    .all-item { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; text-align: start; font: inherit; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer; }
+    .all-item:hover { border-color: var(--accent); }
+    .all-n { font-weight: 700; font-size: .9rem; }
+    .all-v { font-weight: 700; font-variant-numeric: tabular-nums; text-align: end; }
+    .all-name { grid-column: 1 / -1; color: var(--muted); font-size: .76rem; }
     .fx { max-width: 720px; }
     .fx label.field-label { margin-top: 0; }
     #amount { font-size: 1.4rem; font-weight: 600; direction: ltr; font-family: "Inter", sans-serif; }
@@ -125,6 +132,8 @@ META-->
           <thead><tr><th scope="col" id="qHeadFrom">—</th><th scope="col" class="num" id="qHeadTo">—</th></tr></thead>
           <tbody id="quickBody"></tbody>
         </table>
+        <h3 class="all-title" id="allTitle"></h3>
+        <div class="all-grid" id="allGrid"></div>
       </section>
 
       <section class="pop-conv" aria-labelledby="popConvTitle">
@@ -158,6 +167,7 @@ META-->
 
       var GULF = [
         { code: "SAR", flag: "🇸🇦", name: "Saudi Riyal" },
+        { code: "AED", flag: "🇦🇪", name: "UAE Dirham" },
         { code: "KWD", flag: "🇰🇼", name: "Kuwaiti Dinar" },
         { code: "QAR", flag: "🇶🇦", name: "Qatari Riyal" },
         { code: "OMR", flag: "🇴🇲", name: "Omani Rial" },
@@ -176,7 +186,39 @@ META-->
         { code: "GBP", flag: "🇬🇧", name: "British Pound" },
         { code: "EUR", flag: "🇪🇺", name: "Euro" }
       ];
-      var ALL = GULF.concat(HOME);
+      var WORLD = [
+        { code: "ETB", flag: "🇪🇹", name: "Ethiopian Birr" },
+        { code: "KES", flag: "🇰🇪", name: "Kenyan Shilling" },
+        { code: "UGX", flag: "🇺🇬", name: "Ugandan Shilling" },
+        { code: "TZS", flag: "🇹🇿", name: "Tanzanian Shilling" },
+        { code: "SDG", flag: "🇸🇩", name: "Sudanese Pound" },
+        { code: "YER", flag: "🇾🇪", name: "Yemeni Rial" },
+        { code: "JOD", flag: "🇯🇴", name: "Jordanian Dinar" },
+        { code: "LBP", flag: "🇱🇧", name: "Lebanese Pound" },
+        { code: "SYP", flag: "🇸🇾", name: "Syrian Pound" },
+        { code: "IQD", flag: "🇮🇶", name: "Iraqi Dinar" },
+        { code: "MAD", flag: "🇲🇦", name: "Moroccan Dirham" },
+        { code: "TND", flag: "🇹🇳", name: "Tunisian Dinar" },
+        { code: "NGN", flag: "🇳🇬", name: "Nigerian Naira" },
+        { code: "GHS", flag: "🇬🇭", name: "Ghanaian Cedi" },
+        { code: "AFN", flag: "🇦🇫", name: "Afghan Afghani" },
+        { code: "MMK", flag: "🇲🇲", name: "Myanmar Kyat" },
+        { code: "CNY", flag: "🇨🇳", name: "Chinese Yuan" },
+        { code: "MYR", flag: "🇲🇾", name: "Malaysian Ringgit" },
+        { code: "THB", flag: "🇹🇭", name: "Thai Baht" },
+        { code: "VND", flag: "🇻🇳", name: "Vietnamese Dong" },
+        { code: "TRY", flag: "🇹🇷", name: "Turkish Lira" },
+        { code: "CAD", flag: "🇨🇦", name: "Canadian Dollar" },
+        { code: "AUD", flag: "🇦🇺", name: "Australian Dollar" },
+        { code: "NZD", flag: "🇳🇿", name: "New Zealand Dollar" },
+        { code: "JPY", flag: "🇯🇵", name: "Japanese Yen" },
+        { code: "CHF", flag: "🇨🇭", name: "Swiss Franc" },
+        { code: "SGD", flag: "🇸🇬", name: "Singapore Dollar" },
+        { code: "HKD", flag: "🇭🇰", name: "Hong Kong Dollar" },
+        { code: "ZAR", flag: "🇿🇦", name: "South African Rand" },
+        { code: "KRW", flag: "🇰🇷", name: "South Korean Won" }
+      ];
+      var ALL = GULF.concat(HOME, WORLD);
 
       var T = {
         en: {
@@ -364,7 +406,8 @@ META-->
 
       function buildSelect(sel, selected) {
         sel.innerHTML = "";
-        [{ label: "Gulf", items: GULF }, { label: "Home", items: HOME }].forEach(function (g) {
+        [{ label: "Gulf", items: GULF }, { label: "Home", items: HOME }, { label: "More", items: WORLD }].forEach(function (g) {
+          g.items = g.items.filter(function (c) { return !state.rates || state.rates[c.code]; });
           var og = document.createElement("optgroup");
           og.label = g.label;
           g.items.forEach(function (c) {
@@ -407,7 +450,27 @@ META-->
         window.ExpatSite.rateNote(el, state.updatedUnix, state.stale);
       }
 
+      // "1 SAR in every currency" list, like a bank rate board
+      function renderAllRates() {
+        var g = $("allGrid"); if (!g) return;
+        $("allTitle").textContent = window.ExpatSite.t("allCur").replace("{cur}", state.from);
+        g.innerHTML = "";
+        ALL.forEach(function (c) {
+          if (c.code === state.from) return;
+          var r = state.rates ? rate(state.from, c.code) : NaN;
+          if (!isFinite(r)) return;
+          var a = document.createElement("button"); a.type = "button"; a.className = "all-item";
+          a.setAttribute("data-cur", c.code);
+          var n = document.createElement("span"); n.className = "all-n"; n.textContent = c.flag + " " + c.code;
+          var v = document.createElement("span"); v.className = "all-v"; v.dir = "ltr"; v.textContent = r.toLocaleString("en-US", { minimumFractionDigits: r < 1 ? 4 : 2, maximumFractionDigits: 4 });
+          var nm = document.createElement("span"); nm.className = "all-name"; nm.textContent = c.name;
+          a.appendChild(n); a.appendChild(v); a.appendChild(nm);
+          a.addEventListener("click", function () { state.to = c.code; $("toCur").value = c.code; saveFx(); renderResult(); document.getElementById("convert").scrollIntoView({ behavior: "smooth", block: "start" }); });
+          g.appendChild(a);
+        });
+      }
       function renderResult() {
+        setTimeout(renderAllRates, 0);
         if (typeof renderTrend === "function") setTimeout(renderTrend, 0);
         var amt = parseFloat($("amount").value);
         if (!isFinite(amt) || amt < 0) amt = 0;

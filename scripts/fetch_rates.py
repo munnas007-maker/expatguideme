@@ -24,6 +24,8 @@ API = "https://api.currencyfreaks.com/v2.0/rates/latest"
 GCC = ["SAR", "AED", "QAR", "KWD", "OMR", "BHD"]
 DEST = ["INR", "PKR", "BDT", "PHP", "NPR", "EGP"]
 EXTRA = ["LKR", "IDR", "EUR", "GBP"]   # other currencies shown on the exchange-rate page, same single call
+WORLD = ("ETB KES UGX TZS SDG YER JOD LBP SYP IQD MAD TND NGN GHS AFN MMK CNY MYR THB VND TRY CAD AUD NZD JPY CHF "
+         "SGD HKD ZAR KRW").split()   # extra currencies on the exchange page; optional (kept if present and positive)
 SYMBOLS = GCC + DEST + EXTRA + ["XAU"]
 GRAMS_PER_TROY_OZ = 31.1035
 KARATS = {"24K": 24, "22K": 22, "21K": 21, "18K": 18}
@@ -51,7 +53,7 @@ def fail(msg):
 
 
 def fetch(key):
-    url = API + "?" + urllib.parse.urlencode({"apikey": key, "symbols": ",".join(SYMBOLS)})
+    url = API + "?" + urllib.parse.urlencode({"apikey": key, "symbols": ",".join(SYMBOLS + WORLD)})
     req = urllib.request.Request(url, headers={"User-Agent": "ExpatGuideME-rates", "Accept": "application/json"})
     try:
         with urllib.request.urlopen(req, timeout=30) as r:
@@ -85,6 +87,13 @@ def parse(data):
     for c, (lo, hi) in RANGES.items():
         if not lo <= usd[c] <= hi:
             fail("%s = %s is outside the plausible range %s-%s" % (c, usd[c], lo, hi))
+    for c in WORLD:  # optional currencies: keep only valid numbers, never fail the run for them
+        try:
+            v = float(data["rates"][c])
+            if v > 0:
+                usd[c] = v
+        except (KeyError, TypeError, ValueError):
+            pass
     oz = 1 / usd.pop("XAU")
     if not 500 < oz < 20000:
         fail("gold price %.2f USD/oz is implausible" % oz)
