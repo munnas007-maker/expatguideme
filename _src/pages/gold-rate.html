@@ -32,6 +32,9 @@ META-->
     .src { font-size: .82rem; color: var(--muted); }
     @media (max-width: 760px) { .g-grid { grid-template-columns: 1fr; } .total { font-size: 1.6rem; } }
   </style>
+    .making-row { display: flex; gap: 8px; align-items: stretch; }
+    .making-row input { flex: 1 1 auto; min-width: 0; }
+    .making-row select { flex: 0 0 auto; width: auto; min-width: 7.5em; }
 <!--/STYLE-->
 <!--BODY-->
   <main id="main" tabindex="-1">
@@ -68,8 +71,11 @@ META-->
           <div class="seg" id="karatSeg" role="group" aria-labelledby="karatLabel">
             <button type="button" data-k="24">24K</button><button type="button" data-k="22">22K</button><button type="button" data-k="21">21K</button><button type="button" data-k="18">18K</button>
           </div>
-          <div class="field"><label class="field-label" for="making" data-t="making"></label>
-            <input type="number" id="making" inputmode="decimal" min="0" max="100" step="any" value="0"></div>
+          <div class="field"><label class="field-label" for="making" data-t="makingV"></label>
+            <div class="making-row">
+              <input type="number" id="making" inputmode="decimal" min="0" step="any" value="0">
+              <select id="makingUnit"><option value="pct">%</option><option value="g">SAR / g</option></select>
+            </div></div>
         </section>
 
         <section class="card" aria-live="polite" aria-labelledby="totalLbl">
@@ -132,7 +138,7 @@ META-->
       var PURITY = { 24: 0.999, 22: 0.916, 21: 0.875, 18: 0.75 };
       var CURS = ["SAR", "AED", "QAR", "KWD", "OMR", "BHD"];
       var DEC = { SAR: 2, AED: 2, QAR: 2, KWD: 3, OMR: 3, BHD: 3, INR: 0 };
-      var state = { usdOz: BASE ? BASE.usdOz : null, rates: BASE ? BASE.rates : null, at: BASE ? BASE.at : null, live: false, cur: "SAR", k: 22, who: "female", stay: 13, form: "j" };
+      var state = { mu: "pct", usdOz: BASE ? BASE.usdOz : null, rates: BASE ? BASE.rates : null, at: BASE ? BASE.at : null, live: false, cur: "SAR", k: 22, who: "female", stay: 13, form: "j" };
       var lang = "en";
       function $(id) { return document.getElementById(id); }
       function L(k) { return (T[lang] && T[lang][k]) || T.en[k] || window.ExpatSite.t(k); }
@@ -142,7 +148,7 @@ META-->
       function perGram(cur, k) { return state.usdOz && state.rates ? state.usdOz / OZ * PURITY[k] * state.rates[cur] : null; }
       var CC2CUR = { sa: "SAR", ae: "AED", qa: "QAR", kw: "KWD", om: "OMR", bh: "BHD" };
       var CUR2CC = { SAR: "sa", AED: "ae", QAR: "qa", KWD: "kw", OMR: "om", BHD: "bh" };
-      try { var saved = JSON.parse(localStorage.getItem("egm-gold") || "{}"); if (CURS.indexOf(saved.cur) > -1) state.cur = saved.cur; } catch (e) {}
+      try { var saved = JSON.parse(localStorage.getItem("egm-gold") || "{}"); if (CURS.indexOf(saved.cur) > -1) state.cur = saved.cur; if (saved.mu === "g") state.mu = "g"; } catch (e) {}
       var hadGold = false; try { hadGold = !!localStorage.getItem("egm-gold"); } catch (e) {}
       if (window.ExpatSite.country && (window.ExpatSite.hasCountry() || !hadGold)) state.cur = CC2CUR[window.ExpatSite.country()] || state.cur;
       if (window.ExpatSite.onCountry) window.ExpatSite.onCountry(function (cc) { if (CC2CUR[cc]) setCur(CC2CUR[cc], true); });
@@ -162,17 +168,20 @@ META-->
         var t = when && !isNaN(when) ? when.toLocaleString(lang === "en" ? "en-GB" : lang, { dateStyle: "medium", timeStyle: "short" }) : "";
         m.textContent = (state.live ? "" : L("offline") + " ") + L("updated").replace("{time}", t);
       }
-      function setCur(c, fromHeader) { state.cur = c; $("cur").value = c; try { localStorage.setItem("egm-gold", JSON.stringify({ cur: c })); } catch (e) {} if (!fromHeader && window.ExpatSite.setCountry) window.ExpatSite.setCountry(CUR2CC[c], true); render(); }
+      function setCur(c, fromHeader) { state.cur = c; $("cur").value = c; save(); if (!fromHeader && window.ExpatSite.setCountry) window.ExpatSite.setCountry(CUR2CC[c], true); render(); }
+      function save() { try { localStorage.setItem("egm-gold", JSON.stringify({ cur: state.cur, mu: state.mu })); } catch (e) {} }
       function seg(id, key) { document.querySelectorAll("#" + id + " button").forEach(function (b) { var v = b.getAttribute(key === "k" ? "data-k" : "data-v"); b.setAttribute("aria-pressed", String(String(state[key]) === v)); }); }
 
       function render() {
         renderLive();
+        var mu = $("makingUnit"); mu.value = state.mu; mu.options[1].textContent = state.cur + " / g"; mu.setAttribute("aria-label", L("makingV"));
         seg("karatSeg", "k"); seg("whoSeg", "who"); seg("staySeg", "stay"); seg("formSeg", "form");
         var w = num("weight");
         document.querySelectorAll("#wPresets .preset").forEach(function (b) { b.classList.toggle("on", Number(b.getAttribute("data-w")) === w); });
         var pg = perGram(state.cur, state.k), pgInr = perGram("INR", state.k);
         if (pg) {
-          var metal = pg * w, mk = metal * num("making") / 100;
+          // Making charge: a percentage of the gold value, or a fixed amount per gram (common in Gulf shops)
+          var metal = pg * w, mk = state.mu === "g" ? num("making") * w : metal * num("making") / 100;
           $("metalOut").textContent = money(metal, state.cur);
           $("makingOut").textContent = money(mk, state.cur);
           $("totalOut").textContent = money(metal + mk, state.cur);
@@ -227,6 +236,7 @@ META-->
       [["whoSeg", "who", String], ["staySeg", "stay", Number], ["formSeg", "form", String]].forEach(function (x) {
         document.querySelectorAll("#" + x[0] + " button").forEach(function (b) { b.addEventListener("click", function () { state[x[1]] = x[2](b.getAttribute("data-v")); render(); }); });
       });
+      $("makingUnit").addEventListener("change", function () { state.mu = this.value === "g" ? "g" : "pct"; save(); render(); });
       ["weight", "making", "dWeight"].forEach(function (id) { $(id).addEventListener("input", render); });
       render();
       loadLive();

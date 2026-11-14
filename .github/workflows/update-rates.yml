@@ -1,15 +1,20 @@
 # Builds and publishes expatguideme.com on GitHub Pages.
 # - Every push to main: rebuild all 8 languages and publish.
-# - Every day at 04:00 UTC (07:00 Riyadh): also fetch today's currency rates and
-#   gold price, commit the refreshed pages, publish, then ping IndexNow.
+# - Every 2 hours: fetch the latest exchange rates, gold spot price and any
+#   provider rates checked in their apps, rebuild, publish, and save the new
+#   data files back to the repository (only when something changed).
+# - Once a day (04:15 UTC = 07:15 Riyadh) the same run also pings IndexNow.
+# Visitors' browsers also fetch the live market rate and gold price when a page
+# opens, so the numbers baked into the pages are only the fallback.
 # Repository setting needed once: Settings > Pages > Source = "GitHub Actions".
-name: Build and publish
+name: Update rates and publish
 
 on:
   push:
     branches: [main]
   schedule:
-    - cron: "0 4 * * *"
+    - cron: "0 */2 * * *"    # rates + gold every 2 hours
+    - cron: "15 4 * * *"     # daily run that also pings IndexNow
   workflow_dispatch:
     inputs:
       ping_all:
@@ -40,21 +45,22 @@ jobs:
           node-version: "22"
       - name: Install build tools
         run: npm install --no-audit --no-fund
-      - name: Fetch today's currency rates and gold price
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+      - name: Fetch latest rates, gold and checked provider rates
+        if: github.event_name != 'push'
         run: python3 scripts/update_rates.py
       - name: Build all languages
         run: NODE_PATH=$PWD/node_modules python3 _src/build.py
-      - name: Save refreshed pages to the repository
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+      - name: Save new data to the repository
+        if: github.event_name != 'push'
         run: |
           git config user.name "ExpatGuideME robot"
           git config user.email "actions@users.noreply.github.com"
-          git add -A _src/data site
+          git add _src/data/rates.json _src/data/provider_rates.json
           if git diff --cached --quiet; then
-            echo "No changes today."
+            echo "No new data."
           else
-            git commit -m "Daily rate update $(date -u +%Y-%m-%d)"
+            git commit -m "Rate update $(date -u '+%Y-%m-%d %H:%M') UTC"
+            git pull --rebase --autostash origin main
             git push
           fi
       - uses: actions/configure-pages@v5
@@ -75,7 +81,7 @@ jobs:
   indexnow:
     needs: deploy
     runs-on: ubuntu-latest
-    if: github.event_name != 'push'
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && github.event.schedule == '15 4 * * *')
     steps:
       - uses: actions/checkout@v4
         with:

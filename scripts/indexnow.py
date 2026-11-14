@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Ping IndexNow (Bing, ChatGPT Search, Yandex, Seznam, Naver) with pages that changed.
 
-Run by .github/workflows/daily-update.yml after GitHub Pages has deployed.
+Run by .github/workflows/update-rates.yml after GitHub Pages has deployed.
+Reads the live sitemap (falls back to site/sitemap.xml in the repository).
 Sends every sitemap URL whose <lastmod> is today (UTC). With --all, sends
 every URL in the sitemap (useful once after moving hosts).
 """
@@ -22,8 +23,16 @@ def main():
     if not keys:
         sys.exit("no IndexNow key file in site/")
     key = keys[0]
-    with open(os.path.join(SITE, "sitemap.xml"), encoding="utf-8") as f:
-        xml = f.read()
+    xml = ""
+    try:
+        req = urllib.request.Request(f"https://{HOST}/sitemap.xml", headers={"User-Agent": "ExpatGuideME-indexnow"})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            xml = r.read().decode("utf-8")
+    except Exception as e:
+        print("live sitemap not reachable, using the repository copy:", e)
+    if "<loc>" not in xml:
+        with open(os.path.join(SITE, "sitemap.xml"), encoding="utf-8") as f:
+            xml = f.read()
     today = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
     pairs = re.findall(r"<loc>([^<]+)</loc>\s*<lastmod>([^<]+)</lastmod>", xml)
     urls = [u for u, d in pairs] if "--all" in sys.argv else [u for u, d in pairs if d >= today]

@@ -6,7 +6,7 @@ Simple guides and free tools for expats in the Gulf — https://expatguideme.com
 - Page bodies live in `_src/pages/*.html`.
 - Shared parts (header, footer, newsletter, search, cookie banner, floating buttons) are added by `_src/build.py`.
 - Shared styles and behaviour: `site/assets/site.css` and `site/assets/site.js`.
-- GitHub Pages publishes the `site/` folder through `.github/workflows/daily-update.yml` (every push to `main`, plus a daily 07:00 Riyadh run that refreshes rates and gold and pings IndexNow).
+- GitHub Pages publishes the `site/` folder through `.github/workflows/update-rates.yml` (every push to `main`; every 2 hours it refreshes exchange rates, gold and checked provider rates; the 07:15 Riyadh run also pings IndexNow).
 - Forms are sent by email through FormSubmit (`_src/data/site.json` → `form_endpoint`). Community rate sharing on Send Money is off until `rates_api` is set.
 - Money settings live in `_src/data/`: `partners.json` (Send via links, sponsored flag), `essentials.json` (footer card), `products.json` (Playbook checkout).
 

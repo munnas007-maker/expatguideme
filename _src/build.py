@@ -392,8 +392,9 @@ def summary_block(key, rates, when):
             return ""
         per_g = oz / 31.1034768
         dec = {"KWD": 3, "OMR": 3, "BHD": 3}
-        head_cells = ['<th scope="col" data-s="thGcc"></th>', '<th scope="col">24K</th>', '<th scope="col">22K</th>', '<th scope="col">21K</th>']
-        rows = [[f'<th scope="row" dir="ltr">{c}</th>'] + [f'<td dir="ltr">{fmt(per_g * p * rates[c], dec.get(c, 2))}</td>' for p in (0.999, 0.916, 0.875)]
+        # Hallmark fineness, the same as the live table on gold-rate.html: 999, 916, 875, 750
+        head_cells = ['<th scope="col" data-s="thGcc"></th>', '<th scope="col">24K</th>', '<th scope="col">22K</th>', '<th scope="col">21K</th>', '<th scope="col">18K</th>']
+        rows = [[f'<th scope="row" dir="ltr">{c}</th>'] + [f'<td dir="ltr">{fmt(per_g * p * rates[c], dec.get(c, 2))}</td>' for p in (0.999, 0.916, 0.875, 0.75)]
                 for c in ("SAR", "AED", "QAR", "KWD", "OMR", "BHD")]
     elif key == "vac":
         cap = ""
@@ -527,6 +528,7 @@ def build():
         body = body.replace("<!--CHECKOUT-->", checkout_html())
         script = script.replace("/*PARTNERS*/{}", json.dumps(PARTNER_LINKS))
         script = script.replace('/*RATES_API*/""', json.dumps(SITE_CFG["rates_api"]))
+        script = script.replace("/*CHECKED*/{}", json.dumps(checked_provider_rates(), separators=(",", ":")))
         if "/*GOLDBASE*/" in script:
             script = script.replace("/*GOLDBASE*/null", json.dumps(gold_base())).replace("/*GOLDRULES*/null", json.dumps(gold_rules()))
         body = body.replace("__RATESDATE__", when.strftime("%Y-%m-%d"))
@@ -620,6 +622,30 @@ def gold_base():
     d = _rates_file()
     g = d.get("gold") or {}
     return {"usdOz": g.get("usd_per_troy_ounce"), "at": g.get("updated_at"), "rates": d["rates"]}
+
+
+def checked_provider_rates():
+    """Provider rates checked in each provider's app (_src/data/provider_rates.json),
+    without rows older than max_age_hours. The page also re-checks age and distance
+    from the live market rate in the visitor's browser."""
+    path = os.path.join(ROOT, "_src", "data", "provider_rates.json")
+    if not os.path.exists(path):
+        return {}
+    with open(path, encoding="utf-8") as f:
+        data = json.load(f)
+    max_age = datetime.timedelta(hours=data.get("max_age_hours", 48))
+    now = datetime.datetime.now(datetime.timezone.utc)
+    out = {}
+    for route, provs in (data.get("rates") or {}).items():
+        for pid, v in provs.items():
+            try:
+                at = datetime.datetime.fromisoformat(v["checked_at"].replace("Z", "+00:00"))
+                ok = now - at <= max_age and float(v["rate"]) > 0
+            except (KeyError, ValueError, TypeError):
+                ok = False
+            if ok:
+                out.setdefault(route, {})[pid] = {"rate": float(v["rate"]), "fee": v.get("fee"), "at": v["checked_at"]}
+    return out
 
 
 def gold_rules():

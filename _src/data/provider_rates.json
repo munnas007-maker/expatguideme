@@ -1,0 +1,5 @@
+{
+  "_help": "Rates a person has checked in each provider's own app. Never type a guess here. Format: rates -> \"SAR-INR\" -> provider id -> {rate, fee, checked_at}. rate = how many INR for 1 SAR; fee in the sending currency (null if not checked); checked_at in UTC like 2026-11-14T06:30:00Z. Rows older than max_age_hours or more than 5% away from the market rate are removed automatically. If provider_rates_csv is set in site.json, the published Google Sheet replaces this list every 2 hours (columns: from, to, provider, rate, fee, checked_at).",
+  "max_age_hours": 48,
+  "rates": {}
+}
