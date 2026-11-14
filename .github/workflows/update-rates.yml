@@ -48,6 +48,8 @@ jobs:
       - name: Fetch latest rates, gold and checked provider rates
         if: github.event_name != 'push'
         run: python3 scripts/update_rates.py
+      - name: Check data files
+        run: python3 scripts/validate_data.py
       - name: Build all languages
         run: NODE_PATH=$PWD/node_modules python3 _src/build.py
       - name: Save new data to the repository

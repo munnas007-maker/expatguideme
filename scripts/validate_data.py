@@ -101,8 +101,8 @@ def check_remit(errs):
                 errs.append(f"{where}: no name")
             if p.get("type") not in REMIT_TYPES:
                 errs.append(f"{where}: type must be one of {sorted(REMIT_TYPES)}")
-            if not is_https(p.get("url")):
-                errs.append(f"{where}: url must be an https link")
+            if p.get("url") and not is_https(p.get("url")):
+                errs.append(f"{where}: url must be empty (not verified yet) or an https link")
             offer = p.get("offer")
             if offer is not None and not (isinstance(offer, dict) and offer.get("text") and is_time(offer.get("checked_at"))):
                 errs.append(f"{where}: offer must be null or {{text, url, checked_at}}")

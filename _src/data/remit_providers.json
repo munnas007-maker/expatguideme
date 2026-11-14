@@ -92,7 +92,7 @@
     "id": "wallstreet",
     "name": "Wall Street Exchange",
     "type": "exchange",
-    "url": ""
+    "url": "https://www.wallstreet.ae/"
    },
    {
     "id": "wu",
@@ -150,13 +150,13 @@
     "id": "aldar",
     "name": "Al Dar for Exchange Works",
     "type": "exchange",
-    "url": ""
+    "url": "https://www.aldarexchange.com/"
    },
    {
     "id": "alzaman",
     "name": "Al Zaman Exchange",
     "type": "exchange",
-    "url": ""
+    "url": "https://alzamanexchange.com.qa/"
    },
    {
     "id": "lulu",
