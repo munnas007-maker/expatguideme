@@ -474,7 +474,7 @@
 
   /* ---------- Trend charts (Chart.js, loaded only when a chart is shown) ---------- */
   var chartLib = null, histP = null;
-  var CHART_SRC = "https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js";
+  var CHART_SRC = "https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.js";
   var USD_PEG = { SAR: 3.75, AED: 3.6725, QAR: 3.64, OMR: 0.3845, BHD: 0.376, USD: 1 };
   var ECB = { INR: 1, PHP: 1, IDR: 1, EUR: 1, GBP: 1, NPR: 1 };
   function loadChart() {
@@ -581,15 +581,21 @@
       links.forEach(function (a) {
         a.addEventListener("click", function (e) {
           var el = document.getElementById(a.getAttribute("href").slice(1)); if (!el) return;
-          e.preventDefault(); var y = el.getBoundingClientRect().top + window.scrollY - (nav.offsetHeight + 70);
+          e.preventDefault(); var y = el.getBoundingClientRect().top + window.scrollY - (nav.getBoundingClientRect().bottom - nav.getBoundingClientRect().top) - (document.querySelector(".site-header") || nav).offsetHeight - 8;
           window.scrollTo({ top: y, behavior: "smooth" }); mark(el.id);
         });
       });
-      if ("IntersectionObserver" in window) {
-        var io = new IntersectionObserver(function (en) { en.forEach(function (x) { if (x.isIntersecting) mark(x.target.id); }); }, { rootMargin: "-40% 0px -55% 0px" });
-        secs.forEach(function (s) { if (s) io.observe(s); });
+      // Highlight the last section whose top has passed just below the tab bar
+      var ticking = false;
+      function onScroll() {
+        ticking = false;
+        var line = nav.getBoundingClientRect().bottom + 24, cur = secs[0];
+        secs.forEach(function (s) { if (s && s.getBoundingClientRect().top <= line) cur = s; });
+        if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) cur = secs[secs.length - 1] || cur;
+        if (cur) mark(cur.id);
       }
-      if (secs[0]) mark(secs[0].id);
+      window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+      onScroll();
     });
   }
 
