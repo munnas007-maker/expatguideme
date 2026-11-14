@@ -4,63 +4,139 @@
   "sa": [
    {
     "id": "stcbank",
-    "name": "STC Bank",
+    "name": "STC Bank (STC Pay)",
     "type": "digitalBank",
-    "url": "https://www.stcbank.com.sa/"
+    "url": "https://stcbank.com.sa/en/web/guest/international-transfer",
+    "offer": null
    },
    {
     "id": "urpay",
     "name": "urpay",
     "type": "wallet",
-    "url": "https://www.urpay.com.sa/"
+    "url": "https://urpay.com.sa/en",
+    "offer": {
+     "text": "Zero fee on transfers to any bank account in Pakistan (min. SAR 375)",
+     "url": "https://urpay.com.sa/en/pakistan-transfer",
+     "checked_at": "2026-11-14T12:51:25Z"
+    }
    },
    {
     "id": "barq",
     "name": "Barq",
     "type": "wallet",
-    "url": ""
+    "url": "https://barq.com/international-transfer/",
+    "offer": null
    },
    {
     "id": "enjaz",
-    "name": "Enjaz (Bank AlBilad)",
+    "name": "Enjaz",
     "type": "bankRemit",
-    "url": "https://www.enjaz.com/"
+    "url": "https://www.enjaz.com/en/transfers",
+    "offer": null
    },
    {
     "id": "tahweel",
     "name": "Tahweel Al Rajhi",
     "type": "bankRemit",
-    "url": "https://www.tahweelalrajhi.com.sa/"
+    "url": "https://www.tahweelalrajhi.com.sa/",
+    "offer": {
+     "text": "Tahweel Wheel: every international transfer in the Al Rajhi app enters a prize draw (until 31 Dec 2026)",
+     "url": "https://www.alrajhibank.com.sa/en/Personal/Offers/CardsOffers/Tahweel/tahweel-wheel",
+     "checked_at": "2026-11-14T12:51:25Z"
+    }
    },
    {
     "id": "snbquickpay",
-    "name": "SNB QuickPay",
+    "name": "SNB QuickPay / NEO (SNB)",
     "type": "bankRemit",
-    "url": "https://www.alahli.com/"
+    "url": "https://www.alahli.com/en/pages/personal-banking/finance/payments-and-transfers",
+    "offer": null
    },
    {
-    "id": "tiqmo",
-    "name": "Tiqmo",
+    "id": "alinmapay",
+    "name": "Alinma Pay",
     "type": "wallet",
-    "url": "https://tiqmo.com/"
+    "url": "https://www.alinmapay.com.sa/en/",
+    "offer": null
+   },
+   {
+    "id": "alinma",
+    "name": "Alinma Bank",
+    "type": "bankRemit",
+    "url": "https://www.alinma.com/en/retail/digital-channels/other-services/alinma-transfers",
+    "offer": null
+   },
+   {
+    "id": "d360",
+    "name": "D360 Bank",
+    "type": "digitalBank",
+    "url": "https://d360.com/en/personal/international-transfers",
+    "offer": {
+     "text": "SAR 10 cashback on transfers to Pakistan of SAR 750 or more, once a month (until 31 Dec 2026)",
+     "url": "https://d360.com/en/offers/pakistan-offer",
+     "checked_at": "2026-11-14T12:51:25Z"
+    }
+   },
+   {
+    "id": "enbdksa",
+    "name": "Emirates NBD KSA (DirectRemit)",
+    "type": "bankRemit",
+    "url": "https://www.emiratesnbd.com.sa/en/fx/directremit",
+    "offer": {
+     "text": "DirectRemit: zero fee on transfers to any bank account in India",
+     "url": "https://www.emiratesnbd.com.sa/en/fx/directremit",
+     "checked_at": "2026-11-14T12:51:25Z"
+    }
    },
    {
     "id": "mobilypay",
     "name": "Mobily Pay",
     "type": "wallet",
-    "url": "https://www.mobily.com.sa/"
+    "url": "https://mobilypay.sa/en/services.html",
+    "offer": {
+     "text": "Free international transfer fee on larger transfers via MoneyGram (until 30 Nov 2026)",
+     "url": "https://mobilypay.sa/en/offers/offer-56.html",
+     "checked_at": "2026-11-14T12:51:25Z"
+    }
+   },
+   {
+    "id": "friendipay",
+    "name": "FRiENDi PAY",
+    "type": "wallet",
+    "url": "https://friendipay.sa/en/features/",
+    "offer": {
+     "text": "Your first international transfer is free",
+     "url": "https://friendipay.sa/en/features/",
+     "checked_at": "2026-11-14T12:51:25Z"
+    }
+   },
+   {
+    "id": "tiqmo",
+    "name": "Tiqmo",
+    "type": "wallet",
+    "url": "https://tiqmo.com/",
+    "offer": null
+   },
+   {
+    "id": "binyalla",
+    "name": "Bin Yalla Exchange",
+    "type": "exchange",
+    "url": "",
+    "offer": null
    },
    {
     "id": "fawri",
     "name": "Fawri (Bank AlJazira)",
     "type": "bankRemit",
-    "url": "https://www.bankaljazira.com/"
+    "url": "https://www.bankaljazira.com/fawri-en",
+    "offer": null
    },
    {
     "id": "wu",
-    "name": "Western Union (Ersal)",
+    "name": "Western Union",
     "type": "global",
-    "url": "https://www.westernunion.com/"
+    "url": "https://www.westernunion.com/sa/en/home.html",
+    "offer": null
    }
   ],
   "ae": [
@@ -68,49 +144,108 @@
     "id": "alansari",
     "name": "Al Ansari Exchange",
     "type": "exchange",
-    "url": "https://alansariexchange.com/"
+    "url": "https://alansariexchange.com/",
+    "offer": {
+     "text": "First transfer on the Al Ansari app is free for new customers (min. AED 50)",
+     "url": "https://alansariexchange.com/promotion/first-app-transfer-free/",
+     "checked_at": "2026-11-14T12:51:25Z"
+    }
    },
    {
     "id": "lulu",
     "name": "LuLu Exchange",
     "type": "exchange",
-    "url": "https://luluexchange.com/"
+    "url": "https://luluexchange.com/",
+    "offer": {
+     "text": "Unlimited free transfers on the LuLu Money app to India, Pakistan, Bangladesh, the Philippines, Nepal and more (until 31 Mar 2027)",
+     "url": "https://luluexchange.com/promotion/unlimited-free-transfer/",
+     "checked_at": "2026-11-14T12:51:25Z"
+    }
    },
    {
     "id": "alfardan",
     "name": "Al Fardan Exchange",
     "type": "exchange",
-    "url": "https://alfardanexchange.com/"
+    "url": "https://alfardanexchange.com/money-transfer",
+    "offer": null
    },
    {
     "id": "gccexchange",
     "name": "GCC Exchange",
     "type": "exchange",
-    "url": "https://gccexchange.com/"
+    "url": "https://www.gccexchange.com/",
+    "offer": null
    },
    {
-    "id": "wallstreet",
-    "name": "Wall Street Exchange",
+    "id": "alrostamani",
+    "name": "Al Rostamani International Exchange",
     "type": "exchange",
-    "url": "https://www.wallstreet.ae/"
+    "url": "https://www.alrostamaniexchange.com/",
+    "offer": null
+   },
+   {
+    "id": "joyalukkas",
+    "name": "Joyalukkas Exchange",
+    "type": "exchange",
+    "url": "https://www.joyalukkasexchange.com/",
+    "offer": null
+   },
+   {
+    "id": "orient",
+    "name": "Orient Exchange",
+    "type": "exchange",
+    "url": "https://www.orientexchange.com/Orient/Remittance",
+    "offer": null
+   },
+   {
+    "id": "sharaf",
+    "name": "Sharaf Exchange",
+    "type": "exchange",
+    "url": "",
+    "offer": null
+   },
+   {
+    "id": "eandmoney",
+    "name": "e& money",
+    "type": "wallet",
+    "url": "https://www.eandmoney.com/en/",
+    "offer": null
+   },
+   {
+    "id": "botim",
+    "name": "Botim",
+    "type": "wallet",
+    "url": "https://botim.me/international-transfer",
+    "offer": null
    },
    {
     "id": "wu",
     "name": "Western Union",
     "type": "global",
-    "url": "https://www.westernunion.com/"
+    "url": "https://www.westernunion.com/ae/en/home.html",
+    "offer": {
+     "text": "Zero transfer fee to bank accounts in India and 50% off your first online transfer fee",
+     "url": "https://www.westernunion.com/ae/en/promotions.html",
+     "checked_at": "2026-11-14T12:51:25Z"
+    }
    },
    {
     "id": "remitly",
     "name": "Remitly",
     "type": "global",
-    "url": "https://www.remitly.com/"
+    "url": "https://www.remitly.com/ae/en",
+    "offer": {
+     "text": "New customers: no fees and a special rate on the first transfer (until 31 Jan 2027)",
+     "url": "https://www.remitly.com/ae/en/india",
+     "checked_at": "2026-11-14T12:51:25Z"
+    }
    },
    {
     "id": "wise",
     "name": "Wise",
     "type": "global",
-    "url": "https://wise.com/"
+    "url": "https://wise.com/ae/",
+    "offer": null
    }
   ],
   "kw": [
@@ -118,31 +253,79 @@
     "id": "almulla",
     "name": "Al Mulla Exchange",
     "type": "exchange",
-    "url": "https://www.almullaexchange.com/"
+    "url": "https://www.almullaexchange.com/",
+    "offer": null
    },
    {
     "id": "bec",
     "name": "Bahrain Exchange Company (BEC)",
     "type": "exchange",
-    "url": "https://www.bec.com.kw/"
+    "url": "https://www.bec.com.kw/",
+    "offer": null
+   },
+   {
+    "id": "muzaini",
+    "name": "Al Muzaini Exchange",
+    "type": "exchange",
+    "url": "https://www.muzaini.com/",
+    "offer": null
    },
    {
     "id": "uaeexchangekw",
-    "name": "UAE Exchange Kuwait",
+    "name": "UAE Exchange Centre Kuwait",
     "type": "exchange",
-    "url": ""
+    "url": "https://www.uaeexchange.com.kw/",
+    "offer": null
    },
    {
     "id": "lulu",
     "name": "LuLu Exchange Kuwait",
     "type": "exchange",
-    "url": "https://luluexchange.com/"
+    "url": "https://luluexchange.com/kuwait/",
+    "offer": {
+     "text": "LuLu Money app rewards: KWD 0.5 in points on every transfer, KWD 1.5 on a new user's first transfer",
+     "url": "https://luluexchange.com/kuwait/promotion/lulu-money-rewards-program/",
+     "checked_at": "2026-11-14T12:51:25Z"
+    }
+   },
+   {
+    "id": "cityintl",
+    "name": "City International Exchange",
+    "type": "exchange",
+    "url": "",
+    "offer": null
+   },
+   {
+    "id": "dollarco",
+    "name": "Dollarco Exchange",
+    "type": "exchange",
+    "url": "",
+    "offer": null
+   },
+   {
+    "id": "joyalukkas",
+    "name": "Joyalukkas Exchange Kuwait",
+    "type": "exchange",
+    "url": "https://www.joyalukkasexchange.com/",
+    "offer": null
+   },
+   {
+    "id": "kieco",
+    "name": "Kuwait India International Exchange (KIECO)",
+    "type": "exchange",
+    "url": "https://kiecokw.com/",
+    "offer": null
    },
    {
     "id": "wu",
     "name": "Western Union",
     "type": "global",
-    "url": "https://www.westernunion.com/"
+    "url": "https://www.westernunion.com/kw/en/home.html",
+    "offer": {
+     "text": "50% off your first online transfer fee",
+     "url": "https://www.westernunion.com/kw/en/promotions.html",
+     "checked_at": "2026-11-14T12:51:25Z"
+    }
    }
   ],
   "qa": [
@@ -150,37 +333,82 @@
     "id": "aldar",
     "name": "Al Dar for Exchange Works",
     "type": "exchange",
-    "url": "https://www.aldarexchange.com/"
+    "url": "https://aldarexchange.com/en/",
+    "offer": null
    },
    {
     "id": "alzaman",
     "name": "Al Zaman Exchange",
     "type": "exchange",
-    "url": "https://alzamanexchange.com.qa/"
-   },
-   {
-    "id": "lulu",
-    "name": "LuLu Exchange Qatar",
-    "type": "exchange",
-    "url": "https://luluexchange.com/"
+    "url": "https://alzamanexchange.com.qa/",
+    "offer": null
    },
    {
     "id": "alfardan",
     "name": "Alfardan Exchange Qatar",
     "type": "exchange",
-    "url": "https://www.alfardanexchange.com.qa/"
+    "url": "https://www.alfardanexchange.com.qa/",
+    "offer": null
+   },
+   {
+    "id": "lulu",
+    "name": "LuLu Exchange Qatar",
+    "type": "exchange",
+    "url": "https://luluexchange.com/qatar/",
+    "offer": null
+   },
+   {
+    "id": "gulfexchange",
+    "name": "Gulf Exchange",
+    "type": "exchange",
+    "url": "https://gulfexchange.com.qa/en/",
+    "offer": null
+   },
+   {
+    "id": "trustexchange",
+    "name": "Trust Exchange",
+    "type": "exchange",
+    "url": "https://trustexchange.qa/",
+    "offer": null
+   },
+   {
+    "id": "almana",
+    "name": "Al Mana Exchange",
+    "type": "exchange",
+    "url": "https://almanaexchange.com/products-and-services/remittance/",
+    "offer": null
+   },
+   {
+    "id": "dohaexchange",
+    "name": "Doha Exchange",
+    "type": "exchange",
+    "url": "",
+    "offer": null
+   },
+   {
+    "id": "cityexchange",
+    "name": "City Exchange",
+    "type": "exchange",
+    "url": "",
+    "offer": null
    },
    {
     "id": "ooredoo",
     "name": "Ooredoo Money",
     "type": "wallet",
-    "url": "https://www.ooredoo.qa/"
+    "url": "https://www.ooredoomoney.qa/",
+    "offer": {
+     "text": "Zero fee when you send QAR 5,000 or more (Send Money promotion)",
+     "url": "https://www.ooredoomoney.qa/",
+     "checked_at": "2026-11-14T12:51:25Z"
+    }
    },
    {
     "id": "wu",
     "name": "Western Union",
     "type": "global",
-    "url": "https://www.westernunion.com/"
+    "url": "https://www.westernunion.com/qa/en/home.html",
+    "offer": null
    }
   ],
   "om": [
@@ -188,69 +416,168 @@
     "id": "lulu",
     "name": "LuLu Exchange Oman",
     "type": "exchange",
-    "url": "https://luluexchange.com/"
+    "url": "https://luluexchange.com.om/",
+    "offer": null
    },
    {
     "id": "unimoni",
     "name": "Unimoni Oman",
     "type": "exchange",
-    "url": ""
+    "url": "https://www.unimoni.om/",
+    "offer": null
    },
    {
     "id": "modern",
     "name": "Modern Exchange",
     "type": "exchange",
-    "url": ""
+    "url": "https://www.modernexchange.com.om/en",
+    "offer": null
    },
    {
     "id": "purshottam",
     "name": "Purshottam Kanji Exchange",
     "type": "exchange",
-    "url": ""
+    "url": "https://www.pkexchange.com.om/",
+    "offer": null
+   },
+   {
+    "id": "globalmoney",
+    "name": "Global Money Exchange",
+    "type": "exchange",
+    "url": "https://globalmoneyexchange.om/",
+    "offer": null
+   },
+   {
+    "id": "hamdan",
+    "name": "Hamdan Exchange",
+    "type": "exchange",
+    "url": "https://hamdanexchange.om/",
+    "offer": null
+   },
+   {
+    "id": "gulfoverseas",
+    "name": "Gulf Overseas Exchange",
+    "type": "exchange",
+    "url": "",
+    "offer": null
+   },
+   {
+    "id": "aljadeed",
+    "name": "Al Jadeed Exchange",
+    "type": "exchange",
+    "url": "",
+    "offer": null
+   },
+   {
+    "id": "joyalukkas",
+    "name": "Joyalukkas Exchange Oman",
+    "type": "exchange",
+    "url": "https://www.joyalukkasexchange.com/",
+    "offer": null
    },
    {
     "id": "omantel",
-    "name": "Omantel Money",
+    "name": "OMPAY wallet (Omantel)",
     "type": "wallet",
-    "url": ""
+    "url": "https://ompay.om/wallet",
+    "offer": null
+   },
+   {
+    "id": "ooredoo",
+    "name": "walletii by Ooredoo",
+    "type": "wallet",
+    "url": "",
+    "offer": null
    },
    {
     "id": "wu",
     "name": "Western Union",
     "type": "global",
-    "url": "https://www.westernunion.com/"
+    "url": "https://www.westernunion.com/om/en/send-money-to-india.html",
+    "offer": null
    }
   ],
   "bh": [
    {
     "id": "bfc",
-    "name": "Bahrain Financing Company (BFC)",
+    "name": "BFC (Al Ansari group)",
     "type": "exchange",
-    "url": "https://www.bfc.com.bh/"
+    "url": "https://www.bfc.com.bh/personal/international-money-transfer/",
+    "offer": null
    },
    {
     "id": "lulu",
     "name": "LuLu Exchange Bahrain",
     "type": "exchange",
-    "url": "https://luluexchange.com/"
-   },
-   {
-    "id": "beyon",
-    "name": "Beyon Money",
-    "type": "wallet",
-    "url": ""
+    "url": "https://luluexchange.com/bahrain/services/money-transfer/",
+    "offer": null
    },
    {
     "id": "nec",
     "name": "NEC Remit",
     "type": "exchange",
-    "url": ""
+    "url": "https://www.necremit.com/",
+    "offer": null
+   },
+   {
+    "id": "zenj",
+    "name": "Zenj Exchange",
+    "type": "exchange",
+    "url": "https://zenjex.com/Services.aspx",
+    "offer": null
+   },
+   {
+    "id": "biieco",
+    "name": "Bahrain India International Exchange (BIIECO)",
+    "type": "exchange",
+    "url": "",
+    "offer": null
+   },
+   {
+    "id": "beyon",
+    "name": "Beyon Money",
+    "type": "wallet",
+    "url": "https://www.beyonmoney.com/",
+    "offer": null
+   },
+   {
+    "id": "benefitpay",
+    "name": "BenefitPay",
+    "type": "wallet",
+    "url": "",
+    "offer": null
+   },
+   {
+    "id": "stcpaybh",
+    "name": "stc pay Bahrain",
+    "type": "wallet",
+    "url": "",
+    "offer": null
+   },
+   {
+    "id": "bbk",
+    "name": "BBK",
+    "type": "bankRemit",
+    "url": "https://www.bbkonline.com/remittance/",
+    "offer": null
+   },
+   {
+    "id": "nbb",
+    "name": "National Bank of Bahrain (NBB)",
+    "type": "bankRemit",
+    "url": "",
+    "offer": null
    },
    {
     "id": "wu",
     "name": "Western Union",
     "type": "global",
-    "url": "https://www.westernunion.com/"
+    "url": "https://www.westernunion.com/bh/en/home.html",
+    "offer": {
+     "text": "Zero transfer fee to bank accounts and cash pickup in Pakistan",
+     "url": "https://www.westernunion.com/bh/en/promotions.html",
+     "checked_at": "2026-11-14T12:51:25Z"
+    }
    }
   ]
  }
