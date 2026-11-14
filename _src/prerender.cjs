@@ -21,6 +21,23 @@ const RTL = { ar: true, ur: true };
 const siteJs = fs.readFileSync(path.join(SITE, "assets", "site.js"), "utf8");
 const pages = JSON.parse(process.argv[2] || "[]");
 
+// FAQPage structured data built from the visible questions on the page, in the page's language.
+function faqSchema(A) {
+  A.querySelectorAll('script[data-faq-schema]').forEach((n) => n.remove());
+  const items = [];
+  A.querySelectorAll(".faq details").forEach((d) => {
+    const q = ((d.querySelector("summary") || {}).textContent || "").replace(/\s+/g, " ").trim();
+    const a = ((d.querySelector(".answer") || {}).textContent || "").replace(/\s+/g, " ").trim();
+    if (q && a) items.push({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } });
+  });
+  if (!items.length) return;
+  const sc = A.createElement("script");
+  sc.setAttribute("type", "application/ld+json");
+  sc.setAttribute("data-faq-schema", "");
+  sc.textContent = JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: items }).replace(/</g, "\\u003c");
+  A.head.appendChild(sc);
+}
+
 function sleep(ms) { return new Promise((r) => setTimeout(r, ms)); }
 
 function shorten(text, max) {
@@ -46,7 +63,7 @@ async function render(file, pagePath, lang) {
   const live = new JSDOM(tagged, {
     runScripts: "dangerously",
     pretendToBeVisual: true,
-    url: SITE_URL + "/" + lang + pagePath,
+    url: SITE_URL + (lang === "en" ? "" : "/" + lang) + pagePath,
     virtualConsole: vc,
     beforeParse(w) {
       const store = {};
@@ -73,27 +90,32 @@ async function render(file, pagePath, lang) {
   });
   A.querySelectorAll("[data-pr]").forEach((el) => el.removeAttribute("data-pr"));
 
-  const html = A.documentElement;
-  html.setAttribute("lang", lang);
-  html.setAttribute("dir", RTL[lang] ? "rtl" : "ltr");
+  faqSchema(A);
+  if (lang === "en") {
+    fs.writeFileSync(path.join(SITE, file), clean.serialize());
+  } else {
+    const html = A.documentElement;
+    html.setAttribute("lang", lang);
+    html.setAttribute("dir", RTL[lang] ? "rtl" : "ltr");
 
-  const h1 = (B.querySelector("h1") || {}).textContent || "";
-  const lead = (B.querySelector(".lead") || B.querySelector(".lang-note") || {}).textContent || h1;
-  if (h1.trim()) A.title = shorten(h1, 70) + " | ExpatGuideME";
-  const desc = A.querySelector('meta[name="description"]');
-  if (desc && lead.trim()) desc.setAttribute("content", shorten(lead, 158));
-  const canon = A.querySelector('link[rel="canonical"]');
-  if (canon) canon.setAttribute("href", SITE_URL + "/" + lang + pagePath);
+    const h1 = (B.querySelector("h1") || {}).textContent || "";
+    const lead = (B.querySelector(".lead") || B.querySelector(".lang-note") || {}).textContent || h1;
+    if (h1.trim()) A.title = shorten(h1, 70) + " | ExpatGuideME";
+    const desc = A.querySelector('meta[name="description"]');
+    if (desc && lead.trim()) desc.setAttribute("content", shorten(lead, 158));
+    const canon = A.querySelector('link[rel="canonical"]');
+    if (canon) canon.setAttribute("href", SITE_URL + "/" + lang + pagePath);
 
-  A.querySelectorAll("a[href^='/']").forEach((a) => {
-    const h = a.getAttribute("href");
-    if (/^\/(assets|api)\//.test(h) || /\.(xml|txt|png|svg|ico)$/.test(h)) return;
-    a.setAttribute("href", "/" + lang + h);
-  });
+    A.querySelectorAll("a[href^='/']").forEach((a) => {
+      const h = a.getAttribute("href");
+      if (/^\/(assets|api)\//.test(h) || /\.(xml|txt|png|svg|ico)$/.test(h)) return;
+      a.setAttribute("href", "/" + lang + h);
+    });
 
-  const outDir = path.join(SITE, lang);
-  fs.mkdirSync(outDir, { recursive: true });
-  fs.writeFileSync(path.join(outDir, file), clean.serialize());
+    const outDir = path.join(SITE, lang);
+    fs.mkdirSync(outDir, { recursive: true });
+    fs.writeFileSync(path.join(outDir, file), clean.serialize());
+  }
   live.window.close();
   clean.window.close();
 }
@@ -101,6 +123,7 @@ async function render(file, pagePath, lang) {
 (async () => {
   for (const p of pages) {
     for (const lang of LANGS) await render(p.file, p.path, lang);
-    console.log("translated", p.file, "→", LANGS.join(", "));
+    await render(p.file, p.path, "en");
+    console.log("translated", p.file, "→", LANGS.join(", "), "+ en");
   }
 })().catch((e) => { console.error(e.message || e); process.exit(1); });

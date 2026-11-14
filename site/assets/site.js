@@ -19,7 +19,8 @@
     ml: { name: "മലയാളം", dir: "ltr", locale: "ml-IN" },
     ne: { name: "नेपाली", dir: "ltr", locale: "ne-NP" },
     ur: { name: "اردو", dir: "rtl", locale: "ur-PK" },
-    bn: { name: "বাংলা", dir: "ltr", locale: "bn-BD" }
+    bn: { name: "বাংলা", dir: "ltr", locale: "bn-BD" },
+    tl: { name: "Tagalog", dir: "ltr", locale: "fil-PH" }
   };
 
   var S = {
@@ -36,7 +37,7 @@
       cookieText: "We use your browser's storage to remember your language and settings. Our advertising partners, including Google, may use cookies to show ads.",
       cookieLearn: "Privacy policy", cookieOk: "OK", lastUpdated: "Last updated:",
       disclaimer: "This is an independent website. It is not connected to any government office or bank.",
-      copy: "Copy", copied: "Copied ✓", navEos: "End of service", navId: "ID & residency", navFamily: "Family cost", navEmbassy: "Embassy services", navAbout: "About us", navTerms: "Terms of use", navAffiliate: "Affiliate disclosure", footerTools: "Tools", footerSite: "Website", ad: "Advertisement"
+      copy: "Copy", copied: "Copied ✓", navEos: "End of service", navId: "ID & residency", navFamily: "Family cost", navEmbassy: "Embassy services", navAbout: "About us", navTerms: "Terms of use", navAffiliate: "Affiliate disclosure", footerTools: "Tools", footerSite: "Website", ad: "Advertisement", pfExQ: "What is today's riyal rate to rupee, taka or peso?", pfExA: "This page shows the live market rate from the Saudi riyal, UAE dirham, Kuwaiti dinar, Qatari riyal, Omani rial and Bahraini dinar to your home currency. Whether you search for “aaj ka riyal rate”, “innathe riyal rate”, “ajker riyal rate” or “palitan ng riyal to peso”, the numbers above are today's rate.", pfSendQ: "Which app gives the best riyal rate today for sending money home?", pfSendA: "Choose your route above, for example Saudi Arabia to India, Bangladesh, Pakistan, Nepal or the Philippines. The table sorts every bank, exchange and wallet by how much your family receives, using rates shared by other expats today.", pfEosQ: "How do I use the Saudi end of service calculator?", pfEosA: "Choose Saudi Arabia (or your Gulf country), enter your basic salary, allowances and years of service, and say whether you resigned. The calculator applies Articles 84 and 85 of the Saudi Labor Law and shows your gratuity in seconds.", pfIdQ: "How do I check my iqama expiry date?", pfIdA: "In Saudi Arabia, open the Absher app: your iqama number and expiry date are on the dashboard. For Kuwait use Sahel, for Qatar use Metrash, and for Oman and Bahrain see the guide above. You can also add a renewal reminder to your phone below.", pfFamQ: "How much does it cost to live with family in Saudi Arabia per month?", pfFamA: "It depends on rent, school fees and the number of dependents. Enter your own costs in the calculator above: it adds the Saudi dependent fee of SAR 400 per person per month automatically and shows what is left to save.", pfEmbQ: "How do I renew my passport while working in the Gulf?", pfEmbA: "Choose your nationality and the country you live in above. You will see the official embassy website, where to apply, and links for passport renewal, police certificates and attestation."
     },
     ar: {
       skip: "انتقل إلى المحتوى", navHome: "الرئيسية", navExchange: "سعر الصرف", navSend: "تحويل الأموال", navContact: "اتصل بنا", navPrivacy: "الخصوصية",
@@ -51,7 +52,7 @@
       cookieText: "نستخدم تخزين المتصفح لتذكّر لغتك وإعداداتك، وقد يستخدم شركاؤنا في الإعلانات، ومنهم جوجل، ملفات تعريف الارتباط لعرض الإعلانات.",
       cookieLearn: "سياسة الخصوصية", cookieOk: "موافق", lastUpdated: "آخر تحديث:",
       disclaimer: "هذا موقع مستقل، ولا علاقة له بأي جهة حكومية أو بنك.",
-      copy: "نسخ", copied: "تم النسخ ✓", navEos: "نهاية الخدمة", navId: "الهوية والإقامة", navFamily: "تكلفة العائلة", navEmbassy: "خدمات السفارات", navAbout: "من نحن", navTerms: "شروط الاستخدام", navAffiliate: "الإفصاح عن روابط الشراكة", footerTools: "الأدوات", footerSite: "الموقع", ad: "إعلان"
+      copy: "نسخ", copied: "تم النسخ ✓", navEos: "نهاية الخدمة", navId: "الهوية والإقامة", navFamily: "تكلفة العائلة", navEmbassy: "خدمات السفارات", navAbout: "من نحن", navTerms: "شروط الاستخدام", navAffiliate: "الإفصاح عن روابط الشراكة", footerTools: "الأدوات", footerSite: "الموقع", ad: "إعلان", pfExQ: "كم سعر الريال اليوم مقابل الروبية أو التاكا أو البيزو؟", pfExA: "تعرض هذه الصفحة سعر السوق المباشر من الريال السعودي والدرهم الإماراتي والدينار الكويتي والريال القطري والريال العُماني والدينار البحريني إلى عملة بلدك، والأرقام أعلاه هي سعر اليوم.", pfSendQ: "أي تطبيق يعطي أفضل سعر للريال اليوم لتحويل الأموال؟", pfSendA: "اختر مسارك أعلاه، مثل السعودية إلى الهند أو بنغلاديش أو باكستان أو نيبال أو الفلبين. يرتّب الجدول كل بنك وشركة صرافة ومحفظة حسب المبلغ الذي تستلمه عائلتك، بأسعار شاركها مقيمون آخرون اليوم.", pfEosQ: "كيف أحسب مكافأة نهاية الخدمة في السعودية؟", pfEosA: "اختر السعودية أو دولتك الخليجية، وأدخل الراتب الأساسي والبدلات وسنوات الخدمة، وحدّد إن كنت قد استقلت. تطبّق الحاسبة المادتين ٨٤ و٨٥ من نظام العمل السعودي وتعرض المكافأة فورًا.", pfIdQ: "كيف أعرف تاريخ انتهاء الإقامة؟", pfIdA: "في السعودية افتح تطبيق أبشر، وستجد رقم الإقامة وتاريخ انتهائها في لوحة المعلومات. وفي الكويت استخدم سهل، وفي قطر مطراش، ولعُمان والبحرين راجع الدليل أعلاه. ويمكنك إضافة تذكير بالتجديد إلى هاتفك.", pfFamQ: "كم تكلفة المعيشة مع العائلة في السعودية شهريًا؟", pfFamA: "يعتمد ذلك على الإيجار ورسوم المدارس وعدد المرافقين. أدخل تكاليفك في الحاسبة أعلاه، وستضيف رسوم المرافقين ٤٠٠ ريال شهريًا عن كل فرد تلقائيًا وتعرض ما يتبقى للادخار.", pfEmbQ: "كيف أجدد جوازي وأنا أعمل في الخليج؟", pfEmbA: "اختر جنسيتك والدولة التي تعيش فيها أعلاه، وسترى موقع السفارة الرسمي ومكان التقديم وروابط تجديد الجواز وشهادة حسن السيرة والتصديق."
     },
     hi: {
       skip: "मुख्य सामग्री पर जाएँ", navHome: "होम", navExchange: "एक्सचेंज रेट", navSend: "पैसे भेजें", navContact: "संपर्क", navPrivacy: "गोपनीयता",
@@ -66,7 +67,7 @@
       cookieText: "हम आपकी भाषा और सेटिंग्स याद रखने के लिए ब्राउज़र स्टोरेज का उपयोग करते हैं। Google समेत हमारे विज्ञापन पार्टनर विज्ञापन दिखाने के लिए कुकीज़ का उपयोग कर सकते हैं।",
       cookieLearn: "गोपनीयता नीति", cookieOk: "ठीक है", lastUpdated: "आख़िरी अपडेट:",
       disclaimer: "यह एक स्वतंत्र वेबसाइट है। इसका किसी सरकारी विभाग या बैंक से कोई संबंध नहीं है।",
-      copy: "कॉपी करें", copied: "कॉपी हो गया ✓", navEos: "सर्विस समाप्ति", navId: "आईडी और रेज़िडेंसी", navFamily: "परिवार का ख़र्च", navEmbassy: "दूतावास सेवाएँ", navAbout: "हमारे बारे में", navTerms: "उपयोग की शर्तें", navAffiliate: "एफ़िलिएट जानकारी", footerTools: "टूल", footerSite: "वेबसाइट", ad: "विज्ञापन"
+      copy: "कॉपी करें", copied: "कॉपी हो गया ✓", navEos: "सर्विस समाप्ति", navId: "आईडी और रेज़िडेंसी", navFamily: "परिवार का ख़र्च", navEmbassy: "दूतावास सेवाएँ", navAbout: "हमारे बारे में", navTerms: "उपयोग की शर्तें", navAffiliate: "एफ़िलिएट जानकारी", footerTools: "टूल", footerSite: "वेबसाइट", ad: "विज्ञापन", pfExQ: "आज का रियाल रेट (aaj ka riyal rate) क्या है?", pfExA: "यह पेज सऊदी रियाल, यूएई दिरहम, कुवैती दीनार, क़तरी रियाल, ओमानी रियाल और बहरीनी दीनार से भारतीय रुपये और दूसरी मुद्राओं का लाइव मार्केट रेट दिखाता है। ऊपर दिए नंबर आज का रेट हैं।", pfSendQ: "घर पैसे भेजने के लिए आज सबसे अच्छा रियाल रेट कौन-सा ऐप देता है?", pfSendA: "ऊपर अपना रूट चुनें, जैसे सऊदी अरब से भारत। टेबल हर बैंक, एक्सचेंज और वॉलेट को इस हिसाब से लगाती है कि परिवार को कितना मिलेगा, दूसरे प्रवासियों द्वारा आज साझा किए गए रेट के साथ।", pfEosQ: "सऊदी एंड ऑफ़ सर्विस का हिसाब (end of service hisab) कैसे निकालें?", pfEosA: "सऊदी अरब या अपना खाड़ी देश चुनें, बेसिक सैलरी, अलाउंस और सर्विस के साल डालें, और बताएँ कि इस्तीफ़ा दिया या नहीं। कैलकुलेटर सऊदी लेबर लॉ की धारा 84 और 85 लागू करके तुरंत ग्रेच्युटी दिखाता है।", pfIdQ: "इक़ामा की एक्सपायरी डेट कैसे चेक करें?", pfIdA: "सऊदी अरब में Absher ऐप खोलें, डैशबोर्ड पर इक़ामा नंबर और एक्सपायरी डेट दिखती है। कुवैत में Sahel, क़तर में Metrash, और ओमान व बहरीन के लिए ऊपर की गाइड देखें। आप फ़ोन में रिमाइंडर भी जोड़ सकते हैं।", pfFamQ: "सऊदी में परिवार के साथ रहने का महीने का ख़र्च कितना है?", pfFamA: "यह किराया, स्कूल फ़ीस और डिपेंडेंट की संख्या पर निर्भर है। ऊपर कैलकुलेटर में अपने ख़र्च डालें, यह हर व्यक्ति के लिए SAR 400 महीना डिपेंडेंट फ़ीस अपने-आप जोड़ता है और बचत दिखाता है।", pfEmbQ: "खाड़ी में रहते हुए पासपोर्ट रिन्यू कैसे करें?", pfEmbA: "ऊपर अपनी नागरिकता और रहने का देश चुनें। आपको दूतावास की आधिकारिक वेबसाइट, आवेदन की जगह और पासपोर्ट, पुलिस सर्टिफ़िकेट व सत्यापन के लिंक दिखेंगे।"
     },
     ml: {
       skip: "പ്രധാന ഉള്ളടക്കത്തിലേക്ക് പോകുക", navHome: "ഹോം", navExchange: "വിനിമയ നിരക്ക്", navSend: "പണം അയക്കൽ", navContact: "ബന്ധപ്പെടുക", navPrivacy: "സ്വകാര്യത",
@@ -81,7 +82,7 @@
       cookieText: "നിങ്ങളുടെ ഭാഷയും ക്രമീകരണങ്ങളും ഓർത്തുവയ്ക്കാൻ ഞങ്ങൾ ബ്രൗസർ സ്റ്റോറേജ് ഉപയോഗിക്കുന്നു. Google ഉൾപ്പെടെയുള്ള ഞങ്ങളുടെ പരസ്യ പങ്കാളികൾ പരസ്യങ്ങൾ കാണിക്കാൻ കുക്കികൾ ഉപയോഗിച്ചേക്കാം.",
       cookieLearn: "സ്വകാര്യതാ നയം", cookieOk: "ശരി", lastUpdated: "അവസാനം പുതുക്കിയത്:",
       disclaimer: "ഇതൊരു സ്വതന്ത്ര വെബ്സൈറ്റാണ്. ഏതെങ്കിലും സർക്കാർ വകുപ്പുമായോ ബാങ്കുമായോ ഇതിന് ബന്ധമില്ല.",
-      copy: "കോപ്പി ചെയ്യുക", copied: "കോപ്പി ചെയ്തു ✓", navEos: "സർവീസ് ആനുകൂല്യം", navId: "ഐഡി, റെസിഡൻസി", navFamily: "കുടുംബച്ചെലവ്", navEmbassy: "എംബസി സേവനങ്ങൾ", navAbout: "ഞങ്ങളെക്കുറിച്ച്", navTerms: "ഉപയോഗ നിബന്ധനകൾ", navAffiliate: "അഫിലിയേറ്റ് വെളിപ്പെടുത്തൽ", footerTools: "ടൂളുകൾ", footerSite: "വെബ്സൈറ്റ്", ad: "പരസ്യം"
+      copy: "കോപ്പി ചെയ്യുക", copied: "കോപ്പി ചെയ്തു ✓", navEos: "സർവീസ് ആനുകൂല്യം", navId: "ഐഡി, റെസിഡൻസി", navFamily: "കുടുംബച്ചെലവ്", navEmbassy: "എംബസി സേവനങ്ങൾ", navAbout: "ഞങ്ങളെക്കുറിച്ച്", navTerms: "ഉപയോഗ നിബന്ധനകൾ", navAffiliate: "അഫിലിയേറ്റ് വെളിപ്പെടുത്തൽ", footerTools: "ടൂളുകൾ", footerSite: "വെബ്സൈറ്റ്", ad: "പരസ്യം", pfExQ: "ഇന്നത്തെ റിയാൽ റേറ്റ് (innathe riyal rate) എത്ര?", pfExA: "സൗദി റിയാൽ, യുഎഇ ദിർഹം, കുവൈത്ത് ദിനാർ, ഖത്തർ റിയാൽ, ഒമാൻ റിയാൽ, ബഹ്‌റൈൻ ദിനാർ എന്നിവയിൽ നിന്ന് ഇന്ത്യൻ രൂപയിലേക്കും മറ്റ് കറൻസികളിലേക്കുമുള്ള ലൈവ് മാർക്കറ്റ് നിരക്ക് ഈ പേജിൽ കാണാം. മുകളിലെ സംഖ്യകളാണ് ഇന്നത്തെ നിരക്ക്.", pfSendQ: "നാട്ടിലേക്ക് പണം അയക്കാൻ ഇന്ന് മികച്ച റിയാൽ റേറ്റ് ഏത് ആപ്പിൽ?", pfSendA: "മുകളിൽ നിങ്ങളുടെ റൂട്ട് തിരഞ്ഞെടുക്കുക, ഉദാഹരണത്തിന് സൗദി അറേബ്യ മുതൽ ഇന്ത്യ വരെ. മറ്റ് പ്രവാസികൾ ഇന്ന് പങ്കുവച്ച നിരക്കുകൾ ഉപയോഗിച്ച്, കുടുംബത്തിന് എത്ര ലഭിക്കും എന്ന ക്രമത്തിൽ ഓരോ ബാങ്കും എക്സ്ചേഞ്ചും വാലറ്റും പട്ടികയിൽ കാണാം.", pfEosQ: "സൗദി എൻഡ് ഓഫ് സർവീസ് കണക്ക് (end of service calculation) എങ്ങനെ?", pfEosA: "സൗദി അറേബ്യ അല്ലെങ്കിൽ നിങ്ങളുടെ ഗൾഫ് രാജ്യം തിരഞ്ഞെടുത്ത്, ബേസിക് ശമ്പളം, അലവൻസുകൾ, സർവീസ് വർഷങ്ങൾ എന്നിവ നൽകി, രാജിവച്ചോ എന്ന് തിരഞ്ഞെടുക്കുക. സൗദി തൊഴിൽ നിയമത്തിലെ ആർട്ടിക്കിൾ 84, 85 പ്രകാരം ഗ്രാറ്റുവിറ്റി ഉടൻ കാണിക്കും.", pfIdQ: "ഇഖാമ കാലാവധി എങ്ങനെ പരിശോധിക്കാം?", pfIdA: "സൗദിയിൽ Absher ആപ്പ് തുറക്കുക, ഡാഷ്ബോർഡിൽ ഇഖാമ നമ്പറും കാലാവധിയും കാണാം. കുവൈത്തിൽ Sahel, ഖത്തറിൽ Metrash, ഒമാൻ, ബഹ്‌റൈൻ എന്നിവയ്ക്ക് മുകളിലെ ഗൈഡ് നോക്കുക. ഫോണിൽ ഓർമ്മപ്പെടുത്തലും ചേർക്കാം.", pfFamQ: "സൗദിയിൽ കുടുംബത്തോടൊപ്പം താമസിക്കാൻ മാസം എത്ര ചെലവാകും?", pfFamA: "വാടക, സ്കൂൾ ഫീസ്, ഡിപെൻഡന്റുകളുടെ എണ്ണം എന്നിവ അനുസരിച്ചിരിക്കും. മുകളിലെ കാൽക്കുലേറ്ററിൽ നിങ്ങളുടെ ചെലവുകൾ നൽകുക; ഓരോരുത്തർക്കും മാസം SAR 400 ഡിപെൻഡന്റ് ഫീസ് സ്വയം ചേർത്ത് സമ്പാദ്യം കാണിക്കും.", pfEmbQ: "ഗൾഫിൽ ജോലി ചെയ്യുമ്പോൾ പാസ്പോർട്ട് എങ്ങനെ പുതുക്കാം?", pfEmbA: "മുകളിൽ നിങ്ങളുടെ പൗരത്വവും താമസിക്കുന്ന രാജ്യവും തിരഞ്ഞെടുക്കുക. എംബസിയുടെ ഔദ്യോഗിക വെബ്സൈറ്റ്, അപേക്ഷിക്കേണ്ട സ്ഥലം, പാസ്പോർട്ട്, പോലീസ് സർട്ടിഫിക്കറ്റ്, അറ്റസ്റ്റേഷൻ ലിങ്കുകൾ എന്നിവ കാണാം."
     },
     ne: {
       skip: "मुख्य सामग्रीमा जानुहोस्", navHome: "गृहपृष्ठ", navExchange: "विनिमय दर", navSend: "पैसा पठाउनुहोस्", navContact: "सम्पर्क", navPrivacy: "गोपनीयता",
@@ -96,7 +97,7 @@
       cookieText: "हामी तपाईंको भाषा र सेटिङहरू सम्झन ब्राउजर स्टोरेज प्रयोग गर्छौं। Google सहित हाम्रा विज्ञापन साझेदारहरूले विज्ञापन देखाउन कुकीज प्रयोग गर्न सक्छन्।",
       cookieLearn: "गोपनीयता नीति", cookieOk: "ठीक छ", lastUpdated: "पछिल्लो अपडेट:",
       disclaimer: "यो एक स्वतन्त्र वेबसाइट हो। यसको कुनै पनि सरकारी कार्यालय वा बैंकसँग सम्बन्ध छैन।",
-      copy: "कपी गर्नुहोस्", copied: "कपी भयो ✓", navEos: "सेवा समाप्ति", navId: "परिचयपत्र र रेसिडेन्सी", navFamily: "परिवार खर्च", navEmbassy: "दूतावास सेवा", navAbout: "हाम्रोबारे", navTerms: "प्रयोगका सर्तहरू", navAffiliate: "एफिलिएट जानकारी", footerTools: "टुलहरू", footerSite: "वेबसाइट", ad: "विज्ञापन"
+      copy: "कपी गर्नुहोस्", copied: "कपी भयो ✓", navEos: "सेवा समाप्ति", navId: "परिचयपत्र र रेसिडेन्सी", navFamily: "परिवार खर्च", navEmbassy: "दूतावास सेवा", navAbout: "हाम्रोबारे", navTerms: "प्रयोगका सर्तहरू", navAffiliate: "एफिलिएट जानकारी", footerTools: "टुलहरू", footerSite: "वेबसाइट", ad: "विज्ञापन", pfExQ: "आजको रियाल रेट (aajko riyal rate) कति छ?", pfExA: "यो पृष्ठले साउदी रियाल, युएई दिरहम, कुवेती दिनार, कतारी रियाल, ओमानी रियाल र बहराइनी दिनारबाट नेपाली रुपैयाँ र अन्य मुद्राको प्रत्यक्ष बजार दर देखाउँछ। माथिका अंक आजको दर हुन्।", pfSendQ: "घर पैसा पठाउन आज कुन एपले राम्रो रियाल रेट दिन्छ?", pfSendA: "माथि आफ्नो रुट छान्नुहोस्, जस्तै साउदी अरबदेखि नेपाल। अरू प्रवासीले आज साझा गरेका दरअनुसार, परिवारले कति पाउँछ भन्ने क्रममा हरेक बैंक, मनी एक्सचेन्ज र वालेट तालिकामा देखिन्छ।", pfEosQ: "साउदीमा सेवा समाप्ति (end of service) कसरी हिसाब गर्ने?", pfEosA: "साउदी अरब वा आफ्नो खाडी देश छान्नुहोस्, आधारभूत तलब, भत्ता र सेवा वर्ष राख्नुहोस्, र राजीनामा दिनुभएको हो कि होइन छान्नुहोस्। क्यालकुलेटरले साउदी श्रम कानुनको धारा ८४ र ८५ लागू गरी तुरुन्तै ग्र्याच्युटी देखाउँछ।", pfIdQ: "इकामाको म्याद कसरी जाँच्ने?", pfIdA: "साउदीमा Absher एप खोल्नुहोस्, ड्यासबोर्डमा इकामा नम्बर र म्याद देखिन्छ। कुवेतमा Sahel, कतारमा Metrash, र ओमान तथा बहराइनका लागि माथिको गाइड हेर्नुहोस्। फोनमा रिमाइन्डर पनि थप्न सक्नुहुन्छ।", pfFamQ: "साउदीमा परिवारसँग बस्न महिनाको कति खर्च लाग्छ?", pfFamA: "यो भाडा, स्कूल शुल्क र आश्रितको सङ्ख्यामा भर पर्छ। माथिको क्यालकुलेटरमा आफ्नो खर्च राख्नुहोस्; यसले हरेक व्यक्तिका लागि मासिक SAR 400 आश्रित शुल्क आफैँ जोड्छ र बचत देखाउँछ।", pfEmbQ: "खाडीमा काम गर्दा राहदानी कसरी नवीकरण गर्ने?", pfEmbA: "माथि आफ्नो नागरिकता र बस्ने देश छान्नुहोस्। दूतावासको आधिकारिक वेबसाइट, आवेदन दिने ठाउँ, र राहदानी, प्रहरी प्रमाणपत्र र प्रमाणीकरणका लिङ्क देखिन्छन्।"
     },
     ur: {
       skip: "مواد پر جائیں", navHome: "ہوم", navExchange: "شرحِ تبادلہ", navSend: "رقم بھیجیں", navContact: "رابطہ", navPrivacy: "رازداری",
@@ -111,7 +112,7 @@
       cookieText: "ہم آپ کی زبان اور سیٹنگز یاد رکھنے کے لیے براؤزر اسٹوریج استعمال کرتے ہیں۔ Google سمیت ہمارے اشتہاری شراکت دار اشتہارات دکھانے کے لیے کوکیز استعمال کر سکتے ہیں۔",
       cookieLearn: "رازداری کی پالیسی", cookieOk: "ٹھیک ہے", lastUpdated: "آخری اپ ڈیٹ:",
       disclaimer: "یہ ایک آزاد ویب سائٹ ہے۔ اس کا کسی سرکاری دفتر یا بینک سے کوئی تعلق نہیں۔",
-      copy: "کاپی کریں", copied: "کاپی ہو گیا ✓", navEos: "اختتامِ ملازمت", navId: "شناختی کارڈ و اقامہ", navFamily: "خاندانی خرچ", navEmbassy: "سفارت خانے کی خدمات", navAbout: "ہمارے بارے میں", navTerms: "استعمال کی شرائط", navAffiliate: "ایفیلیئٹ انکشاف", footerTools: "ٹولز", footerSite: "ویب سائٹ", ad: "اشتہار"
+      copy: "کاپی کریں", copied: "کاپی ہو گیا ✓", navEos: "اختتامِ ملازمت", navId: "شناختی کارڈ و اقامہ", navFamily: "خاندانی خرچ", navEmbassy: "سفارت خانے کی خدمات", navAbout: "ہمارے بارے میں", navTerms: "استعمال کی شرائط", navAffiliate: "ایفیلیئٹ انکشاف", footerTools: "ٹولز", footerSite: "ویب سائٹ", ad: "اشتہار", pfExQ: "آج کا ریال ریٹ (aaj ka riyal rate) کیا ہے؟", pfExA: "یہ صفحہ سعودی ریال، اماراتی درہم، کویتی دینار، قطری ریال، عمانی ریال اور بحرینی دینار سے پاکستانی روپے اور دیگر کرنسیوں کا لائیو مارکیٹ ریٹ دکھاتا ہے۔ اوپر دیے گئے نمبر آج کا ریٹ ہیں۔", pfSendQ: "گھر رقم بھیجنے کے لیے آج سب سے اچھا ریال ریٹ کون سی ایپ دیتی ہے؟", pfSendA: "اوپر اپنا روٹ چنیں، جیسے سعودی عرب سے پاکستان۔ دوسرے تارکینِ وطن کے آج شیئر کیے گئے ریٹ کے مطابق، ٹیبل ہر بینک، ایکسچینج اور والیٹ کو اس ترتیب سے دکھاتی ہے کہ خاندان کو کتنا ملے گا۔", pfEosQ: "سعودی اختتامِ ملازمت کا حساب (end of service calculator) کیسے نکالیں؟", pfEosA: "سعودی عرب یا اپنا خلیجی ملک چنیں، بنیادی تنخواہ، الاؤنسز اور ملازمت کے سال لکھیں، اور بتائیں کہ استعفیٰ دیا یا نہیں۔ کیلکولیٹر سعودی لیبر لا کی دفعہ 84 اور 85 لاگو کر کے فوراً گریجویٹی دکھاتا ہے۔", pfIdQ: "اقامہ کی میعاد کیسے چیک کریں؟", pfIdA: "سعودی عرب میں Absher ایپ کھولیں، ڈیش بورڈ پر اقامہ نمبر اور میعاد نظر آتی ہے۔ کویت میں Sahel، قطر میں Metrash، اور عمان و بحرین کے لیے اوپر کی گائیڈ دیکھیں۔ آپ فون میں یاد دہانی بھی شامل کر سکتے ہیں۔", pfFamQ: "سعودی عرب میں خاندان کے ساتھ رہنے کا ماہانہ خرچ کتنا ہے؟", pfFamA: "یہ کرایہ، اسکول فیس اور ڈیپنڈنٹس کی تعداد پر منحصر ہے۔ اوپر کیلکولیٹر میں اپنے اخراجات درج کریں؛ یہ ہر فرد کے لیے ماہانہ SAR 400 ڈیپنڈنٹ فیس خود شامل کرتا ہے اور بچت دکھاتا ہے۔", pfEmbQ: "خلیج میں کام کرتے ہوئے پاسپورٹ کی تجدید کیسے کریں؟", pfEmbA: "اوپر اپنی شہریت اور رہائش کا ملک چنیں۔ آپ کو سفارت خانے کی سرکاری ویب سائٹ، درخواست کی جگہ، اور پاسپورٹ، پولیس سرٹیفکیٹ اور تصدیق کے لنکس نظر آئیں گے۔"
     },
     bn: {
       skip: "মূল লেখায় যান", navHome: "হোম", navExchange: "বিনিময় হার", navSend: "টাকা পাঠান", navContact: "যোগাযোগ", navPrivacy: "গোপনীয়তা",
@@ -126,7 +127,22 @@
       cookieText: "আপনার ভাষা ও সেটিংস মনে রাখতে আমরা ব্রাউজারের স্টোরেজ ব্যবহার করি। Google সহ আমাদের বিজ্ঞাপন অংশীদাররা বিজ্ঞাপন দেখাতে কুকি ব্যবহার করতে পারে।",
       cookieLearn: "গোপনীয়তা নীতি", cookieOk: "ঠিক আছে", lastUpdated: "সর্বশেষ আপডেট:",
       disclaimer: "এটি একটি স্বাধীন ওয়েবসাইট। কোনো সরকারি দপ্তর বা ব্যাংকের সাথে এর কোনো সম্পর্ক নেই।",
-      copy: "কপি করুন", copied: "কপি হয়েছে ✓", navEos: "চাকরি শেষের পাওনা", navId: "আইডি ও আকামা", navFamily: "পরিবারের খরচ", navEmbassy: "দূতাবাস সেবা", navAbout: "আমাদের সম্পর্কে", navTerms: "ব্যবহারের শর্তাবলি", navAffiliate: "অ্যাফিলিয়েট তথ্য", footerTools: "টুলস", footerSite: "ওয়েবসাইট", ad: "বিজ্ঞাপন"
+      copy: "কপি করুন", copied: "কপি হয়েছে ✓", navEos: "চাকরি শেষের পাওনা", navId: "আইডি ও আকামা", navFamily: "পরিবারের খরচ", navEmbassy: "দূতাবাস সেবা", navAbout: "আমাদের সম্পর্কে", navTerms: "ব্যবহারের শর্তাবলি", navAffiliate: "অ্যাফিলিয়েট তথ্য", footerTools: "টুলস", footerSite: "ওয়েবসাইট", ad: "বিজ্ঞাপন", pfExQ: "আজকের সৌদি রিয়াল রেট (ajker saudi riyal rate) কত?", pfExA: "এই পেজে সৌদি রিয়াল, আমিরাতি দিরহাম, কুয়েতি দিনার, কাতারি রিয়াল, ওমানি রিয়াল ও বাহরাইনি দিনার থেকে বাংলাদেশি টাকা ও অন্যান্য মুদ্রার লাইভ মার্কেট রেট দেখা যায়। ওপরের সংখ্যাগুলোই আজকের রেট।", pfSendQ: "দেশে টাকা পাঠাতে আজ কোন অ্যাপ সবচেয়ে ভালো রিয়াল রেট দেয়?", pfSendA: "ওপরে আপনার রুট বেছে নিন, যেমন সৌদি আরব থেকে বাংলাদেশ। অন্য প্রবাসীদের আজ শেয়ার করা রেট অনুযায়ী, পরিবার কত টাকা পাবে সেই ক্রমে প্রতিটি ব্যাংক, এক্সচেঞ্জ ও ওয়ালেট টেবিলে দেখা যায়।", pfEosQ: "সৌদিতে চাকরি শেষের পাওনা (end of service) কীভাবে হিসাব করব?", pfEosA: "সৌদি আরব বা আপনার উপসাগরীয় দেশ বেছে নিন, মূল বেতন, ভাতা ও চাকরির বছর লিখুন, এবং পদত্যাগ করেছেন কি না বেছে নিন। ক্যালকুলেটর সৌদি শ্রম আইনের ধারা ৮৪ ও ৮৫ প্রয়োগ করে সঙ্গে সঙ্গে গ্র্যাচুইটি দেখায়।", pfIdQ: "আকামার মেয়াদ কীভাবে চেক করব?", pfIdA: "সৌদিতে Absher অ্যাপ খুলুন, ড্যাশবোর্ডে আকামা নম্বর ও মেয়াদ দেখা যায়। কুয়েতে Sahel, কাতারে Metrash, আর ওমান ও বাহরাইনের জন্য ওপরের গাইড দেখুন। ফোনে রিমাইন্ডারও যোগ করতে পারেন।", pfFamQ: "সৌদিতে পরিবার নিয়ে থাকতে মাসে কত খরচ হয়?", pfFamA: "এটা ভাড়া, স্কুল ফি ও ডিপেন্ডেন্টের সংখ্যার ওপর নির্ভর করে। ওপরের ক্যালকুলেটরে নিজের খরচ লিখুন; এটি প্রতিজনের জন্য মাসে SAR 400 ডিপেন্ডেন্ট ফি নিজেই যোগ করে এবং সঞ্চয় দেখায়।", pfEmbQ: "উপসাগরীয় দেশে কাজ করার সময় পাসপোর্ট কীভাবে নবায়ন করব?", pfEmbA: "ওপরে আপনার নাগরিকত্ব ও যে দেশে থাকেন তা বেছে নিন। দূতাবাসের অফিসিয়াল ওয়েবসাইট, আবেদনের জায়গা, এবং পাসপোর্ট, পুলিশ সনদ ও সত্যায়নের লিংক দেখতে পাবেন।"
+    },
+    tl: {
+      skip: "Pumunta sa nilalaman", navHome: "Home", navExchange: "Palitan ng pera", navSend: "Magpadala ng pera", navContact: "Makipag-ugnayan", navPrivacy: "Privacy",
+      menu: "Menu", close: "Isara", search: "Maghanap", searchPh: "Maghanap ng tools at gabay…",
+      noResults: "Walang nahanap. Subukan ang ibang salita.", language: "Wika",
+      themeDark: "Lumipat sa dark mode", themeLight: "Lumipat sa light mode",
+      toTop: "Bumalik sa itaas", contactUs: "Makipag-ugnayan sa amin",
+      nlTitle: "Kunin ang mga bagong gabay sa email", nlText: "Isang maikling email lang kapag may bagong tool o gabay. Walang spam.",
+      nlEmail: "Ang iyong email address", nlButton: "Mag-subscribe", sending: "Ipinapadala…",
+      nlSuccess: "Salamat! Naka-subscribe ka na.", invalidEmail: "Pakilagay ang tamang email address.",
+      formRequired: "Pakisagutan ang lahat ng field.", formError: "May nagkamali. Pakisubukang muli.",
+      cookieText: "Ginagamit namin ang storage ng iyong browser para tandaan ang iyong wika at settings. Maaaring gumamit ng cookies ang aming mga advertising partner, kasama ang Google, para magpakita ng ads.",
+      cookieLearn: "Privacy policy", cookieOk: "OK", lastUpdated: "Huling update:",
+      disclaimer: "Ito ay isang independiyenteng website. Hindi ito konektado sa anumang opisina ng gobyerno o bangko.",
+      copy: "Kopyahin", copied: "Nakopya ✓", navEos: "End of service", navId: "ID at residency", navFamily: "Gastos ng pamilya", navEmbassy: "Serbisyo ng embahada", navAbout: "Tungkol sa amin", navTerms: "Mga tuntunin", navAffiliate: "Affiliate disclosure", footerTools: "Tools", footerSite: "Website", ad: "Advertisement", pfExQ: "Magkano ang palitan ng riyal to peso today?", pfExA: "Ipinapakita ng page na ito ang live market rate mula sa Saudi riyal, UAE dirham, Kuwaiti dinar, Qatari riyal, Omani rial at Bahraini dinar papuntang Philippine peso at iba pang pera. Ang mga numero sa itaas ay ang rate ngayong araw.", pfSendQ: "Aling app ang may pinakamagandang riyal to peso rate ngayon para magpadala?", pfSendA: "Piliin ang ruta mo sa itaas, halimbawa Saudi Arabia papuntang Pilipinas. Inaayos ng table ang bawat bangko, remittance center at wallet ayon sa kung magkano ang matatanggap ng pamilya mo, gamit ang rates na ibinahagi ng ibang OFW ngayong araw.", pfEosQ: "Paano gamitin ang Saudi end of service calculator?", pfEosA: "Piliin ang Saudi Arabia o ang Gulf country mo, ilagay ang basic salary, allowances at taon ng serbisyo, at sabihin kung nag-resign ka. Ginagamit ng calculator ang Articles 84 at 85 ng Saudi Labor Law at ipinapakita agad ang gratuity mo.", pfIdQ: "Paano i-check ang expiry ng iqama ko?", pfIdA: "Sa Saudi Arabia, buksan ang Absher app: nasa dashboard ang iqama number at expiry date. Sa Kuwait gamitin ang Sahel, sa Qatar ang Metrash, at para sa Oman at Bahrain tingnan ang gabay sa itaas. Puwede ka ring magdagdag ng renewal reminder sa phone mo.", pfFamQ: "Magkano ang buwanang gastos kung kasama ang pamilya sa Saudi?", pfFamA: "Depende ito sa upa, school fees at bilang ng dependents. Ilagay ang sarili mong gastos sa calculator sa itaas: awtomatiko nitong idinadagdag ang Saudi dependent fee na SAR 400 bawat tao bawat buwan at ipinapakita ang maiipon mo.", pfEmbQ: "Paano mag-renew ng passport habang nagtatrabaho sa Gulf?", pfEmbA: "Piliin ang nasyonalidad mo at ang bansang tinitirhan mo sa itaas. Makikita mo ang opisyal na website ng embahada, kung saan mag-a-apply, at mga link para sa passport renewal, police certificate at attestation."
     }
   };
 
@@ -134,7 +150,7 @@
   var SEARCH = [
     {
       url: "/",
-      t: { en: "Home", ar: "الرئيسية", hi: "होम", ml: "ഹോം", ne: "गृहपृष्ठ", ur: "ہوم", bn: "হোম" },
+      t: { en: "Home", ar: "الرئيسية", hi: "होम", ml: "ഹോം", ne: "गृहपृष्ठ", ur: "ہوم", bn: "হোম", tl: "Home" },
       d: {
         en: "Simple guides and free tools for expats in the Gulf",
         ar: "أدلة بسيطة وأدوات مجانية للمقيمين في الخليج",
@@ -142,13 +158,14 @@
         ml: "ഗൾഫിലെ പ്രവാസികൾക്ക് ലളിതമായ ഗൈഡുകളും സൗജന്യ ടൂളുകളും",
         ne: "खाडीमा बस्ने प्रवासीहरूका लागि सजिलो गाइड र निःशुल्क टुलहरू",
         ur: "خلیج میں رہنے والے تارکینِ وطن کے لیے آسان گائیڈز اور مفت ٹولز",
-        bn: "উপসাগরীয় দেশের প্রবাসীদের জন্য সহজ গাইড ও ফ্রি টুল"
+        bn: "উপসাগরীয় দেশের প্রবাসীদের জন্য সহজ গাইড ও ফ্রি টুল",
+        tl: "Simpleng gabay at libreng tools para sa mga OFW sa Gulf"
       },
       k: "home expat gulf guide tools saudi kuwait qatar oman bahrain"
     },
     {
       url: "/exchange-rate.html",
-      t: { en: "Exchange rate today", ar: "سعر الصرف اليوم", hi: "आज का एक्सचेंज रेट", ml: "ഇന്നത്തെ വിനിമയ നിരക്ക്", ne: "आजको विनिमय दर", ur: "آج کی شرحِ تبادلہ", bn: "আজকের বিনিময় হার" },
+      t: { en: "Exchange rate today", ar: "سعر الصرف اليوم", hi: "आज का एक्सचेंज रेट", ml: "ഇന്നത്തെ വിനിമയ നിരക്ക്", ne: "आजको विनिमय दर", ur: "آج کی شرحِ تبادلہ", bn: "আজকের বিনিময় হার", tl: "Palitan ng pera ngayon" },
       d: {
         en: "Riyal and dinar to rupee, taka, peso and more",
         ar: "الريال والدينار إلى الروبية والتاكا والبيزو وغيرها",
@@ -156,13 +173,14 @@
         ml: "റിയാൽ, ദിനാർ എന്നിവ രൂപ, ടാക്ക, പെസോ തുടങ്ങിയവയിലേക്ക്",
         ne: "रियाल र दिनारबाट रुपैयाँ, टाका, पेसो र अन्य मुद्रामा",
         ur: "ریال اور دینار سے روپیہ، ٹکا، پیسو اور دیگر کرنسیاں",
-        bn: "রিয়াল ও দিনার থেকে টাকা, রুপি, পেসো ও অন্যান্য মুদ্রা"
+        bn: "রিয়াল ও দিনার থেকে টাকা, রুপি, পেসো ও অন্যান্য মুদ্রা",
+        tl: "Riyal at dinar papuntang peso, rupee, taka at iba pa"
       },
-      k: "exchange rate currency converter convert riyal rial dinar rupee rupiah taka peso pound dollar euro sar kwd qar omr bhd inr pkr bdt npr lkr php idr egp usd gbp eur remittance send money transfer صرف ريال دينار روبية रुपया रियाल दीनार विनिमय रुपैयाँ രൂപ റിയാൽ"
+      k: "riyal to peso palitan ngayon innathe riyal rate aaj ka riyal rate ajker riyal rate exchange rate currency converter convert riyal rial dinar rupee rupiah taka peso pound dollar euro sar kwd qar omr bhd inr pkr bdt npr lkr php idr egp usd gbp eur remittance send money transfer صرف ريال دينار روبية रुपया रियाल दीनार विनिमय रुपैयाँ രൂപ റിയാൽ"
     },
     {
       url: "/send-money.html",
-      t: { en: "Best way to send money home", ar: "أفضل طريقة لتحويل الأموال", hi: "घर पैसे भेजने का सबसे अच्छा तरीका", ml: "നാട്ടിലേക്ക് പണം അയക്കാൻ മികച്ച വഴി", ne: "घर पैसा पठाउने उत्तम तरिका", ur: "گھر رقم بھیجنے کا بہترین طریقہ", bn: "দেশে টাকা পাঠানোর সেরা উপায়" },
+      t: { en: "Best way to send money home", ar: "أفضل طريقة لتحويل الأموال", hi: "घर पैसे भेजने का सबसे अच्छा तरीका", ml: "നാട്ടിലേക്ക് പണം അയക്കാൻ മികച്ച വഴി", ne: "घर पैसा पठाउने उत्तम तरिका", ur: "گھر رقم بھیجنے کا بہترین طریقہ", bn: "দেশে টাকা পাঠানোর সেরা উপায়", tl: "Pinakamurang paraan magpadala ng pera" },
       d: {
         en: "Compare STC Bank, urpay, Tahweel Al Rajhi, Enjaz, LuLu Money, Al Mulla, BFC and more",
         ar: "قارن بين خدمات التحويل في السعودية والكويت وقطر وعُمان والبحرين",
@@ -170,13 +188,14 @@
         ml: "സൗദി, കുവൈത്ത്, ഖത്തർ, ഒമാൻ, ബഹ്‌റൈൻ എന്നിവിടങ്ങളിലെ സേവനങ്ങൾ താരതമ്യം ചെയ്യുക",
         ne: "साउदी, कुवेत, कतार, ओमान र बहराइनका सेवाहरूको तुलना",
         ur: "سعودی، کویت، قطر، عمان اور بحرین کی ترسیلِ زر سروسز کا موازنہ",
-        bn: "সৌদি, আমিরাত, কুয়েত, কাতার, ওমান ও বাহরাইনের রেমিট্যান্স রেট তুলনা"
+        bn: "সৌদি, আমিরাত, কুয়েত, কাতার, ওমান ও বাহরাইনের রেমিট্যান্স রেট তুলনা",
+        tl: "Ikumpara ang remittance rates mula Saudi, UAE, Kuwait, Qatar, Oman at Bahrain"
       },
-      k: "ajker saudi riyal rate bangladesh taka rate send money home remittance transfer compare cheapest app bank exchange stc bank stc pay urpay tahweel al rajhi enjaz albilad western union al mulla lulu money lulu exchange bfc global pay hawala تحويل حوالة पैसे भेजें പണം അയക്കൽ पैसा पठाउने"
+      k: "palitan ng riyal to peso today padala philippines ajker saudi riyal rate bangladesh taka rate send money home remittance transfer compare cheapest app bank exchange stc bank stc pay urpay tahweel al rajhi enjaz albilad western union al mulla lulu money lulu exchange bfc global pay hawala تحويل حوالة पैसे भेजें പണം അയക്കൽ पैसा पठाउने"
     },
     {
       url: "/end-of-service.html",
-      t: { en: "End-of-service benefit calculator", ar: "حاسبة مكافأة نهاية الخدمة", hi: "एंड-ऑफ़-सर्विस बेनिफ़िट कैलकुलेटर", ml: "എൻഡ് ഓഫ് സർവീസ് ആനുകൂല്യ കാൽക്കുലേറ്റർ", ne: "सेवा समाप्ति सुविधा क्यालकुलेटर", ur: "اختتامِ ملازمت فائدہ کیلکولیٹر", bn: "চাকরি শেষের পাওনা ক্যালকুলেটর" },
+      t: { en: "End-of-service benefit calculator", ar: "حاسبة مكافأة نهاية الخدمة", hi: "एंड-ऑफ़-सर्विस बेनिफ़िट कैलकुलेटर", ml: "എൻഡ് ഓഫ് സർവീസ് ആനുകൂല്യ കാൽക്കുലേറ്റർ", ne: "सेवा समाप्ति सुविधा क्यालकुलेटर", ur: "اختتامِ ملازمت فائدہ کیلکولیٹر", bn: "চাকরি শেষের পাওনা ক্যালকুলেটর", tl: "End-of-service benefit calculator" },
       d: {
         en: "Gratuity for Saudi Arabia, UAE, Kuwait, Qatar, Oman and Bahrain",
         ar: "مكافأة نهاية الخدمة في السعودية والإمارات والكويت وقطر وعُمان والبحرين",
@@ -184,13 +203,14 @@
         ml: "സൗദി, യുഎഇ, കുവൈത്ത്, ഖത്തർ, ഒമാൻ, ബഹ്‌റൈൻ ഗ്രാറ്റുവിറ്റി",
         ne: "साउदी, युएई, कुवेत, कतार, ओमान र बहराइनको ग्र्याच्युटी",
         ur: "سعودی، امارات، کویت، قطر، عمان اور بحرین کی گریجویٹی",
-        bn: "সৌদি, আমিরাত, কুয়েত, কাতার, ওমান ও বাহরাইনের গ্র্যাচুইটি"
+        bn: "সৌদি, আমিরাত, কুয়েত, কাতার, ওমান ও বাহরাইনের গ্র্যাচুইটি",
+        tl: "Gratuity sa Saudi, UAE, Kuwait, Qatar, Oman at Bahrain"
       },
       k: "end of service benefit gratuity eosb esb indemnity final settlement resign resignation termination calculator article 84 85 labour law labor law مكافأة نهاية الخدمة ग्रेच्युटी ഗ്രാറ്റുവിറ്റി ग्र्याच्युटी"
     },
     {
       url: "/id-residency.html",
-      t: { en: "ID card & residency guide", ar: "دليل الهوية والإقامة", hi: "आईडी कार्ड और रेज़िडेंसी गाइड", ml: "ഐഡി കാർഡ്, റെസിഡൻസി ഗൈഡ്", ne: "परिचयपत्र र रेसिडेन्सी गाइड", ur: "شناختی کارڈ اور اقامہ گائیڈ", bn: "আইডি কার্ড ও আকামা গাইড" },
+      t: { en: "ID card & residency guide", ar: "دليل الهوية والإقامة", hi: "आईडी कार्ड और रेज़िडेंसी गाइड", ml: "ഐഡി കാർഡ്, റെസിഡൻസി ഗൈഡ്", ne: "परिचयपत्र र रेसिडेन्सी गाइड", ur: "شناختی کارڈ اور اقامہ گائیڈ", bn: "আইডি কার্ড ও আকামা গাইড", tl: "Gabay sa ID card at residency" },
       d: {
         en: "Iqama, Civil ID, QID, Resident Card and CPR: check, renew, fees",
         ar: "الإقامة والبطاقة المدنية وبطاقة المقيم: الاستعلام والتجديد والرسوم",
@@ -198,13 +218,14 @@
         ml: "ഇഖാമ, സിവിൽ ഐഡി, ക്യുഐഡി, റസിഡന്റ് കാർഡ്, സിപിആർ: പരിശോധന, പുതുക്കൽ, ഫീസ്",
         ne: "इकामा, सिभिल आईडी, क्यूआईडी, रेसिडेन्ट कार्ड, सीपीआर: जाँच, नवीकरण, शुल्क",
         ur: "اقامہ، سول آئی ڈی، کیو آئی ڈی، ریزیڈنٹ کارڈ، سی پی آر: چیک، تجدید، فیس",
-        bn: "আকামা, সিভিল আইডি, কিউআইডি, রেসিডেন্ট কার্ড, সিপিআর: যাচাই, নবায়ন, ফি"
+        bn: "আকামা, সিভিল আইডি, কিউআইডি, রেসিডেন্ট কার্ড, সিপিআর: যাচাই, নবায়ন, ফি",
+        tl: "Iqama, Civil ID, QID, Resident Card, CPR: check, renew, fees"
       },
       k: "iqama civil id qid resident card cpr residence permit renew renewal check expiry fee fine absher muqeem sahel paci metrash rop iga lmra إقامة البطاقة المدنية इक़ामा ഇഖാമ इकामा اقامہ"
     },
     {
       url: "/family-cost.html",
-      t: { en: "Family monthly cost calculator", ar: "حاسبة تكلفة العائلة الشهرية", hi: "परिवार का मासिक ख़र्च कैलकुलेटर", ml: "കുടുംബത്തിന്റെ മാസച്ചെലവ് കാൽക്കുലേറ്റർ", ne: "परिवारको मासिक खर्च क्यालकुलेटर", ur: "خاندان کا ماہانہ خرچ کیلکولیٹر", bn: "পরিবারের মাসিক খরচ ক্যালকুলেটর" },
+      t: { en: "Family monthly cost calculator", ar: "حاسبة تكلفة العائلة الشهرية", hi: "परिवार का मासिक ख़र्च कैलकुलेटर", ml: "കുടുംബത്തിന്റെ മാസച്ചെലവ് കാൽക്കുലേറ്റർ", ne: "परिवारको मासिक खर्च क्यालकुलेटर", ur: "خاندان کا ماہانہ خرچ کیلکولیٹر", bn: "পরিবারের মাসিক খরচ ক্যালকুলেটর", tl: "Calculator ng buwanang gastos ng pamilya" },
       d: {
         en: "Rent, school, dependent fees and bills: what is left to save",
         ar: "الإيجار والمدارس ورسوم المرافقين والفواتير: ما يتبقى للادخار",
@@ -212,13 +233,14 @@
         ml: "വാടക, സ്കൂൾ, ഡിപെൻഡന്റ് ഫീസ്, ബില്ലുകൾ: എത്ര ബാക്കി",
         ne: "भाडा, स्कूल, आश्रित शुल्क र बिल: कति बचत हुन्छ",
         ur: "کرایہ، اسکول، ڈیپنڈنٹ فیس اور بل: بچت کتنی ہوگی",
-        bn: "ভাড়া, স্কুল, ডিপেন্ডেন্ট ফি ও বিল: সঞ্চয়ের জন্য কত থাকে"
+        bn: "ভাড়া, স্কুল, ডিপেন্ডেন্ট ফি ও বিল: সঞ্চয়ের জন্য কত থাকে",
+        tl: "Upa, school, dependent fee at bills: magkano ang maiipon"
       },
       k: "family cost budget monthly expenses rent school fees dependent levy dependant fee utilities groceries savings salary calculator ميزانية تكلفة العائلة बजट ख़र्च ബജറ്റ് ചെലവ് बजेट खर्च بجٹ خرچ"
     },
     {
       url: "/embassy-services.html",
-      t: { en: "Embassy services guide", ar: "دليل خدمات السفارات", hi: "दूतावास सेवाएँ गाइड", ml: "എംബസി സേവന ഗൈഡ്", ne: "दूतावास सेवा गाइड", ur: "سفارت خانے کی خدمات کی گائیڈ", bn: "দূতাবাস সেবা গাইড" },
+      t: { en: "Embassy services guide", ar: "دليل خدمات السفارات", hi: "दूतावास सेवाएँ गाइड", ml: "എംബസി സേവന ഗൈഡ്", ne: "दूतावास सेवा गाइड", ur: "سفارت خانے کی خدمات کی گائیڈ", bn: "দূতাবাস সেবা গাইড", tl: "Gabay sa serbisyo ng embahada" },
       d: {
         en: "Passport renewal, PCC, OCI, NICOP and attestation for Indians, Pakistanis and Nepalis",
         ar: "تجديد الجواز وشهادة حسن السيرة والتصديق للهنود والباكستانيين والنيباليين",
@@ -226,13 +248,14 @@
         ml: "ഇന്ത്യ, പാകിസ്ഥാൻ, നേപ്പാൾ പൗരന്മാർക്ക് പാസ്പോർട്ട്, പിസിസി, ഒസിഐ, അറ്റസ്റ്റേഷൻ",
         ne: "भारतीय, पाकिस्तानी र नेपालीका लागि राहदानी, प्रहरी प्रमाणपत्र र प्रमाणीकरण",
         ur: "بھارتی، پاکستانی اور نیپالی شہریوں کے لیے پاسپورٹ، پی سی سی، نائیکوپ اور تصدیق",
-        bn: "ভারত, পাকিস্তান ও নেপালের নাগরিকদের পাসপোর্ট, পিসিসি ও সত্যায়ন"
+        bn: "ভারত, পাকিস্তান ও নেপালের নাগরিকদের পাসপোর্ট, পিসিসি ও সত্যায়ন",
+        tl: "Passport, PCC, OCI, NICOP at attestation"
       },
       k: "embassy consulate passport renewal pcc police clearance oci nicop pak id attestation vfs bls madad india pakistan nepal سفارة جواز दूतावास पासपोर्ट എംബസി പാസ്പോർട്ട് दूतावास राहदानी سفارت خانہ پاسپورٹ"
     },
     {
       url: "/about.html",
-      t: { en: "About us", ar: "من نحن", hi: "हमारे बारे में", ml: "ഞങ്ങളെക്കുറിച്ച്", ne: "हाम्रोबारे", ur: "ہمارے بارے میں", bn: "আমাদের সম্পর্কে" },
+      t: { en: "About us", ar: "من نحن", hi: "हमारे बारे में", ml: "ഞങ്ങളെക്കുറിച്ച്", ne: "हाम्रोबारे", ur: "ہمارے بارے میں", bn: "আমাদের সম্পর্কে", tl: "Tungkol sa amin" },
       d: {
         en: "Who runs ExpatGuideME and how we check information",
         ar: "من يدير الموقع وكيف نتحقق من المعلومات",
@@ -240,13 +263,14 @@
         ml: "ExpatGuideME ആരാണ് നടത്തുന്നത്, വിവരങ്ങൾ എങ്ങനെ പരിശോധിക്കുന്നു",
         ne: "ExpatGuideME कसले चलाउँछ र जानकारी कसरी जाँचिन्छ",
         ur: "ExpatGuideME کون چلاتا ہے اور معلومات کیسے جانچی جاتی ہیں",
-        bn: "ExpatGuideME কে চালায় এবং তথ্য কীভাবে যাচাই করা হয়"
+        bn: "ExpatGuideME কে চালায় এবং তথ্য কীভাবে যাচাই করা হয়",
+        tl: "Sino ang nagpapatakbo ng ExpatGuideME at paano namin sinusuri ang impormasyon"
       },
       k: "about who team mission editorial sources independent من نحن हमारे बारे में ഞങ്ങളെക്കുറിച്ച് हाम्रोबारे ہمارے بارے میں"
     },
     {
       url: "/terms.html",
-      t: { en: "Terms of use", ar: "شروط الاستخدام", hi: "उपयोग की शर्तें", ml: "ഉപയോഗ നിബന്ധനകൾ", ne: "प्रयोगका सर्तहरू", ur: "استعمال کی شرائط", bn: "ব্যবহারের শর্তাবলি" },
+      t: { en: "Terms of use", ar: "شروط الاستخدام", hi: "उपयोग की शर्तें", ml: "ഉപയോഗ നിബന്ധനകൾ", ne: "प्रयोगका सर्तहरू", ur: "استعمال کی شرائط", bn: "ব্যবহারের শর্তাবলি", tl: "Mga tuntunin ng paggamit" },
       d: {
         en: "Rules for using this website",
         ar: "قواعد استخدام هذا الموقع",
@@ -254,13 +278,14 @@
         ml: "ഈ വെബ്സൈറ്റ് ഉപയോഗിക്കാനുള്ള നിയമങ്ങൾ",
         ne: "यो वेबसाइट प्रयोग गर्ने नियम",
         ur: "اس ویب سائٹ کے استعمال کے اصول",
-        bn: "এই ওয়েবসাইট ব্যবহারের নিয়ম"
+        bn: "এই ওয়েবসাইট ব্যবহারের নিয়ম",
+        tl: "Mga patakaran sa paggamit ng website"
       },
       k: "terms conditions terms of use legal disclaimer شروط शर्तें നിബന്ധനകൾ सर्त شرائط"
     },
     {
       url: "/affiliate-disclosure.html",
-      t: { en: "Affiliate disclosure", ar: "الإفصاح عن روابط الشراكة", hi: "एफ़िलिएट जानकारी", ml: "അഫിലിയേറ്റ് വെളിപ്പെടുത്തൽ", ne: "एफिलिएट जानकारी", ur: "ایفیلیئٹ انکشاف", bn: "অ্যাফিলিয়েট তথ্য" },
+      t: { en: "Affiliate disclosure", ar: "الإفصاح عن روابط الشراكة", hi: "एफ़िलिएट जानकारी", ml: "അഫിലിയേറ്റ് വെളിപ്പെടുത്തൽ", ne: "एफिलिएट जानकारी", ur: "ایفیلیئٹ انکشاف", bn: "অ্যাফিলিয়েট তথ্য", tl: "Affiliate disclosure" },
       d: {
         en: "How we earn money from ads and partner links",
         ar: "كيف نكسب من الإعلانات وروابط الشراكة",
@@ -268,13 +293,14 @@
         ml: "പരസ്യങ്ങളിൽ നിന്നും പങ്കാളി ലിങ്കുകളിൽ നിന്നും ഞങ്ങൾ എങ്ങനെ വരുമാനം നേടുന്നു",
         ne: "हामी विज्ञापन र साझेदार लिङ्कबाट कसरी कमाउँछौं",
         ur: "ہم اشتہارات اور پارٹنر لنکس سے کیسے کماتے ہیں",
-        bn: "বিজ্ঞাপন ও অংশীদার লিংক থেকে আমরা কীভাবে আয় করি"
+        bn: "বিজ্ঞাপন ও অংশীদার লিংক থেকে আমরা কীভাবে আয় করি",
+        tl: "Paano kami kumikita sa ads at partner links"
       },
       k: "affiliate disclosure partner sponsored commission advertising ads إفصاح एफ़िलिएट അഫിലിയേറ്റ് एफिलिएट ایفیلیئٹ"
     },
     {
       url: "/exchange-rate.html#faq",
-      t: { en: "Exchange rate questions (FAQ)", ar: "أسئلة عن سعر الصرف", hi: "एक्सचेंज रेट से जुड़े सवाल", ml: "വിനിമയ നിരക്ക്: പതിവ് ചോദ്യങ്ങൾ", ne: "विनिमय दरसम्बन्धी प्रश्नहरू", ur: "شرحِ تبادلہ کے سوالات", bn: "বিনিময় হার নিয়ে প্রশ্ন" },
+      t: { en: "Exchange rate questions (FAQ)", ar: "أسئلة عن سعر الصرف", hi: "एक्सचेंज रेट से जुड़े सवाल", ml: "വിനിമയ നിരക്ക്: പതിവ് ചോദ്യങ്ങൾ", ne: "विनिमय दरसम्बन्धी प्रश्नहरू", ur: "شرحِ تبادلہ کے سوالات", bn: "বিনিময় হার নিয়ে প্রশ্ন", tl: "Mga tanong sa palitan ng pera" },
       d: {
         en: "Bank rates, daily updates, the riyal's dollar peg",
         ar: "أسعار البنوك والتحديث اليومي وربط الريال بالدولار",
@@ -282,13 +308,14 @@
         ml: "ബാങ്ക് നിരക്ക്, ദിവസേന പുതുക്കൽ, റിയാലും ഡോളറും",
         ne: "बैंक दर, दैनिक अपडेट, रियाल र डलर",
         ur: "بینک ریٹ، روزانہ اپ ڈیٹ، ریال اور ڈالر",
-        bn: "ব্যাংক রেট, প্রতিদিনের আপডেট, রিয়াল ও ডলার"
+        bn: "ব্যাংক রেট, প্রতিদিনের আপডেট, রিয়াল ও ডলার",
+        tl: "Bank rate, araw-araw na update, riyal at dolyar"
       },
       k: "faq question bank margin fee peg pegged dollar update updated official"
     },
     {
       url: "/#faq",
-      t: { en: "About ExpatGuideME (FAQ)", ar: "عن الموقع (أسئلة شائعة)", hi: "ExpatGuideME के बारे में (सवाल)", ml: "ExpatGuideME നെക്കുറിച്ച് (ചോദ്യങ്ങൾ)", ne: "ExpatGuideME बारे (प्रश्नहरू)", ur: "ExpatGuideME کے بارے میں (سوالات)", bn: "ExpatGuideME সম্পর্কে প্রশ্ন" },
+      t: { en: "About ExpatGuideME (FAQ)", ar: "عن الموقع (أسئلة شائعة)", hi: "ExpatGuideME के बारे में (सवाल)", ml: "ExpatGuideME നെക്കുറിച്ച് (ചോദ്യങ്ങൾ)", ne: "ExpatGuideME बारे (प्रश्नहरू)", ur: "ExpatGuideME کے بارے میں (سوالات)", bn: "ExpatGuideME সম্পর্কে প্রশ্ন", tl: "Mga tanong tungkol sa ExpatGuideME" },
       d: {
         en: "Is it free, which languages and countries",
         ar: "هل الموقع مجاني، وما اللغات والدول",
@@ -296,13 +323,14 @@
         ml: "സൗജന്യമാണോ, ഏതൊക്കെ ഭാഷകളും രാജ്യങ്ങളും",
         ne: "निःशुल्क छ कि, कुन भाषा र देशहरू",
         ur: "کیا یہ مفت ہے، کون سی زبانیں اور ممالک",
-        bn: "এটি কি ফ্রি, কোন ভাষা ও দেশ"
+        bn: "এটি কি ফ্রি, কোন ভাষা ও দেশ",
+        tl: "Libre ba, anong mga wika at bansa"
       },
       k: "faq about free languages countries official government"
     },
     {
       url: "/contact.html",
-      t: { en: "Contact us", ar: "اتصل بنا", hi: "संपर्क करें", ml: "ഞങ്ങളെ ബന്ധപ്പെടുക", ne: "सम्पर्क गर्नुहोस्", ur: "ہم سے رابطہ کریں", bn: "যোগাযোগ করুন" },
+      t: { en: "Contact us", ar: "اتصل بنا", hi: "संपर्क करें", ml: "ഞങ്ങളെ ബന്ധപ്പെടുക", ne: "सम्पर्क गर्नुहोस्", ur: "ہم سے رابطہ کریں", bn: "যোগাযোগ করুন", tl: "Makipag-ugnayan sa amin" },
       d: {
         en: "Send a message, report a mistake, request a guide",
         ar: "أرسل رسالة أو أبلغ عن خطأ أو اطلب دليلًا",
@@ -310,13 +338,14 @@
         ml: "സന്ദേശം അയക്കുക, തെറ്റ് അറിയിക്കുക, ഗൈഡ് ആവശ്യപ്പെടുക",
         ne: "सन्देश पठाउनुहोस्, गल्ती जानकारी दिनुहोस्, गाइड माग्नुहोस्",
         ur: "پیغام بھیجیں، غلطی بتائیں، نئی گائیڈ کی درخواست کریں",
-        bn: "বার্তা পাঠান, ভুল জানান, নতুন গাইডের অনুরোধ করুন"
+        bn: "বার্তা পাঠান, ভুল জানান, নতুন গাইডের অনুরোধ করুন",
+        tl: "Magpadala ng mensahe, mag-report ng mali, humiling ng gabay"
       },
       k: "contact email message help mistake feedback request"
     },
     {
       url: "/privacy.html",
-      t: { en: "Privacy policy", ar: "سياسة الخصوصية", hi: "गोपनीयता नीति", ml: "സ്വകാര്യതാ നയം", ne: "गोपनीयता नीति", ur: "رازداری کی پالیسی", bn: "গোপনীয়তা নীতি" },
+      t: { en: "Privacy policy", ar: "سياسة الخصوصية", hi: "गोपनीयता नीति", ml: "സ്വകാര്യതാ നയം", ne: "गोपनीयता नीति", ur: "رازداری کی پالیسی", bn: "গোপনীয়তা নীতি", tl: "Privacy policy" },
       d: {
         en: "What we store and why",
         ar: "ما الذي نحفظه ولماذا",
@@ -324,7 +353,8 @@
         ml: "ഞങ്ങൾ എന്ത് സൂക്ഷിക്കുന്നു, എന്തിന്",
         ne: "हामी के राख्छौं र किन",
         ur: "ہم کیا محفوظ کرتے ہیں اور کیوں",
-        bn: "আমরা কী সংরক্ষণ করি এবং কেন"
+        bn: "আমরা কী সংরক্ষণ করি এবং কেন",
+        tl: "Ano ang iniimbak namin at bakit"
       },
       k: "privacy cookies data storage newsletter policy"
     }
