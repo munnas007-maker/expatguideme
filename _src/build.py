@@ -30,7 +30,7 @@ LANGS = ["en", "ar", "hi", "ml", "ne", "ur", "bn", "tl"]
 HREFLANG = {"en": "en", "ar": "ar", "hi": "hi", "ml": "ml", "ne": "ne", "ur": "ur", "bn": "bn", "tl": "tl"}
 
 # Google AdSense
-ADSENSE_CLIENT = "ca-pub-4815162342890123"
+ADSENSE_CLIENT = "ca-pub-4607186835755358"
 # Ad unit ID of a responsive display unit created in AdSense (Ads > By ad unit).
 # While it is empty, reserved spaces stay hidden and Auto ads place ads instead.
 ADSENSE_UNIT = ""

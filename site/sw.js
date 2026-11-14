@@ -6,7 +6,7 @@
  * - Images and other static files: served from the cache and refreshed in the background.
  * - /api/ and other websites (ads, analytics) are never cached.
  */
-const VERSION = "dcd8bd6c1c";
+const VERSION = "f876bc6b72";
 const CACHE = "egm-" + VERSION;
 const CORE = [
   "/", "/offline.html", "/assets/site.css", "/assets/site.js", "/assets/favicon.svg",
