@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="ar" dir="rtl" data-page-lang="ar"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تطبيق ExpatGuideME | ExpatGuideME</title>
+  <meta name="description" content="كل أدواتنا المجانية للمقيمين في الخليج في تطبيق واحد: أسعار الصرف، ومقارنة التحويلات، وحاسبات نهاية الخدمة والإجازة وتكلفة العائلة، بثماني لغات. تطبيقا…">
+  <meta name="google-adsense-account" content="ca-pub-4815162342890123">
+  <link rel="canonical" href="https://expatguideme.com/ar/mobile-app.html">
+  <link rel="alternate" hreflang="en" href="https://expatguideme.com/mobile-app.html">
+  <link rel="alternate" hreflang="ar" href="https://expatguideme.com/ar/mobile-app.html">
+  <link rel="alternate" hreflang="hi" href="https://expatguideme.com/hi/mobile-app.html">
+  <link rel="alternate" hreflang="ml" href="https://expatguideme.com/ml/mobile-app.html">
+  <link rel="alternate" hreflang="ne" href="https://expatguideme.com/ne/mobile-app.html">
+  <link rel="alternate" hreflang="ur" href="https://expatguideme.com/ur/mobile-app.html">
+  <link rel="alternate" hreflang="bn" href="https://expatguideme.com/bn/mobile-app.html">
+  <link rel="alternate" hreflang="tl" href="https://expatguideme.com/tl/mobile-app.html">
+  <link rel="alternate" hreflang="x-default" href="https://expatguideme.com/mobile-app.html">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="ExpatGuideME">
+  <meta name="mobile-web-app-capable" content="yes">
+  <script>(function(){try{var t=localStorage.getItem('expatguideme_theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Cairo:wght@400;600;700&amp;family=Noto+Sans+Devanagari:wght@400;600;700&amp;family=Noto+Sans+Malayalam:wght@400;600;700&amp;family=Noto+Nastaliq+Urdu:wght@400;700&amp;family=Noto+Sans+Bengali:wght@400;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .app { max-width: 760px; }
+    .app-hero { display: flex; gap: 18px; align-items: center; margin: 8px 0 6px; }
+    .app-hero img { width: 76px; height: 76px; border-radius: 18px; box-shadow: var(--shadow); flex: none; }
+    .app-feats { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+    .app-feats li { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-weight: 600; }
+    .app-feats li::before { content: "✓"; color: var(--brand); margin-inline-end: 8px; }
+    .app-form { display: flex; flex-wrap: wrap; gap: 10px; }
+    .app-form input[type="email"] { flex: 1 1 240px; min-height: 46px; }
+    .how { color: var(--muted); margin: 6px 0; }
+  </style>
+
+</head>
+<body data-page="app" data-ads="off">
+  <a class="skip-link" href="#main" data-s="skip">انتقل إلى المحتوى</a>
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="logo" href="/ar/">ExpatGuide<span>ME</span></a>
+      <nav class="site-nav" id="siteNav" aria-label="Main">
+        <a href="/ar/" data-s="navHome">الرئيسية</a>
+        <a href="/ar/exchange-rate.html" data-s="navExchange">سعر الصرف</a>
+        <a href="/ar/send-money.html" data-s="navSend">تحويل الأموال</a>
+        <a href="/ar/contact.html" data-s="navContact">اتصل بنا</a>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-menu">
+          <button type="button" class="icon-btn" id="langToggle" aria-haspopup="true" aria-expanded="false" aria-controls="langList" data-s-aria="language" aria-label="اللغة" title="اللغة">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg><span class="lang-current" id="langCurrent">English</span>
+          </button>
+          <div class="langs" id="langList" role="group" hidden="">
+            <button type="button" data-lang="en" lang="en">English</button>
+            <button type="button" data-lang="ar" lang="ar">العربية</button>
+            <button type="button" data-lang="hi" lang="hi">हिन्दी</button>
+            <button type="button" data-lang="ml" lang="ml">മലയാളം</button>
+            <button type="button" data-lang="ne" lang="ne">नेपाली</button>
+            <button type="button" data-lang="ur" lang="ur">اردو</button>
+            <button type="button" data-lang="bn" lang="bn">বাংলা</button>
+            <button type="button" data-lang="tl" lang="tl">Tagalog</button>
+          </div>
+        </div>
+        <button type="button" class="icon-btn" data-open-search="" data-s-aria="search" aria-label="بحث" title="بحث"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg></button>
+        <button type="button" class="icon-btn" id="themeToggle"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></button>
+        <button type="button" class="icon-btn menu-btn" id="menuToggle" aria-controls="siteNav" aria-expanded="false"><svg class="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"></path></svg><svg class="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="wrap app">
+      <div class="app-hero">
+        <img src="/assets/icon-192.png" alt="" width="76" height="76">
+        <h1 data-s="appTitle">تطبيق ExpatGuideME</h1>
+      </div>
+      <p class="lead" data-s="appLead">كل أدواتنا المجانية للمقيمين في الخليج في تطبيق واحد: أسعار الصرف، ومقارنة التحويلات، وحاسبات نهاية الخدمة والإجازة وتكلفة العائلة، بثماني لغات. تطبيقا أندرويد وآيفون في الطريق.</p>
+      <div class="store-pills">
+        <span class="store-pill" data-store="android"><span class="store-ico" aria-hidden="true">📱</span><span data-s="appSoonAndroid">قريبًا على أندرويد</span></span>
+        <span class="store-pill" data-store="ios"><span class="store-ico" aria-hidden="true">📱</span><span data-s="appSoonIos">قريبًا على آيفون</span></span>
+      </div>
+      <ul class="app-feats">
+        <li data-s="appF1">أسعار اليوم على شاشتك الرئيسية</li>
+        <li data-s="appF2">حاسبات تعمل دون إنترنت</li>
+        <li data-s="appF3">تذكير بيوم الراتب وتجديد الإقامة</li>
+        <li data-s="appF4">لغتك: ثماني لغات منها العربية والأردية والبنغالية</li>
+      </ul>
+
+      <section class="card" aria-labelledby="notifyTitle">
+        <h2 id="notifyTitle" data-s="appNotifyTitle">وصلك إشعار عند إطلاق التطبيق</h2>
+        <p data-s="appNotifyText">اترك بريدك الإلكتروني وسنرسل لك رسالة واحدة عندما يصبح التطبيق متاحًا في Google Play وApp Store. بلا رسائل مزعجة.</p>
+        <form class="app-form" name="app-notify" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" data-ajax="" data-success="appNotifyOk" novalidate="">
+          <input type="hidden" name="form-name" value="app-notify">
+          <input type="hidden" name="language" value="en" data-lang-field="">
+          <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <label class="sr-only" for="appEmail" data-s="appEmail">بريدك الإلكتروني</label>
+          <input id="appEmail" type="email" name="email" required="" autocomplete="email" inputmode="email" data-s-ph="appEmail" placeholder="بريدك الإلكتروني">
+          <button type="submit" class="btn btn-primary" data-s="appNotifyBtn">أبلغني عند الإطلاق</button>
+          <p class="form-msg" role="alert" aria-live="polite"></p>
+        </form>
+        <div class="success-box" id="appNotifyOk" tabindex="-1" role="status" hidden="">
+          <span class="check" aria-hidden="true">✓</span><span data-s="appNotifyOk">شكرًا لك! سنراسلك عند إطلاق التطبيق.</span>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="nowTitle">
+        <h2 id="nowTitle" data-s="appNowTitle">استخدمه كتطبيق اليوم</h2>
+        <p data-s="appNowText">لا داعي للانتظار. أضف ExpatGuideME إلى شاشتك الرئيسية ليفتح مثل التطبيق، وتعمل الحاسبات حتى دون إنترنت.</p>
+        <p><button type="button" class="btn btn-primary" data-install="" hidden="" data-s="appInstallBtn">ثبّت تطبيق الويب</button></p>
+        <p class="how" data-install-done="" hidden="" data-s="appInstalled">ExpatGuideME مثبّت بالفعل على هذا الجهاز.</p>
+        <p class="how" data-s="appAndroidHow">على أندرويد (Chrome): اضغط «تثبيت»، أو افتح القائمة ⋮ واختر «إضافة إلى الشاشة الرئيسية».</p>
+        <p class="how" data-s="appIosHow">على آيفون (Safari): اضغط زر المشاركة ثم «إضافة إلى الشاشة الرئيسية».</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <section class="newsletter" aria-labelledby="nlTitle">
+        <h2 id="nlTitle" data-s="nlTitle">احصل على الأدلة الجديدة بالبريد</h2>
+        <p data-s="nlText">رسالة قصيرة واحدة عند إضافة أداة أو دليل جديد. بلا رسائل مزعجة.</p>
+        <form class="nl-form" name="newsletter" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" data-ajax="" data-success="nlSuccess" novalidate="">
+          <input type="hidden" name="form-name" value="newsletter">
+          <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <label class="sr-only" for="nlEmail" data-s="nlEmail">بريدك الإلكتروني</label>
+          <input id="nlEmail" type="email" name="email" required="" autocomplete="email" inputmode="email" data-s-ph="nlEmail" placeholder="بريدك الإلكتروني">
+          <button type="submit" class="btn btn-primary" data-s="nlButton">اشترك</button>
+          <p class="form-msg" role="alert" aria-live="polite"></p>
+        </form>
+        <div class="success-box" id="nlSuccess" tabindex="-1" role="status" hidden="">
+          <span class="check" aria-hidden="true">✓</span><span data-s="nlSuccess">شكرًا لك! تم اشتراكك.</span>
+        </div>
+      </section>
+      <div class="footer-cols">
+        <div>
+          <h3 data-s="footerTools">الأدوات</h3>
+          <nav class="footer-links" aria-label="Tools">
+            <a href="/ar/exchange-rate.html" data-s="navExchange">سعر الصرف</a>
+            <a href="/ar/send-money.html" data-s="navSend">تحويل الأموال</a>
+            <a href="/ar/end-of-service.html" data-s="navEos">نهاية الخدمة</a>
+            <a href="/ar/id-residency.html" data-s="navId">الهوية والإقامة</a>
+            <a href="/ar/family-cost.html" data-s="navFamily">تكلفة العائلة</a>
+            <a href="/ar/embassy-services.html" data-s="navEmbassy">خدمات السفارات</a>
+          </nav>
+        </div>
+        <div>
+          <h3 data-s="footerSite">الموقع</h3>
+          <nav class="footer-links" aria-label="Footer">
+            <a href="/ar/" data-s="navHome">الرئيسية</a>
+            <a href="/ar/mobile-app.html" data-s="navApp">تطبيق الجوال</a>
+            <a href="/ar/about.html" data-s="navAbout">من نحن</a>
+            <a href="/ar/contact.html" data-s="navContact">اتصل بنا</a>
+            <a href="/ar/privacy.html" data-s="navPrivacy">الخصوصية</a>
+            <a href="/ar/terms.html" data-s="navTerms">شروط الاستخدام</a>
+            <a href="/ar/affiliate-disclosure.html" data-s="navAffiliate">الإفصاح عن روابط الشراكة</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-app">
+        <h3 data-s="appGet">حمّل التطبيق</h3>
+        <div class="store-pills">
+          <a class="store-pill" href="/ar/mobile-app.html" data-store="android"><span class="store-ico" aria-hidden="true">📱</span><span data-s="appSoonAndroid">قريبًا على أندرويد</span></a>
+          <a class="store-pill" href="/ar/mobile-app.html" data-store="ios"><span class="store-ico" aria-hidden="true">📱</span><span data-s="appSoonIos">قريبًا على آيفون</span></a>
+          <button type="button" class="store-pill store-install" data-install="" hidden=""><span class="store-ico" aria-hidden="true">⬇</span><span data-s="appInstallBtn">ثبّت تطبيق الويب</span></button>
+        </div>
+      </div>
+      <p class="disclaimer" data-s="disclaimer">هذا موقع مستقل، ولا علاقة له بأي جهة حكومية أو بنك.</p>
+    </div>
+  </footer>
+
+  <a class="fab-contact" href="/ar/contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg><span data-s="contactUs">اتصل بنا</span></a>
+  <button type="button" class="to-top" id="toTop" data-s-aria="toTop" hidden="" aria-label="العودة إلى الأعلى" title="العودة إلى الأعلى"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5M5 12l7-7 7 7"></path></svg></button>
+
+  <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookies" hidden="">
+    <p data-s="cookieText">نستخدم تخزين المتصفح لتذكّر لغتك وإعداداتك، وقد يستخدم شركاؤنا في الإعلانات، ومنهم جوجل، ملفات تعريف الارتباط لعرض الإعلانات.</p>
+    <a href="/ar/privacy.html" data-s="cookieLearn">سياسة الخصوصية</a>
+    <button type="button" class="btn btn-primary" id="cookieOk" data-s="cookieOk">موافق</button>
+  </div>
+
+  <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-labelledby="searchTitle" hidden="">
+    <div class="search-box">
+      <div class="search-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+        <h2 id="searchTitle" class="sr-only" data-s="search">بحث</h2>
+        <label class="sr-only" for="searchInput" data-s="search">بحث</label>
+        <input type="search" id="searchInput" autocomplete="off" data-s-ph="searchPh" placeholder="ابحث في الأدوات والأدلة…">
+        <button type="button" class="icon-btn" id="searchClose" data-s-aria="close" aria-label="إغلاق" title="إغلاق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+      </div>
+      <ul class="search-results" id="searchResults"></ul>
+    </div>
+  </div>
+
+  <script src="/assets/site.js"></script>
+
+
+</body></html>

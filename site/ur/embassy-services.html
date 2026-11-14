@@ -17,6 +17,10 @@
   <link rel="alternate" hreflang="x-default" href="https://expatguideme.com/embassy-services.html">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="ExpatGuideME">
+  <meta name="mobile-web-app-capable" content="yes">
   <script>(function(){try{var t=localStorage.getItem('expatguideme_theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -157,12 +161,21 @@
           <h3 data-s="footerSite">ویب سائٹ</h3>
           <nav class="footer-links" aria-label="Footer">
             <a href="/ur/" data-s="navHome">ہوم</a>
+            <a href="/ur/mobile-app.html" data-s="navApp">موبائل ایپ</a>
             <a href="/ur/about.html" data-s="navAbout">ہمارے بارے میں</a>
             <a href="/ur/contact.html" data-s="navContact">رابطہ</a>
             <a href="/ur/privacy.html" data-s="navPrivacy">رازداری</a>
             <a href="/ur/terms.html" data-s="navTerms">استعمال کی شرائط</a>
             <a href="/ur/affiliate-disclosure.html" data-s="navAffiliate">ایفیلیئٹ انکشاف</a>
           </nav>
+        </div>
+      </div>
+      <div class="footer-app">
+        <h3 data-s="appGet">ایپ حاصل کریں</h3>
+        <div class="store-pills">
+          <a class="store-pill" href="/ur/mobile-app.html" data-store="android"><span class="store-ico" aria-hidden="true">📱</span><span data-s="appSoonAndroid">جلد Android پر</span></a>
+          <a class="store-pill" href="/ur/mobile-app.html" data-store="ios"><span class="store-ico" aria-hidden="true">📱</span><span data-s="appSoonIos">جلد iPhone پر</span></a>
+          <button type="button" class="store-pill store-install" data-install="" hidden=""><span class="store-ico" aria-hidden="true">⬇</span><span data-s="appInstallBtn">ویب ایپ انسٹال کریں</span></button>
         </div>
       </div>
       <p class="disclaimer" data-s="disclaimer">یہ ایک آزاد ویب سائٹ ہے۔ اس کا کسی سرکاری دفتر یا بینک سے کوئی تعلق نہیں۔</p>

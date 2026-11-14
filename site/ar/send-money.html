@@ -17,6 +17,10 @@
   <link rel="alternate" hreflang="x-default" href="https://expatguideme.com/send-money.html">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="ExpatGuideME">
+  <meta name="mobile-web-app-capable" content="yes">
   <script>(function(){try{var t=localStorage.getItem('expatguideme_theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -184,6 +188,7 @@
             <div>
               <label class="field-label" for="amount" id="amountLabel"></label>
               <input type="number" id="amount" inputmode="decimal" min="0" step="any" value="1000">
+              <div class="presets" id="amountPresets" role="group" aria-labelledby="amountLabel"></div>
             </div>
           </div>
           <div class="chips" id="fundChips"></div>
@@ -357,12 +362,21 @@
           <h3 data-s="footerSite">الموقع</h3>
           <nav class="footer-links" aria-label="Footer">
             <a href="/ar/" data-s="navHome">الرئيسية</a>
+            <a href="/ar/mobile-app.html" data-s="navApp">تطبيق الجوال</a>
             <a href="/ar/about.html" data-s="navAbout">من نحن</a>
             <a href="/ar/contact.html" data-s="navContact">اتصل بنا</a>
             <a href="/ar/privacy.html" data-s="navPrivacy">الخصوصية</a>
             <a href="/ar/terms.html" data-s="navTerms">شروط الاستخدام</a>
             <a href="/ar/affiliate-disclosure.html" data-s="navAffiliate">الإفصاح عن روابط الشراكة</a>
           </nav>
+        </div>
+      </div>
+      <div class="footer-app">
+        <h3 data-s="appGet">حمّل التطبيق</h3>
+        <div class="store-pills">
+          <a class="store-pill" href="/ar/mobile-app.html" data-store="android"><span class="store-ico" aria-hidden="true">📱</span><span data-s="appSoonAndroid">قريبًا على أندرويد</span></a>
+          <a class="store-pill" href="/ar/mobile-app.html" data-store="ios"><span class="store-ico" aria-hidden="true">📱</span><span data-s="appSoonIos">قريبًا على آيفون</span></a>
+          <button type="button" class="store-pill store-install" data-install="" hidden=""><span class="store-ico" aria-hidden="true">⬇</span><span data-s="appInstallBtn">ثبّت تطبيق الويب</span></button>
         </div>
       </div>
       <p class="disclaimer" data-s="disclaimer">هذا موقع مستقل، ولا علاقة له بأي جهة حكومية أو بنك.</p>
@@ -582,6 +596,9 @@
         $("corRate").textContent = state.market ? "1 " + s.cur + " = " + fmtRate(state.market) + " " + d.cur : "…";
         $("corMeta").textContent = state.market ? L("marketNote") : L("loading");
         $("amountLabel").textContent = fill(L("amountLabel"), { cur: s.cur });
+        $("amountPresets").innerHTML = [500, 1000, 2500, 5000].map(function (n) {
+          return '<button type="button" class="preset' + (state.amount === n ? ' on' : '') + '" data-amt="' + n + '" dir="ltr">' + n.toLocaleString("en-US") + " " + s.cur + "</button>";
+        }).join("");
         $("updRateLabel").textContent = fill(L("updRate"), { from: s.cur, to: d.cur });
         $("updFeeLabel").textContent = fill(L("updFee"), { cur: s.cur });
         var st = $("ratesStatus");
@@ -813,6 +830,14 @@
       document.querySelectorAll(".act").forEach(function (b) { b.addEventListener("click", function () { showPanel(b.getAttribute("data-act")); }); });
       $("amount").addEventListener("input", function () {
         var v = parseFloat(this.value); state.amount = isFinite(v) && v > 0 ? v : 0; renderRows();
+        Array.prototype.forEach.call(document.querySelectorAll("#amountPresets .preset"), function (b) {
+          b.classList.toggle("on", Number(b.getAttribute("data-amt")) === state.amount);
+        });
+      });
+      $("amountPresets").addEventListener("click", function (e) {
+        var b = e.target.closest(".preset"); if (!b) return;
+        $("amount").value = b.getAttribute("data-amt");
+        $("amount").dispatchEvent(new Event("input", { bubbles: true }));
       });
       $("nativeShare").addEventListener("click", function () {
         if (navigator.share) navigator.share({ title: document.title, text: waText(), url: routeUrl() }).catch(function () {});

@@ -33,7 +33,7 @@ ADSENSE_CLIENT = "ca-pub-4815162342890123"
 # While it is empty, reserved spaces stay hidden and Auto ads place ads instead.
 ADSENSE_UNIT = ""
 # Pages that never show ads (policy and trust pages).
-NO_AD_PAGES = {"about", "privacy", "terms", "affiliate", "contact", "404", "notfound", "none"}
+NO_AD_PAGES = {"app", "about", "privacy", "terms", "affiliate", "contact", "404", "notfound", "none"}
 
 ICON = {
     "search": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>',
@@ -87,6 +87,10 @@ def head(meta):
   <link rel="canonical" href="{canonical}">{alternates(meta)}
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="ExpatGuideME">
+  <meta name="mobile-web-app-capable" content="yes">
   {THEME_BOOT}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -184,8 +188,16 @@ def footer(credit):
         <div>
           <h3 data-s="footerSite"></h3>
           <nav class="footer-links" aria-label="Footer">
-{_links([("/", "navHome"), ("/about.html", "navAbout"), ("/contact.html", "navContact"), ("/privacy.html", "navPrivacy"), ("/terms.html", "navTerms"), ("/affiliate-disclosure.html", "navAffiliate")])}
+{_links([("/", "navHome"), ("/mobile-app.html", "navApp"), ("/about.html", "navAbout"), ("/contact.html", "navContact"), ("/privacy.html", "navPrivacy"), ("/terms.html", "navTerms"), ("/affiliate-disclosure.html", "navAffiliate")])}
           </nav>
+        </div>
+      </div>
+      <div class="footer-app">
+        <h3 data-s="appGet"></h3>
+        <div class="store-pills">
+          <a class="store-pill" href="/mobile-app.html" data-store="android"><span class="store-ico" aria-hidden="true">📱</span><span data-s="appSoonAndroid"></span></a>
+          <a class="store-pill" href="/mobile-app.html" data-store="ios"><span class="store-ico" aria-hidden="true">📱</span><span data-s="appSoonIos"></span></a>
+          <button type="button" class="store-pill store-install" data-install hidden><span class="store-ico" aria-hidden="true">⬇</span><span data-s="appInstallBtn"></span></button>
         </div>
       </div>
       <p class="disclaimer" data-s="disclaimer"></p>{credit_html}
@@ -369,7 +381,7 @@ def build():
             m = re.search(r'data-updated="(\d{4}-\d{2}-\d{2})"', body)
             public.append({"file": name, "path": meta["path"], "lastmod": m.group(1) if m else "2026-11-13"})
     order = ["/", "/exchange-rate.html", "/send-money.html", "/end-of-service.html", "/id-residency.html",
-             "/family-cost.html", "/embassy-services.html", "/about.html", "/contact.html", "/privacy.html",
+             "/family-cost.html", "/embassy-services.html", "/mobile-app.html", "/about.html", "/contact.html", "/privacy.html",
              "/terms.html", "/affiliate-disclosure.html"]
     public.sort(key=lambda e: order.index(e["path"]) if e["path"] in order else 99)
     subprocess.run(
@@ -377,11 +389,26 @@ def build():
         check=True,
     )
     sitemap(public, conversion_pages())
+    service_worker()
     if ADSENSE_CLIENT:
         pub = ADSENSE_CLIENT.replace("ca-", "")
         with open(os.path.join(ROOT, "site", "ads.txt"), "w", encoding="utf-8") as f:
             f.write(f"google.com, {pub}, DIRECT, f08c47fec0942fa0\n")
         print("built ads.txt")
+
+
+def service_worker():
+    """Write site/sw.js with a cache version that changes whenever the shared files change."""
+    import hashlib
+    h = hashlib.sha1()
+    for rel in ("assets/site.js", "assets/site.css", "manifest.webmanifest", "offline.html"):
+        with open(os.path.join(ROOT, "site", rel), "rb") as f:
+            h.update(f.read())
+    with open(os.path.join(SRC, "..", "sw.template.js"), encoding="utf-8") as f:
+        js = f.read().replace("__VERSION__", h.hexdigest()[:10])
+    with open(os.path.join(ROOT, "site", "sw.js"), "w", encoding="utf-8") as f:
+        f.write(js)
+    print("built sw.js")
 
 
 # ---------------------------------------------------------------------------

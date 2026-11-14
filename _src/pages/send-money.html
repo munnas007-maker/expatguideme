@@ -132,6 +132,7 @@ META-->
             <div>
               <label class="field-label" for="amount" id="amountLabel"></label>
               <input type="number" id="amount" inputmode="decimal" min="0" step="any" value="1000">
+              <div class="presets" id="amountPresets" role="group" aria-labelledby="amountLabel"></div>
             </div>
           </div>
           <div class="chips" id="fundChips"></div>
@@ -458,6 +459,9 @@ META-->
         $("corRate").textContent = state.market ? "1 " + s.cur + " = " + fmtRate(state.market) + " " + d.cur : "…";
         $("corMeta").textContent = state.market ? L("marketNote") : L("loading");
         $("amountLabel").textContent = fill(L("amountLabel"), { cur: s.cur });
+        $("amountPresets").innerHTML = [500, 1000, 2500, 5000].map(function (n) {
+          return '<button type="button" class="preset' + (state.amount === n ? ' on' : '') + '" data-amt="' + n + '" dir="ltr">' + n.toLocaleString("en-US") + " " + s.cur + "</button>";
+        }).join("");
         $("updRateLabel").textContent = fill(L("updRate"), { from: s.cur, to: d.cur });
         $("updFeeLabel").textContent = fill(L("updFee"), { cur: s.cur });
         var st = $("ratesStatus");
@@ -689,6 +693,14 @@ META-->
       document.querySelectorAll(".act").forEach(function (b) { b.addEventListener("click", function () { showPanel(b.getAttribute("data-act")); }); });
       $("amount").addEventListener("input", function () {
         var v = parseFloat(this.value); state.amount = isFinite(v) && v > 0 ? v : 0; renderRows();
+        Array.prototype.forEach.call(document.querySelectorAll("#amountPresets .preset"), function (b) {
+          b.classList.toggle("on", Number(b.getAttribute("data-amt")) === state.amount);
+        });
+      });
+      $("amountPresets").addEventListener("click", function (e) {
+        var b = e.target.closest(".preset"); if (!b) return;
+        $("amount").value = b.getAttribute("data-amt");
+        $("amount").dispatchEvent(new Event("input", { bubbles: true }));
       });
       $("nativeShare").addEventListener("click", function () {
         if (navigator.share) navigator.share({ title: document.title, text: waText(), url: routeUrl() }).catch(function () {});

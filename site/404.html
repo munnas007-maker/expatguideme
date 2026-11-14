@@ -10,6 +10,10 @@
   <link rel="canonical" href="https://expatguideme.com/404.html">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="ExpatGuideME">
+  <meta name="mobile-web-app-capable" content="yes">
   <script>(function(){try{var t=localStorage.getItem('expatguideme_theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -111,12 +115,21 @@
           <h3 data-s="footerSite"></h3>
           <nav class="footer-links" aria-label="Footer">
             <a href="/" data-s="navHome"></a>
+            <a href="/mobile-app.html" data-s="navApp"></a>
             <a href="/about.html" data-s="navAbout"></a>
             <a href="/contact.html" data-s="navContact"></a>
             <a href="/privacy.html" data-s="navPrivacy"></a>
             <a href="/terms.html" data-s="navTerms"></a>
             <a href="/affiliate-disclosure.html" data-s="navAffiliate"></a>
           </nav>
+        </div>
+      </div>
+      <div class="footer-app">
+        <h3 data-s="appGet"></h3>
+        <div class="store-pills">
+          <a class="store-pill" href="/mobile-app.html" data-store="android"><span class="store-ico" aria-hidden="true">📱</span><span data-s="appSoonAndroid"></span></a>
+          <a class="store-pill" href="/mobile-app.html" data-store="ios"><span class="store-ico" aria-hidden="true">📱</span><span data-s="appSoonIos"></span></a>
+          <button type="button" class="store-pill store-install" data-install hidden><span class="store-ico" aria-hidden="true">⬇</span><span data-s="appInstallBtn"></span></button>
         </div>
       </div>
       <p class="disclaimer" data-s="disclaimer"></p>

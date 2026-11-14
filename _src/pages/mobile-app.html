@@ -1,0 +1,66 @@
+<!--META
+title: ExpatGuideME app for Android and iPhone: coming soon | ExpatGuideME
+description: The ExpatGuideME app is coming to Android and iPhone. Install the free web app today for exchange rates and Gulf expat calculators that work offline, in 8 languages.
+path: /mobile-app.html
+active: app
+META-->
+<!--STYLE-->
+  <style>
+    .app { max-width: 760px; }
+    .app-hero { display: flex; gap: 18px; align-items: center; margin: 8px 0 6px; }
+    .app-hero img { width: 76px; height: 76px; border-radius: 18px; box-shadow: var(--shadow); flex: none; }
+    .app-feats { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+    .app-feats li { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-weight: 600; }
+    .app-feats li::before { content: "✓"; color: var(--brand); margin-inline-end: 8px; }
+    .app-form { display: flex; flex-wrap: wrap; gap: 10px; }
+    .app-form input[type="email"] { flex: 1 1 240px; min-height: 46px; }
+    .how { color: var(--muted); margin: 6px 0; }
+  </style>
+<!--/STYLE-->
+<!--BODY-->
+  <main id="main" tabindex="-1">
+    <div class="wrap app">
+      <div class="app-hero">
+        <img src="/assets/icon-192.png" alt="" width="76" height="76">
+        <h1 data-s="appTitle"></h1>
+      </div>
+      <p class="lead" data-s="appLead"></p>
+      <div class="store-pills">
+        <span class="store-pill" data-store="android"><span class="store-ico" aria-hidden="true">📱</span><span data-s="appSoonAndroid"></span></span>
+        <span class="store-pill" data-store="ios"><span class="store-ico" aria-hidden="true">📱</span><span data-s="appSoonIos"></span></span>
+      </div>
+      <ul class="app-feats">
+        <li data-s="appF1"></li>
+        <li data-s="appF2"></li>
+        <li data-s="appF3"></li>
+        <li data-s="appF4"></li>
+      </ul>
+
+      <section class="card" aria-labelledby="notifyTitle">
+        <h2 id="notifyTitle" data-s="appNotifyTitle"></h2>
+        <p data-s="appNotifyText"></p>
+        <form class="app-form" name="app-notify" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" data-ajax data-success="appNotifyOk" novalidate>
+          <input type="hidden" name="form-name" value="app-notify">
+          <input type="hidden" name="language" value="en" data-lang-field>
+          <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <label class="sr-only" for="appEmail" data-s="appEmail"></label>
+          <input id="appEmail" type="email" name="email" required autocomplete="email" inputmode="email" data-s-ph="appEmail">
+          <button type="submit" class="btn btn-primary" data-s="appNotifyBtn"></button>
+          <p class="form-msg" role="alert" aria-live="polite"></p>
+        </form>
+        <div class="success-box" id="appNotifyOk" tabindex="-1" role="status" hidden>
+          <span class="check" aria-hidden="true">✓</span><span data-s="appNotifyOk"></span>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="nowTitle">
+        <h2 id="nowTitle" data-s="appNowTitle"></h2>
+        <p data-s="appNowText"></p>
+        <p><button type="button" class="btn btn-primary" data-install hidden data-s="appInstallBtn"></button></p>
+        <p class="how" data-install-done hidden data-s="appInstalled"></p>
+        <p class="how" data-s="appAndroidHow"></p>
+        <p class="how" data-s="appIosHow"></p>
+      </section>
+    </div>
+  </main>
+<!--/BODY-->

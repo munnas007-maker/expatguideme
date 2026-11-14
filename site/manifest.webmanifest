@@ -1,0 +1,25 @@
+{
+  "id": "/?source=pwa",
+  "name": "ExpatGuideME: Gulf expat tools",
+  "short_name": "ExpatGuideME",
+  "description": "Free tools for expats in the Gulf: exchange rates, money transfer comparison, end of service, vacation and family cost calculators, in 8 languages.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#0b6e4f",
+  "lang": "en",
+  "dir": "auto",
+  "categories": ["finance", "utilities", "travel"],
+  "icons": [
+    { "src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Exchange rates", "url": "/exchange-rate.html?source=pwa", "icons": [{ "src": "/assets/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Send money home", "url": "/send-money.html?source=pwa", "icons": [{ "src": "/assets/icon-192.png", "sizes": "192x192" }] },
+    { "name": "End of service", "url": "/end-of-service.html?source=pwa", "icons": [{ "src": "/assets/icon-192.png", "sizes": "192x192" }] }
+  ]
+}
