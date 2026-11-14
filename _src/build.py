@@ -15,6 +15,7 @@ The generated .html files in site/ are what Netlify serves.
 import datetime
 import json
 import os
+import sys
 import subprocess
 import re
 
@@ -34,6 +35,9 @@ ADSENSE_CLIENT = "ca-pub-4815162342890123"
 ADSENSE_UNIT = ""
 # Pages that never show ads (policy and trust pages).
 NO_AD_PAGES = {"app", "consult", "playbook", "about", "privacy", "terms", "affiliate", "contact", "404", "notfound", "none"}
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from icons import icon as lucide  # noqa: E402  Lucide icons (ISC)
 
 ICON = {
     "search": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>',
@@ -145,6 +149,10 @@ def header(active):
         cur = ' aria-current="page"' if active == name else ""
         return f'<a href="{href}" data-s="{key}"{cur}></a>'
 
+    def bn(href, ic, key, name):
+        cur = ' aria-current="page"' if active == name else ""
+        return f'<a href="{href}"{cur}>{lucide(ic, "bn-ic")}<span data-s="{key}"></span></a>'
+
     ads_mode = ("live" if ADSENSE_UNIT else "auto") if ADSENSE_CLIENT and active not in NO_AD_PAGES else "off"
     return f"""<body data-page="{active}" data-ads="{ads_mode}">
   <a class="skip-link" href="#main" data-s="skip">Skip to content</a>
@@ -158,6 +166,17 @@ def header(active):
         {link("/exchange-rate.html", "navExchange", "exchange")}
         {link("/send-money.html", "navSend", "send")}
         {link("/contact.html", "navContact", "contact")}
+        <span class="nav-more" aria-hidden="false">
+          {link("/gold-rate.html", "navGold", "gold")}
+          {link("/sim-internet.html", "navSim", "sim")}
+          {link("/family-visa.html", "navVisa", "visa")}
+          {link("/end-of-service.html", "navEos", "eos")}
+          {link("/vacation-calculator.html", "navVac", "vac")}
+          {link("/family-cost.html", "navFamily", "family")}
+          {link("/id-residency.html", "navId", "id")}
+          {link("/embassy-services.html", "navEmbassy", "embassy")}
+          <button type="button" class="nav-theme" data-theme-proxy><span data-s="themeLabel"></span></button>
+        </span>
       </nav>
       <div class="header-actions">
         <div class="country-menu">
@@ -193,6 +212,13 @@ def header(active):
       </div>
     </div>
   </header>
+  <nav class="bottom-nav" aria-label="Quick links">
+    {bn("/", "home", "navHome", "home")}
+    {bn("/exchange-rate.html", "exchange", "bnRates", "exchange")}
+    {bn("/send-money.html", "send", "bnSend", "send")}
+    {bn("/gold-rate.html", "gold", "bnGold", "gold")}
+    <button type="button" data-open-menu aria-controls="siteNav">{lucide("grid", "bn-ic")}<span data-s="bnMore"></span></button>
+  </nav>
 """
 
 
