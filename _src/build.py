@@ -726,6 +726,8 @@ def checked_provider_rates():
                 ok = False
             if ok:
                 out.setdefault(route, {})[pid] = {"rate": float(v["rate"]), "fee": v.get("fee"), "at": v["checked_at"]}
+                if v.get("src"):
+                    out[route][pid].update(src=v["src"], src_url=v.get("src_url", ""))
     return out
 
 

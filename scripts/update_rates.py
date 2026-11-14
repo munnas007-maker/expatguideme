@@ -149,8 +149,69 @@ def clean_provider_rates(entries, usd_rates, now):
         iso = when.strftime("%Y-%m-%dT%H:%M:%SZ")
         if pid not in route or route[pid]["checked_at"] < iso:
             route[pid] = {"rate": rate, "fee": fee, "checked_at": iso}
+            if e.get("src"):
+                route[pid]["src"] = str(e["src"])[:60]
+                route[pid]["src_url"] = str(e.get("src_url", ""))[:200]
     for d in dropped:
         print("provider rate dropped:", d)
+    return out
+
+
+# ---- Rates reported on indianinsaudiarabia.com (SAR -> INR only) ----
+# The Manager chose this site as the automatic source for India. Each rate keeps the site's
+# own "updated ... ago" time and is credited to the site on our page.
+IISA_URL = "https://indianinsaudiarabia.com/sar-to-inr/"
+IISA_SRC = "indianinsaudiarabia.com"
+IISA_IDS = {  # their centre name -> our provider id (centres we do not list are skipped)
+    "enjaz": "enjaz", "alinma pay": "alinmapay", "alinma bank": "alinma", "d360": "d360",
+    "emirates nbd ksa": "enbdksa", "neo - snb": "snbquickpay", "snb quick pay": "snbquickpay",
+    "mobily pay": "mobilypay", "friendi pay": "friendipay", "barq": "barq", "tiqmo": "tiqmo",
+    "stc pay": "stcbank", "western union": "wu", "tahweel al rajhi": "tahweel", "fawri": "fawri",
+    "urpay": "urpay", "bin yalla": "binyalla",
+}
+
+
+def iisa_age(text):
+    """'updated 9 hrs ago' -> timedelta. 'yesterday' counts as 36 hours (never fresher than it may be)."""
+    t = (text or "").lower().replace("updated", "").strip()
+    if t in ("just now", "now"):
+        return datetime.timedelta(0)
+    if t == "yesterday":
+        return datetime.timedelta(hours=36)
+    m = re.match(r"(an?|\d+)\s*(min|minute|hr|hour|day|week|month)s?\s+ago", t)
+    if not m:
+        return None
+    n = 1 if m.group(1) in ("a", "an") else int(m.group(1))
+    unit = m.group(2)
+    hours = {"min": 1 / 60, "minute": 1 / 60, "hr": 1, "hour": 1, "day": 24, "week": 168, "month": 720}[unit]
+    return datetime.timedelta(hours=n * hours)
+
+
+def fetch_iisa(now):
+    """SAR->INR centre rates from indianinsaudiarabia.com as provider-rate entries."""
+    try:
+        req = urllib.request.Request(IISA_URL, headers={"User-Agent": "Mozilla/5.0 (compatible; ExpatGuideME-rates; +https://expatguideme.com)"})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            page = r.read().decode("utf-8", "replace")
+    except Exception as e:
+        print("indianinsaudiarabia.com not reachable:", e)
+        return []
+    out = []
+    for name, rate, rest in re.findall(r'<div class="rate-card[^"]*"[^>]*?data-name="([^"]*)"[^>]*?data-rate="([^"]*)"(.*?)</div></div>', page, re.S):
+        pid = IISA_IDS.get(re.sub(r"\s+", " ", name).strip().lower())
+        if not pid:
+            continue
+        fee_m = re.search(r'class="rc-fee"[^>]*>([^<]*)<', rest)
+        upd_m = re.search(r'class="rc-upd"[^>]*>([^<]*)<', rest)
+        age = iisa_age(upd_m.group(1) if upd_m else "")
+        if age is None:
+            continue
+        fee_txt = (fee_m.group(1) if fee_m else "").strip().lower()
+        fm = re.search(r"([\d.]+)", fee_txt)
+        fee = "0" if "no fee" in fee_txt else (fm.group(1) if fm else "")
+        out.append({"from": "SAR", "to": "INR", "provider": pid, "rate": rate, "fee": fee,
+                    "checked_at": (now - age).strftime("%Y-%m-%dT%H:%M:%SZ"), "src": IISA_SRC, "src_url": IISA_URL})
+    print("indianinsaudiarabia.com rates read:", len(out))
     return out
 
 
@@ -176,6 +237,7 @@ def update_provider_rates(usd_rates):
             print("provider sheet rows:", len(rows))
         except Exception as e:
             print("provider sheet not reachable, keeping the previous checked rates:", e)
+    entries = entries + fetch_iisa(now)
     current["rates"] = clean_provider_rates(entries, usd_rates, now)
     current["max_age_hours"] = MAX_AGE_HOURS
     with open(PROVIDER_OUT, "w", encoding="utf-8") as f:

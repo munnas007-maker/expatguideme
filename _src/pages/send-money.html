@@ -7,6 +7,8 @@ credit: yes
 META-->
 <!--STYLE-->
   <style>
+    .rate-src { display: block; font-size: .78rem; margin-top: 2px; }
+    .src-note { font-size: .85rem; color: var(--muted); margin: 10px 0 0; }
     .sm { max-width: 980px; }
     .picker { max-width: 560px; }
     .picker .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
@@ -320,12 +322,12 @@ META-->
       function fmt(n, dec) { return Number(n).toLocaleString("en-US", { minimumFractionDigits: dec, maximumFractionDigits: dec }); }
       function fmtRate(r) { return r >= 100 ? fmt(r, 2) : r >= 1 ? fmt(r, 4) : fmt(r, 6); }
       function ago(ts) {
-        var m = Math.max(0, Math.round((Date.now() - ts) / 60000));
+        var m = Math.max(0, Math.round((Date.now() - new Date(ts).getTime()) / 60000));
         if (m < 1) return L("justNow");
         if (m < 60) return fill(L("agoMin"), { n: m });
         var h = Math.round(m / 60);
         if (h < 24) return fill(L("agoHr"), { n: h });
-        return fill(L("agoDay"), { n: Math.round(h / 24) });
+        return fill(L("agoDay"), { n: Math.floor(h / 24) });
       }
       function iso(t) { return "\u2066" + t + "\u2069"; }
       function rtl() { return document.documentElement.dir === "rtl"; }
@@ -368,7 +370,7 @@ META-->
             var chk = CHECKED[s.cur + "-" + d.cur] || {};
             Object.keys(chk).forEach(function (id) {
               var c = chk[id], have = state.providers[id];
-              if (!have || !have.rate || new Date(have.at) < new Date(c.at)) state.providers[id] = { rate: c.rate, fee: c.fee, at: c.at, n: 0, checked: true };
+              if (!have || !have.rate || new Date(have.at) < new Date(c.at)) state.providers[id] = { rate: c.rate, fee: c.fee, at: c.at, n: 0, checked: true, src: c.src, srcUrl: c.src_url };
             });
             state.history = data.history || [];
             if (data.market) { state.market = data.market.rate; state.marketAt = data.market.at; return; }
@@ -408,7 +410,7 @@ META-->
           var rate = real ? c.rate : null;
           var fee = real && c.fee != null ? c.fee : null;
           var payout = rate ? Math.max(0, state.amount - (fee || 0)) * rate : null;
-          return { p: p, i: i, est: !real, rate: rate, fee: fee, at: real ? c.at : null, n: real ? c.n : 0, checked: real && !!c.checked, payout: payout };
+          return { p: p, i: i, est: !real, rate: rate, fee: fee, at: real ? c.at : null, n: real ? c.n : 0, checked: real && !!c.checked, src: real ? c.src : null, srcUrl: real ? c.srcUrl : null, payout: payout };
         });
         list.sort(function (a, b) {
           if (a.est !== b.est) return a.est ? 1 : -1;
@@ -475,7 +477,13 @@ META-->
           var tdR = el("td", r.rate ? "num" : "num muted-cell", r.rate ? fmtRate(r.rate) : L("noRate")); tdR.setAttribute("data-label", L("colRate")); tr.appendChild(tdR);
           var tdF = el("td", r.fee != null ? "num" : "muted-cell", r.fee != null ? fmt(r.fee, s.dec) + " " + s.cur : L("feeCheck")); tdF.setAttribute("data-label", L("colFee")); tr.appendChild(tdF);
           var tdP = el("td", r.payout != null ? "num" : "num muted-cell", r.payout != null ? fmt(r.payout, 2) + " " + d.cur : "–"); tdP.setAttribute("data-label", L("colGet")); tr.appendChild(tdP);
-          var tdU = el("td", "muted-cell", r.at ? stamp(r.at) + " · " + (r.checked ? L("checked") : (r.n === 1 ? L("update1") : fill(L("updates"), { n: r.n }))) : "–"); tdU.setAttribute("data-label", L("colUpdated")); tr.appendChild(tdU);
+          var tdU = el("td", "muted-cell", r.at ? stamp(r.at) + (r.src ? "" : " · " + (r.checked ? L("checked") : (r.n === 1 ? L("update1") : fill(L("updates"), { n: r.n })))) : "–"); tdU.setAttribute("data-label", L("colUpdated"));
+          if (r.src) {  // rate reported on another website: name it and link to it
+            var sl = el("a", "rate-src", window.ExpatSite.t("rateSrc").replace("{site}", r.src));
+            sl.href = /^https:\/\//.test(r.srcUrl || "") ? r.srcUrl : "https://" + r.src + "/"; sl.target = "_blank"; sl.rel = "noopener";
+            tdU.appendChild(sl);
+          }
+          tr.appendChild(tdU);
 
           var tdA = el("td"); tdA.setAttribute("data-label", L("colAction"));
           var wrap = el("div", "row-actions");
@@ -496,6 +504,11 @@ META-->
         });
         window.ExpatSite.tagOutbound(body);
         $("affNote").hidden = !list.some(function (r) { return PARTNERS[r.p.id]; });
+        var srcs = list.filter(function (r) { return r.src; }).map(function (r) { return r.src; }).filter(function (v, i, a) { return a.indexOf(v) === i; });
+        var sn = $("srcNote");
+        if (!sn) { sn = el("p", "src-note"); sn.id = "srcNote"; $("affNote").parentNode.insertBefore(sn, $("affNote")); }
+        sn.hidden = !srcs.length;
+        sn.textContent = srcs.length ? window.ExpatSite.t("rateSrcNote").replace("{site}", srcs.join(", ")) : "";
 
         var top = list[0];
         if (top && top.payout != null) {
