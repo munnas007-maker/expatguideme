@@ -15,6 +15,16 @@
   <link rel="alternate" hreflang="bn" href="https://expatguideme.com/bn/id-residency.html">
   <link rel="alternate" hreflang="tl" href="https://expatguideme.com/tl/id-residency.html">
   <link rel="alternate" hreflang="x-default" href="https://expatguideme.com/id-residency.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ExpatGuideME">
+  <meta property="og:title" content="دليل الهوية والإقامة | ExpatGuideME">
+  <meta property="og:description" content="شرح مبسّط للإقامة والبطاقة المدنية والبطاقة الشخصية القطرية وبطاقة المقيم والبطاقة الذكية: الاستعلام، ومن يجدّد، والتكلفة، وماذا يحدث عند التأخير.">
+  <meta property="og:url" content="https://expatguideme.com/ar/id-residency.html">
+  <meta property="og:image" content="https://expatguideme.com/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ar_SA">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#ffffff">
   <meta name="form-endpoint" content="https://formsubmit.co/ajax/support@expatguideme.com">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -70,6 +80,18 @@
         <a href="/ar/contact.html" data-s="navContact">اتصل بنا</a>
       </nav>
       <div class="header-actions">
+        <div class="country-menu">
+          <button type="button" class="icon-btn country-btn" id="countryToggle" aria-haspopup="true" aria-expanded="false" aria-controls="countryList" data-s-aria="countryPick" aria-label="دولتك" title="دولتك"><span id="countryFlag" aria-hidden="true">🇸🇦</span></button>
+          <div class="countries" id="countryList" role="group" hidden="">
+            <p class="countries-title" data-s="countryPick">دولتك</p>
+            <button type="button" data-cc="sa"><span aria-hidden="true">🇸🇦</span> <span data-s="cSA">السعودية</span></button>
+            <button type="button" data-cc="ae"><span aria-hidden="true">🇦🇪</span> <span data-s="cAE">الإمارات</span></button>
+            <button type="button" data-cc="qa"><span aria-hidden="true">🇶🇦</span> <span data-s="cQA">قطر</span></button>
+            <button type="button" data-cc="kw"><span aria-hidden="true">🇰🇼</span> <span data-s="cKW">الكويت</span></button>
+            <button type="button" data-cc="om"><span aria-hidden="true">🇴🇲</span> <span data-s="cOM">عُمان</span></button>
+            <button type="button" data-cc="bh"><span aria-hidden="true">🇧🇭</span> <span data-s="cBH">البحرين</span></button>
+          </div>
+        </div>
         <div class="lang-menu">
           <button type="button" class="icon-btn" id="langToggle" aria-haspopup="true" aria-expanded="false" aria-controls="langList" data-s-aria="language" aria-label="اللغة" title="اللغة">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg><span class="lang-current" id="langCurrent">English</span>
@@ -251,7 +273,10 @@
       var COUNTRIES = [{"code": "sa", "flag": "🇸🇦", "n": {"en": "Saudi Arabia", "ar": "السعودية", "hi": "सऊदी अरब", "ml": "സൗദി അറേബ്യ", "ne": "साउदी अरब", "ur": "سعودی عرب", "bn": "সৌদি আরব", "tl": "Saudi Arabia"}}, {"code": "kw", "flag": "🇰🇼", "n": {"en": "Kuwait", "ar": "الكويت", "hi": "कुवैत", "ml": "കുവൈത്ത്", "ne": "कुवेत", "ur": "کویت", "bn": "কুয়েত", "tl": "Kuwait"}}, {"code": "qa", "flag": "🇶🇦", "n": {"en": "Qatar", "ar": "قطر", "hi": "क़तर", "ml": "ഖത്തർ", "ne": "कतार", "ur": "قطر", "bn": "কাতার", "tl": "Qatar"}}, {"code": "om", "flag": "🇴🇲", "n": {"en": "Oman", "ar": "عُمان", "hi": "ओमान", "ml": "ഒമാൻ", "ne": "ओमान", "ur": "عمان", "bn": "ওমান", "tl": "Oman"}}, {"code": "bh", "flag": "🇧🇭", "n": {"en": "Bahrain", "ar": "البحرين", "hi": "बहरीन", "ml": "ബഹ്‌റൈൻ", "ne": "बहराइन", "ur": "بحرین", "bn": "বাহরাইন", "tl": "Bahrain"}}];
       var PREF_KEY = "expatguideme_idcountry_v1";
       var current = "sa";
-      try { var s = localStorage.getItem(PREF_KEY); if (C.en[s]) current = s; } catch (e) {}
+      var hasPage = false;
+      try { var s = localStorage.getItem(PREF_KEY); if (C.en[s]) { current = s; hasPage = true; } } catch (e) {}
+      if (window.ExpatSite.country && (window.ExpatSite.hasCountry() || !hasPage) && C.en[window.ExpatSite.country()]) current = window.ExpatSite.country();
+      if (window.ExpatSite.onCountry) window.ExpatSite.onCountry(function (cc) { if (C.en[cc]) { current = cc; try { localStorage.setItem(PREF_KEY, current); } catch (e) {} render(); } });
 
       function $(id) { return document.getElementById(id); }
       function lang() { return window.ExpatSite.lang(); }
@@ -266,7 +291,7 @@
         COUNTRIES.forEach(function (c) {
           var b = el("button", null, c.flag + " " + (c.n[lang()] || c.n.en));
           b.type = "button"; b.setAttribute("data-country", c.code); b.setAttribute("aria-pressed", String(c.code === current));
-          b.addEventListener("click", function () { current = c.code; try { localStorage.setItem(PREF_KEY, current); } catch (e) {} render(); });
+          b.addEventListener("click", function () { current = c.code; try { localStorage.setItem(PREF_KEY, current); } catch (e) {} if (window.ExpatSite.setCountry) window.ExpatSite.setCountry(c.code, true); render(); });
           tabs.appendChild(b);
         });
         var g = guide();

@@ -15,6 +15,16 @@
   <link rel="alternate" hreflang="bn" href="https://expatguideme.com/bn/send-money.html">
   <link rel="alternate" hreflang="tl" href="https://expatguideme.com/tl/send-money.html">
   <link rel="alternate" hreflang="x-default" href="https://expatguideme.com/send-money.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ExpatGuideME">
+  <meta property="og:title" content="Magpadala ng pera pauwi: ikumpara ang rates | ExpatGuideME">
+  <meta property="og:description" content="Piliin kung saan ka nagpapadala at kung saan nakatira ang pamilya mo. Tingnan ang live market rate, ang rates na ibinahagi ng ibang OFW para sa bawat bangko,…">
+  <meta property="og:url" content="https://expatguideme.com/tl/send-money.html">
+  <meta property="og:image" content="https://expatguideme.com/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="tl_PH">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#ffffff">
   <meta name="form-endpoint" content="https://formsubmit.co/ajax/support@expatguideme.com">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -117,6 +127,18 @@
         <a href="/tl/contact.html" data-s="navContact">Makipag-ugnayan</a>
       </nav>
       <div class="header-actions">
+        <div class="country-menu">
+          <button type="button" class="icon-btn country-btn" id="countryToggle" aria-haspopup="true" aria-expanded="false" aria-controls="countryList" data-s-aria="countryPick" aria-label="Bansa mo" title="Bansa mo"><span id="countryFlag" aria-hidden="true">🇸🇦</span></button>
+          <div class="countries" id="countryList" role="group" hidden="">
+            <p class="countries-title" data-s="countryPick">Bansa mo</p>
+            <button type="button" data-cc="sa"><span aria-hidden="true">🇸🇦</span> <span data-s="cSA">Saudi Arabia</span></button>
+            <button type="button" data-cc="ae"><span aria-hidden="true">🇦🇪</span> <span data-s="cAE">UAE</span></button>
+            <button type="button" data-cc="qa"><span aria-hidden="true">🇶🇦</span> <span data-s="cQA">Qatar</span></button>
+            <button type="button" data-cc="kw"><span aria-hidden="true">🇰🇼</span> <span data-s="cKW">Kuwait</span></button>
+            <button type="button" data-cc="om"><span aria-hidden="true">🇴🇲</span> <span data-s="cOM">Oman</span></button>
+            <button type="button" data-cc="bh"><span aria-hidden="true">🇧🇭</span> <span data-s="cBH">Bahrain</span></button>
+          </div>
+        </div>
         <div class="lang-menu">
           <button type="button" class="icon-btn" id="langToggle" aria-haspopup="true" aria-expanded="false" aria-controls="langList" data-s-aria="language" aria-label="Wika" title="Wika">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg><span class="lang-current" id="langCurrent">English</span>
@@ -840,9 +862,9 @@
       }
 
       /* ---------- Events ---------- */
-      $("srcSel").addEventListener("change", function () { state.src = this.value; });
+      $("srcSel").addEventListener("change", function () { state.src = this.value; if (window.ExpatSite.setCountry) window.ExpatSite.setCountry(state.src, true); });
       $("dstSel").addEventListener("change", function () { state.dst = this.value; });
-      $("nextBtn").addEventListener("click", function () { state.src = $("srcSel").value; state.dst = $("dstSel").value; openRoute(true); });
+      $("nextBtn").addEventListener("click", function () { state.src = $("srcSel").value; state.dst = $("dstSel").value; if (window.ExpatSite.setCountry) window.ExpatSite.setCountry(state.src, true); openRoute(true); });
       $("changeBtn").addEventListener("click", function () {
         $("hub").hidden = true; $("picker").hidden = false;
         $("srcSel").value = state.src; $("dstSel").value = state.dst; $("srcSel").focus();
@@ -898,7 +920,14 @@
         var savedRoute = false;
         try { var saved = JSON.parse(storeGet(PREF_KEY) || "null"); if (saved && validRoute(saved.src, saved.dst)) { state.src = saved.src; state.dst = saved.dst; savedRoute = true; } } catch (e) {}
         if (!savedRoute) state.dst = { bn: "bd", ur: "pk", ne: "np", tl: "ph" }[lang()] || "in";
+        var X = window.ExpatSite;
+        if (X.country && (X.hasCountry() || !savedRoute) && validRoute(X.country(), state.dst)) state.src = X.country();
       }
+      if (window.ExpatSite.onCountry) window.ExpatSite.onCountry(function (cc) {
+        if (!validRoute(cc, state.dst)) return;
+        state.src = cc; $("srcSel").value = cc;
+        if (!$("hub").hidden) openRoute(true);
+      });
       var firstLang = true;
       window.ExpatSite.onLang(function () {
         renderText();

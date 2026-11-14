@@ -132,6 +132,12 @@ META-->
       function num(id) { var v = parseFloat($(id).value); return isFinite(v) && v > 0 ? v : 0; }
       function money(v, cur, dec) { return cur + " " + Number(v).toLocaleString("en-US", { minimumFractionDigits: dec, maximumFractionDigits: dec }); }
       function save() { try { localStorage.setItem(PREF_KEY, JSON.stringify({ country: state.country, home: state.home })); } catch (e) {} }
+      (function () {
+        var X = window.ExpatSite, hasPage = false, ok = function (cc) { return SOURCES.some(function (s) { return s.code === cc; }); };
+        try { hasPage = !!localStorage.getItem(PREF_KEY); } catch (e) {}
+        if (X.country && (X.hasCountry() || !hasPage) && ok(X.country())) state.country = X.country();
+        if (X.onCountry) X.onCountry(function (cc) { if (ok(cc)) { state.country = cc; state.levyTouched = false; save(); render(); } });
+      })();
 
       LINES.forEach(function (k) {
         var wrap = el("div", "field");
@@ -196,7 +202,7 @@ META-->
         levyRow(); calc();
       }
 
-      $("country").addEventListener("change", function () { state.country = this.value; state.levyTouched = false; save(); render(); });
+      $("country").addEventListener("change", function () { state.country = this.value; state.levyTouched = false; save(); if (window.ExpatSite.setCountry) window.ExpatSite.setCountry(state.country, true); render(); });
       $("home").addEventListener("change", function () { state.home = this.value; save(); calc(); });
       $("income").addEventListener("input", calc);
       $("deps").addEventListener("input", function () { levyRow(); calc(); });

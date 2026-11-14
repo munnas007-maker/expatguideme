@@ -109,8 +109,14 @@ META-->
         window.ExpatSite.tagOutbound(document.querySelector(".emb .card"));
       }
       function save() { try { localStorage.setItem(PREF_KEY, JSON.stringify(state)); } catch (e) {} }
+      (function () {
+        var X = window.ExpatSite, hasPage = false;
+        try { hasPage = !!localStorage.getItem(PREF_KEY); } catch (e) {}
+        if (X.country && (X.hasCountry() || !hasPage) && EMB.in[X.country()]) state.liv = X.country();
+        if (X.onCountry) X.onCountry(function (cc) { if (EMB.in[cc]) { state.liv = cc; save(); render(); } });
+      })();
       $("nat").addEventListener("change", function () { state.nat = this.value; save(); render(); });
-      $("liv").addEventListener("change", function () { state.liv = this.value; save(); render(); });
+      $("liv").addEventListener("change", function () { state.liv = this.value; save(); if (window.ExpatSite.setCountry) window.ExpatSite.setCountry(state.liv, true); render(); });
       window.ExpatSite.onLang(render);
     })();
   </script>

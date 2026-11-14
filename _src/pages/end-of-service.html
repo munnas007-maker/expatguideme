@@ -717,6 +717,12 @@ META-->
           if (saved.mode === "years" || saved.mode === "dates") state.mode = saved.mode;
         }
       } catch (e) {}
+      (function () {
+        var X = window.ExpatSite, hasPage = false;
+        try { hasPage = !!localStorage.getItem(PREF_KEY); } catch (e) {}
+        if (X.country && (X.hasCountry() || !hasPage)) { var g = X.country(); if (COUNTRIES.some(function (c) { return c.code === g; })) state.country = g; }
+        if (X.onCountry) X.onCountry(function (cc) { if (COUNTRIES.some(function (c) { return c.code === cc; })) { state.country = cc; savePrefs(); render(); } });
+      })();
       function savePrefs() { try { localStorage.setItem(PREF_KEY, JSON.stringify(state)); } catch (e) {} }
 
       function $(id) { return document.getElementById(id); }
@@ -850,7 +856,7 @@ META-->
           var b = el("button", null, c.flag + " " + cname(c, lang));
           b.type = "button"; b.setAttribute("data-country", c.code);
           b.setAttribute("aria-pressed", String(c.code === state.country));
-          b.addEventListener("click", function () { state.country = c.code; savePrefs(); render(); });
+          b.addEventListener("click", function () { state.country = c.code; savePrefs(); if (window.ExpatSite.setCountry) window.ExpatSite.setCountry(c.code, true); render(); });
           box.appendChild(b);
         });
       }

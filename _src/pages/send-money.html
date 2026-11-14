@@ -697,9 +697,9 @@ META-->
       }
 
       /* ---------- Events ---------- */
-      $("srcSel").addEventListener("change", function () { state.src = this.value; });
+      $("srcSel").addEventListener("change", function () { state.src = this.value; if (window.ExpatSite.setCountry) window.ExpatSite.setCountry(state.src, true); });
       $("dstSel").addEventListener("change", function () { state.dst = this.value; });
-      $("nextBtn").addEventListener("click", function () { state.src = $("srcSel").value; state.dst = $("dstSel").value; openRoute(true); });
+      $("nextBtn").addEventListener("click", function () { state.src = $("srcSel").value; state.dst = $("dstSel").value; if (window.ExpatSite.setCountry) window.ExpatSite.setCountry(state.src, true); openRoute(true); });
       $("changeBtn").addEventListener("click", function () {
         $("hub").hidden = true; $("picker").hidden = false;
         $("srcSel").value = state.src; $("dstSel").value = state.dst; $("srcSel").focus();
@@ -755,7 +755,14 @@ META-->
         var savedRoute = false;
         try { var saved = JSON.parse(storeGet(PREF_KEY) || "null"); if (saved && validRoute(saved.src, saved.dst)) { state.src = saved.src; state.dst = saved.dst; savedRoute = true; } } catch (e) {}
         if (!savedRoute) state.dst = { bn: "bd", ur: "pk", ne: "np", tl: "ph" }[lang()] || "in";
+        var X = window.ExpatSite;
+        if (X.country && (X.hasCountry() || !savedRoute) && validRoute(X.country(), state.dst)) state.src = X.country();
       }
+      if (window.ExpatSite.onCountry) window.ExpatSite.onCountry(function (cc) {
+        if (!validRoute(cc, state.dst)) return;
+        state.src = cc; $("srcSel").value = cc;
+        if (!$("hub").hidden) openRoute(true);
+      });
       var firstLang = true;
       window.ExpatSite.onLang(function () {
         renderText();

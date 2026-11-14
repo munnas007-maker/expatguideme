@@ -15,6 +15,16 @@
   <link rel="alternate" hreflang="bn" href="https://expatguideme.com/bn/end-of-service.html">
   <link rel="alternate" hreflang="tl" href="https://expatguideme.com/tl/end-of-service.html">
   <link rel="alternate" hreflang="x-default" href="https://expatguideme.com/end-of-service.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ExpatGuideME">
+  <meta property="og:title" content="End-of-service benefit calculator | ExpatGuideME">
+  <meta property="og:description" content="Kalkulahin ang gratuity na dapat mong matanggap kapag natapos ang trabaho mo sa Saudi Arabia, UAE, Kuwait, Qatar, Oman o Bahrain. Piliin ang bansa, ilagay…">
+  <meta property="og:url" content="https://expatguideme.com/tl/end-of-service.html">
+  <meta property="og:image" content="https://expatguideme.com/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="tl_PH">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#ffffff">
   <meta name="form-endpoint" content="https://formsubmit.co/ajax/support@expatguideme.com">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -101,6 +111,18 @@
         <a href="/tl/contact.html" data-s="navContact">Makipag-ugnayan</a>
       </nav>
       <div class="header-actions">
+        <div class="country-menu">
+          <button type="button" class="icon-btn country-btn" id="countryToggle" aria-haspopup="true" aria-expanded="false" aria-controls="countryList" data-s-aria="countryPick" aria-label="Bansa mo" title="Bansa mo"><span id="countryFlag" aria-hidden="true">🇸🇦</span></button>
+          <div class="countries" id="countryList" role="group" hidden="">
+            <p class="countries-title" data-s="countryPick">Bansa mo</p>
+            <button type="button" data-cc="sa"><span aria-hidden="true">🇸🇦</span> <span data-s="cSA">Saudi Arabia</span></button>
+            <button type="button" data-cc="ae"><span aria-hidden="true">🇦🇪</span> <span data-s="cAE">UAE</span></button>
+            <button type="button" data-cc="qa"><span aria-hidden="true">🇶🇦</span> <span data-s="cQA">Qatar</span></button>
+            <button type="button" data-cc="kw"><span aria-hidden="true">🇰🇼</span> <span data-s="cKW">Kuwait</span></button>
+            <button type="button" data-cc="om"><span aria-hidden="true">🇴🇲</span> <span data-s="cOM">Oman</span></button>
+            <button type="button" data-cc="bh"><span aria-hidden="true">🇧🇭</span> <span data-s="cBH">Bahrain</span></button>
+          </div>
+        </div>
         <div class="lang-menu">
           <button type="button" class="icon-btn" id="langToggle" aria-haspopup="true" aria-expanded="false" aria-controls="langList" data-s-aria="language" aria-label="Wika" title="Wika">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg><span class="lang-current" id="langCurrent">English</span>
@@ -860,6 +882,12 @@
           if (saved.mode === "years" || saved.mode === "dates") state.mode = saved.mode;
         }
       } catch (e) {}
+      (function () {
+        var X = window.ExpatSite, hasPage = false;
+        try { hasPage = !!localStorage.getItem(PREF_KEY); } catch (e) {}
+        if (X.country && (X.hasCountry() || !hasPage)) { var g = X.country(); if (COUNTRIES.some(function (c) { return c.code === g; })) state.country = g; }
+        if (X.onCountry) X.onCountry(function (cc) { if (COUNTRIES.some(function (c) { return c.code === cc; })) { state.country = cc; savePrefs(); render(); } });
+      })();
       function savePrefs() { try { localStorage.setItem(PREF_KEY, JSON.stringify(state)); } catch (e) {} }
 
       function $(id) { return document.getElementById(id); }
@@ -993,7 +1021,7 @@
           var b = el("button", null, c.flag + " " + cname(c, lang));
           b.type = "button"; b.setAttribute("data-country", c.code);
           b.setAttribute("aria-pressed", String(c.code === state.country));
-          b.addEventListener("click", function () { state.country = c.code; savePrefs(); render(); });
+          b.addEventListener("click", function () { state.country = c.code; savePrefs(); if (window.ExpatSite.setCountry) window.ExpatSite.setCountry(c.code, true); render(); });
           box.appendChild(b);
         });
       }

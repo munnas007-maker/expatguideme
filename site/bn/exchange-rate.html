@@ -15,6 +15,16 @@
   <link rel="alternate" hreflang="bn" href="https://expatguideme.com/bn/exchange-rate.html">
   <link rel="alternate" hreflang="tl" href="https://expatguideme.com/tl/exchange-rate.html">
   <link rel="alternate" hreflang="x-default" href="https://expatguideme.com/exchange-rate.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ExpatGuideME">
+  <meta property="og:title" content="আজকের উপসাগরীয় বিনিময় হার | ExpatGuideME">
+  <meta property="og:description" content="সৌদি রিয়াল, কুয়েতি দিনার, কাতারি রিয়াল, ওমানি রিয়াল ও বাহরাইনি দিনারকে আপনার দেশের মুদ্রায় রূপান্তর করুন।">
+  <meta property="og:url" content="https://expatguideme.com/bn/exchange-rate.html">
+  <meta property="og:image" content="https://expatguideme.com/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="bn_BD">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#ffffff">
   <meta name="form-endpoint" content="https://formsubmit.co/ajax/support@expatguideme.com">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -98,6 +108,18 @@
         <a href="/bn/contact.html" data-s="navContact">যোগাযোগ</a>
       </nav>
       <div class="header-actions">
+        <div class="country-menu">
+          <button type="button" class="icon-btn country-btn" id="countryToggle" aria-haspopup="true" aria-expanded="false" aria-controls="countryList" data-s-aria="countryPick" aria-label="আপনার দেশ" title="আপনার দেশ"><span id="countryFlag" aria-hidden="true">🇸🇦</span></button>
+          <div class="countries" id="countryList" role="group" hidden="">
+            <p class="countries-title" data-s="countryPick">আপনার দেশ</p>
+            <button type="button" data-cc="sa"><span aria-hidden="true">🇸🇦</span> <span data-s="cSA">সৌদি আরব</span></button>
+            <button type="button" data-cc="ae"><span aria-hidden="true">🇦🇪</span> <span data-s="cAE">আমিরাত</span></button>
+            <button type="button" data-cc="qa"><span aria-hidden="true">🇶🇦</span> <span data-s="cQA">কাতার</span></button>
+            <button type="button" data-cc="kw"><span aria-hidden="true">🇰🇼</span> <span data-s="cKW">কুয়েত</span></button>
+            <button type="button" data-cc="om"><span aria-hidden="true">🇴🇲</span> <span data-s="cOM">ওমান</span></button>
+            <button type="button" data-cc="bh"><span aria-hidden="true">🇧🇭</span> <span data-s="cBH">বাহরাইন</span></button>
+          </div>
+        </div>
         <div class="lang-menu">
           <button type="button" class="icon-btn" id="langToggle" aria-haspopup="true" aria-expanded="false" aria-controls="langList" data-s-aria="language" aria-label="ভাষা" title="ভাষা">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg><span class="lang-current" id="langCurrent">English</span>
@@ -621,7 +643,7 @@
       }
 
       $("amount").addEventListener("input", renderResult);
-      $("fromCur").addEventListener("change", function (e) { state.from = e.target.value; saveFx(); renderResult(); });
+      $("fromCur").addEventListener("change", function (e) { state.from = e.target.value; saveFx(); if (CUR2CC[state.from] && window.ExpatSite.setCountry) window.ExpatSite.setCountry(CUR2CC[state.from], true); renderResult(); });
       $("toCur").addEventListener("change", function (e) { state.to = e.target.value; saveFx(); renderResult(); });
       $("swapBtn").addEventListener("click", function () {
         var tmp = state.from;
@@ -633,11 +655,18 @@
         renderResult();
       });
 
+      var CC2CUR = { sa: "SAR", ae: "AED", qa: "QAR", kw: "KWD", om: "OMR", bh: "BHD" };
+      var CUR2CC = { SAR: "sa", AED: "ae", QAR: "qa", KWD: "kw", OMR: "om", BHD: "bh" };
       var saved = storeGet(FX_KEY);
       if (saved) {
         if (find(saved.from)) state.from = saved.from;
         if (find(saved.to)) state.to = saved.to;
       }
+      if (window.ExpatSite.country && (window.ExpatSite.hasCountry() || !saved) && CC2CUR[window.ExpatSite.country()] !== state.to) state.from = CC2CUR[window.ExpatSite.country()];
+      if (window.ExpatSite.onCountry) window.ExpatSite.onCountry(function (cc) {
+        var c = CC2CUR[cc]; if (!c || c === state.to) return;
+        state.from = c; $("fromCur").value = c; saveFx(); renderResult();
+      });
       buildSelect($("fromCur"), state.from);
       buildSelect($("toCur"), state.to);
 

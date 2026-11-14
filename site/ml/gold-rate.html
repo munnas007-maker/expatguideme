@@ -15,6 +15,16 @@
   <link rel="alternate" hreflang="bn" href="https://expatguideme.com/bn/gold-rate.html">
   <link rel="alternate" hreflang="tl" href="https://expatguideme.com/tl/gold-rate.html">
   <link rel="alternate" hreflang="x-default" href="https://expatguideme.com/gold-rate.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ExpatGuideME">
+  <meta property="og:title" content="ഗൾഫിലെ ഇന്നത്തെ സ്വർണവിലയും ഇന്ത്യൻ കസ്റ്റംസ് ഡ്യൂട്ടി കാൽക്കുലേറ്ററും | ExpatGuideME">
+  <meta property="og:description" content="സൗദി റിയാൽ, യുഎഇ ദിർഹം, ഖത്തർ റിയാൽ, കുവൈത്ത് ദിനാർ, ഒമാൻ റിയാൽ, ബഹ്‌റൈൻ ദിനാർ എന്നിവയിൽ 24K, 22K, 21K, 18K സ്വർണത്തിന്റെ ഗ്രാമിന് ലൈവ് വില. ആഭരണത്തിന്റെ…">
+  <meta property="og:url" content="https://expatguideme.com/ml/gold-rate.html">
+  <meta property="og:image" content="https://expatguideme.com/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ml_IN">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#ffffff">
   <meta name="form-endpoint" content="https://formsubmit.co/ajax/support@expatguideme.com">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -70,6 +80,18 @@
         <a href="/ml/contact.html" data-s="navContact">ബന്ധപ്പെടുക</a>
       </nav>
       <div class="header-actions">
+        <div class="country-menu">
+          <button type="button" class="icon-btn country-btn" id="countryToggle" aria-haspopup="true" aria-expanded="false" aria-controls="countryList" data-s-aria="countryPick" aria-label="നിങ്ങളുടെ രാജ്യം" title="നിങ്ങളുടെ രാജ്യം"><span id="countryFlag" aria-hidden="true">🇸🇦</span></button>
+          <div class="countries" id="countryList" role="group" hidden="">
+            <p class="countries-title" data-s="countryPick">നിങ്ങളുടെ രാജ്യം</p>
+            <button type="button" data-cc="sa"><span aria-hidden="true">🇸🇦</span> <span data-s="cSA">സൗദി അറേബ്യ</span></button>
+            <button type="button" data-cc="ae"><span aria-hidden="true">🇦🇪</span> <span data-s="cAE">യുഎഇ</span></button>
+            <button type="button" data-cc="qa"><span aria-hidden="true">🇶🇦</span> <span data-s="cQA">ഖത്തർ</span></button>
+            <button type="button" data-cc="kw"><span aria-hidden="true">🇰🇼</span> <span data-s="cKW">കുവൈത്ത്</span></button>
+            <button type="button" data-cc="om"><span aria-hidden="true">🇴🇲</span> <span data-s="cOM">ഒമാൻ</span></button>
+            <button type="button" data-cc="bh"><span aria-hidden="true">🇧🇭</span> <span data-s="cBH">ബഹ്‌റൈൻ</span></button>
+          </div>
+        </div>
         <div class="lang-menu">
           <button type="button" class="icon-btn" id="langToggle" aria-haspopup="true" aria-expanded="false" aria-controls="langList" data-s-aria="language" aria-label="ഭാഷ" title="ഭാഷ">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg><span class="lang-current" id="langCurrent">English</span>
@@ -283,7 +305,12 @@
       function fmt(n, d) { return n.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d }); }
       function money(n, c) { return c + " " + fmt(n, DEC[c] != null ? DEC[c] : 2); }
       function perGram(cur, k) { return state.usdOz && state.rates ? state.usdOz / OZ * PURITY[k] * state.rates[cur] : null; }
+      var CC2CUR = { sa: "SAR", ae: "AED", qa: "QAR", kw: "KWD", om: "OMR", bh: "BHD" };
+      var CUR2CC = { SAR: "sa", AED: "ae", QAR: "qa", KWD: "kw", OMR: "om", BHD: "bh" };
       try { var saved = JSON.parse(localStorage.getItem("egm-gold") || "{}"); if (CURS.indexOf(saved.cur) > -1) state.cur = saved.cur; } catch (e) {}
+      var hadGold = false; try { hadGold = !!localStorage.getItem("egm-gold"); } catch (e) {}
+      if (window.ExpatSite.country && (window.ExpatSite.hasCountry() || !hadGold)) state.cur = CC2CUR[window.ExpatSite.country()] || state.cur;
+      if (window.ExpatSite.onCountry) window.ExpatSite.onCountry(function (cc) { if (CC2CUR[cc]) setCur(CC2CUR[cc], true); });
 
       function renderLive() {
         var body = $("liveRows"); body.innerHTML = "";
@@ -300,7 +327,7 @@
         var t = when && !isNaN(when) ? when.toLocaleString(lang === "en" ? "en-GB" : lang, { dateStyle: "medium", timeStyle: "short" }) : "";
         m.textContent = (state.live ? "" : L("offline") + " ") + L("updated").replace("{time}", t);
       }
-      function setCur(c) { state.cur = c; $("cur").value = c; try { localStorage.setItem("egm-gold", JSON.stringify({ cur: c })); } catch (e) {} render(); }
+      function setCur(c, fromHeader) { state.cur = c; $("cur").value = c; try { localStorage.setItem("egm-gold", JSON.stringify({ cur: c })); } catch (e) {} if (!fromHeader && window.ExpatSite.setCountry) window.ExpatSite.setCountry(CUR2CC[c], true); render(); }
       function seg(id, key) { document.querySelectorAll("#" + id + " button").forEach(function (b) { var v = b.getAttribute(key === "k" ? "data-k" : "data-v"); b.setAttribute("aria-pressed", String(String(state[key]) === v)); }); }
 
       function render() {

@@ -118,6 +118,12 @@ async function render(file, pagePath, lang) {
     if (h1.trim()) A.title = shorten(h1, 70) + " | ExpatGuideME";
     const desc = A.querySelector('meta[name="description"]');
     if (desc && lead.trim()) desc.setAttribute("content", shorten(lead, 158));
+    const OG_LOCALE = { ar: "ar_SA", hi: "hi_IN", ml: "ml_IN", ne: "ne_NP", ur: "ur_PK", bn: "bn_BD", tl: "tl_PH" };
+    const setMeta = (sel, v) => { const m = A.querySelector(sel); if (m && v) m.setAttribute("content", v); };
+    setMeta('meta[property="og:title"]', A.title);
+    if (lead.trim()) setMeta('meta[property="og:description"]', shorten(lead, 158));
+    setMeta('meta[property="og:url"]', SITE_URL + "/" + lang + pagePath);
+    setMeta('meta[property="og:locale"]', OG_LOCALE[lang]);
     const canon = A.querySelector('link[rel="canonical"]');
     if (canon) canon.setAttribute("href", SITE_URL + "/" + lang + pagePath);
 

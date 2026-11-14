@@ -478,7 +478,7 @@ META-->
       }
 
       $("amount").addEventListener("input", renderResult);
-      $("fromCur").addEventListener("change", function (e) { state.from = e.target.value; saveFx(); renderResult(); });
+      $("fromCur").addEventListener("change", function (e) { state.from = e.target.value; saveFx(); if (CUR2CC[state.from] && window.ExpatSite.setCountry) window.ExpatSite.setCountry(CUR2CC[state.from], true); renderResult(); });
       $("toCur").addEventListener("change", function (e) { state.to = e.target.value; saveFx(); renderResult(); });
       $("swapBtn").addEventListener("click", function () {
         var tmp = state.from;
@@ -490,11 +490,18 @@ META-->
         renderResult();
       });
 
+      var CC2CUR = { sa: "SAR", ae: "AED", qa: "QAR", kw: "KWD", om: "OMR", bh: "BHD" };
+      var CUR2CC = { SAR: "sa", AED: "ae", QAR: "qa", KWD: "kw", OMR: "om", BHD: "bh" };
       var saved = storeGet(FX_KEY);
       if (saved) {
         if (find(saved.from)) state.from = saved.from;
         if (find(saved.to)) state.to = saved.to;
       }
+      if (window.ExpatSite.country && (window.ExpatSite.hasCountry() || !saved) && CC2CUR[window.ExpatSite.country()] !== state.to) state.from = CC2CUR[window.ExpatSite.country()];
+      if (window.ExpatSite.onCountry) window.ExpatSite.onCountry(function (cc) {
+        var c = CC2CUR[cc]; if (!c || c === state.to) return;
+        state.from = c; $("fromCur").value = c; saveFx(); renderResult();
+      });
       buildSelect($("fromCur"), state.from);
       buildSelect($("toCur"), state.to);
 

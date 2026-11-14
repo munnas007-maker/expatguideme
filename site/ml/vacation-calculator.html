@@ -15,6 +15,16 @@
   <link rel="alternate" hreflang="bn" href="https://expatguideme.com/bn/vacation-calculator.html">
   <link rel="alternate" hreflang="tl" href="https://expatguideme.com/tl/vacation-calculator.html">
   <link rel="alternate" hreflang="x-default" href="https://expatguideme.com/vacation-calculator.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ExpatGuideME">
+  <meta property="og:title" content="ഗൾഫ് വാർഷിക ലീവ് &amp; വെക്കേഷൻ കാൽക്കുലേറ്റർ | ExpatGuideME">
+  <meta property="og:description" content="സൗദി അറേബ്യ, യുഎഇ, ഖത്തർ, കുവൈത്ത്, ഒമാൻ, ബഹ്‌റൈൻ എന്നിവിടങ്ങളിൽ നിങ്ങൾ നേടിയ ലീവ് ദിവസങ്ങൾ, 1 വർഷ / 2 വർഷ വെക്കേഷന് ബാക്കിയുള്ളത്, ഉപയോഗിക്കാത്ത ദിവസങ്ങളുടെ…">
+  <meta property="og:url" content="https://expatguideme.com/ml/vacation-calculator.html">
+  <meta property="og:image" content="https://expatguideme.com/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ml_IN">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#ffffff">
   <meta name="form-endpoint" content="https://formsubmit.co/ajax/support@expatguideme.com">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -77,6 +87,18 @@
         <a href="/ml/contact.html" data-s="navContact">ബന്ധപ്പെടുക</a>
       </nav>
       <div class="header-actions">
+        <div class="country-menu">
+          <button type="button" class="icon-btn country-btn" id="countryToggle" aria-haspopup="true" aria-expanded="false" aria-controls="countryList" data-s-aria="countryPick" aria-label="നിങ്ങളുടെ രാജ്യം" title="നിങ്ങളുടെ രാജ്യം"><span id="countryFlag" aria-hidden="true">🇸🇦</span></button>
+          <div class="countries" id="countryList" role="group" hidden="">
+            <p class="countries-title" data-s="countryPick">നിങ്ങളുടെ രാജ്യം</p>
+            <button type="button" data-cc="sa"><span aria-hidden="true">🇸🇦</span> <span data-s="cSA">സൗദി അറേബ്യ</span></button>
+            <button type="button" data-cc="ae"><span aria-hidden="true">🇦🇪</span> <span data-s="cAE">യുഎഇ</span></button>
+            <button type="button" data-cc="qa"><span aria-hidden="true">🇶🇦</span> <span data-s="cQA">ഖത്തർ</span></button>
+            <button type="button" data-cc="kw"><span aria-hidden="true">🇰🇼</span> <span data-s="cKW">കുവൈത്ത്</span></button>
+            <button type="button" data-cc="om"><span aria-hidden="true">🇴🇲</span> <span data-s="cOM">ഒമാൻ</span></button>
+            <button type="button" data-cc="bh"><span aria-hidden="true">🇧🇭</span> <span data-s="cBH">ബഹ്‌റൈൻ</span></button>
+          </div>
+        </div>
         <div class="lang-menu">
           <button type="button" class="icon-btn" id="langToggle" aria-haspopup="true" aria-expanded="false" aria-controls="langList" data-s-aria="language" aria-label="ഭാഷ" title="ഭാഷ">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg><span class="lang-current" id="langCurrent">English</span>
@@ -368,7 +390,7 @@
         document.querySelectorAll("[data-t]").forEach(function (el) { el.textContent = L(el.getAttribute("data-t")); });
         render();
       });
-      document.querySelectorAll("#countryTabs button").forEach(function (b) { b.addEventListener("click", function () { setCountry(b.getAttribute("data-cc")); }); });
+      document.querySelectorAll("#countryTabs button").forEach(function (b) { b.addEventListener("click", function () { setCountry(b.getAttribute("data-cc")); if (window.ExpatSite.setCountry) window.ExpatSite.setCountry(b.getAttribute("data-cc"), true); }); });
       document.querySelectorAll("#baseSeg button").forEach(function (b) { b.addEventListener("click", function () { state.base = b.getAttribute("data-base"); render(); }); });
       $("svcPresets").addEventListener("click", function (e) {
         var b = e.target.closest(".preset"); if (!b) return;
@@ -377,7 +399,9 @@
       ["years", "months", "basic", "allow", "used"].forEach(function (id) { $(id).addEventListener("input", render); });
       $("vacForm").addEventListener("submit", function (e) { e.preventDefault(); });
       var h = (location.hash || "").slice(1);
-      setCountry(C[h] ? h : "sa");
+      var g = window.ExpatSite.country ? window.ExpatSite.country() : "sa";
+      setCountry(C[h] ? h : (C[g] ? g : "sa"));
+      if (window.ExpatSite.onCountry) window.ExpatSite.onCountry(function (cc) { if (C[cc]) setCountry(cc); });
     })();
   </script>
 

@@ -437,3 +437,17 @@ tr.sponsored-row td { background: rgba(240, 214, 138, .12); }
 .ess-ico { font-size: 1.3rem; line-height: 1; }
 .ess-d { display: block; color: var(--muted); font-size: .85rem; }
 .ess-note { color: var(--muted); font-size: .8rem; margin: 8px 0 0; }
+
+/* ---------- Header country switcher ---------- */
+.country-menu { position: relative; }
+.country-btn { font-size: 1.25rem; line-height: 1; border: 2px solid var(--brand-soft); background: linear-gradient(135deg, var(--brand-soft), var(--card)); }
+.country-btn:hover { border-color: var(--brand); }
+.countries {
+  position: absolute; top: calc(100% + 6px); inset-inline-end: 0; z-index: 70;
+  display: flex; flex-direction: column; gap: 2px; min-width: 190px; padding: 6px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow);
+}
+.countries-title { margin: 4px 10px 6px; font-size: .78rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+.countries button { display: flex; gap: 8px; align-items: center; text-align: start; font: inherit; font-size: .95rem; font-weight: 600; padding: 9px 12px; min-height: 42px; border-radius: 8px; border: 0; background: transparent; color: var(--ink); cursor: pointer; }
+.countries button:hover { background: var(--brand-soft); color: var(--brand); }
+.countries button.active { background: var(--brand); color: var(--on-brand); }

@@ -5,7 +5,7 @@
  * - Static files: served from the cache and refreshed in the background.
  * - /api/ and other websites (ads, analytics) are never cached.
  */
-const VERSION = "ebc1440a9d";
+const VERSION = "76740bfdf2";
 const CACHE = "egm-" + VERSION;
 const CORE = [
   "/", "/offline.html", "/assets/site.css", "/assets/site.js", "/assets/favicon.svg",

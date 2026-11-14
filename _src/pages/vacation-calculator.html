@@ -225,7 +225,7 @@ META-->
         document.querySelectorAll("[data-t]").forEach(function (el) { el.textContent = L(el.getAttribute("data-t")); });
         render();
       });
-      document.querySelectorAll("#countryTabs button").forEach(function (b) { b.addEventListener("click", function () { setCountry(b.getAttribute("data-cc")); }); });
+      document.querySelectorAll("#countryTabs button").forEach(function (b) { b.addEventListener("click", function () { setCountry(b.getAttribute("data-cc")); if (window.ExpatSite.setCountry) window.ExpatSite.setCountry(b.getAttribute("data-cc"), true); }); });
       document.querySelectorAll("#baseSeg button").forEach(function (b) { b.addEventListener("click", function () { state.base = b.getAttribute("data-base"); render(); }); });
       $("svcPresets").addEventListener("click", function (e) {
         var b = e.target.closest(".preset"); if (!b) return;
@@ -234,7 +234,9 @@ META-->
       ["years", "months", "basic", "allow", "used"].forEach(function (id) { $(id).addEventListener("input", render); });
       $("vacForm").addEventListener("submit", function (e) { e.preventDefault(); });
       var h = (location.hash || "").slice(1);
-      setCountry(C[h] ? h : "sa");
+      var g = window.ExpatSite.country ? window.ExpatSite.country() : "sa";
+      setCountry(C[h] ? h : (C[g] ? g : "sa"));
+      if (window.ExpatSite.onCountry) window.ExpatSite.onCountry(function (cc) { if (C[cc]) setCountry(cc); });
     })();
   </script>
 <!--/SCRIPT-->
