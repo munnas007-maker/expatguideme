@@ -234,7 +234,7 @@ def footer(credit):
         <div>
           <h3 data-s="footerTools"></h3>
           <nav class="footer-links" aria-label="Tools">
-{_links([("/exchange-rate.html", "navExchange"), ("/gold-rate.html", "navGold"), ("/send-money.html", "navSend"), ("/sim-internet.html", "navSim"), ("/end-of-service.html", "navEos"), ("/vacation-calculator.html", "navVac"), ("/id-residency.html", "navId"), ("/family-cost.html", "navFamily"), ("/embassy-services.html", "navEmbassy")])}
+{_links([("/exchange-rate.html", "navExchange"), ("/gold-rate.html", "navGold"), ("/send-money.html", "navSend"), ("/sim-internet.html", "navSim"), ("/family-visa.html", "navVisa"), ("/end-of-service.html", "navEos"), ("/vacation-calculator.html", "navVac"), ("/id-residency.html", "navId"), ("/family-cost.html", "navFamily"), ("/embassy-services.html", "navEmbassy")])}
           </nav>
         </div>
         <div>
@@ -530,6 +530,7 @@ def build():
         body = body.replace("<!--CHECKOUT-->", checkout_html())
         script = script.replace("/*PARTNERS*/{}", json.dumps(PARTNER_LINKS))
         script = script.replace('/*RATES_API*/""', json.dumps(SITE_CFG["rates_api"]))
+        script = script.replace("/*VISA*/null", json.dumps(visa_data(), ensure_ascii=False, separators=(",", ":")))
         script = script.replace("/*TELECOM*/null", json.dumps(telecom_data(), ensure_ascii=False, separators=(",", ":")))
         script = script.replace("/*PROVIDERS*/null", json.dumps(remit_providers(), ensure_ascii=False, separators=(",", ":")))
         script = script.replace("/*CHECKED*/{}", json.dumps(checked_provider_rates(), separators=(",", ":")))
@@ -557,7 +558,7 @@ def build():
         if not meta.get("noindex"):
             m = re.search(r'data-updated="(\d{4}-\d{2}-\d{2})"', body)
             public.append({"file": name, "path": meta["path"], "lastmod": m.group(1) if m else "2026-11-13"})
-    order = ["/", "/exchange-rate.html", "/gold-rate.html", "/send-money.html", "/sim-internet.html", "/end-of-service.html", "/vacation-calculator.html", "/id-residency.html",
+    order = ["/", "/exchange-rate.html", "/gold-rate.html", "/send-money.html", "/sim-internet.html", "/family-visa.html", "/end-of-service.html", "/vacation-calculator.html", "/id-residency.html",
              "/family-cost.html", "/embassy-services.html", "/legal-consult.html", "/financial-playbook.html", "/mobile-app.html", "/about.html", "/contact.html", "/privacy.html",
              "/terms.html", "/affiliate-disclosure.html"]
     public.sort(key=lambda e: order.index(e["path"]) if e["path"] in order else 99)
@@ -629,6 +630,13 @@ def gold_base():
     d = _rates_file()
     g = d.get("gold") or {}
     return {"usdOz": g.get("usd_per_troy_ounce"), "at": g.get("updated_at"), "rates": d["rates"]}
+
+
+def visa_data():
+    with open(os.path.join(ROOT, "_src", "data", "family_visa.json"), encoding="utf-8") as f:
+        d = json.load(f)
+    d.pop("_help", None)
+    return d
 
 
 def telecom_data():

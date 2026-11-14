@@ -1,0 +1,83 @@
+{
+ "_help": "Family residence visa and family visit visa guide shown on family-visa.html. countries.<cc>.family / .visit = null until researched, then: {checked_at (UTC ISO), official:[{name,url}], sources:[https urls of the official government pages used], fees:[{item (English key), amount (number), currency}], text:{en:{summary, who:[...], documents:[...], steps:[...], processing, validity, notes:[...], fee_items:{<English item>: <translated item>}}, ar:{...}, hi, ml, ne, ur, bn, tl}}. Facts only from official government sources (ministries, MOFA, ICP, MOI, ROP, NPRA, Absher, official e-government portals). Never estimate a fee.",
+ "portals": {
+  "sa": [
+   {
+    "name": "Ministry of Foreign Affairs visa platform",
+    "url": "https://visa.mofa.gov.sa/"
+   },
+   {
+    "name": "Absher",
+    "url": "https://www.absher.sa/"
+   }
+  ],
+  "ae": [
+   {
+    "name": "ICP (Federal Authority for Identity, Citizenship, Customs & Port Security)",
+    "url": "https://icp.gov.ae/"
+   },
+   {
+    "name": "GDRFA Dubai",
+    "url": "https://gdrfad.gov.ae/"
+   }
+  ],
+  "qa": [
+   {
+    "name": "Ministry of Interior Qatar",
+    "url": "https://portal.moi.gov.qa/"
+   },
+   {
+    "name": "Hukoomi",
+    "url": "https://hukoomi.gov.qa/"
+   }
+  ],
+  "kw": [
+   {
+    "name": "Ministry of Interior Kuwait",
+    "url": "https://www.moi.gov.kw/"
+   }
+  ],
+  "om": [
+   {
+    "name": "Royal Oman Police",
+    "url": "https://www.rop.gov.om/"
+   }
+  ],
+  "bh": [
+   {
+    "name": "NPRA (Nationality, Passports & Residence Affairs)",
+    "url": "https://www.npra.gov.bh/"
+   },
+   {
+    "name": "Bahrain eVisa",
+    "url": "https://www.evisa.gov.bh/"
+   }
+  ]
+ },
+ "countries": {
+  "sa": {
+   "family": null,
+   "visit": null
+  },
+  "ae": {
+   "family": null,
+   "visit": null
+  },
+  "qa": {
+   "family": null,
+   "visit": null
+  },
+  "kw": {
+   "family": null,
+   "visit": null
+  },
+  "om": {
+   "family": null,
+   "visit": null
+  },
+  "bh": {
+   "family": null,
+   "visit": null
+  }
+ }
+}

@@ -108,8 +108,41 @@ def check_remit(errs):
                 errs.append(f"{where}: offer must be null or {{text, url, checked_at}}")
 
 
+def check_visa(errs):
+    d = json.load(open(os.path.join(DATA, "family_visa.json"), encoding="utf-8"))
+    for cc in CCS:
+        for o in (d.get("portals") or {}).get(cc, []):
+            if not is_https(o.get("url")):
+                errs.append(f"visa portals {cc}: bad url {o.get('url')}")
+        for kind in ("family", "visit"):
+            e = ((d.get("countries") or {}).get(cc) or {}).get(kind)
+            where = f"visa {cc}/{kind}"
+            if e is None:
+                continue
+            if not e.get("checked_at") or not is_time(e.get("checked_at")):
+                errs.append(f"{where}: checked_at missing or not an ISO time")
+            if not e.get("sources") or not all(is_https(u) for u in e["sources"]):
+                errs.append(f"{where}: sources must be a non-empty list of https links")
+            for o in e.get("official") or []:
+                if not is_https(o.get("url")):
+                    errs.append(f"{where}: official link {o.get('url')} must be https")
+            for f in e.get("fees") or []:
+                if not f.get("item") or not isinstance(f.get("amount"), (int, float)) or not f.get("currency"):
+                    errs.append(f"{where}: fee needs item, numeric amount and currency: {f}")
+            en = (e.get("text") or {}).get("en") or {}
+            if not en.get("summary") or not en.get("steps"):
+                errs.append(f"{where}: English text needs at least summary and steps")
+            for lg, t in (e.get("text") or {}).items():
+                if lg not in ("en", "ar", "hi", "ml", "ne", "ur", "bn", "tl"):
+                    errs.append(f"{where}: unknown language {lg}")
+                for k in ("who", "documents", "steps", "notes"):
+                    if k in t and not (isinstance(t[k], list) and all(isinstance(x, str) for x in t[k])):
+                        errs.append(f"{where}/{lg}: {k} must be a list of sentences")
+
+
 def main():
     errs = []
+    check_visa(errs)
     check_telecom(errs)
     check_remit(errs)
     if errs:
