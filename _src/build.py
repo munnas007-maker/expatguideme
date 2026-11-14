@@ -12,12 +12,19 @@ Usage (from the repository root):
 Edit the page bodies in _src/pages/*.html, then run the script.
 The generated .html files in site/ are what Netlify serves.
 """
+import json
 import os
+import subprocess
 import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "_src", "pages")
 SITE_URL = "https://expatguideme.com"
+
+# Languages. English lives at the root; every other language gets its own folder
+# (/ar/, /hi/, /ml/, /ne/, /ur/, /bn/) built by _src/prerender.cjs.
+LANGS = ["en", "ar", "hi", "ml", "ne", "ur", "bn"]
+HREFLANG = {"en": "en", "ar": "ar", "hi": "hi", "ml": "ml", "ne": "ne", "ur": "ur", "bn": "bn"}
 
 # Google AdSense
 ADSENSE_CLIENT = "ca-pub-4815162342890123"
@@ -46,6 +53,19 @@ THEME_BOOT = (
 )
 
 
+def alternates(meta):
+    """hreflang links for every language version of this page."""
+    if meta.get("noindex"):
+        return ""
+    path = meta["path"]
+    out = []
+    for l in LANGS:
+        url = SITE_URL + (path if l == "en" else "/" + l + path)
+        out.append(f'\n  <link rel="alternate" hreflang="{HREFLANG[l]}" href="{url}">')
+    out.append(f'\n  <link rel="alternate" hreflang="x-default" href="{SITE_URL + path}">')
+    return "".join(out)
+
+
 def head(meta):
     canonical = SITE_URL + meta["path"]
     robots = '\n  <meta name="robots" content="noindex">' if meta.get("noindex") else ""
@@ -55,19 +75,19 @@ def head(meta):
         if meta["active"] not in NO_AD_PAGES:
             ads += f'\n  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}" crossorigin="anonymous"></script>'
     return f"""<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr"{'' if meta.get("noindex") else ' data-page-lang="en"'}>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{meta["title"]}</title>
   <meta name="description" content="{meta["description"]}">{robots}{ads}
-  <link rel="canonical" href="{canonical}">
+  <link rel="canonical" href="{canonical}">{alternates(meta)}
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   {THEME_BOOT}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Cairo:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Malayalam:wght@400;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Cairo:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Malayalam:wght@400;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/site.css">
 {meta.get("style", "")}
 </head>"""
@@ -104,6 +124,7 @@ def header(active):
             <button type="button" data-lang="ml" lang="ml">മലയാളം</button>
             <button type="button" data-lang="ne" lang="ne">नेपाली</button>
             <button type="button" data-lang="ur" lang="ur">اردو</button>
+            <button type="button" data-lang="bn" lang="bn">বাংলা</button>
           </div>
         </div>
         <button type="button" class="icon-btn" data-open-search data-s-aria="search">{ICON["search"]}</button>
@@ -235,8 +256,29 @@ def ad_units(body, active):
     )
 
 
+def sitemap(entries):
+    """sitemap.xml with every language version of every public page."""
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
+    ]
+    for e in entries:
+        alts = "".join(
+            f'\n    <xhtml:link rel="alternate" hreflang="{HREFLANG[l]}" href="{SITE_URL + (e["path"] if l == "en" else "/" + l + e["path"])}"/>'
+            for l in LANGS
+        ) + f'\n    <xhtml:link rel="alternate" hreflang="x-default" href="{SITE_URL + e["path"]}"/>'
+        for l in LANGS:
+            loc = SITE_URL + (e["path"] if l == "en" else "/" + l + e["path"])
+            lines.append(f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{e['lastmod']}</lastmod>{alts}\n  </url>")
+    lines.append("</urlset>")
+    with open(os.path.join(ROOT, "site", "sitemap.xml"), "w", encoding="utf-8") as f:
+        f.write("\n".join(lines) + "\n")
+    print("built sitemap.xml with", len(entries) * len(LANGS), "addresses")
+
+
 def build():
     pages = sorted(p for p in os.listdir(SRC) if p.endswith(".html"))
+    public = []
     for name in pages:
         meta, body, script = parse_page(os.path.join(SRC, name))
         html = (
@@ -255,6 +297,18 @@ def build():
         with open(out, "w", encoding="utf-8") as f:
             f.write(html)
         print("built", name)
+        if not meta.get("noindex"):
+            m = re.search(r'data-updated="(\d{4}-\d{2}-\d{2})"', body)
+            public.append({"file": name, "path": meta["path"], "lastmod": m.group(1) if m else "2026-11-13"})
+    order = ["/", "/exchange-rate.html", "/send-money.html", "/end-of-service.html", "/id-residency.html",
+             "/family-cost.html", "/embassy-services.html", "/about.html", "/contact.html", "/privacy.html",
+             "/terms.html", "/affiliate-disclosure.html"]
+    public.sort(key=lambda e: order.index(e["path"]) if e["path"] in order else 99)
+    subprocess.run(
+        ["node", os.path.join(SRC, "..", "prerender.cjs"), json.dumps([{"file": e["file"], "path": e["path"]} for e in public])],
+        check=True,
+    )
+    sitemap(public)
     if ADSENSE_CLIENT:
         pub = ADSENSE_CLIENT.replace("ca-", "")
         with open(os.path.join(ROOT, "site", "ads.txt"), "w", encoding="utf-8") as f:

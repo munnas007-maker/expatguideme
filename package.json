@@ -5,5 +5,11 @@
   "description": "ExpatGuideME static site with a small community-rates function",
   "dependencies": {
     "@netlify/blobs": "^11.1.9"
+  },
+  "devDependencies": {
+    "jsdom": "^26.1.0"
+  },
+  "scripts": {
+    "build": "python3 _src/build.py"
   }
 }

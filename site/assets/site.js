@@ -18,7 +18,8 @@
     hi: { name: "हिन्दी", dir: "ltr", locale: "hi-IN" },
     ml: { name: "മലയാളം", dir: "ltr", locale: "ml-IN" },
     ne: { name: "नेपाली", dir: "ltr", locale: "ne-NP" },
-    ur: { name: "اردو", dir: "rtl", locale: "ur-PK" }
+    ur: { name: "اردو", dir: "rtl", locale: "ur-PK" },
+    bn: { name: "বাংলা", dir: "ltr", locale: "bn-BD" }
   };
 
   var S = {
@@ -111,6 +112,21 @@
       cookieLearn: "رازداری کی پالیسی", cookieOk: "ٹھیک ہے", lastUpdated: "آخری اپ ڈیٹ:",
       disclaimer: "یہ ایک آزاد ویب سائٹ ہے۔ اس کا کسی سرکاری دفتر یا بینک سے کوئی تعلق نہیں۔",
       copy: "کاپی کریں", copied: "کاپی ہو گیا ✓", navEos: "اختتامِ ملازمت", navId: "شناختی کارڈ و اقامہ", navFamily: "خاندانی خرچ", navEmbassy: "سفارت خانے کی خدمات", navAbout: "ہمارے بارے میں", navTerms: "استعمال کی شرائط", navAffiliate: "ایفیلیئٹ انکشاف", footerTools: "ٹولز", footerSite: "ویب سائٹ", ad: "اشتہار"
+    },
+    bn: {
+      skip: "মূল লেখায় যান", navHome: "হোম", navExchange: "বিনিময় হার", navSend: "টাকা পাঠান", navContact: "যোগাযোগ", navPrivacy: "গোপনীয়তা",
+      menu: "মেনু", close: "বন্ধ করুন", search: "খুঁজুন", searchPh: "টুল ও গাইড খুঁজুন…",
+      noResults: "কিছু পাওয়া যায়নি। অন্য শব্দ দিয়ে চেষ্টা করুন।", language: "ভাষা",
+      themeDark: "ডার্ক মোডে যান", themeLight: "লাইট মোডে যান",
+      toTop: "উপরে যান", contactUs: "আমাদের সাথে যোগাযোগ করুন",
+      nlTitle: "নতুন গাইড ইমেইলে পান", nlText: "নতুন টুল বা গাইড যোগ হলে শুধু একটি ছোট ইমেইল। কোনো স্প্যাম নয়।",
+      nlEmail: "আপনার ইমেইল ঠিকানা", nlButton: "সাবস্ক্রাইব করুন", sending: "পাঠানো হচ্ছে…",
+      nlSuccess: "ধন্যবাদ! আপনি সাবস্ক্রাইব করেছেন।", invalidEmail: "দয়া করে সঠিক ইমেইল ঠিকানা লিখুন।",
+      formRequired: "দয়া করে সব ঘর পূরণ করুন।", formError: "কিছু একটা ভুল হয়েছে। আবার চেষ্টা করুন।",
+      cookieText: "আপনার ভাষা ও সেটিংস মনে রাখতে আমরা ব্রাউজারের স্টোরেজ ব্যবহার করি। Google সহ আমাদের বিজ্ঞাপন অংশীদাররা বিজ্ঞাপন দেখাতে কুকি ব্যবহার করতে পারে।",
+      cookieLearn: "গোপনীয়তা নীতি", cookieOk: "ঠিক আছে", lastUpdated: "সর্বশেষ আপডেট:",
+      disclaimer: "এটি একটি স্বাধীন ওয়েবসাইট। কোনো সরকারি দপ্তর বা ব্যাংকের সাথে এর কোনো সম্পর্ক নেই।",
+      copy: "কপি করুন", copied: "কপি হয়েছে ✓", navEos: "চাকরি শেষের পাওনা", navId: "আইডি ও আকামা", navFamily: "পরিবারের খরচ", navEmbassy: "দূতাবাস সেবা", navAbout: "আমাদের সম্পর্কে", navTerms: "ব্যবহারের শর্তাবলি", navAffiliate: "অ্যাফিলিয়েট তথ্য", footerTools: "টুলস", footerSite: "ওয়েবসাইট", ad: "বিজ্ঞাপন"
     }
   };
 
@@ -118,183 +134,197 @@
   var SEARCH = [
     {
       url: "/",
-      t: { en: "Home", ar: "الرئيسية", hi: "होम", ml: "ഹോം", ne: "गृहपृष्ठ", ur: "ہوم" },
+      t: { en: "Home", ar: "الرئيسية", hi: "होम", ml: "ഹോം", ne: "गृहपृष्ठ", ur: "ہوم", bn: "হোম" },
       d: {
         en: "Simple guides and free tools for expats in the Gulf",
         ar: "أدلة بسيطة وأدوات مجانية للمقيمين في الخليج",
         hi: "खाड़ी में रहने वाले प्रवासियों के लिए आसान गाइड और मुफ़्त टूल",
         ml: "ഗൾഫിലെ പ്രവാസികൾക്ക് ലളിതമായ ഗൈഡുകളും സൗജന്യ ടൂളുകളും",
         ne: "खाडीमा बस्ने प्रवासीहरूका लागि सजिलो गाइड र निःशुल्क टुलहरू",
-        ur: "خلیج میں رہنے والے تارکینِ وطن کے لیے آسان گائیڈز اور مفت ٹولز"
+        ur: "خلیج میں رہنے والے تارکینِ وطن کے لیے آسان گائیڈز اور مفت ٹولز",
+        bn: "উপসাগরীয় দেশের প্রবাসীদের জন্য সহজ গাইড ও ফ্রি টুল"
       },
       k: "home expat gulf guide tools saudi kuwait qatar oman bahrain"
     },
     {
       url: "/exchange-rate.html",
-      t: { en: "Exchange rate today", ar: "سعر الصرف اليوم", hi: "आज का एक्सचेंज रेट", ml: "ഇന്നത്തെ വിനിമയ നിരക്ക്", ne: "आजको विनिमय दर", ur: "آج کی شرحِ تبادلہ" },
+      t: { en: "Exchange rate today", ar: "سعر الصرف اليوم", hi: "आज का एक्सचेंज रेट", ml: "ഇന്നത്തെ വിനിമയ നിരക്ക്", ne: "आजको विनिमय दर", ur: "آج کی شرحِ تبادلہ", bn: "আজকের বিনিময় হার" },
       d: {
         en: "Riyal and dinar to rupee, taka, peso and more",
         ar: "الريال والدينار إلى الروبية والتاكا والبيزو وغيرها",
         hi: "रियाल और दीनार से रुपया, टका, पेसो और अन्य",
         ml: "റിയാൽ, ദിനാർ എന്നിവ രൂപ, ടാക്ക, പെസോ തുടങ്ങിയവയിലേക്ക്",
         ne: "रियाल र दिनारबाट रुपैयाँ, टाका, पेसो र अन्य मुद्रामा",
-        ur: "ریال اور دینار سے روپیہ، ٹکا، پیسو اور دیگر کرنسیاں"
+        ur: "ریال اور دینار سے روپیہ، ٹکا، پیسو اور دیگر کرنسیاں",
+        bn: "রিয়াল ও দিনার থেকে টাকা, রুপি, পেসো ও অন্যান্য মুদ্রা"
       },
       k: "exchange rate currency converter convert riyal rial dinar rupee rupiah taka peso pound dollar euro sar kwd qar omr bhd inr pkr bdt npr lkr php idr egp usd gbp eur remittance send money transfer صرف ريال دينار روبية रुपया रियाल दीनार विनिमय रुपैयाँ രൂപ റിയാൽ"
     },
     {
       url: "/send-money.html",
-      t: { en: "Best way to send money home", ar: "أفضل طريقة لتحويل الأموال", hi: "घर पैसे भेजने का सबसे अच्छा तरीका", ml: "നാട്ടിലേക്ക് പണം അയക്കാൻ മികച്ച വഴി", ne: "घर पैसा पठाउने उत्तम तरिका", ur: "گھر رقم بھیجنے کا بہترین طریقہ" },
+      t: { en: "Best way to send money home", ar: "أفضل طريقة لتحويل الأموال", hi: "घर पैसे भेजने का सबसे अच्छा तरीका", ml: "നാട്ടിലേക്ക് പണം അയക്കാൻ മികച്ച വഴി", ne: "घर पैसा पठाउने उत्तम तरिका", ur: "گھر رقم بھیجنے کا بہترین طریقہ", bn: "দেশে টাকা পাঠানোর সেরা উপায়" },
       d: {
         en: "Compare STC Bank, urpay, Tahweel Al Rajhi, Enjaz, LuLu Money, Al Mulla, BFC and more",
         ar: "قارن بين خدمات التحويل في السعودية والكويت وقطر وعُمان والبحرين",
         hi: "सऊदी, कुवैत, क़तर, ओमान और बहरीन की ट्रांसफ़र सेवाओं की तुलना",
         ml: "സൗദി, കുവൈത്ത്, ഖത്തർ, ഒമാൻ, ബഹ്‌റൈൻ എന്നിവിടങ്ങളിലെ സേവനങ്ങൾ താരതമ്യം ചെയ്യുക",
         ne: "साउदी, कुवेत, कतार, ओमान र बहराइनका सेवाहरूको तुलना",
-        ur: "سعودی، کویت، قطر، عمان اور بحرین کی ترسیلِ زر سروسز کا موازنہ"
+        ur: "سعودی، کویت، قطر، عمان اور بحرین کی ترسیلِ زر سروسز کا موازنہ",
+        bn: "সৌদি, আমিরাত, কুয়েত, কাতার, ওমান ও বাহরাইনের রেমিট্যান্স রেট তুলনা"
       },
-      k: "send money home remittance transfer compare cheapest app bank exchange stc bank stc pay urpay tahweel al rajhi enjaz albilad western union al mulla lulu money lulu exchange bfc global pay hawala تحويل حوالة पैसे भेजें പണം അയക്കൽ पैसा पठाउने"
+      k: "ajker saudi riyal rate bangladesh taka rate send money home remittance transfer compare cheapest app bank exchange stc bank stc pay urpay tahweel al rajhi enjaz albilad western union al mulla lulu money lulu exchange bfc global pay hawala تحويل حوالة पैसे भेजें പണം അയക്കൽ पैसा पठाउने"
     },
     {
       url: "/end-of-service.html",
-      t: { en: "End-of-service benefit calculator", ar: "حاسبة مكافأة نهاية الخدمة", hi: "एंड-ऑफ़-सर्विस बेनिफ़िट कैलकुलेटर", ml: "എൻഡ് ഓഫ് സർവീസ് ആനുകൂല്യ കാൽക്കുലേറ്റർ", ne: "सेवा समाप्ति सुविधा क्यालकुलेटर", ur: "اختتامِ ملازمت فائدہ کیلکولیٹر" },
+      t: { en: "End-of-service benefit calculator", ar: "حاسبة مكافأة نهاية الخدمة", hi: "एंड-ऑफ़-सर्विस बेनिफ़िट कैलकुलेटर", ml: "എൻഡ് ഓഫ് സർവീസ് ആനുകൂല്യ കാൽക്കുലേറ്റർ", ne: "सेवा समाप्ति सुविधा क्यालकुलेटर", ur: "اختتامِ ملازمت فائدہ کیلکولیٹر", bn: "চাকরি শেষের পাওনা ক্যালকুলেটর" },
       d: {
         en: "Gratuity for Saudi Arabia, UAE, Kuwait, Qatar, Oman and Bahrain",
         ar: "مكافأة نهاية الخدمة في السعودية والإمارات والكويت وقطر وعُمان والبحرين",
         hi: "सऊदी, यूएई, कुवैत, क़तर, ओमान और बहरीन की ग्रेच्युटी",
         ml: "സൗദി, യുഎഇ, കുവൈത്ത്, ഖത്തർ, ഒമാൻ, ബഹ്‌റൈൻ ഗ്രാറ്റുവിറ്റി",
         ne: "साउदी, युएई, कुवेत, कतार, ओमान र बहराइनको ग्र्याच्युटी",
-        ur: "سعودی، امارات، کویت، قطر، عمان اور بحرین کی گریجویٹی"
+        ur: "سعودی، امارات، کویت، قطر، عمان اور بحرین کی گریجویٹی",
+        bn: "সৌদি, আমিরাত, কুয়েত, কাতার, ওমান ও বাহরাইনের গ্র্যাচুইটি"
       },
       k: "end of service benefit gratuity eosb esb indemnity final settlement resign resignation termination calculator article 84 85 labour law labor law مكافأة نهاية الخدمة ग्रेच्युटी ഗ്രാറ്റുവിറ്റി ग्र्याच्युटी"
     },
     {
       url: "/id-residency.html",
-      t: { en: "ID card & residency guide", ar: "دليل الهوية والإقامة", hi: "आईडी कार्ड और रेज़िडेंसी गाइड", ml: "ഐഡി കാർഡ്, റെസിഡൻസി ഗൈഡ്", ne: "परिचयपत्र र रेसिडेन्सी गाइड", ur: "شناختی کارڈ اور اقامہ گائیڈ" },
+      t: { en: "ID card & residency guide", ar: "دليل الهوية والإقامة", hi: "आईडी कार्ड और रेज़िडेंसी गाइड", ml: "ഐഡി കാർഡ്, റെസിഡൻസി ഗൈഡ്", ne: "परिचयपत्र र रेसिडेन्सी गाइड", ur: "شناختی کارڈ اور اقامہ گائیڈ", bn: "আইডি কার্ড ও আকামা গাইড" },
       d: {
         en: "Iqama, Civil ID, QID, Resident Card and CPR: check, renew, fees",
         ar: "الإقامة والبطاقة المدنية وبطاقة المقيم: الاستعلام والتجديد والرسوم",
         hi: "इक़ामा, सिविल आईडी, क्यूआईडी, रेज़िडेंट कार्ड, सीपीआर: जाँच, नवीनीकरण, फ़ीस",
         ml: "ഇഖാമ, സിവിൽ ഐഡി, ക്യുഐഡി, റസിഡന്റ് കാർഡ്, സിപിആർ: പരിശോധന, പുതുക്കൽ, ഫീസ്",
         ne: "इकामा, सिभिल आईडी, क्यूआईडी, रेसिडेन्ट कार्ड, सीपीआर: जाँच, नवीकरण, शुल्क",
-        ur: "اقامہ، سول آئی ڈی، کیو آئی ڈی، ریزیڈنٹ کارڈ، سی پی آر: چیک، تجدید، فیس"
+        ur: "اقامہ، سول آئی ڈی، کیو آئی ڈی، ریزیڈنٹ کارڈ، سی پی آر: چیک، تجدید، فیس",
+        bn: "আকামা, সিভিল আইডি, কিউআইডি, রেসিডেন্ট কার্ড, সিপিআর: যাচাই, নবায়ন, ফি"
       },
       k: "iqama civil id qid resident card cpr residence permit renew renewal check expiry fee fine absher muqeem sahel paci metrash rop iga lmra إقامة البطاقة المدنية इक़ामा ഇഖാമ इकामा اقامہ"
     },
     {
       url: "/family-cost.html",
-      t: { en: "Family monthly cost calculator", ar: "حاسبة تكلفة العائلة الشهرية", hi: "परिवार का मासिक ख़र्च कैलकुलेटर", ml: "കുടുംബത്തിന്റെ മാസച്ചെലവ് കാൽക്കുലേറ്റർ", ne: "परिवारको मासिक खर्च क्यालकुलेटर", ur: "خاندان کا ماہانہ خرچ کیلکولیٹر" },
+      t: { en: "Family monthly cost calculator", ar: "حاسبة تكلفة العائلة الشهرية", hi: "परिवार का मासिक ख़र्च कैलकुलेटर", ml: "കുടുംബത്തിന്റെ മാസച്ചെലവ് കാൽക്കുലേറ്റർ", ne: "परिवारको मासिक खर्च क्यालकुलेटर", ur: "خاندان کا ماہانہ خرچ کیلکولیٹر", bn: "পরিবারের মাসিক খরচ ক্যালকুলেটর" },
       d: {
         en: "Rent, school, dependent fees and bills: what is left to save",
         ar: "الإيجار والمدارس ورسوم المرافقين والفواتير: ما يتبقى للادخار",
         hi: "किराया, स्कूल, डिपेंडेंट फ़ीस और बिल: बचत कितनी बचेगी",
         ml: "വാടക, സ്കൂൾ, ഡിപെൻഡന്റ് ഫീസ്, ബില്ലുകൾ: എത്ര ബാക്കി",
         ne: "भाडा, स्कूल, आश्रित शुल्क र बिल: कति बचत हुन्छ",
-        ur: "کرایہ، اسکول، ڈیپنڈنٹ فیس اور بل: بچت کتنی ہوگی"
+        ur: "کرایہ، اسکول، ڈیپنڈنٹ فیس اور بل: بچت کتنی ہوگی",
+        bn: "ভাড়া, স্কুল, ডিপেন্ডেন্ট ফি ও বিল: সঞ্চয়ের জন্য কত থাকে"
       },
       k: "family cost budget monthly expenses rent school fees dependent levy dependant fee utilities groceries savings salary calculator ميزانية تكلفة العائلة बजट ख़र्च ബജറ്റ് ചെലവ് बजेट खर्च بجٹ خرچ"
     },
     {
       url: "/embassy-services.html",
-      t: { en: "Embassy services guide", ar: "دليل خدمات السفارات", hi: "दूतावास सेवाएँ गाइड", ml: "എംബസി സേവന ഗൈഡ്", ne: "दूतावास सेवा गाइड", ur: "سفارت خانے کی خدمات کی گائیڈ" },
+      t: { en: "Embassy services guide", ar: "دليل خدمات السفارات", hi: "दूतावास सेवाएँ गाइड", ml: "എംബസി സേവന ഗൈഡ്", ne: "दूतावास सेवा गाइड", ur: "سفارت خانے کی خدمات کی گائیڈ", bn: "দূতাবাস সেবা গাইড" },
       d: {
         en: "Passport renewal, PCC, OCI, NICOP and attestation for Indians, Pakistanis and Nepalis",
         ar: "تجديد الجواز وشهادة حسن السيرة والتصديق للهنود والباكستانيين والنيباليين",
         hi: "भारतीय, पाकिस्तानी और नेपाली नागरिकों के लिए पासपोर्ट, पीसीसी, ओसीआई और सत्यापन",
         ml: "ഇന്ത്യ, പാകിസ്ഥാൻ, നേപ്പാൾ പൗരന്മാർക്ക് പാസ്പോർട്ട്, പിസിസി, ഒസിഐ, അറ്റസ്റ്റേഷൻ",
         ne: "भारतीय, पाकिस्तानी र नेपालीका लागि राहदानी, प्रहरी प्रमाणपत्र र प्रमाणीकरण",
-        ur: "بھارتی، پاکستانی اور نیپالی شہریوں کے لیے پاسپورٹ، پی سی سی، نائیکوپ اور تصدیق"
+        ur: "بھارتی، پاکستانی اور نیپالی شہریوں کے لیے پاسپورٹ، پی سی سی، نائیکوپ اور تصدیق",
+        bn: "ভারত, পাকিস্তান ও নেপালের নাগরিকদের পাসপোর্ট, পিসিসি ও সত্যায়ন"
       },
       k: "embassy consulate passport renewal pcc police clearance oci nicop pak id attestation vfs bls madad india pakistan nepal سفارة جواز दूतावास पासपोर्ट എംബസി പാസ്പോർട്ട് दूतावास राहदानी سفارت خانہ پاسپورٹ"
     },
     {
       url: "/about.html",
-      t: { en: "About us", ar: "من نحن", hi: "हमारे बारे में", ml: "ഞങ്ങളെക്കുറിച്ച്", ne: "हाम्रोबारे", ur: "ہمارے بارے میں" },
+      t: { en: "About us", ar: "من نحن", hi: "हमारे बारे में", ml: "ഞങ്ങളെക്കുറിച്ച്", ne: "हाम्रोबारे", ur: "ہمارے بارے میں", bn: "আমাদের সম্পর্কে" },
       d: {
         en: "Who runs ExpatGuideME and how we check information",
         ar: "من يدير الموقع وكيف نتحقق من المعلومات",
         hi: "ExpatGuideME कौन चलाता है और जानकारी कैसे जाँची जाती है",
         ml: "ExpatGuideME ആരാണ് നടത്തുന്നത്, വിവരങ്ങൾ എങ്ങനെ പരിശോധിക്കുന്നു",
         ne: "ExpatGuideME कसले चलाउँछ र जानकारी कसरी जाँचिन्छ",
-        ur: "ExpatGuideME کون چلاتا ہے اور معلومات کیسے جانچی جاتی ہیں"
+        ur: "ExpatGuideME کون چلاتا ہے اور معلومات کیسے جانچی جاتی ہیں",
+        bn: "ExpatGuideME কে চালায় এবং তথ্য কীভাবে যাচাই করা হয়"
       },
       k: "about who team mission editorial sources independent من نحن हमारे बारे में ഞങ്ങളെക്കുറിച്ച് हाम्रोबारे ہمارے بارے میں"
     },
     {
       url: "/terms.html",
-      t: { en: "Terms of use", ar: "شروط الاستخدام", hi: "उपयोग की शर्तें", ml: "ഉപയോഗ നിബന്ധനകൾ", ne: "प्रयोगका सर्तहरू", ur: "استعمال کی شرائط" },
+      t: { en: "Terms of use", ar: "شروط الاستخدام", hi: "उपयोग की शर्तें", ml: "ഉപയോഗ നിബന്ധനകൾ", ne: "प्रयोगका सर्तहरू", ur: "استعمال کی شرائط", bn: "ব্যবহারের শর্তাবলি" },
       d: {
         en: "Rules for using this website",
         ar: "قواعد استخدام هذا الموقع",
         hi: "इस वेबसाइट के उपयोग के नियम",
         ml: "ഈ വെബ്സൈറ്റ് ഉപയോഗിക്കാനുള്ള നിയമങ്ങൾ",
         ne: "यो वेबसाइट प्रयोग गर्ने नियम",
-        ur: "اس ویب سائٹ کے استعمال کے اصول"
+        ur: "اس ویب سائٹ کے استعمال کے اصول",
+        bn: "এই ওয়েবসাইট ব্যবহারের নিয়ম"
       },
       k: "terms conditions terms of use legal disclaimer شروط शर्तें നിബന്ധനകൾ सर्त شرائط"
     },
     {
       url: "/affiliate-disclosure.html",
-      t: { en: "Affiliate disclosure", ar: "الإفصاح عن روابط الشراكة", hi: "एफ़िलिएट जानकारी", ml: "അഫിലിയേറ്റ് വെളിപ്പെടുത്തൽ", ne: "एफिलिएट जानकारी", ur: "ایفیلیئٹ انکشاف" },
+      t: { en: "Affiliate disclosure", ar: "الإفصاح عن روابط الشراكة", hi: "एफ़िलिएट जानकारी", ml: "അഫിലിയേറ്റ് വെളിപ്പെടുത്തൽ", ne: "एफिलिएट जानकारी", ur: "ایفیلیئٹ انکشاف", bn: "অ্যাফিলিয়েট তথ্য" },
       d: {
         en: "How we earn money from ads and partner links",
         ar: "كيف نكسب من الإعلانات وروابط الشراكة",
         hi: "हम विज्ञापन और पार्टनर लिंक से कैसे कमाते हैं",
         ml: "പരസ്യങ്ങളിൽ നിന്നും പങ്കാളി ലിങ്കുകളിൽ നിന്നും ഞങ്ങൾ എങ്ങനെ വരുമാനം നേടുന്നു",
         ne: "हामी विज्ञापन र साझेदार लिङ्कबाट कसरी कमाउँछौं",
-        ur: "ہم اشتہارات اور پارٹنر لنکس سے کیسے کماتے ہیں"
+        ur: "ہم اشتہارات اور پارٹنر لنکس سے کیسے کماتے ہیں",
+        bn: "বিজ্ঞাপন ও অংশীদার লিংক থেকে আমরা কীভাবে আয় করি"
       },
       k: "affiliate disclosure partner sponsored commission advertising ads إفصاح एफ़िलिएट അഫിലിയേറ്റ് एफिलिएट ایفیلیئٹ"
     },
     {
       url: "/exchange-rate.html#faq",
-      t: { en: "Exchange rate questions (FAQ)", ar: "أسئلة عن سعر الصرف", hi: "एक्सचेंज रेट से जुड़े सवाल", ml: "വിനിമയ നിരക്ക്: പതിവ് ചോദ്യങ്ങൾ", ne: "विनिमय दरसम्बन्धी प्रश्नहरू", ur: "شرحِ تبادلہ کے سوالات" },
+      t: { en: "Exchange rate questions (FAQ)", ar: "أسئلة عن سعر الصرف", hi: "एक्सचेंज रेट से जुड़े सवाल", ml: "വിനിമയ നിരക്ക്: പതിവ് ചോദ്യങ്ങൾ", ne: "विनिमय दरसम्बन्धी प्रश्नहरू", ur: "شرحِ تبادلہ کے سوالات", bn: "বিনিময় হার নিয়ে প্রশ্ন" },
       d: {
         en: "Bank rates, daily updates, the riyal's dollar peg",
         ar: "أسعار البنوك والتحديث اليومي وربط الريال بالدولار",
         hi: "बैंक रेट, रोज़ाना अपडेट, रियाल और डॉलर",
         ml: "ബാങ്ക് നിരക്ക്, ദിവസേന പുതുക്കൽ, റിയാലും ഡോളറും",
         ne: "बैंक दर, दैनिक अपडेट, रियाल र डलर",
-        ur: "بینک ریٹ، روزانہ اپ ڈیٹ، ریال اور ڈالر"
+        ur: "بینک ریٹ، روزانہ اپ ڈیٹ، ریال اور ڈالر",
+        bn: "ব্যাংক রেট, প্রতিদিনের আপডেট, রিয়াল ও ডলার"
       },
       k: "faq question bank margin fee peg pegged dollar update updated official"
     },
     {
       url: "/#faq",
-      t: { en: "About ExpatGuideME (FAQ)", ar: "عن الموقع (أسئلة شائعة)", hi: "ExpatGuideME के बारे में (सवाल)", ml: "ExpatGuideME നെക്കുറിച്ച് (ചോദ്യങ്ങൾ)", ne: "ExpatGuideME बारे (प्रश्नहरू)", ur: "ExpatGuideME کے بارے میں (سوالات)" },
+      t: { en: "About ExpatGuideME (FAQ)", ar: "عن الموقع (أسئلة شائعة)", hi: "ExpatGuideME के बारे में (सवाल)", ml: "ExpatGuideME നെക്കുറിച്ച് (ചോദ്യങ്ങൾ)", ne: "ExpatGuideME बारे (प्रश्नहरू)", ur: "ExpatGuideME کے بارے میں (سوالات)", bn: "ExpatGuideME সম্পর্কে প্রশ্ন" },
       d: {
         en: "Is it free, which languages and countries",
         ar: "هل الموقع مجاني، وما اللغات والدول",
         hi: "क्या यह मुफ़्त है, कौन-सी भाषाएँ और देश",
         ml: "സൗജന്യമാണോ, ഏതൊക്കെ ഭാഷകളും രാജ്യങ്ങളും",
         ne: "निःशुल्क छ कि, कुन भाषा र देशहरू",
-        ur: "کیا یہ مفت ہے، کون سی زبانیں اور ممالک"
+        ur: "کیا یہ مفت ہے، کون سی زبانیں اور ممالک",
+        bn: "এটি কি ফ্রি, কোন ভাষা ও দেশ"
       },
       k: "faq about free languages countries official government"
     },
     {
       url: "/contact.html",
-      t: { en: "Contact us", ar: "اتصل بنا", hi: "संपर्क करें", ml: "ഞങ്ങളെ ബന്ധപ്പെടുക", ne: "सम्पर्क गर्नुहोस्", ur: "ہم سے رابطہ کریں" },
+      t: { en: "Contact us", ar: "اتصل بنا", hi: "संपर्क करें", ml: "ഞങ്ങളെ ബന്ധപ്പെടുക", ne: "सम्पर्क गर्नुहोस्", ur: "ہم سے رابطہ کریں", bn: "যোগাযোগ করুন" },
       d: {
         en: "Send a message, report a mistake, request a guide",
         ar: "أرسل رسالة أو أبلغ عن خطأ أو اطلب دليلًا",
         hi: "संदेश भेजें, गलती बताएँ, गाइड माँगें",
         ml: "സന്ദേശം അയക്കുക, തെറ്റ് അറിയിക്കുക, ഗൈഡ് ആവശ്യപ്പെടുക",
         ne: "सन्देश पठाउनुहोस्, गल्ती जानकारी दिनुहोस्, गाइड माग्नुहोस्",
-        ur: "پیغام بھیجیں، غلطی بتائیں، نئی گائیڈ کی درخواست کریں"
+        ur: "پیغام بھیجیں، غلطی بتائیں، نئی گائیڈ کی درخواست کریں",
+        bn: "বার্তা পাঠান, ভুল জানান, নতুন গাইডের অনুরোধ করুন"
       },
       k: "contact email message help mistake feedback request"
     },
     {
       url: "/privacy.html",
-      t: { en: "Privacy policy", ar: "سياسة الخصوصية", hi: "गोपनीयता नीति", ml: "സ്വകാര്യതാ നയം", ne: "गोपनीयता नीति", ur: "رازداری کی پالیسی" },
+      t: { en: "Privacy policy", ar: "سياسة الخصوصية", hi: "गोपनीयता नीति", ml: "സ്വകാര്യതാ നയം", ne: "गोपनीयता नीति", ur: "رازداری کی پالیسی", bn: "গোপনীয়তা নীতি" },
       d: {
         en: "What we store and why",
         ar: "ما الذي نحفظه ولماذا",
         hi: "हम क्या सहेजते हैं और क्यों",
         ml: "ഞങ്ങൾ എന്ത് സൂക്ഷിക്കുന്നു, എന്തിന്",
         ne: "हामी के राख्छौं र किन",
-        ur: "ہم کیا محفوظ کرتے ہیں اور کیوں"
+        ur: "ہم کیا محفوظ کرتے ہیں اور کیوں",
+        bn: "আমরা কী সংরক্ষণ করি এবং কেন"
       },
       k: "privacy cookies data storage newsletter policy"
     }
@@ -311,7 +341,33 @@
   }
 
   /* ---------- Language ---------- */
+  /* Each language has its own address: English at the root, others under /xx/. */
+  var PAGE_LANG = document.documentElement.getAttribute("data-page-lang");
+  var NO_NAV = !!window.__EXPAT_NO_NAV || !PAGE_LANG;
+
+  function pagePath() {
+    var p = location.pathname || "/";
+    var m = /^\/([a-z]{2})(\/.*)?$/.exec(p);
+    if (m && LANGS[m[1]] && m[1] !== "en") p = m[2] || "/";
+    return p;
+  }
+  function langUrl(l, path) {
+    var p = path || pagePath();
+    return (l === "en" ? "" : "/" + l) + (p.charAt(0) === "/" ? p : "/" + p);
+  }
+  function href(path) {
+    if (!path || path.charAt(0) !== "/" || NO_NAV) return path;
+    return langUrl(lang, path);
+  }
+
   function detectLang() {
+    if (PAGE_LANG && LANGS[PAGE_LANG]) {
+      var saved0 = prefs().lang;
+      if (PAGE_LANG === "en" && !NO_NAV && saved0 && saved0 !== "en" && LANGS[saved0]) {
+        try { location.replace(langUrl(saved0) + location.search + location.hash); } catch (e) {}
+      }
+      return PAGE_LANG;
+    }
     var saved = prefs().lang;
     if (LANGS[saved]) return saved;
     var nav = ((navigator.languages && navigator.languages[0]) || navigator.language || "en").toLowerCase();
@@ -375,8 +431,12 @@
 
   function setLang(l) {
     if (!LANGS[l] || l === lang) return;
-    lang = l;
     savePref("lang", l);
+    if (!NO_NAV) {
+      location.href = langUrl(l) + location.search + location.hash;
+      return;
+    }
+    lang = l;
     applyLang();
   }
 
@@ -481,7 +541,7 @@
     results.forEach(function (entry, i) {
       var li = document.createElement("li");
       var a = document.createElement("a");
-      a.href = entry.url;
+      a.href = href(entry.url);
       if (i === 0) a.className = "active";
       var strong = document.createElement("strong");
       strong.textContent = entry.t[lang] || entry.t.en;
@@ -814,6 +874,7 @@
     lang: function () { return lang; },
     t: t,
     setLang: setLang,
+    href: href,
     onLang: function (fn) { listeners.push(fn); fn(lang); },
     tagOutbound: tagOutbound,
     langs: LANGS

@@ -52,6 +52,7 @@ body {
   transition: background-color 0.2s, color 0.2s;
 }
 html[lang="ar"] body { font-family: "Cairo", "Inter", Tahoma, sans-serif; line-height: 1.8; }
+html[lang="bn"] body { font-family: "Noto Sans Bengali", "Inter", sans-serif; line-height: 1.75; }
 html[lang="ur"] body { font-family: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Cairo", Tahoma, sans-serif; line-height: 2.2; }
 html[lang="ur"] h1, html[lang="ur"] h2, html[lang="ur"] h3 { line-height: 1.9; }
 html[lang="hi"] body,
@@ -159,6 +160,7 @@ html:not([data-theme="dark"]) .i-sun { display: none; }
 .langs button:hover { background: var(--brand-soft); color: var(--brand); }
 .langs button.active { background: var(--brand); color: var(--on-brand); }
 .langs button[lang="ar"] { font-family: "Cairo", sans-serif; }
+.langs button[lang="bn"] { font-family: "Noto Sans Bengali", sans-serif; }
 .langs button[lang="ur"] { font-family: "Noto Nastaliq Urdu", "Cairo", sans-serif; }
 .langs button[lang="hi"], .langs button[lang="ne"] { font-family: "Noto Sans Devanagari", sans-serif; }
 .langs button[lang="ml"] { font-family: "Noto Sans Malayalam", sans-serif; }

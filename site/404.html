@@ -13,7 +13,7 @@
   <script>(function(){try{var t=localStorage.getItem('expatguideme_theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Cairo:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Malayalam:wght@400;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Cairo:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Malayalam:wght@400;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/site.css">
   <style>
     .nf { text-align: center; padding: 48px 0 24px; max-width: 620px; }
@@ -54,6 +54,7 @@
             <button type="button" data-lang="ml" lang="ml">മലയാളം</button>
             <button type="button" data-lang="ne" lang="ne">नेपाली</button>
             <button type="button" data-lang="ur" lang="ur">اردو</button>
+            <button type="button" data-lang="bn" lang="bn">বাংলা</button>
           </div>
         </div>
         <button type="button" class="icon-btn" data-open-search data-s-aria="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
@@ -153,7 +154,8 @@
         hi: { title: "पेज नहीं मिला", text: "यह पेज हट गया है या कभी था ही नहीं। ये लिंक आपको सही जगह पहुँचा देंगे।", home: "होम पेज पर जाएँ" },
         ml: { title: "പേജ് കണ്ടെത്തിയില്ല", text: "ഈ പേജ് മാറ്റിയിരിക്കാം, അല്ലെങ്കിൽ നിലവിലില്ല. ഈ ലിങ്കുകൾ നിങ്ങളെ ശരിയായ സ്ഥലത്ത് എത്തിക്കും.", home: "ഹോം പേജിലേക്ക് പോകുക" },
         ne: { title: "पृष्ठ फेला परेन", text: "यो पृष्ठ सारिएको छ वा कहिल्यै थिएन। यी लिङ्कहरूले तपाईंलाई सही ठाउँमा पुर्याउँछन्।", home: "गृहपृष्ठमा जानुहोस्" },
-        ur: { title: "صفحہ نہیں ملا", text: "یہ صفحہ منتقل ہو گیا ہے یا کبھی موجود ہی نہیں تھا۔ یہ لنکس آپ کو صحیح جگہ پہنچا دیں گے۔", home: "ہوم پیج پر جائیں" }
+        ur: { title: "صفحہ نہیں ملا", text: "یہ صفحہ منتقل ہو گیا ہے یا کبھی موجود ہی نہیں تھا۔ یہ لنکس آپ کو صحیح جگہ پہنچا دیں گے۔", home: "ہوم پیج پر جائیں" },
+        bn: { title: "পেজটি পাওয়া যায়নি", text: "এই পেজটি সরানো হয়েছে বা কখনও ছিল না। এই লিংকগুলো আপনাকে সঠিক জায়গায় নিয়ে যাবে।", home: "হোম পেজে যান" }
       };
       window.ExpatSite.onLang(function (lang) {
         var L = T[lang] || T.en;
