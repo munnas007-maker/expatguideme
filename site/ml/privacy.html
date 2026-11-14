@@ -15,6 +15,7 @@
   <link rel="alternate" hreflang="tl" href="https://expatguideme.com/tl/privacy.html">
   <link rel="alternate" hreflang="x-default" href="https://expatguideme.com/privacy.html">
   <meta name="theme-color" content="#ffffff">
+  <meta name="form-endpoint" content="https://formsubmit.co/ajax/support@expatguideme.com">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="/manifest.webmanifest">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -105,7 +106,7 @@
 
         <h2>Forms: newsletter and contact</h2>
         <p>If you subscribe to our newsletter, we receive your email address. If you use the contact form, we receive your name, email address and message. We use this only to send you updates you asked for or to reply to you. We never sell or share it for marketing.</p>
-        <p>Form submissions are processed and stored by our hosting provider, Netlify. To unsubscribe or ask us to delete your details, send a message through the contact page.</p>
+        <p>Form submissions are sent to us by email through FormSubmit (formsubmit.co), a form-to-email service. To unsubscribe or ask us to delete your details, send a message through the contact page.</p>
         <p>Please do not send passwords, ID numbers or bank details through any form.</p>
 
         <h2>Mobile app launch list</h2>
@@ -119,7 +120,8 @@
 
         <h2>Outside services the site uses</h2>
         <ul>
-          <li><strong>Netlify</strong> hosts the website. Like any web server, it processes technical data such as your IP address to deliver pages and keep the site secure.</li>
+          <li><strong>GitHub Pages</strong> hosts the website. Like any web server, it processes technical data such as your IP address to deliver pages and keep the site secure.</li>
+          <li><strong>FormSubmit</strong> (formsubmit.co) delivers the messages you send through our forms to our email inbox.</li>
           <li><strong>Google Fonts</strong> provides the fonts. Your browser downloads them from Google's servers.</li>
           <li><strong>ExchangeRate-API</strong> provides the exchange rates. On the exchange rate page, your browser requests the latest rates directly from their servers.</li>
         </ul>
@@ -155,7 +157,7 @@
       <section class="newsletter" aria-labelledby="nlTitle">
         <h2 id="nlTitle" data-s="nlTitle">പുതിയ ഗൈഡുകൾ ഇമെയിലിൽ ലഭിക്കാൻ</h2>
         <p data-s="nlText">പുതിയ ടൂളോ ഗൈഡോ ചേർക്കുമ്പോൾ ഒരു ചെറിയ ഇമെയിൽ മാത്രം. സ്പാം ഇല്ല.</p>
-        <form class="nl-form" name="newsletter" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" data-ajax="" data-success="nlSuccess" novalidate="">
+        <form class="nl-form" name="newsletter" method="POST" action="/" data-ajax="" data-success="nlSuccess" novalidate="">
           <input type="hidden" name="form-name" value="newsletter">
           <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
           <label class="sr-only" for="nlEmail" data-s="nlEmail">നിങ്ങളുടെ ഇമെയിൽ വിലാസം</label>

@@ -15,6 +15,7 @@
   <link rel="alternate" hreflang="tl" href="https://expatguideme.com/tl/mobile-app.html">
   <link rel="alternate" hreflang="x-default" href="https://expatguideme.com/mobile-app.html">
   <meta name="theme-color" content="#ffffff">
+  <meta name="form-endpoint" content="https://formsubmit.co/ajax/support@expatguideme.com">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="/manifest.webmanifest">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -95,7 +96,7 @@
       <section class="card" aria-labelledby="notifyTitle">
         <h2 id="notifyTitle" data-s="appNotifyTitle">ആപ്പ് ലോഞ്ച് ചെയ്യുമ്പോൾ അറിയിപ്പ് നേടൂ</h2>
         <p data-s="appNotifyText">നിങ്ങളുടെ ഇമെയിൽ നൽകൂ; ആപ്പ് Google Play-യിലും App Store-ലും എത്തുമ്പോൾ ഒരു സന്ദേശം മാത്രം അയക്കും. സ്പാം ഇല്ല.</p>
-        <form class="app-form" name="app-notify" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" data-ajax="" data-success="appNotifyOk" novalidate="">
+        <form class="app-form" name="app-notify" method="POST" action="/" data-ajax="" data-success="appNotifyOk" novalidate="">
           <input type="hidden" name="form-name" value="app-notify">
           <input type="hidden" name="language" value="en" data-lang-field="">
           <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
@@ -125,7 +126,7 @@
       <section class="newsletter" aria-labelledby="nlTitle">
         <h2 id="nlTitle" data-s="nlTitle">പുതിയ ഗൈഡുകൾ ഇമെയിലിൽ ലഭിക്കാൻ</h2>
         <p data-s="nlText">പുതിയ ടൂളോ ഗൈഡോ ചേർക്കുമ്പോൾ ഒരു ചെറിയ ഇമെയിൽ മാത്രം. സ്പാം ഇല്ല.</p>
-        <form class="nl-form" name="newsletter" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" data-ajax="" data-success="nlSuccess" novalidate="">
+        <form class="nl-form" name="newsletter" method="POST" action="/" data-ajax="" data-success="nlSuccess" novalidate="">
           <input type="hidden" name="form-name" value="newsletter">
           <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
           <label class="sr-only" for="nlEmail" data-s="nlEmail">നിങ്ങളുടെ ഇമെയിൽ വിലാസം</label>

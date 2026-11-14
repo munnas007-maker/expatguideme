@@ -1,0 +1,5 @@
+{
+  "_help": "form_endpoint: where all site forms are sent (FormSubmit AJAX endpoint). After you confirm FormSubmit's activation email, you may replace the email address with the random string FormSubmit sends you. rates_api: full URL of a community-rates API (for example a Cloudflare Worker); leave empty to switch community rate sharing off on send-money.html.",
+  "form_endpoint": "https://formsubmit.co/ajax/support@expatguideme.com",
+  "rates_api": ""
+}

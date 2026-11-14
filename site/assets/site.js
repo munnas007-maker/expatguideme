@@ -729,10 +729,31 @@
           submit.appendChild(document.createTextNode(" " + t("sending")));
         }
 
-        var body = new URLSearchParams(new FormData(form)).toString();
-        fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: body })
+        var meta = document.querySelector('meta[name="form-endpoint"]');
+        var endpoint = meta ? meta.getAttribute("content") : "";
+        var req;
+        if (endpoint) {
+          // Static hosting: send the form as JSON to the form-to-email endpoint (FormSubmit).
+          var data = {};
+          new FormData(form).forEach(function (v, k) { if (k !== "bot-field" && k !== "form-name") data[k] = v; });
+          var fname = form.getAttribute("name") || "form";
+          data._subject = "ExpatGuideME: " + fname;
+          data.form = fname;
+          data.page = location.pathname;
+          data._template = "table";
+          data._captcha = "false";
+          req = fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data) })
+            .then(function (res) {
+              if (!res.ok) throw new Error("HTTP " + res.status);
+              return res.json().catch(function () { return {}; });
+            })
+            .then(function (j) { if (j && (j.success === false || j.success === "false")) throw new Error(j.message || "rejected"); return { ok: true }; });
+        } else {
+          req = fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: new URLSearchParams(new FormData(form)).toString() });
+        }
+        req
           .then(function (res) {
-            if (!res.ok) throw new Error("HTTP " + res.status);
+            if (!res.ok) throw new Error("HTTP " + (res.status || ""));
             form.hidden = true;
             if (success) {
               success.hidden = false;

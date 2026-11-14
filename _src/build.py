@@ -69,6 +69,11 @@ def alternates(meta):
     return "".join(out)
 
 
+def form_meta():
+    ep = SITE_CFG.get("form_endpoint")
+    return f'\n  <meta name="form-endpoint" content="{ep}">' if ep else ""
+
+
 def head(meta):
     canonical = SITE_URL + meta["path"]
     robots = '\n  <meta name="robots" content="noindex">' if meta.get("noindex") else ""
@@ -85,7 +90,7 @@ def head(meta):
   <title>{meta["title"]}</title>
   <meta name="description" content="{meta["description"]}">{robots}{ads}
   <link rel="canonical" href="{canonical}">{alternates(meta)}
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">{form_meta()}
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="/manifest.webmanifest">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -166,7 +171,7 @@ def footer(credit):
       <section class="newsletter" aria-labelledby="nlTitle">
         <h2 id="nlTitle" data-s="nlTitle"></h2>
         <p data-s="nlText"></p>
-        <form class="nl-form" name="newsletter" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" data-ajax data-success="nlSuccess" novalidate>
+        <form class="nl-form" name="newsletter" method="POST" action="/" data-ajax data-success="nlSuccess" novalidate>
           <input type="hidden" name="form-name" value="newsletter">
           <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
           <label class="sr-only" for="nlEmail" data-s="nlEmail"></label>
@@ -428,7 +433,7 @@ def checkout_html():
                 f'<a class="btn btn-primary btn-lg" href="{url}" target="_blank" rel="noopener" data-t="buyBtn"></a>'
                 f'<p class="pb-secure" data-provider="{provider}" data-t="secure"></p></div>')
     return ('<div class="pb-soon"><h2 data-t="soonT"></h2><p data-t="soonText"></p>'
-            '<form class="app-form" name="playbook-waitlist" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" data-ajax data-success="pbOk" novalidate>'
+            '<form class="app-form" name="playbook-waitlist" method="POST" action="/" data-ajax data-success="pbOk" novalidate>'
             '<input type="hidden" name="form-name" value="playbook-waitlist">'
             '<input type="hidden" name="language" value="en" data-lang-field>'
             '<p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>'
@@ -442,9 +447,19 @@ def checkout_html():
 ESSENTIALS = ""
 
 
+def load_site_config():
+    with open(os.path.join(ROOT, "_src", "data", "site.json"), encoding="utf-8") as f:
+        cfg = json.load(f)
+    return {"form_endpoint": _url(cfg.get("form_endpoint"), "form_endpoint"), "rates_api": _url(cfg.get("rates_api"), "rates_api")}
+
+
+SITE_CFG = {"form_endpoint": "", "rates_api": ""}
+
+
 def build():
     pages = sorted(p for p in os.listdir(SRC) if p.endswith(".html"))
-    global ESSENTIALS
+    global ESSENTIALS, SITE_CFG
+    SITE_CFG = load_site_config()
     PARTNER_LINKS = load_partners()
     ESSENTIALS = essentials_html()
     rates, when = load_rates()
@@ -454,6 +469,7 @@ def build():
         body = re.sub(r"<!--SUMMARY:([a-z]+)-->", lambda m: summary_block(m.group(1), rates, when), body)
         body = body.replace("<!--CHECKOUT-->", checkout_html())
         script = script.replace("/*PARTNERS*/{}", json.dumps(PARTNER_LINKS))
+        script = script.replace('/*RATES_API*/""', json.dumps(SITE_CFG["rates_api"]))
         html = (
             head(meta)
             + "\n"
@@ -483,6 +499,9 @@ def build():
     )
     sitemap(public, conversion_pages())
     service_worker()
+    with open(os.path.join(ROOT, "site", "CNAME"), "w", encoding="utf-8") as f:
+        f.write("expatguideme.com\n")
+    open(os.path.join(ROOT, "site", ".nojekyll"), "w").close()
     if ADSENSE_CLIENT:
         pub = ADSENSE_CLIENT.replace("ca-", "")
         with open(os.path.join(ROOT, "site", "ads.txt"), "w", encoding="utf-8") as f:

@@ -1,22 +1,33 @@
-# Daily robot: refreshes baseline currency rates and gold spot price, rebuilds all 8 languages and pushes.
-# Netlify deploys the push automatically, and netlify/functions/deploy-succeeded.mjs
-# then pings IndexNow (Bing, ChatGPT Search, Yandex and others) with the fresh pages.
-name: Daily rate update
+# Builds and publishes expatguideme.com on GitHub Pages.
+# - Every push to main: rebuild all 8 languages and publish.
+# - Every day at 04:00 UTC (07:00 Riyadh): also fetch today's currency rates and
+#   gold price, commit the refreshed pages, publish, then ping IndexNow.
+# Repository setting needed once: Settings > Pages > Source = "GitHub Actions".
+name: Build and publish
 
 on:
+  push:
+    branches: [main]
   schedule:
-    - cron: "0 4 * * *"   # 04:00 UTC = 07:00 Riyadh
+    - cron: "0 4 * * *"
   workflow_dispatch:
+    inputs:
+      ping_all:
+        description: "Ping IndexNow with every page (use once after moving hosts)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
-  group: daily-update
+  group: pages
   cancel-in-progress: false
 
 jobs:
-  update:
+  build:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -30,10 +41,12 @@ jobs:
       - name: Install build tools
         run: npm install --no-audit --no-fund
       - name: Fetch today's currency rates and gold price
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: python3 scripts/update_rates.py
       - name: Build all languages
         run: NODE_PATH=$PWD/node_modules python3 _src/build.py
-      - name: Commit and push if anything changed
+      - name: Save refreshed pages to the repository
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: |
           git config user.name "ExpatGuideME robot"
           git config user.email "actions@users.noreply.github.com"
@@ -44,3 +57,30 @@ jobs:
             git commit -m "Daily rate update $(date -u +%Y-%m-%d)"
             git push
           fi
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+  indexnow:
+    needs: deploy
+    runs-on: ubuntu-latest
+    if: github.event_name != 'push'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Ping IndexNow
+        run: |
+          sleep 30
+          python3 scripts/indexnow.py ${{ inputs.ping_all && '--all' || '' }}

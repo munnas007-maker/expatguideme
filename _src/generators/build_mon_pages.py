@@ -61,7 +61,7 @@ META-->
 
       <section class="card" aria-labelledby="formT">
         <h2 id="formT" data-t="formT"></h2>
-        <form class="lc-form" name="expert-review" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" data-ajax data-success="lcOk" novalidate>
+        <form class="lc-form" name="expert-review" method="POST" action="/" data-ajax data-success="lcOk" novalidate>
           <input type="hidden" name="form-name" value="expert-review">
           <input type="hidden" name="language" value="en" data-lang-field>
           <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>

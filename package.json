@@ -2,10 +2,7 @@
   "name": "expatguideme",
   "private": true,
   "type": "module",
-  "description": "ExpatGuideME static site with a small community-rates function",
-  "dependencies": {
-    "@netlify/blobs": "^11.1.9"
-  },
+  "description": "ExpatGuideME static site (GitHub Pages), built by _src/build.py",
   "devDependencies": {
     "jsdom": "^26.1.0"
   },

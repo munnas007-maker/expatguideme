@@ -15,6 +15,7 @@
   <link rel="alternate" hreflang="tl" href="https://expatguideme.com/tl/mobile-app.html">
   <link rel="alternate" hreflang="x-default" href="https://expatguideme.com/mobile-app.html">
   <meta name="theme-color" content="#ffffff">
+  <meta name="form-endpoint" content="https://formsubmit.co/ajax/support@expatguideme.com">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="/manifest.webmanifest">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -95,7 +96,7 @@
       <section class="card" aria-labelledby="notifyTitle">
         <h2 id="notifyTitle" data-s="appNotifyTitle">Get a message when the app launches</h2>
         <p data-s="appNotifyText">Leave your email and we will send you one message when the app is in Google Play and the App Store. No spam.</p>
-        <form class="app-form" name="app-notify" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" data-ajax="" data-success="appNotifyOk" novalidate="">
+        <form class="app-form" name="app-notify" method="POST" action="/" data-ajax="" data-success="appNotifyOk" novalidate="">
           <input type="hidden" name="form-name" value="app-notify">
           <input type="hidden" name="language" value="en" data-lang-field="">
           <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
@@ -125,7 +126,7 @@
       <section class="newsletter" aria-labelledby="nlTitle">
         <h2 id="nlTitle" data-s="nlTitle">Get new guides by email</h2>
         <p data-s="nlText">One short email when we add a new tool or guide. No spam.</p>
-        <form class="nl-form" name="newsletter" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" data-ajax="" data-success="nlSuccess" novalidate="">
+        <form class="nl-form" name="newsletter" method="POST" action="/" data-ajax="" data-success="nlSuccess" novalidate="">
           <input type="hidden" name="form-name" value="newsletter">
           <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
           <label class="sr-only" for="nlEmail" data-s="nlEmail">Your email address</label>
