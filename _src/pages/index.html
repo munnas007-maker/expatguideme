@@ -31,7 +31,7 @@ META-->
     .tool[data-c="work"] { --c: var(--c-work); } .tool[data-c="family"] { --c: var(--c-family); }
     .tool[data-c="phone"] { --c: var(--c-phone); }
     a.tool:hover { border-color: var(--c); box-shadow: var(--shadow); transform: translateY(-2px); color: var(--ink); }
-    .tool .icon { width: 48px; height: 48px; display: grid; place-items: center; font-size: 1.55rem; line-height: 1; border-radius: 14px; background: color-mix(in srgb, var(--c) 12%, var(--card)); }
+    .tool .icon { width: 48px; height: 48px; display: grid; place-items: center; font-size: 1.55rem; line-height: 1; border-radius: 14px; color: var(--c); background: color-mix(in srgb, var(--c) 12%, var(--card)); }
     .tool h3 { font-size: 1.07rem; line-height: 1.4; }
     .tool p { color: var(--muted); font-size: 0.92rem; flex: 1; }
     .tag { align-self: flex-start; font-size: 0.78rem; font-weight: 700; padding: 4px 12px; border-radius: 999px; }
@@ -197,8 +197,15 @@ META-->
         }
       };
 
+      var ICONS = /*ICONS*/{};   // Lucide icons (ISC licence), injected at build time
+      function svgIcon(name) {
+        var p = ICONS[name]; if (!p) return null;
+        var d = document.createElement("div");
+        d.innerHTML = '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' + p + "</svg>";
+        return d.firstChild;
+      }
       var TOOLS = [
-        { icon: "💱", href: "/exchange-rate.html", c: "money",
+        { icon: "💱", href: "/exchange-rate.html", ic: "exchange", c: "money",
           en: ["Exchange rate today", "Riyal and dinar to rupee, taka, peso and more."],
           ar: ["سعر الصرف اليوم", "الريال والدينار إلى الروبية والتاكا والبيزو وغيرها."],
           hi: ["आज का एक्सचेंज रेट", "रियाल और दीनार से रुपया, टका, पेसो और अन्य।"],
@@ -207,7 +214,7 @@ META-->
           ur: ["آج کی شرحِ تبادلہ", "ریال اور دینار سے روپیہ، ٹکا، پیسو اور دیگر۔"],
           bn: ["আজকের বিনিময় হার", "রিয়াল ও দিনার থেকে টাকা, রুপি, পেসো ও আরও।"],
           tl: ["Palitan ng pera ngayon", "Riyal at dinar papuntang peso, rupee, taka at iba pa."] },
-        { icon: "💸", href: "/send-money.html", c: "money",
+        { icon: "💸", href: "/send-money.html", ic: "send", c: "money",
           en: ["Best way to send money home", "Compare transfer apps and banks."],
           ar: ["أفضل طريقة لتحويل الأموال", "قارن تطبيقات التحويل والبنوك."],
           hi: ["घर पैसे भेजने का सबसे अच्छा तरीका", "ट्रांसफ़र ऐप और बैंकों की तुलना करें।"],
@@ -216,7 +223,7 @@ META-->
           ur: ["گھر رقم بھیجنے کا بہترین طریقہ", "ٹرانسفر ایپس اور بینکوں کا موازنہ کریں۔"],
           bn: ["দেশে টাকা পাঠানোর সেরা উপায়", "ট্রান্সফার অ্যাপ ও ব্যাংক তুলনা করুন।"],
           tl: ["Pinakamurang paraan magpadala", "Ikumpara ang remittance apps at bangko."] },
-        { icon: "📱", href: "/sim-internet.html", c: "phone",
+        { icon: "📱", href: "/sim-internet.html", ic: "sim", c: "phone",
           en: ["SIM & internet offers", "Every mobile company's plans and prices in each Gulf country."],
           ar: ["عروض الشرائح والإنترنت", "باقات وأسعار كل شركات الاتصالات في كل دولة خليجية."],
           hi: ["सिम और इंटरनेट ऑफ़र", "हर खाड़ी देश की सभी मोबाइल कंपनियों के प्लान और क़ीमतें।"],
@@ -225,7 +232,7 @@ META-->
           ur: ["سم اور انٹرنیٹ آفرز", "ہر خلیجی ملک کی تمام موبائل کمپنیوں کے پلان اور قیمتیں۔"],
           bn: ["সিম ও ইন্টারনেট অফার", "প্রতিটি উপসাগরীয় দেশের সব মোবাইল কোম্পানির প্ল্যান ও দাম।"],
           tl: ["SIM at internet offers", "Plans at presyo ng bawat mobile company sa bawat bansa sa Gulf."] },
-        { icon: "🛬", href: "/family-visa.html", c: "family",
+        { icon: "🛬", href: "/family-visa.html", ic: "visa", c: "family",
           en: ["Family & visit visa", "Bring your family: who can apply, documents, steps and fees."],
           ar: ["تأشيرة العائلة والزيارة", "استقدم عائلتك: من يحق له التقديم والمستندات والخطوات والرسوم."],
           hi: ["फ़ैमिली और विज़िट वीज़ा", "परिवार बुलाएँ: कौन आवेदन करे, दस्तावेज़, स्टेप और फ़ीस।"],
@@ -234,7 +241,7 @@ META-->
           ur: ["فیملی اور وزٹ ویزا", "خاندان کو بلائیں: اہلیت، دستاویزات، مراحل اور فیس۔"],
           bn: ["ফ্যামিলি ও ভিজিট ভিসা", "পরিবার আনুন: যোগ্যতা, কাগজপত্র, ধাপ ও ফি।"],
           tl: ["Family at visit visa", "Dalhin ang pamilya: sino ang puwede, dokumento, hakbang at bayad."] },
-        { icon: "🪪", href: "/id-residency.html", c: "family",
+        { icon: "🪪", href: "/id-residency.html", ic: "id", c: "family",
           en: ["ID card & residency guide", "Iqama, Civil ID, QID, Resident Card and CPR: check, renew, fees."],
           ar: ["دليل الإقامة والهوية", "الإقامة والبطاقة المدنية وغيرها: الاستعلام والتجديد والرسوم."],
           hi: ["आईडी कार्ड और रेज़िडेंसी गाइड", "इक़ामा, सिविल आईडी, क्यूआईडी: जाँच, नवीनीकरण और फ़ीस।"],
@@ -243,7 +250,7 @@ META-->
           ur: ["شناختی کارڈ اور اقامہ گائیڈ", "اقامہ، سول آئی ڈی، کیو آئی ڈی: چیک، تجدید اور فیس۔"],
           bn: ["আইডি কার্ড ও আকামা গাইড", "আকামা, সিভিল আইডি, কিউআইডি: যাচাই, নবায়ন ও ফি।"],
           tl: ["Gabay sa ID at residency", "Iqama, Civil ID, QID: check, renew at fees."] },
-        { icon: "🧮", href: "/end-of-service.html", c: "work",
+        { icon: "🧮", href: "/end-of-service.html", ic: "eos", c: "work",
           en: ["End-of-service benefit", "Estimate what you should receive."],
           ar: ["مكافأة نهاية الخدمة", "قدّر المبلغ المستحق لك."],
           hi: ["सेवा समाप्ति लाभ", "अनुमान लगाएँ कि आपको कितना मिलना चाहिए।"],
@@ -252,7 +259,7 @@ META-->
           ur: ["اختتامِ ملازمت فائدہ", "اندازہ لگائیں کہ آپ کو کتنا ملنا چاہیے۔"],
           bn: ["চাকরি শেষের পাওনা", "আপনার কত পাওয়ার কথা তা হিসাব করুন।"],
           tl: ["End-of-service benefit", "Kalkulahin kung magkano ang dapat mong matanggap."] },
-        { icon: "🪙", href: "/gold-rate.html", c: "gold",
+        { icon: "🪙", href: "/gold-rate.html", ic: "gold", c: "gold",
           en: ["Gold rate today", "Per gram in 6 Gulf currencies, plus India duty."],
           ar: ["سعر الذهب اليوم", "للغرام بست عملات خليجية، مع الجمارك الهندية."],
           hi: ["आज का सोने का भाव", "6 खाड़ी मुद्राओं में प्रति ग्राम, साथ में भारत ड्यूटी।"],
@@ -261,7 +268,7 @@ META-->
           ur: ["آج سونے کا ریٹ", "6 خلیجی کرنسیوں میں فی گرام، ساتھ بھارت ڈیوٹی۔"],
           bn: ["আজকের সোনার দাম", "৬টি উপসাগরীয় মুদ্রায় প্রতি গ্রাম, সঙ্গে ভারতের শুল্ক।"],
           tl: ["Presyo ng ginto ngayon", "Bawat gramo sa 6 na Gulf currency, at India duty."] },
-        { icon: "🏖️", href: "/vacation-calculator.html", c: "work",
+        { icon: "🏖️", href: "/vacation-calculator.html", ic: "vac", c: "work",
           en: ["Vacation & leave calculator", "Leave days, 2-year balance and leave salary."],
           ar: ["حاسبة الإجازة السنوية", "أيام الإجازة ورصيد السنتين وراتب الإجازة."],
           hi: ["छुट्टी कैलकुलेटर", "छुट्टी के दिन, 2 साल का बैलेंस और लीव सैलरी।"],
@@ -270,7 +277,7 @@ META-->
           ur: ["چھٹی کیلکولیٹر", "چھٹی کے دن، 2 سال کا بیلنس اور لیو سیلری۔"],
           bn: ["ছুটির ক্যালকুলেটর", "ছুটির দিন, ২ বছরের ব্যালান্স ও ছুটির বেতন।"],
           tl: ["Vacation at leave calculator", "Araw ng leave, 2-taong balance at leave salary."] },
-        { icon: "👨‍👩‍👧", href: "/family-cost.html", c: "family",
+        { icon: "👨‍👩‍👧", href: "/family-cost.html", ic: "family", c: "family",
           en: ["Family monthly cost", "Rent, school, fees and bills in one place."],
           ar: ["تكلفة العائلة الشهرية", "الإيجار والمدارس والرسوم والفواتير في مكان واحد."],
           hi: ["परिवार का मासिक खर्च", "किराया, स्कूल, फ़ीस और बिल एक जगह।"],
@@ -279,7 +286,7 @@ META-->
           ur: ["خاندان کا ماہانہ خرچ", "کرایہ، اسکول، فیس اور بل ایک جگہ۔"],
           bn: ["পরিবারের মাসিক খরচ", "ভাড়া, স্কুল, ফি ও বিল এক জায়গায়।"],
           tl: ["Buwanang gastos ng pamilya", "Upa, school, fees at bills sa isang lugar."] },
-        { icon: "🛂", href: "/embassy-services.html", c: "family",
+        { icon: "🛂", href: "/embassy-services.html", ic: "embassy", c: "family",
           en: ["Embassy services", "Passport renewal, PCC, OCI and attestation."],
           ar: ["خدمات السفارات", "تجديد الجواز وشهادة حسن السيرة والتصديق."],
           hi: ["दूतावास सेवाएँ", "पासपोर्ट नवीनीकरण, पीसीसी, ओसीआई और सत्यापन।"],
@@ -320,7 +327,9 @@ META-->
           card.setAttribute("data-c", t.c || "money");
           if (firstRender) card.style.setProperty("--i", i);
           if (t.href) card.href = window.ExpatSite.href ? window.ExpatSite.href(t.href) : t.href;
-          var icon = el("div", "icon", t.icon);
+          var svg = svgIcon(t.ic);
+          var icon = el("div", "icon", svg ? null : t.icon);
+          if (svg) icon.appendChild(svg);
           icon.setAttribute("aria-hidden", "true");
           card.appendChild(icon);
           card.appendChild(el("h3", null, text[0]));

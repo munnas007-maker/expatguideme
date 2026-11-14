@@ -184,6 +184,31 @@ def update_provider_rates(usd_rates):
     print("checked provider rates kept:", sum(len(v) for v in current["rates"].values()))
 
 
+HISTORY = os.path.join(ROOT, "_src", "data", "history.json")
+HIST_CODES = ["SAR", "AED", "QAR", "KWD", "OMR", "BHD", "INR", "PKR", "BDT", "PHP", "NPR", "LKR", "IDR", "EGP", "EUR", "GBP"]
+HIST_DAYS = 90
+
+
+def record_history(out):
+    """Append this run's reading (time, gold USD/oz, USD rates) for the trend charts.
+    Readings are stored as published; one per source update, kept for 90 days."""
+    h = {"points": []}
+    if os.path.exists(HISTORY):
+        with open(HISTORY, encoding="utf-8") as f:
+            h = json.load(f)
+    pts = h.get("points", [])
+    g = out.get("gold") or {}
+    point = {"t": out["time_last_update_unix"], "g": g.get("usd_per_troy_ounce"),
+             "gt": g.get("updated_at"), "r": {c: out["rates"][c] for c in HIST_CODES if c in out["rates"]}}
+    if not pts or pts[-1].get("gt") != point["gt"] or pts[-1].get("t") != point["t"]:
+        pts.append(point)
+    cutoff = int(datetime.datetime.now(datetime.timezone.utc).timestamp()) - HIST_DAYS * 86400
+    h["points"] = [p for p in pts if (p.get("t") or 0) >= cutoff or (p.get("gt") or "") >= datetime.datetime.fromtimestamp(cutoff, datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")]
+    with open(HISTORY, "w", encoding="utf-8") as f:
+        json.dump(h, f, separators=(",", ":"))
+        f.write("\n")
+
+
 def main():
     previous = {}
     if os.path.exists(OUT):
@@ -235,6 +260,7 @@ def main():
         f.write("\n")
     print("saved", OUT, out["time_last_update_utc"], "gold:", (out["gold"] or {}).get("usd_per_troy_ounce"))
     update_provider_rates(rates)
+    record_history(out)
 
 
 if __name__ == "__main__":

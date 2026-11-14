@@ -15,6 +15,7 @@ The generated .html files in site/ are what Netlify serves.
 import datetime
 import json
 import os
+import shutil
 import sys
 import subprocess
 import re
@@ -556,6 +557,9 @@ def build():
         body = body.replace("<!--CHECKOUT-->", checkout_html())
         script = script.replace("/*PARTNERS*/{}", json.dumps(PARTNER_LINKS))
         script = script.replace('/*RATES_API*/""', json.dumps(SITE_CFG["rates_api"]))
+        if "/*ICONS*/{}" in script:
+            from icons import ICONS as _LUCIDE
+            script = script.replace("/*ICONS*/{}", json.dumps(_LUCIDE, separators=(",", ":")))
         script = script.replace("/*VISA*/null", json.dumps(visa_data(), ensure_ascii=False, separators=(",", ":")))
         script = script.replace("/*TELECOM*/null", json.dumps(telecom_data(), ensure_ascii=False, separators=(",", ":")))
         script = script.replace("/*PROVIDERS*/null", json.dumps(remit_providers(), ensure_ascii=False, separators=(",", ":")))
@@ -669,6 +673,9 @@ def latest_json():
     os.makedirs(os.path.join(ROOT, "site", "data"), exist_ok=True)
     with open(os.path.join(ROOT, "site", "data", "latest.json"), "w", encoding="utf-8") as f:
         json.dump(out, f, separators=(",", ":"))
+    hist = os.path.join(ROOT, "_src", "data", "history.json")
+    if os.path.exists(hist):
+        shutil.copyfile(hist, os.path.join(ROOT, "site", "data", "history.json"))
 
 
 def visa_data():

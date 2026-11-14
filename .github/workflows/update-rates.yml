@@ -65,7 +65,7 @@ jobs:
         run: |
           git config user.name "ExpatGuideME robot"
           git config user.email "actions@users.noreply.github.com"
-          git add _src/data/rates.json _src/data/provider_rates.json
+          git add _src/data/rates.json _src/data/provider_rates.json _src/data/history.json
           if [ -f data/live_rates.json ]; then git add data/live_rates.json; fi
           if git diff --cached --quiet; then
             echo "No new data."

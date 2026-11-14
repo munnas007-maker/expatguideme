@@ -63,7 +63,7 @@
     .tool[data-c="work"] { --c: var(--c-work); } .tool[data-c="family"] { --c: var(--c-family); }
     .tool[data-c="phone"] { --c: var(--c-phone); }
     a.tool:hover { border-color: var(--c); box-shadow: var(--shadow); transform: translateY(-2px); color: var(--ink); }
-    .tool .icon { width: 48px; height: 48px; display: grid; place-items: center; font-size: 1.55rem; line-height: 1; border-radius: 14px; background: color-mix(in srgb, var(--c) 12%, var(--card)); }
+    .tool .icon { width: 48px; height: 48px; display: grid; place-items: center; font-size: 1.55rem; line-height: 1; border-radius: 14px; color: var(--c); background: color-mix(in srgb, var(--c) 12%, var(--card)); }
     .tool h3 { font-size: 1.07rem; line-height: 1.4; }
     .tool p { color: var(--muted); font-size: 0.92rem; flex: 1; }
     .tag { align-self: flex-start; font-size: 0.78rem; font-weight: 700; padding: 4px 12px; border-radius: 999px; }
@@ -378,8 +378,15 @@
         }
       };
 
+      var ICONS = {"exchange":"<path d=\"M8 3 4 7l4 4\"/> <path d=\"M4 7h16\"/> <path d=\"m16 21 4-4-4-4\"/> <path d=\"M20 17H4\"/>","send":"<path d=\"M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z\"/> <path d=\"m21.854 2.147-10.94 10.939\"/>","sim":"<rect width=\"14\" height=\"20\" x=\"5\" y=\"2\" rx=\"2\" ry=\"2\"/> <path d=\"M12 18h.01\"/>","visa":"<path d=\"M2 22h20\"/> <path d=\"M3.77 10.77 2 9l2-4.5 1.1.55c.55.28.9.84.9 1.45s.35 1.17.9 1.45L8 8.5l3-6 1.05.53a2 2 0 0 1 1.09 1.52l.72 5.4a2 2 0 0 0 1.09 1.52l4.4 2.2c.42.22.78.55 1.01.96l.6 1.03c.49.88-.06 1.98-1.06 2.1l-1.18.15c-.47.06-.95-.02-1.37-.24L4.29 11.15a2 2 0 0 1-.52-.38Z\"/>","id":"<path d=\"M16 10h2\"/> <path d=\"M16 14h2\"/> <path d=\"M6.17 15a3 3 0 0 1 5.66 0\"/> <circle cx=\"9\" cy=\"11\" r=\"2\"/> <rect x=\"2\" y=\"5\" width=\"20\" height=\"14\" rx=\"2\"/>","eos":"<path d=\"M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17\"/> <path d=\"m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9\"/> <path d=\"m2 16 6 6\"/> <circle cx=\"16\" cy=\"9\" r=\"2.9\"/> <circle cx=\"6\" cy=\"5\" r=\"3\"/>","gold":"<circle cx=\"8\" cy=\"8\" r=\"6\"/> <path d=\"M18.09 10.37A6 6 0 1 1 10.34 18\"/> <path d=\"M7 6h1v4\"/> <path d=\"m16.71 13.88.7.71-2.82 2.82\"/>","vac":"<path d=\"M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1 1 1h4\"/> <path d=\"M13 7.14A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-3l-1-1-1 1h-3\"/> <path d=\"M5.89 9.71c-2.15 2.15-2.3 5.47-.35 7.43l4.24-4.25.7-.7.71-.71 2.12-2.12c-1.95-1.96-5.27-1.8-7.42.35\"/> <path d=\"M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14\"/>","family":"<path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\"/> <circle cx=\"9\" cy=\"7\" r=\"4\"/> <path d=\"M22 21v-2a4 4 0 0 0-3-3.87\"/> <path d=\"M16 3.13a4 4 0 0 1 0 7.75\"/>","embassy":"<line x1=\"3\" x2=\"21\" y1=\"22\" y2=\"22\"/> <line x1=\"6\" x2=\"6\" y1=\"18\" y2=\"11\"/> <line x1=\"10\" x2=\"10\" y1=\"18\" y2=\"11\"/> <line x1=\"14\" x2=\"14\" y1=\"18\" y2=\"11\"/> <line x1=\"18\" x2=\"18\" y1=\"18\" y2=\"11\"/> <polygon points=\"12 2 20 7 4 7\"/>","home":"<path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"/> <path d=\"M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/>","menu":"<line x1=\"4\" x2=\"20\" y1=\"12\" y2=\"12\"/> <line x1=\"4\" x2=\"20\" y1=\"6\" y2=\"6\"/> <line x1=\"4\" x2=\"20\" y1=\"18\" y2=\"18\"/>","chart":"<path d=\"M3 3v16a2 2 0 0 0 2 2h16\"/> <path d=\"m19 9-5 5-4-4-3 3\"/>","calculator":"<rect width=\"16\" height=\"20\" x=\"4\" y=\"2\" rx=\"2\"/> <line x1=\"8\" x2=\"16\" y1=\"6\" y2=\"6\"/> <line x1=\"16\" x2=\"16\" y1=\"14\" y2=\"18\"/> <path d=\"M16 10h.01\"/> <path d=\"M12 10h.01\"/> <path d=\"M8 10h.01\"/> <path d=\"M12 14h.01\"/> <path d=\"M8 14h.01\"/> <path d=\"M12 18h.01\"/> <path d=\"M8 18h.01\"/>","list":"<path d=\"M3 12h.01\"/> <path d=\"M3 18h.01\"/> <path d=\"M3 6h.01\"/> <path d=\"M8 12h13\"/> <path d=\"M8 18h13\"/> <path d=\"M8 6h13\"/>","shield":"<path d=\"M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z\"/> <path d=\"m9 12 2 2 4-4\"/>","x":"<path d=\"M18 6 6 18\"/> <path d=\"m6 6 12 12\"/>","gem":"<path d=\"M6 3h12l4 6-10 13L2 9Z\"/> <path d=\"M11 3 8 9l4 13 4-13-3-6\"/> <path d=\"M2 9h20\"/>","wallet":"<path d=\"M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1\"/> <path d=\"M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4\"/>","grid":"<rect width=\"7\" height=\"7\" x=\"3\" y=\"3\" rx=\"1\"/> <rect width=\"7\" height=\"7\" x=\"14\" y=\"3\" rx=\"1\"/> <rect width=\"7\" height=\"7\" x=\"14\" y=\"14\" rx=\"1\"/> <rect width=\"7\" height=\"7\" x=\"3\" y=\"14\" rx=\"1\"/>"};   // Lucide icons (ISC licence), injected at build time
+      function svgIcon(name) {
+        var p = ICONS[name]; if (!p) return null;
+        var d = document.createElement("div");
+        d.innerHTML = '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' + p + "</svg>";
+        return d.firstChild;
+      }
       var TOOLS = [
-        { icon: "💱", href: "/exchange-rate.html", c: "money",
+        { icon: "💱", href: "/exchange-rate.html", ic: "exchange", c: "money",
           en: ["Exchange rate today", "Riyal and dinar to rupee, taka, peso and more."],
           ar: ["سعر الصرف اليوم", "الريال والدينار إلى الروبية والتاكا والبيزو وغيرها."],
           hi: ["आज का एक्सचेंज रेट", "रियाल और दीनार से रुपया, टका, पेसो और अन्य।"],
@@ -388,7 +395,7 @@
           ur: ["آج کی شرحِ تبادلہ", "ریال اور دینار سے روپیہ، ٹکا، پیسو اور دیگر۔"],
           bn: ["আজকের বিনিময় হার", "রিয়াল ও দিনার থেকে টাকা, রুপি, পেসো ও আরও।"],
           tl: ["Palitan ng pera ngayon", "Riyal at dinar papuntang peso, rupee, taka at iba pa."] },
-        { icon: "💸", href: "/send-money.html", c: "money",
+        { icon: "💸", href: "/send-money.html", ic: "send", c: "money",
           en: ["Best way to send money home", "Compare transfer apps and banks."],
           ar: ["أفضل طريقة لتحويل الأموال", "قارن تطبيقات التحويل والبنوك."],
           hi: ["घर पैसे भेजने का सबसे अच्छा तरीका", "ट्रांसफ़र ऐप और बैंकों की तुलना करें।"],
@@ -397,7 +404,7 @@
           ur: ["گھر رقم بھیجنے کا بہترین طریقہ", "ٹرانسفر ایپس اور بینکوں کا موازنہ کریں۔"],
           bn: ["দেশে টাকা পাঠানোর সেরা উপায়", "ট্রান্সফার অ্যাপ ও ব্যাংক তুলনা করুন।"],
           tl: ["Pinakamurang paraan magpadala", "Ikumpara ang remittance apps at bangko."] },
-        { icon: "📱", href: "/sim-internet.html", c: "phone",
+        { icon: "📱", href: "/sim-internet.html", ic: "sim", c: "phone",
           en: ["SIM & internet offers", "Every mobile company's plans and prices in each Gulf country."],
           ar: ["عروض الشرائح والإنترنت", "باقات وأسعار كل شركات الاتصالات في كل دولة خليجية."],
           hi: ["सिम और इंटरनेट ऑफ़र", "हर खाड़ी देश की सभी मोबाइल कंपनियों के प्लान और क़ीमतें।"],
@@ -406,7 +413,7 @@
           ur: ["سم اور انٹرنیٹ آفرز", "ہر خلیجی ملک کی تمام موبائل کمپنیوں کے پلان اور قیمتیں۔"],
           bn: ["সিম ও ইন্টারনেট অফার", "প্রতিটি উপসাগরীয় দেশের সব মোবাইল কোম্পানির প্ল্যান ও দাম।"],
           tl: ["SIM at internet offers", "Plans at presyo ng bawat mobile company sa bawat bansa sa Gulf."] },
-        { icon: "🛬", href: "/family-visa.html", c: "family",
+        { icon: "🛬", href: "/family-visa.html", ic: "visa", c: "family",
           en: ["Family & visit visa", "Bring your family: who can apply, documents, steps and fees."],
           ar: ["تأشيرة العائلة والزيارة", "استقدم عائلتك: من يحق له التقديم والمستندات والخطوات والرسوم."],
           hi: ["फ़ैमिली और विज़िट वीज़ा", "परिवार बुलाएँ: कौन आवेदन करे, दस्तावेज़, स्टेप और फ़ीस।"],
@@ -415,7 +422,7 @@
           ur: ["فیملی اور وزٹ ویزا", "خاندان کو بلائیں: اہلیت، دستاویزات، مراحل اور فیس۔"],
           bn: ["ফ্যামিলি ও ভিজিট ভিসা", "পরিবার আনুন: যোগ্যতা, কাগজপত্র, ধাপ ও ফি।"],
           tl: ["Family at visit visa", "Dalhin ang pamilya: sino ang puwede, dokumento, hakbang at bayad."] },
-        { icon: "🪪", href: "/id-residency.html", c: "family",
+        { icon: "🪪", href: "/id-residency.html", ic: "id", c: "family",
           en: ["ID card & residency guide", "Iqama, Civil ID, QID, Resident Card and CPR: check, renew, fees."],
           ar: ["دليل الإقامة والهوية", "الإقامة والبطاقة المدنية وغيرها: الاستعلام والتجديد والرسوم."],
           hi: ["आईडी कार्ड और रेज़िडेंसी गाइड", "इक़ामा, सिविल आईडी, क्यूआईडी: जाँच, नवीनीकरण और फ़ीस।"],
@@ -424,7 +431,7 @@
           ur: ["شناختی کارڈ اور اقامہ گائیڈ", "اقامہ، سول آئی ڈی، کیو آئی ڈی: چیک، تجدید اور فیس۔"],
           bn: ["আইডি কার্ড ও আকামা গাইড", "আকামা, সিভিল আইডি, কিউআইডি: যাচাই, নবায়ন ও ফি।"],
           tl: ["Gabay sa ID at residency", "Iqama, Civil ID, QID: check, renew at fees."] },
-        { icon: "🧮", href: "/end-of-service.html", c: "work",
+        { icon: "🧮", href: "/end-of-service.html", ic: "eos", c: "work",
           en: ["End-of-service benefit", "Estimate what you should receive."],
           ar: ["مكافأة نهاية الخدمة", "قدّر المبلغ المستحق لك."],
           hi: ["सेवा समाप्ति लाभ", "अनुमान लगाएँ कि आपको कितना मिलना चाहिए।"],
@@ -433,7 +440,7 @@
           ur: ["اختتامِ ملازمت فائدہ", "اندازہ لگائیں کہ آپ کو کتنا ملنا چاہیے۔"],
           bn: ["চাকরি শেষের পাওনা", "আপনার কত পাওয়ার কথা তা হিসাব করুন।"],
           tl: ["End-of-service benefit", "Kalkulahin kung magkano ang dapat mong matanggap."] },
-        { icon: "🪙", href: "/gold-rate.html", c: "gold",
+        { icon: "🪙", href: "/gold-rate.html", ic: "gold", c: "gold",
           en: ["Gold rate today", "Per gram in 6 Gulf currencies, plus India duty."],
           ar: ["سعر الذهب اليوم", "للغرام بست عملات خليجية، مع الجمارك الهندية."],
           hi: ["आज का सोने का भाव", "6 खाड़ी मुद्राओं में प्रति ग्राम, साथ में भारत ड्यूटी।"],
@@ -442,7 +449,7 @@
           ur: ["آج سونے کا ریٹ", "6 خلیجی کرنسیوں میں فی گرام، ساتھ بھارت ڈیوٹی۔"],
           bn: ["আজকের সোনার দাম", "৬টি উপসাগরীয় মুদ্রায় প্রতি গ্রাম, সঙ্গে ভারতের শুল্ক।"],
           tl: ["Presyo ng ginto ngayon", "Bawat gramo sa 6 na Gulf currency, at India duty."] },
-        { icon: "🏖️", href: "/vacation-calculator.html", c: "work",
+        { icon: "🏖️", href: "/vacation-calculator.html", ic: "vac", c: "work",
           en: ["Vacation & leave calculator", "Leave days, 2-year balance and leave salary."],
           ar: ["حاسبة الإجازة السنوية", "أيام الإجازة ورصيد السنتين وراتب الإجازة."],
           hi: ["छुट्टी कैलकुलेटर", "छुट्टी के दिन, 2 साल का बैलेंस और लीव सैलरी।"],
@@ -451,7 +458,7 @@
           ur: ["چھٹی کیلکولیٹر", "چھٹی کے دن، 2 سال کا بیلنس اور لیو سیلری۔"],
           bn: ["ছুটির ক্যালকুলেটর", "ছুটির দিন, ২ বছরের ব্যালান্স ও ছুটির বেতন।"],
           tl: ["Vacation at leave calculator", "Araw ng leave, 2-taong balance at leave salary."] },
-        { icon: "👨‍👩‍👧", href: "/family-cost.html", c: "family",
+        { icon: "👨‍👩‍👧", href: "/family-cost.html", ic: "family", c: "family",
           en: ["Family monthly cost", "Rent, school, fees and bills in one place."],
           ar: ["تكلفة العائلة الشهرية", "الإيجار والمدارس والرسوم والفواتير في مكان واحد."],
           hi: ["परिवार का मासिक खर्च", "किराया, स्कूल, फ़ीस और बिल एक जगह।"],
@@ -460,7 +467,7 @@
           ur: ["خاندان کا ماہانہ خرچ", "کرایہ، اسکول، فیس اور بل ایک جگہ۔"],
           bn: ["পরিবারের মাসিক খরচ", "ভাড়া, স্কুল, ফি ও বিল এক জায়গায়।"],
           tl: ["Buwanang gastos ng pamilya", "Upa, school, fees at bills sa isang lugar."] },
-        { icon: "🛂", href: "/embassy-services.html", c: "family",
+        { icon: "🛂", href: "/embassy-services.html", ic: "embassy", c: "family",
           en: ["Embassy services", "Passport renewal, PCC, OCI and attestation."],
           ar: ["خدمات السفارات", "تجديد الجواز وشهادة حسن السيرة والتصديق."],
           hi: ["दूतावास सेवाएँ", "पासपोर्ट नवीनीकरण, पीसीसी, ओसीआई और सत्यापन।"],
@@ -501,7 +508,9 @@
           card.setAttribute("data-c", t.c || "money");
           if (firstRender) card.style.setProperty("--i", i);
           if (t.href) card.href = window.ExpatSite.href ? window.ExpatSite.href(t.href) : t.href;
-          var icon = el("div", "icon", t.icon);
+          var svg = svgIcon(t.ic);
+          var icon = el("div", "icon", svg ? null : t.icon);
+          if (svg) icon.appendChild(svg);
           icon.setAttribute("aria-hidden", "true");
           card.appendChild(icon);
           card.appendChild(el("h3", null, text[0]));

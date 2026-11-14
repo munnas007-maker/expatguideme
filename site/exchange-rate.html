@@ -165,7 +165,13 @@
       <h1 data-t="title">Gulf Exchange Rate Today</h1>
       <p class="lead" data-t="lead">Convert Saudi Riyal, Kuwaiti Dinar, Qatari Riyal, Omani Rial and Bahraini Dinar to your home currency.</p>
 
-      <section class="card reveal" aria-labelledby="amountLabel">
+      <nav class="sec-tabs" aria-label="Sections" data-sec-tabs="">
+        <a href="#convert" data-s="secConvert">Converter</a>
+        <a href="#trend" data-s="secTrend">Trend</a>
+        <a href="#rates" data-s="secRates">All rates</a>
+        <a href="#faq" data-s="secFaq">FAQ</a>
+      </nav>
+      <section class="card reveal" id="convert" aria-labelledby="amountLabel">
         <label class="field-label" id="amountLabel" for="amount" data-t="amount">Amount</label>
         <input id="amount" type="number" inputmode="decimal" min="0" step="any" value="1000">
 
@@ -207,7 +213,14 @@
 
       <div class="ad-slot" data-ad-slot="exchange-rate-middle" data-t="ad">Advertisement</div>
 
-      <section class="card" aria-labelledby="quickTitle">
+      <section class="card trend-card" id="trend" aria-labelledby="trendH">
+        <h2 id="trendH"><span data-s="trendTitle">Trend</span> · <span id="trendPair" dir="ltr"></span></h2>
+        <p class="trend-sub" data-s="trend30">Last 30 days</p>
+        <div id="trendBox"></div>
+        <p class="rate-stamp" id="trendStamp"></p>
+      </section>
+
+      <section class="card" id="rates" aria-labelledby="quickTitle">
         <h2 id="quickTitle" data-t="quick" style="margin-top:0">Quick table</h2>
         <table>
           <thead><tr><th scope="col" id="qHeadFrom">—</th><th scope="col" class="num" id="qHeadTo">—</th></tr></thead>
@@ -322,7 +335,7 @@
       "use strict";
 
       var API_URL = "/data/latest.json";   // published by the site robot every 2 hours (single source of truth)
-      var FXBASE = {"rates":{"SAR":3.75,"AED":3.6725,"KWD":0.311288,"QAR":3.64,"OMR":0.384497,"BHD":0.376,"INR":94.289707,"PKR":276.595456,"BDT":124.501956,"PHP":63.857758,"NPR":150.862806,"LKR":332.56566,"IDR":18231.963325,"EGP":53.437041,"USD":1},"time_last_update_unix":1794614551};   // last rates saved by the site robot, used only if the live feed fails
+      var FXBASE = {"rates":{"AED":3.6725,"AFN":65.273218,"AUD":1.475083,"BDT":124.501956,"BHD":0.376,"CAD":1.426026,"CHF":0.838606,"CNY":6.684938,"EGP":53.437041,"ETB":161.215372,"EUR":0.905954,"GBP":0.756419,"GHS":11.755865,"HKD":7.846025,"IDR":18231.963325,"INR":94.289707,"IQD":1514.27115,"IRR":1852769.267598,"JOD":0.709,"JPY":159.799454,"KES":129.992415,"KRW":1336.179911,"KWD":0.311288,"LBP":89500,"LKR":332.56566,"MAD":9.888419,"MMK":2101.377643,"MYR":4.086467,"NGN":1352.362126,"NPR":150.862806,"NZD":1.809216,"OMR":0.384497,"PHP":63.857758,"PKR":276.595456,"QAR":3.64,"SAR":3.75,"SDG":480.872722,"SGD":1.287798,"SYP":121.919972,"THB":33.882849,"TND":3.02005,"TRY":50.369257,"TZS":2642.092137,"UGX":4024.600571,"USD":1,"VND":25735.189593,"YER":236.705403,"ZAR":16.898089},"time_last_update_unix":1794614551};   // last rates saved by the site robot, used only if the live feed fails
       var CACHE_KEY = "expatguideme_rates_v1";
       var FX_KEY = "expatguideme_fx_v1";
       var CACHE_MAX_AGE = 6 * 60 * 60 * 1000;
@@ -580,6 +593,7 @@
       }
 
       function renderResult() {
+        if (typeof renderTrend === "function") setTimeout(renderTrend, 0);
         var amt = parseFloat($("amount").value);
         if (!isFinite(amt) || amt < 0) amt = 0;
         var f = find(state.from), to = find(state.to);
@@ -627,7 +641,24 @@
         document.title = fmtAmount(amt) + " " + f.code + " to " + to.code + " | ExpatGuideME";
       }
 
-      function renderAll() { renderTexts(); renderStatus(); renderResult(); }
+      // 30-day trend for the selected pair, drawn when the card scrolls into view
+      var trendKey = "", trendSeen = false;
+      function renderTrend() {
+        $("trendPair").textContent = state.from + " → " + state.to;
+        window.ExpatSite.rateNote($("trendStamp"), state.updatedUnix, state.stale);
+        var key = state.from + state.to + document.documentElement.lang;
+        if (!trendSeen || key === trendKey) return;
+        trendKey = key;
+        var f = state.from, to = state.to;
+        window.ExpatSite.pairSeries(f, to).then(function (d) {
+          if (f !== state.from || to !== state.to) return;
+          window.ExpatSite.trendChart($("trendBox"), d, { decimals: 4, label: f + " → " + to });
+        });
+      }
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (en, ob) { if (en[0].isIntersecting) { trendSeen = true; renderTrend(); ob.disconnect(); } }, { rootMargin: "200px" }).observe($("trend"));
+      } else { trendSeen = true; }
+      function renderAll() { renderTexts(); renderStatus(); renderResult(); renderTrend(); }
 
       function saveFx() { storeSet(FX_KEY, { from: state.from, to: state.to }); }
 
