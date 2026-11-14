@@ -38,6 +38,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Cairo:wght@400;600;700&amp;family=Noto+Sans+Devanagari:wght@400;600;700&amp;family=Noto+Sans+Malayalam:wght@400;600;700&amp;family=Noto+Nastaliq+Urdu:wght@400;700&amp;family=Noto+Sans+Bengali:wght@400;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/site.css">
   <style>
+    .all-title { margin: 22px 0 10px; font-size: 1.05rem; }
+    .all-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+    .all-item { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; text-align: start; font: inherit; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer; }
+    .all-item:hover { border-color: var(--accent); }
+    .all-n { font-weight: 700; font-size: .9rem; }
+    .all-v { font-weight: 700; font-variant-numeric: tabular-nums; text-align: end; }
+    .all-name { grid-column: 1 / -1; color: var(--muted); font-size: .76rem; }
     .fx { max-width: 720px; }
     .fx label.field-label { margin-top: 0; }
     #amount { font-size: 1.4rem; font-weight: 600; direction: ltr; font-family: "Inter", sans-serif; }
@@ -207,7 +214,7 @@
       <section class="answer-box" aria-labelledby="sumQ">
         <h2 id="sumQ" data-s="sumExQ">What is today's Gulf currency rate to rupee, taka and peso?</h2>
         <p data-s="sumExA">The table shows today's market rate from each Gulf currency to the Indian rupee, Pakistani rupee, Bangladeshi taka, Philippine peso and Nepali rupee. Banks and transfer apps pay slightly less, so use it as a reference and compare providers before you send.</p>
-        <div class="table-scroll"><table class="summary-table"><caption><time datetime="2026-11-14T00:02:31Z" data-ts="2026-11-14T00:02:31Z" data-ts-label="rUpdated">Updated Nov 14, 2026, 12:02 AM UTC</time></caption><thead><tr><th scope="col" data-s="thGcc">Gulf currency</th><th scope="col">INR</th><th scope="col">PKR</th><th scope="col">BDT</th><th scope="col">PHP</th><th scope="col">NPR</th></tr></thead><tbody><tr><th scope="row" dir="ltr">1 SAR</th><td dir="ltr">25.14</td><td dir="ltr">73.76</td><td dir="ltr">33.20</td><td dir="ltr">17.03</td><td dir="ltr">40.23</td></tr><tr><th scope="row" dir="ltr">1 AED</th><td dir="ltr">25.67</td><td dir="ltr">75.32</td><td dir="ltr">33.90</td><td dir="ltr">17.39</td><td dir="ltr">41.08</td></tr><tr><th scope="row" dir="ltr">1 KWD</th><td dir="ltr">302.90</td><td dir="ltr">888.55</td><td dir="ltr">399.96</td><td dir="ltr">205.14</td><td dir="ltr">484.64</td></tr><tr><th scope="row" dir="ltr">1 QAR</th><td dir="ltr">25.90</td><td dir="ltr">75.99</td><td dir="ltr">34.20</td><td dir="ltr">17.54</td><td dir="ltr">41.45</td></tr><tr><th scope="row" dir="ltr">1 OMR</th><td dir="ltr">245.23</td><td dir="ltr">719.37</td><td dir="ltr">323.80</td><td dir="ltr">166.08</td><td dir="ltr">392.36</td></tr><tr><th scope="row" dir="ltr">1 BHD</th><td dir="ltr">250.77</td><td dir="ltr">735.63</td><td dir="ltr">331.12</td><td dir="ltr">169.83</td><td dir="ltr">401.23</td></tr></tbody></table></div>
+        <div class="table-scroll"><table class="summary-table"><caption><time datetime="2026-11-13T23:59:00Z" data-ts="2026-11-13T23:59:00Z" data-ts-label="rUpdated">Updated Nov 13, 2026, 11:59 PM UTC</time></caption><thead><tr><th scope="col" data-s="thGcc">Gulf currency</th><th scope="col">INR</th><th scope="col">PKR</th><th scope="col">BDT</th><th scope="col">PHP</th><th scope="col">NPR</th></tr></thead><tbody><tr><th scope="row" dir="ltr">1 SAR</th><td dir="ltr">25.12</td><td dir="ltr">73.70</td><td dir="ltr">33.14</td><td dir="ltr">17.03</td><td dir="ltr">40.18</td></tr><tr><th scope="row" dir="ltr">1 AED</th><td dir="ltr">25.67</td><td dir="ltr">75.31</td><td dir="ltr">33.86</td><td dir="ltr">17.40</td><td dir="ltr">41.05</td></tr><tr><th scope="row" dir="ltr">1 KWD</th><td dir="ltr">305.50</td><td dir="ltr">896.35</td><td dir="ltr">403.05</td><td dir="ltr">207.13</td><td dir="ltr">488.63</td></tr><tr><th scope="row" dir="ltr">1 QAR</th><td dir="ltr">25.86</td><td dir="ltr">75.88</td><td dir="ltr">34.12</td><td dir="ltr">17.54</td><td dir="ltr">41.37</td></tr><tr><th scope="row" dir="ltr">1 OMR</th><td dir="ltr">244.85</td><td dir="ltr">718.40</td><td dir="ltr">323.03</td><td dir="ltr">166.01</td><td dir="ltr">391.62</td></tr><tr><th scope="row" dir="ltr">1 BHD</th><td dir="ltr">250.00</td><td dir="ltr">733.53</td><td dir="ltr">329.83</td><td dir="ltr">169.50</td><td dir="ltr">399.87</td></tr></tbody></table></div>
       </section>
 
 
@@ -226,6 +233,8 @@
           <thead><tr><th scope="col" id="qHeadFrom">—</th><th scope="col" class="num" id="qHeadTo">—</th></tr></thead>
           <tbody id="quickBody"></tbody>
         </table>
+        <h3 class="all-title" id="allTitle"></h3>
+        <div class="all-grid" id="allGrid"></div>
       </section>
 
       <section class="pop-conv" aria-labelledby="popConvTitle">
@@ -335,7 +344,7 @@
       "use strict";
 
       var API_URL = "/data/latest.json";   // published by the site robot every 2 hours (single source of truth)
-      var FXBASE = {"rates":{"AED":3.6725,"AFN":65.273218,"AUD":1.475083,"BDT":124.501956,"BHD":0.376,"CAD":1.426026,"CHF":0.838606,"CNY":6.684938,"EGP":53.437041,"ETB":161.215372,"EUR":0.905954,"GBP":0.756419,"GHS":11.755865,"HKD":7.846025,"IDR":18231.963325,"INR":94.289707,"IQD":1514.27115,"IRR":1852769.267598,"JOD":0.709,"JPY":159.799454,"KES":129.992415,"KRW":1336.179911,"KWD":0.311288,"LBP":89500,"LKR":332.56566,"MAD":9.888419,"MMK":2101.377643,"MYR":4.086467,"NGN":1352.362126,"NPR":150.862806,"NZD":1.809216,"OMR":0.384497,"PHP":63.857758,"PKR":276.595456,"QAR":3.64,"SAR":3.75,"SDG":480.872722,"SGD":1.287798,"SYP":121.919972,"THB":33.882849,"TND":3.02005,"TRY":50.369257,"TZS":2642.092137,"UGX":4024.600571,"USD":1,"VND":25735.189593,"YER":236.705403,"ZAR":16.898089},"time_last_update_unix":1794614551};   // last rates saved by the site robot, used only if the live feed fails
+      var FXBASE = {"rates":{"AED":3.673,"AFN":65.5571,"AUD":1.47634,"BDT":124.38,"BHD":0.3771,"CAD":1.42715,"CHF":0.83895,"CNY":6.67265,"EGP":53.42,"ETB":161.059,"EUR":0.907276,"GBP":0.75663,"GHS":11.7195,"HKD":7.8456,"IDR":18234.0,"INR":94.2765,"IQD":1310.0,"JOD":0.709,"JPY":159.695,"KES":130.05,"KRW":1336.83,"KWD":0.3086,"LBP":89550.0,"LKR":332.59,"MAD":9.9605,"MMK":2100.0,"MYR":4.08603,"NGN":1402.55,"NPR":150.79,"NZD":1.80995,"OMR":0.38504,"PHP":63.9199,"PKR":276.613,"QAR":3.6452,"SAR":3.753,"SDG":600.221,"SGD":1.2879,"SYP":11059.6,"THB":33.883,"TND":3.03055,"TRY":50.3497,"TZS":2642.85,"UGX":4118.3,"USD":1.0,"VND":25725.5,"YER":236.396,"ZAR":16.935},"time_last_update_unix":1794614340};   // last rates saved by the site robot, used only if the live feed fails
       var CACHE_KEY = "expatguideme_rates_v1";
       var FX_KEY = "expatguideme_fx_v1";
       var CACHE_MAX_AGE = 6 * 60 * 60 * 1000;
@@ -343,6 +352,7 @@
 
       var GULF = [
         { code: "SAR", flag: "🇸🇦", name: "Saudi Riyal" },
+        { code: "AED", flag: "🇦🇪", name: "UAE Dirham" },
         { code: "KWD", flag: "🇰🇼", name: "Kuwaiti Dinar" },
         { code: "QAR", flag: "🇶🇦", name: "Qatari Riyal" },
         { code: "OMR", flag: "🇴🇲", name: "Omani Rial" },
@@ -361,7 +371,39 @@
         { code: "GBP", flag: "🇬🇧", name: "British Pound" },
         { code: "EUR", flag: "🇪🇺", name: "Euro" }
       ];
-      var ALL = GULF.concat(HOME);
+      var WORLD = [
+        { code: "ETB", flag: "🇪🇹", name: "Ethiopian Birr" },
+        { code: "KES", flag: "🇰🇪", name: "Kenyan Shilling" },
+        { code: "UGX", flag: "🇺🇬", name: "Ugandan Shilling" },
+        { code: "TZS", flag: "🇹🇿", name: "Tanzanian Shilling" },
+        { code: "SDG", flag: "🇸🇩", name: "Sudanese Pound" },
+        { code: "YER", flag: "🇾🇪", name: "Yemeni Rial" },
+        { code: "JOD", flag: "🇯🇴", name: "Jordanian Dinar" },
+        { code: "LBP", flag: "🇱🇧", name: "Lebanese Pound" },
+        { code: "SYP", flag: "🇸🇾", name: "Syrian Pound" },
+        { code: "IQD", flag: "🇮🇶", name: "Iraqi Dinar" },
+        { code: "MAD", flag: "🇲🇦", name: "Moroccan Dirham" },
+        { code: "TND", flag: "🇹🇳", name: "Tunisian Dinar" },
+        { code: "NGN", flag: "🇳🇬", name: "Nigerian Naira" },
+        { code: "GHS", flag: "🇬🇭", name: "Ghanaian Cedi" },
+        { code: "AFN", flag: "🇦🇫", name: "Afghan Afghani" },
+        { code: "MMK", flag: "🇲🇲", name: "Myanmar Kyat" },
+        { code: "CNY", flag: "🇨🇳", name: "Chinese Yuan" },
+        { code: "MYR", flag: "🇲🇾", name: "Malaysian Ringgit" },
+        { code: "THB", flag: "🇹🇭", name: "Thai Baht" },
+        { code: "VND", flag: "🇻🇳", name: "Vietnamese Dong" },
+        { code: "TRY", flag: "🇹🇷", name: "Turkish Lira" },
+        { code: "CAD", flag: "🇨🇦", name: "Canadian Dollar" },
+        { code: "AUD", flag: "🇦🇺", name: "Australian Dollar" },
+        { code: "NZD", flag: "🇳🇿", name: "New Zealand Dollar" },
+        { code: "JPY", flag: "🇯🇵", name: "Japanese Yen" },
+        { code: "CHF", flag: "🇨🇭", name: "Swiss Franc" },
+        { code: "SGD", flag: "🇸🇬", name: "Singapore Dollar" },
+        { code: "HKD", flag: "🇭🇰", name: "Hong Kong Dollar" },
+        { code: "ZAR", flag: "🇿🇦", name: "South African Rand" },
+        { code: "KRW", flag: "🇰🇷", name: "South Korean Won" }
+      ];
+      var ALL = GULF.concat(HOME, WORLD);
 
       var T = {
         en: {
@@ -549,7 +591,8 @@
 
       function buildSelect(sel, selected) {
         sel.innerHTML = "";
-        [{ label: "Gulf", items: GULF }, { label: "Home", items: HOME }].forEach(function (g) {
+        [{ label: "Gulf", items: GULF }, { label: "Home", items: HOME }, { label: "More", items: WORLD }].forEach(function (g) {
+          g.items = g.items.filter(function (c) { return !state.rates || state.rates[c.code]; });
           var og = document.createElement("optgroup");
           og.label = g.label;
           g.items.forEach(function (c) {
@@ -592,7 +635,27 @@
         window.ExpatSite.rateNote(el, state.updatedUnix, state.stale);
       }
 
+      // "1 SAR in every currency" list, like a bank rate board
+      function renderAllRates() {
+        var g = $("allGrid"); if (!g) return;
+        $("allTitle").textContent = window.ExpatSite.t("allCur").replace("{cur}", state.from);
+        g.innerHTML = "";
+        ALL.forEach(function (c) {
+          if (c.code === state.from) return;
+          var r = state.rates ? rate(state.from, c.code) : NaN;
+          if (!isFinite(r)) return;
+          var a = document.createElement("button"); a.type = "button"; a.className = "all-item";
+          a.setAttribute("data-cur", c.code);
+          var n = document.createElement("span"); n.className = "all-n"; n.textContent = c.flag + " " + c.code;
+          var v = document.createElement("span"); v.className = "all-v"; v.dir = "ltr"; v.textContent = r.toLocaleString("en-US", { minimumFractionDigits: r < 1 ? 4 : 2, maximumFractionDigits: 4 });
+          var nm = document.createElement("span"); nm.className = "all-name"; nm.textContent = c.name;
+          a.appendChild(n); a.appendChild(v); a.appendChild(nm);
+          a.addEventListener("click", function () { state.to = c.code; $("toCur").value = c.code; saveFx(); renderResult(); document.getElementById("convert").scrollIntoView({ behavior: "smooth", block: "start" }); });
+          g.appendChild(a);
+        });
+      }
       function renderResult() {
+        setTimeout(renderAllRates, 0);
         if (typeof renderTrend === "function") setTimeout(renderTrend, 0);
         var amt = parseFloat($("amount").value);
         if (!isFinite(amt) || amt < 0) amt = 0;

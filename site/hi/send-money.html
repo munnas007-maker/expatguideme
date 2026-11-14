@@ -38,6 +38,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Cairo:wght@400;600;700&amp;family=Noto+Sans+Devanagari:wght@400;600;700&amp;family=Noto+Sans+Malayalam:wght@400;600;700&amp;family=Noto+Nastaliq+Urdu:wght@400;700&amp;family=Noto+Sans+Bengali:wght@400;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/site.css">
   <style>
+    .rate-src { display: block; font-size: .78rem; margin-top: 2px; }
+    .src-note { font-size: .85rem; color: var(--muted); margin: 10px 0 0; }
     .sm { max-width: 980px; }
     .picker { max-width: 560px; }
     .picker .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
@@ -206,7 +208,7 @@
           <div>
             <div class="corridor-name" id="corName"></div>
             <div class="corridor-meta"><span data-t="marketLabel">मार्केट रेट</span></div>
-            <div class="corridor-rate" id="corRate">…</div>
+            <div class="corridor-rate" id="corRate" data-live="">…</div>
             <div class="corridor-meta" id="corMeta"></div>
             <p class="rate-stamp" id="corStamp" role="status"></p>
           </div>
@@ -340,7 +342,7 @@
       <section class="answer-box" aria-labelledby="sumQ">
         <h2 id="sumQ" data-s="sumSendQ">1,000 रियाल या दिरहम पर परिवार को कितना मिलेगा?</h2>
         <p data-s="sumSendA">आज के मार्केट रेट पर हर खाड़ी मुद्रा के 1,000 की क़ीमत टेबल में दी गई है। सेवा के मार्जिन और फ़ीस के बाद परिवार को आम तौर पर थोड़ा कम मिलता है, इसलिए नीचे की तुलना हर सेवा को असल में पहुँचने वाली रक़म के क्रम में दिखाती है।</p>
-        <div class="table-scroll"><table class="summary-table"><caption><time datetime="2026-11-14T00:02:31Z" data-ts="2026-11-14T00:02:31Z" data-ts-label="rUpdated">अपडेट: 14 नव॰ 2026, 12:02 am UTC</time></caption><thead><tr><th scope="col" data-s="thYouSend">आप भेजते हैं</th><th scope="col">INR</th><th scope="col">PKR</th><th scope="col">BDT</th><th scope="col">PHP</th><th scope="col">NPR</th></tr></thead><tbody><tr><th scope="row" dir="ltr">1,000 SAR</th><td dir="ltr">25,144</td><td dir="ltr">73,759</td><td dir="ltr">33,201</td><td dir="ltr">17,029</td><td dir="ltr">40,230</td></tr><tr><th scope="row" dir="ltr">1,000 AED</th><td dir="ltr">25,675</td><td dir="ltr">75,315</td><td dir="ltr">33,901</td><td dir="ltr">17,388</td><td dir="ltr">41,079</td></tr><tr><th scope="row" dir="ltr">1,000 KWD</th><td dir="ltr">302,902</td><td dir="ltr">888,552</td><td dir="ltr">399,957</td><td dir="ltr">205,140</td><td dir="ltr">484,641</td></tr><tr><th scope="row" dir="ltr">1,000 QAR</th><td dir="ltr">25,904</td><td dir="ltr">75,988</td><td dir="ltr">34,204</td><td dir="ltr">17,543</td><td dir="ltr">41,446</td></tr><tr><th scope="row" dir="ltr">1,000 OMR</th><td dir="ltr">245,229</td><td dir="ltr">719,370</td><td dir="ltr">323,805</td><td dir="ltr">166,081</td><td dir="ltr">392,364</td></tr><tr><th scope="row" dir="ltr">1,000 BHD</th><td dir="ltr">250,770</td><td dir="ltr">735,626</td><td dir="ltr">331,122</td><td dir="ltr">169,834</td><td dir="ltr">401,231</td></tr></tbody></table></div>
+        <div class="table-scroll"><table class="summary-table"><caption><time datetime="2026-11-13T23:59:00Z" data-ts="2026-11-13T23:59:00Z" data-ts-label="rUpdated">अपडेट: 13 नव॰ 2026, 11:59 pm UTC</time></caption><thead><tr><th scope="col" data-s="thYouSend">आप भेजते हैं</th><th scope="col">INR</th><th scope="col">PKR</th><th scope="col">BDT</th><th scope="col">PHP</th><th scope="col">NPR</th></tr></thead><tbody><tr><th scope="row" dir="ltr">1,000 SAR</th><td dir="ltr">25,120</td><td dir="ltr">73,705</td><td dir="ltr">33,141</td><td dir="ltr">17,032</td><td dir="ltr">40,179</td></tr><tr><th scope="row" dir="ltr">1,000 AED</th><td dir="ltr">25,667</td><td dir="ltr">75,310</td><td dir="ltr">33,863</td><td dir="ltr">17,403</td><td dir="ltr">41,054</td></tr><tr><th scope="row" dir="ltr">1,000 KWD</th><td dir="ltr">305,497</td><td dir="ltr">896,348</td><td dir="ltr">403,046</td><td dir="ltr">207,129</td><td dir="ltr">488,626</td></tr><tr><th scope="row" dir="ltr">1,000 QAR</th><td dir="ltr">25,863</td><td dir="ltr">75,884</td><td dir="ltr">34,122</td><td dir="ltr">17,535</td><td dir="ltr">41,367</td></tr><tr><th scope="row" dir="ltr">1,000 OMR</th><td dir="ltr">244,849</td><td dir="ltr">718,401</td><td dir="ltr">323,031</td><td dir="ltr">166,008</td><td dir="ltr">391,622</td></tr><tr><th scope="row" dir="ltr">1,000 BHD</th><td dir="ltr">250,004</td><td dir="ltr">733,527</td><td dir="ltr">329,833</td><td dir="ltr">169,504</td><td dir="ltr">399,867</td></tr></tbody></table></div>
       </section>
 
 
@@ -465,7 +467,7 @@
 
       var PARTNERS = {};
       var RATES_API = "";
-      var FXBASE = {"rates":{"AED":3.6725,"AFN":65.273218,"AUD":1.475083,"BDT":124.501956,"BHD":0.376,"CAD":1.426026,"CHF":0.838606,"CNY":6.684938,"EGP":53.437041,"ETB":161.215372,"EUR":0.905954,"GBP":0.756419,"GHS":11.755865,"HKD":7.846025,"IDR":18231.963325,"INR":94.289707,"IQD":1514.27115,"IRR":1852769.267598,"JOD":0.709,"JPY":159.799454,"KES":129.992415,"KRW":1336.179911,"KWD":0.311288,"LBP":89500,"LKR":332.56566,"MAD":9.888419,"MMK":2101.377643,"MYR":4.086467,"NGN":1352.362126,"NPR":150.862806,"NZD":1.809216,"OMR":0.384497,"PHP":63.857758,"PKR":276.595456,"QAR":3.64,"SAR":3.75,"SDG":480.872722,"SGD":1.287798,"SYP":121.919972,"THB":33.882849,"TND":3.02005,"TRY":50.369257,"TZS":2642.092137,"UGX":4024.600571,"USD":1,"VND":25735.189593,"YER":236.705403,"ZAR":16.898089},"time_last_update_unix":1794614551};   // last market rates saved by the site robot, used only if the live feed fails
+      var FXBASE = {"rates":{"AED":3.673,"AFN":65.5571,"AUD":1.47634,"BDT":124.38,"BHD":0.3771,"CAD":1.42715,"CHF":0.83895,"CNY":6.67265,"EGP":53.42,"ETB":161.059,"EUR":0.907276,"GBP":0.75663,"GHS":11.7195,"HKD":7.8456,"IDR":18234.0,"INR":94.2765,"IQD":1310.0,"JOD":0.709,"JPY":159.695,"KES":130.05,"KRW":1336.83,"KWD":0.3086,"LBP":89550.0,"LKR":332.59,"MAD":9.9605,"MMK":2100.0,"MYR":4.08603,"NGN":1402.55,"NPR":150.79,"NZD":1.80995,"OMR":0.38504,"PHP":63.9199,"PKR":276.613,"QAR":3.6452,"SAR":3.753,"SDG":600.221,"SGD":1.2879,"SYP":11059.6,"THB":33.883,"TND":3.03055,"TRY":50.3497,"TZS":2642.85,"UGX":4118.3,"USD":1.0,"VND":25725.5,"YER":236.396,"ZAR":16.935},"time_last_update_unix":1794614340};   // last market rates saved by the site robot, used only if the live feed fails
       var CHECKED = {};   // provider rates checked in each provider's own app (from _src/data/provider_rates.json)
       var CHECK_MAX_AGE = 48 * 3600 * 1000, CHECK_MAX_GAP = 0.05;
       // Rate updates are for the ExpatGuideME team only: a phone is unlocked once with #team=<key>
@@ -505,12 +507,12 @@
       function fmt(n, dec) { return Number(n).toLocaleString("en-US", { minimumFractionDigits: dec, maximumFractionDigits: dec }); }
       function fmtRate(r) { return r >= 100 ? fmt(r, 2) : r >= 1 ? fmt(r, 4) : fmt(r, 6); }
       function ago(ts) {
-        var m = Math.max(0, Math.round((Date.now() - ts) / 60000));
+        var m = Math.max(0, Math.round((Date.now() - new Date(ts).getTime()) / 60000));
         if (m < 1) return L("justNow");
         if (m < 60) return fill(L("agoMin"), { n: m });
         var h = Math.round(m / 60);
         if (h < 24) return fill(L("agoHr"), { n: h });
-        return fill(L("agoDay"), { n: Math.round(h / 24) });
+        return fill(L("agoDay"), { n: Math.floor(h / 24) });
       }
       function iso(t) { return "\u2066" + t + "\u2069"; }
       function rtl() { return document.documentElement.dir === "rtl"; }
@@ -553,7 +555,7 @@
             var chk = CHECKED[s.cur + "-" + d.cur] || {};
             Object.keys(chk).forEach(function (id) {
               var c = chk[id], have = state.providers[id];
-              if (!have || !have.rate || new Date(have.at) < new Date(c.at)) state.providers[id] = { rate: c.rate, fee: c.fee, at: c.at, n: 0, checked: true };
+              if (!have || !have.rate || new Date(have.at) < new Date(c.at)) state.providers[id] = { rate: c.rate, fee: c.fee, at: c.at, n: 0, checked: true, src: c.src, srcUrl: c.src_url };
             });
             state.history = data.history || [];
             if (data.market) { state.market = data.market.rate; state.marketAt = data.market.at; return; }
@@ -593,7 +595,7 @@
           var rate = real ? c.rate : null;
           var fee = real && c.fee != null ? c.fee : null;
           var payout = rate ? Math.max(0, state.amount - (fee || 0)) * rate : null;
-          return { p: p, i: i, est: !real, rate: rate, fee: fee, at: real ? c.at : null, n: real ? c.n : 0, checked: real && !!c.checked, payout: payout };
+          return { p: p, i: i, est: !real, rate: rate, fee: fee, at: real ? c.at : null, n: real ? c.n : 0, checked: real && !!c.checked, src: real ? c.src : null, srcUrl: real ? c.srcUrl : null, payout: payout };
         });
         list.sort(function (a, b) {
           if (a.est !== b.est) return a.est ? 1 : -1;
@@ -660,7 +662,13 @@
           var tdR = el("td", r.rate ? "num" : "num muted-cell", r.rate ? fmtRate(r.rate) : L("noRate")); tdR.setAttribute("data-label", L("colRate")); tr.appendChild(tdR);
           var tdF = el("td", r.fee != null ? "num" : "muted-cell", r.fee != null ? fmt(r.fee, s.dec) + " " + s.cur : L("feeCheck")); tdF.setAttribute("data-label", L("colFee")); tr.appendChild(tdF);
           var tdP = el("td", r.payout != null ? "num" : "num muted-cell", r.payout != null ? fmt(r.payout, 2) + " " + d.cur : "–"); tdP.setAttribute("data-label", L("colGet")); tr.appendChild(tdP);
-          var tdU = el("td", "muted-cell", r.at ? stamp(r.at) + " · " + (r.checked ? L("checked") : (r.n === 1 ? L("update1") : fill(L("updates"), { n: r.n }))) : "–"); tdU.setAttribute("data-label", L("colUpdated")); tr.appendChild(tdU);
+          var tdU = el("td", "muted-cell", r.at ? stamp(r.at) + (r.src ? "" : " · " + (r.checked ? L("checked") : (r.n === 1 ? L("update1") : fill(L("updates"), { n: r.n })))) : "–"); tdU.setAttribute("data-label", L("colUpdated"));
+          if (r.src) {  // rate reported on another website: name it and link to it
+            var sl = el("a", "rate-src", window.ExpatSite.t("rateSrc").replace("{site}", r.src));
+            sl.href = /^https:\/\//.test(r.srcUrl || "") ? r.srcUrl : "https://" + r.src + "/"; sl.target = "_blank"; sl.rel = "noopener";
+            tdU.appendChild(sl);
+          }
+          tr.appendChild(tdU);
 
           var tdA = el("td"); tdA.setAttribute("data-label", L("colAction"));
           var wrap = el("div", "row-actions");
@@ -681,6 +689,11 @@
         });
         window.ExpatSite.tagOutbound(body);
         $("affNote").hidden = !list.some(function (r) { return PARTNERS[r.p.id]; });
+        var srcs = list.filter(function (r) { return r.src; }).map(function (r) { return r.src; }).filter(function (v, i, a) { return a.indexOf(v) === i; });
+        var sn = $("srcNote");
+        if (!sn) { sn = el("p", "src-note"); sn.id = "srcNote"; $("affNote").parentNode.insertBefore(sn, $("affNote")); }
+        sn.hidden = !srcs.length;
+        sn.textContent = srcs.length ? window.ExpatSite.t("rateSrcNote").replace("{site}", srcs.join(", ")) : "";
 
         var top = list[0];
         if (top && top.payout != null) {
