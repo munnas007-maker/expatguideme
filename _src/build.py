@@ -12,6 +12,7 @@ Usage (from the repository root):
 Edit the page bodies in _src/pages/*.html, then run the script.
 The generated .html files in site/ are what Netlify serves.
 """
+import datetime
 import json
 import os
 import subprocess
@@ -58,6 +59,8 @@ def alternates(meta):
     if meta.get("noindex"):
         return ""
     path = meta["path"]
+    if meta.get("en_only"):
+        return f'\n  <link rel="alternate" hreflang="en" href="{SITE_URL + path}">\n  <link rel="alternate" hreflang="x-default" href="{SITE_URL + path}">'
     out = []
     for l in LANGS:
         url = SITE_URL + (path if l == "en" else "/" + l + path)
@@ -75,7 +78,7 @@ def head(meta):
         if meta["active"] not in NO_AD_PAGES:
             ads += f'\n  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}" crossorigin="anonymous"></script>'
     return f"""<!DOCTYPE html>
-<html lang="en" dir="ltr"{'' if meta.get("noindex") else ' data-page-lang="en"'}>
+<html lang="en" dir="ltr"{'' if meta.get("noindex") else ' data-page-lang="en"'}{' data-en-only' if meta.get("en_only") else ''}>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -257,7 +260,7 @@ def ad_units(body, active):
     )
 
 
-def sitemap(entries):
+def sitemap(entries, extra=()):
     """sitemap.xml with every language version of every public page."""
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
@@ -271,17 +274,81 @@ def sitemap(entries):
         for l in LANGS:
             loc = SITE_URL + (e["path"] if l == "en" else "/" + l + e["path"])
             lines.append(f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{e['lastmod']}</lastmod>{alts}\n  </url>")
+    for e in extra:
+        lines.append(f'  <url>\n    <loc>{SITE_URL + e["path"]}</loc>\n    <lastmod>{e["lastmod"]}</lastmod>\n'
+                     f'    <xhtml:link rel="alternate" hreflang="en" href="{SITE_URL + e["path"]}"/>\n  </url>')
     lines.append("</urlset>")
     with open(os.path.join(ROOT, "site", "sitemap.xml"), "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
-    print("built sitemap.xml with", len(entries) * len(LANGS), "addresses")
+    print("built sitemap.xml with", len(entries) * len(LANGS) + len(extra), "addresses")
+
+
+def _num(x):
+    t = f"{x:.2f}".rstrip("0").rstrip(".")
+    return t
+
+
+def _ext(url, label):
+    return f'<a href="{url}" target="_blank" rel="noopener">{label}</a>'
+
+
+def summary_block(key, rates, when):
+    """Question heading + short answer + data table near the top of each tool page.
+    Text is translated by site.js (data-s); numbers are baked in at build time."""
+    gcc = ["SAR", "AED", "KWD", "QAR", "OMR", "BHD"]
+    home = ["INR", "PKR", "BDT", "PHP", "NPR"]
+    iso = when.strftime("%Y-%m-%d")
+    cap = f'<caption><span data-s="thMarketOn"></span> <time datetime="{iso}" dir="ltr">{iso}</time></caption>'
+    if key == "ex":
+        head_cells = ['<th scope="col" data-s="thGcc"></th>'] + [f'<th scope="col">{c}</th>' for c in home]
+        rows = [[f'<th scope="row" dir="ltr">1 {g}</th>'] + [f'<td dir="ltr">{fmt(cross(rates, g, h))}</td>' for h in home] for g in gcc]
+    elif key == "send":
+        head_cells = ['<th scope="col" data-s="thYouSend"></th>'] + [f'<th scope="col">{c}</th>' for c in home]
+        rows = [[f'<th scope="row" dir="ltr">1,000 {g}</th>'] + [f'<td dir="ltr">{fmt(1000 * cross(rates, g, h), 0)}</td>' for h in home] for g in gcc]
+    elif key == "eos":
+        cap = ""
+        head_cells = ['<th scope="col" data-s="thYears"></th>', '<th scope="col" data-s="thAward"></th>', '<th scope="col" data-s="thResign"></th>']
+        rows = []
+        for y in (1, 2, 3, 5, 7, 10, 15):
+            award = 0.5 * y if y <= 5 else 2.5 + (y - 5)
+            share = 0 if y < 2 else (1 / 3 if y < 5 else (2 / 3 if y < 10 else 1))
+            rows.append([f'<th scope="row" dir="ltr">{y}</th>', f'<td dir="ltr">{_num(award)}</td>', f'<td dir="ltr">{_num(award * share)}</td>'])
+    elif key == "id":
+        cap = ""
+        head_cells = ['<th scope="col" data-s="thCountry"></th>', '<th scope="col" data-s="thIdName"></th>', '<th scope="col" data-s="thCheck"></th>']
+        data = [("cSA", "Iqama", _ext("https://www.absher.sa/", "Absher")), ("cKW", "Civil ID", _ext("https://www.paci.gov.kw/", "Sahel / PACI")),
+                ("cQA", "QID", _ext("https://portal.moi.gov.qa/", "Metrash")), ("cOM", "Resident Card", _ext("https://www.rop.gov.om/", "ROP")),
+                ("cBH", "CPR", _ext("https://www.bahrain.bh/", "bahrain.bh"))]
+        rows = [[f'<th scope="row" data-s="{c}"></th>', f'<td dir="ltr">{n}</td>', f'<td dir="ltr">{a}</td>'] for c, n, a in data]
+    elif key == "fam":
+        cap = ""
+        head_cells = ['<th scope="col" data-s="thDeps"></th>', '<th scope="col" data-s="thMonth"></th>', '<th scope="col" data-s="thYear"></th>']
+        rows = [[f'<th scope="row" dir="ltr">{n}</th>', f'<td dir="ltr">SAR {400 * n:,}</td>', f'<td dir="ltr">SAR {4800 * n:,}</td>'] for n in (1, 2, 3, 4)]
+    elif key == "emb":
+        cap = ""
+        head_cells = ['<th scope="col" data-s="thNat"></th>', '<th scope="col" data-s="thEmb"></th>', '<th scope="col" data-s="thPass"></th>']
+        data = [("cIN", _ext("https://www.eoiriyadh.gov.in/", "eoiriyadh.gov.in"), _ext("https://embassy.passportindia.gov.in/", "embassy.passportindia.gov.in")),
+                ("cPK", _ext("https://mofa.gov.pk/overseas-missions", "mofa.gov.pk"), _ext("https://onlinemrp.dgip.gov.pk/", "onlinemrp.dgip.gov.pk")),
+                ("cNP", _ext("https://sa.nepalembassy.gov.np/", "sa.nepalembassy.gov.np"), _ext("https://nepalpassport.gov.np/", "nepalpassport.gov.np"))]
+        rows = [[f'<th scope="row" data-s="{c}"></th>', f'<td dir="ltr">{a}</td>', f'<td dir="ltr">{b}</td>'] for c, a, b in data]
+    else:
+        raise SystemExit("unknown summary " + key)
+    Q = {"ex": "sumEx", "send": "sumSend", "eos": "sumEos", "id": "sumId", "fam": "sumFam", "emb": "sumEmb"}[key]
+    body = "".join("<tr>" + "".join(r) + "</tr>" for r in rows)
+    return (f'<section class="answer-box" aria-labelledby="sumQ">\n'
+            f'        <h2 id="sumQ" data-s="{Q}Q"></h2>\n'
+            f'        <p data-s="{Q}A"></p>\n'
+            f'        <div class="table-scroll"><table class="summary-table">{cap}<thead><tr>{"".join(head_cells)}</tr></thead><tbody>{body}</tbody></table></div>\n'
+            f'      </section>')
 
 
 def build():
     pages = sorted(p for p in os.listdir(SRC) if p.endswith(".html"))
+    rates, when = load_rates()
     public = []
     for name in pages:
         meta, body, script = parse_page(os.path.join(SRC, name))
+        body = re.sub(r"<!--SUMMARY:([a-z]+)-->", lambda m: summary_block(m.group(1), rates, when), body)
         html = (
             head(meta)
             + "\n"
@@ -309,12 +376,148 @@ def build():
         ["node", os.path.join(SRC, "..", "prerender.cjs"), json.dumps([{"file": e["file"], "path": e["path"]} for e in public])],
         check=True,
     )
-    sitemap(public)
+    sitemap(public, conversion_pages())
     if ADSENSE_CLIENT:
         pub = ADSENSE_CLIENT.replace("ca-", "")
         with open(os.path.join(ROOT, "site", "ads.txt"), "w", encoding="utf-8") as f:
             f.write(f"google.com, {pub}, DIRECT, f08c47fec0942fa0\n")
         print("built ads.txt")
+
+
+# ---------------------------------------------------------------------------
+# Long-tail conversion pages: /1000-sar-to-inr.html and friends (English only).
+# Numbers come from _src/data/rates.json, refreshed daily by scripts/update_rates.py.
+# ---------------------------------------------------------------------------
+CUR = {
+    "SAR": ("Saudi riyal", "Saudi riyals", "sa", "Saudi Arabia"),
+    "AED": ("UAE dirham", "UAE dirhams", "ae", "the UAE"),
+    "KWD": ("Kuwaiti dinar", "Kuwaiti dinars", "kw", "Kuwait"),
+    "QAR": ("Qatari riyal", "Qatari riyals", "qa", "Qatar"),
+    "OMR": ("Omani rial", "Omani rials", "om", "Oman"),
+    "BHD": ("Bahraini dinar", "Bahraini dinars", "bh", "Bahrain"),
+    "INR": ("Indian rupee", "Indian rupees", "in", "India"),
+    "PKR": ("Pakistani rupee", "Pakistani rupees", "pk", "Pakistan"),
+    "BDT": ("Bangladeshi taka", "Bangladeshi taka", "bd", "Bangladesh"),
+    "PHP": ("Philippine peso", "Philippine pesos", "ph", "the Philippines"),
+    "NPR": ("Nepali rupee", "Nepali rupees", "np", "Nepal"),
+    "LKR": ("Sri Lankan rupee", "Sri Lankan rupees", "lk", "Sri Lanka"),
+}
+CONVERSIONS = [
+    ("SAR", "INR"), ("SAR", "PKR"), ("SAR", "BDT"), ("SAR", "PHP"), ("SAR", "NPR"), ("SAR", "LKR"),
+    ("AED", "INR"), ("AED", "PKR"), ("AED", "BDT"), ("AED", "PHP"),
+    ("KWD", "INR"), ("QAR", "INR"), ("OMR", "INR"), ("BHD", "INR"),
+]
+AMOUNT = 1000
+
+
+def load_rates():
+    with open(os.path.join(ROOT, "_src", "data", "rates.json"), encoding="utf-8") as f:
+        data = json.load(f)
+    when = datetime.datetime.fromtimestamp(data["time_last_update_unix"], datetime.timezone.utc)
+    return data["rates"], when
+
+
+def cross(rates, a, b):
+    return rates[b] / rates[a]
+
+
+def fmt(n, d=2):
+    return f"{n:,.{d}f}"
+
+
+def conv_path(a, b, amount=AMOUNT):
+    return f"/{amount}-{a.lower()}-to-{b.lower()}.html"
+
+
+def conversion_page(a, b, rates, when):
+    r = cross(rates, a, b)
+    inv = 1 / r
+    an, apl, acc, actry = CUR[a]
+    bn, bpl, bcc, bctry = CUR[b]
+    total = AMOUNT * r
+    day = when.strftime("%-d %B %Y")
+    iso = when.strftime("%Y-%m-%d")
+    rdig = 4 if r < 10 else 2
+    title = f"{AMOUNT:,} {a} to {b} today: {fmt(total)} {b} | ExpatGuideME"
+    desc = (f"{AMOUNT:,} {apl} = {fmt(total)} {bpl} at today's market rate (1 {a} = {fmt(r, rdig)} {b}), "
+            f"updated {day}. Table for common amounts and where to compare transfer rates.")
+    rows = "".join(
+        f"<tr><td>{fmt(x, 0)} {a}</td><td>{fmt(x * r)} {b}</td></tr>" for x in (100, 500, 1000, 2000, 2500, 5000, 10000)
+    )
+    back = "".join(
+        f"<tr><td>{fmt(x, 0)} {b}</td><td>{fmt(x * inv)} {a}</td></tr>" for x in (1000, 10000, 50000, 100000)
+    )
+    q1 = f"How much is {AMOUNT:,} {a} in {b} today?"
+    a1 = (f"At today's market rate, {AMOUNT:,} {apl} ({a}) equals {fmt(total)} {bpl} ({b}). "
+          f"One {an} is worth {fmt(r, rdig)} {b}. The rate was last updated on {day}.")
+    q2 = f"Will my family in {bctry} receive exactly {fmt(total)} {b}?"
+    a2 = ("Usually a little less. Banks, exchange houses and transfer apps pay slightly below the market rate "
+          "and some charge a fee, so compare what your family actually receives before you send.")
+    q3 = f"Where can I get the best {a} to {b} rate?"
+    a3 = (f"Open our send money comparison for {actry} to {bctry}. It lists banks, exchanges and wallets "
+          "with rates shared by other expats today, sorted by what your family receives.")
+    faq = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+        {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": t}} for q, t in ((q1, a1), (q2, a2), (q3, a3))]}
+    others = "".join(
+        f'<li><a href="{conv_path(x, y)}">{AMOUNT:,} {x} to {y}</a></li>' for x, y in CONVERSIONS if (x, y) != (a, b)
+    )
+    meta = {"title": title, "description": desc, "path": conv_path(a, b), "active": "exchange", "en_only": True,
+            "style": f'<script type="application/ld+json">{json.dumps(faq, ensure_ascii=False)}</script>'}
+    body = f"""
+  <main id="main" tabindex="-1">
+   <div class="wrap conv-page" data-updated="{iso}">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/exchange-rate.html">Exchange rates</a> › {a} to {b}</nav>
+    <h1>{AMOUNT:,} {a} to {b} today</h1>
+    <p class="lead">{an} to {bn} at the live market rate, updated {day}.</p>
+    <section class="answer-box" aria-labelledby="ansQ">
+      <h2 id="ansQ">{q1}</h2>
+      <p class="answer-big"><strong>{AMOUNT:,} {a} = {fmt(total)} {b}</strong></p>
+      <p>{a1} {a2}</p>
+      <table class="summary-table">
+        <caption>{an} to {bn} ({day})</caption>
+        <thead><tr><th scope="col">{apl.capitalize()}</th><th scope="col">{bpl.capitalize()}</th></tr></thead>
+        <tbody>{rows}</tbody>
+      </table>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="/send-money.html#{acc}-{bcc}">Compare transfer rates to {bctry}</a>
+        <a class="btn" href="/exchange-rate.html">Live converter</a>
+      </div>
+    </section>
+    <section aria-labelledby="backTitle">
+      <h2 id="backTitle">{b} to {a}</h2>
+      <table class="summary-table">
+        <thead><tr><th scope="col">{bpl.capitalize()}</th><th scope="col">{apl.capitalize()}</th></tr></thead>
+        <tbody>{back}</tbody>
+      </table>
+    </section>
+    <section class="faq" id="faq" aria-labelledby="faqTitle">
+      <h2 id="faqTitle">Frequently asked questions</h2>
+      <details><summary>{q1}</summary><div class="answer"><p>{a1}</p></div></details>
+      <details><summary>{q2}</summary><div class="answer"><p>{a2}</p></div></details>
+      <details><summary>{q3}</summary><div class="answer"><p>{a3}</p></div></details>
+    </section>
+    <section aria-labelledby="moreTitle">
+      <h2 id="moreTitle">Other popular conversions</h2>
+      <ul class="conv-links">{others}</ul>
+    </section>
+    <p class="disclaimer-note">Market rate from open.er-api.com, for information only. It is not an offer from any bank or exchange company.</p>
+   </div>
+  </main>"""
+    return meta, body
+
+
+def conversion_pages():
+    rates, when = load_rates()
+    out = []
+    for a, b in CONVERSIONS:
+        meta, body = conversion_page(a, b, rates, when)
+        html = (head(meta) + "\n" + header(meta["active"]) + "\n" + body + "\n" + footer(True)
+                + '\n  <script src="/assets/site.js"></script>\n</body>\n</html>\n')
+        with open(os.path.join(ROOT, "site", meta["path"].lstrip("/")), "w", encoding="utf-8") as f:
+            f.write(html)
+        out.append({"path": meta["path"], "lastmod": when.strftime("%Y-%m-%d")})
+    print("built", len(out), "conversion pages")
+    return out
 
 
 if __name__ == "__main__":

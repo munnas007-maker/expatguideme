@@ -382,3 +382,21 @@ body[data-ads="auto"] .ad-slot, body[data-ads="auto"] .ad-note { display: none; 
 .ad-slot.ad-live .ad-label { display: block; font-size: 0.72rem; color: var(--muted); margin-bottom: 4px; }
 .ad-slot.ad-live ins.adsbygoogle { min-height: 250px; }
 @media (max-width: 520px) { .ad-slot.ad-live { min-height: 300px; } }
+
+/* ---------- Answer boxes, summary tables, conversion pages ---------- */
+.answer-box { background: var(--card); border: 1px solid var(--line); border-inline-start: 4px solid var(--brand); border-radius: 16px; padding: 20px; margin: 18px 0; }
+.answer-box h2 { margin-top: 0; font-size: 1.2rem; }
+.answer-big { font-size: 1.6rem; margin: 6px 0 10px; color: var(--brand-dark); }
+.summary-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-variant-numeric: tabular-nums; }
+.summary-table caption { text-align: start; color: var(--muted); font-size: .9rem; padding-bottom: 6px; }
+.summary-table th, .summary-table td { padding: 9px 10px; border-bottom: 1px solid var(--line); text-align: start; }
+.summary-table th { background: var(--brand-soft); font-weight: 600; }
+.summary-table tbody tr:last-child td { border-bottom: 0; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.crumbs { font-size: .9rem; color: var(--muted); margin: 12px 0 4px; }
+.crumbs a { color: inherit; }
+.conv-links { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 8px; padding: 0; list-style: none; }
+.conv-links a { display: block; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); text-decoration: none; }
+.disclaimer-note { color: var(--muted); font-size: .85rem; margin: 18px 0; }
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.answer-box .summary-table th[scope="row"] { background: transparent; white-space: nowrap; }

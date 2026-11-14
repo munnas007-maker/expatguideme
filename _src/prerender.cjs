@@ -31,10 +31,14 @@ function faqSchema(A) {
     if (q && a) items.push({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } });
   });
   if (!items.length) return;
+  addJson(A, { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: items });
+}
+
+function addJson(A, obj) {
   const sc = A.createElement("script");
   sc.setAttribute("type", "application/ld+json");
   sc.setAttribute("data-faq-schema", "");
-  sc.textContent = JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: items }).replace(/</g, "\\u003c");
+  sc.textContent = JSON.stringify(obj).replace(/</g, "\\u003c");
   A.head.appendChild(sc);
 }
 
@@ -91,6 +95,17 @@ async function render(file, pagePath, lang) {
   A.querySelectorAll("[data-pr]").forEach((el) => el.removeAttribute("data-pr"));
 
   faqSchema(A);
+  if (A.querySelector(".answer-box")) {
+    const h1t = ((B.querySelector("h1") || {}).textContent || "").trim();
+    const leadT = ((B.querySelector(".lead") || {}).textContent || "").replace(/\s+/g, " ").trim();
+    addJson(A, {
+      "@context": "https://schema.org", "@type": "WebApplication", name: h1t, description: leadT,
+      url: SITE_URL + (lang === "en" ? "" : "/" + lang) + pagePath, inLanguage: lang,
+      applicationCategory: "FinanceApplication", operatingSystem: "Any", isAccessibleForFree: true,
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      publisher: { "@type": "Organization", name: "ExpatGuideME", url: SITE_URL }
+    });
+  }
   if (lang === "en") {
     fs.writeFileSync(path.join(SITE, file), clean.serialize());
   } else {
@@ -108,7 +123,7 @@ async function render(file, pagePath, lang) {
 
     A.querySelectorAll("a[href^='/']").forEach((a) => {
       const h = a.getAttribute("href");
-      if (/^\/(assets|api)\//.test(h) || /\.(xml|txt|png|svg|ico)$/.test(h)) return;
+      if (/^\/(assets|api)\//.test(h) || /\.(xml|txt|png|svg|ico|webmanifest)$/.test(h) || /^\/\d+-[a-z]{3}-to-[a-z]{3}\.html/.test(h)) return;
       a.setAttribute("href", "/" + lang + h);
     });
 
