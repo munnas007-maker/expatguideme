@@ -1,0 +1,306 @@
+{
+ "_help": "SIM and internet offers shown on sim-internet.html. Updated weekly by a scheduled Claude task that reads each company's official website. Every plan must come from the company's own site: name, price (number, as shown by the company), currency, data, calls, validity, kind (prepaid|postpaid|data|home|esim), url (the official page it was read from), note (e.g. 'incl. VAT'). checked_at: UTC time the company's site was last checked. Never estimate a price. affiliate_url: only a real referral link the Manager has received from that company's programme.",
+ "updated_at": null,
+ "countries": {
+  "sa": [
+   {
+    "id": "stc",
+    "name": "stc",
+    "website": "https://www.stc.com.sa/",
+    "offers_url": "https://www.stc.com.sa/",
+    "kinds": [
+     "prepaid",
+     "postpaid",
+     "data",
+     "home"
+    ],
+    "checked_at": null,
+    "offer": null,
+    "affiliate_url": null,
+    "plans": []
+   },
+   {
+    "id": "mobily",
+    "name": "Mobily",
+    "website": "https://www.mobily.com.sa/",
+    "offers_url": "https://www.mobily.com.sa/",
+    "kinds": [
+     "prepaid",
+     "postpaid",
+     "data",
+     "home"
+    ],
+    "checked_at": null,
+    "offer": null,
+    "affiliate_url": null,
+    "plans": []
+   },
+   {
+    "id": "zain-sa",
+    "name": "Zain KSA",
+    "website": "https://sa.zain.com/",
+    "offers_url": "https://sa.zain.com/",
+    "kinds": [
+     "prepaid",
+     "postpaid",
+     "data",
+     "home"
+    ],
+    "checked_at": null,
+    "offer": null,
+    "affiliate_url": null,
+    "plans": []
+   },
+   {
+    "id": "salam",
+    "name": "Salam",
+    "website": "https://salam.sa/",
+    "offers_url": "https://salam.sa/",
+    "kinds": [
+     "prepaid",
+     "postpaid",
+     "data",
+     "home"
+    ],
+    "checked_at": null,
+    "offer": null,
+    "affiliate_url": null,
+    "plans": []
+   }
+  ],
+  "ae": [
+   {
+    "id": "eand",
+    "name": "e& (Etisalat)",
+    "website": "https://www.etisalat.ae/",
+    "offers_url": "https://www.etisalat.ae/",
+    "kinds": [
+     "prepaid",
+     "postpaid",
+     "data",
+     "home"
+    ],
+    "checked_at": null,
+    "offer": null,
+    "affiliate_url": null,
+    "plans": []
+   },
+   {
+    "id": "du",
+    "name": "du",
+    "website": "https://www.du.ae/",
+    "offers_url": "https://www.du.ae/",
+    "kinds": [
+     "prepaid",
+     "postpaid",
+     "data",
+     "home"
+    ],
+    "checked_at": null,
+    "offer": null,
+    "affiliate_url": null,
+    "plans": []
+   },
+   {
+    "id": "virgin-ae",
+    "name": "Virgin Mobile UAE",
+    "website": "https://www.virginmobile.ae/",
+    "offers_url": "https://www.virginmobile.ae/",
+    "kinds": [
+     "prepaid",
+     "postpaid",
+     "data",
+     "esim"
+    ],
+    "checked_at": null,
+    "offer": null,
+    "affiliate_url": null,
+    "plans": []
+   }
+  ],
+  "qa": [
+   {
+    "id": "ooredoo-qa",
+    "name": "Ooredoo Qatar",
+    "website": "https://www.ooredoo.qa/",
+    "offers_url": "https://www.ooredoo.qa/",
+    "kinds": [
+     "prepaid",
+     "postpaid",
+     "data",
+     "home"
+    ],
+    "checked_at": null,
+    "offer": null,
+    "affiliate_url": null,
+    "plans": []
+   },
+   {
+    "id": "vodafone-qa",
+    "name": "Vodafone Qatar",
+    "website": "https://www.vodafone.qa/",
+    "offers_url": "https://www.vodafone.qa/",
+    "kinds": [
+     "prepaid",
+     "postpaid",
+     "data",
+     "home"
+    ],
+    "checked_at": null,
+    "offer": null,
+    "affiliate_url": null,
+    "plans": []
+   }
+  ],
+  "kw": [
+   {
+    "id": "zain-kw",
+    "name": "Zain Kuwait",
+    "website": "https://www.kw.zain.com/",
+    "offers_url": "https://www.kw.zain.com/",
+    "kinds": [
+     "prepaid",
+     "postpaid",
+     "data",
+     "home"
+    ],
+    "checked_at": null,
+    "offer": null,
+    "affiliate_url": null,
+    "plans": []
+   },
+   {
+    "id": "ooredoo-kw",
+    "name": "Ooredoo Kuwait",
+    "website": "https://www.ooredoo.com.kw/",
+    "offers_url": "https://www.ooredoo.com.kw/",
+    "kinds": [
+     "prepaid",
+     "postpaid",
+     "data",
+     "home"
+    ],
+    "checked_at": null,
+    "offer": null,
+    "affiliate_url": null,
+    "plans": []
+   },
+   {
+    "id": "stc-kw",
+    "name": "stc Kuwait",
+    "website": "https://www.stc.com.kw/",
+    "offers_url": "https://www.stc.com.kw/",
+    "kinds": [
+     "prepaid",
+     "postpaid",
+     "data",
+     "home"
+    ],
+    "checked_at": null,
+    "offer": null,
+    "affiliate_url": null,
+    "plans": []
+   }
+  ],
+  "om": [
+   {
+    "id": "omantel",
+    "name": "Omantel",
+    "website": "https://www.omantel.om/",
+    "offers_url": "https://www.omantel.om/",
+    "kinds": [
+     "prepaid",
+     "postpaid",
+     "data",
+     "home"
+    ],
+    "checked_at": null,
+    "offer": null,
+    "affiliate_url": null,
+    "plans": []
+   },
+   {
+    "id": "ooredoo-om",
+    "name": "Ooredoo Oman",
+    "website": "https://www.ooredoo.om/",
+    "offers_url": "https://www.ooredoo.om/",
+    "kinds": [
+     "prepaid",
+     "postpaid",
+     "data",
+     "home"
+    ],
+    "checked_at": null,
+    "offer": null,
+    "affiliate_url": null,
+    "plans": []
+   },
+   {
+    "id": "vodafone-om",
+    "name": "Vodafone Oman",
+    "website": "https://www.vodafone.om/",
+    "offers_url": "https://www.vodafone.om/",
+    "kinds": [
+     "prepaid",
+     "postpaid",
+     "data",
+     "home"
+    ],
+    "checked_at": null,
+    "offer": null,
+    "affiliate_url": null,
+    "plans": []
+   }
+  ],
+  "bh": [
+   {
+    "id": "batelco",
+    "name": "Batelco",
+    "website": "https://www.batelco.com/",
+    "offers_url": "https://www.batelco.com/",
+    "kinds": [
+     "prepaid",
+     "postpaid",
+     "data",
+     "home"
+    ],
+    "checked_at": null,
+    "offer": null,
+    "affiliate_url": null,
+    "plans": []
+   },
+   {
+    "id": "zain-bh",
+    "name": "Zain Bahrain",
+    "website": "https://www.bh.zain.com/",
+    "offers_url": "https://www.bh.zain.com/",
+    "kinds": [
+     "prepaid",
+     "postpaid",
+     "data",
+     "home"
+    ],
+    "checked_at": null,
+    "offer": null,
+    "affiliate_url": null,
+    "plans": []
+   },
+   {
+    "id": "stc-bh",
+    "name": "stc Bahrain",
+    "website": "https://www.stc.com.bh/",
+    "offers_url": "https://www.stc.com.bh/",
+    "kinds": [
+     "prepaid",
+     "postpaid",
+     "data",
+     "home"
+    ],
+    "checked_at": null,
+    "offer": null,
+    "affiliate_url": null,
+    "plans": []
+   }
+  ]
+ }
+}

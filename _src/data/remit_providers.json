@@ -1,0 +1,257 @@
+{
+ "_help": "Money transfer companies shown on send-money.html, per Gulf country (sa, ae, qa, kw, om, bh). id: short lowercase code (never change it once live, rates are stored under it); type: one of the type labels on the page; url: the company's official website. Optional offer: {text, url, checked_at} for a published promotion, copied only from the company's own site. The rate-sharing script accepts updates only for ids listed here.",
+ "providers": {
+  "sa": [
+   {
+    "id": "stcbank",
+    "name": "STC Bank",
+    "type": "digitalBank",
+    "url": "https://www.stcbank.com.sa/"
+   },
+   {
+    "id": "urpay",
+    "name": "urpay",
+    "type": "wallet",
+    "url": "https://www.urpay.com.sa/"
+   },
+   {
+    "id": "barq",
+    "name": "Barq",
+    "type": "wallet",
+    "url": ""
+   },
+   {
+    "id": "enjaz",
+    "name": "Enjaz (Bank AlBilad)",
+    "type": "bankRemit",
+    "url": "https://www.enjaz.com/"
+   },
+   {
+    "id": "tahweel",
+    "name": "Tahweel Al Rajhi",
+    "type": "bankRemit",
+    "url": "https://www.tahweelalrajhi.com.sa/"
+   },
+   {
+    "id": "snbquickpay",
+    "name": "SNB QuickPay",
+    "type": "bankRemit",
+    "url": "https://www.alahli.com/"
+   },
+   {
+    "id": "tiqmo",
+    "name": "Tiqmo",
+    "type": "wallet",
+    "url": "https://tiqmo.com/"
+   },
+   {
+    "id": "mobilypay",
+    "name": "Mobily Pay",
+    "type": "wallet",
+    "url": "https://www.mobily.com.sa/"
+   },
+   {
+    "id": "fawri",
+    "name": "Fawri (Bank AlJazira)",
+    "type": "bankRemit",
+    "url": "https://www.bankaljazira.com/"
+   },
+   {
+    "id": "wu",
+    "name": "Western Union (Ersal)",
+    "type": "global",
+    "url": "https://www.westernunion.com/"
+   }
+  ],
+  "ae": [
+   {
+    "id": "alansari",
+    "name": "Al Ansari Exchange",
+    "type": "exchange",
+    "url": "https://alansariexchange.com/"
+   },
+   {
+    "id": "lulu",
+    "name": "LuLu Exchange",
+    "type": "exchange",
+    "url": "https://luluexchange.com/"
+   },
+   {
+    "id": "alfardan",
+    "name": "Al Fardan Exchange",
+    "type": "exchange",
+    "url": "https://alfardanexchange.com/"
+   },
+   {
+    "id": "gccexchange",
+    "name": "GCC Exchange",
+    "type": "exchange",
+    "url": "https://gccexchange.com/"
+   },
+   {
+    "id": "wallstreet",
+    "name": "Wall Street Exchange",
+    "type": "exchange",
+    "url": ""
+   },
+   {
+    "id": "wu",
+    "name": "Western Union",
+    "type": "global",
+    "url": "https://www.westernunion.com/"
+   },
+   {
+    "id": "remitly",
+    "name": "Remitly",
+    "type": "global",
+    "url": "https://www.remitly.com/"
+   },
+   {
+    "id": "wise",
+    "name": "Wise",
+    "type": "global",
+    "url": "https://wise.com/"
+   }
+  ],
+  "kw": [
+   {
+    "id": "almulla",
+    "name": "Al Mulla Exchange",
+    "type": "exchange",
+    "url": "https://www.almullaexchange.com/"
+   },
+   {
+    "id": "bec",
+    "name": "Bahrain Exchange Company (BEC)",
+    "type": "exchange",
+    "url": "https://www.bec.com.kw/"
+   },
+   {
+    "id": "uaeexchangekw",
+    "name": "UAE Exchange Kuwait",
+    "type": "exchange",
+    "url": ""
+   },
+   {
+    "id": "lulu",
+    "name": "LuLu Exchange Kuwait",
+    "type": "exchange",
+    "url": "https://luluexchange.com/"
+   },
+   {
+    "id": "wu",
+    "name": "Western Union",
+    "type": "global",
+    "url": "https://www.westernunion.com/"
+   }
+  ],
+  "qa": [
+   {
+    "id": "aldar",
+    "name": "Al Dar for Exchange Works",
+    "type": "exchange",
+    "url": ""
+   },
+   {
+    "id": "alzaman",
+    "name": "Al Zaman Exchange",
+    "type": "exchange",
+    "url": ""
+   },
+   {
+    "id": "lulu",
+    "name": "LuLu Exchange Qatar",
+    "type": "exchange",
+    "url": "https://luluexchange.com/"
+   },
+   {
+    "id": "alfardan",
+    "name": "Alfardan Exchange Qatar",
+    "type": "exchange",
+    "url": "https://www.alfardanexchange.com.qa/"
+   },
+   {
+    "id": "ooredoo",
+    "name": "Ooredoo Money",
+    "type": "wallet",
+    "url": "https://www.ooredoo.qa/"
+   },
+   {
+    "id": "wu",
+    "name": "Western Union",
+    "type": "global",
+    "url": "https://www.westernunion.com/"
+   }
+  ],
+  "om": [
+   {
+    "id": "lulu",
+    "name": "LuLu Exchange Oman",
+    "type": "exchange",
+    "url": "https://luluexchange.com/"
+   },
+   {
+    "id": "unimoni",
+    "name": "Unimoni Oman",
+    "type": "exchange",
+    "url": ""
+   },
+   {
+    "id": "modern",
+    "name": "Modern Exchange",
+    "type": "exchange",
+    "url": ""
+   },
+   {
+    "id": "purshottam",
+    "name": "Purshottam Kanji Exchange",
+    "type": "exchange",
+    "url": ""
+   },
+   {
+    "id": "omantel",
+    "name": "Omantel Money",
+    "type": "wallet",
+    "url": ""
+   },
+   {
+    "id": "wu",
+    "name": "Western Union",
+    "type": "global",
+    "url": "https://www.westernunion.com/"
+   }
+  ],
+  "bh": [
+   {
+    "id": "bfc",
+    "name": "Bahrain Financing Company (BFC)",
+    "type": "exchange",
+    "url": "https://www.bfc.com.bh/"
+   },
+   {
+    "id": "lulu",
+    "name": "LuLu Exchange Bahrain",
+    "type": "exchange",
+    "url": "https://luluexchange.com/"
+   },
+   {
+    "id": "beyon",
+    "name": "Beyon Money",
+    "type": "wallet",
+    "url": ""
+   },
+   {
+    "id": "nec",
+    "name": "NEC Remit",
+    "type": "exchange",
+    "url": ""
+   },
+   {
+    "id": "wu",
+    "name": "Western Union",
+    "type": "global",
+    "url": "https://www.westernunion.com/"
+   }
+  ]
+ }
+}

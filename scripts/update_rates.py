@@ -30,7 +30,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "_src", "data", "rates.json")
 PROVIDER_OUT = os.path.join(ROOT, "_src", "data", "provider_rates.json")
 SITE_CFG = os.path.join(ROOT, "_src", "data", "site.json")
-SEND_PAGE = os.path.join(ROOT, "_src", "pages", "send-money.html")
+PROVIDERS_FILE = os.path.join(ROOT, "_src", "data", "remit_providers.json")
 CUR_COUNTRY = {"SAR": "sa", "AED": "ae", "QAR": "qa", "KWD": "kw", "OMR": "om", "BHD": "bh"}
 MAX_AGE_HOURS = 48
 MAX_GAP = 0.05          # a checked rate must be within 5% of the market rate
@@ -63,10 +63,9 @@ def fetch_gold(previous):
 
 
 def known_providers():
-    """Provider ids per sending country, read from the send-money page itself."""
-    with open(SEND_PAGE, encoding="utf-8") as f:
-        m = re.search(r"var PROVIDERS = (\{.*?\});\n", f.read(), re.S)
-    return {cc: {p["id"] for p in lst} for cc, lst in json.loads(m.group(1)).items()}
+    """Provider ids per sending country, from _src/data/remit_providers.json."""
+    with open(PROVIDERS_FILE, encoding="utf-8") as f:
+        return {cc: {p["id"] for p in lst} for cc, lst in json.load(f)["providers"].items()}
 
 
 def parse_time(text):

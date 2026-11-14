@@ -234,7 +234,7 @@ def footer(credit):
         <div>
           <h3 data-s="footerTools"></h3>
           <nav class="footer-links" aria-label="Tools">
-{_links([("/exchange-rate.html", "navExchange"), ("/gold-rate.html", "navGold"), ("/send-money.html", "navSend"), ("/end-of-service.html", "navEos"), ("/vacation-calculator.html", "navVac"), ("/id-residency.html", "navId"), ("/family-cost.html", "navFamily"), ("/embassy-services.html", "navEmbassy")])}
+{_links([("/exchange-rate.html", "navExchange"), ("/gold-rate.html", "navGold"), ("/send-money.html", "navSend"), ("/sim-internet.html", "navSim"), ("/end-of-service.html", "navEos"), ("/vacation-calculator.html", "navVac"), ("/id-residency.html", "navId"), ("/family-cost.html", "navFamily"), ("/embassy-services.html", "navEmbassy")])}
           </nav>
         </div>
         <div>
@@ -530,6 +530,8 @@ def build():
         body = body.replace("<!--CHECKOUT-->", checkout_html())
         script = script.replace("/*PARTNERS*/{}", json.dumps(PARTNER_LINKS))
         script = script.replace('/*RATES_API*/""', json.dumps(SITE_CFG["rates_api"]))
+        script = script.replace("/*TELECOM*/null", json.dumps(telecom_data(), ensure_ascii=False, separators=(",", ":")))
+        script = script.replace("/*PROVIDERS*/null", json.dumps(remit_providers(), ensure_ascii=False, separators=(",", ":")))
         script = script.replace("/*CHECKED*/{}", json.dumps(checked_provider_rates(), separators=(",", ":")))
         script = script.replace("/*FXBASE*/null", json.dumps(fx_base(), separators=(",", ":")))
         if "/*GOLDBASE*/" in script:
@@ -555,7 +557,7 @@ def build():
         if not meta.get("noindex"):
             m = re.search(r'data-updated="(\d{4}-\d{2}-\d{2})"', body)
             public.append({"file": name, "path": meta["path"], "lastmod": m.group(1) if m else "2026-11-13"})
-    order = ["/", "/exchange-rate.html", "/gold-rate.html", "/send-money.html", "/end-of-service.html", "/vacation-calculator.html", "/id-residency.html",
+    order = ["/", "/exchange-rate.html", "/gold-rate.html", "/send-money.html", "/sim-internet.html", "/end-of-service.html", "/vacation-calculator.html", "/id-residency.html",
              "/family-cost.html", "/embassy-services.html", "/legal-consult.html", "/financial-playbook.html", "/mobile-app.html", "/about.html", "/contact.html", "/privacy.html",
              "/terms.html", "/affiliate-disclosure.html"]
     public.sort(key=lambda e: order.index(e["path"]) if e["path"] in order else 99)
@@ -629,12 +631,22 @@ def gold_base():
     return {"usdOz": g.get("usd_per_troy_ounce"), "at": g.get("updated_at"), "rates": d["rates"]}
 
 
+def telecom_data():
+    with open(os.path.join(ROOT, "_src", "data", "telecom.json"), encoding="utf-8") as f:
+        d = json.load(f)
+    d.pop("_help", None)
+    return d
+
+
+def remit_providers():
+    with open(os.path.join(ROOT, "_src", "data", "remit_providers.json"), encoding="utf-8") as f:
+        return json.load(f)["providers"]
+
+
 def provider_list():
-    """site/assets/providers.json: provider ids per Gulf country, read from the send-money page.
+    """site/assets/providers.json: provider ids per Gulf country (from _src/data/remit_providers.json).
     The community rates script accepts updates only for these providers."""
-    with open(os.path.join(SRC, "send-money.html"), encoding="utf-8") as f:
-        m = re.search(r"var PROVIDERS = (\{.*?\});\n", f.read(), re.S)
-    data = {cc: [p["id"] for p in lst] for cc, lst in json.loads(m.group(1)).items()}
+    data = {cc: [p["id"] for p in lst] for cc, lst in remit_providers().items()}
     with open(os.path.join(ROOT, "site", "assets", "providers.json"), "w", encoding="utf-8") as f:
         json.dump(data, f, separators=(",", ":"))
 
