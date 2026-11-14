@@ -8,6 +8,9 @@ on:
       mode:
         description: "probe or cleanup"
         default: "cleanup"
+      script:
+        description: "probe script name in scripts/"
+        default: "probe_rate_pages"
 permissions:
   contents: write
 jobs:
@@ -22,7 +25,7 @@ jobs:
       - name: Probe
         if: inputs.mode == 'probe'
         run: |
-          python3 scripts/probe_rate_pages.py
+          python3 scripts/${{ inputs.script }}.py
           cd probe
           git init -q -b probe-results
           git config user.name "ExpatGuideME robot"; git config user.email "actions@users.noreply.github.com"
