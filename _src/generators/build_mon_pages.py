@@ -66,7 +66,7 @@ META-->
           <input type="hidden" name="language" value="en" data-lang-field>
           <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
           <div class="row2">
-            <div class="field"><label class="field-label" for="lcName" data-t="name"></label><input id="lcName" name="name" required autocomplete="name" maxlength="80"></div>
+            <div class="field"><label class="field-label" for="lcName" data-t="name"></label><input id="lcName" type="text" name="name" required autocomplete="name" maxlength="80"></div>
             <div class="field"><label class="field-label" for="lcEmail" data-t="email"></label><input id="lcEmail" type="email" name="email" required autocomplete="email" inputmode="email" maxlength="120"></div>
           </div>
           <div class="row2">

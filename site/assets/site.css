@@ -451,3 +451,19 @@ tr.sponsored-row td { background: rgba(240, 214, 138, .12); }
 .countries button { display: flex; gap: 8px; align-items: center; text-align: start; font: inherit; font-size: .95rem; font-weight: 600; padding: 9px 12px; min-height: 42px; border-radius: 8px; border: 0; background: transparent; color: var(--ink); cursor: pointer; }
 .countries button:hover { background: var(--brand-soft); color: var(--brand); }
 .countries button.active { background: var(--brand); color: var(--on-brand); }
+
+/* Small-phone header fit (audit 2026-11-14): 5 header buttons + logo must fit 320–420px */
+@media (max-width: 420px) {
+  .header-row { gap: 6px; }
+  .logo { font-size: 1.05rem; }
+  .header-actions { gap: 2px; }
+  .header-actions .icon-btn { min-width: 38px; padding: 0 6px; }
+  .country-btn { font-size: 1.1rem; }
+}
+@media (max-width: 350px) {
+  .logo { font-size: .95rem; }
+  .header-actions .icon-btn { min-width: 34px; padding: 0 4px; }
+  .icon-btn svg { width: 18px; height: 18px; }
+}
+/* App promo bar is for phones only */
+@media (min-width: 761px) { .app-bar { display: none !important; } }
