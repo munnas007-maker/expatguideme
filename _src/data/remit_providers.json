@@ -1,5 +1,5 @@
 {
- "_help": "Money transfer companies shown on send-money.html, per Gulf country (sa, ae, qa, kw, om, bh). id: short lowercase code (never change it once live, rates are stored under it); type: one of the type labels on the page; url: the company's official website. Optional offer: {text, url, checked_at} for a published promotion, copied only from the company's own site. The rate-sharing script accepts updates only for ids listed here.",
+ "_help": "Money transfer companies shown on send-money.html, per Gulf country (sa, ae, qa, kw, om, bh). id: short lowercase code (never change it once live, rates are stored under it); type: one of the type labels on the page; url: the company's official website. Optional offer: {text, url, checked_at, to: [home currency codes it applies to, e.g. [\"PKR\"]; omit if it applies to every country]} for a published promotion, copied only from the company's own site. The rate-sharing script accepts updates only for ids listed here.",
  "providers": {
   "sa": [
    {

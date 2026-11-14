@@ -559,6 +559,15 @@
         if (!(age <= CHECK_MAX_AGE)) return false;
         return !state.market || Math.abs(c.rate / state.market - 1) <= CHECK_MAX_GAP;
       }
+      // Show an offer only for the home country it applies to: offer.to (["INR", ...]) when given,
+      // otherwise hide it when its text names a different home country.
+      var OFFER_WORDS = { INR: /india/i, PKR: /pakistan/i, BDT: /bangladesh/i, PHP: /philippine/i, NPR: /nepal/i, LKR: /sri lanka/i, IDR: /indonesia/i, EGP: /egypt/i };
+      function offerFits(o) {
+        var cur = dst().cur;
+        if (o.to && o.to.length) return o.to.indexOf(cur) > -1;
+        var named = Object.keys(OFFER_WORDS).filter(function (c) { return OFFER_WORDS[c].test(o.text); });
+        return !named.length || named.indexOf(cur) > -1;
+      }
       function rows() {
         var list = PROVIDERS[state.src].map(function (p, i) {
           var c = state.providers[p.id];
@@ -622,7 +631,7 @@
           tdN.appendChild(name);
           tdN.appendChild(el("div", "p-type", TYPES[lang()] ? TYPES[lang()][r.p.type] : TYPES.en[r.p.type]));
           // Published promotion, copied from the company's own website, shown with the date it was checked
-          if (r.p.offer && r.p.offer.text) {
+          if (r.p.offer && r.p.offer.text && offerFits(r.p.offer)) {
             var of = el("a", "p-offer", "🎁 " + r.p.offer.text);
             of.href = r.p.offer.url || r.p.url; of.target = "_blank"; of.rel = "noopener";
             if (r.p.offer.checked_at) of.title = window.ExpatSite.stamp(r.p.offer.checked_at);
