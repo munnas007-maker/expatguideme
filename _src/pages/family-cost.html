@@ -152,7 +152,7 @@ META-->
       function loadRates() {
         var c = null;
         try { c = JSON.parse(localStorage.getItem(MKT_KEY) || "null"); if (c && c.rates && Date.now() - c.saved < 6 * 3600000) { state.rates = c.rates; state.ratesAt = c.at; calc(); return; } } catch (e) {}
-        fetch("https://open.er-api.com/v6/latest/USD").then(function (r) { return r.json(); }).then(function (d) {
+        fetch("/data/latest.json", { cache: "no-cache" }).then(function (r) { return r.json(); }).then(function (d) {
           if (!d || d.result !== "success") throw new Error("rates");
           state.rates = d.rates; state.ratesAt = d.time_last_update_unix * 1000; state.ratesStale = false;
           try { localStorage.setItem(MKT_KEY, JSON.stringify({ rates: d.rates, at: state.ratesAt, saved: Date.now() })); } catch (e) {}

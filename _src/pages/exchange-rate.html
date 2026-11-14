@@ -136,7 +136,7 @@ META-->
     (function () {
       "use strict";
 
-      var API_URL = "https://open.er-api.com/v6/latest/USD";
+      var API_URL = "/data/latest.json";   // published by the site robot every 2 hours (single source of truth)
       var FXBASE = /*FXBASE*/null;   // last rates saved by the site robot, used only if the live feed fails
       var CACHE_KEY = "expatguideme_rates_v1";
       var FX_KEY = "expatguideme_fx_v1";

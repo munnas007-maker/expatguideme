@@ -21,6 +21,7 @@ import csv
 import datetime
 import io
 import re
+import urllib.parse
 import json
 import os
 import sys
@@ -43,6 +44,25 @@ def get_json(url):
     req = urllib.request.Request(url, headers={"User-Agent": "ExpatGuideME-rates"})
     with urllib.request.urlopen(req, timeout=30) as r:
         return json.load(r)
+
+
+CF_URL = "https://api.currencyfreaks.com/v2.0/rates/latest"
+# Currencies the site uses (Gulf, home countries of expats, major world currencies). Crypto is ignored.
+KEEP = set(CODES) | set("""EUR GBP ETB KES UGX SDG YER JOD MAD TND CNY MYR THB MMK AFN NGN GHS TRY CAD AUD
+JPY CHF SGD HKD ZAR KRW LBP SYP IQD IRR VND TZS NZD""".split())
+METALS = {"XAU", "XAG", "XPT", "XPD"}
+# Official pegs, used only to sanity-check a feed before it is published
+PEGS = {"SAR": (3.75, 0.02), "AED": (3.6725, 0.02), "QAR": (3.64, 0.03), "BHD": (0.376, 0.003), "OMR": (0.3845, 0.003)}
+
+
+def check_rates(rates, source):
+    for c in CODES:
+        v = rates.get(c)
+        if not isinstance(v, (int, float)) or v <= 0:
+            raise ValueError(f"{source}: missing or bad rate for {c}: {v}")
+    for c, (peg, tol) in PEGS.items():
+        if abs(rates[c] - peg) > tol:
+            raise ValueError(f"{source}: {c} rate {rates[c]} is far from its official peg {peg}")
 
 
 def fetch_gold(previous):
@@ -169,20 +189,46 @@ def main():
     if os.path.exists(OUT):
         with open(OUT, encoding="utf-8") as f:
             previous = json.load(f)
-    data = get_json("https://open.er-api.com/v6/latest/USD")
-    if data.get("result") != "success":
-        sys.exit("rate source did not return success")
-    rates = {c: data["rates"][c] for c in CODES}
-    for c, v in rates.items():
-        if not isinstance(v, (int, float)) or v <= 0:
-            sys.exit(f"bad rate for {c}: {v}")
+    rates = unix = gold = None
+    source = None
+    # Single source of truth: data/live_rates.json written by scripts/fetch_rates.py in this same run
+    live_path = os.path.join(ROOT, "data", "live_rates.json")
+    if os.path.exists(live_path):
+        try:
+            with open(live_path, encoding="utf-8") as f:
+                live = json.load(f)
+            fetched = datetime.datetime.fromisoformat(live["fetched_at"].replace("Z", "+00:00"))
+            if datetime.datetime.now(datetime.timezone.utc) - fetched < datetime.timedelta(minutes=45):
+                rates = dict(live["usd_rates"], USD=1.0)
+                check_rates(rates, "data/live_rates.json")
+                unix, source = live["updated_unix"], live["source"]
+                g = live["gold"]
+                gold = {"usd_per_troy_ounce": g["usd_per_troy_ounce"], "usd_per_gram_24k": g["usd_per_gram_24k"],
+                        "updated_at": live["updated_at"], "source": live["source"]}
+            else:
+                print("data/live_rates.json is older than this run; using the fallback source")
+        except Exception as e:
+            rates = unix = gold = None
+            print("data/live_rates.json not usable, falling back:", e)
+    if rates is None:
+        data = get_json("https://open.er-api.com/v6/latest/USD")
+        if data.get("result") != "success":
+            sys.exit("rate source did not return success")
+        rates = {k: v for k, v in data["rates"].items() if k in KEEP and isinstance(v, (int, float)) and v > 0}
+        try:
+            check_rates(rates, "open.er-api.com")
+        except ValueError as e:
+            sys.exit(str(e))
+        unix, source = data["time_last_update_unix"], "open.er-api.com"
+    if gold is None:
+        gold = fetch_gold(previous.get("gold"))
     out = {
-        "source": "open.er-api.com",
+        "source": source,
         "base": "USD",
-        "time_last_update_unix": data["time_last_update_unix"],
-        "time_last_update_utc": data["time_last_update_utc"],
-        "rates": rates,
-        "gold": fetch_gold(previous.get("gold")),
+        "time_last_update_unix": unix,
+        "time_last_update_utc": datetime.datetime.fromtimestamp(unix, datetime.timezone.utc).strftime("%a, %d %b %Y %H:%M:%S +0000"),
+        "rates": dict(sorted(rates.items())),
+        "gold": gold,
     }
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(out, f, indent=2)

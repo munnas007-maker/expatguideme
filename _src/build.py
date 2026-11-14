@@ -416,13 +416,13 @@ def summary_block(key, rates, when):
         oz = g.get("usd_per_troy_ounce")
         if not oz:
             return ""
-        per_g = oz / 31.1034768
+        per_g = oz / 31.1035
         gt = _parse_ts(g.get("updated_at")) or when
         cap = stamp_caption(max(gt, when))
-        dec = {"KWD": 3, "OMR": 3, "BHD": 3}
-        # Hallmark fineness, the same as the live table on gold-rate.html: 999, 916, 875, 750
+        dec = {}
+        # Karat purity: 24K = pure spot price, 22K = 24K × 22/24, 21K = 24K × 21/24, 18K = 24K × 18/24 (same as gold-rate.html and fetch_rates.py)
         head_cells = ['<th scope="col" data-s="thGcc"></th>', '<th scope="col">24K</th>', '<th scope="col">22K</th>', '<th scope="col">21K</th>', '<th scope="col">18K</th>']
-        rows = [[f'<th scope="row" dir="ltr">{c}</th>'] + [f'<td dir="ltr">{fmt(per_g * p * rates[c], dec.get(c, 2))}</td>' for p in (0.999, 0.916, 0.875, 0.75)]
+        rows = [[f'<th scope="row" dir="ltr">{c}</th>'] + [f'<td dir="ltr">{fmt(per_g * p * rates[c], dec.get(c, 2))}</td>' for p in (1, 22 / 24, 21 / 24, 18 / 24)]
                 for c in ("SAR", "AED", "QAR", "KWD", "OMR", "BHD")]
     elif key == "vac":
         cap = ""
@@ -595,6 +595,7 @@ def build():
     )
     sitemap(public, conversion_pages())
     provider_list()
+    latest_json()
     service_worker()
     with open(os.path.join(ROOT, "site", "CNAME"), "w", encoding="utf-8") as f:
         f.write("expatguideme.com\n")
@@ -655,7 +656,19 @@ def gold_base():
     """This morning's gold spot price and exchange rates for the gold page (fallback when live APIs fail)."""
     d = _rates_file()
     g = d.get("gold") or {}
-    return {"usdOz": g.get("usd_per_troy_ounce"), "at": g.get("updated_at"), "rates": d["rates"]}
+    return {"usdOz": g.get("usd_per_troy_ounce"), "at": g.get("updated_at"), "src": g.get("source") or "gold-api.com", "rates": d["rates"]}
+
+
+def latest_json():
+    """site/data/latest.json: the one copy of today's rates and gold that every page reads live.
+    Same shape as open.er-api.com (result/rates/time_last_update_unix) plus the gold block."""
+    d = _rates_file()
+    out = {"result": "success", "base": "USD", "source": d.get("source", "open.er-api.com"),
+           "time_last_update_unix": d["time_last_update_unix"], "time_last_update_utc": d.get("time_last_update_utc"),
+           "rates": d["rates"], "gold": d.get("gold")}
+    os.makedirs(os.path.join(ROOT, "site", "data"), exist_ok=True)
+    with open(os.path.join(ROOT, "site", "data", "latest.json"), "w", encoding="utf-8") as f:
+        json.dump(out, f, separators=(",", ":"))
 
 
 def visa_data():
@@ -832,7 +845,7 @@ def conversion_page(a, b, rates, when):
       <h2 id="moreTitle">Other popular conversions</h2>
       <ul class="conv-links">{others}</ul>
     </section>
-    <p class="disclaimer-note">Market rate from open.er-api.com, for information only. It is not an offer from any bank or exchange company.</p>
+    <p class="disclaimer-note">Market rate from {_rates_file().get("source", "open.er-api.com")}, for information only. It is not an offer from any bank or exchange company.</p>
    </div>
   </main>"""
     return meta, body

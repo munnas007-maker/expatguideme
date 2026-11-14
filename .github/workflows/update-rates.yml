@@ -1,6 +1,7 @@
 # Builds and publishes expatguideme.com on GitHub Pages.
 # - Every push to main: rebuild all 8 languages and publish.
-# - Every 2 hours: fetch the latest exchange rates, gold spot price and any
+# - Every 2 hours: fetch live rates + gold from CurrencyFreaks (secret CURRENCYFREAKS_API_KEY;
+#   free open.er-api.com / gold-api.com are used only if that fails), plus any
 #   provider rates checked in their apps, rebuild, publish, and save the new
 #   data files back to the repository (only when something changed).
 # - Once a day (04:15 UTC = 07:15 Riyadh) the same run also pings IndexNow.
@@ -45,7 +46,14 @@ jobs:
           node-version: "22"
       - name: Install build tools
         run: npm install --no-audit --no-fund
-      - name: Fetch latest rates, gold and checked provider rates
+      - name: Fetch live rates and gold from CurrencyFreaks (one API call)
+        if: github.event_name != 'push'
+        id: live
+        continue-on-error: true   # on failure the previous verified rates stay; the free source is used instead
+        env:
+          CURRENCYFREAKS_API_KEY: ${{ secrets.CURRENCYFREAKS_API_KEY }}
+        run: python3 scripts/fetch_rates.py
+      - name: Prepare site rates, gold and checked provider rates
         if: github.event_name != 'push'
         run: python3 scripts/update_rates.py
       - name: Check data files
@@ -58,6 +66,7 @@ jobs:
           git config user.name "ExpatGuideME robot"
           git config user.email "actions@users.noreply.github.com"
           git add _src/data/rates.json _src/data/provider_rates.json
+          if [ -f data/live_rates.json ]; then git add data/live_rates.json; fi
           if git diff --cached --quiet; then
             echo "No new data."
           else
