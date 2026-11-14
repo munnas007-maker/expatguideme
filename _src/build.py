@@ -565,6 +565,7 @@ def build():
         env=dict(os.environ, TZ="UTC"),  # baked timestamps in UTC; visitors' browsers show their own time zone
     )
     sitemap(public, conversion_pages())
+    provider_list()
     service_worker()
     with open(os.path.join(ROOT, "site", "CNAME"), "w", encoding="utf-8") as f:
         f.write("expatguideme.com\n")
@@ -626,6 +627,16 @@ def gold_base():
     d = _rates_file()
     g = d.get("gold") or {}
     return {"usdOz": g.get("usd_per_troy_ounce"), "at": g.get("updated_at"), "rates": d["rates"]}
+
+
+def provider_list():
+    """site/assets/providers.json: provider ids per Gulf country, read from the send-money page.
+    The community rates script accepts updates only for these providers."""
+    with open(os.path.join(SRC, "send-money.html"), encoding="utf-8") as f:
+        m = re.search(r"var PROVIDERS = (\{.*?\});\n", f.read(), re.S)
+    data = {cc: [p["id"] for p in lst] for cc, lst in json.loads(m.group(1)).items()}
+    with open(os.path.join(ROOT, "site", "assets", "providers.json"), "w", encoding="utf-8") as f:
+        json.dump(data, f, separators=(",", ":"))
 
 
 def checked_provider_rates():

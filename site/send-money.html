@@ -917,7 +917,7 @@
         if (fee != null && (!isFinite(fee) || fee < 0)) { msg.className = "form-err"; msg.textContent = L("errFee"); $("updFee").focus(); return; }
         var btn = $("updSubmit"); btn.disabled = true;
         var payload = { from: src().cur, to: dst().cur, provider: $("updProvider").value, rate: rate, fee: fee, website: $("updWebsite").value };
-        fetch(RATES_API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) })
+        fetch(RATES_API, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(payload) })  // text/plain: no CORS preflight (Google Apps Script)
           .then(function (r) { return r.json().then(function (j) { return { status: r.status, body: j }; }); })
           .then(function (res) {
             if (res.status === 200 && res.body.ok) {
