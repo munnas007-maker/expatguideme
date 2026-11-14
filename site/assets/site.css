@@ -467,3 +467,10 @@ tr.sponsored-row td { background: rgba(240, 214, 138, .12); }
 }
 /* App promo bar is for phones only */
 @media (min-width: 761px) { .app-bar { display: none !important; } }
+@media (max-width: 350px) {
+  .wrap { padding: 0 12px; }
+  .header-actions { gap: 0; }
+  .header-actions .icon-btn { min-width: 32px; padding: 0 3px; }
+}
+h1, h2 { overflow-wrap: anywhere; }
+.app-hero h1 { min-width: 0; }

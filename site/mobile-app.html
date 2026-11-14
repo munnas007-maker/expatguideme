@@ -39,6 +39,7 @@
   <style>
     .app { max-width: 760px; }
     .app-hero { display: flex; gap: 18px; align-items: center; margin: 8px 0 6px; }
+    @media (max-width: 380px) { .app-hero { gap: 12px; } .app-hero img { width: 56px; height: 56px; border-radius: 14px; } }
     .app-hero img { width: 76px; height: 76px; border-radius: 18px; box-shadow: var(--shadow); flex: none; }
     .app-feats { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
     .app-feats li { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-weight: 600; }
