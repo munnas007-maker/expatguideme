@@ -479,3 +479,42 @@ h1, h2 { overflow-wrap: anywhere; }
 .rate-stamp { margin: 8px 0 0; font-size: .85rem; color: var(--muted); }
 .rate-warn { display: block; color: var(--warn-ink); background: var(--warn-bg); border-radius: 8px; padding: 8px 10px; font-weight: 600; }
 caption time { font-weight: 600; }
+
+/* =========================================================
+   Colour system (2026-11): 5 crisp topic colours, one per group of tools.
+   Each colour passes WCAG AA (≥4.5:1) with white text.
+   ========================================================= */
+:root {
+  --c-money: #047857;   /* exchange rate, send money */
+  --c-gold: #b45309;    /* gold rate */
+  --c-work: #2563eb;    /* end of service, vacation */
+  --c-family: #be185d;  /* family visa, ID & residency, family cost, embassy */
+  --c-phone: #7c3aed;   /* SIM & internet */
+  --accent: var(--brand);
+}
+html[data-theme="dark"] {
+  --c-money: #34d399; --c-gold: #fbbf24; --c-work: #60a5fa; --c-family: #f472b6; --c-phone: #a78bfa;
+}
+body[data-page="exchange"], body[data-page="send"] { --accent: var(--c-money); }
+body[data-page="gold"] { --accent: var(--c-gold); }
+body[data-page="eos"], body[data-page="vac"] { --accent: var(--c-work); }
+body[data-page="visa"], body[data-page="id"], body[data-page="family"], body[data-page="embassy"] { --accent: var(--c-family); }
+body[data-page="sim"] { --accent: var(--c-phone); }
+:root { --accent-soft: color-mix(in srgb, var(--accent) 11%, var(--card)); }
+body { --accent-soft: color-mix(in srgb, var(--accent) 11%, var(--card)); }
+
+/* Tool pages: a crisp colour bar above the title, coloured section edges */
+body:not([data-page="home"]) main .wrap > h1::before {
+  content: ""; display: block; width: 56px; height: 6px; border-radius: 6px;
+  background: var(--accent); margin-bottom: 14px;
+}
+body:not([data-page="home"]) main .card { border-top: 4px solid var(--accent); }
+body:not([data-page="home"]) main h2 { color: var(--ink); }
+body:not([data-page="home"]) main h2::after {
+  content: ""; display: block; width: 32px; height: 3px; border-radius: 3px; background: var(--accent); margin-top: 6px; opacity: .85;
+}
+.summary-table th { background: var(--accent-soft); }
+.rate-stamp:not(.rate-warn) { color: var(--muted); }
+.cc-tabs button[aria-selected="true"], .kind-tabs button[aria-selected="true"] { background: var(--accent) !important; border-color: var(--accent) !important; color: #fff !important; }
+html[data-theme="dark"] .cc-tabs button[aria-selected="true"], html[data-theme="dark"] .kind-tabs button[aria-selected="true"] { color: #0b0f14 !important; }
+.kinds li { background: var(--accent-soft) !important; color: var(--accent) !important; }
