@@ -13,6 +13,7 @@
   <link rel="alternate" hreflang="ne" href="https://expatguideme.com/ne/end-of-service.html">
   <link rel="alternate" hreflang="ur" href="https://expatguideme.com/ur/end-of-service.html">
   <link rel="alternate" hreflang="bn" href="https://expatguideme.com/bn/end-of-service.html">
+  <link rel="alternate" hreflang="tl" href="https://expatguideme.com/tl/end-of-service.html">
   <link rel="alternate" hreflang="x-default" href="https://expatguideme.com/end-of-service.html">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -107,6 +108,7 @@
             <button type="button" data-lang="ne" lang="ne">नेपाली</button>
             <button type="button" data-lang="ur" lang="ur">اردو</button>
             <button type="button" data-lang="bn" lang="bn">বাংলা</button>
+            <button type="button" data-lang="tl" lang="tl">Tagalog</button>
           </div>
         </div>
         <button type="button" class="icon-btn" data-open-search="" data-s-aria="search" aria-label="തിരയുക" title="തിരയുക"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg></button>
@@ -300,22 +302,22 @@
       var DAY = 86400000;
 
       var COUNTRIES = [
-        { code: "sa", flag: "🇸🇦", cur: "SAR", dec: 2, en: "Saudi Arabia", ar: "السعودية", hi: "सऊदी अरब", ml: "സൗദി അറേബ്യ", ne: "साउदी अरब", ur: "سعودی عرب", bn: "সৌদি আরব",
+        { code: "sa", flag: "🇸🇦", cur: "SAR", dec: 2, en: "Saudi Arabia", ar: "السعودية", hi: "सऊदी अरब", ml: "സൗദി അറേബ്യ", ne: "साउदी अरब", ur: "سعودی عرب", bn: "সৌদি আরব", tl: "Saudi Arabia",
           curAr: "ر.س", url: "https://www.hrsd.gov.sa/en/knowledge-centre/articles/317",
           auth: { en: "Ministry of Human Resources and Social Development (HRSD)", ar: "وزارة الموارد البشرية والتنمية الاجتماعية" } },
-        { code: "ae", flag: "🇦🇪", cur: "AED", dec: 2, en: "UAE", ar: "الإمارات", hi: "यूएई", ml: "യുഎഇ", ne: "युएई", ur: "امارات", bn: "সংযুক্ত আরব আমিরাত",
+        { code: "ae", flag: "🇦🇪", cur: "AED", dec: 2, en: "UAE", ar: "الإمارات", hi: "यूएई", ml: "യുഎഇ", ne: "युएई", ur: "امارات", bn: "সংযুক্ত আরব আমিরাত", tl: "UAE",
           curAr: "د.إ", url: "https://www.mohre.gov.ae",
           auth: { en: "Ministry of Human Resources and Emiratisation (MOHRE)", ar: "وزارة الموارد البشرية والتوطين" } },
-        { code: "kw", flag: "🇰🇼", cur: "KWD", dec: 3, en: "Kuwait", ar: "الكويت", hi: "कुवैत", ml: "കുവൈത്ത്", ne: "कुवेत", ur: "کویت", bn: "কুয়েত",
+        { code: "kw", flag: "🇰🇼", cur: "KWD", dec: 3, en: "Kuwait", ar: "الكويت", hi: "कुवैत", ml: "കുവൈത്ത്", ne: "कुवेत", ur: "کویت", bn: "কুয়েত", tl: "Kuwait",
           curAr: "د.ك", url: "https://www.manpower.gov.kw",
           auth: { en: "Public Authority for Manpower (PAM)", ar: "الهيئة العامة للقوى العاملة" } },
-        { code: "qa", flag: "🇶🇦", cur: "QAR", dec: 2, en: "Qatar", ar: "قطر", hi: "क़तर", ml: "ഖത്തർ", ne: "कतार", ur: "قطر", bn: "কাতার",
+        { code: "qa", flag: "🇶🇦", cur: "QAR", dec: 2, en: "Qatar", ar: "قطر", hi: "क़तर", ml: "ഖത്തർ", ne: "कतार", ur: "قطر", bn: "কাতার", tl: "Qatar",
           curAr: "ر.ق", url: "https://www.mol.gov.qa",
           auth: { en: "Ministry of Labour, Qatar", ar: "وزارة العمل في قطر" } },
-        { code: "om", flag: "🇴🇲", cur: "OMR", dec: 3, en: "Oman", ar: "عُمان", hi: "ओमान", ml: "ഒമാൻ", ne: "ओमान", ur: "عمان", bn: "ওমান",
+        { code: "om", flag: "🇴🇲", cur: "OMR", dec: 3, en: "Oman", ar: "عُمان", hi: "ओमान", ml: "ഒമാൻ", ne: "ओमान", ur: "عمان", bn: "ওমান", tl: "Oman",
           curAr: "ر.ع", url: "https://www.mol.gov.om",
           auth: { en: "Ministry of Labour, Oman", ar: "وزارة العمل في سلطنة عُمان" } },
-        { code: "bh", flag: "🇧🇭", cur: "BHD", dec: 3, en: "Bahrain", ar: "البحرين", hi: "बहरीन", ml: "ബഹ്‌റൈൻ", ne: "बहराइन", ur: "بحرین", bn: "বাহরাইন",
+        { code: "bh", flag: "🇧🇭", cur: "BHD", dec: 3, en: "Bahrain", ar: "البحرين", hi: "बहरीन", ml: "ബഹ്‌റൈൻ", ne: "बहराइन", ur: "بحرین", bn: "বাহরাইন", tl: "Bahrain",
           curAr: "د.ب", url: "https://www.sio.gov.bh",
           auth: { en: "Social Insurance Organization (SIO), Bahrain", ar: "الهيئة العامة للتأمين الاجتماعي في البحرين" } }
       ];
@@ -754,6 +756,68 @@
           q5: "এই পরিমাণ কি একদম সঠিক?",
           a5: "এটি আইনের ভিত্তিতে একটি কাছাকাছি হিসাব। আপনার চুক্তি, কোম্পানির দিন গোনার নিয়ম, বিনা বেতনের ছুটি বা বিশেষ পরিস্থিতির কারণে আসল পরিমাণ ভিন্ন হতে পারে। আপনাকে দেওয়া হিসাব যাচাই করতে এটি ব্যবহার করুন এবং কোম্পানিকে তাদের হিসাব দেখাতে বলুন।",
           disclaimer: "এই ক্যালকুলেটর প্রতিটি দেশের বেসরকারি খাতের শ্রম আইনের ভিত্তিতে একটি আনুমানিক হিসাব দেয়। এতে সরকারি চাকরি, গৃহকর্মী, DIFC ও ADGM-এর মতো নিজস্ব নিয়মের ফ্রি জোন বা বিশেষ পরিস্থিতি অন্তর্ভুক্ত নয়। আপনার চুক্তি এর বেশি দিতে পারে। সঠিক পরিমাণের জন্য কোম্পানি বা অফিসিয়াল শ্রম কর্তৃপক্ষের সাথে নিশ্চিত হন।"
+        },
+        tl: {
+          title: "End-of-service benefit calculator",
+          lead: "Kalkulahin ang gratuity na dapat mong matanggap kapag natapos ang trabaho mo sa Saudi Arabia, UAE, Kuwait, Qatar, Oman o Bahrain. Piliin ang bansa, ilagay ang sahod at tagal ng serbisyo, at makikita ang halaga kasama ang batas sa likod nito.",
+          ad: "Advertisement",
+          calcTitle: "Kalkulahin ang end-of-service benefit mo",
+          countryLabel: "Nagtatrabaho ako sa:",
+          reasonLabel: "Paano natatapos ang trabaho mo?",
+          reasonEnd: "Natapos ang kontrata o tinapos ng employer",
+          reasonResign: "Nag-resign ako",
+          modeLabel: "Tagal ng serbisyo",
+          modeYears: "Taon at buwan",
+          modeDates: "Eksaktong petsa",
+          yearsLabel: "Taon", monthsLabel: "Buwan",
+          startLabel: "Unang araw ng trabaho", endLabel: "Huling araw ng trabaho",
+          basicLabel: "Buwanang basic salary ({cur})",
+          allowLabel: "Buwanang fixed allowances ({cur})",
+          allowUsed: "Housing, transportation at iba pang fixed allowances. Sa {country}, idinadagdag ang mga ito sa basic salary.",
+          allowNotUsed: "Housing, transportation at iba pang fixed allowances. Sa {country}, hindi ito isinasama; basic salary lang ang ginagamit.",
+          unpaidLabel: "Mga araw ng unpaid leave (opsyonal)",
+          unpaidHint: "Hindi binibilang sa serbisyo ang mga araw ng unpaid leave.",
+          resultTitle: "Ang tantya mo",
+          resultHint: "Ilagay ang buwanang basic salary mo para makita ang tantya.",
+          totalLabel: "Tantyang end-of-service benefit",
+          serviceLabel: "Serbisyong binilang", wageLabel: "Buwanang sahod na ginamit", fullLabel: "Buong halaga bago ang bawas",
+          unitY: "taon", unitM: "buwan", unitD: "araw",
+          lineFmt: "{y} taon × {rate}",
+          rHalf: "kalahating buwang sahod", rMonth: "isang buwang sahod", r21: "21 araw ng basic salary", r30: "30 araw ng basic salary", rMonthBasic: "isang buwang basic salary",
+          oldLaw: "bago ang 31 Hul 2023", newLaw: "mula 31 Hul 2023",
+          nUnder1: "Wala pang isang taon ang serbisyo, kaya wala pang end-of-service benefit.",
+          nResignNone: "Nag-resign ka bago makumpleto ang {n} taon ng serbisyo, kaya walang benefit.",
+          nShare: "Dahil nag-resign ka, matatanggap mo ang {share} ng buong halaga.",
+          third: "isang-katlo", twoThirds: "dalawang-katlo", half: "kalahati",
+          nResignFull: "Nag-resign ka pagkatapos ng 10 taon o higit pa, kaya buong halaga ang matatanggap mo.",
+          nCap: "Nililimitahan ng batas ang kabuuan sa {n} buwang sahod, kaya hanggang {amt} lang ang halaga.",
+          nOmanSavings: "Papalitan ng Oman ang gratuity ng mga expat ng savings fund na hinuhulugan ng employer, hindi lalampas sa 19 Hulyo 2027. Dapat pa ring ibigay sa iyo ang gratuity na naipon bago ang pagbabago.",
+          nBahrainSplit: "Babayaran ng employer para sa serbisyo bago ang 1 Marso 2024: {a}. Babayaran ng SIO para sa serbisyo mula 1 Marso 2024: {b}.",
+          nDates: "Dapat mas huli ang huling araw ng trabaho kaysa sa unang araw.",
+          copy: "Kopyahin ang resulta",
+          copyHead: "Tantyang end-of-service ({country})",
+          ruleTitle: "Paano ito kinakalkula sa {country}",
+          official: "Opisyal na source: {auth}",
+          rule: {
+            sa: "Article 84 ng Saudi Labor Law: kalahating buwang sahod sa bawat isa sa unang limang taon at isang buong buwang sahod sa bawat taon pagkatapos noon, batay sa huling sahod kasama ang fixed allowances. Kung nag-resign (Article 85): wala kung kulang sa 2 taon, isang-katlo mula 2 hanggang 5 taon, dalawang-katlo mula 5 hanggang 10 taon, at buo mula 10 taon. Kung ang employer ang tumapos ng kontrata, buo ang matatanggap mo.",
+            ae: "Article 51 ng UAE Labour Law: pagkatapos ng hindi bababa sa isang taon ng serbisyo, 21 araw ng basic salary sa bawat isa sa unang limang taon at 30 araw ng basic salary sa bawat taon pagkatapos noon. Binibilang nang proporsyon ang bahagi ng taon. Hindi puwedeng lumampas sa dalawang taong sahod ang kabuuan. Hindi ito nababawasan kapag nag-resign.",
+            kw: "Article 51 ng Kuwait Labour Law No. 6 ng 2010: para sa may buwanang sahod, 15 araw na sahod sa bawat isa sa unang limang taon at isang buwang sahod sa bawat taon pagkatapos noon, hanggang 18 buwang sahod sa kabuuan. Kung nag-resign (Article 53): wala kung kulang sa 3 taon, kalahati mula 3 hanggang 5 taon, dalawang-katlo mula 5 hanggang 10 taon, at buo mula 10 taon.",
+            qa: "Article 54 ng Qatar Labour Law: pagkatapos ng hindi bababa sa isang taon ng serbisyo, hindi bababa sa tatlong linggong basic salary bawat taon, at proporsyon para sa bahagi ng taon. Puwedeng mas malaki ang ibigay ng kontrata mo. Walang upper limit at hindi ito nababawasan kapag nag-resign.",
+            om: "Article 61 ng Oman Labour Law (2023): hindi bababa sa isang buwang basic salary bawat taon ng serbisyo. Ang serbisyo bago ang 31 Hulyo 2023 ay binibilang sa lumang batas: 15 araw na sahod sa bawat isa sa unang tatlong taon, tapos isang buwan bawat taon pagkatapos. Papalitan ng savings fund para sa expats ang gratuity hindi lalampas sa 19 Hulyo 2027.",
+            bh: "Article 116 ng Bahrain Labour Law: pagkatapos ng hindi bababa sa isang taon ng serbisyo, 15 araw na sahod sa bawat isa sa unang tatlong taon at isang buwang sahod sa bawat taon pagkatapos noon. Mula 1 Marso 2024, ang bahaging naipon mula sa petsang iyon ay binabayaran ng Social Insurance Organization (SIO) sa halip na ng employer. Hindi ito nababawasan kapag nag-resign."
+          },
+          faqTitle: "Mga madalas itanong",
+          q1: "Sa basic salary ba o sa kabuuang sahod kinakalkula?",
+          a1: "Depende sa bansa. Ang Saudi Arabia at Kuwait ay gumagamit ng huling buong sahod, kasama ang fixed allowances gaya ng housing. Ang UAE, Qatar, Oman at Bahrain ay gumagamit ng basic salary. Makikita sa payslip o kontrata mo kung magkano ang basic.",
+          q2: "Mawawala ba ang benefit ko kapag nag-resign ako?",
+          a2: "Sa Saudi Arabia at Kuwait lang, at bahagi lang. Sa Saudi, wala kung kulang sa 2 taon, isang-katlo hanggang 5 taon at dalawang-katlo hanggang 10 taon. Sa Kuwait, wala kung kulang sa 3 taon, kalahati hanggang 5 taon at dalawang-katlo hanggang 10 taon. Sa UAE, Qatar, Oman at Bahrain, hindi ito nababawasan kapag nag-resign.",
+          q3: "Kailan ito dapat bayaran ng employer?",
+          a3: "Sa Saudi Arabia, sa loob ng isang linggo pagkatapos ng trabaho, o dalawang linggo kung nag-resign. Sa UAE, sa loob ng 14 na araw. Sa Qatar, hanggang sa susunod na working day. Sa Kuwait at Oman, kasama ng final settlement. Sa Bahrain, ang employer ang nagbabayad ng bahagi bago ang 1 Marso 2024 at kine-claim mo ang susunod na bahagi sa SIO.",
+          q4: "Puwede bang bawasan o hindi ibigay ng employer?",
+          a4: "Puwedeng ibawas ng employer ang perang talagang utang mo, gaya ng hindi pa bayad na loan. Kung tinanggal ka dahil sa seryosong pagkakamaling nakalista sa batas, puwedeng mawala ang benefit. Kung hindi ka sang-ayon sa final settlement, kontakin ang labour ministry ng bansa mo bago pumirma ng anuman.",
+          q5: "Eksakto ba ang halagang ito?",
+          a5: "Malapit na tantya ito batay sa batas. Puwedeng mag-iba ang tunay na halaga dahil sa kontrata mo, sa paraan ng pagbilang ng araw ng employer, unpaid leave o espesyal na kaso. Gamitin ito para suriin ang settlement na iniaalok sa iyo, at hilingin sa employer na ipakita ang kalkulasyon nila.",
+          disclaimer: "Nagbibigay ang calculator na ito ng tantya batay sa private-sector labour law ng bawat bansa. Hindi kasama ang trabaho sa gobyerno, domestic workers, free zones na may sariling patakaran gaya ng DIFC at ADGM, o espesyal na kaso. Puwedeng mas malaki ang ibigay ng kontrata mo. Para sa eksaktong halaga, kumpirmahin sa employer mo o sa opisyal na labour authority."
         }
       };
 

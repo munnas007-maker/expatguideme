@@ -1,0 +1,327 @@
+<!DOCTYPE html><html lang="tl" dir="ltr" data-page-lang="tl"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family monthly cost calculator | ExpatGuideME</title>
+  <meta name="description" content="Add up rent, school, bills and fees for your family in the Gulf, and see how much is left to save or send home each month.">
+  <meta name="google-adsense-account" content="ca-pub-4815162342890123">
+  <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4815162342890123" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://expatguideme.com/tl/family-cost.html">
+  <link rel="alternate" hreflang="en" href="https://expatguideme.com/family-cost.html">
+  <link rel="alternate" hreflang="ar" href="https://expatguideme.com/ar/family-cost.html">
+  <link rel="alternate" hreflang="hi" href="https://expatguideme.com/hi/family-cost.html">
+  <link rel="alternate" hreflang="ml" href="https://expatguideme.com/ml/family-cost.html">
+  <link rel="alternate" hreflang="ne" href="https://expatguideme.com/ne/family-cost.html">
+  <link rel="alternate" hreflang="ur" href="https://expatguideme.com/ur/family-cost.html">
+  <link rel="alternate" hreflang="bn" href="https://expatguideme.com/bn/family-cost.html">
+  <link rel="alternate" hreflang="tl" href="https://expatguideme.com/tl/family-cost.html">
+  <link rel="alternate" hreflang="x-default" href="https://expatguideme.com/family-cost.html">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <script>(function(){try{var t=localStorage.getItem('expatguideme_theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Cairo:wght@400;600;700&amp;family=Noto+Sans+Devanagari:wght@400;600;700&amp;family=Noto+Sans+Malayalam:wght@400;600;700&amp;family=Noto+Nastaliq+Urdu:wght@400;700&amp;family=Noto+Sans+Bengali:wght@400;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .fc { max-width: 960px; }
+    .grid2 { display: grid; grid-template-columns: 1.15fr 1fr; gap: 18px; align-items: start; }
+    .grid2 .card { margin-bottom: 0; }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+    .field { margin-bottom: 12px; }
+    .hint { font-size: 0.82rem; color: var(--muted); margin-top: 6px; }
+    .cost-title { font-size: 1.05rem; margin: 18px 0 10px; }
+    .result { position: sticky; top: 84px; }
+    .big { font-size: 1.9rem; font-weight: 800; color: var(--brand); line-height: 1.25; direction: ltr; unicode-bidi: isolate; }
+    .big.neg { color: #b42318; }
+    html[data-theme="dark"] .big.neg { color: #ff8a80; }
+    .facts { list-style: none; padding: 0; margin: 12px 0; }
+    .facts li { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-bottom: 1px dashed var(--line); font-size: 0.93rem; }
+    .facts .v { font-weight: 700; direction: ltr; unicode-bidi: isolate; }
+    .bars { margin-top: 10px; }
+    .bar { margin-bottom: 8px; font-size: 0.85rem; }
+    .bar .track { height: 8px; background: var(--bg); border-radius: 999px; overflow: hidden; margin-top: 3px; }
+    .bar .fill { height: 100%; background: var(--brand); border-radius: 999px; }
+    .muted { color: var(--muted); }
+    .tips { list-style: none; padding: 0; display: grid; gap: 10px; }
+    .tips li { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+    .tips li::before { content: "✓ "; color: var(--brand); font-weight: 800; }
+    .disclosure { font-size: 0.85rem; color: var(--muted); border-inline-start: 3px solid var(--line); padding-inline-start: 10px; margin: 18px 0; }
+    @media (max-width: 760px) { .grid2, .row2 { grid-template-columns: 1fr; } .result { position: static; } }
+  </style>
+
+</head>
+<body data-page="family" data-ads="auto">
+  <a class="skip-link" href="#main" data-s="skip">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="logo" href="/tl/">ExpatGuide<span>ME</span></a>
+      <nav class="site-nav" id="siteNav" aria-label="Main">
+        <a href="/tl/" data-s="navHome">Home</a>
+        <a href="/tl/exchange-rate.html" data-s="navExchange">Exchange rate</a>
+        <a href="/tl/send-money.html" data-s="navSend">Send money</a>
+        <a href="/tl/contact.html" data-s="navContact">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-menu">
+          <button type="button" class="icon-btn" id="langToggle" aria-haspopup="true" aria-expanded="false" aria-controls="langList" data-s-aria="language" aria-label="Language" title="Language">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg><span class="lang-current" id="langCurrent">English</span>
+          </button>
+          <div class="langs" id="langList" role="group" hidden="">
+            <button type="button" data-lang="en" lang="en">English</button>
+            <button type="button" data-lang="ar" lang="ar">العربية</button>
+            <button type="button" data-lang="hi" lang="hi">हिन्दी</button>
+            <button type="button" data-lang="ml" lang="ml">മലയാളം</button>
+            <button type="button" data-lang="ne" lang="ne">नेपाली</button>
+            <button type="button" data-lang="ur" lang="ur">اردو</button>
+            <button type="button" data-lang="bn" lang="bn">বাংলা</button>
+            <button type="button" data-lang="tl" lang="tl">Tagalog</button>
+          </div>
+        </div>
+        <button type="button" class="icon-btn" data-open-search="" data-s-aria="search" aria-label="Search" title="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg></button>
+        <button type="button" class="icon-btn" id="themeToggle"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></button>
+        <button type="button" class="icon-btn menu-btn" id="menuToggle" aria-controls="siteNav" aria-expanded="false"><svg class="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"></path></svg><svg class="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="wrap fc">
+      <h1 data-t="title">Family monthly cost calculator</h1>
+      <p class="lead" data-t="lead">Add up rent, school, bills and fees for your family in the Gulf, and see how much is left to save or send home each month.</p>
+
+      <div class="grid2">
+        <form class="card" id="fcForm" novalidate="">
+          <div class="row2">
+            <div>
+              <label class="field-label" for="country" data-t="countryLabel">I live in:</label>
+              <select id="country"></select>
+            </div>
+            <div>
+              <label class="field-label" for="home" data-t="homeLabel">I send savings home to</label>
+              <select id="home"></select>
+            </div>
+          </div>
+          <div class="row2">
+            <div>
+              <label class="field-label" for="income" id="incomeLabel"></label>
+              <input type="number" id="income" inputmode="decimal" min="0" step="any">
+            </div>
+            <div>
+              <label class="field-label" for="deps" data-t="depLabel">Family members on my residence (dependents)</label>
+              <input type="number" id="deps" inputmode="numeric" min="0" step="1" value="0">
+            </div>
+          </div>
+          <h2 class="cost-title" id="costsTitle"></h2>
+          <div id="costFields"></div>
+          <p class="hint" id="levyNote" data-t="levyNote" hidden="">Saudi Arabia charges SAR 400 a month for each dependent. We fill this in for you, and you can change it.</p>
+        </form>
+
+        <div class="card result" aria-live="polite">
+          <h2 data-t="resultTitle">Your month</h2>
+          <p class="muted" id="hint" data-t="hint">Enter your monthly income and costs to see the result.</p>
+          <div id="out" hidden="">
+            <div class="muted" data-t="leftLabel">Left to save</div>
+            <div class="big" id="left"></div>
+            <div class="muted" id="homeVal"></div>
+            <ul class="facts">
+              <li><span data-t="totalLabel">Total costs</span><span class="v" id="total"></span></li>
+              <li><span id="pct"></span><span></span></li>
+              <li><span id="year"></span><span></span></li>
+            </ul>
+            <p id="overMsg" class="muted" hidden=""></p>
+            <h3 style="font-size:0.95rem" data-t="breakdown">Where the money goes</h3>
+            <div class="bars" id="bars"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-slot" data-ad-slot="family-cost-top" data-t="ad">Advertisement</div>
+
+      <section aria-labelledby="tipsTitle">
+        <h2 id="tipsTitle" data-t="tipsTitle">Simple ways to save more</h2>
+        <ul class="tips"><li data-t="tip1">Pay school fees for the term or year if the school gives a discount.</li><li data-t="tip2">Compare transfer apps before you send money home. Small rate differences add up.</li><li data-t="tip3">Review phone and internet plans once a year. Many families pay for more than they use.</li></ul>
+      </section>
+
+      <section class="faq" id="faq" aria-labelledby="faqTitle">
+        <h2 id="faqTitle" data-t="faqTitle">Frequently asked questions</h2>
+        <details><summary data-t="q1">Is my data saved?</summary><div class="answer"><p data-t="a1">Your income and costs stay in your browser while the page is open. They are not sent to us.</p></div></details>
+        <details><summary data-t="q2">Why is the dependent fee filled only for Saudi Arabia?</summary><div class="answer"><p data-t="a2">Saudi Arabia charges a fixed monthly fee for each dependent. Other Gulf countries do not have the same monthly fee, so you can add any family costs under other costs.</p></div></details>
+        <details><summary data-t="q3">How is the home currency amount calculated?</summary><div class="answer"><p data-t="a3">We use today's market exchange rate. Your bank or transfer app will give a slightly lower rate, so check the send money page before you transfer.</p></div></details>
+      </section>
+
+      <div class="ad-slot" data-ad-slot="family-cost-bottom" data-t="ad">Advertisement</div>
+      <p class="disclosure" data-t="disclosure">This is a planning tool. Results depend on the numbers you enter. Exchange rates come from an international rate service and change every day.</p>
+      <p class="last-updated" data-updated="2026-11-13"></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <section class="newsletter" aria-labelledby="nlTitle">
+        <h2 id="nlTitle" data-s="nlTitle">Get new guides by email</h2>
+        <p data-s="nlText">One short email when we add a new tool or guide. No spam.</p>
+        <form class="nl-form" name="newsletter" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" data-ajax="" data-success="nlSuccess" novalidate="">
+          <input type="hidden" name="form-name" value="newsletter">
+          <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <label class="sr-only" for="nlEmail" data-s="nlEmail">Your email address</label>
+          <input id="nlEmail" type="email" name="email" required="" autocomplete="email" inputmode="email" data-s-ph="nlEmail" placeholder="Your email address">
+          <button type="submit" class="btn btn-primary" data-s="nlButton">Subscribe</button>
+          <p class="form-msg" role="alert" aria-live="polite"></p>
+        </form>
+        <div class="success-box" id="nlSuccess" tabindex="-1" role="status" hidden="">
+          <span class="check" aria-hidden="true">✓</span><span data-s="nlSuccess">Thank you! You're subscribed.</span>
+        </div>
+      </section>
+      <div class="footer-cols">
+        <div>
+          <h3 data-s="footerTools">Tools</h3>
+          <nav class="footer-links" aria-label="Tools">
+            <a href="/tl/exchange-rate.html" data-s="navExchange">Exchange rate</a>
+            <a href="/tl/send-money.html" data-s="navSend">Send money</a>
+            <a href="/tl/end-of-service.html" data-s="navEos">End of service</a>
+            <a href="/tl/id-residency.html" data-s="navId">ID &amp; residency</a>
+            <a href="/tl/family-cost.html" data-s="navFamily">Family cost</a>
+            <a href="/tl/embassy-services.html" data-s="navEmbassy">Embassy services</a>
+          </nav>
+        </div>
+        <div>
+          <h3 data-s="footerSite">Website</h3>
+          <nav class="footer-links" aria-label="Footer">
+            <a href="/tl/" data-s="navHome">Home</a>
+            <a href="/tl/about.html" data-s="navAbout">About us</a>
+            <a href="/tl/contact.html" data-s="navContact">Contact</a>
+            <a href="/tl/privacy.html" data-s="navPrivacy">Privacy</a>
+            <a href="/tl/terms.html" data-s="navTerms">Terms of use</a>
+            <a href="/tl/affiliate-disclosure.html" data-s="navAffiliate">Affiliate disclosure</a>
+          </nav>
+        </div>
+      </div>
+      <p class="disclaimer" data-s="disclaimer">This is an independent website. It is not connected to any government office or bank.</p>
+      <p class="credit"><a href="https://www.exchangerate-api.com">Rates By Exchange Rate API</a></p>
+    </div>
+  </footer>
+
+  <a class="fab-contact" href="/tl/contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg><span data-s="contactUs">Contact us</span></a>
+  <button type="button" class="to-top" id="toTop" data-s-aria="toTop" hidden="" aria-label="Back to top" title="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5M5 12l7-7 7 7"></path></svg></button>
+
+  <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookies" hidden="">
+    <p data-s="cookieText">We use your browser's storage to remember your language and settings. Our advertising partners, including Google, may use cookies to show ads.</p>
+    <a href="/tl/privacy.html" data-s="cookieLearn">Privacy policy</a>
+    <button type="button" class="btn btn-primary" id="cookieOk" data-s="cookieOk">OK</button>
+  </div>
+
+  <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-labelledby="searchTitle" hidden="">
+    <div class="search-box">
+      <div class="search-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+        <h2 id="searchTitle" class="sr-only" data-s="search">Search</h2>
+        <label class="sr-only" for="searchInput" data-s="search">Search</label>
+        <input type="search" id="searchInput" autocomplete="off" data-s-ph="searchPh" placeholder="Search tools and guides…">
+        <button type="button" class="icon-btn" id="searchClose" data-s-aria="close" aria-label="Close" title="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+      </div>
+      <ul class="search-results" id="searchResults"></ul>
+    </div>
+  </div>
+
+  <script src="/assets/site.js"></script>
+  <script>
+    (function () {
+      "use strict";
+      var U = {"en": {"title": "Family monthly cost calculator", "lead": "Add up rent, school, bills and fees for your family in the Gulf, and see how much is left to save or send home each month.", "countryLabel": "I live in:", "homeLabel": "I send savings home to", "incomeLabel": "Monthly income ({cur})", "depLabel": "Family members on my residence (dependents)", "costsTitle": "Monthly costs ({cur})", "rent": "Rent", "school": "School fees (monthly total)", "utilities": "Electricity, water, internet and phone", "groceries": "Food and groceries", "transport": "Transport and fuel", "health": "Medical and insurance", "levy": "Dependent fee", "other": "Other costs", "levyNote": "Saudi Arabia charges SAR 400 a month for each dependent. We fill this in for you, and you can change it.", "resultTitle": "Your month", "hint": "Enter your monthly income and costs to see the result.", "totalLabel": "Total costs", "leftLabel": "Left to save", "pct": "{p}% of your income goes to costs", "over": "You spend {amt} more than you earn each month.", "homeValue": "≈ {amt} at today's market rate", "yearLabel": "In one year you could save {amt}", "breakdown": "Where the money goes", "tipsTitle": "Simple ways to save more", "tip1": "Pay school fees for the term or year if the school gives a discount.", "tip2": "Compare transfer apps before you send money home. Small rate differences add up.", "tip3": "Review phone and internet plans once a year. Many families pay for more than they use.", "faqTitle": "Frequently asked questions", "q1": "Is my data saved?", "a1": "Your income and costs stay in your browser while the page is open. They are not sent to us.", "q2": "Why is the dependent fee filled only for Saudi Arabia?", "a2": "Saudi Arabia charges a fixed monthly fee for each dependent. Other Gulf countries do not have the same monthly fee, so you can add any family costs under other costs.", "q3": "How is the home currency amount calculated?", "a3": "We use today's market exchange rate. Your bank or transfer app will give a slightly lower rate, so check the send money page before you transfer.", "ad": "Advertisement", "disclosure": "This is a planning tool. Results depend on the numbers you enter. Exchange rates come from an international rate service and change every day."}, "ar": {"title": "حاسبة تكلفة العائلة الشهرية", "lead": "اجمع الإيجار والمدارس والفواتير والرسوم لعائلتك في الخليج، واعرف المبلغ المتبقي للادخار أو للتحويل إلى بلدك كل شهر.", "countryLabel": "أعيش في:", "homeLabel": "أحوّل مدخراتي إلى", "incomeLabel": "الدخل الشهري ({cur})", "depLabel": "أفراد العائلة على إقامتي (المرافقون)", "costsTitle": "التكاليف الشهرية ({cur})", "rent": "الإيجار", "school": "رسوم المدارس (المجموع الشهري)", "utilities": "الكهرباء والماء والإنترنت والهاتف", "groceries": "الطعام والمشتريات", "transport": "المواصلات والوقود", "health": "العلاج والتأمين", "levy": "رسوم المرافقين", "other": "تكاليف أخرى", "levyNote": "تفرض السعودية ٤٠٠ ريال شهريًا عن كل مرافق. نملؤها لك، ويمكنك تعديلها.", "resultTitle": "شهرك", "hint": "أدخل دخلك وتكاليفك الشهرية لترى النتيجة.", "totalLabel": "إجمالي التكاليف", "leftLabel": "المتبقي للادخار", "pct": "{p}٪ من دخلك يذهب إلى التكاليف", "over": "تنفق {amt} أكثر من دخلك كل شهر.", "homeValue": "≈ {amt} بسعر السوق اليوم", "yearLabel": "في سنة واحدة يمكنك ادخار {amt}", "breakdown": "أين تذهب الأموال", "tipsTitle": "طرق بسيطة لادخار المزيد", "tip1": "ادفع رسوم المدرسة للفصل أو السنة إذا منحت المدرسة خصمًا.", "tip2": "قارن تطبيقات التحويل قبل الإرسال، فالفروق الصغيرة في السعر تتراكم.", "tip3": "راجع باقات الهاتف والإنترنت مرة في السنة، فكثير من العائلات تدفع أكثر مما تستخدم.", "faqTitle": "الأسئلة الشائعة", "q1": "هل تُحفظ بياناتي؟", "a1": "يبقى دخلك وتكاليفك في متصفحك أثناء فتح الصفحة، ولا تُرسل إلينا.", "q2": "لماذا تُملأ رسوم المرافقين للسعودية فقط؟", "a2": "تفرض السعودية رسومًا شهرية ثابتة عن كل مرافق، ولا توجد الرسوم نفسها في دول الخليج الأخرى، ويمكنك إضافة أي تكاليف عائلية ضمن التكاليف الأخرى.", "q3": "كيف يُحسب المبلغ بعملة بلدي؟", "a3": "نستخدم سعر صرف السوق اليوم. يعطي البنك أو تطبيق التحويل سعرًا أقل قليلًا، فراجع صفحة تحويل الأموال قبل الإرسال.", "ad": "مساحة إعلانية", "disclosure": "هذه أداة للتخطيط، وتعتمد النتائج على الأرقام التي تدخلها. أسعار الصرف من خدمة دولية وتتغير يوميًا."}, "hi": {"title": "परिवार का मासिक ख़र्च कैलकुलेटर", "lead": "खाड़ी में अपने परिवार का किराया, स्कूल, बिल और फ़ीस जोड़ें, और देखें कि हर महीने बचत या घर भेजने के लिए कितना बचता है।", "countryLabel": "मैं यहाँ रहता/रहती हूँ:", "homeLabel": "मैं बचत यहाँ भेजता/भेजती हूँ", "incomeLabel": "मासिक आय ({cur})", "depLabel": "मेरे रेज़िडेंस पर परिवार के सदस्य (डिपेंडेंट)", "costsTitle": "मासिक ख़र्च ({cur})", "rent": "किराया", "school": "स्कूल फ़ीस (मासिक कुल)", "utilities": "बिजली, पानी, इंटरनेट और फ़ोन", "groceries": "खाना और राशन", "transport": "आना-जाना और ईंधन", "health": "इलाज और बीमा", "levy": "डिपेंडेंट फ़ीस", "other": "अन्य ख़र्च", "levyNote": "सऊदी अरब हर डिपेंडेंट के लिए SAR 400 महीना लेता है। हम यह भर देते हैं, आप इसे बदल सकते हैं।", "resultTitle": "आपका महीना", "hint": "नतीजा देखने के लिए मासिक आय और ख़र्च डालें।", "totalLabel": "कुल ख़र्च", "leftLabel": "बचत के लिए बचा", "pct": "आपकी आय का {p}% ख़र्च में जाता है", "over": "आप हर महीने आय से {amt} ज़्यादा ख़र्च करते हैं।", "homeValue": "≈ {amt} आज के मार्केट रेट पर", "yearLabel": "एक साल में आप {amt} बचा सकते हैं", "breakdown": "पैसा कहाँ जाता है", "tipsTitle": "ज़्यादा बचाने के आसान तरीक़े", "tip1": "अगर स्कूल छूट दे तो टर्म या साल की फ़ीस एक साथ दें।", "tip2": "घर पैसे भेजने से पहले ट्रांसफ़र ऐप्स की तुलना करें। छोटे रेट अंतर भी जुड़ते हैं।", "tip3": "साल में एक बार फ़ोन और इंटरनेट प्लान देखें। कई परिवार ज़रूरत से ज़्यादा भुगतान करते हैं।", "faqTitle": "अक्सर पूछे जाने वाले सवाल", "q1": "क्या मेरा डेटा सेव होता है?", "a1": "पेज खुला रहने तक आपकी आय और ख़र्च आपके ब्राउज़र में रहते हैं। ये हमें नहीं भेजे जाते।", "q2": "डिपेंडेंट फ़ीस सिर्फ़ सऊदी के लिए क्यों भरी जाती है?", "a2": "सऊदी अरब हर डिपेंडेंट के लिए तय मासिक फ़ीस लेता है। दूसरे खाड़ी देशों में ऐसी मासिक फ़ीस नहीं है, आप परिवार के ख़र्च 'अन्य ख़र्च' में जोड़ सकते हैं।", "q3": "घर की मुद्रा में रक़म कैसे निकलती है?", "a3": "हम आज का मार्केट रेट इस्तेमाल करते हैं। बैंक या ट्रांसफ़र ऐप थोड़ा कम रेट देंगे, इसलिए भेजने से पहले 'पैसे भेजें' पेज देखें।", "ad": "विज्ञापन", "disclosure": "यह योजना बनाने का टूल है। नतीजे आपके डाले गए नंबरों पर निर्भर हैं। एक्सचेंज रेट एक अंतरराष्ट्रीय सेवा से आते हैं और रोज़ बदलते हैं।"}, "ml": {"title": "കുടുംബത്തിന്റെ മാസച്ചെലവ് കാൽക്കുലേറ്റർ", "lead": "ഗൾഫിലെ കുടുംബത്തിന്റെ വാടക, സ്കൂൾ, ബില്ലുകൾ, ഫീസ് എന്നിവ കൂട്ടി, ഓരോ മാസവും സമ്പാദിക്കാനോ നാട്ടിലേക്ക് അയക്കാനോ എത്ര ബാക്കിയുണ്ടെന്ന് കാണൂ.", "countryLabel": "ഞാൻ താമസിക്കുന്നത്:", "homeLabel": "സമ്പാദ്യം അയക്കുന്നത്", "incomeLabel": "മാസവരുമാനം ({cur})", "depLabel": "എന്റെ റെസിഡൻസിലുള്ള കുടുംബാംഗങ്ങൾ (ഡിപെൻഡന്റുകൾ)", "costsTitle": "മാസച്ചെലവുകൾ ({cur})", "rent": "വാടക", "school": "സ്കൂൾ ഫീസ് (മാസത്തെ ആകെ)", "utilities": "വൈദ്യുതി, വെള്ളം, ഇന്റർനെറ്റ്, ഫോൺ", "groceries": "ഭക്ഷണവും പലചരക്കും", "transport": "യാത്രയും ഇന്ധനവും", "health": "ചികിത്സയും ഇൻഷുറൻസും", "levy": "ഡിപെൻഡന്റ് ഫീസ്", "other": "മറ്റ് ചെലവുകൾ", "levyNote": "സൗദി അറേബ്യ ഓരോ ഡിപെൻഡന്റിനും മാസം SAR 400 ഈടാക്കുന്നു. ഞങ്ങൾ ഇത് പൂരിപ്പിക്കും, നിങ്ങൾക്ക് മാറ്റാം.", "resultTitle": "നിങ്ങളുടെ മാസം", "hint": "ഫലം കാണാൻ മാസവരുമാനവും ചെലവുകളും നൽകുക.", "totalLabel": "ആകെ ചെലവ്", "leftLabel": "സമ്പാദിക്കാൻ ബാക്കി", "pct": "വരുമാനത്തിന്റെ {p}% ചെലവിലേക്ക് പോകുന്നു", "over": "ഓരോ മാസവും വരുമാനത്തേക്കാൾ {amt} കൂടുതൽ ചെലവാക്കുന്നു.", "homeValue": "≈ {amt} ഇന്നത്തെ മാർക്കറ്റ് നിരക്കിൽ", "yearLabel": "ഒരു വർഷത്തിൽ {amt} സമ്പാദിക്കാം", "breakdown": "പണം എവിടേക്ക് പോകുന്നു", "tipsTitle": "കൂടുതൽ സമ്പാദിക്കാനുള്ള ലളിതമായ വഴികൾ", "tip1": "സ്കൂൾ ഇളവ് നൽകുന്നുണ്ടെങ്കിൽ ടേം അല്ലെങ്കിൽ വർഷത്തെ ഫീസ് ഒരുമിച്ച് അടയ്ക്കുക.", "tip2": "നാട്ടിലേക്ക് പണം അയക്കുന്നതിന് മുമ്പ് ട്രാൻസ്ഫർ ആപ്പുകൾ താരതമ്യം ചെയ്യുക. ചെറിയ നിരക്ക് വ്യത്യാസങ്ങൾ കൂടിച്ചേരും.", "tip3": "വർഷത്തിൽ ഒരിക്കൽ ഫോൺ, ഇന്റർനെറ്റ് പ്ലാനുകൾ പരിശോധിക്കുക. പല കുടുംബങ്ങളും ഉപയോഗിക്കുന്നതിലും കൂടുതൽ അടയ്ക്കുന്നു.", "faqTitle": "പതിവ് ചോദ്യങ്ങൾ", "q1": "എന്റെ വിവരങ്ങൾ സേവ് ചെയ്യുമോ?", "a1": "പേജ് തുറന്നിരിക്കുന്നിടത്തോളം വരുമാനവും ചെലവുകളും നിങ്ങളുടെ ബ്രൗസറിൽ മാത്രം. ഞങ്ങൾക്ക് അയക്കില്ല.", "q2": "ഡിപെൻഡന്റ് ഫീസ് സൗദിക്ക് മാത്രം പൂരിപ്പിക്കുന്നത് എന്തുകൊണ്ട്?", "a2": "സൗദി അറേബ്യ ഓരോ ഡിപെൻഡന്റിനും നിശ്ചിത മാസ ഫീസ് ഈടാക്കുന്നു. മറ്റ് ഗൾഫ് രാജ്യങ്ങളിൽ ഇതുപോലുള്ള മാസ ഫീസ് ഇല്ല, കുടുംബച്ചെലവുകൾ 'മറ്റ് ചെലവുകളിൽ' ചേർക്കാം.", "q3": "നാട്ടിലെ കറൻസിയിലെ തുക എങ്ങനെ കണക്കാക്കുന്നു?", "a3": "ഇന്നത്തെ മാർക്കറ്റ് വിനിമയ നിരക്ക് ഉപയോഗിക്കുന്നു. ബാങ്കോ ട്രാൻസ്ഫർ ആപ്പോ അൽപം കുറഞ്ഞ നിരക്ക് നൽകും, അയക്കുന്നതിന് മുമ്പ് പണം അയക്കൽ പേജ് നോക്കുക.", "ad": "പരസ്യം", "disclosure": "ഇതൊരു പ്ലാനിംഗ് ടൂളാണ്. നിങ്ങൾ നൽകുന്ന സംഖ്യകൾ അനുസരിച്ചാണ് ഫലം. വിനിമയ നിരക്കുകൾ ഒരു അന്താരാഷ്ട്ര സേവനത്തിൽ നിന്നാണ്, ദിവസവും മാറും."}, "ne": {"title": "परिवारको मासिक खर्च क्यालकुलेटर", "lead": "खाडीमा परिवारको भाडा, स्कूल, बिल र शुल्क जोड्नुहोस्, र हरेक महिना बचत गर्न वा घर पठाउन कति बाँकी रहन्छ हेर्नुहोस्।", "countryLabel": "म यहाँ बस्छु:", "homeLabel": "म बचत यहाँ पठाउँछु", "incomeLabel": "मासिक आम्दानी ({cur})", "depLabel": "मेरो रेसिडेन्समा परिवारका सदस्य (आश्रित)", "costsTitle": "मासिक खर्च ({cur})", "rent": "भाडा", "school": "स्कूल शुल्क (मासिक जम्मा)", "utilities": "बिजुली, पानी, इन्टरनेट र फोन", "groceries": "खाना र किराना", "transport": "यातायात र इन्धन", "health": "उपचार र बीमा", "levy": "आश्रित शुल्क", "other": "अन्य खर्च", "levyNote": "साउदी अरबले हरेक आश्रितका लागि मासिक SAR 400 लिन्छ। हामी यो भरिदिन्छौं, तपाईं बदल्न सक्नुहुन्छ।", "resultTitle": "तपाईंको महिना", "hint": "नतिजा हेर्न मासिक आम्दानी र खर्च राख्नुहोस्।", "totalLabel": "कुल खर्च", "leftLabel": "बचतका लागि बाँकी", "pct": "तपाईंको आम्दानीको {p}% खर्चमा जान्छ", "over": "तपाईं हरेक महिना आम्दानीभन्दा {amt} बढी खर्च गर्नुहुन्छ।", "homeValue": "≈ {amt} आजको बजार दरमा", "yearLabel": "एक वर्षमा तपाईं {amt} बचत गर्न सक्नुहुन्छ", "breakdown": "पैसा कहाँ जान्छ", "tipsTitle": "धेरै बचत गर्ने सजिला उपाय", "tip1": "स्कूलले छुट दिए टर्म वा वर्षको शुल्क एकैपटक तिर्नुहोस्।", "tip2": "घर पैसा पठाउनुअघि ट्रान्सफर एपहरू तुलना गर्नुहोस्। सानो दर फरक पनि जोडिन्छ।", "tip3": "वर्षमा एक पटक फोन र इन्टरनेट प्लान जाँच्नुहोस्। धेरै परिवारले चाहिनेभन्दा बढी तिर्छन्।", "faqTitle": "धेरै सोधिने प्रश्नहरू", "q1": "के मेरो डाटा सेभ हुन्छ?", "a1": "पृष्ठ खुला रहुन्जेल तपाईंको आम्दानी र खर्च तपाईंकै ब्राउजरमा रहन्छ। हामीलाई पठाइँदैन।", "q2": "आश्रित शुल्क साउदीका लागि मात्र किन भरिन्छ?", "a2": "साउदी अरबले हरेक आश्रितका लागि निश्चित मासिक शुल्क लिन्छ। अरू खाडी देशमा यस्तो मासिक शुल्क छैन, परिवारका खर्च 'अन्य खर्च' मा थप्न सक्नुहुन्छ।", "q3": "घरको मुद्रामा रकम कसरी निकालिन्छ?", "a3": "हामी आजको बजार विनिमय दर प्रयोग गर्छौं। बैंक वा ट्रान्सफर एपले अलि कम दर दिन्छ, त्यसैले पठाउनुअघि पैसा पठाउने पृष्ठ हेर्नुहोस्।", "ad": "विज्ञापन", "disclosure": "यो योजना बनाउने टुल हो। नतिजा तपाईंले राखेका अंकमा भर पर्छ। विनिमय दर अन्तर्राष्ट्रिय सेवाबाट आउँछ र दैनिक बदलिन्छ।"}, "ur": {"title": "خاندان کا ماہانہ خرچ کیلکولیٹر", "lead": "خلیج میں اپنے خاندان کا کرایہ، اسکول، بل اور فیس جمع کریں، اور دیکھیں کہ ہر مہینے بچت یا گھر بھیجنے کے لیے کتنا بچتا ہے۔", "countryLabel": "میں یہاں رہتا/رہتی ہوں:", "homeLabel": "میں بچت یہاں بھیجتا/بھیجتی ہوں", "incomeLabel": "ماہانہ آمدنی ({cur})", "depLabel": "میری رہائش پر خاندان کے افراد (ڈیپنڈنٹس)", "costsTitle": "ماہانہ اخراجات ({cur})", "rent": "کرایہ", "school": "اسکول فیس (ماہانہ کل)", "utilities": "بجلی، پانی، انٹرنیٹ اور فون", "groceries": "کھانا اور راشن", "transport": "آمد و رفت اور ایندھن", "health": "علاج اور انشورنس", "levy": "ڈیپنڈنٹ فیس", "other": "دیگر اخراجات", "levyNote": "سعودی عرب ہر ڈیپنڈنٹ کے لیے ماہانہ SAR 400 لیتا ہے۔ ہم یہ بھر دیتے ہیں، آپ اسے بدل سکتے ہیں۔", "resultTitle": "آپ کا مہینہ", "hint": "نتیجہ دیکھنے کے لیے ماہانہ آمدنی اور اخراجات درج کریں۔", "totalLabel": "کل اخراجات", "leftLabel": "بچت کے لیے باقی", "pct": "آپ کی آمدنی کا {p}% اخراجات میں جاتا ہے", "over": "آپ ہر مہینے آمدنی سے {amt} زیادہ خرچ کرتے ہیں۔", "homeValue": "≈ {amt} آج کے مارکیٹ ریٹ پر", "yearLabel": "ایک سال میں آپ {amt} بچا سکتے ہیں", "breakdown": "پیسہ کہاں جاتا ہے", "tipsTitle": "زیادہ بچت کے آسان طریقے", "tip1": "اگر اسکول رعایت دے تو ٹرم یا سال کی فیس ایک ساتھ ادا کریں۔", "tip2": "گھر رقم بھیجنے سے پہلے ٹرانسفر ایپس کا موازنہ کریں۔ چھوٹے ریٹ فرق بھی جمع ہو جاتے ہیں۔", "tip3": "سال میں ایک بار فون اور انٹرنیٹ پلان دیکھیں۔ کئی خاندان ضرورت سے زیادہ ادا کرتے ہیں۔", "faqTitle": "اکثر پوچھے جانے والے سوالات", "q1": "کیا میرا ڈیٹا محفوظ ہوتا ہے؟", "a1": "صفحہ کھلا رہنے تک آپ کی آمدنی اور اخراجات آپ کے براؤزر میں رہتے ہیں۔ یہ ہمیں نہیں بھیجے جاتے۔", "q2": "ڈیپنڈنٹ فیس صرف سعودی عرب کے لیے کیوں بھری جاتی ہے؟", "a2": "سعودی عرب ہر ڈیپنڈنٹ کے لیے مقررہ ماہانہ فیس لیتا ہے۔ دوسرے خلیجی ممالک میں ایسی ماہانہ فیس نہیں، خاندان کے اخراجات 'دیگر اخراجات' میں شامل کر سکتے ہیں۔", "q3": "گھر کی کرنسی میں رقم کیسے نکالی جاتی ہے؟", "a3": "ہم آج کا مارکیٹ ریٹ استعمال کرتے ہیں۔ بینک یا ٹرانسفر ایپ تھوڑا کم ریٹ دیں گے، اس لیے بھیجنے سے پہلے رقم بھیجنے کا صفحہ دیکھیں۔", "ad": "اشتہار", "disclosure": "یہ منصوبہ بندی کا ٹول ہے۔ نتائج آپ کے درج کیے گئے نمبروں پر منحصر ہیں۔ ایکسچینج ریٹ ایک بین الاقوامی سروس سے آتے ہیں اور روز بدلتے ہیں۔"}, "bn": {"title": "পরিবারের মাসিক খরচ ক্যালকুলেটর", "lead": "উপসাগরীয় দেশে পরিবারের ভাড়া, স্কুল, বিল ও ফি যোগ করুন, আর দেখুন প্রতি মাসে সঞ্চয় বা দেশে পাঠানোর জন্য কত টাকা থাকে।", "countryLabel": "আমি থাকি:", "homeLabel": "আমি সঞ্চয় পাঠাই", "incomeLabel": "মাসিক আয় ({cur})", "depLabel": "আমার রেসিডেন্সে পরিবারের সদস্য (ডিপেন্ডেন্ট)", "costsTitle": "মাসিক খরচ ({cur})", "rent": "ভাড়া", "school": "স্কুল ফি (মাসিক মোট)", "utilities": "বিদ্যুৎ, পানি, ইন্টারনেট ও ফোন", "groceries": "খাবার ও বাজার", "transport": "যাতায়াত ও জ্বালানি", "health": "চিকিৎসা ও বিমা", "levy": "ডিপেন্ডেন্ট ফি", "other": "অন্যান্য খরচ", "levyNote": "সৌদি আরব প্রতিজন ডিপেন্ডেন্টের জন্য মাসে SAR 400 নেয়। আমরা এটি পূরণ করে দিই, আপনি বদলাতে পারেন।", "resultTitle": "আপনার মাস", "hint": "ফলাফল দেখতে মাসিক আয় ও খরচ লিখুন।", "totalLabel": "মোট খরচ", "leftLabel": "সঞ্চয়ের জন্য বাকি", "pct": "আপনার আয়ের {p}% খরচে যায়", "over": "আপনি প্রতি মাসে আয়ের চেয়ে {amt} বেশি খরচ করছেন।", "homeValue": "≈ {amt} আজকের মার্কেট রেটে", "yearLabel": "এক বছরে আপনি {amt} সঞ্চয় করতে পারেন", "breakdown": "টাকা কোথায় যায়", "tipsTitle": "বেশি সঞ্চয়ের সহজ উপায়", "tip1": "স্কুল ছাড় দিলে টার্ম বা বছরের ফি একসাথে দিন।", "tip2": "দেশে টাকা পাঠানোর আগে ট্রান্সফার অ্যাপগুলো তুলনা করুন। ছোট রেটের পার্থক্যও জমে বড় হয়।", "tip3": "বছরে একবার ফোন ও ইন্টারনেট প্ল্যান দেখে নিন। অনেক পরিবার প্রয়োজনের চেয়ে বেশি দেয়।", "faqTitle": "সাধারণ প্রশ্ন", "q1": "আমার তথ্য কি সংরক্ষণ হয়?", "a1": "পেজ খোলা থাকা পর্যন্ত আপনার আয় ও খরচ শুধু আপনার ব্রাউজারে থাকে। আমাদের কাছে পাঠানো হয় না।", "q2": "ডিপেন্ডেন্ট ফি শুধু সৌদির জন্য কেন পূরণ হয়?", "a2": "সৌদি আরব প্রতিজন ডিপেন্ডেন্টের জন্য নির্দিষ্ট মাসিক ফি নেয়। অন্য উপসাগরীয় দেশে এমন মাসিক ফি নেই, পরিবারের খরচ 'অন্যান্য খরচ'-এ যোগ করতে পারেন।", "q3": "দেশের মুদ্রায় পরিমাণ কীভাবে হিসাব হয়?", "a3": "আমরা আজকের মার্কেট বিনিময় হার ব্যবহার করি। ব্যাংক বা ট্রান্সফার অ্যাপ একটু কম রেট দেবে, তাই পাঠানোর আগে টাকা পাঠানোর পেজটি দেখুন।", "ad": "বিজ্ঞাপন", "disclosure": "এটি একটি পরিকল্পনার টুল। ফলাফল আপনার দেওয়া সংখ্যার ওপর নির্ভর করে। বিনিময় হার একটি আন্তর্জাতিক সেবা থেকে আসে এবং প্রতিদিন বদলায়।"}, "tl": {"title": "Calculator ng buwanang gastos ng pamilya", "lead": "Pagsamahin ang upa, school, bills at fees ng pamilya mo sa Gulf, at tingnan kung magkano ang natitira para ipunin o ipadala pauwi bawat buwan.", "countryLabel": "Nakatira ako sa:", "homeLabel": "Ipinapadala ko ang ipon sa", "incomeLabel": "Buwanang kita ({cur})", "depLabel": "Mga miyembro ng pamilya sa residency ko (dependents)", "costsTitle": "Buwanang gastos ({cur})", "rent": "Upa", "school": "School fees (kabuuan bawat buwan)", "utilities": "Kuryente, tubig, internet at phone", "groceries": "Pagkain at grocery", "transport": "Pamasahe at gasolina", "health": "Gamot at insurance", "levy": "Dependent fee", "other": "Iba pang gastos", "levyNote": "Naniningil ang Saudi Arabia ng SAR 400 bawat buwan para sa bawat dependent. Kami na ang naglalagay nito, at puwede mo itong baguhin.", "resultTitle": "Ang buwan mo", "hint": "Ilagay ang buwanang kita at gastos mo para makita ang resulta.", "totalLabel": "Kabuuang gastos", "leftLabel": "Natitira para ipunin", "pct": "{p}% ng kita mo ay napupunta sa gastos", "over": "Gumagastos ka ng {amt} nang higit sa kinikita mo bawat buwan.", "homeValue": "≈ {amt} sa market rate ngayon", "yearLabel": "Sa isang taon, puwede kang makaipon ng {amt}", "breakdown": "Saan napupunta ang pera", "tipsTitle": "Simpleng paraan para makaipon pa", "tip1": "Bayaran ang school fees para sa buong term o taon kung may discount ang school.", "tip2": "Ikumpara ang remittance apps bago magpadala pauwi. Nadadagdagan ang maliliit na diperensya sa rate.", "tip3": "Suriin ang phone at internet plans minsan sa isang taon. Maraming pamilya ang nagbabayad nang higit sa kailangan nila.", "faqTitle": "Mga madalas itanong", "q1": "Sine-save ba ang data ko?", "a1": "Nananatili lang sa browser mo ang kita at gastos habang bukas ang page. Hindi ito ipinapadala sa amin.", "q2": "Bakit sa Saudi lang naglalagay ng dependent fee?", "a2": "Naniningil ang Saudi Arabia ng takdang buwanang fee para sa bawat dependent. Walang ganitong buwanang fee sa ibang bansa sa Gulf, kaya puwede mong idagdag ang gastos ng pamilya sa iba pang gastos.", "q3": "Paano kinakalkula ang halaga sa pera ng sariling bansa?", "a3": "Ginagamit namin ang market exchange rate ngayon. Medyo mas mababa ang ibibigay ng bangko o remittance app, kaya tingnan ang page ng pagpapadala ng pera bago mag-transfer.", "ad": "Advertisement", "disclosure": "Ito ay tool sa pagpaplano. Nakadepende ang resulta sa mga numerong ilalagay mo. Galing sa isang international service ang exchange rates at nagbabago araw-araw."}};
+      var SOURCES = [{"code": "sa", "cur": "SAR", "flag": "🇸🇦", "dec": 2, "n": {"en": "Saudi Arabia", "ar": "السعودية", "hi": "सऊदी अरब", "ml": "സൗദി അറേബ്യ", "ne": "साउदी अरब", "ur": "سعودی عرب", "bn": "সৌদি আরব", "tl": "Saudi Arabia"}}, {"code": "ae", "cur": "AED", "flag": "🇦🇪", "dec": 2, "n": {"en": "UAE", "ar": "الإمارات", "hi": "यूएई", "ml": "യുഎഇ", "ne": "युएई", "ur": "امارات", "bn": "সংযুক্ত আরব আমিরাত", "tl": "UAE"}}, {"code": "kw", "cur": "KWD", "flag": "🇰🇼", "dec": 3, "n": {"en": "Kuwait", "ar": "الكويت", "hi": "कुवैत", "ml": "കുവൈത്ത്", "ne": "कुवेत", "ur": "کویت", "bn": "কুয়েত", "tl": "Kuwait"}}, {"code": "qa", "cur": "QAR", "flag": "🇶🇦", "dec": 2, "n": {"en": "Qatar", "ar": "قطر", "hi": "क़तर", "ml": "ഖത്തർ", "ne": "कतार", "ur": "قطر", "bn": "কাতার", "tl": "Qatar"}}, {"code": "om", "cur": "OMR", "flag": "🇴🇲", "dec": 3, "n": {"en": "Oman", "ar": "عُمان", "hi": "ओमान", "ml": "ഒമാൻ", "ne": "ओमान", "ur": "عمان", "bn": "ওমান", "tl": "Oman"}}, {"code": "bh", "cur": "BHD", "flag": "🇧🇭", "dec": 3, "n": {"en": "Bahrain", "ar": "البحرين", "hi": "बहरीन", "ml": "ബഹ്‌റൈൻ", "ne": "बहराइन", "ur": "بحرین", "bn": "বাহরাইন", "tl": "Bahrain"}}];
+      var DESTS = [{"code": "in", "cur": "INR", "flag": "🇮🇳", "n": {"en": "India", "ar": "الهند", "hi": "भारत", "ml": "ഇന്ത്യ", "ne": "भारत", "ur": "بھارت", "bn": "ভারত", "tl": "India"}}, {"code": "bd", "cur": "BDT", "flag": "🇧🇩", "n": {"en": "Bangladesh", "ar": "بنغلاديش", "hi": "बांग्लादेश", "ml": "ബംഗ്ലാദേശ്", "ne": "बंगलादेश", "ur": "بنگلہ دیش", "bn": "বাংলাদেশ", "tl": "Bangladesh"}}, {"code": "ph", "cur": "PHP", "flag": "🇵🇭", "n": {"en": "Philippines", "ar": "الفلبين", "hi": "फ़िलीपींस", "ml": "ഫിലിപ്പീൻസ്", "ne": "फिलिपिन्स", "ur": "فلپائن", "bn": "ফিলিপাইন", "tl": "Pilipinas"}}, {"code": "pk", "cur": "PKR", "flag": "🇵🇰", "n": {"en": "Pakistan", "ar": "باكستان", "hi": "पाकिस्तान", "ml": "പാകിസ്ഥാൻ", "ne": "पाकिस्तान", "ur": "پاکستان", "bn": "পাকিস্তান", "tl": "Pakistan"}}, {"code": "np", "cur": "NPR", "flag": "🇳🇵", "n": {"en": "Nepal", "ar": "نيبال", "hi": "नेपाल", "ml": "നേപ്പാൾ", "ne": "नेपाल", "ur": "نیپال", "bn": "নেপাল", "tl": "Nepal"}}, {"code": "lk", "cur": "LKR", "flag": "🇱🇰", "n": {"en": "Sri Lanka", "ar": "سريلانكا", "hi": "श्रीलंका", "ml": "ശ്രീലങ്ക", "ne": "श्रीलंका", "ur": "سری لنکا", "bn": "শ্রীলঙ্কা", "tl": "Sri Lanka"}}, {"code": "id", "cur": "IDR", "flag": "🇮🇩", "n": {"en": "Indonesia", "ar": "إندونيسيا", "hi": "इंडोनेशिया", "ml": "ഇന്തോനേഷ്യ", "ne": "इन्डोनेसिया", "ur": "انڈونیشیا", "bn": "ইন্দোনেশিয়া", "tl": "Indonesia"}}, {"code": "eg", "cur": "EGP", "flag": "🇪🇬", "n": {"en": "Egypt", "ar": "مصر", "hi": "मिस्र", "ml": "ഈജിപ്ത്", "ne": "इजिप्ट", "ur": "مصر", "bn": "মিশর", "tl": "Ehipto"}}];
+      var LINES = ["rent", "school", "utilities", "groceries", "transport", "health", "levy", "other"];
+      var LEVY_SAR = 400;
+      var PREF_KEY = "expatguideme_family_v1";
+      var MKT_KEY = "expatguideme_mkt_v1";
+      var state = { country: "sa", home: "in", levyTouched: false, rates: null };
+      try { var p = JSON.parse(localStorage.getItem(PREF_KEY) || "null"); if (p) { if (SOURCES.some(function (s) { return s.code === p.country; })) state.country = p.country; if (DESTS.some(function (d) { return d.code === p.home; })) state.home = p.home; } } catch (e) {}
+
+      function $(id) { return document.getElementById(id); }
+      function lang() { return window.ExpatSite.lang(); }
+      function L(k) { var d = U[lang()] || U.en; return d[k] != null ? d[k] : U.en[k]; }
+      function fill(str, v) { return String(str).replace(/\{(\w+)\}/g, function (m, k) { return v[k] != null ? v[k] : m; }); }
+      function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+      function src() { return SOURCES.filter(function (s) { return s.code === state.country; })[0]; }
+      function dst() { return DESTS.filter(function (d) { return d.code === state.home; })[0]; }
+      function num(id) { var v = parseFloat($(id).value); return isFinite(v) && v > 0 ? v : 0; }
+      function money(v, cur, dec) { return cur + " " + Number(v).toLocaleString("en-US", { minimumFractionDigits: dec, maximumFractionDigits: dec }); }
+      function save() { try { localStorage.setItem(PREF_KEY, JSON.stringify({ country: state.country, home: state.home })); } catch (e) {} }
+
+      LINES.forEach(function (k) {
+        var wrap = el("div", "field");
+        var lab = el("label", "field-label"); lab.setAttribute("for", "c_" + k); lab.setAttribute("data-t", k);
+        var inp = el("input"); inp.type = "number"; inp.id = "c_" + k; inp.min = "0"; inp.step = "any"; inp.setAttribute("inputmode", "decimal");
+        wrap.appendChild(lab); wrap.appendChild(inp); $("costFields").appendChild(wrap);
+        inp.addEventListener("input", function () { if (k === "levy") state.levyTouched = true; calc(); });
+      });
+
+      function loadRates() {
+        try { var c = JSON.parse(localStorage.getItem(MKT_KEY) || "null"); if (c && c.rates && Date.now() - c.saved < 6 * 3600000) { state.rates = c.rates; calc(); return; } } catch (e) {}
+        fetch("https://open.er-api.com/v6/latest/USD").then(function (r) { return r.json(); }).then(function (d) {
+          if (d && d.result === "success") { state.rates = d.rates; try { localStorage.setItem(MKT_KEY, JSON.stringify({ rates: d.rates, at: d.time_last_update_unix * 1000, saved: Date.now() })); } catch (e) {} calc(); }
+        }).catch(function () {});
+      }
+
+      function levyRow() {
+        var isSa = state.country === "sa";
+        $("c_levy").parentNode.hidden = !isSa;
+        $("levyNote").hidden = !isSa;
+        if (isSa && !state.levyTouched) $("c_levy").value = String(Math.floor(num("deps")) * LEVY_SAR);
+        if (!isSa) $("c_levy").value = "";
+      }
+
+      function calc() {
+        var s = src(), d = dst();
+        var income = num("income");
+        var costs = LINES.map(function (k) { return { k: k, v: num("c_" + k) }; });
+        var total = costs.reduce(function (a, c) { return a + c.v; }, 0);
+        if (income <= 0) { $("out").hidden = true; $("hint").hidden = false; return; }
+        $("out").hidden = false; $("hint").hidden = true;
+        var left = income - total;
+        $("left").textContent = money(left, s.cur, s.dec);
+        $("left").className = "big" + (left < 0 ? " neg" : "");
+        $("total").textContent = money(total, s.cur, s.dec);
+        $("pct").textContent = fill(L("pct"), { p: Math.round((total / income) * 100) });
+        $("year").textContent = fill(L("yearLabel"), { amt: "⁦" + money(Math.max(0, left) * 12, s.cur, s.dec) + "⁩" });
+        $("overMsg").hidden = left >= 0;
+        $("overMsg").textContent = left < 0 ? fill(L("over"), { amt: "⁦" + money(-left, s.cur, s.dec) + "⁩" }) : "";
+        if (state.rates && state.rates[s.cur] && state.rates[d.cur] && left > 0) {
+          var v = left * state.rates[d.cur] / state.rates[s.cur];
+          $("homeVal").textContent = fill(L("homeValue"), { amt: "⁦" + money(v, d.cur, 0) + "⁩" });
+        } else { $("homeVal").textContent = ""; }
+        var bars = $("bars"); bars.innerHTML = "";
+        var max = Math.max.apply(null, costs.map(function (c) { return c.v; }).concat([1]));
+        costs.filter(function (c) { return c.v > 0; }).sort(function (a, b) { return b.v - a.v; }).forEach(function (c) {
+          var row = el("div", "bar");
+          var top = el("div"); top.appendChild(el("span", null, L(c.k) + ": ")); var vv = el("strong", null, money(c.v, s.cur, s.dec)); vv.dir = "ltr"; top.appendChild(vv);
+          var tr = el("div", "track"), fl = el("div", "fill"); fl.style.width = Math.round((c.v / max) * 100) + "%"; tr.appendChild(fl);
+          row.appendChild(top); row.appendChild(tr); bars.appendChild(row);
+        });
+      }
+
+      function render() {
+        document.querySelectorAll("[data-t]").forEach(function (n) { n.textContent = L(n.getAttribute("data-t")) || ""; });
+        var cs = $("country"), hs = $("home"); cs.innerHTML = ""; hs.innerHTML = "";
+        SOURCES.forEach(function (s) { var o = el("option", null, s.flag + " " + (s.n[lang()] || s.n.en)); o.value = s.code; cs.appendChild(o); });
+        DESTS.forEach(function (d) { var o = el("option", null, d.flag + " " + (d.n[lang()] || d.n.en) + " (" + d.cur + ")"); o.value = d.code; hs.appendChild(o); });
+        cs.value = state.country; hs.value = state.home;
+        $("incomeLabel").textContent = fill(L("incomeLabel"), { cur: src().cur });
+        $("costsTitle").textContent = fill(L("costsTitle"), { cur: src().cur });
+        levyRow(); calc();
+      }
+
+      $("country").addEventListener("change", function () { state.country = this.value; state.levyTouched = false; save(); render(); });
+      $("home").addEventListener("change", function () { state.home = this.value; save(); calc(); });
+      $("income").addEventListener("input", calc);
+      $("deps").addEventListener("input", function () { levyRow(); calc(); });
+      $("fcForm").addEventListener("submit", function (e) { e.preventDefault(); });
+      window.ExpatSite.onLang(render);
+      loadRates();
+    })();
+  </script>
+
+
+</body></html>

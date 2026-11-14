@@ -22,9 +22,9 @@ SRC = os.path.join(ROOT, "_src", "pages")
 SITE_URL = "https://expatguideme.com"
 
 # Languages. English lives at the root; every other language gets its own folder
-# (/ar/, /hi/, /ml/, /ne/, /ur/, /bn/) built by _src/prerender.cjs.
-LANGS = ["en", "ar", "hi", "ml", "ne", "ur", "bn"]
-HREFLANG = {"en": "en", "ar": "ar", "hi": "hi", "ml": "ml", "ne": "ne", "ur": "ur", "bn": "bn"}
+# (/ar/, /hi/, /ml/, /ne/, /ur/, /bn/, /tl/) built by _src/prerender.cjs.
+LANGS = ["en", "ar", "hi", "ml", "ne", "ur", "bn", "tl"]
+HREFLANG = {"en": "en", "ar": "ar", "hi": "hi", "ml": "ml", "ne": "ne", "ur": "ur", "bn": "bn", "tl": "tl"}
 
 # Google AdSense
 ADSENSE_CLIENT = "ca-pub-4815162342890123"
@@ -125,6 +125,7 @@ def header(active):
             <button type="button" data-lang="ne" lang="ne">नेपाली</button>
             <button type="button" data-lang="ur" lang="ur">اردو</button>
             <button type="button" data-lang="bn" lang="bn">বাংলা</button>
+            <button type="button" data-lang="tl" lang="tl">Tagalog</button>
           </div>
         </div>
         <button type="button" class="icon-btn" data-open-search data-s-aria="search">{ICON["search"]}</button>

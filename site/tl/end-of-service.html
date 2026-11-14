@@ -1,0 +1,1071 @@
+<!DOCTYPE html><html lang="tl" dir="ltr" data-page-lang="tl"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>End-of-service benefit calculator | ExpatGuideME</title>
+  <meta name="description" content="Estimate the gratuity you should receive when your job ends in Saudi Arabia, the UAE, Kuwait, Qatar, Oman or Bahrain. Choose your country, enter your salary…">
+  <meta name="google-adsense-account" content="ca-pub-4815162342890123">
+  <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4815162342890123" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://expatguideme.com/tl/end-of-service.html">
+  <link rel="alternate" hreflang="en" href="https://expatguideme.com/end-of-service.html">
+  <link rel="alternate" hreflang="ar" href="https://expatguideme.com/ar/end-of-service.html">
+  <link rel="alternate" hreflang="hi" href="https://expatguideme.com/hi/end-of-service.html">
+  <link rel="alternate" hreflang="ml" href="https://expatguideme.com/ml/end-of-service.html">
+  <link rel="alternate" hreflang="ne" href="https://expatguideme.com/ne/end-of-service.html">
+  <link rel="alternate" hreflang="ur" href="https://expatguideme.com/ur/end-of-service.html">
+  <link rel="alternate" hreflang="bn" href="https://expatguideme.com/bn/end-of-service.html">
+  <link rel="alternate" hreflang="tl" href="https://expatguideme.com/tl/end-of-service.html">
+  <link rel="alternate" hreflang="x-default" href="https://expatguideme.com/end-of-service.html">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <script>(function(){try{var t=localStorage.getItem('expatguideme_theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Cairo:wght@400;600;700&amp;family=Noto+Sans+Devanagari:wght@400;600;700&amp;family=Noto+Sans+Malayalam:wght@400;600;700&amp;family=Noto+Nastaliq+Urdu:wght@400;700&amp;family=Noto+Sans+Bengali:wght@400;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .eos { max-width: 960px; }
+    .country-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 18px; }
+    .country-tabs button, .seg button {
+      font: inherit; font-weight: 600; font-size: 0.95rem; padding: 8px 16px; border-radius: 999px; cursor: pointer;
+      border: 1px solid var(--line); background: var(--card); color: var(--ink);
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+    .country-tabs button:hover, .seg button:hover { border-color: var(--brand); color: var(--brand); }
+    .country-tabs button[aria-pressed="true"], .seg button[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: var(--on-brand); }
+    .seg { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .seg button { font-size: 0.9rem; padding: 7px 14px; }
+    .group-label { font-weight: 600; color: var(--muted); font-size: 0.9rem; margin-bottom: 8px; }
+
+    .calc-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 18px; align-items: start; }
+    .calc-grid .card { margin-bottom: 0; }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+    .field { margin-bottom: 14px; }
+    .hint { font-size: 0.82rem; color: var(--muted); margin-top: 6px; }
+    input[type="date"] {
+      width: 100%; font: inherit; font-size: 1rem; color: var(--ink); background: var(--card);
+      border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s; min-height: 46px;
+    }
+    html[data-theme="dark"] input[type="date"] { color-scheme: dark; }
+    .error { color: #b42318; font-weight: 600; font-size: 0.9rem; margin-top: 4px; }
+    html[data-theme="dark"] .error { color: #ff8a80; }
+
+    .result { position: sticky; top: 84px; }
+    .result h2 { margin-bottom: 10px; }
+    .total-box { background: var(--brand-soft); border: 1px solid var(--line); border-radius: 14px; padding: 16px; margin-bottom: 14px; }
+    .total-label { font-size: 0.85rem; font-weight: 700; color: var(--muted); }
+    .total { font-size: 2rem; font-weight: 800; color: var(--brand); line-height: 1.2; margin-top: 4px; word-break: break-word; }
+    .facts { list-style: none; margin: 0 0 12px; padding: 0; }
+    .facts li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px dashed var(--line); font-size: 0.93rem; }
+    .facts li:last-child { border-bottom: none; }
+    .facts .k { color: var(--muted); }
+    .facts .v { font-weight: 700; text-align: end; }
+    .notes { list-style: none; padding: 0; margin: 0 0 14px; }
+    .notes li { font-size: 0.88rem; background: var(--warn-bg); color: var(--warn-ink); border-radius: 10px; padding: 9px 12px; margin-bottom: 8px; }
+    .result-empty { color: var(--muted); }
+    .result .btn { width: 100%; }
+
+    .rule-card h2 { font-size: 1.2rem; }
+    .rule-card p { margin-bottom: 10px; }
+    .official { font-weight: 600; }
+    .disclosure { font-size: 0.85rem; color: var(--muted); border-inline-start: 3px solid var(--line); padding-inline-start: 10px; margin: 18px 0; }
+
+    @media (max-width: 760px) {
+      .calc-grid { grid-template-columns: 1fr; }
+      .result { position: static; }
+      .total { font-size: 1.7rem; }
+    }
+    @media print {
+      .country-tabs, .seg { display: none !important; }
+      .result { position: static; }
+    }
+  </style>
+
+</head>
+<body data-page="eos" data-ads="auto">
+  <a class="skip-link" href="#main" data-s="skip">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="logo" href="/tl/">ExpatGuide<span>ME</span></a>
+      <nav class="site-nav" id="siteNav" aria-label="Main">
+        <a href="/tl/" data-s="navHome">Home</a>
+        <a href="/tl/exchange-rate.html" data-s="navExchange">Exchange rate</a>
+        <a href="/tl/send-money.html" data-s="navSend">Send money</a>
+        <a href="/tl/contact.html" data-s="navContact">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-menu">
+          <button type="button" class="icon-btn" id="langToggle" aria-haspopup="true" aria-expanded="false" aria-controls="langList" data-s-aria="language" aria-label="Language" title="Language">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg><span class="lang-current" id="langCurrent">English</span>
+          </button>
+          <div class="langs" id="langList" role="group" hidden="">
+            <button type="button" data-lang="en" lang="en">English</button>
+            <button type="button" data-lang="ar" lang="ar">العربية</button>
+            <button type="button" data-lang="hi" lang="hi">हिन्दी</button>
+            <button type="button" data-lang="ml" lang="ml">മലയാളം</button>
+            <button type="button" data-lang="ne" lang="ne">नेपाली</button>
+            <button type="button" data-lang="ur" lang="ur">اردو</button>
+            <button type="button" data-lang="bn" lang="bn">বাংলা</button>
+            <button type="button" data-lang="tl" lang="tl">Tagalog</button>
+          </div>
+        </div>
+        <button type="button" class="icon-btn" data-open-search="" data-s-aria="search" aria-label="Search" title="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg></button>
+        <button type="button" class="icon-btn" id="themeToggle"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></button>
+        <button type="button" class="icon-btn menu-btn" id="menuToggle" aria-controls="siteNav" aria-expanded="false"><svg class="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"></path></svg><svg class="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="wrap eos">
+      <h1 data-t="title">End-of-service benefit calculator</h1>
+      <p class="lead" data-t="lead">Estimate the gratuity you should receive when your job ends in Saudi Arabia, the UAE, Kuwait, Qatar, Oman or Bahrain. Choose your country, enter your salary and service, and see the amount with the rule behind it.</p>
+
+      <div class="ad-slot" data-ad-slot="end-of-service-top" data-t="ad">Advertisement</div>
+
+      <section aria-labelledby="calcTitle">
+        <h2 id="calcTitle" data-t="calcTitle">Calculate your end-of-service benefit</h2>
+        <p class="group-label" id="countryLabel" data-t="countryLabel">I work in:</p>
+        <div class="country-tabs" id="countryTabs" role="group" aria-labelledby="countryLabel"></div>
+
+        <div class="calc-grid">
+          <form class="card" id="eosForm" novalidate="">
+            <p class="group-label" id="reasonLabel" data-t="reasonLabel">How is your job ending?</p>
+            <div class="seg" id="reasonSeg" role="group" aria-labelledby="reasonLabel">
+              <button type="button" data-reason="end" data-t="reasonEnd">Contract ended or employer ended it</button>
+              <button type="button" data-reason="resign" data-t="reasonResign">I resigned</button>
+            </div>
+
+            <p class="group-label" id="modeLabel" data-t="modeLabel">Length of service</p>
+            <div class="seg" id="modeSeg" role="group" aria-labelledby="modeLabel">
+              <button type="button" data-mode="years" data-t="modeYears">Years and months</button>
+              <button type="button" data-mode="dates" data-t="modeDates">Exact dates</button>
+            </div>
+
+            <div class="row2" id="yearsBox">
+              <div>
+                <label class="field-label" for="years" data-t="yearsLabel">Years</label>
+                <input type="number" id="years" inputmode="numeric" min="0" max="60" step="1" value="5">
+              </div>
+              <div>
+                <label class="field-label" for="months" data-t="monthsLabel">Months</label>
+                <input type="number" id="months" inputmode="numeric" min="0" max="11" step="1" value="0">
+              </div>
+            </div>
+
+            <div class="row2" id="datesBox" hidden="">
+              <div>
+                <label class="field-label" for="startDate" data-t="startLabel">First working day</label>
+                <input type="date" id="startDate">
+              </div>
+              <div>
+                <label class="field-label" for="endDate" data-t="endLabel">Last working day</label>
+                <input type="date" id="endDate">
+              </div>
+            </div>
+            <p class="error" id="dateError" role="alert" hidden="" data-t="nDates">The last working day must be after the first working day.</p>
+
+            <div class="field">
+              <label class="field-label" for="basic" id="basicLabel"></label>
+              <input type="number" id="basic" inputmode="decimal" min="0" step="any" autocomplete="off">
+            </div>
+            <div class="field">
+              <label class="field-label" for="allow" id="allowLabel"></label>
+              <input type="number" id="allow" inputmode="decimal" min="0" step="any" autocomplete="off" value="0">
+              <p class="hint" id="allowHint"></p>
+            </div>
+            <div class="field">
+              <label class="field-label" for="unpaid" data-t="unpaidLabel">Unpaid leave days (optional)</label>
+              <input type="number" id="unpaid" inputmode="numeric" min="0" step="1" value="0">
+              <p class="hint" data-t="unpaidHint">Days of unpaid leave are not counted as service.</p>
+            </div>
+          </form>
+
+          <div class="card result" aria-live="polite">
+            <h2 data-t="resultTitle">Your estimate</h2>
+            <p class="result-empty" id="resultEmpty" data-t="resultHint">Enter your basic monthly salary to see your estimate.</p>
+            <div id="resultBody" hidden="">
+              <div class="total-box">
+                <div class="total-label" data-t="totalLabel">Estimated end-of-service benefit</div>
+                <div class="total" id="total"></div>
+              </div>
+              <ul class="facts" id="facts"></ul>
+              <ul class="notes" id="notes"></ul>
+              <p id="copyText" class="sr-only"></p>
+              <button type="button" class="btn btn-ghost" id="copyResult" data-copy="#copyText" data-t="copy">Copy result</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="ad-slot" data-ad-slot="end-of-service-middle" data-t="ad">Advertisement</div>
+
+      <section class="card rule-card" aria-labelledby="ruleTitle">
+        <h2 id="ruleTitle"></h2>
+        <p id="ruleText"></p>
+        <p><a class="official" id="officialLink" href="https://www.hrsd.gov.sa/en/knowledge-centre/articles/317" target="_blank" rel="noopener"></a></p>
+      </section>
+
+      <section class="faq" id="faq" aria-labelledby="faqTitle">
+        <h2 id="faqTitle" data-t="faqTitle">Frequently asked questions</h2>
+        <details><summary data-t="q1">Is it calculated on basic salary or total salary?</summary><div class="answer"><p data-t="a1">It depends on the country. Saudi Arabia and Kuwait use your last full wage, including fixed allowances such as housing. The UAE, Qatar, Oman and Bahrain use basic salary. Your payslip or contract shows which part is basic.</p></div></details>
+        <details><summary data-t="q2">Do I lose my benefit if I resign?</summary><div class="answer"><p data-t="a2">Only in Saudi Arabia and Kuwait, and only partly. In Saudi Arabia you get nothing under 2 years, one third up to 5 years and two thirds up to 10 years. In Kuwait you get nothing under 3 years, half up to 5 years and two thirds up to 10 years. In the UAE, Qatar, Oman and Bahrain, resigning does not reduce it.</p></div></details>
+        <details><summary data-t="q3">When must my employer pay it?</summary><div class="answer"><p data-t="a3">In Saudi Arabia, within one week after the job ends, or two weeks if you resigned. In the UAE, within 14 days. In Qatar, by the next working day. In Kuwait and Oman, with your final settlement. In Bahrain, your employer pays the part before 1 March 2024 and you claim the later part from the SIO.</p></div></details>
+        <details><summary data-t="q4">Can my employer cut or refuse it?</summary><div class="answer"><p data-t="a4">An employer may deduct money you really owe, such as an unpaid loan. If you are dismissed for serious misconduct listed in the law, you can lose the benefit. If you disagree with your final settlement, contact your country's labour ministry before you sign anything.</p></div></details>
+        <details><summary data-t="q5">Is this amount exact?</summary><div class="answer"><p data-t="a5">It is a close estimate based on the law. Your real amount can differ because of your contract, how your employer counts days, unpaid leave, or special cases. Use it to check the settlement you are offered, and ask your employer to show their calculation.</p></div></details>
+      </section>
+
+      <div class="ad-slot" data-ad-slot="end-of-service-bottom" data-t="ad">Advertisement</div>
+
+      <p class="disclosure" data-t="disclaimer">This calculator gives an estimate based on the private-sector labour law of each country. It does not cover government jobs, domestic workers, free zones with their own rules such as DIFC and ADGM, or special cases. Your contract may give you more. For the exact amount, check with your employer or the official labour authority.</p>
+      <p class="last-updated" data-updated="2026-11-13"></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <section class="newsletter" aria-labelledby="nlTitle">
+        <h2 id="nlTitle" data-s="nlTitle">Get new guides by email</h2>
+        <p data-s="nlText">One short email when we add a new tool or guide. No spam.</p>
+        <form class="nl-form" name="newsletter" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" data-ajax="" data-success="nlSuccess" novalidate="">
+          <input type="hidden" name="form-name" value="newsletter">
+          <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <label class="sr-only" for="nlEmail" data-s="nlEmail">Your email address</label>
+          <input id="nlEmail" type="email" name="email" required="" autocomplete="email" inputmode="email" data-s-ph="nlEmail" placeholder="Your email address">
+          <button type="submit" class="btn btn-primary" data-s="nlButton">Subscribe</button>
+          <p class="form-msg" role="alert" aria-live="polite"></p>
+        </form>
+        <div class="success-box" id="nlSuccess" tabindex="-1" role="status" hidden="">
+          <span class="check" aria-hidden="true">✓</span><span data-s="nlSuccess">Thank you! You're subscribed.</span>
+        </div>
+      </section>
+      <div class="footer-cols">
+        <div>
+          <h3 data-s="footerTools">Tools</h3>
+          <nav class="footer-links" aria-label="Tools">
+            <a href="/tl/exchange-rate.html" data-s="navExchange">Exchange rate</a>
+            <a href="/tl/send-money.html" data-s="navSend">Send money</a>
+            <a href="/tl/end-of-service.html" data-s="navEos">End of service</a>
+            <a href="/tl/id-residency.html" data-s="navId">ID &amp; residency</a>
+            <a href="/tl/family-cost.html" data-s="navFamily">Family cost</a>
+            <a href="/tl/embassy-services.html" data-s="navEmbassy">Embassy services</a>
+          </nav>
+        </div>
+        <div>
+          <h3 data-s="footerSite">Website</h3>
+          <nav class="footer-links" aria-label="Footer">
+            <a href="/tl/" data-s="navHome">Home</a>
+            <a href="/tl/about.html" data-s="navAbout">About us</a>
+            <a href="/tl/contact.html" data-s="navContact">Contact</a>
+            <a href="/tl/privacy.html" data-s="navPrivacy">Privacy</a>
+            <a href="/tl/terms.html" data-s="navTerms">Terms of use</a>
+            <a href="/tl/affiliate-disclosure.html" data-s="navAffiliate">Affiliate disclosure</a>
+          </nav>
+        </div>
+      </div>
+      <p class="disclaimer" data-s="disclaimer">This is an independent website. It is not connected to any government office or bank.</p>
+    </div>
+  </footer>
+
+  <a class="fab-contact" href="/tl/contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg><span data-s="contactUs">Contact us</span></a>
+  <button type="button" class="to-top" id="toTop" data-s-aria="toTop" hidden="" aria-label="Back to top" title="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5M5 12l7-7 7 7"></path></svg></button>
+
+  <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookies" hidden="">
+    <p data-s="cookieText">We use your browser's storage to remember your language and settings. Our advertising partners, including Google, may use cookies to show ads.</p>
+    <a href="/tl/privacy.html" data-s="cookieLearn">Privacy policy</a>
+    <button type="button" class="btn btn-primary" id="cookieOk" data-s="cookieOk">OK</button>
+  </div>
+
+  <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-labelledby="searchTitle" hidden="">
+    <div class="search-box">
+      <div class="search-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+        <h2 id="searchTitle" class="sr-only" data-s="search">Search</h2>
+        <label class="sr-only" for="searchInput" data-s="search">Search</label>
+        <input type="search" id="searchInput" autocomplete="off" data-s-ph="searchPh" placeholder="Search tools and guides…">
+        <button type="button" class="icon-btn" id="searchClose" data-s-aria="close" aria-label="Close" title="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+      </div>
+      <ul class="search-results" id="searchResults"></ul>
+    </div>
+  </div>
+
+  <script src="/assets/site.js"></script>
+  <script>
+    (function () {
+      "use strict";
+
+      var PREF_KEY = "expatguideme_eos_v1";
+      var OMAN_NEW_LAW = Date.UTC(2023, 6, 31);
+      var BAHRAIN_SIO = Date.UTC(2024, 2, 1);
+      var DAY = 86400000;
+
+      var COUNTRIES = [
+        { code: "sa", flag: "🇸🇦", cur: "SAR", dec: 2, en: "Saudi Arabia", ar: "السعودية", hi: "सऊदी अरब", ml: "സൗദി അറേബ്യ", ne: "साउदी अरब", ur: "سعودی عرب", bn: "সৌদি আরব", tl: "Saudi Arabia",
+          curAr: "ر.س", url: "https://www.hrsd.gov.sa/en/knowledge-centre/articles/317",
+          auth: { en: "Ministry of Human Resources and Social Development (HRSD)", ar: "وزارة الموارد البشرية والتنمية الاجتماعية" } },
+        { code: "ae", flag: "🇦🇪", cur: "AED", dec: 2, en: "UAE", ar: "الإمارات", hi: "यूएई", ml: "യുഎഇ", ne: "युएई", ur: "امارات", bn: "সংযুক্ত আরব আমিরাত", tl: "UAE",
+          curAr: "د.إ", url: "https://www.mohre.gov.ae",
+          auth: { en: "Ministry of Human Resources and Emiratisation (MOHRE)", ar: "وزارة الموارد البشرية والتوطين" } },
+        { code: "kw", flag: "🇰🇼", cur: "KWD", dec: 3, en: "Kuwait", ar: "الكويت", hi: "कुवैत", ml: "കുവൈത്ത്", ne: "कुवेत", ur: "کویت", bn: "কুয়েত", tl: "Kuwait",
+          curAr: "د.ك", url: "https://www.manpower.gov.kw",
+          auth: { en: "Public Authority for Manpower (PAM)", ar: "الهيئة العامة للقوى العاملة" } },
+        { code: "qa", flag: "🇶🇦", cur: "QAR", dec: 2, en: "Qatar", ar: "قطر", hi: "क़तर", ml: "ഖത്തർ", ne: "कतार", ur: "قطر", bn: "কাতার", tl: "Qatar",
+          curAr: "ر.ق", url: "https://www.mol.gov.qa",
+          auth: { en: "Ministry of Labour, Qatar", ar: "وزارة العمل في قطر" } },
+        { code: "om", flag: "🇴🇲", cur: "OMR", dec: 3, en: "Oman", ar: "عُمان", hi: "ओमान", ml: "ഒമാൻ", ne: "ओमान", ur: "عمان", bn: "ওমান", tl: "Oman",
+          curAr: "ر.ع", url: "https://www.mol.gov.om",
+          auth: { en: "Ministry of Labour, Oman", ar: "وزارة العمل في سلطنة عُمان" } },
+        { code: "bh", flag: "🇧🇭", cur: "BHD", dec: 3, en: "Bahrain", ar: "البحرين", hi: "बहरीन", ml: "ബഹ്‌റൈൻ", ne: "बहराइन", ur: "بحرین", bn: "বাহরাইন", tl: "Bahrain",
+          curAr: "د.ب", url: "https://www.sio.gov.bh",
+          auth: { en: "Social Insurance Organization (SIO), Bahrain", ar: "الهيئة العامة للتأمين الاجتماعي في البحرين" } }
+      ];
+
+      var T = {
+        en: {
+          title: "End-of-service benefit calculator",
+          lead: "Estimate the gratuity you should receive when your job ends in Saudi Arabia, the UAE, Kuwait, Qatar, Oman or Bahrain. Choose your country, enter your salary and service, and see the amount with the rule behind it.",
+          ad: "Advertisement",
+          calcTitle: "Calculate your end-of-service benefit",
+          countryLabel: "I work in:",
+          reasonLabel: "How is your job ending?",
+          reasonEnd: "Contract ended or employer ended it",
+          reasonResign: "I resigned",
+          modeLabel: "Length of service",
+          modeYears: "Years and months",
+          modeDates: "Exact dates",
+          yearsLabel: "Years", monthsLabel: "Months",
+          startLabel: "First working day", endLabel: "Last working day",
+          basicLabel: "Basic monthly salary ({cur})",
+          allowLabel: "Fixed monthly allowances ({cur})",
+          allowUsed: "Housing, transport and other fixed allowances. In {country} they are added to your basic salary.",
+          allowNotUsed: "Housing, transport and other fixed allowances. In {country} they are not counted; only basic salary is used.",
+          unpaidLabel: "Unpaid leave days (optional)",
+          unpaidHint: "Days of unpaid leave are not counted as service.",
+          resultTitle: "Your estimate",
+          resultHint: "Enter your basic monthly salary to see your estimate.",
+          totalLabel: "Estimated end-of-service benefit",
+          serviceLabel: "Service counted", wageLabel: "Monthly wage used", fullLabel: "Full award before reductions",
+          unitY: "years", unitM: "months", unitD: "days",
+          lineFmt: "{y} years × {rate}",
+          rHalf: "half a month's wage", rMonth: "one month's wage", r21: "21 days' basic salary", r30: "30 days' basic salary", rMonthBasic: "one month's basic salary",
+          oldLaw: "before 31 Jul 2023", newLaw: "from 31 Jul 2023",
+          nUnder1: "Less than one year of service: no end-of-service benefit is due yet.",
+          nResignNone: "You resigned with less than {n} years of service, so no benefit is due.",
+          nShare: "Because you resigned, you receive {share} of the full award.",
+          third: "one third", twoThirds: "two thirds", half: "half",
+          nResignFull: "You resigned after 10 years or more, so you receive the full award.",
+          nCap: "The law caps the total at {n} months' wage, so the amount is limited to {amt}.",
+          nOmanSavings: "Oman is replacing gratuity for expats with a savings fund paid in by employers, no later than 19 July 2027. Gratuity earned before the switch is still owed to you.",
+          nBahrainSplit: "Paid by your employer for service before 1 March 2024: {a}. Paid by the SIO for service from 1 March 2024: {b}.",
+          nDates: "The last working day must be after the first working day.",
+          copy: "Copy result",
+          copyHead: "End-of-service estimate ({country})",
+          ruleTitle: "How it is calculated in {country}",
+          official: "Official source: {auth}",
+          rule: {
+            sa: "Article 84 of the Saudi Labor Law: half a month's wage for each of the first five years and one full month's wage for each year after that, on your last wage including fixed allowances. If you resign (Article 85): nothing under 2 years, one third from 2 to 5 years, two thirds from 5 to 10 years and the full award from 10 years. If the employer ends your contract, you get the full award.",
+            ae: "Article 51 of the UAE Labour Law: after at least one year of service, 21 days' basic salary for each of the first five years and 30 days' basic salary for each year after that. Part years count in proportion. The total cannot be more than two years' wage. Resigning does not reduce it.",
+            kw: "Article 51 of Kuwait Labour Law No. 6 of 2010: for monthly-paid workers, 15 days' wage for each of the first five years and one month's wage for each year after that, up to 18 months' wage in total. If you resign (Article 53): nothing under 3 years, half from 3 to 5 years, two thirds from 5 to 10 years and the full amount from 10 years.",
+            qa: "Article 54 of the Qatar Labour Law: after at least one year of service, at least three weeks' basic wage for each year, with part years paid in proportion. Your contract may give you more. There is no upper limit and resigning does not reduce it.",
+            om: "Article 61 of the Oman Labour Law (2023): at least one month's basic wage for each year of service. Service before 31 July 2023 is counted under the old law: 15 days' wage for each of the first three years, then one month for each year after. A savings fund for expats will replace gratuity by 19 July 2027 at the latest.",
+            bh: "Article 116 of the Bahrain Labour Law: after at least one year of service, 15 days' wage for each of the first three years and one month's wage for each year after that. Since 1 March 2024, the part earned from that date is paid to you by the Social Insurance Organization (SIO) instead of your employer. Resigning does not reduce it."
+          },
+          faqTitle: "Frequently asked questions",
+          q1: "Is it calculated on basic salary or total salary?",
+          a1: "It depends on the country. Saudi Arabia and Kuwait use your last full wage, including fixed allowances such as housing. The UAE, Qatar, Oman and Bahrain use basic salary. Your payslip or contract shows which part is basic.",
+          q2: "Do I lose my benefit if I resign?",
+          a2: "Only in Saudi Arabia and Kuwait, and only partly. In Saudi Arabia you get nothing under 2 years, one third up to 5 years and two thirds up to 10 years. In Kuwait you get nothing under 3 years, half up to 5 years and two thirds up to 10 years. In the UAE, Qatar, Oman and Bahrain, resigning does not reduce it.",
+          q3: "When must my employer pay it?",
+          a3: "In Saudi Arabia, within one week after the job ends, or two weeks if you resigned. In the UAE, within 14 days. In Qatar, by the next working day. In Kuwait and Oman, with your final settlement. In Bahrain, your employer pays the part before 1 March 2024 and you claim the later part from the SIO.",
+          q4: "Can my employer cut or refuse it?",
+          a4: "An employer may deduct money you really owe, such as an unpaid loan. If you are dismissed for serious misconduct listed in the law, you can lose the benefit. If you disagree with your final settlement, contact your country's labour ministry before you sign anything.",
+          q5: "Is this amount exact?",
+          a5: "It is a close estimate based on the law. Your real amount can differ because of your contract, how your employer counts days, unpaid leave, or special cases. Use it to check the settlement you are offered, and ask your employer to show their calculation.",
+          disclaimer: "This calculator gives an estimate based on the private-sector labour law of each country. It does not cover government jobs, domestic workers, free zones with their own rules such as DIFC and ADGM, or special cases. Your contract may give you more. For the exact amount, check with your employer or the official labour authority."
+        },
+        ar: {
+          title: "حاسبة مكافأة نهاية الخدمة",
+          lead: "احسب تقديرًا لمكافأة نهاية الخدمة عند انتهاء عملك في السعودية أو الإمارات أو الكويت أو قطر أو عُمان أو البحرين. اختر الدولة وأدخل راتبك ومدة خدمتك لترى المبلغ والقاعدة النظامية التي يستند إليها.",
+          ad: "مساحة إعلانية",
+          calcTitle: "احسب مكافأة نهاية الخدمة",
+          countryLabel: "أعمل في:",
+          reasonLabel: "كيف ينتهي عملك؟",
+          reasonEnd: "انتهى العقد أو أنهاه صاحب العمل",
+          reasonResign: "قدّمت استقالتي",
+          modeLabel: "مدة الخدمة",
+          modeYears: "سنوات وأشهر",
+          modeDates: "تواريخ محددة",
+          yearsLabel: "السنوات", monthsLabel: "الأشهر",
+          startLabel: "أول يوم عمل", endLabel: "آخر يوم عمل",
+          basicLabel: "الراتب الأساسي الشهري ({cur})",
+          allowLabel: "البدلات الشهرية الثابتة ({cur})",
+          allowUsed: "بدل السكن والنقل وغيرها من البدلات الثابتة. في {country} تُضاف إلى الراتب الأساسي.",
+          allowNotUsed: "بدل السكن والنقل وغيرها من البدلات الثابتة. في {country} لا تُحتسب، ويُعتمد الراتب الأساسي فقط.",
+          unpaidLabel: "أيام الإجازة دون أجر (اختياري)",
+          unpaidHint: "لا تُحتسب أيام الإجازة دون أجر ضمن مدة الخدمة.",
+          resultTitle: "التقدير",
+          resultHint: "أدخل راتبك الأساسي الشهري لترى التقدير.",
+          totalLabel: "مكافأة نهاية الخدمة التقديرية",
+          serviceLabel: "مدة الخدمة المحتسبة", wageLabel: "الأجر الشهري المعتمد", fullLabel: "المكافأة الكاملة قبل التخفيض",
+          unitY: "سنة", unitM: "شهر", unitD: "يوم",
+          lineFmt: "{y} سنة × {rate}",
+          rHalf: "أجر نصف شهر", rMonth: "أجر شهر كامل", r21: "أجر ٢١ يومًا من الراتب الأساسي", r30: "أجر ٣٠ يومًا من الراتب الأساسي", rMonthBasic: "راتب أساسي لشهر كامل",
+          oldLaw: "قبل ٣١ يوليو ٢٠٢٣", newLaw: "من ٣١ يوليو ٢٠٢٣",
+          nUnder1: "مدة الخدمة أقل من سنة، فلا تستحق مكافأة نهاية الخدمة بعد.",
+          nResignNone: "قدّمت استقالتك قبل إكمال {n} سنوات من الخدمة، فلا تستحق مكافأة.",
+          nShare: "لأنك قدّمت استقالتك، تستحق {share} المكافأة الكاملة.",
+          third: "ثلث", twoThirds: "ثلثي", half: "نصف",
+          nResignFull: "قدّمت استقالتك بعد ١٠ سنوات أو أكثر، فتستحق المكافأة كاملة.",
+          nCap: "يحدّ النظام المبلغ الإجمالي بأجر {n} شهرًا، لذلك يقتصر المبلغ على {amt}.",
+          nOmanSavings: "تستبدل عُمان مكافأة نهاية الخدمة للوافدين بنظام ادخار يدفع فيه صاحب العمل، في موعد أقصاه ١٩ يوليو ٢٠٢٧. وتبقى المكافأة المستحقة قبل التحول حقًا لك.",
+          nBahrainSplit: "يدفعه صاحب العمل عن الخدمة قبل ١ مارس ٢٠٢٤: {a}. وتدفعه هيئة التأمين الاجتماعي عن الخدمة من ١ مارس ٢٠٢٤: {b}.",
+          nDates: "يجب أن يكون آخر يوم عمل بعد أول يوم عمل.",
+          copy: "نسخ النتيجة",
+          copyHead: "تقدير مكافأة نهاية الخدمة ({country})",
+          ruleTitle: "طريقة الحساب في {country}",
+          official: "المصدر الرسمي: {auth}",
+          rule: {
+            sa: "المادة ٨٤ من نظام العمل السعودي: أجر نصف شهر عن كل سنة من السنوات الخمس الأولى، وأجر شهر كامل عن كل سنة بعدها، على أساس آخر أجر شامل للبدلات الثابتة. وعند الاستقالة (المادة ٨٥): لا شيء لأقل من سنتين، والثلث من سنتين إلى خمس سنوات، والثلثان من خمس إلى عشر سنوات، والمكافأة كاملة بعد عشر سنوات. وإذا أنهى صاحب العمل العقد تستحق المكافأة كاملة.",
+            ae: "المادة ٥١ من قانون العمل الإماراتي: بعد سنة خدمة على الأقل، أجر ٢١ يومًا من الراتب الأساسي عن كل سنة من السنوات الخمس الأولى، وأجر ٣٠ يومًا عن كل سنة بعدها. وتُحتسب أجزاء السنة بنسبتها. ولا يزيد المجموع على أجر سنتين. ولا تُخفَّض المكافأة عند الاستقالة.",
+            kw: "المادة ٥١ من قانون العمل الكويتي رقم ٦ لسنة ٢٠١٠: لمن يتقاضى أجرًا شهريًا، أجر ١٥ يومًا عن كل سنة من السنوات الخمس الأولى، وأجر شهر عن كل سنة بعدها، بحد أقصى أجر ١٨ شهرًا. وعند الاستقالة (المادة ٥٣): لا شيء لأقل من ثلاث سنوات، والنصف من ثلاث إلى خمس سنوات، والثلثان من خمس إلى عشر سنوات، والمبلغ كاملًا بعد عشر سنوات.",
+            qa: "المادة ٥٤ من قانون العمل القطري: بعد سنة خدمة على الأقل، أجر ثلاثة أسابيع على الأقل من الأجر الأساسي عن كل سنة، وتُحتسب أجزاء السنة بنسبتها. وقد يمنحك عقدك أكثر من ذلك. ولا يوجد حد أعلى، ولا تُخفَّض المكافأة عند الاستقالة.",
+            om: "المادة ٦١ من قانون العمل العُماني لسنة ٢٠٢٣: أجر شهر أساسي على الأقل عن كل سنة خدمة. وتُحتسب الخدمة قبل ٣١ يوليو ٢٠٢٣ وفق القانون السابق: أجر ١٥ يومًا عن كل سنة من السنوات الثلاث الأولى، ثم أجر شهر عن كل سنة بعدها. وسيحل نظام الادخار للوافدين محل المكافأة في موعد أقصاه ١٩ يوليو ٢٠٢٧.",
+            bh: "المادة ١١٦ من قانون العمل البحريني: بعد سنة خدمة على الأقل، أجر ١٥ يومًا عن كل سنة من السنوات الثلاث الأولى، وأجر شهر عن كل سنة بعدها. ومنذ ١ مارس ٢٠٢٤ تدفع هيئة التأمين الاجتماعي الجزء المستحق عن الخدمة من ذلك التاريخ بدلًا من صاحب العمل. ولا تُخفَّض المكافأة عند الاستقالة."
+          },
+          faqTitle: "الأسئلة الشائعة",
+          q1: "هل تُحسب على الراتب الأساسي أم الراتب الإجمالي؟",
+          a1: "يختلف ذلك حسب الدولة. تعتمد السعودية والكويت آخر أجر كامل شامل للبدلات الثابتة مثل بدل السكن. وتعتمد الإمارات وقطر وعُمان والبحرين الراتب الأساسي. ويوضح كشف الراتب أو العقد مقدار الراتب الأساسي.",
+          q2: "هل أخسر المكافأة إذا قدّمت استقالتي؟",
+          a2: "في السعودية والكويت فقط، وبشكل جزئي. في السعودية لا شيء لأقل من سنتين، والثلث حتى خمس سنوات، والثلثان حتى عشر سنوات. وفي الكويت لا شيء لأقل من ثلاث سنوات، والنصف حتى خمس سنوات، والثلثان حتى عشر سنوات. أما في الإمارات وقطر وعُمان والبحرين فلا تُخفَّض المكافأة عند الاستقالة.",
+          q3: "متى يجب أن يدفعها صاحب العمل؟",
+          a3: "في السعودية خلال أسبوع من انتهاء العمل، أو أسبوعين إذا قدّمت استقالتك. وفي الإمارات خلال ١٤ يومًا. وفي قطر بحلول يوم العمل التالي. وفي الكويت وعُمان مع التسوية النهائية. وفي البحرين يدفع صاحب العمل الجزء السابق لـ ١ مارس ٢٠٢٤، وتطالب هيئة التأمين الاجتماعي بالجزء اللاحق.",
+          q4: "هل يمكن لصاحب العمل أن يخصم منها أو يرفض دفعها؟",
+          a4: "يجوز لصاحب العمل خصم مبالغ مستحقة عليك فعلًا، مثل قرض غير مسدد. وقد تفقد المكافأة إذا فُصلت بسبب مخالفة جسيمة منصوص عليها في النظام. وإذا اعترضت على التسوية النهائية فراجع وزارة العمل في بلدك قبل التوقيع على أي ورقة.",
+          q5: "هل هذا المبلغ دقيق؟",
+          a5: "هو تقدير قريب مبني على النظام. وقد يختلف المبلغ الفعلي بسبب عقدك أو طريقة احتساب الأيام لدى صاحب العمل أو الإجازات دون أجر أو الحالات الخاصة. استخدمه لمراجعة التسوية المعروضة عليك، واطلب من صاحب العمل طريقة حسابه.",
+          disclaimer: "تعطي هذه الحاسبة تقديرًا مبنيًا على نظام العمل في القطاع الخاص لكل دولة. ولا تشمل الوظائف الحكومية ولا العمالة المنزلية ولا المناطق الحرة ذات الأنظمة الخاصة مثل مركز دبي المالي العالمي وسوق أبوظبي العالمي ولا الحالات الخاصة. وقد يمنحك عقدك أكثر. للمبلغ الدقيق راجع صاحب العمل أو الجهة الرسمية المختصة."
+        },
+        hi: {
+          title: "एंड-ऑफ़-सर्विस बेनिफ़िट कैलकुलेटर",
+          lead: "सऊदी अरब, यूएई, कुवैत, क़तर, ओमान या बहरीन में नौकरी ख़त्म होने पर मिलने वाली ग्रेच्युटी का अनुमान लगाएँ। अपना देश चुनें, सैलरी और सर्विस डालें, और नियम के साथ रक़म देखें।",
+          ad: "विज्ञापन",
+          calcTitle: "अपना एंड-ऑफ़-सर्विस बेनिफ़िट निकालें",
+          countryLabel: "मैं यहाँ काम करता/करती हूँ:",
+          reasonLabel: "आपकी नौकरी कैसे ख़त्म हो रही है?",
+          reasonEnd: "कॉन्ट्रैक्ट ख़त्म हुआ या कंपनी ने ख़त्म किया",
+          reasonResign: "मैंने इस्तीफ़ा दिया",
+          modeLabel: "सर्विस की अवधि",
+          modeYears: "साल और महीने",
+          modeDates: "सही तारीख़ें",
+          yearsLabel: "साल", monthsLabel: "महीने",
+          startLabel: "काम का पहला दिन", endLabel: "काम का आख़िरी दिन",
+          basicLabel: "मासिक बेसिक सैलरी ({cur})",
+          allowLabel: "मासिक फ़िक्स्ड अलाउंस ({cur})",
+          allowUsed: "हाउसिंग, ट्रांसपोर्ट और दूसरे फ़िक्स्ड अलाउंस। {country} में ये बेसिक सैलरी में जोड़े जाते हैं।",
+          allowNotUsed: "हाउसिंग, ट्रांसपोर्ट और दूसरे फ़िक्स्ड अलाउंस। {country} में ये नहीं गिने जाते, सिर्फ़ बेसिक सैलरी ली जाती है।",
+          unpaidLabel: "बिना वेतन छुट्टी के दिन (वैकल्पिक)",
+          unpaidHint: "बिना वेतन छुट्टी के दिन सर्विस में नहीं गिने जाते।",
+          resultTitle: "आपका अनुमान",
+          resultHint: "अनुमान देखने के लिए अपनी मासिक बेसिक सैलरी डालें।",
+          totalLabel: "अनुमानित एंड-ऑफ़-सर्विस बेनिफ़िट",
+          serviceLabel: "गिनी गई सर्विस", wageLabel: "इस्तेमाल हुई मासिक सैलरी", fullLabel: "कटौती से पहले पूरी रक़म",
+          unitY: "साल", unitM: "महीने", unitD: "दिन",
+          lineFmt: "{y} साल × {rate}",
+          rHalf: "आधे महीने की सैलरी", rMonth: "एक महीने की सैलरी", r21: "21 दिन की बेसिक सैलरी", r30: "30 दिन की बेसिक सैलरी", rMonthBasic: "एक महीने की बेसिक सैलरी",
+          oldLaw: "31 जुलाई 2023 से पहले", newLaw: "31 जुलाई 2023 से",
+          nUnder1: "सर्विस एक साल से कम है, इसलिए अभी एंड-ऑफ़-सर्विस बेनिफ़िट नहीं बनता।",
+          nResignNone: "आपने {n} साल की सर्विस पूरी होने से पहले इस्तीफ़ा दिया, इसलिए कोई बेनिफ़िट नहीं बनता।",
+          nShare: "इस्तीफ़ा देने की वजह से आपको पूरी रक़म का {share} मिलेगा।",
+          third: "एक-तिहाई", twoThirds: "दो-तिहाई", half: "आधा",
+          nResignFull: "आपने 10 साल या उससे ज़्यादा के बाद इस्तीफ़ा दिया, इसलिए पूरी रक़म मिलेगी।",
+          nCap: "क़ानून के अनुसार कुल रक़म {n} महीने की सैलरी से ज़्यादा नहीं हो सकती, इसलिए रक़म {amt} तक सीमित है।",
+          nOmanSavings: "ओमान प्रवासियों की ग्रेच्युटी की जगह एक सेविंग्स फ़ंड ला रहा है, जिसमें कंपनी पैसा जमा करेगी। यह 19 जुलाई 2027 तक लागू होगा। उससे पहले की ग्रेच्युटी आपको मिलनी ही है।",
+          nBahrainSplit: "1 मार्च 2024 से पहले की सर्विस के लिए कंपनी देगी: {a}। 1 मार्च 2024 से की सर्विस के लिए SIO देगा: {b}।",
+          nDates: "काम का आख़िरी दिन, पहले दिन के बाद होना चाहिए।",
+          copy: "नतीजा कॉपी करें",
+          copyHead: "एंड-ऑफ़-सर्विस अनुमान ({country})",
+          ruleTitle: "{country} में हिसाब कैसे होता है",
+          official: "आधिकारिक स्रोत: {auth}",
+          rule: {
+            sa: "सऊदी लेबर लॉ की धारा 84: पहले पाँच साल में हर साल के लिए आधे महीने की सैलरी, और उसके बाद हर साल के लिए एक महीने की सैलरी, आख़िरी सैलरी पर जिसमें फ़िक्स्ड अलाउंस शामिल हैं। इस्तीफ़ा देने पर (धारा 85): 2 साल से कम पर कुछ नहीं, 2 से 5 साल पर एक-तिहाई, 5 से 10 साल पर दो-तिहाई, और 10 साल के बाद पूरी रक़म। कंपनी कॉन्ट्रैक्ट ख़त्म करे तो पूरी रक़म मिलती है।",
+            ae: "यूएई लेबर लॉ की धारा 51: कम से कम एक साल की सर्विस के बाद, पहले पाँच साल में हर साल के लिए 21 दिन की बेसिक सैलरी और उसके बाद हर साल के लिए 30 दिन की बेसिक सैलरी। अधूरे साल का हिस्सा अनुपात में गिना जाता है। कुल रक़म दो साल की सैलरी से ज़्यादा नहीं हो सकती। इस्तीफ़े से रक़म कम नहीं होती।",
+            kw: "कुवैत लेबर लॉ नंबर 6/2010 की धारा 51: मासिक वेतन वालों को पहले पाँच साल में हर साल के लिए 15 दिन की सैलरी और उसके बाद हर साल के लिए एक महीने की सैलरी, कुल 18 महीने की सैलरी तक। इस्तीफ़ा देने पर (धारा 53): 3 साल से कम पर कुछ नहीं, 3 से 5 साल पर आधा, 5 से 10 साल पर दो-तिहाई, और 10 साल के बाद पूरी रक़म।",
+            qa: "क़तर लेबर लॉ की धारा 54: कम से कम एक साल की सर्विस के बाद, हर साल के लिए कम से कम तीन हफ़्ते की बेसिक सैलरी, अधूरे साल के लिए अनुपात में। आपका कॉन्ट्रैक्ट इससे ज़्यादा दे सकता है। कोई ऊपरी सीमा नहीं है और इस्तीफ़े से रक़म कम नहीं होती।",
+            om: "ओमान लेबर लॉ (2023) की धारा 61: सर्विस के हर साल के लिए कम से कम एक महीने की बेसिक सैलरी। 31 जुलाई 2023 से पहले की सर्विस पुराने क़ानून से गिनी जाती है: पहले तीन साल में हर साल के लिए 15 दिन की सैलरी, फिर हर साल के लिए एक महीना। प्रवासियों के लिए सेविंग्स फ़ंड 19 जुलाई 2027 तक ग्रेच्युटी की जगह ले लेगा।",
+            bh: "बहरीन लेबर लॉ की धारा 116: कम से कम एक साल की सर्विस के बाद, पहले तीन साल में हर साल के लिए 15 दिन की सैलरी और उसके बाद हर साल के लिए एक महीने की सैलरी। 1 मार्च 2024 से, उस तारीख़ के बाद कमाया गया हिस्सा कंपनी की जगह सोशल इंश्योरेंस ऑर्गनाइज़ेशन (SIO) देता है। इस्तीफ़े से रक़म कम नहीं होती।"
+          },
+          faqTitle: "अक्सर पूछे जाने वाले सवाल",
+          q1: "हिसाब बेसिक सैलरी पर होता है या कुल सैलरी पर?",
+          a1: "यह देश पर निर्भर है। सऊदी अरब और कुवैत में आख़िरी पूरी सैलरी ली जाती है, जिसमें हाउसिंग जैसे फ़िक्स्ड अलाउंस शामिल हैं। यूएई, क़तर, ओमान और बहरीन में बेसिक सैलरी ली जाती है। आपकी पे-स्लिप या कॉन्ट्रैक्ट में बेसिक सैलरी लिखी होती है।",
+          q2: "क्या इस्तीफ़ा देने पर बेनिफ़िट चला जाता है?",
+          a2: "सिर्फ़ सऊदी अरब और कुवैत में, और वह भी आंशिक रूप से। सऊदी में 2 साल से कम पर कुछ नहीं, 5 साल तक एक-तिहाई और 10 साल तक दो-तिहाई। कुवैत में 3 साल से कम पर कुछ नहीं, 5 साल तक आधा और 10 साल तक दो-तिहाई। यूएई, क़तर, ओमान और बहरीन में इस्तीफ़े से रक़म कम नहीं होती।",
+          q3: "कंपनी को यह कब तक देना होता है?",
+          a3: "सऊदी अरब में नौकरी ख़त्म होने के एक हफ़्ते में, या इस्तीफ़ा देने पर दो हफ़्ते में। यूएई में 14 दिन में। क़तर में अगले कामकाजी दिन तक। कुवैत और ओमान में फ़ाइनल सेटलमेंट के साथ। बहरीन में 1 मार्च 2024 से पहले का हिस्सा कंपनी देती है और बाद वाला हिस्सा आप SIO से क्लेम करते हैं।",
+          q4: "क्या कंपनी इसमें कटौती कर सकती है या मना कर सकती है?",
+          a4: "कंपनी वह पैसा काट सकती है जो आप पर सच में बकाया है, जैसे बिना चुकाया लोन। क़ानून में लिखे गंभीर कदाचार के लिए निकाले जाने पर बेनिफ़िट जा सकता है। अगर आप फ़ाइनल सेटलमेंट से सहमत नहीं हैं, तो कुछ भी साइन करने से पहले अपने देश के लेबर मंत्रालय से संपर्क करें।",
+          q5: "क्या यह रक़म बिल्कुल सही है?",
+          a5: "यह क़ानून पर आधारित एक नज़दीकी अनुमान है। आपके कॉन्ट्रैक्ट, कंपनी के दिन गिनने के तरीक़े, बिना वेतन छुट्टी या ख़ास मामलों की वजह से असली रक़म अलग हो सकती है। इसे अपने सेटलमेंट की जाँच के लिए इस्तेमाल करें और कंपनी से उनका हिसाब दिखाने को कहें।",
+          disclaimer: "यह कैलकुलेटर हर देश के प्राइवेट सेक्टर लेबर लॉ के आधार पर अनुमान देता है। इसमें सरकारी नौकरियाँ, घरेलू कामगार, DIFC और ADGM जैसे अपने नियमों वाले फ़्री ज़ोन, या ख़ास मामले शामिल नहीं हैं। आपका कॉन्ट्रैक्ट इससे ज़्यादा दे सकता है। सही रक़म के लिए अपनी कंपनी या आधिकारिक लेबर विभाग से पुष्टि करें।"
+        },
+        ml: {
+          title: "എൻഡ് ഓഫ് സർവീസ് ആനുകൂല്യ കാൽക്കുലേറ്റർ",
+          lead: "സൗദി അറേബ്യ, യുഎഇ, കുവൈത്ത്, ഖത്തർ, ഒമാൻ, ബഹ്‌റൈൻ എന്നിവിടങ്ങളിൽ ജോലി അവസാനിക്കുമ്പോൾ ലഭിക്കേണ്ട ഗ്രാറ്റുവിറ്റി കണക്കാക്കൂ. രാജ്യം തിരഞ്ഞെടുത്ത് ശമ്പളവും സർവീസും നൽകിയാൽ തുകയും അതിന്റെ നിയമവും കാണാം.",
+          ad: "പരസ്യം",
+          calcTitle: "നിങ്ങളുടെ എൻഡ് ഓഫ് സർവീസ് ആനുകൂല്യം കണക്കാക്കൂ",
+          countryLabel: "ഞാൻ ജോലി ചെയ്യുന്നത്:",
+          reasonLabel: "ജോലി എങ്ങനെയാണ് അവസാനിക്കുന്നത്?",
+          reasonEnd: "കരാർ കഴിഞ്ഞു അല്ലെങ്കിൽ കമ്പനി അവസാനിപ്പിച്ചു",
+          reasonResign: "ഞാൻ രാജിവെച്ചു",
+          modeLabel: "സർവീസ് കാലയളവ്",
+          modeYears: "വർഷവും മാസവും",
+          modeDates: "കൃത്യമായ തീയതികൾ",
+          yearsLabel: "വർഷം", monthsLabel: "മാസം",
+          startLabel: "ജോലിയുടെ ആദ്യ ദിവസം", endLabel: "ജോലിയുടെ അവസാന ദിവസം",
+          basicLabel: "മാസ അടിസ്ഥാന ശമ്പളം ({cur})",
+          allowLabel: "സ്ഥിരം മാസ അലവൻസുകൾ ({cur})",
+          allowUsed: "ഹൗസിംഗ്, ട്രാൻസ്‌പോർട്ട്, മറ്റ് സ്ഥിരം അലവൻസുകൾ. {country}യിൽ ഇവ അടിസ്ഥാന ശമ്പളത്തോട് ചേർക്കും.",
+          allowNotUsed: "ഹൗസിംഗ്, ട്രാൻസ്‌പോർട്ട്, മറ്റ് സ്ഥിരം അലവൻസുകൾ. {country}യിൽ ഇവ കണക്കാക്കില്ല; അടിസ്ഥാന ശമ്പളം മാത്രം.",
+          unpaidLabel: "ശമ്പളമില്ലാത്ത അവധി ദിവസങ്ങൾ (ആവശ്യമെങ്കിൽ)",
+          unpaidHint: "ശമ്പളമില്ലാത്ത അവധി ദിവസങ്ങൾ സർവീസായി കണക്കാക്കില്ല.",
+          resultTitle: "നിങ്ങളുടെ കണക്ക്",
+          resultHint: "കണക്ക് കാണാൻ മാസ അടിസ്ഥാന ശമ്പളം നൽകുക.",
+          totalLabel: "ലഭിക്കാവുന്ന എൻഡ് ഓഫ് സർവീസ് ആനുകൂല്യം",
+          serviceLabel: "കണക്കാക്കിയ സർവീസ്", wageLabel: "ഉപയോഗിച്ച മാസ ശമ്പളം", fullLabel: "കുറവിന് മുമ്പുള്ള മുഴുവൻ തുക",
+          unitY: "വർഷം", unitM: "മാസം", unitD: "ദിവസം",
+          lineFmt: "{y} വർഷം × {rate}",
+          rHalf: "അര മാസത്തെ ശമ്പളം", rMonth: "ഒരു മാസത്തെ ശമ്പളം", r21: "21 ദിവസത്തെ അടിസ്ഥാന ശമ്പളം", r30: "30 ദിവസത്തെ അടിസ്ഥാന ശമ്പളം", rMonthBasic: "ഒരു മാസത്തെ അടിസ്ഥാന ശമ്പളം",
+          oldLaw: "2023 ജൂലൈ 31ന് മുമ്പ്", newLaw: "2023 ജൂലൈ 31 മുതൽ",
+          nUnder1: "സർവീസ് ഒരു വർഷത്തിൽ കുറവാണ്, അതിനാൽ ഇപ്പോൾ എൻഡ് ഓഫ് സർവീസ് ആനുകൂല്യം ലഭിക്കില്ല.",
+          nResignNone: "{n} വർഷം സർവീസ് പൂർത്തിയാകുന്നതിന് മുമ്പ് രാജിവെച്ചതിനാൽ ആനുകൂല്യം ലഭിക്കില്ല.",
+          nShare: "രാജിവെച്ചതിനാൽ മുഴുവൻ തുകയുടെ {share} ലഭിക്കും.",
+          third: "മൂന്നിലൊന്ന്", twoThirds: "മൂന്നിൽ രണ്ട്", half: "പകുതി",
+          nResignFull: "10 വർഷമോ അതിലധികമോ കഴിഞ്ഞ് രാജിവെച്ചതിനാൽ മുഴുവൻ തുകയും ലഭിക്കും.",
+          nCap: "നിയമപ്രകാരം ആകെ തുക {n} മാസത്തെ ശമ്പളത്തിൽ കൂടില്ല, അതിനാൽ തുക {amt} ആയി പരിമിതപ്പെടുത്തി.",
+          nOmanSavings: "പ്രവാസികളുടെ ഗ്രാറ്റുവിറ്റിക്ക് പകരം കമ്പനി പണം അടയ്ക്കുന്ന ഒരു സേവിംഗ്സ് ഫണ്ട് ഒമാൻ കൊണ്ടുവരുന്നു, 2027 ജൂലൈ 19ന് മുമ്പ്. അതിന് മുമ്പ് നേടിയ ഗ്രാറ്റുവിറ്റി നിങ്ങൾക്ക് ലഭിക്കേണ്ടതാണ്.",
+          nBahrainSplit: "2024 മാർച്ച് 1ന് മുമ്പുള്ള സർവീസിന് കമ്പനി നൽകും: {a}. 2024 മാർച്ച് 1 മുതലുള്ള സർവീസിന് SIO നൽകും: {b}.",
+          nDates: "ജോലിയുടെ അവസാന ദിവസം ആദ്യ ദിവസത്തിന് ശേഷമായിരിക്കണം.",
+          copy: "ഫലം കോപ്പി ചെയ്യുക",
+          copyHead: "എൻഡ് ഓഫ് സർവീസ് കണക്ക് ({country})",
+          ruleTitle: "{country}യിൽ കണക്കാക്കുന്നത് എങ്ങനെ",
+          official: "ഔദ്യോഗിക ഉറവിടം: {auth}",
+          rule: {
+            sa: "സൗദി തൊഴിൽ നിയമം ആർട്ടിക്കിൾ 84: ആദ്യ അഞ്ച് വർഷത്തിൽ ഓരോ വർഷത്തിനും അര മാസത്തെ ശമ്പളം, അതിന് ശേഷം ഓരോ വർഷത്തിനും ഒരു മാസത്തെ ശമ്പളം; സ്ഥിരം അലവൻസുകൾ ഉൾപ്പെടെയുള്ള അവസാന ശമ്പളത്തിൽ. രാജിവെച്ചാൽ (ആർട്ടിക്കിൾ 85): 2 വർഷത്തിൽ താഴെ ഒന്നുമില്ല, 2 മുതൽ 5 വർഷം വരെ മൂന്നിലൊന്ന്, 5 മുതൽ 10 വർഷം വരെ മൂന്നിൽ രണ്ട്, 10 വർഷത്തിന് ശേഷം മുഴുവൻ. കമ്പനി കരാർ അവസാനിപ്പിച്ചാൽ മുഴുവൻ തുകയും ലഭിക്കും.",
+            ae: "യുഎഇ തൊഴിൽ നിയമം ആർട്ടിക്കിൾ 51: കുറഞ്ഞത് ഒരു വർഷം സർവീസിന് ശേഷം, ആദ്യ അഞ്ച് വർഷത്തിൽ ഓരോ വർഷത്തിനും 21 ദിവസത്തെ അടിസ്ഥാന ശമ്പളം, അതിന് ശേഷം ഓരോ വർഷത്തിനും 30 ദിവസത്തെ അടിസ്ഥാന ശമ്പളം. വർഷത്തിന്റെ ഭാഗം അനുപാതത്തിൽ കണക്കാക്കും. ആകെ തുക രണ്ട് വർഷത്തെ ശമ്പളത്തിൽ കൂടില്ല. രാജിവെച്ചാലും കുറയില്ല.",
+            kw: "കുവൈത്ത് തൊഴിൽ നിയമം 6/2010 ആർട്ടിക്കിൾ 51: മാസശമ്പളക്കാർക്ക് ആദ്യ അഞ്ച് വർഷത്തിൽ ഓരോ വർഷത്തിനും 15 ദിവസത്തെ ശമ്പളം, അതിന് ശേഷം ഓരോ വർഷത്തിനും ഒരു മാസത്തെ ശമ്പളം; ആകെ 18 മാസത്തെ ശമ്പളം വരെ. രാജിവെച്ചാൽ (ആർട്ടിക്കിൾ 53): 3 വർഷത്തിൽ താഴെ ഒന്നുമില്ല, 3 മുതൽ 5 വർഷം വരെ പകുതി, 5 മുതൽ 10 വർഷം വരെ മൂന്നിൽ രണ്ട്, 10 വർഷത്തിന് ശേഷം മുഴുവൻ.",
+            qa: "ഖത്തർ തൊഴിൽ നിയമം ആർട്ടിക്കിൾ 54: കുറഞ്ഞത് ഒരു വർഷം സർവീസിന് ശേഷം, ഓരോ വർഷത്തിനും കുറഞ്ഞത് മൂന്ന് ആഴ്ചത്തെ അടിസ്ഥാന ശമ്പളം; വർഷത്തിന്റെ ഭാഗം അനുപാതത്തിൽ. നിങ്ങളുടെ കരാർ ഇതിൽ കൂടുതൽ നൽകിയേക്കാം. ഉയർന്ന പരിധിയില്ല, രാജിവെച്ചാലും കുറയില്ല.",
+            om: "ഒമാൻ തൊഴിൽ നിയമം (2023) ആർട്ടിക്കിൾ 61: ഓരോ സർവീസ് വർഷത്തിനും കുറഞ്ഞത് ഒരു മാസത്തെ അടിസ്ഥാന ശമ്പളം. 2023 ജൂലൈ 31ന് മുമ്പുള്ള സർവീസ് പഴയ നിയമപ്രകാരം: ആദ്യ മൂന്ന് വർഷത്തിൽ ഓരോ വർഷത്തിനും 15 ദിവസത്തെ ശമ്പളം, പിന്നീട് ഓരോ വർഷത്തിനും ഒരു മാസം. പ്രവാസികൾക്കുള്ള സേവിംഗ്സ് ഫണ്ട് 2027 ജൂലൈ 19നകം ഗ്രാറ്റുവിറ്റിക്ക് പകരമാകും.",
+            bh: "ബഹ്‌റൈൻ തൊഴിൽ നിയമം ആർട്ടിക്കിൾ 116: കുറഞ്ഞത് ഒരു വർഷം സർവീസിന് ശേഷം, ആദ്യ മൂന്ന് വർഷത്തിൽ ഓരോ വർഷത്തിനും 15 ദിവസത്തെ ശമ്പളം, അതിന് ശേഷം ഓരോ വർഷത്തിനും ഒരു മാസത്തെ ശമ്പളം. 2024 മാർച്ച് 1 മുതൽ നേടുന്ന ഭാഗം കമ്പനിക്ക് പകരം സോഷ്യൽ ഇൻഷുറൻസ് ഓർഗനൈസേഷൻ (SIO) നൽകും. രാജിവെച്ചാലും കുറയില്ല."
+          },
+          faqTitle: "പതിവ് ചോദ്യങ്ങൾ",
+          q1: "കണക്ക് അടിസ്ഥാന ശമ്പളത്തിലാണോ മൊത്തം ശമ്പളത്തിലാണോ?",
+          a1: "രാജ്യത്തെ ആശ്രയിച്ചിരിക്കും. സൗദി അറേബ്യയും കുവൈത്തും ഹൗസിംഗ് പോലുള്ള സ്ഥിരം അലവൻസുകൾ ഉൾപ്പെടെയുള്ള അവസാന ശമ്പളം എടുക്കും. യുഎഇ, ഖത്തർ, ഒമാൻ, ബഹ്‌റൈൻ എന്നിവ അടിസ്ഥാന ശമ്പളം എടുക്കും. നിങ്ങളുടെ പേസ്ലിപ്പിലോ കരാറിലോ അടിസ്ഥാന ശമ്പളം കാണാം.",
+          q2: "രാജിവെച്ചാൽ ആനുകൂല്യം നഷ്ടപ്പെടുമോ?",
+          a2: "സൗദി അറേബ്യയിലും കുവൈത്തിലും മാത്രം, അതും ഭാഗികമായി. സൗദിയിൽ 2 വർഷത്തിൽ താഴെ ഒന്നുമില്ല, 5 വർഷം വരെ മൂന്നിലൊന്ന്, 10 വർഷം വരെ മൂന്നിൽ രണ്ട്. കുവൈത്തിൽ 3 വർഷത്തിൽ താഴെ ഒന്നുമില്ല, 5 വർഷം വരെ പകുതി, 10 വർഷം വരെ മൂന്നിൽ രണ്ട്. യുഎഇ, ഖത്തർ, ഒമാൻ, ബഹ്‌റൈൻ എന്നിവിടങ്ങളിൽ രാജിവെച്ചാലും കുറയില്ല.",
+          q3: "കമ്പനി എപ്പോഴാണ് ഇത് നൽകേണ്ടത്?",
+          a3: "സൗദി അറേബ്യയിൽ ജോലി അവസാനിച്ച് ഒരാഴ്ചയ്ക്കകം, രാജിവെച്ചാൽ രണ്ടാഴ്ചയ്ക്കകം. യുഎഇയിൽ 14 ദിവസത്തിനകം. ഖത്തറിൽ അടുത്ത പ്രവൃത്തി ദിവസത്തിനകം. കുവൈത്തിലും ഒമാനിലും ഫൈനൽ സെറ്റിൽമെന്റിനൊപ്പം. ബഹ്‌റൈനിൽ 2024 മാർച്ച് 1ന് മുമ്പുള്ള ഭാഗം കമ്പനി നൽകും, ശേഷമുള്ള ഭാഗം SIO-യിൽ നിന്ന് ക്ലെയിം ചെയ്യണം.",
+          q4: "കമ്പനിക്ക് ഇതിൽ നിന്ന് കുറയ്ക്കാനോ നിഷേധിക്കാനോ കഴിയുമോ?",
+          a4: "തിരിച്ചടയ്ക്കാത്ത ലോൺ പോലെ നിങ്ങൾ യഥാർത്ഥത്തിൽ കടപ്പെട്ട തുക കമ്പനിക്ക് കുറയ്ക്കാം. നിയമത്തിൽ പറയുന്ന ഗുരുതരമായ തെറ്റിന് പിരിച്ചുവിട്ടാൽ ആനുകൂല്യം നഷ്ടപ്പെടാം. ഫൈനൽ സെറ്റിൽമെന്റിനോട് യോജിപ്പില്ലെങ്കിൽ ഒന്നും ഒപ്പിടുന്നതിന് മുമ്പ് നിങ്ങളുടെ രാജ്യത്തെ തൊഴിൽ മന്ത്രാലയത്തെ ബന്ധപ്പെടുക.",
+          q5: "ഈ തുക കൃത്യമാണോ?",
+          a5: "നിയമത്തെ അടിസ്ഥാനമാക്കിയ അടുത്ത കണക്കാണിത്. കരാർ, കമ്പനി ദിവസങ്ങൾ കണക്കാക്കുന്ന രീതി, ശമ്പളമില്ലാത്ത അവധി, പ്രത്യേക സാഹചര്യങ്ങൾ എന്നിവ കാരണം യഥാർത്ഥ തുക വ്യത്യാസപ്പെടാം. നിങ്ങൾക്ക് നൽകുന്ന സെറ്റിൽമെന്റ് പരിശോധിക്കാൻ ഇത് ഉപയോഗിക്കൂ, കമ്പനിയോട് അവരുടെ കണക്ക് കാണിക്കാൻ ആവശ്യപ്പെടൂ.",
+          disclaimer: "ഓരോ രാജ്യത്തെയും സ്വകാര്യ മേഖല തൊഴിൽ നിയമത്തെ അടിസ്ഥാനമാക്കിയ ഒരു കണക്കാണ് ഈ കാൽക്കുലേറ്റർ നൽകുന്നത്. സർക്കാർ ജോലികൾ, വീട്ടുജോലിക്കാർ, DIFC, ADGM പോലുള്ള സ്വന്തം നിയമങ്ങളുള്ള ഫ്രീ സോണുകൾ, പ്രത്യേക സാഹചര്യങ്ങൾ എന്നിവ ഇതിൽ ഉൾപ്പെടുന്നില്ല. നിങ്ങളുടെ കരാർ കൂടുതൽ നൽകിയേക്കാം. കൃത്യമായ തുകയ്ക്ക് കമ്പനിയോടോ ഔദ്യോഗിക തൊഴിൽ വകുപ്പിനോടോ ഉറപ്പാക്കുക."
+        },
+        ne: {
+          title: "सेवा समाप्ति सुविधा क्यालकुलेटर",
+          lead: "साउदी अरब, युएई, कुवेत, कतार, ओमान वा बहराइनमा जागिर सकिँदा पाउनुपर्ने ग्र्याच्युटीको अनुमान गर्नुहोस्। आफ्नो देश छान्नुहोस्, तलब र सेवा अवधि राख्नुहोस्, अनि नियमसहित रकम हेर्नुहोस्।",
+          ad: "विज्ञापन",
+          calcTitle: "आफ्नो सेवा समाप्ति सुविधा हिसाब गर्नुहोस्",
+          countryLabel: "म यहाँ काम गर्छु:",
+          reasonLabel: "तपाईंको जागिर कसरी सकिँदैछ?",
+          reasonEnd: "सम्झौता सकियो वा कम्पनीले अन्त्य गर्‍यो",
+          reasonResign: "मैले राजीनामा दिएँ",
+          modeLabel: "सेवा अवधि",
+          modeYears: "वर्ष र महिना",
+          modeDates: "ठ्याक्कै मितिहरू",
+          yearsLabel: "वर्ष", monthsLabel: "महिना",
+          startLabel: "कामको पहिलो दिन", endLabel: "कामको अन्तिम दिन",
+          basicLabel: "मासिक आधारभूत तलब ({cur})",
+          allowLabel: "मासिक स्थिर भत्ता ({cur})",
+          allowUsed: "आवास, यातायात र अन्य स्थिर भत्ता। {country} मा यी आधारभूत तलबमा जोडिन्छन्।",
+          allowNotUsed: "आवास, यातायात र अन्य स्थिर भत्ता। {country} मा यी गनिँदैनन्, आधारभूत तलब मात्र लिइन्छ।",
+          unpaidLabel: "बिना तलबको बिदाका दिन (ऐच्छिक)",
+          unpaidHint: "बिना तलबको बिदाका दिन सेवा अवधिमा गनिँदैनन्।",
+          resultTitle: "तपाईंको अनुमान",
+          resultHint: "अनुमान हेर्न आफ्नो मासिक आधारभूत तलब राख्नुहोस्।",
+          totalLabel: "अनुमानित सेवा समाप्ति सुविधा",
+          serviceLabel: "गनिएको सेवा", wageLabel: "प्रयोग गरिएको मासिक तलब", fullLabel: "कटौतीअघिको पूरा रकम",
+          unitY: "वर्ष", unitM: "महिना", unitD: "दिन",
+          lineFmt: "{y} वर्ष × {rate}",
+          rHalf: "आधा महिनाको तलब", rMonth: "एक महिनाको तलब", r21: "२१ दिनको आधारभूत तलब", r30: "३० दिनको आधारभूत तलब", rMonthBasic: "एक महिनाको आधारभूत तलब",
+          oldLaw: "३१ जुलाई २०२३ अघि", newLaw: "३१ जुलाई २०२३ देखि",
+          nUnder1: "सेवा अवधि एक वर्षभन्दा कम छ, त्यसैले अहिले सेवा समाप्ति सुविधा पाइँदैन।",
+          nResignNone: "तपाईंले {n} वर्षको सेवा पूरा हुनुअघि राजीनामा दिनुभयो, त्यसैले सुविधा पाइँदैन।",
+          nShare: "राजीनामा दिएकाले तपाईंले पूरा रकमको {share} पाउनुहुन्छ।",
+          third: "एक तिहाइ", twoThirds: "दुई तिहाइ", half: "आधा",
+          nResignFull: "तपाईंले १० वर्ष वा बढीपछि राजीनामा दिनुभयो, त्यसैले पूरा रकम पाउनुहुन्छ।",
+          nCap: "कानुनअनुसार कुल रकम {n} महिनाको तलबभन्दा बढी हुँदैन, त्यसैले रकम {amt} मा सीमित छ।",
+          nOmanSavings: "ओमानले विदेशी कामदारको ग्र्याच्युटीको सट्टा कम्पनीले रकम जम्मा गर्ने बचत कोष ल्याउँदैछ, १९ जुलाई २०२७ भित्र। त्यसअघि कमाएको ग्र्याच्युटी तपाईंले पाउनैपर्छ।",
+          nBahrainSplit: "१ मार्च २०२४ अघिको सेवाका लागि कम्पनीले दिने: {a}। १ मार्च २०२४ देखिको सेवाका लागि SIO ले दिने: {b}।",
+          nDates: "कामको अन्तिम दिन पहिलो दिनपछि हुनुपर्छ।",
+          copy: "नतिजा कपी गर्नुहोस्",
+          copyHead: "सेवा समाप्ति अनुमान ({country})",
+          ruleTitle: "{country} मा हिसाब कसरी हुन्छ",
+          official: "आधिकारिक स्रोत: {auth}",
+          rule: {
+            sa: "साउदी श्रम कानुनको धारा ८४: पहिलो पाँच वर्षमा हरेक वर्षका लागि आधा महिनाको तलब, त्यसपछि हरेक वर्षका लागि एक महिनाको तलब, स्थिर भत्तासहितको अन्तिम तलबमा। राजीनामा दिँदा (धारा ८५): २ वर्षभन्दा कममा केही पनि होइन, २ देखि ५ वर्षमा एक तिहाइ, ५ देखि १० वर्षमा दुई तिहाइ, र १० वर्षपछि पूरा रकम। कम्पनीले सम्झौता अन्त्य गरे पूरा रकम पाइन्छ।",
+            ae: "युएई श्रम कानुनको धारा ५१: कम्तीमा एक वर्ष सेवापछि, पहिलो पाँच वर्षमा हरेक वर्षका लागि २१ दिनको आधारभूत तलब र त्यसपछि हरेक वर्षका लागि ३० दिनको आधारभूत तलब। वर्षको भाग अनुपातमा गनिन्छ। कुल रकम दुई वर्षको तलबभन्दा बढी हुँदैन। राजीनामा दिँदा घट्दैन।",
+            kw: "कुवेत श्रम कानुन नं. ६/२०१० को धारा ५१: मासिक तलब पाउनेलाई पहिलो पाँच वर्षमा हरेक वर्षका लागि १५ दिनको तलब र त्यसपछि हरेक वर्षका लागि एक महिनाको तलब, कुल १८ महिनाको तलबसम्म। राजीनामा दिँदा (धारा ५३): ३ वर्षभन्दा कममा केही पनि होइन, ३ देखि ५ वर्षमा आधा, ५ देखि १० वर्षमा दुई तिहाइ, र १० वर्षपछि पूरा रकम।",
+            qa: "कतार श्रम कानुनको धारा ५४: कम्तीमा एक वर्ष सेवापछि, हरेक वर्षका लागि कम्तीमा तीन हप्ताको आधारभूत तलब, वर्षको भाग अनुपातमा। तपाईंको सम्झौताले बढी दिन सक्छ। माथिल्लो सीमा छैन र राजीनामा दिँदा घट्दैन।",
+            om: "ओमान श्रम कानुन (२०२३) को धारा ६१: सेवाको हरेक वर्षका लागि कम्तीमा एक महिनाको आधारभूत तलब। ३१ जुलाई २०२३ अघिको सेवा पुरानो कानुनअनुसार गनिन्छ: पहिलो तीन वर्षमा हरेक वर्षका लागि १५ दिनको तलब, त्यसपछि हरेक वर्षका लागि एक महिना। विदेशी कामदारका लागि बचत कोषले १९ जुलाई २०२७ भित्र ग्र्याच्युटीको ठाउँ लिनेछ।",
+            bh: "बहराइन श्रम कानुनको धारा ११६: कम्तीमा एक वर्ष सेवापछि, पहिलो तीन वर्षमा हरेक वर्षका लागि १५ दिनको तलब र त्यसपछि हरेक वर्षका लागि एक महिनाको तलब। १ मार्च २०२४ देखि कमाएको भाग कम्पनीको सट्टा सामाजिक बीमा संगठन (SIO) ले दिन्छ। राजीनामा दिँदा घट्दैन।"
+          },
+          faqTitle: "धेरै सोधिने प्रश्नहरू",
+          q1: "हिसाब आधारभूत तलबमा हुन्छ कि कुल तलबमा?",
+          a1: "यो देशअनुसार फरक हुन्छ। साउदी अरब र कुवेतले आवासजस्ता स्थिर भत्तासहितको अन्तिम पूरा तलब लिन्छन्। युएई, कतार, ओमान र बहराइनले आधारभूत तलब लिन्छन्। तपाईंको पे-स्लिप वा सम्झौतामा आधारभूत तलब लेखिएको हुन्छ।",
+          q2: "राजीनामा दिँदा सुविधा गुम्छ?",
+          a2: "साउदी अरब र कुवेतमा मात्र, त्यो पनि आंशिक रूपमा। साउदीमा २ वर्षभन्दा कममा केही पनि होइन, ५ वर्षसम्म एक तिहाइ र १० वर्षसम्म दुई तिहाइ। कुवेतमा ३ वर्षभन्दा कममा केही पनि होइन, ५ वर्षसम्म आधा र १० वर्षसम्म दुई तिहाइ। युएई, कतार, ओमान र बहराइनमा राजीनामा दिँदा घट्दैन।",
+          q3: "कम्पनीले यो कहिलेसम्म दिनुपर्छ?",
+          a3: "साउदी अरबमा जागिर सकिएको एक हप्ताभित्र, राजीनामा दिए दुई हप्ताभित्र। युएईमा १४ दिनभित्र। कतारमा अर्को कार्यदिनसम्म। कुवेत र ओमानमा अन्तिम हिसाबसँगै। बहराइनमा १ मार्च २०२४ अघिको भाग कम्पनीले दिन्छ र पछिको भाग तपाईंले SIO बाट दाबी गर्नुहुन्छ।",
+          q4: "के कम्पनीले यसबाट कटौती गर्न वा दिन अस्वीकार गर्न सक्छ?",
+          a4: "तपाईंले साँच्चै तिर्नुपर्ने रकम, जस्तै नतिरेको ऋण, कम्पनीले काट्न सक्छ। कानुनमा उल्लेखित गम्भीर गल्तीका कारण निकालिएमा सुविधा गुम्न सक्छ। अन्तिम हिसाबसँग असहमत हुनुहुन्छ भने केही पनि हस्ताक्षर गर्नुअघि आफ्नो देशको श्रम मन्त्रालयमा सम्पर्क गर्नुहोस्।",
+          q5: "के यो रकम ठ्याक्कै सही हो?",
+          a5: "यो कानुनमा आधारित नजिकको अनुमान हो। तपाईंको सम्झौता, कम्पनीले दिन गन्ने तरिका, बिना तलबको बिदा वा विशेष अवस्थाका कारण वास्तविक रकम फरक हुन सक्छ। आफूलाई दिइएको हिसाब जाँच्न यसलाई प्रयोग गर्नुहोस् र कम्पनीलाई उनीहरूको हिसाब देखाउन भन्नुहोस्।",
+          disclaimer: "यो क्यालकुलेटरले हरेक देशको निजी क्षेत्र श्रम कानुनमा आधारित अनुमान दिन्छ। यसमा सरकारी जागिर, घरेलु कामदार, DIFC र ADGM जस्ता आफ्नै नियम भएका फ्री जोन वा विशेष अवस्था समेटिएका छैनन्। तपाईंको सम्झौताले बढी दिन सक्छ। ठ्याक्कै रकमका लागि आफ्नो कम्पनी वा आधिकारिक श्रम निकायसँग पुष्टि गर्नुहोस्।"
+        },
+        ur: {
+          title: "اختتامِ ملازمت فائدہ کیلکولیٹر",
+          lead: "سعودی عرب، امارات، کویت، قطر، عمان یا بحرین میں ملازمت ختم ہونے پر ملنے والی گریجویٹی کا اندازہ لگائیں۔ اپنا ملک چنیں، تنخواہ اور مدتِ ملازمت لکھیں، اور قانون کے ساتھ رقم دیکھیں۔",
+          ad: "اشتہار",
+          calcTitle: "اپنا اختتامِ ملازمت فائدہ معلوم کریں",
+          countryLabel: "میں یہاں کام کرتا/کرتی ہوں:",
+          reasonLabel: "آپ کی ملازمت کیسے ختم ہو رہی ہے؟",
+          reasonEnd: "معاہدہ ختم ہوا یا کمپنی نے ختم کیا",
+          reasonResign: "میں نے استعفیٰ دیا",
+          modeLabel: "مدتِ ملازمت",
+          modeYears: "سال اور مہینے",
+          modeDates: "درست تاریخیں",
+          yearsLabel: "سال", monthsLabel: "مہینے",
+          startLabel: "کام کا پہلا دن", endLabel: "کام کا آخری دن",
+          basicLabel: "ماہانہ بنیادی تنخواہ ({cur})",
+          allowLabel: "ماہانہ مقررہ الاؤنسز ({cur})",
+          allowUsed: "ہاؤسنگ، ٹرانسپورٹ اور دیگر مقررہ الاؤنسز۔ {country} میں یہ بنیادی تنخواہ میں شامل کیے جاتے ہیں۔",
+          allowNotUsed: "ہاؤسنگ، ٹرانسپورٹ اور دیگر مقررہ الاؤنسز۔ {country} میں یہ شمار نہیں ہوتے، صرف بنیادی تنخواہ لی جاتی ہے۔",
+          unpaidLabel: "بغیر تنخواہ چھٹی کے دن (اختیاری)",
+          unpaidHint: "بغیر تنخواہ چھٹی کے دن مدتِ ملازمت میں شمار نہیں ہوتے۔",
+          resultTitle: "آپ کا اندازہ",
+          resultHint: "اندازہ دیکھنے کے لیے اپنی ماہانہ بنیادی تنخواہ لکھیں۔",
+          totalLabel: "اندازاً اختتامِ ملازمت فائدہ",
+          serviceLabel: "شمار شدہ مدت", wageLabel: "استعمال شدہ ماہانہ تنخواہ", fullLabel: "کٹوتی سے پہلے پوری رقم",
+          unitY: "سال", unitM: "مہینے", unitD: "دن",
+          lineFmt: "{y} سال × {rate}",
+          rHalf: "آدھے مہینے کی تنخواہ", rMonth: "ایک مہینے کی تنخواہ", r21: "21 دن کی بنیادی تنخواہ", r30: "30 دن کی بنیادی تنخواہ", rMonthBasic: "ایک مہینے کی بنیادی تنخواہ",
+          oldLaw: "31 جولائی 2023 سے پہلے", newLaw: "31 جولائی 2023 سے",
+          nUnder1: "مدتِ ملازمت ایک سال سے کم ہے، اس لیے ابھی اختتامِ ملازمت فائدہ نہیں بنتا۔",
+          nResignNone: "آپ نے {n} سال کی ملازمت پوری ہونے سے پہلے استعفیٰ دیا، اس لیے کوئی فائدہ نہیں بنتا۔",
+          nShare: "استعفیٰ دینے کی وجہ سے آپ کو پوری رقم کا {share} ملے گا۔",
+          third: "ایک تہائی", twoThirds: "دو تہائی", half: "آدھا",
+          nResignFull: "آپ نے 10 سال یا اس سے زیادہ کے بعد استعفیٰ دیا، اس لیے پوری رقم ملے گی۔",
+          nCap: "قانون کے مطابق کل رقم {n} مہینے کی تنخواہ سے زیادہ نہیں ہو سکتی، اس لیے رقم {amt} تک محدود ہے۔",
+          nOmanSavings: "عمان تارکینِ وطن کی گریجویٹی کی جگہ ایک بچت فنڈ لا رہا ہے جس میں کمپنی رقم جمع کرے گی، زیادہ سے زیادہ 19 جولائی 2027 تک۔ اس سے پہلے کی گریجویٹی آپ کا حق ہے۔",
+          nBahrainSplit: "یکم مارچ 2024 سے پہلے کی ملازمت کے لیے کمپنی ادا کرے گی: {a}۔ یکم مارچ 2024 سے کی ملازمت کے لیے SIO ادا کرے گا: {b}۔",
+          nDates: "کام کا آخری دن پہلے دن کے بعد ہونا چاہیے۔",
+          copy: "نتیجہ کاپی کریں",
+          copyHead: "اختتامِ ملازمت اندازہ ({country})",
+          ruleTitle: "{country} میں حساب کیسے ہوتا ہے",
+          official: "سرکاری ذریعہ: {auth}",
+          rule: {
+            sa: "سعودی لیبر لا کی دفعہ 84: پہلے پانچ سال میں ہر سال کے لیے آدھے مہینے کی تنخواہ، اور اس کے بعد ہر سال کے لیے ایک مہینے کی تنخواہ، مقررہ الاؤنسز سمیت آخری تنخواہ پر۔ استعفیٰ کی صورت میں (دفعہ 85): 2 سال سے کم پر کچھ نہیں، 2 سے 5 سال پر ایک تہائی، 5 سے 10 سال پر دو تہائی، اور 10 سال کے بعد پوری رقم۔ اگر کمپنی معاہدہ ختم کرے تو پوری رقم ملتی ہے۔",
+            ae: "امارات کے لیبر لا کی دفعہ 51: کم از کم ایک سال ملازمت کے بعد، پہلے پانچ سال میں ہر سال کے لیے 21 دن کی بنیادی تنخواہ اور اس کے بعد ہر سال کے لیے 30 دن کی بنیادی تنخواہ۔ سال کا حصہ تناسب سے شمار ہوتا ہے۔ کل رقم دو سال کی تنخواہ سے زیادہ نہیں ہو سکتی۔ استعفیٰ سے رقم کم نہیں ہوتی۔",
+            kw: "کویت لیبر لا نمبر 6/2010 کی دفعہ 51: ماہانہ تنخواہ والوں کے لیے پہلے پانچ سال میں ہر سال کے لیے 15 دن کی تنخواہ اور اس کے بعد ہر سال کے لیے ایک مہینے کی تنخواہ، کل 18 مہینے کی تنخواہ تک۔ استعفیٰ کی صورت میں (دفعہ 53): 3 سال سے کم پر کچھ نہیں، 3 سے 5 سال پر آدھا، 5 سے 10 سال پر دو تہائی، اور 10 سال کے بعد پوری رقم۔",
+            qa: "قطر لیبر لا کی دفعہ 54: کم از کم ایک سال ملازمت کے بعد، ہر سال کے لیے کم از کم تین ہفتے کی بنیادی تنخواہ، سال کا حصہ تناسب سے۔ آپ کا معاہدہ اس سے زیادہ دے سکتا ہے۔ کوئی بالائی حد نہیں اور استعفیٰ سے رقم کم نہیں ہوتی۔",
+            om: "عمان لیبر لا (2023) کی دفعہ 61: ملازمت کے ہر سال کے لیے کم از کم ایک مہینے کی بنیادی تنخواہ۔ 31 جولائی 2023 سے پہلے کی ملازمت پرانے قانون کے مطابق: پہلے تین سال میں ہر سال کے لیے 15 دن کی تنخواہ، پھر ہر سال کے لیے ایک مہینہ۔ تارکینِ وطن کے لیے بچت فنڈ زیادہ سے زیادہ 19 جولائی 2027 تک گریجویٹی کی جگہ لے لے گا۔",
+            bh: "بحرین لیبر لا کی دفعہ 116: کم از کم ایک سال ملازمت کے بعد، پہلے تین سال میں ہر سال کے لیے 15 دن کی تنخواہ اور اس کے بعد ہر سال کے لیے ایک مہینے کی تنخواہ۔ یکم مارچ 2024 سے، اس تاریخ کے بعد کمایا گیا حصہ کمپنی کی بجائے سوشل انشورنس آرگنائزیشن (SIO) ادا کرتی ہے۔ استعفیٰ سے رقم کم نہیں ہوتی۔"
+          },
+          faqTitle: "اکثر پوچھے جانے والے سوالات",
+          q1: "حساب بنیادی تنخواہ پر ہوتا ہے یا کل تنخواہ پر؟",
+          a1: "یہ ملک پر منحصر ہے۔ سعودی عرب اور کویت ہاؤسنگ جیسے مقررہ الاؤنسز سمیت آخری پوری تنخواہ لیتے ہیں۔ امارات، قطر، عمان اور بحرین بنیادی تنخواہ لیتے ہیں۔ آپ کی پے سلپ یا معاہدے میں بنیادی تنخواہ لکھی ہوتی ہے۔",
+          q2: "کیا استعفیٰ دینے سے فائدہ ختم ہو جاتا ہے؟",
+          a2: "صرف سعودی عرب اور کویت میں، اور وہ بھی جزوی طور پر۔ سعودی عرب میں 2 سال سے کم پر کچھ نہیں، 5 سال تک ایک تہائی اور 10 سال تک دو تہائی۔ کویت میں 3 سال سے کم پر کچھ نہیں، 5 سال تک آدھا اور 10 سال تک دو تہائی۔ امارات، قطر، عمان اور بحرین میں استعفیٰ سے رقم کم نہیں ہوتی۔",
+          q3: "کمپنی کو یہ کب تک ادا کرنا ہوتا ہے؟",
+          a3: "سعودی عرب میں ملازمت ختم ہونے کے ایک ہفتے میں، یا استعفیٰ کی صورت میں دو ہفتے میں۔ امارات میں 14 دن میں۔ قطر میں اگلے کام کے دن تک۔ کویت اور عمان میں فائنل سیٹلمنٹ کے ساتھ۔ بحرین میں یکم مارچ 2024 سے پہلے کا حصہ کمپنی دیتی ہے اور بعد کا حصہ آپ SIO سے کلیم کرتے ہیں۔",
+          q4: "کیا کمپنی اس میں کٹوتی یا انکار کر سکتی ہے؟",
+          a4: "کمپنی وہ رقم کاٹ سکتی ہے جو آپ پر واقعی واجب ہو، جیسے نہ لوٹایا گیا قرض۔ قانون میں درج سنگین بدانتظامی پر برطرفی کی صورت میں فائدہ ختم ہو سکتا ہے۔ اگر آپ فائنل سیٹلمنٹ سے متفق نہیں تو کچھ بھی دستخط کرنے سے پہلے اپنے ملک کی وزارتِ محنت سے رابطہ کریں۔",
+          q5: "کیا یہ رقم بالکل درست ہے؟",
+          a5: "یہ قانون پر مبنی ایک قریبی اندازہ ہے۔ آپ کے معاہدے، کمپنی کے دن گننے کے طریقے، بغیر تنخواہ چھٹی یا خاص حالات کی وجہ سے اصل رقم مختلف ہو سکتی ہے۔ اسے اپنی سیٹلمنٹ چیک کرنے کے لیے استعمال کریں اور کمپنی سے ان کا حساب دکھانے کو کہیں۔",
+          disclaimer: "یہ کیلکولیٹر ہر ملک کے نجی شعبے کے لیبر لا پر مبنی اندازہ دیتا ہے۔ اس میں سرکاری ملازمتیں، گھریلو ملازمین، DIFC اور ADGM جیسے اپنے قوانین والے فری زون، یا خاص حالات شامل نہیں۔ آپ کا معاہدہ زیادہ دے سکتا ہے۔ درست رقم کے لیے اپنی کمپنی یا سرکاری محنت کے ادارے سے تصدیق کریں۔"
+        },
+        bn: {
+          title: "চাকরি শেষের পাওনা (গ্র্যাচুইটি) ক্যালকুলেটর",
+          lead: "সৌদি আরব, আমিরাত, কুয়েত, কাতার, ওমান বা বাহরাইনে চাকরি শেষ হলে কত গ্র্যাচুইটি পাওয়ার কথা তা হিসাব করুন। দেশ বেছে নিন, বেতন ও চাকরির মেয়াদ লিখুন, আর আইনের নিয়মসহ টাকার পরিমাণ দেখুন।",
+          ad: "বিজ্ঞাপন",
+          calcTitle: "আপনার চাকরি শেষের পাওনা হিসাব করুন",
+          countryLabel: "আমি কাজ করি:",
+          reasonLabel: "আপনার চাকরি কীভাবে শেষ হচ্ছে?",
+          reasonEnd: "চুক্তি শেষ বা কোম্পানি শেষ করেছে",
+          reasonResign: "আমি পদত্যাগ করেছি",
+          modeLabel: "চাকরির মেয়াদ",
+          modeYears: "বছর ও মাস",
+          modeDates: "সঠিক তারিখ",
+          yearsLabel: "বছর", monthsLabel: "মাস",
+          startLabel: "কাজের প্রথম দিন", endLabel: "কাজের শেষ দিন",
+          basicLabel: "মাসিক মূল বেতন ({cur})",
+          allowLabel: "মাসিক নির্দিষ্ট ভাতা ({cur})",
+          allowUsed: "বাসা, যাতায়াত ও অন্যান্য নির্দিষ্ট ভাতা। {country}-এ এগুলো মূল বেতনের সাথে যোগ হয়।",
+          allowNotUsed: "বাসা, যাতায়াত ও অন্যান্য নির্দিষ্ট ভাতা। {country}-এ এগুলো ধরা হয় না, শুধু মূল বেতন নেওয়া হয়।",
+          unpaidLabel: "বিনা বেতনের ছুটির দিন (ঐচ্ছিক)",
+          unpaidHint: "বিনা বেতনের ছুটির দিন চাকরির মেয়াদে ধরা হয় না।",
+          resultTitle: "আপনার হিসাব",
+          resultHint: "হিসাব দেখতে আপনার মাসিক মূল বেতন লিখুন।",
+          totalLabel: "আনুমানিক চাকরি শেষের পাওনা",
+          serviceLabel: "গণনা করা মেয়াদ", wageLabel: "ব্যবহৃত মাসিক বেতন", fullLabel: "কর্তনের আগে পুরো পাওনা",
+          unitY: "বছর", unitM: "মাস", unitD: "দিন",
+          lineFmt: "{y} বছর × {rate}",
+          rHalf: "আধা মাসের বেতন", rMonth: "এক মাসের বেতন", r21: "২১ দিনের মূল বেতন", r30: "৩০ দিনের মূল বেতন", rMonthBasic: "এক মাসের মূল বেতন",
+          oldLaw: "৩১ জুলাই ২০২৩-এর আগে", newLaw: "৩১ জুলাই ২০২৩ থেকে",
+          nUnder1: "চাকরির মেয়াদ এক বছরের কম, তাই এখনও চাকরি শেষের পাওনা হয়নি।",
+          nResignNone: "{n} বছর চাকরি পূর্ণ হওয়ার আগে পদত্যাগ করেছেন, তাই কোনো পাওনা নেই।",
+          nShare: "পদত্যাগ করায় আপনি পুরো পাওনার {share} পাবেন।",
+          third: "এক-তৃতীয়াংশ", twoThirds: "দুই-তৃতীয়াংশ", half: "অর্ধেক",
+          nResignFull: "১০ বছর বা তার বেশি পরে পদত্যাগ করেছেন, তাই পুরো পাওনা পাবেন।",
+          nCap: "আইন অনুযায়ী মোট পাওনা {n} মাসের বেতনের বেশি হতে পারে না, তাই পরিমাণ {amt}-এ সীমিত।",
+          nOmanSavings: "ওমান প্রবাসীদের গ্র্যাচুইটির বদলে একটি সঞ্চয় তহবিল চালু করছে, যেখানে কোম্পানি টাকা জমা দেবে, সর্বশেষ ১৯ জুলাই ২০২৭-এর মধ্যে। এর আগের গ্র্যাচুইটি আপনার পাওনা থাকবে।",
+          nBahrainSplit: "১ মার্চ ২০২৪-এর আগের চাকরির জন্য কোম্পানি দেবে: {a}। ১ মার্চ ২০২৪ থেকে চাকরির জন্য SIO দেবে: {b}।",
+          nDates: "কাজের শেষ দিন প্রথম দিনের পরে হতে হবে।",
+          copy: "ফলাফল কপি করুন",
+          copyHead: "চাকরি শেষের পাওনার হিসাব ({country})",
+          ruleTitle: "{country}-এ কীভাবে হিসাব হয়",
+          official: "অফিসিয়াল সূত্র: {auth}",
+          rule: {
+            sa: "সৌদি শ্রম আইনের ধারা ৮৪: প্রথম পাঁচ বছরের প্রতি বছরের জন্য আধা মাসের বেতন, এবং এরপর প্রতি বছরের জন্য এক মাসের বেতন, নির্দিষ্ট ভাতাসহ শেষ বেতনের ওপর। পদত্যাগ করলে (ধারা ৮৫): ২ বছরের কম হলে কিছু নয়, ২ থেকে ৫ বছরে এক-তৃতীয়াংশ, ৫ থেকে ১০ বছরে দুই-তৃতীয়াংশ, এবং ১০ বছরের পর পুরো পাওনা। কোম্পানি চুক্তি শেষ করলে পুরো পাওনা পাবেন।",
+            ae: "আমিরাতের শ্রম আইনের ধারা ৫১: অন্তত এক বছর চাকরির পর, প্রথম পাঁচ বছরের প্রতি বছরের জন্য ২১ দিনের মূল বেতন এবং এরপর প্রতি বছরের জন্য ৩০ দিনের মূল বেতন। বছরের অংশ অনুপাতে ধরা হয়। মোট পাওনা দুই বছরের বেতনের বেশি হতে পারে না। পদত্যাগে পাওনা কমে না।",
+            kw: "কুয়েত শ্রম আইন নং ৬/২০১০-এর ধারা ৫১: মাসিক বেতনের কর্মীদের জন্য প্রথম পাঁচ বছরের প্রতি বছরের জন্য ১৫ দিনের বেতন এবং এরপর প্রতি বছরের জন্য এক মাসের বেতন, মোট ১৮ মাসের বেতন পর্যন্ত। পদত্যাগ করলে (ধারা ৫৩): ৩ বছরের কম হলে কিছু নয়, ৩ থেকে ৫ বছরে অর্ধেক, ৫ থেকে ১০ বছরে দুই-তৃতীয়াংশ, এবং ১০ বছরের পর পুরো পরিমাণ।",
+            qa: "কাতার শ্রম আইনের ধারা ৫৪: অন্তত এক বছর চাকরির পর, প্রতি বছরের জন্য অন্তত তিন সপ্তাহের মূল বেতন, বছরের অংশ অনুপাতে। আপনার চুক্তি এর বেশি দিতে পারে। কোনো ঊর্ধ্বসীমা নেই এবং পদত্যাগে পাওনা কমে না।",
+            om: "ওমান শ্রম আইন (২০২৩)-এর ধারা ৬১: চাকরির প্রতি বছরের জন্য অন্তত এক মাসের মূল বেতন। ৩১ জুলাই ২০২৩-এর আগের চাকরি পুরোনো আইনে ধরা হয়: প্রথম তিন বছরের প্রতি বছরের জন্য ১৫ দিনের বেতন, এরপর প্রতি বছরের জন্য এক মাস। প্রবাসীদের সঞ্চয় তহবিল সর্বশেষ ১৯ জুলাই ২০২৭-এর মধ্যে গ্র্যাচুইটির জায়গা নেবে।",
+            bh: "বাহরাইন শ্রম আইনের ধারা ১১৬: অন্তত এক বছর চাকরির পর, প্রথম তিন বছরের প্রতি বছরের জন্য ১৫ দিনের বেতন এবং এরপর প্রতি বছরের জন্য এক মাসের বেতন। ১ মার্চ ২০২৪ থেকে, ওই তারিখের পর অর্জিত অংশ কোম্পানির বদলে সোশ্যাল ইনস্যুরেন্স অর্গানাইজেশন (SIO) দেয়। পদত্যাগে পাওনা কমে না।"
+          },
+          faqTitle: "সাধারণ প্রশ্ন",
+          q1: "হিসাব কি মূল বেতনে হয় নাকি মোট বেতনে?",
+          a1: "এটা দেশের ওপর নির্ভর করে। সৌদি আরব ও কুয়েত বাসা ভাতার মতো নির্দিষ্ট ভাতাসহ শেষ পুরো বেতন ধরে। আমিরাত, কাতার, ওমান ও বাহরাইন মূল বেতন ধরে। আপনার পে-স্লিপ বা চুক্তিতে মূল বেতন লেখা থাকে।",
+          q2: "পদত্যাগ করলে কি পাওনা হারাব?",
+          a2: "শুধু সৌদি আরব ও কুয়েতে, তাও আংশিকভাবে। সৌদিতে ২ বছরের কম হলে কিছু নয়, ৫ বছর পর্যন্ত এক-তৃতীয়াংশ এবং ১০ বছর পর্যন্ত দুই-তৃতীয়াংশ। কুয়েতে ৩ বছরের কম হলে কিছু নয়, ৫ বছর পর্যন্ত অর্ধেক এবং ১০ বছর পর্যন্ত দুই-তৃতীয়াংশ। আমিরাত, কাতার, ওমান ও বাহরাইনে পদত্যাগে পাওনা কমে না।",
+          q3: "কোম্পানিকে কখনের মধ্যে এটি দিতে হয়?",
+          a3: "সৌদি আরবে চাকরি শেষের এক সপ্তাহের মধ্যে, পদত্যাগ করলে দুই সপ্তাহের মধ্যে। আমিরাতে ১৪ দিনের মধ্যে। কাতারে পরের কর্মদিবসের মধ্যে। কুয়েত ও ওমানে চূড়ান্ত হিসাবের সাথে। বাহরাইনে ১ মার্চ ২০২৪-এর আগের অংশ কোম্পানি দেয়, আর পরের অংশ আপনি SIO থেকে দাবি করেন।",
+          q4: "কোম্পানি কি এখান থেকে কাটতে বা না দিতে পারে?",
+          a4: "আপনার কাছে সত্যিই পাওনা টাকা, যেমন অপরিশোধিত ঋণ, কোম্পানি কাটতে পারে। আইনে উল্লেখিত গুরুতর অসদাচরণের জন্য বরখাস্ত হলে পাওনা হারাতে পারেন। চূড়ান্ত হিসাবে আপত্তি থাকলে কিছুতে সই করার আগে আপনার দেশের শ্রম মন্ত্রণালয়ে যোগাযোগ করুন।",
+          q5: "এই পরিমাণ কি একদম সঠিক?",
+          a5: "এটি আইনের ভিত্তিতে একটি কাছাকাছি হিসাব। আপনার চুক্তি, কোম্পানির দিন গোনার নিয়ম, বিনা বেতনের ছুটি বা বিশেষ পরিস্থিতির কারণে আসল পরিমাণ ভিন্ন হতে পারে। আপনাকে দেওয়া হিসাব যাচাই করতে এটি ব্যবহার করুন এবং কোম্পানিকে তাদের হিসাব দেখাতে বলুন।",
+          disclaimer: "এই ক্যালকুলেটর প্রতিটি দেশের বেসরকারি খাতের শ্রম আইনের ভিত্তিতে একটি আনুমানিক হিসাব দেয়। এতে সরকারি চাকরি, গৃহকর্মী, DIFC ও ADGM-এর মতো নিজস্ব নিয়মের ফ্রি জোন বা বিশেষ পরিস্থিতি অন্তর্ভুক্ত নয়। আপনার চুক্তি এর বেশি দিতে পারে। সঠিক পরিমাণের জন্য কোম্পানি বা অফিসিয়াল শ্রম কর্তৃপক্ষের সাথে নিশ্চিত হন।"
+        },
+        tl: {
+          title: "End-of-service benefit calculator",
+          lead: "Kalkulahin ang gratuity na dapat mong matanggap kapag natapos ang trabaho mo sa Saudi Arabia, UAE, Kuwait, Qatar, Oman o Bahrain. Piliin ang bansa, ilagay ang sahod at tagal ng serbisyo, at makikita ang halaga kasama ang batas sa likod nito.",
+          ad: "Advertisement",
+          calcTitle: "Kalkulahin ang end-of-service benefit mo",
+          countryLabel: "Nagtatrabaho ako sa:",
+          reasonLabel: "Paano natatapos ang trabaho mo?",
+          reasonEnd: "Natapos ang kontrata o tinapos ng employer",
+          reasonResign: "Nag-resign ako",
+          modeLabel: "Tagal ng serbisyo",
+          modeYears: "Taon at buwan",
+          modeDates: "Eksaktong petsa",
+          yearsLabel: "Taon", monthsLabel: "Buwan",
+          startLabel: "Unang araw ng trabaho", endLabel: "Huling araw ng trabaho",
+          basicLabel: "Buwanang basic salary ({cur})",
+          allowLabel: "Buwanang fixed allowances ({cur})",
+          allowUsed: "Housing, transportation at iba pang fixed allowances. Sa {country}, idinadagdag ang mga ito sa basic salary.",
+          allowNotUsed: "Housing, transportation at iba pang fixed allowances. Sa {country}, hindi ito isinasama; basic salary lang ang ginagamit.",
+          unpaidLabel: "Mga araw ng unpaid leave (opsyonal)",
+          unpaidHint: "Hindi binibilang sa serbisyo ang mga araw ng unpaid leave.",
+          resultTitle: "Ang tantya mo",
+          resultHint: "Ilagay ang buwanang basic salary mo para makita ang tantya.",
+          totalLabel: "Tantyang end-of-service benefit",
+          serviceLabel: "Serbisyong binilang", wageLabel: "Buwanang sahod na ginamit", fullLabel: "Buong halaga bago ang bawas",
+          unitY: "taon", unitM: "buwan", unitD: "araw",
+          lineFmt: "{y} taon × {rate}",
+          rHalf: "kalahating buwang sahod", rMonth: "isang buwang sahod", r21: "21 araw ng basic salary", r30: "30 araw ng basic salary", rMonthBasic: "isang buwang basic salary",
+          oldLaw: "bago ang 31 Hul 2023", newLaw: "mula 31 Hul 2023",
+          nUnder1: "Wala pang isang taon ang serbisyo, kaya wala pang end-of-service benefit.",
+          nResignNone: "Nag-resign ka bago makumpleto ang {n} taon ng serbisyo, kaya walang benefit.",
+          nShare: "Dahil nag-resign ka, matatanggap mo ang {share} ng buong halaga.",
+          third: "isang-katlo", twoThirds: "dalawang-katlo", half: "kalahati",
+          nResignFull: "Nag-resign ka pagkatapos ng 10 taon o higit pa, kaya buong halaga ang matatanggap mo.",
+          nCap: "Nililimitahan ng batas ang kabuuan sa {n} buwang sahod, kaya hanggang {amt} lang ang halaga.",
+          nOmanSavings: "Papalitan ng Oman ang gratuity ng mga expat ng savings fund na hinuhulugan ng employer, hindi lalampas sa 19 Hulyo 2027. Dapat pa ring ibigay sa iyo ang gratuity na naipon bago ang pagbabago.",
+          nBahrainSplit: "Babayaran ng employer para sa serbisyo bago ang 1 Marso 2024: {a}. Babayaran ng SIO para sa serbisyo mula 1 Marso 2024: {b}.",
+          nDates: "Dapat mas huli ang huling araw ng trabaho kaysa sa unang araw.",
+          copy: "Kopyahin ang resulta",
+          copyHead: "Tantyang end-of-service ({country})",
+          ruleTitle: "Paano ito kinakalkula sa {country}",
+          official: "Opisyal na source: {auth}",
+          rule: {
+            sa: "Article 84 ng Saudi Labor Law: kalahating buwang sahod sa bawat isa sa unang limang taon at isang buong buwang sahod sa bawat taon pagkatapos noon, batay sa huling sahod kasama ang fixed allowances. Kung nag-resign (Article 85): wala kung kulang sa 2 taon, isang-katlo mula 2 hanggang 5 taon, dalawang-katlo mula 5 hanggang 10 taon, at buo mula 10 taon. Kung ang employer ang tumapos ng kontrata, buo ang matatanggap mo.",
+            ae: "Article 51 ng UAE Labour Law: pagkatapos ng hindi bababa sa isang taon ng serbisyo, 21 araw ng basic salary sa bawat isa sa unang limang taon at 30 araw ng basic salary sa bawat taon pagkatapos noon. Binibilang nang proporsyon ang bahagi ng taon. Hindi puwedeng lumampas sa dalawang taong sahod ang kabuuan. Hindi ito nababawasan kapag nag-resign.",
+            kw: "Article 51 ng Kuwait Labour Law No. 6 ng 2010: para sa may buwanang sahod, 15 araw na sahod sa bawat isa sa unang limang taon at isang buwang sahod sa bawat taon pagkatapos noon, hanggang 18 buwang sahod sa kabuuan. Kung nag-resign (Article 53): wala kung kulang sa 3 taon, kalahati mula 3 hanggang 5 taon, dalawang-katlo mula 5 hanggang 10 taon, at buo mula 10 taon.",
+            qa: "Article 54 ng Qatar Labour Law: pagkatapos ng hindi bababa sa isang taon ng serbisyo, hindi bababa sa tatlong linggong basic salary bawat taon, at proporsyon para sa bahagi ng taon. Puwedeng mas malaki ang ibigay ng kontrata mo. Walang upper limit at hindi ito nababawasan kapag nag-resign.",
+            om: "Article 61 ng Oman Labour Law (2023): hindi bababa sa isang buwang basic salary bawat taon ng serbisyo. Ang serbisyo bago ang 31 Hulyo 2023 ay binibilang sa lumang batas: 15 araw na sahod sa bawat isa sa unang tatlong taon, tapos isang buwan bawat taon pagkatapos. Papalitan ng savings fund para sa expats ang gratuity hindi lalampas sa 19 Hulyo 2027.",
+            bh: "Article 116 ng Bahrain Labour Law: pagkatapos ng hindi bababa sa isang taon ng serbisyo, 15 araw na sahod sa bawat isa sa unang tatlong taon at isang buwang sahod sa bawat taon pagkatapos noon. Mula 1 Marso 2024, ang bahaging naipon mula sa petsang iyon ay binabayaran ng Social Insurance Organization (SIO) sa halip na ng employer. Hindi ito nababawasan kapag nag-resign."
+          },
+          faqTitle: "Mga madalas itanong",
+          q1: "Sa basic salary ba o sa kabuuang sahod kinakalkula?",
+          a1: "Depende sa bansa. Ang Saudi Arabia at Kuwait ay gumagamit ng huling buong sahod, kasama ang fixed allowances gaya ng housing. Ang UAE, Qatar, Oman at Bahrain ay gumagamit ng basic salary. Makikita sa payslip o kontrata mo kung magkano ang basic.",
+          q2: "Mawawala ba ang benefit ko kapag nag-resign ako?",
+          a2: "Sa Saudi Arabia at Kuwait lang, at bahagi lang. Sa Saudi, wala kung kulang sa 2 taon, isang-katlo hanggang 5 taon at dalawang-katlo hanggang 10 taon. Sa Kuwait, wala kung kulang sa 3 taon, kalahati hanggang 5 taon at dalawang-katlo hanggang 10 taon. Sa UAE, Qatar, Oman at Bahrain, hindi ito nababawasan kapag nag-resign.",
+          q3: "Kailan ito dapat bayaran ng employer?",
+          a3: "Sa Saudi Arabia, sa loob ng isang linggo pagkatapos ng trabaho, o dalawang linggo kung nag-resign. Sa UAE, sa loob ng 14 na araw. Sa Qatar, hanggang sa susunod na working day. Sa Kuwait at Oman, kasama ng final settlement. Sa Bahrain, ang employer ang nagbabayad ng bahagi bago ang 1 Marso 2024 at kine-claim mo ang susunod na bahagi sa SIO.",
+          q4: "Puwede bang bawasan o hindi ibigay ng employer?",
+          a4: "Puwedeng ibawas ng employer ang perang talagang utang mo, gaya ng hindi pa bayad na loan. Kung tinanggal ka dahil sa seryosong pagkakamaling nakalista sa batas, puwedeng mawala ang benefit. Kung hindi ka sang-ayon sa final settlement, kontakin ang labour ministry ng bansa mo bago pumirma ng anuman.",
+          q5: "Eksakto ba ang halagang ito?",
+          a5: "Malapit na tantya ito batay sa batas. Puwedeng mag-iba ang tunay na halaga dahil sa kontrata mo, sa paraan ng pagbilang ng araw ng employer, unpaid leave o espesyal na kaso. Gamitin ito para suriin ang settlement na iniaalok sa iyo, at hilingin sa employer na ipakita ang kalkulasyon nila.",
+          disclaimer: "Nagbibigay ang calculator na ito ng tantya batay sa private-sector labour law ng bawat bansa. Hindi kasama ang trabaho sa gobyerno, domestic workers, free zones na may sariling patakaran gaya ng DIFC at ADGM, o espesyal na kaso. Puwedeng mas malaki ang ibigay ng kontrata mo. Para sa eksaktong halaga, kumpirmahin sa employer mo o sa opisyal na labour authority."
+        }
+      };
+
+      /* ---------- State ---------- */
+      var state = { country: "sa", reason: "end", mode: "years" };
+      try {
+        var saved = JSON.parse(localStorage.getItem(PREF_KEY) || "null");
+        if (saved) {
+          if (COUNTRIES.some(function (c) { return c.code === saved.country; })) state.country = saved.country;
+          if (saved.reason === "end" || saved.reason === "resign") state.reason = saved.reason;
+          if (saved.mode === "years" || saved.mode === "dates") state.mode = saved.mode;
+        }
+      } catch (e) {}
+      function savePrefs() { try { localStorage.setItem(PREF_KEY, JSON.stringify(state)); } catch (e) {} }
+
+      function $(id) { return document.getElementById(id); }
+      function L() { return T[window.ExpatSite.lang()] || T.en; }
+      function country() { return COUNTRIES.filter(function (c) { return c.code === state.country; })[0]; }
+      function cname(c, lang) { return c[lang] || c.en; }
+      function fill(str, vars) { return String(str).replace(/\{(\w+)\}/g, function (m, k) { return vars[k] != null ? vars[k] : m; }); }
+      function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+      function num(id) { var v = parseFloat($(id).value); return isFinite(v) && v > 0 ? v : 0; }
+      function curLabel(c, lang) { return lang === "ar" ? c.curAr : c.cur; }
+      function money(v, c, lang) {
+        var n = v.toLocaleString("en-US", { minimumFractionDigits: c.dec, maximumFractionDigits: c.dec });
+        return lang === "ar" ? n + " " + c.curAr : c.cur + " " + n;
+      }
+      function yrs(v) { return (Math.round(v * 100) / 100).toLocaleString("en-US", { maximumFractionDigits: 2 }); }
+      function utcDay(s) { var p = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || ""); return p ? Date.UTC(+p[1], +p[2] - 1, +p[3]) : NaN; }
+      function isoDay(ms) { return new Date(ms).toISOString().slice(0, 10); }
+      function todayUtc() { var d = new Date(); return Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()); }
+
+      /* ---------- Service period ---------- */
+      function service() {
+        var unpaid = Math.floor(num("unpaid"));
+        var start, end, totalYears;
+        if (state.mode === "years") {
+          var y = Math.max(0, Math.floor(num("years"))), m = Math.min(11, Math.max(0, Math.floor(num("months"))));
+          end = todayUtc();
+          var s = new Date(end); s.setUTCFullYear(s.getUTCFullYear() - y); s.setUTCMonth(s.getUTCMonth() - m);
+          start = s.getTime();
+          totalYears = y + m / 12;
+        } else {
+          start = utcDay($("startDate").value); end = utcDay($("endDate").value);
+          if (isNaN(start) || isNaN(end)) return { empty: true };
+          if (end <= start) return { error: true };
+          totalYears = (end - start) / DAY / 365;
+        }
+        totalYears = Math.max(0, totalYears - unpaid / 365);
+        return { start: start, end: end, years: totalYears, unpaid: unpaid };
+      }
+      function yearsBefore(svc, cutoff) {
+        if (svc.start >= cutoff) return 0;
+        var before = (Math.min(cutoff, svc.end) - svc.start) / DAY / 365;
+        return Math.max(0, Math.min(svc.years, before));
+      }
+
+      /* ---------- Rules ---------- */
+      function tiered(W, y, firstYears, firstRate, laterRate) {
+        var a = Math.min(y, firstYears), b = Math.max(0, y - firstYears);
+        return { a: a, b: b, amtA: W * firstRate * a, amtB: W * laterRate * b, total: W * firstRate * a + W * laterRate * b };
+      }
+
+      function calculate(code, basic, allow, svc, reason) {
+        var y = svc.years, r = { lines: [], notes: [], share: 1, cap: null, split: null };
+        if (code === "sa") {
+          r.wage = basic + allow; r.wageType = "total";
+          var t = tiered(r.wage, y, 5, 0.5, 1);
+          if (t.a > 0) r.lines.push({ y: t.a, rate: "rHalf", amt: t.amtA });
+          if (t.b > 0) r.lines.push({ y: t.b, rate: "rMonth", amt: t.amtB });
+          r.full = t.total;
+          if (reason === "resign") {
+            if (y < 2) { r.share = 0; r.notes.push({ k: "nResignNone", n: 2 }); }
+            else if (y < 5) { r.share = 1 / 3; r.notes.push({ k: "nShare", share: "third" }); }
+            else if (y < 10) { r.share = 2 / 3; r.notes.push({ k: "nShare", share: "twoThirds" }); }
+            else r.notes.push({ k: "nResignFull" });
+          }
+        } else if (code === "ae") {
+          r.wage = basic; r.wageType = "basic";
+          if (y < 1) { r.full = 0; r.notes.push({ k: "nUnder1" }); }
+          else {
+            var u = tiered(r.wage, y, 5, 21 / 30, 1);
+            if (u.a > 0) r.lines.push({ y: u.a, rate: "r21", amt: u.amtA });
+            if (u.b > 0) r.lines.push({ y: u.b, rate: "r30", amt: u.amtB });
+            r.full = u.total;
+            r.cap = { months: 24, amount: r.wage * 24 };
+          }
+        } else if (code === "kw") {
+          r.wage = basic + allow; r.wageType = "total";
+          var k = tiered(r.wage, y, 5, 0.5, 1);
+          if (k.a > 0) r.lines.push({ y: k.a, rate: "rHalf", amt: k.amtA });
+          if (k.b > 0) r.lines.push({ y: k.b, rate: "rMonth", amt: k.amtB });
+          r.full = k.total;
+          r.cap = { months: 18, amount: r.wage * 18 };
+          if (reason === "resign") {
+            if (y < 3) { r.share = 0; r.notes.push({ k: "nResignNone", n: 3 }); }
+            else if (y < 5) { r.share = 1 / 2; r.notes.push({ k: "nShare", share: "half" }); }
+            else if (y < 10) { r.share = 2 / 3; r.notes.push({ k: "nShare", share: "twoThirds" }); }
+            else r.notes.push({ k: "nResignFull" });
+          }
+        } else if (code === "qa") {
+          r.wage = basic; r.wageType = "basic";
+          if (y < 1) { r.full = 0; r.notes.push({ k: "nUnder1" }); }
+          else { r.full = r.wage * 21 / 30 * y; r.lines.push({ y: y, rate: "r21", amt: r.full }); }
+        } else if (code === "om") {
+          r.wage = basic; r.wageType = "basic";
+          if (y < 1) { r.full = 0; r.notes.push({ k: "nUnder1" }); }
+          else {
+            var pre = yearsBefore(svc, OMAN_NEW_LAW), post = y - pre;
+            var o = tiered(r.wage, pre, 3, 0.5, 1);
+            if (o.a > 0) r.lines.push({ y: o.a, rate: "rHalf", amt: o.amtA, tag: "oldLaw" });
+            if (o.b > 0) r.lines.push({ y: o.b, rate: "rMonth", amt: o.amtB, tag: "oldLaw" });
+            if (post > 0) r.lines.push({ y: post, rate: "rMonthBasic", amt: r.wage * post, tag: pre > 0 ? "newLaw" : null });
+            r.full = o.total + r.wage * post;
+          }
+          r.notes.push({ k: "nOmanSavings" });
+        } else if (code === "bh") {
+          r.wage = basic; r.wageType = "basic";
+          if (y < 1) { r.full = 0; r.notes.push({ k: "nUnder1" }); }
+          else {
+            var b = tiered(r.wage, y, 3, 0.5, 1);
+            if (b.a > 0) r.lines.push({ y: b.a, rate: "rHalf", amt: b.amtA });
+            if (b.b > 0) r.lines.push({ y: b.b, rate: "rMonth", amt: b.amtB });
+            r.full = b.total;
+            var preB = yearsBefore(svc, BAHRAIN_SIO);
+            var employerPart = tiered(r.wage, preB, 3, 0.5, 1).total;
+            r.split = { employer: employerPart, sio: r.full - employerPart };
+          }
+        }
+        var gross = r.full;
+        if (r.cap && gross > r.cap.amount) { gross = r.cap.amount; r.capped = true; }
+        r.total = gross * r.share;
+        if (r.split) {
+          var f = r.full > 0 ? r.total / r.full : 0;
+          r.split.employer *= f; r.split.sio *= f;
+        }
+        return r;
+      }
+
+      /* ---------- Rendering ---------- */
+      function renderTabs(lang) {
+        var box = $("countryTabs"); box.innerHTML = "";
+        COUNTRIES.forEach(function (c) {
+          var b = el("button", null, c.flag + " " + cname(c, lang));
+          b.type = "button"; b.setAttribute("data-country", c.code);
+          b.setAttribute("aria-pressed", String(c.code === state.country));
+          b.addEventListener("click", function () { state.country = c.code; savePrefs(); render(); });
+          box.appendChild(b);
+        });
+      }
+      function renderSegs() {
+        document.querySelectorAll("#reasonSeg button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-reason") === state.reason)); });
+        document.querySelectorAll("#modeSeg button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-mode") === state.mode)); });
+        $("yearsBox").hidden = state.mode !== "years";
+        $("datesBox").hidden = state.mode !== "dates";
+      }
+
+      function serviceText(svc, Lx) {
+        var totalMonths = Math.round(svc.years * 12 * 1000) / 1000;
+        var Y = Math.floor(totalMonths / 12), M = Math.floor(totalMonths - Y * 12);
+        var D = Math.round((totalMonths - Y * 12 - M) * 30.4167);
+        if (D >= 30) { D = 0; M += 1; if (M === 12) { M = 0; Y += 1; } }
+        var parts = [Y + " " + Lx.unitY, M + " " + Lx.unitM];
+        if (D > 0) parts.push(D + " " + Lx.unitD);
+        return parts.join(", ");
+      }
+
+      function renderResult() {
+        var lang = window.ExpatSite.lang(), Lx = L(), c = country();
+        var basic = num("basic"), allow = num("allow");
+        var svc = service();
+        $("dateError").hidden = !svc.error;
+        if (svc.error || svc.empty || basic <= 0) {
+          $("resultBody").hidden = true; $("resultEmpty").hidden = false; return;
+        }
+        var r = calculate(c.code, basic, allow, svc, state.reason);
+        $("resultEmpty").hidden = true; $("resultBody").hidden = false;
+        $("total").textContent = money(r.total, c, lang);
+
+        var facts = $("facts"); facts.innerHTML = "";
+        function fact(k, v) { var li = el("li"); li.appendChild(el("span", "k", k)); li.appendChild(el("span", "v", v)); facts.appendChild(li); return li; }
+        fact(Lx.serviceLabel, serviceText(svc, Lx));
+        fact(Lx.wageLabel, money(r.wage, c, lang));
+        r.lines.forEach(function (ln) {
+          var label = fill(Lx.lineFmt, { y: yrs(ln.y), rate: Lx[ln.rate] }) + (ln.tag ? " (" + Lx[ln.tag] + ")" : "");
+          fact(label, money(ln.amt, c, lang));
+        });
+        if (r.share !== 1 && r.full > 0) fact(Lx.fullLabel, money(r.capped ? r.cap.amount : r.full, c, lang));
+
+        var notes = $("notes"); notes.innerHTML = "";
+        var noteTexts = [];
+        if (r.capped) noteTexts.push(fill(Lx.nCap, { n: r.cap.months, amt: money(r.cap.amount, c, lang) }));
+        r.notes.forEach(function (n) {
+          noteTexts.push(fill(Lx[n.k], { n: n.n, share: n.share ? Lx[n.share] : "" }));
+        });
+        if (r.split && r.total > 0) noteTexts.push(fill(Lx.nBahrainSplit, { a: money(r.split.employer, c, lang), b: money(r.split.sio, c, lang) }));
+        noteTexts.forEach(function (t) { notes.appendChild(el("li", null, t)); });
+
+        var lines = [fill(Lx.copyHead, { country: cname(c, lang) }), Lx.totalLabel + ": " + money(r.total, c, lang)];
+        facts.querySelectorAll("li").forEach(function (li) { lines.push(li.firstChild.textContent + ": " + li.lastChild.textContent); });
+        noteTexts.forEach(function (t) { lines.push(t); });
+        lines.push(location.origin + "/end-of-service.html");
+        $("copyText").textContent = lines.join("\n");
+      }
+
+      function render() {
+        var lang = window.ExpatSite.lang(), Lx = L(), c = country();
+        document.querySelectorAll("[data-t]").forEach(function (n) {
+          var k = n.getAttribute("data-t"); n.textContent = Lx[k] || T.en[k] || "";
+        });
+        renderTabs(lang);
+        renderSegs();
+        var cl = curLabel(c, lang), cn = cname(c, lang);
+        $("basicLabel").textContent = fill(Lx.basicLabel, { cur: cl });
+        $("allowLabel").textContent = fill(Lx.allowLabel, { cur: cl });
+        var usesAllow = c.code === "sa" || c.code === "kw";
+        $("allowHint").textContent = fill(usesAllow ? Lx.allowUsed : Lx.allowNotUsed, { country: cn });
+        $("ruleTitle").textContent = fill(Lx.ruleTitle, { country: cn });
+        $("ruleText").textContent = Lx.rule[c.code];
+        var link = $("officialLink");
+        link.textContent = fill(Lx.official, { auth: c.auth[lang] || c.auth.en });
+        link.setAttribute("href", c.url);
+        window.ExpatSite.tagOutbound(link.parentNode);
+        renderResult();
+      }
+
+      /* ---------- Events ---------- */
+      document.querySelectorAll("#reasonSeg button").forEach(function (b) {
+        b.addEventListener("click", function () { state.reason = b.getAttribute("data-reason"); savePrefs(); renderSegs(); renderResult(); });
+      });
+      document.querySelectorAll("#modeSeg button").forEach(function (b) {
+        b.addEventListener("click", function () {
+          state.mode = b.getAttribute("data-mode"); savePrefs();
+          if (state.mode === "dates" && !$("endDate").value) $("endDate").value = isoDay(todayUtc());
+          renderSegs(); renderResult();
+        });
+      });
+      ["years", "months", "startDate", "endDate", "basic", "allow", "unpaid"].forEach(function (id) {
+        $(id).addEventListener("input", renderResult);
+        $(id).addEventListener("change", renderResult);
+      });
+      $("eosForm").addEventListener("submit", function (e) { e.preventDefault(); renderResult(); });
+      if (state.mode === "dates") $("endDate").value = isoDay(todayUtc());
+
+      window.ExpatEOS = { calculate: calculate };
+      window.ExpatSite.onLang(render);
+    })();
+  </script>
+
+
+</body></html>
