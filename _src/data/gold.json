@@ -1,0 +1,11 @@
+{
+  "_help": "India customs rules used by the gold page duty calculator. Update when the rules change and set checked to the date you verified them.",
+  "checked": "2026-11-14",
+  "india": {
+    "jewellery_duty_free_g": { "female": 40, "male": 20 },
+    "duty_free_min_months_abroad": 12,
+    "concessional_rate_percent": 15,
+    "concessional_min_months_abroad": 6,
+    "concessional_max_grams": 1000
+  }
+}

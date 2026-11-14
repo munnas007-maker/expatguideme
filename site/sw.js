@@ -5,13 +5,13 @@
  * - Static files: served from the cache and refreshed in the background.
  * - /api/ and other websites (ads, analytics) are never cached.
  */
-const VERSION = "58ddbf6c78";
+const VERSION = "ebc1440a9d";
 const CACHE = "egm-" + VERSION;
 const CORE = [
   "/", "/offline.html", "/assets/site.css", "/assets/site.js", "/assets/favicon.svg",
   "/assets/icon-192.png", "/manifest.webmanifest",
   "/end-of-service.html", "/vacation-calculator.html", "/family-cost.html",
-  "/embassy-services.html", "/id-residency.html", "/exchange-rate.html"
+  "/embassy-services.html", "/id-residency.html", "/exchange-rate.html", "/gold-rate.html"
 ];
 const FONT_CACHE = "egm-fonts";
 

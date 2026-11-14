@@ -69,6 +69,31 @@ def alternates(meta):
     return "".join(out)
 
 
+FORM_TAG_RE = re.compile(r'<form ([^>]*?)method="POST" action="/"([^>]*)>')
+
+
+def static_forms(html):
+    """Point every form at FormSubmit so it also works without JavaScript, and add its hidden fields:
+    _next (thank-you page), _subject, _template, _captcha and the _honey spam trap.
+    With JavaScript on, site.js sends the same form as JSON to the AJAX endpoint instead."""
+    ep = SITE_CFG.get("form_endpoint")
+    if not ep:
+        return html
+    action = ep.replace("/ajax/", "/")
+
+    def repl(m):
+        attrs = m.group(1) + m.group(2)
+        nm = re.search(r'name="([^"]+)"', attrs)
+        name = nm.group(1) if nm else "form"
+        hidden = (f'<input type="hidden" name="_next" value="{SITE_URL}/thank-you.html">'
+                  f'<input type="hidden" name="_subject" value="ExpatGuideME {name}">'
+                  '<input type="hidden" name="_template" value="table">'
+                  '<input type="hidden" name="_captcha" value="false">'
+                  '<input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">')
+        return f'<form {m.group(1)}method="POST" action="{action}"{m.group(2)}>{hidden}'
+    return FORM_TAG_RE.sub(repl, html)
+
+
 def form_meta():
     ep = SITE_CFG.get("form_endpoint")
     return f'\n  <meta name="form-endpoint" content="{ep}">' if ep else ""
@@ -187,7 +212,7 @@ def footer(credit):
         <div>
           <h3 data-s="footerTools"></h3>
           <nav class="footer-links" aria-label="Tools">
-{_links([("/exchange-rate.html", "navExchange"), ("/send-money.html", "navSend"), ("/end-of-service.html", "navEos"), ("/vacation-calculator.html", "navVac"), ("/id-residency.html", "navId"), ("/family-cost.html", "navFamily"), ("/embassy-services.html", "navEmbassy")])}
+{_links([("/exchange-rate.html", "navExchange"), ("/gold-rate.html", "navGold"), ("/send-money.html", "navSend"), ("/end-of-service.html", "navEos"), ("/vacation-calculator.html", "navVac"), ("/id-residency.html", "navId"), ("/family-cost.html", "navFamily"), ("/embassy-services.html", "navEmbassy")])}
           </nav>
         </div>
         <div>
@@ -338,6 +363,16 @@ def summary_block(key, rates, when):
                 ("cQA", "QID", _ext("https://portal.moi.gov.qa/", "Metrash")), ("cOM", "Resident Card", _ext("https://www.rop.gov.om/", "ROP")),
                 ("cBH", "CPR", _ext("https://www.bahrain.bh/", "bahrain.bh"))]
         rows = [[f'<th scope="row" data-s="{c}"></th>', f'<td dir="ltr">{n}</td>', f'<td dir="ltr">{a}</td>'] for c, n, a in data]
+    elif key == "gold":
+        g = (_rates_file().get("gold") or {})
+        oz = g.get("usd_per_troy_ounce")
+        if not oz:
+            return ""
+        per_g = oz / 31.1034768
+        dec = {"KWD": 3, "OMR": 3, "BHD": 3}
+        head_cells = ['<th scope="col" data-s="thGcc"></th>', '<th scope="col">24K</th>', '<th scope="col">22K</th>', '<th scope="col">21K</th>']
+        rows = [[f'<th scope="row" dir="ltr">{c}</th>'] + [f'<td dir="ltr">{fmt(per_g * p * rates[c], dec.get(c, 2))}</td>' for p in (0.999, 0.916, 0.875)]
+                for c in ("SAR", "AED", "QAR", "KWD", "OMR", "BHD")]
     elif key == "vac":
         cap = ""
         head_cells = ['<th scope="col" data-s="thCountry"></th>', '<th scope="col" data-s="thDaysYear"></th>']
@@ -356,7 +391,7 @@ def summary_block(key, rates, when):
         rows = [[f'<th scope="row" data-s="{c}"></th>', f'<td dir="ltr">{a}</td>', f'<td dir="ltr">{b}</td>'] for c, a, b in data]
     else:
         raise SystemExit("unknown summary " + key)
-    Q = {"ex": "sumEx", "send": "sumSend", "eos": "sumEos", "id": "sumId", "fam": "sumFam", "emb": "sumEmb", "vac": "sumVac"}[key]
+    Q = {"ex": "sumEx", "send": "sumSend", "eos": "sumEos", "id": "sumId", "fam": "sumFam", "emb": "sumEmb", "vac": "sumVac", "gold": "sumGold"}[key]
     body = "".join("<tr>" + "".join(r) + "</tr>" for r in rows)
     return (f'<section class="answer-box" aria-labelledby="sumQ">\n'
             f'        <h2 id="sumQ" data-s="{Q}Q"></h2>\n'
@@ -470,6 +505,9 @@ def build():
         body = body.replace("<!--CHECKOUT-->", checkout_html())
         script = script.replace("/*PARTNERS*/{}", json.dumps(PARTNER_LINKS))
         script = script.replace('/*RATES_API*/""', json.dumps(SITE_CFG["rates_api"]))
+        if "/*GOLDBASE*/" in script:
+            script = script.replace("/*GOLDBASE*/null", json.dumps(gold_base())).replace("/*GOLDRULES*/null", json.dumps(gold_rules()))
+        body = body.replace("__RATESDATE__", when.strftime("%Y-%m-%d"))
         html = (
             head(meta)
             + "\n"
@@ -482,6 +520,7 @@ def build():
             + (script.rstrip() + "\n" if script.strip() else "")
             + "</body>\n</html>\n"
         )
+        html = static_forms(html)
         out = os.path.join(ROOT, "site", name)
         with open(out, "w", encoding="utf-8") as f:
             f.write(html)
@@ -489,7 +528,7 @@ def build():
         if not meta.get("noindex"):
             m = re.search(r'data-updated="(\d{4}-\d{2}-\d{2})"', body)
             public.append({"file": name, "path": meta["path"], "lastmod": m.group(1) if m else "2026-11-13"})
-    order = ["/", "/exchange-rate.html", "/send-money.html", "/end-of-service.html", "/vacation-calculator.html", "/id-residency.html",
+    order = ["/", "/exchange-rate.html", "/gold-rate.html", "/send-money.html", "/end-of-service.html", "/vacation-calculator.html", "/id-residency.html",
              "/family-cost.html", "/embassy-services.html", "/legal-consult.html", "/financial-playbook.html", "/mobile-app.html", "/about.html", "/contact.html", "/privacy.html",
              "/terms.html", "/affiliate-disclosure.html"]
     public.sort(key=lambda e: order.index(e["path"]) if e["path"] in order else 99)
@@ -547,6 +586,25 @@ CONVERSIONS = [
     ("KWD", "INR"), ("QAR", "INR"), ("OMR", "INR"), ("BHD", "INR"),
 ]
 AMOUNT = 1000
+
+
+def _rates_file():
+    with open(os.path.join(ROOT, "_src", "data", "rates.json"), encoding="utf-8") as f:
+        return json.load(f)
+
+
+def gold_base():
+    """This morning's gold spot price and exchange rates for the gold page (fallback when live APIs fail)."""
+    d = _rates_file()
+    g = d.get("gold") or {}
+    return {"usdOz": g.get("usd_per_troy_ounce"), "at": g.get("updated_at"), "rates": d["rates"]}
+
+
+def gold_rules():
+    with open(os.path.join(ROOT, "_src", "data", "gold.json"), encoding="utf-8") as f:
+        r = json.load(f)
+    r.pop("_help", None)
+    return r
 
 
 def load_rates():
@@ -653,7 +711,7 @@ def conversion_pages():
         html = (head(meta) + "\n" + header(meta["active"]) + "\n" + body + "\n" + footer(True)
                 + '\n  <script src="/assets/site.js"></script>\n</body>\n</html>\n')
         with open(os.path.join(ROOT, "site", meta["path"].lstrip("/")), "w", encoding="utf-8") as f:
-            f.write(html)
+            f.write(static_forms(html))
         out.append({"path": meta["path"], "lastmod": when.strftime("%Y-%m-%d")})
     print("built", len(out), "conversion pages")
     return out

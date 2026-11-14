@@ -131,7 +131,7 @@
       <section class="newsletter" aria-labelledby="nlTitle">
         <h2 id="nlTitle" data-s="nlTitle">নতুন গাইড ইমেইলে পান</h2>
         <p data-s="nlText">নতুন টুল বা গাইড যোগ হলে শুধু একটি ছোট ইমেইল। কোনো স্প্যাম নয়।</p>
-        <form class="nl-form" name="newsletter" method="POST" action="/" data-ajax="" data-success="nlSuccess" novalidate="">
+        <form class="nl-form" name="newsletter" method="POST" action="https://formsubmit.co/support@expatguideme.com" data-ajax="" data-success="nlSuccess" novalidate=""><input type="hidden" name="_next" value="https://expatguideme.com/thank-you.html"><input type="hidden" name="_subject" value="ExpatGuideME newsletter"><input type="hidden" name="_template" value="table"><input type="hidden" name="_captcha" value="false"><input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
           <input type="hidden" name="form-name" value="newsletter">
           <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
           <label class="sr-only" for="nlEmail" data-s="nlEmail">আপনার ইমেইল ঠিকানা</label>
@@ -148,6 +148,7 @@
           <h3 data-s="footerTools">টুলস</h3>
           <nav class="footer-links" aria-label="Tools">
             <a href="/bn/exchange-rate.html" data-s="navExchange">বিনিময় হার</a>
+            <a href="/bn/gold-rate.html" data-s="navGold">সোনার দাম</a>
             <a href="/bn/send-money.html" data-s="navSend">টাকা পাঠান</a>
             <a href="/bn/end-of-service.html" data-s="navEos">চাকরি শেষের পাওনা</a>
             <a href="/bn/vacation-calculator.html" data-s="navVac">ছুটির ক্যালকুলেটর</a>
@@ -355,6 +356,15 @@
           ur: ["اختتامِ ملازمت فائدہ", "اندازہ لگائیں کہ آپ کو کتنا ملنا چاہیے۔"],
           bn: ["চাকরি শেষের পাওনা", "আপনার কত পাওয়ার কথা তা হিসাব করুন।"],
           tl: ["End-of-service benefit", "Kalkulahin kung magkano ang dapat mong matanggap."] },
+        { icon: "🪙", href: "/gold-rate.html",
+          en: ["Gold rate today", "Per gram in 6 Gulf currencies, plus India duty."],
+          ar: ["سعر الذهب اليوم", "للغرام بست عملات خليجية، مع الجمارك الهندية."],
+          hi: ["आज का सोने का भाव", "6 खाड़ी मुद्राओं में प्रति ग्राम, साथ में भारत ड्यूटी।"],
+          ml: ["ഇന്നത്തെ സ്വർണവില", "6 ഗൾഫ് കറൻസികളിൽ ഗ്രാം വില, ഇന്ത്യൻ ഡ്യൂട്ടിയും."],
+          ne: ["आजको सुनको भाउ", "6 खाडी मुद्रामा प्रति ग्राम, भारत भन्सार पनि।"],
+          ur: ["آج سونے کا ریٹ", "6 خلیجی کرنسیوں میں فی گرام، ساتھ بھارت ڈیوٹی۔"],
+          bn: ["আজকের সোনার দাম", "৬টি উপসাগরীয় মুদ্রায় প্রতি গ্রাম, সঙ্গে ভারতের শুল্ক।"],
+          tl: ["Presyo ng ginto ngayon", "Bawat gramo sa 6 na Gulf currency, at India duty."] },
         { icon: "🏖️", href: "/vacation-calculator.html",
           en: ["Vacation & leave calculator", "Leave days, 2-year balance and leave salary."],
           ar: ["حاسبة الإجازة السنوية", "أيام الإجازة ورصيد السنتين وراتب الإجازة."],
