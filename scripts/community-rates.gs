@@ -7,7 +7,9 @@
  *   POST <web app URL>   body (text/plain) = JSON { from, to, provider, rate, fee, website }
  *        -> { ok: true, provider: { rate, fee, at, n } }   or   { error: "range" | "fee" | "wait" | ... }
  *
- * Rates are shared by visitors who have just checked them in a provider's app.
+ * TEAM ONLY: rates are entered only by the ExpatGuideME team (the Manager and
+ * people he gives the team key to), after checking them in a provider's app.
+ * Every update must carry the team key; visitors can read rates but not change them.
  * A rate is accepted only when it is within 5% of the live market rate, for a
  * provider the site lists for that country. The same provider in the same
  * corridor can be updated once every 2 minutes (Apps Script cannot see visitor
@@ -20,7 +22,10 @@
  *  2. Delete the sample code, paste this whole file, name the project "ExpatGuideME rates".
  *  3. Deploy > New deployment > type "Web app": Execute as = Me, Who has access = Anyone.
  *  4. Authorize when Google asks, then copy the "Web app URL" (ends with /exec).
- *  5. Put that URL in _src/data/site.json as "rates_api" and push (or send it to Claude).
+ *  5. In the editor, click Project Settings (gear) > Script properties > Add script property:
+ *     name TEAM_KEY, value: a long secret word only your team knows (at least 12 characters).
+ *  6. Send the Web app URL to Claude. Your team opens the website once with
+ *     https://expatguideme.com/send-money.html#team=<TEAM_KEY> to unlock the update buttons on that phone.
  */
 
 var SOURCES = ["SAR", "AED", "KWD", "QAR", "OMR", "BHD"];
@@ -112,6 +117,8 @@ function doPost(e) {
   var body;
   try { body = JSON.parse(e.postData.contents); } catch (err) { return out_({ error: "body" }); }
   if (body.website) return out_({ ok: true }); // honeypot field filled by a bot
+  var teamKey = props_().getProperty("TEAM_KEY");
+  if (!teamKey || teamKey.length < 12 || String(body.key || "") !== teamKey) return out_({ error: "team" });
   var from = String(body.from || "").toUpperCase(), to = String(body.to || "").toUpperCase();
   var provider = String(body.provider || "");
   var rate = Number(body.rate);
