@@ -67,6 +67,13 @@
     "offer": null
    },
    {
+    "id": "meem",
+    "name": "meem (Gulf International Bank)",
+    "type": "digitalBank",
+    "url": "https://meem.com.sa/",
+    "offer": null
+   },
+   {
     "id": "d360",
     "name": "D360 Bank",
     "type": "digitalBank",
@@ -76,6 +83,13 @@
      "url": "https://d360.com/en/offers/pakistan-offer",
      "checked_at": "2026-11-14T12:51:25Z"
     }
+   },
+   {
+    "id": "visionbank",
+    "name": "Vision Bank",
+    "type": "digitalBank",
+    "url": "https://www.visionbank.com.sa/",
+    "offer": null
    },
    {
     "id": "enbdksa",
@@ -167,7 +181,11 @@
     "name": "Al Fardan Exchange",
     "type": "exchange",
     "url": "https://alfardanexchange.com/money-transfer",
-    "offer": null
+    "offer": {
+     "text": "New customers: zero transfer fee on up to 2 transfers in the AlfaPay app with promo code FREE (until 31 Dec 2026)",
+     "url": "https://alfardanexchange.com/alfapay-free-transfers",
+     "checked_at": "2026-11-14T18:13:55Z"
+    }
    },
    {
     "id": "gccexchange",
@@ -191,6 +209,13 @@
     "offer": null
    },
    {
+    "id": "wallstreet",
+    "name": "Wall Street Exchange",
+    "type": "exchange",
+    "url": "https://www.wallstreet.ae/",
+    "offer": null
+   },
+   {
     "id": "orient",
     "name": "Orient Exchange",
     "type": "exchange",
@@ -201,7 +226,7 @@
     "id": "sharaf",
     "name": "Sharaf Exchange",
     "type": "exchange",
-    "url": "",
+    "url": "https://www.sharafexchange.ae/",
     "offer": null
    },
    {
@@ -427,6 +452,13 @@
     "offer": null
    },
    {
+    "id": "omanexchange",
+    "name": "Oman Exchange (Oman UAE Exchange)",
+    "type": "exchange",
+    "url": "https://www.omanexchange.com.om/",
+    "offer": null
+   },
+   {
     "id": "modern",
     "name": "Modern Exchange",
     "type": "exchange",
@@ -486,7 +518,7 @@
     "id": "ooredoo",
     "name": "walletii by Ooredoo",
     "type": "wallet",
-    "url": "",
+    "url": "https://www.walletii.com/",
     "offer": null
    },
    {
@@ -529,6 +561,13 @@
    {
     "id": "biieco",
     "name": "Bahrain India International Exchange (BIIECO)",
+    "type": "exchange",
+    "url": "https://biieco.com/",
+    "offer": null
+   },
+   {
+    "id": "isabinyousif",
+    "name": "Isa Bin Yousif Exchange",
     "type": "exchange",
     "url": "",
     "offer": null
