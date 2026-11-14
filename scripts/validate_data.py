@@ -135,7 +135,7 @@ def check_visa(errs):
             for lg, t in (e.get("text") or {}).items():
                 if lg not in ("en", "ar", "hi", "ml", "ne", "ur", "bn", "tl"):
                     errs.append(f"{where}: unknown language {lg}")
-                for k in ("who", "documents", "steps", "notes"):
+                for k in ("checklist", "who", "documents", "steps", "after", "extend", "mistakes", "notes"):
                     if k in t and not (isinstance(t[k], list) and all(isinstance(x, str) for x in t[k])):
                         errs.append(f"{where}/{lg}: {k} must be a list of sentences")
 

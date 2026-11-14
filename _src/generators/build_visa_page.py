@@ -73,7 +73,7 @@ META-->
           var t = e.text[lang] && e.text[lang].summary ? e.text[lang] : e.text.en;
           if (t !== e.text[lang] && lang !== "en") box.appendChild(el("p", "en-only", L("enOnly")));
           if (t.summary) box.appendChild(el("p", "vsum", t.summary));
-          [["who", "ul"], ["documents", "ul"], ["steps", "ol"]].forEach(function (s) {
+          [["checklist", "ul"], ["who", "ul"], ["documents", "ul"], ["steps", "ol"]].forEach(function (s) {
             if (t[s[0]] && t[s[0]].length) { box.appendChild(el("h3", null, L(s[0]))); box.appendChild(list(s[1], t[s[0]])); }
           });
           var fees = (e.fees || []).filter(function (f) { return f && f.item; });
@@ -88,7 +88,9 @@ META-->
           }
           if (t.processing) { box.appendChild(el("h3", null, L("processing"))); box.appendChild(el("p", null, t.processing)); }
           if (t.validity) { box.appendChild(el("h3", null, L("validity"))); box.appendChild(el("p", null, t.validity)); }
-          if (t.notes && t.notes.length) { box.appendChild(el("h3", null, L("notes"))); box.appendChild(list("ul", t.notes)); }
+          [["after", "ol"], ["extend", "ul"], ["mistakes", "ul"], ["notes", "ul"]].forEach(function (s) {
+            if (t[s[0]] && t[s[0]].length) { box.appendChild(el("h3", null, L(s[0]))); box.appendChild(list(s[1], t[s[0]])); }
+          });
         }
         var off = ((e && e.official) || (DATA && DATA.portals && DATA.portals[cc]) || []).filter(function (o) { return safeUrl(o.url); });
         if (off.length) {
