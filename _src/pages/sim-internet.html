@@ -94,7 +94,7 @@ META-->
           var links = el("div", "op-links");
           var aff = safeUrl(op.affiliate_url), url = aff || safeUrl(op.offers_url) || safeUrl(op.website);
           if (url) {
-            var a = el("a", "btn btn-outline", L("official")); a.href = url; a.target = "_blank";
+            var a = el("a", "btn btn-ghost", L("official")); a.href = url; a.target = "_blank";
             a.rel = aff ? "sponsored nofollow noopener" : "noopener";
             links.appendChild(a);
             if (aff) links.appendChild(el("span", "partner-tag", L("partner")));
