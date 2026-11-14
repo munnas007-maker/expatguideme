@@ -56,7 +56,7 @@ async function render(file, pagePath, lang) {
   const raw = fs.readFileSync(path.join(SITE, file), "utf8");
   const clean = new JSDOM(raw);
   const A = clean.window.document;
-  const marked = A.querySelectorAll("[data-t],[data-s],[data-s-ph],[data-s-aria]");
+  const marked = A.querySelectorAll("[data-t],[data-s],[data-s-ph],[data-s-aria],[data-ts]");
   marked.forEach((el, i) => el.setAttribute("data-pr", String(i)));
   A.documentElement.setAttribute("data-page-lang", lang);
 
@@ -85,7 +85,7 @@ async function render(file, pagePath, lang) {
   B.querySelectorAll("[data-pr]").forEach((src) => {
     const dst = A.querySelector('[data-pr="' + src.getAttribute("data-pr") + '"]');
     if (!dst) return;
-    if ((src.hasAttribute("data-t") || src.hasAttribute("data-s")) && src.textContent.trim()) dst.textContent = src.textContent;
+    if ((src.hasAttribute("data-t") || src.hasAttribute("data-s") || src.hasAttribute("data-ts")) && src.textContent.trim()) dst.textContent = src.textContent;
     if (src.hasAttribute("data-s-ph") && src.getAttribute("placeholder")) dst.setAttribute("placeholder", src.getAttribute("placeholder"));
     if (src.hasAttribute("data-s-aria") && src.getAttribute("aria-label")) {
       dst.setAttribute("aria-label", src.getAttribute("aria-label"));

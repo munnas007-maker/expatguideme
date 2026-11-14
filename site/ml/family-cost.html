@@ -152,6 +152,7 @@
             <div class="muted" data-t="leftLabel">സമ്പാദിക്കാൻ ബാക്കി</div>
             <div class="big" id="left"></div>
             <div class="muted" id="homeVal"></div>
+            <p class="rate-stamp" id="homeStamp" role="status" hidden=""></p>
             <ul class="facts">
               <li><span data-t="totalLabel">ആകെ ചെലവ്</span><span class="v" id="total"></span></li>
               <li><span id="pct"></span><span></span></li>
@@ -284,6 +285,7 @@
       var LEVY_SAR = 400;
       var PREF_KEY = "expatguideme_family_v1";
       var MKT_KEY = "expatguideme_mkt_v1";
+      var FXBASE = {"rates":{"SAR":3.75,"AED":3.6725,"KWD":0.311288,"QAR":3.64,"OMR":0.384497,"BHD":0.376,"INR":94.289707,"PKR":276.595456,"BDT":124.501956,"PHP":63.857758,"NPR":150.862806,"LKR":332.56566,"IDR":18231.963325,"EGP":53.437041,"USD":1},"time_last_update_unix":1794614551};   // last rates saved by the site robot, used only if the live feed fails
       var state = { country: "sa", home: "in", levyTouched: false, rates: null };
       try { var p = JSON.parse(localStorage.getItem(PREF_KEY) || "null"); if (p) { if (SOURCES.some(function (s) { return s.code === p.country; })) state.country = p.country; if (DESTS.some(function (d) { return d.code === p.home; })) state.home = p.home; } } catch (e) {}
 
@@ -313,10 +315,19 @@
       });
 
       function loadRates() {
-        try { var c = JSON.parse(localStorage.getItem(MKT_KEY) || "null"); if (c && c.rates && Date.now() - c.saved < 6 * 3600000) { state.rates = c.rates; calc(); return; } } catch (e) {}
+        var c = null;
+        try { c = JSON.parse(localStorage.getItem(MKT_KEY) || "null"); if (c && c.rates && Date.now() - c.saved < 6 * 3600000) { state.rates = c.rates; state.ratesAt = c.at; calc(); return; } } catch (e) {}
         fetch("https://open.er-api.com/v6/latest/USD").then(function (r) { return r.json(); }).then(function (d) {
-          if (d && d.result === "success") { state.rates = d.rates; try { localStorage.setItem(MKT_KEY, JSON.stringify({ rates: d.rates, at: d.time_last_update_unix * 1000, saved: Date.now() })); } catch (e) {} calc(); }
-        }).catch(function () {});
+          if (!d || d.result !== "success") throw new Error("rates");
+          state.rates = d.rates; state.ratesAt = d.time_last_update_unix * 1000; state.ratesStale = false;
+          try { localStorage.setItem(MKT_KEY, JSON.stringify({ rates: d.rates, at: state.ratesAt, saved: Date.now() })); } catch (e) {}
+          calc();
+        }).catch(function () {
+          // Live feed failed: newest saved rates, shown with a visible warning and their exact time
+          var base = FXBASE && FXBASE.rates ? { rates: FXBASE.rates, at: FXBASE.time_last_update_unix * 1000 } : null;
+          var pick = c && c.rates && (!base || c.at >= base.at) ? c : base;
+          if (pick) { state.rates = pick.rates; state.ratesAt = pick.at; state.ratesStale = true; calc(); }
+        });
       }
 
       function levyRow() {
@@ -345,7 +356,8 @@
         if (state.rates && state.rates[s.cur] && state.rates[d.cur] && left > 0) {
           var v = left * state.rates[d.cur] / state.rates[s.cur];
           $("homeVal").textContent = fill(L("homeValue"), { amt: "⁦" + money(v, d.cur, 0) + "⁩" });
-        } else { $("homeVal").textContent = ""; }
+          $("homeStamp").hidden = false; window.ExpatSite.rateNote($("homeStamp"), state.ratesAt, state.ratesStale);
+        } else { $("homeVal").textContent = ""; $("homeStamp").hidden = true; }
         var bars = $("bars"); bars.innerHTML = "";
         var max = Math.max.apply(null, costs.map(function (c) { return c.v; }).concat([1]));
         costs.filter(function (c) { return c.v > 0; }).sort(function (a, b) { return b.v - a.v; }).forEach(function (c) {

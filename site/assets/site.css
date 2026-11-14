@@ -474,3 +474,8 @@ tr.sponsored-row td { background: rgba(240, 214, 138, .12); }
 }
 h1, h2 { overflow-wrap: anywhere; }
 .app-hero h1 { min-width: 0; }
+
+/* Rate timestamps and live-feed fallback warning */
+.rate-stamp { margin: 8px 0 0; font-size: .85rem; color: var(--muted); }
+.rate-warn { display: block; color: var(--warn-ink); background: var(--warn-bg); border-radius: 8px; padding: 8px 10px; font-weight: 600; }
+caption time { font-weight: 600; }

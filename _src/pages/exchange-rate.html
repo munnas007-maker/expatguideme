@@ -137,6 +137,7 @@ META-->
       "use strict";
 
       var API_URL = "https://open.er-api.com/v6/latest/USD";
+      var FXBASE = /*FXBASE*/null;   // last rates saved by the site robot, used only if the live feed fails
       var CACHE_KEY = "expatguideme_rates_v1";
       var FX_KEY = "expatguideme_fx_v1";
       var CACHE_MAX_AGE = 6 * 60 * 60 * 1000;
@@ -338,7 +339,7 @@ META-->
       function fmtDate(unix) {
         if (!unix) return "";
         try {
-          return new Date(unix * 1000).toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" });
+          return window.ExpatSite.stamp(unix);
         } catch (e) { return ""; }
       }
       function storeGet(k) { try { var r = localStorage.getItem(k); return r ? JSON.parse(r) : null; } catch (e) { return null; } }
@@ -390,12 +391,7 @@ META-->
           return;
         }
         if (!state.rates) { el.textContent = t("loading"); return; }
-        if (state.stale) {
-          el.classList.add("warn");
-          el.textContent = t("offline") + " " + fmtDate(state.updatedUnix);
-          return;
-        }
-        el.textContent = t("updated") + " " + fmtDate(state.updatedUnix);
+        window.ExpatSite.rateNote(el, state.updatedUnix, state.stale);
       }
 
       function renderResult() {
@@ -471,7 +467,10 @@ META-->
             renderAll();
           })
           .catch(function () {
-            if (cached && cached.data && cached.data.rates) applyData(cached.data, true);
+            // Live feed failed: use the newest saved rates (browser copy or the site's own copy) and say so
+            var saved = cached && cached.data && cached.data.rates ? cached.data : null;
+            if (FXBASE && FXBASE.rates && (!saved || FXBASE.time_last_update_unix > (saved.time_last_update_unix || 0))) saved = FXBASE;
+            if (saved) applyData(saved, true);
             else state.error = true;
             renderAll();
           });

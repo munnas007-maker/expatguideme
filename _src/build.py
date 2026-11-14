@@ -363,7 +363,7 @@ def summary_block(key, rates, when):
     gcc = ["SAR", "AED", "KWD", "QAR", "OMR", "BHD"]
     home = ["INR", "PKR", "BDT", "PHP", "NPR"]
     iso = when.strftime("%Y-%m-%d")
-    cap = f'<caption><span data-s="thMarketOn"></span> <time datetime="{iso}" dir="ltr">{iso}</time></caption>'
+    cap = stamp_caption(when)
     if key == "ex":
         head_cells = ['<th scope="col" data-s="thGcc"></th>'] + [f'<th scope="col">{c}</th>' for c in home]
         rows = [[f'<th scope="row" dir="ltr">1 {g}</th>'] + [f'<td dir="ltr">{fmt(cross(rates, g, h))}</td>' for h in home] for g in gcc]
@@ -391,6 +391,8 @@ def summary_block(key, rates, when):
         if not oz:
             return ""
         per_g = oz / 31.1034768
+        gt = _parse_ts(g.get("updated_at")) or when
+        cap = stamp_caption(max(gt, when))
         dec = {"KWD": 3, "OMR": 3, "BHD": 3}
         # Hallmark fineness, the same as the live table on gold-rate.html: 999, 916, 875, 750
         head_cells = ['<th scope="col" data-s="thGcc"></th>', '<th scope="col">24K</th>', '<th scope="col">22K</th>', '<th scope="col">21K</th>', '<th scope="col">18K</th>']
@@ -529,6 +531,7 @@ def build():
         script = script.replace("/*PARTNERS*/{}", json.dumps(PARTNER_LINKS))
         script = script.replace('/*RATES_API*/""', json.dumps(SITE_CFG["rates_api"]))
         script = script.replace("/*CHECKED*/{}", json.dumps(checked_provider_rates(), separators=(",", ":")))
+        script = script.replace("/*FXBASE*/null", json.dumps(fx_base(), separators=(",", ":")))
         if "/*GOLDBASE*/" in script:
             script = script.replace("/*GOLDBASE*/null", json.dumps(gold_base())).replace("/*GOLDRULES*/null", json.dumps(gold_rules()))
         body = body.replace("__RATESDATE__", when.strftime("%Y-%m-%d"))
@@ -559,6 +562,7 @@ def build():
     subprocess.run(
         ["node", os.path.join(SRC, "..", "prerender.cjs"), json.dumps([{"file": e["file"], "path": e["path"]} for e in public])],
         check=True,
+        env=dict(os.environ, TZ="UTC"),  # baked timestamps in UTC; visitors' browsers show their own time zone
     )
     sitemap(public, conversion_pages())
     service_worker()
@@ -662,6 +666,31 @@ def load_rates():
     return data["rates"], when
 
 
+def _parse_ts(text):
+    try:
+        return datetime.datetime.fromisoformat(str(text).replace("Z", "+00:00")).astimezone(datetime.timezone.utc)
+    except ValueError:
+        return None
+
+
+def stamp_html(when, label="rUpdated", tag="time"):
+    """Exact time the data was published by the source. site.js rewrites it into the
+    visitor's language and time zone; this UTC text is what shows without JavaScript."""
+    iso = when.astimezone(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    text = when.astimezone(datetime.timezone.utc).strftime("%-d %b %Y, %H:%M UTC")
+    return f'<{tag} datetime="{iso}" data-ts="{iso}" data-ts-label="{label}">Updated {text}</{tag}>'
+
+
+def stamp_caption(when):
+    return f"<caption>{stamp_html(when)}</caption>"
+
+
+def fx_base():
+    """Last saved market rates, used by the pages only when the live feed fails (with a visible warning)."""
+    d = _rates_file()
+    return {"rates": d["rates"], "time_last_update_unix": d["time_last_update_unix"]}
+
+
 def cross(rates, a, b):
     return rates[b] / rates[a]
 
@@ -680,7 +709,7 @@ def conversion_page(a, b, rates, when):
     an, apl, acc, actry = CUR[a]
     bn, bpl, bcc, bctry = CUR[b]
     total = AMOUNT * r
-    day = when.strftime("%-d %B %Y")
+    day = when.strftime("%-d %B %Y, %H:%M UTC")
     iso = when.strftime("%Y-%m-%d")
     rdig = 4 if r < 10 else 2
     title = f"{AMOUNT:,} {a} to {b} today: {fmt(total)} {b} | ExpatGuideME"
@@ -700,7 +729,7 @@ def conversion_page(a, b, rates, when):
           "and some charge a fee, so compare what your family actually receives before you send.")
     q3 = f"Where can I get the best {a} to {b} rate?"
     a3 = (f"Open our send money comparison for {actry} to {bctry}. It lists banks, exchanges and wallets "
-          "with rates shared by other expats today, sorted by what your family receives.")
+          "with each provider's own rate once it has been checked in its app, sorted by what your family receives.")
     faq = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": t}} for q, t in ((q1, a1), (q2, a2), (q3, a3))]}
     others = "".join(
@@ -713,13 +742,14 @@ def conversion_page(a, b, rates, when):
    <div class="wrap conv-page" data-updated="{iso}">
     <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/exchange-rate.html">Exchange rates</a> › {a} to {b}</nav>
     <h1>{AMOUNT:,} {a} to {b} today</h1>
-    <p class="lead">{an} to {bn} at the live market rate, updated {day}.</p>
+    <p class="lead">{an} to {bn} at the market rate.</p>
+    <p class="rate-stamp">{stamp_html(when)}</p>
     <section class="answer-box" aria-labelledby="ansQ">
       <h2 id="ansQ">{q1}</h2>
       <p class="answer-big"><strong>{AMOUNT:,} {a} = {fmt(total)} {b}</strong></p>
       <p>{a1} {a2}</p>
       <table class="summary-table">
-        <caption>{an} to {bn} ({day})</caption>
+        <caption>{an} to {bn} · {stamp_html(when)}</caption>
         <thead><tr><th scope="col">{apl.capitalize()}</th><th scope="col">{bpl.capitalize()}</th></tr></thead>
         <tbody>{rows}</tbody>
       </table>

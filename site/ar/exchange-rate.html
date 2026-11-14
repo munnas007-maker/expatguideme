@@ -183,7 +183,7 @@
       <section class="answer-box" aria-labelledby="sumQ">
         <h2 id="sumQ" data-s="sumExQ">كم سعر العملات الخليجية اليوم مقابل الروبية والتاكا والبيزو؟</h2>
         <p data-s="sumExA">يعرض الجدول سعر السوق اليوم من كل عملة خليجية إلى الروبية الهندية والروبية الباكستانية والتاكا البنغلاديشية والبيزو الفلبيني والروبية النيبالية. تعطي البنوك وتطبيقات التحويل سعرًا أقل قليلًا، فاستخدمه مرجعًا وقارن الجهات قبل التحويل.</p>
-        <div class="table-scroll"><table class="summary-table"><caption><span data-s="thMarketOn">سعر السوق في</span> <time datetime="2026-11-14" dir="ltr">2026-11-14</time></caption><thead><tr><th scope="col" data-s="thGcc">العملة الخليجية</th><th scope="col">INR</th><th scope="col">PKR</th><th scope="col">BDT</th><th scope="col">PHP</th><th scope="col">NPR</th></tr></thead><tbody><tr><th scope="row" dir="ltr">1 SAR</th><td dir="ltr">25.14</td><td dir="ltr">73.76</td><td dir="ltr">33.20</td><td dir="ltr">17.03</td><td dir="ltr">40.23</td></tr><tr><th scope="row" dir="ltr">1 AED</th><td dir="ltr">25.67</td><td dir="ltr">75.32</td><td dir="ltr">33.90</td><td dir="ltr">17.39</td><td dir="ltr">41.08</td></tr><tr><th scope="row" dir="ltr">1 KWD</th><td dir="ltr">302.90</td><td dir="ltr">888.55</td><td dir="ltr">399.96</td><td dir="ltr">205.14</td><td dir="ltr">484.64</td></tr><tr><th scope="row" dir="ltr">1 QAR</th><td dir="ltr">25.90</td><td dir="ltr">75.99</td><td dir="ltr">34.20</td><td dir="ltr">17.54</td><td dir="ltr">41.45</td></tr><tr><th scope="row" dir="ltr">1 OMR</th><td dir="ltr">245.23</td><td dir="ltr">719.37</td><td dir="ltr">323.80</td><td dir="ltr">166.08</td><td dir="ltr">392.36</td></tr><tr><th scope="row" dir="ltr">1 BHD</th><td dir="ltr">250.77</td><td dir="ltr">735.63</td><td dir="ltr">331.12</td><td dir="ltr">169.83</td><td dir="ltr">401.23</td></tr></tbody></table></div>
+        <div class="table-scroll"><table class="summary-table"><caption><time datetime="2026-11-14T00:02:31Z" data-ts="2026-11-14T00:02:31Z" data-ts-label="rUpdated">آخر تحديث: 14 نوفمبر 2026، 12:02 ص UTC</time></caption><thead><tr><th scope="col" data-s="thGcc">العملة الخليجية</th><th scope="col">INR</th><th scope="col">PKR</th><th scope="col">BDT</th><th scope="col">PHP</th><th scope="col">NPR</th></tr></thead><tbody><tr><th scope="row" dir="ltr">1 SAR</th><td dir="ltr">25.14</td><td dir="ltr">73.76</td><td dir="ltr">33.20</td><td dir="ltr">17.03</td><td dir="ltr">40.23</td></tr><tr><th scope="row" dir="ltr">1 AED</th><td dir="ltr">25.67</td><td dir="ltr">75.32</td><td dir="ltr">33.90</td><td dir="ltr">17.39</td><td dir="ltr">41.08</td></tr><tr><th scope="row" dir="ltr">1 KWD</th><td dir="ltr">302.90</td><td dir="ltr">888.55</td><td dir="ltr">399.96</td><td dir="ltr">205.14</td><td dir="ltr">484.64</td></tr><tr><th scope="row" dir="ltr">1 QAR</th><td dir="ltr">25.90</td><td dir="ltr">75.99</td><td dir="ltr">34.20</td><td dir="ltr">17.54</td><td dir="ltr">41.45</td></tr><tr><th scope="row" dir="ltr">1 OMR</th><td dir="ltr">245.23</td><td dir="ltr">719.37</td><td dir="ltr">323.80</td><td dir="ltr">166.08</td><td dir="ltr">392.36</td></tr><tr><th scope="row" dir="ltr">1 BHD</th><td dir="ltr">250.77</td><td dir="ltr">735.63</td><td dir="ltr">331.12</td><td dir="ltr">169.83</td><td dir="ltr">401.23</td></tr></tbody></table></div>
       </section>
 
 
@@ -302,6 +302,7 @@
       "use strict";
 
       var API_URL = "https://open.er-api.com/v6/latest/USD";
+      var FXBASE = {"rates":{"SAR":3.75,"AED":3.6725,"KWD":0.311288,"QAR":3.64,"OMR":0.384497,"BHD":0.376,"INR":94.289707,"PKR":276.595456,"BDT":124.501956,"PHP":63.857758,"NPR":150.862806,"LKR":332.56566,"IDR":18231.963325,"EGP":53.437041,"USD":1},"time_last_update_unix":1794614551};   // last rates saved by the site robot, used only if the live feed fails
       var CACHE_KEY = "expatguideme_rates_v1";
       var FX_KEY = "expatguideme_fx_v1";
       var CACHE_MAX_AGE = 6 * 60 * 60 * 1000;
@@ -503,7 +504,7 @@
       function fmtDate(unix) {
         if (!unix) return "";
         try {
-          return new Date(unix * 1000).toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" });
+          return window.ExpatSite.stamp(unix);
         } catch (e) { return ""; }
       }
       function storeGet(k) { try { var r = localStorage.getItem(k); return r ? JSON.parse(r) : null; } catch (e) { return null; } }
@@ -555,12 +556,7 @@
           return;
         }
         if (!state.rates) { el.textContent = t("loading"); return; }
-        if (state.stale) {
-          el.classList.add("warn");
-          el.textContent = t("offline") + " " + fmtDate(state.updatedUnix);
-          return;
-        }
-        el.textContent = t("updated") + " " + fmtDate(state.updatedUnix);
+        window.ExpatSite.rateNote(el, state.updatedUnix, state.stale);
       }
 
       function renderResult() {
@@ -636,7 +632,10 @@
             renderAll();
           })
           .catch(function () {
-            if (cached && cached.data && cached.data.rates) applyData(cached.data, true);
+            // Live feed failed: use the newest saved rates (browser copy or the site's own copy) and say so
+            var saved = cached && cached.data && cached.data.rates ? cached.data : null;
+            if (FXBASE && FXBASE.rates && (!saved || FXBASE.time_last_update_unix > (saved.time_last_update_unix || 0))) saved = FXBASE;
+            if (saved) applyData(saved, true);
             else state.error = true;
             renderAll();
           });
