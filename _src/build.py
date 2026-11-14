@@ -182,7 +182,7 @@ def footer(credit):
         <div>
           <h3 data-s="footerTools"></h3>
           <nav class="footer-links" aria-label="Tools">
-{_links([("/exchange-rate.html", "navExchange"), ("/send-money.html", "navSend"), ("/end-of-service.html", "navEos"), ("/id-residency.html", "navId"), ("/family-cost.html", "navFamily"), ("/embassy-services.html", "navEmbassy")])}
+{_links([("/exchange-rate.html", "navExchange"), ("/send-money.html", "navSend"), ("/end-of-service.html", "navEos"), ("/vacation-calculator.html", "navVac"), ("/id-residency.html", "navId"), ("/family-cost.html", "navFamily"), ("/embassy-services.html", "navEmbassy")])}
           </nav>
         </div>
         <div>
@@ -332,6 +332,11 @@ def summary_block(key, rates, when):
                 ("cQA", "QID", _ext("https://portal.moi.gov.qa/", "Metrash")), ("cOM", "Resident Card", _ext("https://www.rop.gov.om/", "ROP")),
                 ("cBH", "CPR", _ext("https://www.bahrain.bh/", "bahrain.bh"))]
         rows = [[f'<th scope="row" data-s="{c}"></th>', f'<td dir="ltr">{n}</td>', f'<td dir="ltr">{a}</td>'] for c, n, a in data]
+    elif key == "vac":
+        cap = ""
+        head_cells = ['<th scope="col" data-s="thCountry"></th>', '<th scope="col" data-s="thDaysYear"></th>']
+        data = [("cSA", "21 → 30 (5+)"), ("cAE", "30"), ("cQA", "21 → 28 (5+)"), ("cKW", "30"), ("cOM", "30"), ("cBH", "30")]
+        rows = [[f'<th scope="row" data-s="{c}"></th>', f'<td dir="ltr">{d}</td>'] for c, d in data]
     elif key == "fam":
         cap = ""
         head_cells = ['<th scope="col" data-s="thDeps"></th>', '<th scope="col" data-s="thMonth"></th>', '<th scope="col" data-s="thYear"></th>']
@@ -345,7 +350,7 @@ def summary_block(key, rates, when):
         rows = [[f'<th scope="row" data-s="{c}"></th>', f'<td dir="ltr">{a}</td>', f'<td dir="ltr">{b}</td>'] for c, a, b in data]
     else:
         raise SystemExit("unknown summary " + key)
-    Q = {"ex": "sumEx", "send": "sumSend", "eos": "sumEos", "id": "sumId", "fam": "sumFam", "emb": "sumEmb"}[key]
+    Q = {"ex": "sumEx", "send": "sumSend", "eos": "sumEos", "id": "sumId", "fam": "sumFam", "emb": "sumEmb", "vac": "sumVac"}[key]
     body = "".join("<tr>" + "".join(r) + "</tr>" for r in rows)
     return (f'<section class="answer-box" aria-labelledby="sumQ">\n'
             f'        <h2 id="sumQ" data-s="{Q}Q"></h2>\n'
@@ -380,7 +385,7 @@ def build():
         if not meta.get("noindex"):
             m = re.search(r'data-updated="(\d{4}-\d{2}-\d{2})"', body)
             public.append({"file": name, "path": meta["path"], "lastmod": m.group(1) if m else "2026-11-13"})
-    order = ["/", "/exchange-rate.html", "/send-money.html", "/end-of-service.html", "/id-residency.html",
+    order = ["/", "/exchange-rate.html", "/send-money.html", "/end-of-service.html", "/vacation-calculator.html", "/id-residency.html",
              "/family-cost.html", "/embassy-services.html", "/mobile-app.html", "/about.html", "/contact.html", "/privacy.html",
              "/terms.html", "/affiliate-disclosure.html"]
     public.sort(key=lambda e: order.index(e["path"]) if e["path"] in order else 99)

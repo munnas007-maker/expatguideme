@@ -1,0 +1,379 @@
+<!DOCTYPE html><html lang="bn" dir="ltr" data-page-lang="bn"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>উপসাগরীয় দেশের বার্ষিক ছুটি (ভ্যাকেশন) ক্যালকুলেটর | ExpatGuideME</title>
+  <meta name="description" content="সৌদি আরব, আমিরাত, কাতার, কুয়েত, ওমান বা বাহরাইনে আপনি কত দিন ছুটি অর্জন করেছেন, ১ বছর বা ২ বছরের ছুটির জন্য কত বাকি, আর না নেওয়া দিনগুলোর নগদ মূল্য কত তা…">
+  <meta name="google-adsense-account" content="ca-pub-4815162342890123">
+  <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4815162342890123" crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://expatguideme.com/bn/vacation-calculator.html">
+  <link rel="alternate" hreflang="en" href="https://expatguideme.com/vacation-calculator.html">
+  <link rel="alternate" hreflang="ar" href="https://expatguideme.com/ar/vacation-calculator.html">
+  <link rel="alternate" hreflang="hi" href="https://expatguideme.com/hi/vacation-calculator.html">
+  <link rel="alternate" hreflang="ml" href="https://expatguideme.com/ml/vacation-calculator.html">
+  <link rel="alternate" hreflang="ne" href="https://expatguideme.com/ne/vacation-calculator.html">
+  <link rel="alternate" hreflang="ur" href="https://expatguideme.com/ur/vacation-calculator.html">
+  <link rel="alternate" hreflang="bn" href="https://expatguideme.com/bn/vacation-calculator.html">
+  <link rel="alternate" hreflang="tl" href="https://expatguideme.com/tl/vacation-calculator.html">
+  <link rel="alternate" hreflang="x-default" href="https://expatguideme.com/vacation-calculator.html">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="ExpatGuideME">
+  <meta name="mobile-web-app-capable" content="yes">
+  <script>(function(){try{var t=localStorage.getItem('expatguideme_theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Cairo:wght@400;600;700&amp;family=Noto+Sans+Devanagari:wght@400;600;700&amp;family=Noto+Sans+Malayalam:wght@400;600;700&amp;family=Noto+Nastaliq+Urdu:wght@400;700&amp;family=Noto+Sans+Bengali:wght@400;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .vac { max-width: 960px; }
+    .country-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 18px; }
+    .country-tabs button, .seg button {
+      font: inherit; font-weight: 600; font-size: 0.95rem; padding: 8px 16px; border-radius: 999px; cursor: pointer;
+      border: 1px solid var(--line); background: var(--card); color: var(--ink);
+    }
+    .country-tabs button:hover, .seg button:hover { border-color: var(--brand); color: var(--brand); }
+    .country-tabs button[aria-pressed="true"], .seg button[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: var(--on-brand); }
+    .seg { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .seg button { font-size: 0.9rem; padding: 7px 14px; }
+    .group-label { font-weight: 600; color: var(--muted); font-size: 0.9rem; margin-bottom: 8px; }
+    .calc-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 18px; align-items: start; }
+    .calc-grid .card { margin-bottom: 0; }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+    .field { margin-bottom: 14px; }
+    .result { position: sticky; top: 84px; }
+    .total-box { background: var(--brand-soft); border: 1px solid var(--line); border-radius: 14px; padding: 16px; margin-bottom: 14px; }
+    .total-label { font-size: 0.85rem; font-weight: 700; color: var(--muted); }
+    .total { font-size: 2rem; font-weight: 800; color: var(--brand); line-height: 1.2; margin-top: 4px; }
+    .facts { list-style: none; margin: 0 0 12px; padding: 0; }
+    .facts li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px dashed var(--line); font-size: 0.93rem; }
+    .facts li:last-child { border-bottom: none; }
+    .facts .k { color: var(--muted); }
+    .facts .v { font-weight: 700; text-align: end; }
+    .notes { list-style: none; padding: 0; margin: 0 0 6px; }
+    .notes li { font-size: 0.88rem; background: var(--warn-bg); color: var(--warn-ink); border-radius: 10px; padding: 9px 12px; margin-bottom: 8px; }
+    .guide h3 { font-size: 1.05rem; margin: 18px 0 6px; }
+    .guide p { margin-bottom: 10px; }
+    .src { font-size: 0.85rem; color: var(--muted); }
+    .disclosure { font-size: 0.85rem; color: var(--muted); border-inline-start: 3px solid var(--line); padding-inline-start: 10px; margin: 18px 0; }
+    .xlink { display: inline-block; margin-top: 4px; font-weight: 600; }
+    @media (max-width: 760px) { .calc-grid { grid-template-columns: 1fr; } .result { position: static; } .total { font-size: 1.7rem; } }
+  </style>
+
+<script type="application/ld+json" data-faq-schema="">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"সৌদিতে ২ বছরের ছুটি কত দিন?","acceptedAnswer":{"@type":"Answer","text":"ধারা ১০৯ অনুযায়ী প্রথম পাঁচ বছর প্রতি বছর ২১ দিন, অর্থাৎ ২ বছরে ৪২ দিন। প্রতি ২ বছরে ছুটিতে গেলে পিছিয়ে নেওয়ার সম্মতি নিয়োগকর্তার কাছ থেকে লিখিত নিন (ধারা ১১০)।"}},{"@type":"Question","name":"সৌদিতে ছুটির বেতন (leave salary) কীভাবে হিসাব হয়?","acceptedAnswer":{"@type":"Answer","text":"মাসিক বেতন (মূল + নির্দিষ্ট ভাতা) ৩০ দিয়ে ভাগ করে ছুটির দিন দিয়ে গুণ করুন। যেমন SAR 4,500 বেতনে দৈনিক SAR 150, ২১ দিন = SAR 3,150।"}},{"@type":"Question","name":"ছুটির হিসাব (chutir hisab) কীভাবে করব?","acceptedAnswer":{"@type":"Answer","text":"দেশ বেছে নিয়ে চাকরির বছর, বেতন ও নেওয়া ছুটির দিন লিখুন। ক্যালকুলেটর অর্জিত ছুটি, বাকি ছুটি ও তার নগদ মূল্য দেখাবে।"}},{"@type":"Question","name":"চাকরি ছাড়লে বাকি ছুটির টাকা পাব?","acceptedAnswer":{"@type":"Answer","text":"হ্যাঁ। প্রতিটি উপসাগরীয় দেশে চুক্তি শেষ হলে না নেওয়া বার্ষিক ছুটির টাকা দিতে হয়। সৌদিতে পূর্ণ বেতনে, আমিরাত ও কাতারে মূল বেতনে।"}}]}</script><script type="application/ld+json" data-faq-schema="">{"@context":"https://schema.org","@type":"WebApplication","name":"উপসাগরীয় দেশের বার্ষিক ছুটি (ভ্যাকেশন) ক্যালকুলেটর","description":"সৌদি আরব, আমিরাত, কাতার, কুয়েত, ওমান বা বাহরাইনে আপনি কত দিন ছুটি অর্জন করেছেন, ১ বছর বা ২ বছরের ছুটির জন্য কত বাকি, আর না নেওয়া দিনগুলোর নগদ মূল্য কত তা হিসাব করুন।","url":"https://expatguideme.com/bn/vacation-calculator.html","inLanguage":"bn","applicationCategory":"FinanceApplication","operatingSystem":"Any","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"ExpatGuideME","url":"https://expatguideme.com"}}</script></head>
+<body data-page="vac" data-ads="auto">
+  <a class="skip-link" href="#main" data-s="skip">মূল লেখায় যান</a>
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="logo" href="/bn/">ExpatGuide<span>ME</span></a>
+      <nav class="site-nav" id="siteNav" aria-label="Main">
+        <a href="/bn/" data-s="navHome">হোম</a>
+        <a href="/bn/exchange-rate.html" data-s="navExchange">বিনিময় হার</a>
+        <a href="/bn/send-money.html" data-s="navSend">টাকা পাঠান</a>
+        <a href="/bn/contact.html" data-s="navContact">যোগাযোগ</a>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-menu">
+          <button type="button" class="icon-btn" id="langToggle" aria-haspopup="true" aria-expanded="false" aria-controls="langList" data-s-aria="language" aria-label="ভাষা" title="ভাষা">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg><span class="lang-current" id="langCurrent">English</span>
+          </button>
+          <div class="langs" id="langList" role="group" hidden="">
+            <button type="button" data-lang="en" lang="en">English</button>
+            <button type="button" data-lang="ar" lang="ar">العربية</button>
+            <button type="button" data-lang="hi" lang="hi">हिन्दी</button>
+            <button type="button" data-lang="ml" lang="ml">മലയാളം</button>
+            <button type="button" data-lang="ne" lang="ne">नेपाली</button>
+            <button type="button" data-lang="ur" lang="ur">اردو</button>
+            <button type="button" data-lang="bn" lang="bn">বাংলা</button>
+            <button type="button" data-lang="tl" lang="tl">Tagalog</button>
+          </div>
+        </div>
+        <button type="button" class="icon-btn" data-open-search="" data-s-aria="search" aria-label="খুঁজুন" title="খুঁজুন"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg></button>
+        <button type="button" class="icon-btn" id="themeToggle"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></button>
+        <button type="button" class="icon-btn menu-btn" id="menuToggle" aria-controls="siteNav" aria-expanded="false"><svg class="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"></path></svg><svg class="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div class="wrap vac" data-updated="2026-11-14">
+      <h1 data-t="title">উপসাগরীয় দেশের বার্ষিক ছুটি (ভ্যাকেশন) ক্যালকুলেটর</h1>
+      <p class="lead" data-t="lead">সৌদি আরব, আমিরাত, কাতার, কুয়েত, ওমান বা বাহরাইনে আপনি কত দিন ছুটি অর্জন করেছেন, ১ বছর বা ২ বছরের ছুটির জন্য কত বাকি, আর না নেওয়া দিনগুলোর নগদ মূল্য কত তা হিসাব করুন।</p>
+
+      <section aria-labelledby="calcTitle">
+        <h2 id="calcTitle" data-t="calcTitle">আপনার ছুটির হিসাব করুন</h2>
+        <p class="group-label" id="countryLabel" data-t="countryLabel">আপনি কোথায় কাজ করেন?</p>
+        <div class="country-tabs" id="countryTabs" role="group" aria-labelledby="countryLabel">
+          <button type="button" data-cc="sa"><span aria-hidden="true">🇸🇦</span> <span data-s="cSA">সৌদি আরব</span></button>
+          <button type="button" data-cc="ae"><span aria-hidden="true">🇦🇪</span> <span data-s="cAE">আমিরাত</span></button>
+          <button type="button" data-cc="qa"><span aria-hidden="true">🇶🇦</span> <span data-s="cQA">কাতার</span></button>
+          <button type="button" data-cc="kw"><span aria-hidden="true">🇰🇼</span> <span data-s="cKW">কুয়েত</span></button>
+          <button type="button" data-cc="om"><span aria-hidden="true">🇴🇲</span> <span data-s="cOM">ওমান</span></button>
+          <button type="button" data-cc="bh"><span aria-hidden="true">🇧🇭</span> <span data-s="cBH">বাহরাইন</span></button>
+        </div>
+
+        <div class="calc-grid">
+          <form class="card" id="vacForm" novalidate="">
+            <p class="group-label" id="presetLabel" data-t="presetLabel">দ্রুত বেছে নিন</p>
+            <div class="presets" role="group" aria-labelledby="presetLabel" id="svcPresets">
+              <button type="button" class="preset" data-y="1" data-t="p1">১ বছর</button>
+              <button type="button" class="preset" data-y="2" data-t="p2">২ বছর</button>
+              <button type="button" class="preset" data-y="5" data-t="p5">৫ বছর</button>
+            </div>
+            <div class="row2" style="margin-top:14px">
+              <div>
+                <label class="field-label" for="years" data-t="yearsLabel">চাকরির বছর</label>
+                <input type="number" id="years" inputmode="numeric" min="0" max="60" step="1" value="2">
+              </div>
+              <div>
+                <label class="field-label" for="months" data-t="monthsLabel">অতিরিক্ত মাস</label>
+                <input type="number" id="months" inputmode="numeric" min="0" max="11" step="1" value="0">
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="basic" id="basicLabel"></label>
+              <input type="number" id="basic" inputmode="decimal" min="0" step="any" autocomplete="off">
+            </div>
+            <div class="field">
+              <label class="field-label" for="allow" id="allowLabel"></label>
+              <input type="number" id="allow" inputmode="decimal" min="0" step="any" autocomplete="off" value="0">
+            </div>
+            <div class="field">
+              <label class="field-label" for="used" data-t="usedLabel">আগে নেওয়া ছুটির দিন (ঐচ্ছিক)</label>
+              <input type="number" id="used" inputmode="decimal" min="0" step="any" autocomplete="off" value="0">
+            </div>
+            <p class="group-label" id="baseLabel" data-t="baseLabel">নগদ মূল্যের ভিত্তি</p>
+            <div class="seg" id="baseSeg" role="group" aria-labelledby="baseLabel">
+              <button type="button" data-base="full" data-t="baseFull">পূর্ণ বেতন (মূল + ভাতা)</button>
+              <button type="button" data-base="basic" data-t="baseBasic">শুধু মূল বেতন</button>
+            </div>
+          </form>
+
+          <section class="card result" aria-labelledby="resultTitle" aria-live="polite">
+            <h2 id="resultTitle" data-t="resultTitle">আপনার ছুটি</h2>
+            <div class="total-box">
+              <div class="total-label" data-t="balance">বাকি ছুটি</div>
+              <div class="total" id="balanceOut" dir="ltr">0</div>
+            </div>
+            <ul class="facts">
+              <li><span class="k" data-t="perYear">এখন বছরে ছুটি</span><span class="v" id="perYearOut" dir="ltr"></span></li>
+              <li><span class="k" data-t="accrued">মোট অর্জিত ছুটি</span><span class="v" id="accruedOut" dir="ltr"></span></li>
+              <li><span class="k" data-t="usedK">নেওয়া দিন</span><span class="v" id="usedOut" dir="ltr"></span></li>
+              <li><span class="k" data-t="dayRate">দৈনিক বেতন (মাসিক ÷ ৩০)</span><span class="v" id="rateOut" dir="ltr">–</span></li>
+              <li><span class="k" data-t="cash">বাকি ছুটির আনুমানিক নগদ মূল্য</span><span class="v" id="cashOut" dir="ltr">–</span></li>
+            </ul>
+            <ul class="notes" id="notes"></ul>
+            <a class="xlink" href="/bn/end-of-service.html" data-t="xEos">আপনার চাকরি শেষের পাওনাও হিসাব করুন</a>
+          </section>
+        </div>
+      </section>
+
+      <section class="answer-box" aria-labelledby="sumQ">
+        <h2 id="sumQ" data-s="sumVacQ">প্রতিটি উপসাগরীয় দেশে প্রবাসীরা বছরে কত দিন ছুটি পান?</h2>
+        <p data-s="sumVacA">সৌদি আরব বছরে ২১ দিন দেয়, একই নিয়োগকর্তার অধীনে ৫ বছর পর ৩০ দিন; কাতার ২১ দিন দেয়, ৫ বছর পর ২৮। আমিরাত, কুয়েত, ওমান ও বাহরাইন বছরে ৩০ দিন দেয়। এগুলো আইনি ন্যূনতম, আর চাকরি ছাড়লে বাকি দিনের টাকা দিতে হয়।</p>
+        <div class="table-scroll"><table class="summary-table"><thead><tr><th scope="col" data-s="thCountry">দেশ</th><th scope="col" data-s="thDaysYear">বছরে ছুটি</th></tr></thead><tbody><tr><th scope="row" data-s="cSA">সৌদি আরব</th><td dir="ltr">21 → 30 (5+)</td></tr><tr><th scope="row" data-s="cAE">আমিরাত</th><td dir="ltr">30</td></tr><tr><th scope="row" data-s="cQA">কাতার</th><td dir="ltr">21 → 28 (5+)</td></tr><tr><th scope="row" data-s="cKW">কুয়েত</th><td dir="ltr">30</td></tr><tr><th scope="row" data-s="cOM">ওমান</th><td dir="ltr">30</td></tr><tr><th scope="row" data-s="cBH">বাহরাইন</th><td dir="ltr">30</td></tr></tbody></table></div>
+      </section>
+
+      <div class="ad-slot" data-ad-slot="vacation-mid" data-t="ad">বিজ্ঞাপন</div>
+
+      <section class="guide" aria-labelledby="gTitle">
+        <h2 id="gTitle" data-t="gTitle">উপসাগরীয় শ্রম আইনে আপনার ছুটির অধিকার</h2>
+        <h3 data-t="gCarryT">২ বছরের ছুটির জন্য কি ছুটি জমানো যায়?</h3>
+        <p data-t="gCarrySa">সৌদি আরব: ধারা ১১০ অনুযায়ী নিয়োগকর্তার সম্মতিতে বার্ষিক ছুটি বা তার অংশ পরের বছরে পিছিয়ে নেওয়া যায়। এই সম্মতি লিখিত রাখুন। অর্জিত ছুটি আইনি অধিকার: চাকরির সময় তা ছেড়ে দেওয়া যায় না, আর ধারা ১১১ অনুযায়ী চাকরি ছাড়লে বাকি দিনের টাকা দিতে হয়।</p>
+        <p data-t="gCarryAe">আমিরাত: ধারা ২৯ অনুযায়ী নিয়োগকর্তা আপনাকে ২ বছরের বেশি অর্জিত ছুটি নেওয়া থেকে আটকাতে পারে না, যদি না আপনি নিজে তা পরে নিতে বা নগদ নিতে চান। ছুটি পরে নিতে নিয়োগকর্তার সম্মতি লাগে।</p>
+        <p data-t="gCarryOther">কাতারে আপনার লিখিত অনুরোধে বার্ষিক ছুটির অর্ধেক পর্যন্ত পিছানো যায়। ওমানে ৩০ দিন পর্যন্ত। কুয়েত ও বাহরাইনে নিয়োগকর্তার সঙ্গে লিখিতভাবে ঠিক করুন।</p>
+        <h3 data-t="gHolT">ঈদ ও জাতীয় ছুটি কি আমার ছুটি থেকে কাটে?</h3>
+        <p data-t="gHolSa">না। সৌদি আরবে ধারা ১১২ ও বাস্তবায়ন বিধির ধারা ২৪ ঈদুল ফিতর, ঈদুল আজহা, জাতীয় দিবস ও প্রতিষ্ঠা দিবসে বেতনসহ ছুটি দেয়। এগুলো আপনার বার্ষিক ছুটির মধ্যে পড়লে সেই দিনগুলো ছুটি হিসেবে গোনা হয় না, ছুটি ততদিন বাড়ে।</p>
+        <h3 data-t="gPayT">সৌদি আর আমিরাতে ছুটির টাকা আলাদা কেন</h3>
+        <p data-t="gPaySa">সৌদি আরব (ধারা ১০৯ ও ১১১): ছুটির বেতন আগাম দেওয়া হয় এবং তা মূল বেতন ও বাসা-যাতায়াতের মতো নির্দিষ্ট ভাতাসহ পূর্ণ বেতনে। চাকরি শেষে বাকি দিনও একই বেতনে।</p>
+        <p data-t="gPayAe">আমিরাত (ধারা ২৯ ও মন্ত্রিসভার সিদ্ধান্ত ১/২০২২): ছুটিতে স্বাভাবিক বেতন পাবেন, কিন্তু না নেওয়া ছুটির নগদ টাকা শুধু মূল বেতনে হিসাব হয়। তাই ক্যালকুলেটর আমিরাতের জন্য মূল বেতন নেয়।</p>
+        <p class="src" data-t="gSrc">সূত্র: সৌদি শ্রম আইন (রাজকীয় ডিক্রি M/51, ২০২৫ সংশোধনী), আমিরাতের ফেডারেল ডিক্রি-আইন ৩৩/২০২১, কাতার আইন ১৪/২০০৪, কুয়েত আইন ৬/২০১০, ওমান রাজকীয় ডিক্রি ৫৩/২০২৩, বাহরাইন আইন ৩৬/২০১২।</p>
+      </section>
+
+      <p class="disclosure" data-t="disclaimer">এই হিসাব উপসাগরীয় শ্রম আইনের ন্যূনতম অধিকার দেখায়। আপনার চুক্তি বা কোম্পানির নীতি বেশি দিন বা বেশি টাকা দিতে পারে। এটি সাধারণ তথ্য, আইনি পরামর্শ নয়; বিরোধ হলে আপনার দেশের শ্রম মন্ত্রণালয়ে যোগাযোগ করুন।</p>
+
+      <section class="faq" id="faq" aria-labelledby="faqTitle">
+        <h2 id="faqTitle" data-t="faqTitle">সাধারণ প্রশ্ন</h2>
+        <details><summary data-t="q1">সৌদিতে ২ বছরের ছুটি কত দিন?</summary><div class="answer"><p data-t="a1">ধারা ১০৯ অনুযায়ী প্রথম পাঁচ বছর প্রতি বছর ২১ দিন, অর্থাৎ ২ বছরে ৪২ দিন। প্রতি ২ বছরে ছুটিতে গেলে পিছিয়ে নেওয়ার সম্মতি নিয়োগকর্তার কাছ থেকে লিখিত নিন (ধারা ১১০)।</p></div></details>
+        <details><summary data-t="q2">সৌদিতে ছুটির বেতন (leave salary) কীভাবে হিসাব হয়?</summary><div class="answer"><p data-t="a2">মাসিক বেতন (মূল + নির্দিষ্ট ভাতা) ৩০ দিয়ে ভাগ করে ছুটির দিন দিয়ে গুণ করুন। যেমন SAR 4,500 বেতনে দৈনিক SAR 150, ২১ দিন = SAR 3,150।</p></div></details>
+        <details><summary data-t="q3">ছুটির হিসাব (chutir hisab) কীভাবে করব?</summary><div class="answer"><p data-t="a3">দেশ বেছে নিয়ে চাকরির বছর, বেতন ও নেওয়া ছুটির দিন লিখুন। ক্যালকুলেটর অর্জিত ছুটি, বাকি ছুটি ও তার নগদ মূল্য দেখাবে।</p></div></details>
+        <details><summary data-t="q4">চাকরি ছাড়লে বাকি ছুটির টাকা পাব?</summary><div class="answer"><p data-t="a4">হ্যাঁ। প্রতিটি উপসাগরীয় দেশে চুক্তি শেষ হলে না নেওয়া বার্ষিক ছুটির টাকা দিতে হয়। সৌদিতে পূর্ণ বেতনে, আমিরাত ও কাতারে মূল বেতনে।</p></div></details>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <section class="newsletter" aria-labelledby="nlTitle">
+        <h2 id="nlTitle" data-s="nlTitle">নতুন গাইড ইমেইলে পান</h2>
+        <p data-s="nlText">নতুন টুল বা গাইড যোগ হলে শুধু একটি ছোট ইমেইল। কোনো স্প্যাম নয়।</p>
+        <form class="nl-form" name="newsletter" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" data-ajax="" data-success="nlSuccess" novalidate="">
+          <input type="hidden" name="form-name" value="newsletter">
+          <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <label class="sr-only" for="nlEmail" data-s="nlEmail">আপনার ইমেইল ঠিকানা</label>
+          <input id="nlEmail" type="email" name="email" required="" autocomplete="email" inputmode="email" data-s-ph="nlEmail" placeholder="আপনার ইমেইল ঠিকানা">
+          <button type="submit" class="btn btn-primary" data-s="nlButton">সাবস্ক্রাইব করুন</button>
+          <p class="form-msg" role="alert" aria-live="polite"></p>
+        </form>
+        <div class="success-box" id="nlSuccess" tabindex="-1" role="status" hidden="">
+          <span class="check" aria-hidden="true">✓</span><span data-s="nlSuccess">ধন্যবাদ! আপনি সাবস্ক্রাইব করেছেন।</span>
+        </div>
+      </section>
+      <div class="footer-cols">
+        <div>
+          <h3 data-s="footerTools">টুলস</h3>
+          <nav class="footer-links" aria-label="Tools">
+            <a href="/bn/exchange-rate.html" data-s="navExchange">বিনিময় হার</a>
+            <a href="/bn/send-money.html" data-s="navSend">টাকা পাঠান</a>
+            <a href="/bn/end-of-service.html" data-s="navEos">চাকরি শেষের পাওনা</a>
+            <a href="/bn/vacation-calculator.html" data-s="navVac">ছুটির ক্যালকুলেটর</a>
+            <a href="/bn/id-residency.html" data-s="navId">আইডি ও আকামা</a>
+            <a href="/bn/family-cost.html" data-s="navFamily">পরিবারের খরচ</a>
+            <a href="/bn/embassy-services.html" data-s="navEmbassy">দূতাবাস সেবা</a>
+          </nav>
+        </div>
+        <div>
+          <h3 data-s="footerSite">ওয়েবসাইট</h3>
+          <nav class="footer-links" aria-label="Footer">
+            <a href="/bn/" data-s="navHome">হোম</a>
+            <a href="/bn/mobile-app.html" data-s="navApp">মোবাইল অ্যাপ</a>
+            <a href="/bn/about.html" data-s="navAbout">আমাদের সম্পর্কে</a>
+            <a href="/bn/contact.html" data-s="navContact">যোগাযোগ</a>
+            <a href="/bn/privacy.html" data-s="navPrivacy">গোপনীয়তা</a>
+            <a href="/bn/terms.html" data-s="navTerms">ব্যবহারের শর্তাবলি</a>
+            <a href="/bn/affiliate-disclosure.html" data-s="navAffiliate">অ্যাফিলিয়েট তথ্য</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-app">
+        <h3 data-s="appGet">অ্যাপ নিন</h3>
+        <div class="store-pills">
+          <a class="store-pill" href="/bn/mobile-app.html" data-store="android"><span class="store-ico" aria-hidden="true">📱</span><span data-s="appSoonAndroid">শিগগিরই Android-এ</span></a>
+          <a class="store-pill" href="/bn/mobile-app.html" data-store="ios"><span class="store-ico" aria-hidden="true">📱</span><span data-s="appSoonIos">শিগগিরই iPhone-এ</span></a>
+          <button type="button" class="store-pill store-install" data-install="" hidden=""><span class="store-ico" aria-hidden="true">⬇</span><span data-s="appInstallBtn">ওয়েব অ্যাপ ইনস্টল করুন</span></button>
+        </div>
+      </div>
+      <p class="disclaimer" data-s="disclaimer">এটি একটি স্বাধীন ওয়েবসাইট। কোনো সরকারি দপ্তর বা ব্যাংকের সাথে এর কোনো সম্পর্ক নেই।</p>
+    </div>
+  </footer>
+
+  <a class="fab-contact" href="/bn/contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg><span data-s="contactUs">আমাদের সাথে যোগাযোগ করুন</span></a>
+  <button type="button" class="to-top" id="toTop" data-s-aria="toTop" hidden="" aria-label="উপরে যান" title="উপরে যান"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5M5 12l7-7 7 7"></path></svg></button>
+
+  <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookies" hidden="">
+    <p data-s="cookieText">আপনার ভাষা ও সেটিংস মনে রাখতে আমরা ব্রাউজারের স্টোরেজ ব্যবহার করি। Google সহ আমাদের বিজ্ঞাপন অংশীদাররা বিজ্ঞাপন দেখাতে কুকি ব্যবহার করতে পারে।</p>
+    <a href="/bn/privacy.html" data-s="cookieLearn">গোপনীয়তা নীতি</a>
+    <button type="button" class="btn btn-primary" id="cookieOk" data-s="cookieOk">ঠিক আছে</button>
+  </div>
+
+  <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-labelledby="searchTitle" hidden="">
+    <div class="search-box">
+      <div class="search-head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+        <h2 id="searchTitle" class="sr-only" data-s="search">খুঁজুন</h2>
+        <label class="sr-only" for="searchInput" data-s="search">খুঁজুন</label>
+        <input type="search" id="searchInput" autocomplete="off" data-s-ph="searchPh" placeholder="টুল ও গাইড খুঁজুন…">
+        <button type="button" class="icon-btn" id="searchClose" data-s-aria="close" aria-label="বন্ধ করুন" title="বন্ধ করুন"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+      </div>
+      <ul class="search-results" id="searchResults"></ul>
+    </div>
+  </div>
+
+  <script src="/assets/site.js"></script>
+  <script>
+    (function () {
+      "use strict";
+      var T = {"en": {"title": "GCC annual leave & vacation calculator", "lead": "Work out how many vacation days you have earned in Saudi Arabia, the UAE, Qatar, Kuwait, Oman or Bahrain, what is left for your 1-year or 2-year vacation, and what the unused days are worth in cash.", "calcTitle": "Calculate your leave", "countryLabel": "Where do you work?", "presetLabel": "Quick presets", "p1": "1 year", "p2": "2 years", "p5": "5 years", "yearsLabel": "Years of service", "monthsLabel": "Extra months", "basicLabel": "Monthly basic salary ({cur})", "allowLabel": "Fixed allowances: housing, transport ({cur})", "usedLabel": "Leave days already used (optional)", "baseLabel": "Cash value based on", "baseFull": "Full wage (basic + allowances)", "baseBasic": "Basic salary only", "resultTitle": "Your leave", "perYear": "Leave per year now", "accrued": "Total leave earned", "usedK": "Days already used", "balance": "Remaining vacation balance", "dayRate": "Daily rate (monthly ÷ 30)", "cash": "Estimated cash value of the balance", "days": "{n} days", "empty": "Enter your salary to see the cash value.", "wait": "In this country, annual leave starts after {n} months of service. Your balance is 0 until then.", "over": "You entered more used days than you have earned, so the balance shows 0.", "nSA": "Saudi Arabia, Articles 109 and 111: 21 days a year, 30 days after 5 continuous years with the same employer. Leave pay and unused-leave pay use your full wage.", "nAE": "UAE, Article 29 of Decree-Law 33/2021: 30 days a year after 1 year (2 days a month between 6 and 12 months). Unused leave paid out at the end of service uses your basic salary.", "nQA": "Qatar, Article 79 of Law 14/2004: at least 3 weeks (21 days) a year after 1 year of service, 4 weeks (28 days) from 5 years. Leave pay uses your basic wage.", "nKW": "Kuwait, Article 70 of Law 6/2010: 30 days a year; the first leave is due after 9 months of service.", "nOM": "Oman, Article 78 of Royal Decree 53/2023: 30 days a year after 6 months of service; up to 30 unused days can be carried to the next year.", "nBH": "Bahrain, Article 58 of Law 36/2012: 30 days a year, earned at 2.5 days for each month of service.", "gTitle": "Your vacation rights under GCC labour law", "gCarryT": "Can I save my leave for a 2-year vacation?", "gCarrySa": "Saudi Arabia: Article 110 lets you postpone your annual leave, or part of it, to the following year with your employer's agreement. Keep that agreement in writing. Earned leave is a legal right: you cannot give it up during your service, and Article 111 says any days left when you leave must be paid.", "gCarryAe": "UAE: under Article 29 the employer may not stop you from using your earned leave for more than 2 years, unless you choose to carry it forward or take cash for it under the Executive Regulations. Carrying days forward needs your employer's agreement.", "gCarryOther": "Qatar allows up to half of the yearly leave to be postponed at your written request. Oman allows up to 30 days to be carried forward. In Kuwait and Bahrain, agree any carry-over with your employer in writing.", "gHolT": "Do Eid and national holidays reduce my leave?", "gHolSa": "No. In Saudi Arabia, Article 112 and Article 24 of the Implementing Regulations give paid holidays for Eid al-Fitr, Eid al-Adha, National Day and Founding Day. When one of these falls during your annual leave, those days are not counted as leave, so your vacation is extended by them.", "gPayT": "Why Saudi Arabia and the UAE pay leave differently", "gPaySa": "Saudi Arabia (Articles 109 and 111): leave is paid in advance on your wage, which includes your basic salary and fixed allowances such as housing and transport. Unused days paid at the end of service use the same wage.", "gPayAe": "UAE (Article 29 and Cabinet Resolution 1 of 2022): you receive your normal pay during leave, but cash for unused leave days is calculated on your basic salary only. That is why the calculator uses basic salary for the UAE.", "gSrc": "Sources: Saudi Labor Law (Royal Decree M/51, amended 2025), UAE Federal Decree-Law 33 of 2021, Qatar Law 14 of 2004, Kuwait Law 6 of 2010, Oman Royal Decree 53/2023, Bahrain Law 36 of 2012.", "disclaimer": "These calculations show the statutory minimum under GCC labour laws. Your employment contract or company policy may give you more days or a higher payout. This is general information, not legal advice; for a dispute, contact your country's labour ministry.", "faqTitle": "Frequently asked questions", "q1": "How many vacation days do I get for 2 years in Saudi Arabia?", "a1": "Under Article 109 you earn 21 days for each year in your first five years, so 2 years of service gives 42 days. If you take your vacation every 2 years, agree the postponement with your employer in writing (Article 110).", "q2": "How is leave salary calculated in KSA?", "a2": "Divide your monthly wage, basic plus fixed allowances, by 30 and multiply by your leave days. For example, a wage of SAR 4,500 gives SAR 150 a day, so 21 days are worth SAR 3,150.", "q3": "How do I do my vacation leave calculation (chutti hisab)?", "a3": "Choose your country, enter your years of service, salary and the leave days you already used. The calculator shows the days you have earned, the balance left and its cash value.", "q4": "Do I get paid for unused leave when I leave the job?", "a4": "Yes. In every GCC country, unused annual leave must be paid when your contract ends. Saudi Arabia pays it on your full wage; the UAE and Qatar pay it on your basic salary.", "xEos": "Also calculate your end of service benefit"}, "ar": {"title": "حاسبة الإجازة السنوية في دول الخليج", "lead": "احسب أيام الإجازة التي استحققتها في السعودية أو الإمارات أو قطر أو الكويت أو عُمان أو البحرين، والرصيد المتبقي لإجازة السنة أو السنتين، وقيمة الأيام غير المستخدمة نقدًا.", "calcTitle": "احسب إجازتك", "countryLabel": "أين تعمل؟", "presetLabel": "اختيارات سريعة", "p1": "سنة واحدة", "p2": "سنتان", "p5": "٥ سنوات", "yearsLabel": "سنوات الخدمة", "monthsLabel": "أشهر إضافية", "basicLabel": "الراتب الأساسي الشهري ({cur})", "allowLabel": "البدلات الثابتة: السكن والنقل ({cur})", "usedLabel": "أيام الإجازة المستخدمة (اختياري)", "baseLabel": "احسب القيمة النقدية على أساس", "baseFull": "الأجر الكامل (الأساسي + البدلات)", "baseBasic": "الراتب الأساسي فقط", "resultTitle": "إجازتك", "perYear": "الإجازة السنوية حاليًا", "accrued": "إجمالي الإجازة المستحقة", "usedK": "الأيام المستخدمة", "balance": "رصيد الإجازة المتبقي", "dayRate": "الأجر اليومي (الشهري ÷ ٣٠)", "cash": "القيمة النقدية التقديرية للرصيد", "days": "{n} يوم", "empty": "أدخل راتبك لمعرفة القيمة النقدية.", "wait": "في هذه الدولة تبدأ الإجازة السنوية بعد {n} أشهر من الخدمة، ورصيدك صفر حتى ذلك الحين.", "over": "أدخلت أيامًا مستخدمة أكثر مما استحققت، لذلك يظهر الرصيد صفرًا.", "nSA": "السعودية، المادتان ١٠٩ و١١١: ٢١ يومًا سنويًا، و٣٠ يومًا بعد ٥ سنوات متصلة لدى صاحب العمل نفسه. أجر الإجازة وأجر الأيام غير المستخدمة على الأجر الكامل.", "nAE": "الإمارات، المادة ٢٩ من المرسوم بقانون ٣٣/٢٠٢١: ٣٠ يومًا سنويًا بعد سنة (يومان عن كل شهر بين ٦ و١٢ شهرًا). بدل الإجازة غير المستخدمة عند انتهاء الخدمة على الراتب الأساسي.", "nQA": "قطر، المادة ٧٩ من القانون ١٤/٢٠٠٤: ثلاثة أسابيع (٢١ يومًا) على الأقل سنويًا بعد سنة، وأربعة أسابيع (٢٨ يومًا) من ٥ سنوات. أجر الإجازة على الأجر الأساسي.", "nKW": "الكويت، المادة ٧٠ من القانون ٦/٢٠١٠: ٣٠ يومًا سنويًا، وتستحق الإجازة الأولى بعد ٩ أشهر من الخدمة.", "nOM": "عُمان، المادة ٧٨ من المرسوم السلطاني ٥٣/٢٠٢٣: ٣٠ يومًا سنويًا بعد ٦ أشهر من الخدمة، ويجوز ترحيل حتى ٣٠ يومًا للسنة التالية.", "nBH": "البحرين، المادة ٥٨ من القانون ٣٦/٢٠١٢: ٣٠ يومًا سنويًا، بمعدل يومين ونصف عن كل شهر خدمة.", "gTitle": "حقوقك في الإجازة وفق قوانين العمل الخليجية", "gCarryT": "هل يمكنني جمع إجازتي لإجازة كل سنتين؟", "gCarrySa": "السعودية: تسمح المادة ١١٠ بتأجيل الإجازة السنوية أو جزء منها إلى السنة التالية بموافقة صاحب العمل، واحرص على توثيق الموافقة كتابيًا. الإجازة المستحقة حق نظامي لا يجوز التنازل عنه أثناء الخدمة، وتنص المادة ١١١ على دفع أجر الأيام المتبقية عند ترك العمل.", "gCarryAe": "الإمارات: وفق المادة ٢٩ لا يجوز لصاحب العمل منعك من استخدام إجازتك المستحقة لأكثر من سنتين، إلا إذا اخترت ترحيلها أو الحصول على بدل نقدي عنها وفق اللائحة التنفيذية، ويتطلب الترحيل موافقة صاحب العمل.", "gCarryOther": "تسمح قطر بتأجيل ما لا يزيد على نصف الإجازة السنوية بطلب كتابي منك، وتسمح عُمان بترحيل حتى ٣٠ يومًا. وفي الكويت والبحرين اتفق كتابيًا مع صاحب العمل على أي ترحيل.", "gHolT": "هل تُخصم أيام العيد والعطلات الوطنية من إجازتي؟", "gHolSa": "لا. في السعودية تمنح المادة ١١٢ والمادة ٢٤ من اللائحة التنفيذية إجازات مدفوعة لعيد الفطر وعيد الأضحى واليوم الوطني ويوم التأسيس. وإذا وقع أحدها خلال إجازتك السنوية فلا تُحسب أيامه من الإجازة، فتمتد إجازتك بقدرها.", "gPayT": "لماذا يختلف أجر الإجازة بين السعودية والإمارات؟", "gPaySa": "السعودية (المادتان ١٠٩ و١١١): يُدفع أجر الإجازة مقدمًا على أساس الأجر الذي يشمل الراتب الأساسي والبدلات الثابتة مثل السكن والنقل، وتُحسب الأيام غير المستخدمة عند انتهاء الخدمة على الأجر نفسه.", "gPayAe": "الإمارات (المادة ٢٩ وقرار مجلس الوزراء ١ لسنة ٢٠٢٢): تتقاضى أجرك المعتاد أثناء الإجازة، لكن البدل النقدي للأيام غير المستخدمة يُحسب على الراتب الأساسي فقط، ولذلك تستخدم الحاسبة الراتب الأساسي للإمارات.", "gSrc": "المصادر: نظام العمل السعودي (المرسوم الملكي م/٥١ وتعديلات ٢٠٢٥)، والمرسوم بقانون اتحادي ٣٣ لسنة ٢٠٢١ في الإمارات، والقانون القطري ١٤ لسنة ٢٠٠٤، والقانون الكويتي ٦ لسنة ٢٠١٠، والمرسوم السلطاني العُماني ٥٣/٢٠٢٣، والقانون البحريني ٣٦ لسنة ٢٠١٢.", "disclaimer": "تعرض هذه الحسابات الحد الأدنى النظامي وفق قوانين العمل الخليجية، وقد يمنحك عقدك أو سياسة شركتك أيامًا أكثر أو مبلغًا أعلى. هذه معلومات عامة وليست استشارة قانونية؛ وعند النزاع راجع وزارة العمل في بلدك.", "faqTitle": "الأسئلة الشائعة", "q1": "كم يوم إجازة أستحق عن سنتين في السعودية؟", "a1": "وفق المادة ١٠٩ تستحق ٢١ يومًا عن كل سنة في السنوات الخمس الأولى، أي ٤٢ يومًا عن سنتين. وإذا أخذت إجازتك كل سنتين فوثّق التأجيل كتابيًا مع صاحب العمل (المادة ١١٠).", "q2": "كيف يُحسب راتب الإجازة في السعودية؟", "a2": "اقسم أجرك الشهري (الأساسي مع البدلات الثابتة) على ٣٠ واضربه في أيام الإجازة. مثلًا أجر ٤٥٠٠ ريال يعني ١٥٠ ريالًا يوميًا، فتكون ٢١ يومًا بقيمة ٣١٥٠ ريالًا.", "q3": "كيف أحسب رصيد إجازتي بنفسي؟", "a3": "اختر دولتك، وأدخل سنوات الخدمة والراتب والأيام التي استخدمتها، وستعرض الحاسبة الأيام المستحقة والرصيد المتبقي وقيمته النقدية.", "q4": "هل أحصل على أجر الإجازة غير المستخدمة عند ترك العمل؟", "a4": "نعم. في جميع دول الخليج يجب دفع أجر الإجازة السنوية غير المستخدمة عند انتهاء العقد. السعودية تدفعه على الأجر الكامل، والإمارات وقطر على الراتب الأساسي.", "xEos": "احسب أيضًا مكافأة نهاية الخدمة"}, "hi": {"title": "खाड़ी देशों का वार्षिक छुट्टी (वेकेशन) कैलकुलेटर", "lead": "जानें कि सऊदी अरब, यूएई, क़तर, कुवैत, ओमान या बहरीन में आपने कितनी छुट्टियाँ कमाई हैं, 1 साल या 2 साल की छुट्टी के लिए कितनी बाक़ी हैं, और बची छुट्टियों का नक़द मूल्य कितना है।", "calcTitle": "अपनी छुट्टी का हिसाब करें", "countryLabel": "आप कहाँ काम करते हैं?", "presetLabel": "तुरंत चुनें", "p1": "1 साल", "p2": "2 साल", "p5": "5 साल", "yearsLabel": "सर्विस के साल", "monthsLabel": "अतिरिक्त महीने", "basicLabel": "मासिक बेसिक सैलरी ({cur})", "allowLabel": "फ़िक्स्ड अलाउंस: मकान, ट्रांसपोर्ट ({cur})", "usedLabel": "पहले ली गई छुट्टियाँ (वैकल्पिक)", "baseLabel": "नक़द मूल्य किस आधार पर", "baseFull": "पूरा वेतन (बेसिक + अलाउंस)", "baseBasic": "सिर्फ़ बेसिक सैलरी", "resultTitle": "आपकी छुट्टी", "perYear": "अभी हर साल की छुट्टी", "accrued": "कुल कमाई गई छुट्टी", "usedK": "ली गई छुट्टियाँ", "balance": "बची हुई छुट्टी", "dayRate": "रोज़ का वेतन (मासिक ÷ 30)", "cash": "बची छुट्टी का अनुमानित नक़द मूल्य", "days": "{n} दिन", "empty": "नक़द मूल्य देखने के लिए सैलरी डालें।", "wait": "इस देश में वार्षिक छुट्टी {n} महीने की सर्विस के बाद शुरू होती है। तब तक बैलेंस 0 है।", "over": "आपने कमाई से ज़्यादा ली गई छुट्टियाँ डाली हैं, इसलिए बैलेंस 0 दिख रहा है।", "nSA": "सऊदी अरब, धारा 109 और 111: हर साल 21 दिन, उसी नियोक्ता के साथ लगातार 5 साल बाद 30 दिन। छुट्टी का वेतन और बची छुट्टी का भुगतान पूरे वेतन पर।", "nAE": "यूएई, डिक्री-लॉ 33/2021 की धारा 29: 1 साल बाद हर साल 30 दिन (6 से 12 महीने के बीच हर महीने 2 दिन)। सर्विस ख़त्म होने पर बची छुट्टी का भुगतान बेसिक सैलरी पर।", "nQA": "क़तर, क़ानून 14/2004 की धारा 79: 1 साल बाद हर साल कम से कम 3 हफ़्ते (21 दिन), 5 साल से 4 हफ़्ते (28 दिन)। छुट्टी का वेतन बेसिक पर।", "nKW": "कुवैत, क़ानून 6/2010 की धारा 70: हर साल 30 दिन; पहली छुट्टी 9 महीने की सर्विस के बाद।", "nOM": "ओमान, शाही फ़रमान 53/2023 की धारा 78: 6 महीने की सर्विस के बाद हर साल 30 दिन; 30 दिन तक अगले साल ले जा सकते हैं।", "nBH": "बहरीन, क़ानून 36/2012 की धारा 58: हर साल 30 दिन, हर महीने की सर्विस पर 2.5 दिन।", "gTitle": "खाड़ी श्रम क़ानूनों में आपके छुट्टी के अधिकार", "gCarryT": "क्या मैं 2 साल की छुट्टी के लिए छुट्टियाँ जमा कर सकता हूँ?", "gCarrySa": "सऊदी अरब: धारा 110 के तहत नियोक्ता की सहमति से वार्षिक छुट्टी या उसका हिस्सा अगले साल तक टाल सकते हैं। यह सहमति लिखित में रखें। कमाई गई छुट्टी क़ानूनी हक़ है: सर्विस के दौरान आप इसे छोड़ नहीं सकते, और धारा 111 के अनुसार नौकरी छोड़ने पर बची छुट्टी का भुगतान ज़रूरी है।", "gCarryAe": "यूएई: धारा 29 के अनुसार नियोक्ता आपको 2 साल से ज़्यादा कमाई गई छुट्टी लेने से नहीं रोक सकता, जब तक आप ख़ुद उसे आगे ले जाना या नक़द लेना न चुनें। छुट्टी आगे ले जाने के लिए नियोक्ता की सहमति चाहिए।", "gCarryOther": "क़तर में आपके लिखित अनुरोध पर सालाना छुट्टी का आधा तक टाला जा सकता है। ओमान में 30 दिन तक आगे ले जा सकते हैं। कुवैत और बहरीन में नियोक्ता से लिखित सहमति लें।", "gHolT": "क्या ईद और राष्ट्रीय छुट्टियाँ मेरी छुट्टी में से कटती हैं?", "gHolSa": "नहीं। सऊदी अरब में धारा 112 और कार्यकारी नियमों की धारा 24 ईद-उल-फ़ित्र, ईद-उल-अज़हा, राष्ट्रीय दिवस और स्थापना दिवस की सवेतन छुट्टियाँ देती हैं। अगर इनमें से कोई आपकी वार्षिक छुट्टी के बीच पड़े, तो वे दिन छुट्टी में नहीं गिने जाते और आपकी छुट्टी उतनी बढ़ जाती है।", "gPayT": "सऊदी और यूएई में छुट्टी का भुगतान अलग क्यों है", "gPaySa": "सऊदी अरब (धारा 109 और 111): छुट्टी का वेतन पहले मिलता है और यह पूरे वेतन पर होता है, जिसमें बेसिक और मकान-ट्रांसपोर्ट जैसे फ़िक्स्ड अलाउंस शामिल हैं। सर्विस ख़त्म होने पर बची छुट्टी भी इसी वेतन पर।", "gPayAe": "यूएई (धारा 29 और कैबिनेट प्रस्ताव 1/2022): छुट्टी के दौरान सामान्य वेतन मिलता है, लेकिन बची छुट्टियों का नक़द भुगतान सिर्फ़ बेसिक सैलरी पर होता है। इसीलिए कैलकुलेटर यूएई के लिए बेसिक सैलरी लेता है।", "gSrc": "स्रोत: सऊदी लेबर लॉ (शाही फ़रमान M/51, 2025 संशोधन), यूएई डिक्री-लॉ 33/2021, क़तर क़ानून 14/2004, कुवैत क़ानून 6/2010, ओमान शाही फ़रमान 53/2023, बहरीन क़ानून 36/2012।", "disclaimer": "ये हिसाब खाड़ी श्रम क़ानूनों के न्यूनतम अधिकार दिखाते हैं। आपका कॉन्ट्रैक्ट या कंपनी पॉलिसी ज़्यादा दिन या ज़्यादा भुगतान दे सकती है। यह सामान्य जानकारी है, क़ानूनी सलाह नहीं; विवाद में अपने देश के श्रम मंत्रालय से संपर्क करें।", "faqTitle": "अक्सर पूछे जाने वाले सवाल", "q1": "सऊदी में 2 साल की छुट्टी के कितने दिन मिलते हैं?", "a1": "धारा 109 के अनुसार पहले पाँच साल में हर साल 21 दिन मिलते हैं, यानी 2 साल पर 42 दिन। अगर आप हर 2 साल में छुट्टी जाते हैं, तो टालने की सहमति नियोक्ता से लिखित में लें (धारा 110)।", "q2": "सऊदी (KSA) में लीव सैलरी का हिसाब कैसे होता है?", "a2": "मासिक वेतन (बेसिक + फ़िक्स्ड अलाउंस) को 30 से भाग दें और छुट्टी के दिनों से गुणा करें। जैसे SAR 4,500 वेतन पर रोज़ SAR 150, तो 21 दिन = SAR 3,150।", "q3": "छुट्टी का हिसाब-किताब (chutti hisab kitab) कैसे करें?", "a3": "अपना देश चुनें, सर्विस के साल, सैलरी और ली गई छुट्टियाँ डालें। कैलकुलेटर कमाई गई छुट्टी, बची छुट्टी और उसका नक़द मूल्य दिखाएगा।", "q4": "नौकरी छोड़ने पर बची छुट्टी का पैसा मिलता है?", "a4": "हाँ। हर खाड़ी देश में कॉन्ट्रैक्ट ख़त्म होने पर बची वार्षिक छुट्टी का भुगतान ज़रूरी है। सऊदी में पूरे वेतन पर, यूएई और क़तर में बेसिक सैलरी पर।", "xEos": "अपना एंड ऑफ़ सर्विस भी निकालें"}, "ml": {"title": "ഗൾഫ് വാർഷിക ലീവ് & വെക്കേഷൻ കാൽക്കുലേറ്റർ", "lead": "സൗദി അറേബ്യ, യുഎഇ, ഖത്തർ, കുവൈത്ത്, ഒമാൻ, ബഹ്‌റൈൻ എന്നിവിടങ്ങളിൽ നിങ്ങൾ നേടിയ ലീവ് ദിവസങ്ങൾ, 1 വർഷ / 2 വർഷ വെക്കേഷന് ബാക്കിയുള്ളത്, ഉപയോഗിക്കാത്ത ദിവസങ്ങളുടെ പണമൂല്യം എന്നിവ കണക്കാക്കൂ.", "calcTitle": "നിങ്ങളുടെ ലീവ് കണക്കാക്കൂ", "countryLabel": "നിങ്ങൾ എവിടെ ജോലി ചെയ്യുന്നു?", "presetLabel": "വേഗത്തിൽ തിരഞ്ഞെടുക്കാം", "p1": "1 വർഷം", "p2": "2 വർഷം", "p5": "5 വർഷം", "yearsLabel": "സർവീസ് വർഷങ്ങൾ", "monthsLabel": "അധിക മാസങ്ങൾ", "basicLabel": "മാസ ബേസിക് ശമ്പളം ({cur})", "allowLabel": "സ്ഥിര അലവൻസുകൾ: ഹൗസിംഗ്, ട്രാൻസ്പോർട്ട് ({cur})", "usedLabel": "ഇതിനകം എടുത്ത ലീവ് ദിവസങ്ങൾ (ആവശ്യമെങ്കിൽ)", "baseLabel": "പണമൂല്യം കണക്കാക്കുന്നത്", "baseFull": "മുഴുവൻ ശമ്പളം (ബേസിക് + അലവൻസ്)", "baseBasic": "ബേസിക് ശമ്പളം മാത്രം", "resultTitle": "നിങ്ങളുടെ ലീവ്", "perYear": "ഇപ്പോൾ വർഷം ലഭിക്കുന്ന ലീവ്", "accrued": "ആകെ നേടിയ ലീവ്", "usedK": "എടുത്ത ദിവസങ്ങൾ", "balance": "ബാക്കിയുള്ള വെക്കേഷൻ", "dayRate": "ദിവസ ശമ്പളം (മാസം ÷ 30)", "cash": "ബാക്കി ലീവിന്റെ ഏകദേശ പണമൂല്യം", "days": "{n} ദിവസം", "empty": "പണമൂല്യം കാണാൻ ശമ്പളം നൽകുക.", "wait": "ഈ രാജ്യത്ത് {n} മാസത്തെ സർവീസിന് ശേഷമാണ് വാർഷിക ലീവ് തുടങ്ങുന്നത്. അതുവരെ ബാലൻസ് 0.", "over": "നേടിയതിനേക്കാൾ കൂടുതൽ ദിവസം എടുത്തതായി നൽകി, അതിനാൽ ബാലൻസ് 0 കാണിക്കുന്നു.", "nSA": "സൗദി അറേബ്യ, ആർട്ടിക്കിൾ 109, 111: വർഷം 21 ദിവസം, ഒരേ തൊഴിലുടമയുടെ കീഴിൽ തുടർച്ചയായ 5 വർഷത്തിന് ശേഷം 30 ദിവസം. ലീവ് ശമ്പളവും ബാക്കി ലീവിന്റെ തുകയും മുഴുവൻ ശമ്പളത്തിൽ.", "nAE": "യുഎഇ, ഡിക്രി-ലോ 33/2021 ആർട്ടിക്കിൾ 29: 1 വർഷത്തിന് ശേഷം വർഷം 30 ദിവസം (6 മുതൽ 12 മാസം വരെ മാസം 2 ദിവസം). സർവീസ് അവസാനിക്കുമ്പോൾ ബാക്കി ലീവിന്റെ തുക ബേസിക് ശമ്പളത്തിൽ.", "nQA": "ഖത്തർ, നിയമം 14/2004 ആർട്ടിക്കിൾ 79: 1 വർഷത്തിന് ശേഷം വർഷം കുറഞ്ഞത് 3 ആഴ്ച (21 ദിവസം), 5 വർഷം മുതൽ 4 ആഴ്ച (28 ദിവസം). ലീവ് ശമ്പളം ബേസിക്കിൽ.", "nKW": "കുവൈത്ത്, നിയമം 6/2010 ആർട്ടിക്കിൾ 70: വർഷം 30 ദിവസം; ആദ്യ ലീവ് 9 മാസത്തെ സർവീസിന് ശേഷം.", "nOM": "ഒമാൻ, രാജകീയ ഉത്തരവ് 53/2023 ആർട്ടിക്കിൾ 78: 6 മാസത്തെ സർവീസിന് ശേഷം വർഷം 30 ദിവസം; 30 ദിവസം വരെ അടുത്ത വർഷത്തേക്ക് മാറ്റാം.", "nBH": "ബഹ്‌റൈൻ, നിയമം 36/2012 ആർട്ടിക്കിൾ 58: വർഷം 30 ദിവസം, ഓരോ മാസത്തിനും 2.5 ദിവസം.", "gTitle": "ഗൾഫ് തൊഴിൽ നിയമപ്രകാരം നിങ്ങളുടെ ലീവ് അവകാശങ്ങൾ", "gCarryT": "2 വർഷത്തെ വെക്കേഷനായി ലീവ് സൂക്ഷിക്കാമോ?", "gCarrySa": "സൗദി: ആർട്ടിക്കിൾ 110 പ്രകാരം തൊഴിലുടമയുടെ സമ്മതത്തോടെ വാർഷിക ലീവോ അതിന്റെ ഭാഗമോ അടുത്ത വർഷത്തേക്ക് മാറ്റാം. ഈ സമ്മതം രേഖാമൂലം സൂക്ഷിക്കുക. നേടിയ ലീവ് നിയമപരമായ അവകാശമാണ്: സർവീസിനിടെ അത് ഉപേക്ഷിക്കാനാവില്ല, ജോലി വിടുമ്പോൾ ബാക്കി ദിവസങ്ങൾക്ക് പണം നൽകണമെന്ന് ആർട്ടിക്കിൾ 111 പറയുന്നു.", "gCarryAe": "യുഎഇ: ആർട്ടിക്കിൾ 29 പ്രകാരം നേടിയ ലീവ് 2 വർഷത്തിൽ കൂടുതൽ എടുക്കുന്നതിൽ നിന്ന് തൊഴിലുടമയ്ക്ക് നിങ്ങളെ തടയാനാവില്ല, നിങ്ങൾ തന്നെ അത് മാറ്റിവയ്ക്കാനോ പണമായി വാങ്ങാനോ തീരുമാനിച്ചാലൊഴികെ. ലീവ് മാറ്റിവയ്ക്കാൻ തൊഴിലുടമയുടെ സമ്മതം വേണം.", "gCarryOther": "ഖത്തറിൽ നിങ്ങളുടെ രേഖാമൂലമുള്ള അപേക്ഷയിൽ വാർഷിക ലീവിന്റെ പകുതി വരെ മാറ്റിവയ്ക്കാം. ഒമാനിൽ 30 ദിവസം വരെ. കുവൈത്തിലും ബഹ്‌റൈനിലും തൊഴിലുടമയുമായി രേഖാമൂലം ധാരണയിലെത്തുക.", "gHolT": "ഈദും ദേശീയ അവധികളും എന്റെ ലീവിൽ നിന്ന് കുറയുമോ?", "gHolSa": "ഇല്ല. സൗദിയിൽ ആർട്ടിക്കിൾ 112-ഉം നടപ്പാക്കൽ ചട്ടങ്ങളിലെ ആർട്ടിക്കിൾ 24-ഉം ഈദുൽ ഫിത്ർ, ഈദുൽ അദ്ഹ, ദേശീയ ദിനം, സ്ഥാപക ദിനം എന്നിവയ്ക്ക് ശമ്പളത്തോടെയുള്ള അവധി നൽകുന്നു. ഇവ നിങ്ങളുടെ വാർഷിക ലീവിനിടെ വന്നാൽ ആ ദിവസങ്ങൾ ലീവായി കണക്കാക്കില്ല, അത്രയും ദിവസം ലീവ് നീളും.", "gPayT": "സൗദിയിലും യുഎഇയിലും ലീവ് ശമ്പളം വ്യത്യസ്തമാകുന്നത് എന്തുകൊണ്ട്", "gPaySa": "സൗദി (ആർട്ടിക്കിൾ 109, 111): ലീവ് ശമ്പളം മുൻകൂട്ടി ലഭിക്കും, അത് ബേസിക്കും ഹൗസിംഗ്, ട്രാൻസ്പോർട്ട് പോലുള്ള സ്ഥിര അലവൻസുകളും ചേർന്ന മുഴുവൻ ശമ്പളത്തിലാണ്. സർവീസ് അവസാനിക്കുമ്പോൾ ബാക്കി ദിവസങ്ങളും ഇതേ ശമ്പളത്തിൽ.", "gPayAe": "യുഎഇ (ആർട്ടിക്കിൾ 29, കാബിനറ്റ് പ്രമേയം 1/2022): ലീവിനിടെ സാധാരണ ശമ്പളം ലഭിക്കും, എന്നാൽ ഉപയോഗിക്കാത്ത ലീവിന്റെ പണം ബേസിക് ശമ്പളത്തിൽ മാത്രമാണ് കണക്കാക്കുന്നത്. അതിനാലാണ് യുഎഇക്ക് കാൽക്കുലേറ്റർ ബേസിക് ഉപയോഗിക്കുന്നത്.", "gSrc": "ഉറവിടങ്ങൾ: സൗദി തൊഴിൽ നിയമം (രാജകീയ ഉത്തരവ് M/51, 2025 ഭേദഗതി), യുഎഇ ഫെഡറൽ ഡിക്രി-ലോ 33/2021, ഖത്തർ നിയമം 14/2004, കുവൈത്ത് നിയമം 6/2010, ഒമാൻ രാജകീയ ഉത്തരവ് 53/2023, ബഹ്‌റൈൻ നിയമം 36/2012.", "disclaimer": "ഈ കണക്കുകൾ ഗൾഫ് തൊഴിൽ നിയമങ്ങളിലെ കുറഞ്ഞ അവകാശം മാത്രമാണ്. നിങ്ങളുടെ കരാറോ കമ്പനി നയമോ കൂടുതൽ ദിവസങ്ങളോ തുകയോ നൽകിയേക്കാം. ഇത് പൊതുവിവരമാണ്, നിയമോപദേശമല്ല; തർക്കമുണ്ടെങ്കിൽ നിങ്ങളുടെ രാജ്യത്തെ തൊഴിൽ മന്ത്രാലയത്തെ സമീപിക്കുക.", "faqTitle": "പതിവ് ചോദ്യങ്ങൾ", "q1": "സൗദിയിൽ 2 വർഷത്തെ വെക്കേഷന് എത്ര ദിവസം ലഭിക്കും?", "a1": "ആർട്ടിക്കിൾ 109 പ്രകാരം ആദ്യ അഞ്ച് വർഷം ഓരോ വർഷത്തിനും 21 ദിവസം, അതായത് 2 വർഷത്തിന് 42 ദിവസം. 2 വർഷത്തിലൊരിക്കൽ വെക്കേഷൻ എടുക്കുന്നെങ്കിൽ മാറ്റിവയ്ക്കൽ തൊഴിലുടമയുമായി രേഖാമൂലം ഉറപ്പാക്കുക (ആർട്ടിക്കിൾ 110).", "q2": "സൗദിയിൽ ലീവ് സാലറി (leave salary) എങ്ങനെ കണക്കാക്കാം?", "a2": "മാസ ശമ്പളം (ബേസിക് + സ്ഥിര അലവൻസ്) 30 കൊണ്ട് ഹരിച്ച് ലീവ് ദിവസങ്ങൾ കൊണ്ട് ഗുണിക്കുക. ഉദാഹരണം: SAR 4,500 ശമ്പളത്തിന് ദിവസം SAR 150, 21 ദിവസത്തിന് SAR 3,150.", "q3": "ലീവ് കണക്ക് (chutti hisab) എങ്ങനെ ചെയ്യാം?", "a3": "രാജ്യം തിരഞ്ഞെടുത്ത് സർവീസ് വർഷങ്ങൾ, ശമ്പളം, എടുത്ത ലീവ് ദിവസങ്ങൾ എന്നിവ നൽകുക. നേടിയ ലീവ്, ബാക്കി, അതിന്റെ പണമൂല്യം എന്നിവ കാൽക്കുലേറ്റർ കാണിക്കും.", "q4": "ജോലി വിടുമ്പോൾ ബാക്കി ലീവിന് പണം ലഭിക്കുമോ?", "a4": "ഉണ്ട്. എല്ലാ ഗൾഫ് രാജ്യങ്ങളിലും കരാർ അവസാനിക്കുമ്പോൾ ഉപയോഗിക്കാത്ത വാർഷിക ലീവിന് പണം നൽകണം. സൗദിയിൽ മുഴുവൻ ശമ്പളത്തിൽ, യുഎഇയിലും ഖത്തറിലും ബേസിക്കിൽ.", "xEos": "നിങ്ങളുടെ എൻഡ് ഓഫ് സർവീസും കണക്കാക്കൂ"}, "ne": {"title": "खाडी देशको वार्षिक बिदा (भ्याकेसन) क्यालकुलेटर", "lead": "साउदी अरब, युएई, कतार, कुवेत, ओमान वा बहराइनमा तपाईंले कति बिदा कमाउनुभयो, १ वर्ष वा २ वर्षको बिदाका लागि कति बाँकी छ, र प्रयोग नगरिएका दिनको नगद मूल्य कति हुन्छ हिसाब गर्नुहोस्।", "calcTitle": "आफ्नो बिदा हिसाब गर्नुहोस्", "countryLabel": "तपाईं कहाँ काम गर्नुहुन्छ?", "presetLabel": "छिटो छनोट", "p1": "१ वर्ष", "p2": "२ वर्ष", "p5": "५ वर्ष", "yearsLabel": "सेवा वर्ष", "monthsLabel": "थप महिना", "basicLabel": "मासिक आधारभूत तलब ({cur})", "allowLabel": "स्थिर भत्ता: आवास, यातायात ({cur})", "usedLabel": "पहिले लिइसकेका बिदा दिन (ऐच्छिक)", "baseLabel": "नगद मूल्यको आधार", "baseFull": "पूरा तलब (आधारभूत + भत्ता)", "baseBasic": "आधारभूत तलब मात्र", "resultTitle": "तपाईंको बिदा", "perYear": "अहिले वार्षिक बिदा", "accrued": "कुल कमाएको बिदा", "usedK": "लिइसकेका दिन", "balance": "बाँकी बिदा", "dayRate": "दैनिक तलब (मासिक ÷ ३०)", "cash": "बाँकी बिदाको अनुमानित नगद मूल्य", "days": "{n} दिन", "empty": "नगद मूल्य हेर्न तलब राख्नुहोस्।", "wait": "यो देशमा वार्षिक बिदा {n} महिनाको सेवापछि सुरु हुन्छ। त्यसअघि बाँकी ० हुन्छ।", "over": "तपाईंले कमाएभन्दा बढी दिन लिएको राख्नुभयो, त्यसैले बाँकी ० देखिन्छ।", "nSA": "साउदी अरब, धारा १०९ र १११: वर्षमा २१ दिन, एउटै रोजगारदातासँग लगातार ५ वर्षपछि ३० दिन। बिदाको तलब र बाँकी बिदाको भुक्तानी पूरा तलबमा।", "nAE": "युएई, डिक्री-कानुन ३३/२०२१ को धारा २९: १ वर्षपछि वर्षमा ३० दिन (६ देखि १२ महिनासम्म महिनामा २ दिन)। सेवा सकिँदा बाँकी बिदाको भुक्तानी आधारभूत तलबमा।", "nQA": "कतार, कानुन १४/२००४ को धारा ७९: १ वर्षपछि वर्षमा कम्तीमा ३ हप्ता (२१ दिन), ५ वर्षदेखि ४ हप्ता (२८ दिन)। बिदाको तलब आधारभूतमा।", "nKW": "कुवेत, कानुन ६/२०१० को धारा ७०: वर्षमा ३० दिन; पहिलो बिदा ९ महिनाको सेवापछि।", "nOM": "ओमान, शाही आदेश ५३/२०२३ को धारा ७८: ६ महिनाको सेवापछि वर्षमा ३० दिन; ३० दिनसम्म अर्को वर्ष सार्न सकिन्छ।", "nBH": "बहराइन, कानुन ३६/२०१२ को धारा ५८: वर्षमा ३० दिन, हरेक महिनाको सेवामा २.५ दिन।", "gTitle": "खाडी श्रम कानुनअनुसार तपाईंको बिदाको अधिकार", "gCarryT": "के म २ वर्षको बिदाका लागि बिदा जम्मा गर्न सक्छु?", "gCarrySa": "साउदी: धारा ११० अनुसार रोजगारदाताको सहमतिमा वार्षिक बिदा वा त्यसको भाग अर्को वर्ष सार्न सकिन्छ। यो सहमति लिखित राख्नुहोस्। कमाएको बिदा कानुनी अधिकार हो: सेवाका बेला त्याग्न मिल्दैन, र धारा १११ अनुसार काम छाड्दा बाँकी दिनको भुक्तानी गर्नुपर्छ।", "gCarryAe": "युएई: धारा २९ अनुसार रोजगारदाताले तपाईंलाई २ वर्षभन्दा बढी कमाएको बिदा लिनबाट रोक्न पाउँदैन, तपाईं आफैँ सार्न वा नगद लिन चाहनुभएमा बाहेक। बिदा सार्न रोजगारदाताको सहमति चाहिन्छ।", "gCarryOther": "कतारमा तपाईंको लिखित अनुरोधमा वार्षिक बिदाको आधासम्म सार्न सकिन्छ। ओमानमा ३० दिनसम्म। कुवेत र बहराइनमा रोजगारदातासँग लिखित सहमति गर्नुहोस्।", "gHolT": "के ईद र राष्ट्रिय बिदाले मेरो बिदा घटाउँछ?", "gHolSa": "घटाउँदैन। साउदीमा धारा ११२ र कार्यान्वयन नियमावलीको धारा २४ ले ईद अल-फित्र, ईद अल-अधा, राष्ट्रिय दिवस र स्थापना दिवसमा तलबी बिदा दिन्छ। यी तपाईंको वार्षिक बिदाभित्र परे ती दिन बिदामा गनिँदैनन्, त्यति नै बिदा थपिन्छ।", "gPayT": "साउदी र युएईमा बिदाको भुक्तानी किन फरक छ", "gPaySa": "साउदी (धारा १०९ र १११): बिदाको तलब अग्रिम पाइन्छ र यो आधारभूत तथा आवास-यातायातजस्ता स्थिर भत्तासहितको पूरा तलबमा हुन्छ। सेवा सकिँदा बाँकी दिन पनि यही तलबमा।", "gPayAe": "युएई (धारा २९ र मन्त्रिपरिषद् निर्णय १/२०२२): बिदामा सामान्य तलब पाइन्छ, तर प्रयोग नगरिएका दिनको नगद आधारभूत तलबमा मात्र हिसाब हुन्छ। त्यसैले क्यालकुलेटरले युएईका लागि आधारभूत तलब लिन्छ।", "gSrc": "स्रोत: साउदी श्रम कानुन (शाही आदेश M/51, २०२५ संशोधन), युएई डिक्री-कानुन ३३/२०२१, कतार कानुन १४/२००४, कुवेत कानुन ६/२०१०, ओमान शाही आदेश ५३/२०२३, बहराइन कानुन ३६/२०१२।", "disclaimer": "यी हिसाबले खाडी श्रम कानुनको न्यूनतम अधिकार मात्र देखाउँछन्। तपाईंको सम्झौता वा कम्पनी नीतिले बढी दिन वा रकम दिन सक्छ। यो सामान्य जानकारी हो, कानुनी सल्लाह होइन; विवाद भए आफ्नो देशको श्रम मन्त्रालयमा सम्पर्क गर्नुहोस्।", "faqTitle": "प्रायः सोधिने प्रश्न", "q1": "साउदीमा २ वर्षको बिदा कति दिन हुन्छ?", "a1": "धारा १०९ अनुसार पहिलो पाँच वर्ष हरेक वर्ष २१ दिन, अर्थात् २ वर्षमा ४२ दिन। हरेक २ वर्षमा बिदा जानुहुन्छ भने सार्ने कुरा रोजगारदातासँग लिखित गर्नुहोस् (धारा ११०)।", "q2": "साउदीमा बिदाको तलब (leave salary) कसरी हिसाब हुन्छ?", "a2": "मासिक तलब (आधारभूत + स्थिर भत्ता) लाई ३० ले भाग गरेर बिदाका दिनले गुणा गर्नुहोस्। जस्तै SAR 4,500 तलबमा दैनिक SAR 150, २१ दिन = SAR 3,150।", "q3": "छुट्टीको हिसाब (chutti hisab) कसरी गर्ने?", "a3": "देश छानेर सेवा वर्ष, तलब र लिइसकेका बिदा दिन राख्नुहोस्। क्यालकुलेटरले कमाएको बिदा, बाँकी र त्यसको नगद मूल्य देखाउँछ।", "q4": "काम छाड्दा बाँकी बिदाको पैसा पाइन्छ?", "a4": "पाइन्छ। सबै खाडी देशमा सम्झौता सकिँदा प्रयोग नगरिएको वार्षिक बिदाको भुक्तानी गर्नुपर्छ। साउदीमा पूरा तलबमा, युएई र कतारमा आधारभूत तलबमा।", "xEos": "आफ्नो सेवा समाप्ति रकम पनि हिसाब गर्नुहोस्"}, "ur": {"title": "خلیجی ممالک کا سالانہ چھٹی (ویکیشن) کیلکولیٹر", "lead": "جانیں کہ سعودی عرب، امارات، قطر، کویت، عمان یا بحرین میں آپ نے کتنی چھٹیاں کمائیں، 1 سال یا 2 سال کی چھٹی کے لیے کتنی باقی ہیں، اور بچی چھٹیوں کی نقد قیمت کتنی ہے۔", "calcTitle": "اپنی چھٹی کا حساب کریں", "countryLabel": "آپ کہاں کام کرتے ہیں؟", "presetLabel": "فوری انتخاب", "p1": "1 سال", "p2": "2 سال", "p5": "5 سال", "yearsLabel": "ملازمت کے سال", "monthsLabel": "اضافی مہینے", "basicLabel": "ماہانہ بنیادی تنخواہ ({cur})", "allowLabel": "مقررہ الاؤنس: رہائش، ٹرانسپورٹ ({cur})", "usedLabel": "پہلے لی گئی چھٹیاں (اختیاری)", "baseLabel": "نقد قیمت کی بنیاد", "baseFull": "پوری تنخواہ (بنیادی + الاؤنس)", "baseBasic": "صرف بنیادی تنخواہ", "resultTitle": "آپ کی چھٹی", "perYear": "اب سالانہ چھٹی", "accrued": "کل کمائی گئی چھٹی", "usedK": "لی گئی چھٹیاں", "balance": "باقی چھٹی", "dayRate": "یومیہ تنخواہ (ماہانہ ÷ 30)", "cash": "باقی چھٹی کی اندازاً نقد قیمت", "days": "{n} دن", "empty": "نقد قیمت دیکھنے کے لیے تنخواہ درج کریں۔", "wait": "اس ملک میں سالانہ چھٹی {n} مہینے کی ملازمت کے بعد شروع ہوتی ہے۔ تب تک بیلنس 0 ہے۔", "over": "آپ نے کمائی سے زیادہ لی گئی چھٹیاں درج کیں، اس لیے بیلنس 0 دکھ رہا ہے۔", "nSA": "سعودی عرب، دفعہ 109 اور 111: سالانہ 21 دن، ایک ہی آجر کے ساتھ مسلسل 5 سال بعد 30 دن۔ چھٹی کی تنخواہ اور باقی چھٹی کی ادائیگی پوری تنخواہ پر۔", "nAE": "امارات، ڈیکری قانون 33/2021 کی دفعہ 29: 1 سال بعد سالانہ 30 دن (6 سے 12 ماہ کے درمیان ہر ماہ 2 دن)۔ ملازمت ختم ہونے پر باقی چھٹی کی ادائیگی بنیادی تنخواہ پر۔", "nQA": "قطر، قانون 14/2004 کی دفعہ 79: 1 سال بعد سالانہ کم از کم 3 ہفتے (21 دن)، 5 سال سے 4 ہفتے (28 دن)۔ چھٹی کی تنخواہ بنیادی پر۔", "nKW": "کویت، قانون 6/2010 کی دفعہ 70: سالانہ 30 دن؛ پہلی چھٹی 9 ماہ کی ملازمت کے بعد۔", "nOM": "عمان، شاہی فرمان 53/2023 کی دفعہ 78: 6 ماہ کی ملازمت کے بعد سالانہ 30 دن؛ 30 دن تک اگلے سال منتقل ہو سکتے ہیں۔", "nBH": "بحرین، قانون 36/2012 کی دفعہ 58: سالانہ 30 دن، ہر ماہ کی ملازمت پر 2.5 دن۔", "gTitle": "خلیجی لیبر قوانین کے تحت آپ کی چھٹی کے حقوق", "gCarryT": "کیا میں 2 سال کی چھٹی کے لیے چھٹیاں جمع کر سکتا ہوں؟", "gCarrySa": "سعودی عرب: دفعہ 110 کے تحت آجر کی رضامندی سے سالانہ چھٹی یا اس کا حصہ اگلے سال تک مؤخر کیا جا سکتا ہے۔ یہ رضامندی تحریری رکھیں۔ کمائی گئی چھٹی قانونی حق ہے: ملازمت کے دوران آپ اسے ترک نہیں کر سکتے، اور دفعہ 111 کے مطابق ملازمت چھوڑنے پر باقی دنوں کی ادائیگی لازم ہے۔", "gCarryAe": "امارات: دفعہ 29 کے مطابق آجر آپ کو 2 سال سے زیادہ کمائی گئی چھٹی لینے سے نہیں روک سکتا، سوائے اس کے کہ آپ خود اسے آگے لے جانا یا نقد لینا چاہیں۔ چھٹی آگے لے جانے کے لیے آجر کی رضامندی ضروری ہے۔", "gCarryOther": "قطر میں آپ کی تحریری درخواست پر سالانہ چھٹی کا نصف تک مؤخر ہو سکتا ہے۔ عمان میں 30 دن تک۔ کویت اور بحرین میں آجر سے تحریری طور پر طے کریں۔", "gHolT": "کیا عید اور قومی تعطیلات میری چھٹی میں سے کٹتی ہیں؟", "gHolSa": "نہیں۔ سعودی عرب میں دفعہ 112 اور ضوابط کی دفعہ 24 عید الفطر، عید الاضحیٰ، قومی دن اور یومِ تاسیس کی تنخواہ والی تعطیلات دیتی ہیں۔ اگر ان میں سے کوئی آپ کی سالانہ چھٹی کے دوران آئے تو وہ دن چھٹی میں شمار نہیں ہوتے اور چھٹی اتنی بڑھ جاتی ہے۔", "gPayT": "سعودی عرب اور امارات میں چھٹی کی ادائیگی مختلف کیوں ہے", "gPaySa": "سعودی عرب (دفعہ 109 اور 111): چھٹی کی تنخواہ پیشگی ملتی ہے اور یہ بنیادی تنخواہ اور رہائش و ٹرانسپورٹ جیسے مقررہ الاؤنس سمیت پوری تنخواہ پر ہوتی ہے۔ ملازمت ختم ہونے پر باقی دن بھی اسی تنخواہ پر۔", "gPayAe": "امارات (دفعہ 29 اور کابینہ قرارداد 1/2022): چھٹی کے دوران معمول کی تنخواہ ملتی ہے، مگر غیر استعمال شدہ چھٹی کی نقد ادائیگی صرف بنیادی تنخواہ پر ہوتی ہے۔ اسی لیے کیلکولیٹر امارات کے لیے بنیادی تنخواہ لیتا ہے۔", "gSrc": "ذرائع: سعودی لیبر لا (شاہی فرمان M/51، ترامیم 2025)، امارات فیڈرل ڈیکری قانون 33/2021، قطر قانون 14/2004، کویت قانون 6/2010، عمان شاہی فرمان 53/2023، بحرین قانون 36/2012۔", "disclaimer": "یہ حسابات خلیجی لیبر قوانین کے کم از کم حقوق دکھاتے ہیں۔ آپ کا معاہدہ یا کمپنی پالیسی زیادہ دن یا زیادہ ادائیگی دے سکتی ہے۔ یہ عمومی معلومات ہیں، قانونی مشورہ نہیں؛ تنازع کی صورت میں اپنے ملک کی وزارتِ محنت سے رابطہ کریں۔", "faqTitle": "عام سوالات", "q1": "سعودی عرب میں 2 سال کی چھٹی کے کتنے دن ملتے ہیں؟", "a1": "دفعہ 109 کے مطابق پہلے پانچ سال میں ہر سال 21 دن، یعنی 2 سال پر 42 دن۔ اگر آپ ہر 2 سال بعد چھٹی جاتے ہیں تو مؤخر کرنے کی رضامندی آجر سے تحریری لیں (دفعہ 110)۔", "q2": "سعودی عرب (KSA) میں لیو سیلری کا حساب کیسے ہوتا ہے؟", "a2": "ماہانہ تنخواہ (بنیادی + مقررہ الاؤنس) کو 30 سے تقسیم کر کے چھٹی کے دنوں سے ضرب دیں۔ مثلاً SAR 4,500 تنخواہ پر یومیہ SAR 150، تو 21 دن = SAR 3,150۔", "q3": "چھٹی کا حساب کتاب (chutti hisab kitab) کیسے کریں؟", "a3": "اپنا ملک چنیں، ملازمت کے سال، تنخواہ اور لی گئی چھٹیاں درج کریں۔ کیلکولیٹر کمائی گئی چھٹی، باقی چھٹی اور اس کی نقد قیمت دکھائے گا۔", "q4": "ملازمت چھوڑنے پر باقی چھٹی کے پیسے ملتے ہیں؟", "a4": "جی ہاں۔ ہر خلیجی ملک میں معاہدہ ختم ہونے پر غیر استعمال شدہ سالانہ چھٹی کی ادائیگی لازم ہے۔ سعودی عرب میں پوری تنخواہ پر، امارات اور قطر میں بنیادی تنخواہ پر۔", "xEos": "اپنی اختتامِ ملازمت کی رقم بھی معلوم کریں"}, "bn": {"title": "উপসাগরীয় দেশের বার্ষিক ছুটি (ভ্যাকেশন) ক্যালকুলেটর", "lead": "সৌদি আরব, আমিরাত, কাতার, কুয়েত, ওমান বা বাহরাইনে আপনি কত দিন ছুটি অর্জন করেছেন, ১ বছর বা ২ বছরের ছুটির জন্য কত বাকি, আর না নেওয়া দিনগুলোর নগদ মূল্য কত তা হিসাব করুন।", "calcTitle": "আপনার ছুটির হিসাব করুন", "countryLabel": "আপনি কোথায় কাজ করেন?", "presetLabel": "দ্রুত বেছে নিন", "p1": "১ বছর", "p2": "২ বছর", "p5": "৫ বছর", "yearsLabel": "চাকরির বছর", "monthsLabel": "অতিরিক্ত মাস", "basicLabel": "মাসিক মূল বেতন ({cur})", "allowLabel": "নির্দিষ্ট ভাতা: বাসা, যাতায়াত ({cur})", "usedLabel": "আগে নেওয়া ছুটির দিন (ঐচ্ছিক)", "baseLabel": "নগদ মূল্যের ভিত্তি", "baseFull": "পূর্ণ বেতন (মূল + ভাতা)", "baseBasic": "শুধু মূল বেতন", "resultTitle": "আপনার ছুটি", "perYear": "এখন বছরে ছুটি", "accrued": "মোট অর্জিত ছুটি", "usedK": "নেওয়া দিন", "balance": "বাকি ছুটি", "dayRate": "দৈনিক বেতন (মাসিক ÷ ৩০)", "cash": "বাকি ছুটির আনুমানিক নগদ মূল্য", "days": "{n} দিন", "empty": "নগদ মূল্য দেখতে বেতন লিখুন।", "wait": "এই দেশে বার্ষিক ছুটি {n} মাস চাকরির পর শুরু হয়। তার আগ পর্যন্ত ব্যালান্স ০।", "over": "আপনি অর্জিত দিনের চেয়ে বেশি নেওয়া দিন লিখেছেন, তাই ব্যালান্স ০ দেখাচ্ছে।", "nSA": "সৌদি আরব, ধারা ১০৯ ও ১১১: বছরে ২১ দিন, একই নিয়োগকর্তার অধীনে টানা ৫ বছর পর ৩০ দিন। ছুটির বেতন ও বাকি ছুটির টাকা পূর্ণ বেতনে।", "nAE": "আমিরাত, ডিক্রি-আইন ৩৩/২০২১-এর ধারা ২৯: ১ বছর পর বছরে ৩০ দিন (৬ থেকে ১২ মাসে প্রতি মাসে ২ দিন)। চাকরি শেষে বাকি ছুটির টাকা মূল বেতনে।", "nQA": "কাতার, আইন ১৪/২০০৪-এর ধারা ৭৯: ১ বছর পর বছরে অন্তত ৩ সপ্তাহ (২১ দিন), ৫ বছর থেকে ৪ সপ্তাহ (২৮ দিন)। ছুটির বেতন মূল বেতনে।", "nKW": "কুয়েত, আইন ৬/২০১০-এর ধারা ৭০: বছরে ৩০ দিন; প্রথম ছুটি ৯ মাস চাকরির পর।", "nOM": "ওমান, রাজকীয় ডিক্রি ৫৩/২০২৩-এর ধারা ৭৮: ৬ মাস চাকরির পর বছরে ৩০ দিন; ৩০ দিন পর্যন্ত পরের বছরে নেওয়া যায়।", "nBH": "বাহরাইন, আইন ৩৬/২০১২-এর ধারা ৫৮: বছরে ৩০ দিন, প্রতি মাসে ২.৫ দিন।", "gTitle": "উপসাগরীয় শ্রম আইনে আপনার ছুটির অধিকার", "gCarryT": "২ বছরের ছুটির জন্য কি ছুটি জমানো যায়?", "gCarrySa": "সৌদি আরব: ধারা ১১০ অনুযায়ী নিয়োগকর্তার সম্মতিতে বার্ষিক ছুটি বা তার অংশ পরের বছরে পিছিয়ে নেওয়া যায়। এই সম্মতি লিখিত রাখুন। অর্জিত ছুটি আইনি অধিকার: চাকরির সময় তা ছেড়ে দেওয়া যায় না, আর ধারা ১১১ অনুযায়ী চাকরি ছাড়লে বাকি দিনের টাকা দিতে হয়।", "gCarryAe": "আমিরাত: ধারা ২৯ অনুযায়ী নিয়োগকর্তা আপনাকে ২ বছরের বেশি অর্জিত ছুটি নেওয়া থেকে আটকাতে পারে না, যদি না আপনি নিজে তা পরে নিতে বা নগদ নিতে চান। ছুটি পরে নিতে নিয়োগকর্তার সম্মতি লাগে।", "gCarryOther": "কাতারে আপনার লিখিত অনুরোধে বার্ষিক ছুটির অর্ধেক পর্যন্ত পিছানো যায়। ওমানে ৩০ দিন পর্যন্ত। কুয়েত ও বাহরাইনে নিয়োগকর্তার সঙ্গে লিখিতভাবে ঠিক করুন।", "gHolT": "ঈদ ও জাতীয় ছুটি কি আমার ছুটি থেকে কাটে?", "gHolSa": "না। সৌদি আরবে ধারা ১১২ ও বাস্তবায়ন বিধির ধারা ২৪ ঈদুল ফিতর, ঈদুল আজহা, জাতীয় দিবস ও প্রতিষ্ঠা দিবসে বেতনসহ ছুটি দেয়। এগুলো আপনার বার্ষিক ছুটির মধ্যে পড়লে সেই দিনগুলো ছুটি হিসেবে গোনা হয় না, ছুটি ততদিন বাড়ে।", "gPayT": "সৌদি আর আমিরাতে ছুটির টাকা আলাদা কেন", "gPaySa": "সৌদি আরব (ধারা ১০৯ ও ১১১): ছুটির বেতন আগাম দেওয়া হয় এবং তা মূল বেতন ও বাসা-যাতায়াতের মতো নির্দিষ্ট ভাতাসহ পূর্ণ বেতনে। চাকরি শেষে বাকি দিনও একই বেতনে।", "gPayAe": "আমিরাত (ধারা ২৯ ও মন্ত্রিসভার সিদ্ধান্ত ১/২০২২): ছুটিতে স্বাভাবিক বেতন পাবেন, কিন্তু না নেওয়া ছুটির নগদ টাকা শুধু মূল বেতনে হিসাব হয়। তাই ক্যালকুলেটর আমিরাতের জন্য মূল বেতন নেয়।", "gSrc": "সূত্র: সৌদি শ্রম আইন (রাজকীয় ডিক্রি M/51, ২০২৫ সংশোধনী), আমিরাতের ফেডারেল ডিক্রি-আইন ৩৩/২০২১, কাতার আইন ১৪/২০০৪, কুয়েত আইন ৬/২০১০, ওমান রাজকীয় ডিক্রি ৫৩/২০২৩, বাহরাইন আইন ৩৬/২০১২।", "disclaimer": "এই হিসাব উপসাগরীয় শ্রম আইনের ন্যূনতম অধিকার দেখায়। আপনার চুক্তি বা কোম্পানির নীতি বেশি দিন বা বেশি টাকা দিতে পারে। এটি সাধারণ তথ্য, আইনি পরামর্শ নয়; বিরোধ হলে আপনার দেশের শ্রম মন্ত্রণালয়ে যোগাযোগ করুন।", "faqTitle": "সাধারণ প্রশ্ন", "q1": "সৌদিতে ২ বছরের ছুটি কত দিন?", "a1": "ধারা ১০৯ অনুযায়ী প্রথম পাঁচ বছর প্রতি বছর ২১ দিন, অর্থাৎ ২ বছরে ৪২ দিন। প্রতি ২ বছরে ছুটিতে গেলে পিছিয়ে নেওয়ার সম্মতি নিয়োগকর্তার কাছ থেকে লিখিত নিন (ধারা ১১০)।", "q2": "সৌদিতে ছুটির বেতন (leave salary) কীভাবে হিসাব হয়?", "a2": "মাসিক বেতন (মূল + নির্দিষ্ট ভাতা) ৩০ দিয়ে ভাগ করে ছুটির দিন দিয়ে গুণ করুন। যেমন SAR 4,500 বেতনে দৈনিক SAR 150, ২১ দিন = SAR 3,150।", "q3": "ছুটির হিসাব (chutir hisab) কীভাবে করব?", "a3": "দেশ বেছে নিয়ে চাকরির বছর, বেতন ও নেওয়া ছুটির দিন লিখুন। ক্যালকুলেটর অর্জিত ছুটি, বাকি ছুটি ও তার নগদ মূল্য দেখাবে।", "q4": "চাকরি ছাড়লে বাকি ছুটির টাকা পাব?", "a4": "হ্যাঁ। প্রতিটি উপসাগরীয় দেশে চুক্তি শেষ হলে না নেওয়া বার্ষিক ছুটির টাকা দিতে হয়। সৌদিতে পূর্ণ বেতনে, আমিরাত ও কাতারে মূল বেতনে।", "xEos": "আপনার চাকরি শেষের পাওনাও হিসাব করুন"}, "tl": {"title": "GCC annual leave at vacation calculator", "lead": "Alamin kung ilang araw ng bakasyon ang naipon mo sa Saudi Arabia, UAE, Qatar, Kuwait, Oman o Bahrain, ilan ang natitira para sa 1-taon o 2-taong bakasyon, at magkano ang halaga ng hindi nagamit na araw.", "calcTitle": "Kalkulahin ang leave mo", "countryLabel": "Saan ka nagtatrabaho?", "presetLabel": "Mabilisang pili", "p1": "1 taon", "p2": "2 taon", "p5": "5 taon", "yearsLabel": "Taon ng serbisyo", "monthsLabel": "Dagdag na buwan", "basicLabel": "Buwanang basic salary ({cur})", "allowLabel": "Fixed allowances: pabahay, transportasyon ({cur})", "usedLabel": "Araw ng leave na nagamit na (opsyonal)", "baseLabel": "Batayan ng cash value", "baseFull": "Buong sahod (basic + allowances)", "baseBasic": "Basic salary lang", "resultTitle": "Ang leave mo", "perYear": "Leave bawat taon ngayon", "accrued": "Kabuuang naipong leave", "usedK": "Nagamit na", "balance": "Natitirang bakasyon", "dayRate": "Arawang rate (buwanan ÷ 30)", "cash": "Tinatayang cash value ng natitira", "days": "{n} araw", "empty": "Ilagay ang sahod mo para makita ang cash value.", "wait": "Sa bansang ito, nagsisimula ang annual leave pagkatapos ng {n} buwan ng serbisyo. 0 ang balance hanggang doon.", "over": "Mas marami ang nagamit na inilagay mo kaysa sa naipon, kaya 0 ang balance.", "nSA": "Saudi Arabia, Articles 109 at 111: 21 araw bawat taon, 30 araw pagkatapos ng 5 tuloy-tuloy na taon sa iisang employer. Ang leave pay at bayad sa hindi nagamit na leave ay sa buong sahod.", "nAE": "UAE, Article 29 ng Decree-Law 33/2021: 30 araw bawat taon pagkatapos ng 1 taon (2 araw bawat buwan mula 6 hanggang 12 buwan). Ang bayad sa hindi nagamit na leave sa pagtatapos ng serbisyo ay sa basic salary.", "nQA": "Qatar, Article 79 ng Law 14/2004: hindi bababa sa 3 linggo (21 araw) bawat taon pagkatapos ng 1 taon, 4 na linggo (28 araw) mula 5 taon. Ang leave pay ay sa basic wage.", "nKW": "Kuwait, Article 70 ng Law 6/2010: 30 araw bawat taon; ang unang leave ay pagkatapos ng 9 na buwan ng serbisyo.", "nOM": "Oman, Article 78 ng Royal Decree 53/2023: 30 araw bawat taon pagkatapos ng 6 na buwan; hanggang 30 araw ang puwedeng ilipat sa susunod na taon.", "nBH": "Bahrain, Article 58 ng Law 36/2012: 30 araw bawat taon, 2.5 araw bawat buwan ng serbisyo.", "gTitle": "Ang karapatan mo sa bakasyon ayon sa GCC labor law", "gCarryT": "Puwede ko bang ipunin ang leave para sa 2-taong bakasyon?", "gCarrySa": "Saudi Arabia: Pinapayagan ng Article 110 na ipagpaliban ang annual leave, o bahagi nito, sa susunod na taon kung pumayag ang employer. Isulat ang kasunduang iyon. Legal na karapatan ang naipong leave: hindi mo ito puwedeng isuko habang nagtatrabaho, at sinasabi ng Article 111 na dapat bayaran ang natitirang araw pag-alis mo.", "gCarryAe": "UAE: Ayon sa Article 29, hindi ka puwedeng pigilan ng employer na gamitin ang naipong leave nang higit sa 2 taon, maliban kung ikaw mismo ang pumiling i-carry forward ito o tumanggap ng cash. Kailangan ng pahintulot ng employer para i-carry forward.", "gCarryOther": "Sa Qatar, hanggang kalahati ng taunang leave ang puwedeng ipagpaliban sa nakasulat mong request. Sa Oman, hanggang 30 araw. Sa Kuwait at Bahrain, isulat ang kasunduan sa employer.", "gHolT": "Nababawasan ba ng Eid at national holidays ang leave ko?", "gHolSa": "Hindi. Sa Saudi Arabia, nagbibigay ang Article 112 at Article 24 ng Implementing Regulations ng bayad na holiday para sa Eid al-Fitr, Eid al-Adha, National Day at Founding Day. Kapag tumapat ang mga ito sa annual leave mo, hindi sila binibilang bilang leave, kaya humahaba ang bakasyon mo.", "gPayT": "Bakit magkaiba ang leave pay sa Saudi at UAE", "gPaySa": "Saudi Arabia (Articles 109 at 111): binabayaran nang maaga ang leave sa buong sahod, kasama ang basic at fixed allowances tulad ng pabahay at transportasyon. Ganoon din ang hindi nagamit na araw sa pagtatapos ng serbisyo.", "gPayAe": "UAE (Article 29 at Cabinet Resolution 1 ng 2022): normal na sahod ang natatanggap mo habang naka-leave, pero ang cash para sa hindi nagamit na leave ay batay lang sa basic salary. Kaya basic salary ang ginagamit ng calculator para sa UAE.", "gSrc": "Mga source: Saudi Labor Law (Royal Decree M/51, binago noong 2025), UAE Federal Decree-Law 33 ng 2021, Qatar Law 14 ng 2004, Kuwait Law 6 ng 2010, Oman Royal Decree 53/2023, Bahrain Law 36 ng 2012.", "disclaimer": "Ipinapakita ng mga kalkulasyong ito ang pinakamababang karapatan ayon sa GCC labor laws. Puwedeng mas marami ang ibigay ng kontrata o company policy mo. Pangkalahatang impormasyon ito, hindi legal advice; kung may alitan, lumapit sa labor ministry ng bansa mo.", "faqTitle": "Mga madalas itanong", "q1": "Ilang araw ang 2-taong bakasyon sa Saudi Arabia?", "a1": "Ayon sa Article 109, 21 araw bawat taon sa unang limang taon, kaya 42 araw para sa 2 taon. Kung tuwing 2 taon ka nagbabakasyon, isulat ang kasunduan sa employer (Article 110).", "q2": "Paano kinukwenta ang leave salary sa KSA?", "a2": "Hatiin sa 30 ang buwanang sahod (basic + fixed allowances) at i-multiply sa bilang ng araw ng leave. Halimbawa, SAR 4,500 na sahod ay SAR 150 bawat araw, kaya 21 araw = SAR 3,150.", "q3": "Paano kalkulahin ang bakasyon ko (vacation leave computation)?", "a3": "Piliin ang bansa, ilagay ang taon ng serbisyo, sahod at mga araw na nagamit na. Ipapakita ng calculator ang naipong leave, natitira at ang cash value nito.", "q4": "Mababayaran ba ang hindi nagamit na leave pag-alis ko sa trabaho?", "a4": "Oo. Sa lahat ng GCC country, dapat bayaran ang hindi nagamit na annual leave pagtatapos ng kontrata. Sa Saudi sa buong sahod; sa UAE at Qatar sa basic salary.", "xEos": "Kalkulahin din ang end of service benefit mo"}};
+      var C = {
+        sa: { cur: "SAR", base: "full", wait: 0, note: "nSA" },
+        ae: { cur: "AED", base: "basic", wait: 6, note: "nAE" },
+        qa: { cur: "QAR", base: "basic", wait: 12, note: "nQA" },
+        kw: { cur: "KWD", base: "full", wait: 9, note: "nKW" },
+        om: { cur: "OMR", base: "full", wait: 6, note: "nOM" },
+        bh: { cur: "BHD", base: "full", wait: 0, note: "nBH" }
+      };
+      var state = { cc: "sa", base: "full" };
+      var lang = "en";
+      function $(id) { return document.getElementById(id); }
+      function L(k) { return (T[lang] && T[lang][k]) || T.en[k] || window.ExpatSite.t(k); }
+      function fill(s, o) { return s.replace(/\{(\w+)\}/g, function (m, k) { return o[k] != null ? o[k] : m; }); }
+      function num(id) { var v = parseFloat($(id).value); return isFinite(v) && v > 0 ? v : 0; }
+      function fmt(n, d) { return n.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d }); }
+      function fmtDays(n) { var r = Math.round(n * 10) / 10; return fill(L("days"), { n: r % 1 ? fmt(r, 1) : fmt(r, 0) }); }
+
+      // Statutory minimum leave earned over the whole service (months).
+      function earned(cc, m) {
+        var y = m / 12;
+        if (cc === "sa") return y <= 5 ? 21 * y : 105 + 30 * (y - 5);
+        if (cc === "ae") return m < 6 ? 0 : (m < 12 ? 2 * m : 30 * y);
+        if (cc === "qa") return m < 12 ? 0 : (y <= 5 ? 21 * y : 105 + 28 * (y - 5));
+        if (cc === "kw") return m < 9 ? 0 : 30 * y;
+        if (cc === "om") return m < 6 ? 0 : 30 * y;
+        return 30 * y; // bh: 2.5 days per month
+      }
+      function perYear(cc, m) {
+        if (cc === "sa") return m >= 60 ? 30 : 21;
+        if (cc === "qa") return m >= 60 ? 28 : 21;
+        return 30;
+      }
+
+      function setCountry(cc) {
+        if (!C[cc]) return;
+        state.cc = cc; state.base = C[cc].base;
+        document.querySelectorAll("#countryTabs button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-cc") === cc)); });
+        try { if (location.hash !== "#" + cc) history.replaceState(null, "", "#" + cc); } catch (e) {}
+        render();
+      }
+      function render() {
+        var c = C[state.cc];
+        $("basicLabel").textContent = fill(L("basicLabel"), { cur: c.cur });
+        $("allowLabel").textContent = fill(L("allowLabel"), { cur: c.cur });
+        document.querySelectorAll("#baseSeg button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-base") === state.base)); });
+        var months = Math.max(0, Math.round(num("years") * 12 + Math.min(11, num("months"))));
+        document.querySelectorAll("#svcPresets .preset").forEach(function (b) { b.classList.toggle("on", months === Number(b.getAttribute("data-y")) * 12); });
+        var acc = earned(state.cc, months);
+        var used = num("used");
+        var bal = Math.max(0, acc - used);
+        $("perYearOut").textContent = fmtDays(perYear(state.cc, months));
+        $("accruedOut").textContent = fmtDays(acc);
+        $("usedOut").textContent = fmtDays(used);
+        $("balanceOut").textContent = fmtDays(bal);
+        var wage = num("basic") + (state.base === "full" ? num("allow") : 0);
+        if (wage > 0) {
+          var rate = wage / 30;
+          $("rateOut").textContent = c.cur + " " + fmt(rate, 2);
+          $("cashOut").textContent = c.cur + " " + fmt(rate * bal, 2);
+        } else {
+          $("rateOut").textContent = "–";
+          $("cashOut").textContent = L("empty");
+        }
+        var notes = [L(c.note)];
+        if (c.wait && months < c.wait) notes.push(fill(L("wait"), { n: c.wait }));
+        if (used > acc && acc > 0) notes.push(L("over"));
+        $("notes").innerHTML = "";
+        notes.forEach(function (n) { var li = document.createElement("li"); li.textContent = n; $("notes").appendChild(li); });
+      }
+
+      window.ExpatSite.onLang(function (l) {
+        lang = T[l] ? l : "en";
+        document.querySelectorAll("[data-t]").forEach(function (el) { el.textContent = L(el.getAttribute("data-t")); });
+        render();
+      });
+      document.querySelectorAll("#countryTabs button").forEach(function (b) { b.addEventListener("click", function () { setCountry(b.getAttribute("data-cc")); }); });
+      document.querySelectorAll("#baseSeg button").forEach(function (b) { b.addEventListener("click", function () { state.base = b.getAttribute("data-base"); render(); }); });
+      $("svcPresets").addEventListener("click", function (e) {
+        var b = e.target.closest(".preset"); if (!b) return;
+        $("years").value = b.getAttribute("data-y"); $("months").value = 0; render();
+      });
+      ["years", "months", "basic", "allow", "used"].forEach(function (id) { $(id).addEventListener("input", render); });
+      $("vacForm").addEventListener("submit", function (e) { e.preventDefault(); });
+      var h = (location.hash || "").slice(1);
+      setCountry(C[h] ? h : "sa");
+    })();
+  </script>
+
+
+</body></html>
