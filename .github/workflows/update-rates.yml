@@ -1,5 +1,5 @@
 # Builds and publishes expatguideme.com on GitHub Pages.
-# - Every push to main: rebuild all 8 languages and publish.
+# - Every push to main: fetch fresh rates, rebuild all 8 languages and publish.
 # - Every 2 hours: fetch live rates + gold from CurrencyFreaks (secret CURRENCYFREAKS_API_KEY;
 #   free open.er-api.com / gold-api.com are used only if that fails), plus any
 #   provider rates checked in their apps, rebuild, publish, and save the new
@@ -47,21 +47,18 @@ jobs:
       - name: Install build tools
         run: npm install --no-audit --no-fund
       - name: Fetch live rates and gold from CurrencyFreaks (one API call)
-        if: github.event_name != 'push'
         id: live
         continue-on-error: true   # on failure the previous verified rates stay; the free source is used instead
         env:
           CURRENCYFREAKS_API_KEY: ${{ secrets.CURRENCYFREAKS_API_KEY }}
         run: python3 scripts/fetch_rates.py
       - name: Prepare site rates, gold and checked provider rates
-        if: github.event_name != 'push'
         run: python3 scripts/update_rates.py
       - name: Check data files
         run: python3 scripts/validate_data.py
       - name: Build all languages
         run: NODE_PATH=$PWD/node_modules python3 _src/build.py
       - name: Save new data to the repository
-        if: github.event_name != 'push'
         run: |
           git config user.name "ExpatGuideME robot"
           git config user.email "actions@users.noreply.github.com"
