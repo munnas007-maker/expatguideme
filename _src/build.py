@@ -359,13 +359,32 @@ def summary_block(key, rates, when):
             f'      </section>')
 
 
+def load_partners():
+    """PARTNER_LINKS: provider id -> tracking URL, from _src/data/partners.json.
+    Empty or non-https values are dropped, so no button (and no broken link) is shown."""
+    with open(os.path.join(ROOT, "_src", "data", "partners.json"), encoding="utf-8") as f:
+        raw = json.load(f)
+    links = {}
+    for k, v in raw.items():
+        if k.startswith("_") or not isinstance(v, str):
+            continue
+        v = v.strip()
+        if v and re.match(r"^https://[^\s\"'<>]+$", v):
+            links[k] = v
+        elif v:
+            print("WARNING: partner link for", k, "ignored (must start with https://)")
+    return links
+
+
 def build():
     pages = sorted(p for p in os.listdir(SRC) if p.endswith(".html"))
+    PARTNER_LINKS = load_partners()
     rates, when = load_rates()
     public = []
     for name in pages:
         meta, body, script = parse_page(os.path.join(SRC, name))
         body = re.sub(r"<!--SUMMARY:([a-z]+)-->", lambda m: summary_block(m.group(1), rates, when), body)
+        script = script.replace("/*PARTNERS*/{}", json.dumps(PARTNER_LINKS))
         html = (
             head(meta)
             + "\n"

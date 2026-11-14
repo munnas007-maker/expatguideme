@@ -1,0 +1,9 @@
+{
+  "_help": "Paste each partner's tracking link between the quotes (must start with https://). Leave a link empty to hide that provider's Send button. Keys match the provider ids used on send-money.html.",
+  "wise": "",
+  "remitly": "",
+  "wu": "",
+  "stcbank": "",
+  "barq": "",
+  "urpay": ""
+}

@@ -218,6 +218,7 @@ META-->
           $("cashOut").textContent = L("empty");
         }
         var notes = [L(c.note)];
+        if (state.cc === "kw" || state.cc === "om" || state.cc === "bh") notes.push(window.ExpatSite.t("vacBaseNote"));
         if (c.wait && months < c.wait) notes.push(fill(L("wait"), { n: c.wait }));
         if (used > acc && acc > 0) notes.push(L("over"));
         $("notes").innerHTML = "";

@@ -420,3 +420,6 @@ body[data-ads="auto"] .ad-slot, body[data-ads="auto"] .ad-note { display: none; 
 .app-bar .btn { min-height: 38px; padding: 6px 12px; font-size: .88rem; }
 .app-bar-close { margin-inline-start: auto; font-size: 1.4rem; line-height: 1; background: none; border: 0; color: var(--ink); width: 38px; height: 38px; cursor: pointer; }
 @media (display-mode: standalone) { .app-bar, .footer-app { display: none; } }
+.send-via { white-space: nowrap; }
+.aff-note a { font-weight: 600; }
+.app-priv { border-inline-start: 4px solid var(--brand); }
