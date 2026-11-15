@@ -1,8 +1,8 @@
 {
   "source": "currencyfreaks.com",
   "base": "USD",
-  "time_last_update_unix": 1794614340,
-  "time_last_update_utc": "Fri, 13 Nov 2026 23:59:00 +0000",
+  "time_last_update_unix": 1794700740,
+  "time_last_update_utc": "Sat, 14 Nov 2026 23:59:00 +0000",
   "rates": {
     "AED": 3.673,
     "AFN": 65.5571,
@@ -53,9 +53,9 @@
     "ZAR": 16.935
   },
   "gold": {
-    "usd_per_troy_ounce": 3885.36,
-    "usd_per_gram_24k": 124.9171,
-    "updated_at": "2026-11-13T23:59:00Z",
+    "usd_per_troy_ounce": 3885.31,
+    "usd_per_gram_24k": 124.9155,
+    "updated_at": "2026-11-14T23:59:00Z",
     "source": "currencyfreaks.com"
   }
 }
