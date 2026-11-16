@@ -4,9 +4,9 @@
   "rates": {
     "SAR-INR": {
       "enjaz": {
-        "rate": 24.921,
+        "rate": 25.001,
         "fee": 14.0,
-        "checked_at": "2026-11-14T20:07:40Z",
+        "checked_at": "2026-11-15T19:26:55Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -20,7 +20,7 @@
       "d360": {
         "rate": 24.91,
         "fee": 0.0,
-        "checked_at": "2026-11-15T13:40:42Z",
+        "checked_at": "2026-11-15T19:26:55Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -32,9 +32,9 @@
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
       "snbquickpay": {
-        "rate": 24.9,
+        "rate": 24.96,
         "fee": 0.0,
-        "checked_at": "2026-11-15T07:40:42Z",
+        "checked_at": "2026-11-15T10:26:55Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -60,9 +60,9 @@
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
       "tiqmo": {
-        "rate": 24.85,
+        "rate": 24.907,
         "fee": 0.0,
-        "checked_at": "2026-11-14T17:40:42Z",
+        "checked_at": "2026-11-15T19:26:55Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -70,6 +70,20 @@
         "rate": 24.88,
         "fee": 0.0,
         "checked_at": "2026-11-14T17:40:42Z",
+        "src": "indianinsaudiarabia.com",
+        "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
+      },
+      "stcbank": {
+        "rate": 24.8917,
+        "fee": 15.0,
+        "checked_at": "2026-11-15T10:26:55Z",
+        "src": "indianinsaudiarabia.com",
+        "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
+      },
+      "tahweel": {
+        "rate": 24.88,
+        "fee": 13.0,
+        "checked_at": "2026-11-15T10:26:55Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       }
