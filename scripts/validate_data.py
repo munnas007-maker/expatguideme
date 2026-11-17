@@ -3,7 +3,8 @@
   python3 scripts/validate_data.py
 
 Checks _src/data/telecom.json (SIM & internet page) and
-_src/data/remit_providers.json (money transfer companies). Exits with an error
+_src/data/remit_providers.json (money transfer companies) and
+_src/data/offers.json (bank card offers). Exits with an error
 and a list of problems if anything is malformed, so a bad weekly update is
 never published.
 """
@@ -140,11 +141,67 @@ def check_visa(errs):
                         errs.append(f"{where}/{lg}: {k} must be a list of sentences")
 
 
+OFFER_CATS = {"online", "grocery", "money", "travel", "food", "health", "fun", "fashion"}
+OFFER_CARDS = {"credit", "mada", "prepaid"}
+DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+
+
+def check_offers(errs):
+    path = os.path.join(DATA, "offers.json")
+    if not os.path.exists(path):
+        return
+    d = json.load(open(path, encoding="utf-8"))
+    if not is_time(d.get("updated_at")):
+        errs.append("offers: updated_at is not an ISO time")
+    banks = d.get("banks") or {}
+    for bid, b in banks.items():
+        if not b.get("name") or not is_https(b.get("offers_url")):
+            errs.append(f"offers bank {bid}: needs a name and an https offers_url")
+    for cc, block in (d.get("countries") or {}).items():
+        if cc not in CCS:
+            errs.append(f"offers: unknown country {cc}")
+            continue
+        store_ids = set()
+        for st in block.get("stores") or []:
+            where = f"offers {cc}/store {st.get('id')}"
+            if not ID_RE.match(str(st.get("id", ""))) or st["id"] in store_ids:
+                errs.append(f"{where}: missing, bad or duplicate id")
+            store_ids.add(st.get("id"))
+            if not st.get("name") or not is_https(st.get("url")):
+                errs.append(f"{where}: needs a name and an https url")
+            if st.get("affiliate_url") is not None and not is_https(st["affiliate_url"]):
+                errs.append(f"{where}: affiliate_url must be an https link")
+        seen = set()
+        for o in block.get("offers") or []:
+            where = f"offers {cc}/{o.get('id')}"
+            if not ID_RE.match(str(o.get("id", ""))) or o["id"] in seen:
+                errs.append(f"{where}: missing, bad or duplicate id")
+            seen.add(o.get("id"))
+            if not o.get("merchant") or not o.get("benefit"):
+                errs.append(f"{where}: needs merchant and benefit")
+            if o.get("category") not in OFFER_CATS:
+                errs.append(f"{where}: unknown category {o.get('category')}")
+            if o.get("bank") not in banks:
+                errs.append(f"{where}: bank {o.get('bank')} is not in banks")
+            if not isinstance(o.get("cards"), list) or not set(o["cards"]) <= OFFER_CARDS:
+                errs.append(f"{where}: cards must be a list of credit/mada/prepaid")
+            for k in ("starts", "ends"):
+                if o.get(k) is not None and not DATE_RE.match(str(o[k])):
+                    errs.append(f"{where}: {k} must be YYYY-MM-DD or null")
+            if o.get("store") is not None and o["store"] not in store_ids:
+                errs.append(f"{where}: store {o['store']} is not in stores")
+            if not is_https(o.get("url")):
+                errs.append(f"{where}: url must be the bank's https page")
+            if not is_time(o.get("checked_at")):
+                errs.append(f"{where}: checked_at is not an ISO time")
+
+
 def main():
     errs = []
     check_visa(errs)
     check_telecom(errs)
     check_remit(errs)
+    check_offers(errs)
     if errs:
         print("DATA PROBLEMS:")
         for e in errs:

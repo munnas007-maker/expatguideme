@@ -505,16 +505,18 @@ caption time { font-weight: 600; }
   --c-work: #2563eb;    /* end of service, vacation */
   --c-family: #be185d;  /* family visa, ID & residency, family cost, embassy */
   --c-phone: #7c3aed;   /* SIM & internet */
+  --c-deals: #c2410c;   /* bank card offers */
   --accent: var(--brand);
 }
 html[data-theme="dark"] {
-  --c-money: #34d399; --c-gold: #fbbf24; --c-work: #60a5fa; --c-family: #f472b6; --c-phone: #a78bfa;
+  --c-money: #34d399; --c-gold: #fbbf24; --c-work: #60a5fa; --c-family: #f472b6; --c-phone: #a78bfa; --c-deals: #fb923c;
 }
 body[data-page="exchange"], body[data-page="send"] { --accent: var(--c-money); }
 body[data-page="gold"] { --accent: var(--c-gold); }
 body[data-page="eos"], body[data-page="vac"] { --accent: var(--c-work); }
 body[data-page="visa"], body[data-page="id"], body[data-page="family"], body[data-page="embassy"] { --accent: var(--c-family); }
 body[data-page="sim"] { --accent: var(--c-phone); }
+body[data-page="offers"] { --accent: var(--c-deals); }
 :root { --accent-soft: color-mix(in srgb, var(--accent) 11%, var(--card)); }
 body { --accent-soft: color-mix(in srgb, var(--accent) 11%, var(--card)); }
 

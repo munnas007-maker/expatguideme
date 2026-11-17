@@ -170,6 +170,7 @@ def header(active):
         <span class="nav-more" aria-hidden="false">
           {link("/gold-rate.html", "navGold", "gold")}
           {link("/sim-internet.html", "navSim", "sim")}
+          {link("/offers.html", "navOffers", "offers")}
           {link("/family-visa.html", "navVisa", "visa")}
           {link("/end-of-service.html", "navEos", "eos")}
           {link("/vacation-calculator.html", "navVac", "vac")}
@@ -261,7 +262,7 @@ def footer(credit):
         <div>
           <h3 data-s="footerTools"></h3>
           <nav class="footer-links" aria-label="Tools">
-{_links([("/exchange-rate.html", "navExchange"), ("/gold-rate.html", "navGold"), ("/send-money.html", "navSend"), ("/sim-internet.html", "navSim"), ("/family-visa.html", "navVisa"), ("/end-of-service.html", "navEos"), ("/vacation-calculator.html", "navVac"), ("/id-residency.html", "navId"), ("/family-cost.html", "navFamily"), ("/embassy-services.html", "navEmbassy")])}
+{_links([("/exchange-rate.html", "navExchange"), ("/gold-rate.html", "navGold"), ("/send-money.html", "navSend"), ("/sim-internet.html", "navSim"), ("/offers.html", "navOffers"), ("/family-visa.html", "navVisa"), ("/end-of-service.html", "navEos"), ("/vacation-calculator.html", "navVac"), ("/id-residency.html", "navId"), ("/family-cost.html", "navFamily"), ("/embassy-services.html", "navEmbassy")])}
           </nav>
         </div>
         <div>
@@ -562,6 +563,8 @@ def build():
             script = script.replace("/*ICONS*/{}", json.dumps(_LUCIDE, separators=(",", ":")))
         script = script.replace("/*VISA*/null", json.dumps(visa_data(), ensure_ascii=False, separators=(",", ":")))
         script = script.replace("/*TELECOM*/null", json.dumps(telecom_data(), ensure_ascii=False, separators=(",", ":")))
+        if "/*OFFERS*/null" in script:
+            script = script.replace("/*OFFERS*/null", json.dumps(offers_data(), ensure_ascii=False, separators=(",", ":")))
         script = script.replace("/*PROVIDERS*/null", json.dumps(remit_providers(), ensure_ascii=False, separators=(",", ":")))
         script = script.replace("/*CHECKED*/{}", json.dumps(checked_provider_rates(), separators=(",", ":")))
         script = script.replace("/*FXBASE*/null", json.dumps(fx_base(), separators=(",", ":")))
@@ -588,7 +591,7 @@ def build():
         if not meta.get("noindex"):
             m = re.search(r'data-updated="(\d{4}-\d{2}-\d{2})"', body)
             public.append({"file": name, "path": meta["path"], "lastmod": m.group(1) if m else "2026-11-13"})
-    order = ["/", "/exchange-rate.html", "/gold-rate.html", "/send-money.html", "/sim-internet.html", "/family-visa.html", "/end-of-service.html", "/vacation-calculator.html", "/id-residency.html",
+    order = ["/", "/exchange-rate.html", "/gold-rate.html", "/send-money.html", "/sim-internet.html", "/offers.html", "/family-visa.html", "/end-of-service.html", "/vacation-calculator.html", "/id-residency.html",
              "/family-cost.html", "/embassy-services.html", "/legal-consult.html", "/financial-playbook.html", "/mobile-app.html", "/about.html", "/contact.html", "/privacy.html",
              "/terms.html", "/affiliate-disclosure.html"]
     public.sort(key=lambda e: order.index(e["path"]) if e["path"] in order else 99)
@@ -687,6 +690,13 @@ def visa_data():
 
 def telecom_data():
     with open(os.path.join(ROOT, "_src", "data", "telecom.json"), encoding="utf-8") as f:
+        d = json.load(f)
+    d.pop("_help", None)
+    return d
+
+
+def offers_data():
+    with open(os.path.join(ROOT, "_src", "data", "offers.json"), encoding="utf-8") as f:
         d = json.load(f)
     d.pop("_help", None)
     return d
