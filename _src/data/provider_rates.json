@@ -18,16 +18,16 @@
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
       "enbdksa": {
-        "rate": 24.85,
+        "rate": 24.74,
         "fee": null,
-        "checked_at": "2026-11-18T04:48:18Z",
+        "checked_at": "2026-11-18T19:03:30Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
       "snbquickpay": {
-        "rate": 24.79,
+        "rate": 24.768,
         "fee": 0.0,
-        "checked_at": "2026-11-18T15:21:06Z",
+        "checked_at": "2026-11-18T19:03:30Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -67,9 +67,9 @@
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
       "binyalla": {
-        "rate": 24.71,
+        "rate": 24.72,
         "fee": null,
-        "checked_at": "2026-11-18T12:48:18Z",
+        "checked_at": "2026-11-18T16:03:30Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -98,6 +98,13 @@
         "rate": 24.64,
         "fee": 13.0,
         "checked_at": "2026-11-18T20:21:06Z",
+        "src": "indianinsaudiarabia.com",
+        "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
+      },
+      "barq": {
+        "rate": 24.68,
+        "fee": 0.0,
+        "checked_at": "2026-11-17T19:03:30Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       }
