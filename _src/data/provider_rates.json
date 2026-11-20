@@ -13,7 +13,7 @@
       "d360": {
         "rate": 24.693,
         "fee": 0.0,
-        "checked_at": "2026-11-20T05:57:49Z",
+        "checked_at": "2026-11-20T07:49:53Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -27,7 +27,7 @@
       "snbquickpay": {
         "rate": 24.71,
         "fee": 0.0,
-        "checked_at": "2026-11-19T22:57:49Z",
+        "checked_at": "2026-11-20T00:49:53Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -41,35 +41,28 @@
       "urpay": {
         "rate": 24.6859,
         "fee": 0.0,
-        "checked_at": "2026-11-19T00:57:49Z",
+        "checked_at": "2026-11-19T02:49:53Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
       "mobilypay": {
         "rate": 24.64,
         "fee": 9.0,
-        "checked_at": "2026-11-19T20:57:49Z",
+        "checked_at": "2026-11-19T22:49:53Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
       "binyalla": {
         "rate": 24.67,
         "fee": null,
-        "checked_at": "2026-11-19T23:57:49Z",
+        "checked_at": "2026-11-20T01:49:53Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
       "wu": {
         "rate": 24.63,
         "fee": 16.1,
-        "checked_at": "2026-11-19T00:57:49Z",
-        "src": "indianinsaudiarabia.com",
-        "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
-      },
-      "alinma": {
-        "rate": 24.7488,
-        "fee": 0.0,
-        "checked_at": "2026-11-18T14:47:07Z",
+        "checked_at": "2026-11-19T02:49:53Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -90,7 +83,7 @@
       "tiqmo": {
         "rate": 24.66,
         "fee": 0.0,
-        "checked_at": "2026-11-19T20:57:49Z",
+        "checked_at": "2026-11-19T22:49:53Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       }
