@@ -13,7 +13,7 @@
       "d360": {
         "rate": 24.693,
         "fee": 0.0,
-        "checked_at": "2026-11-20T01:16:43Z",
+        "checked_at": "2026-11-20T01:55:09Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -27,7 +27,7 @@
       "snbquickpay": {
         "rate": 24.71,
         "fee": 0.0,
-        "checked_at": "2026-11-19T18:16:43Z",
+        "checked_at": "2026-11-19T18:55:09Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -46,16 +46,9 @@
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
       "urpay": {
-        "rate": 24.64,
+        "rate": 24.6859,
         "fee": 0.0,
-        "checked_at": "2026-11-18T20:21:06Z",
-        "src": "indianinsaudiarabia.com",
-        "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
-      },
-      "fawri": {
-        "rate": 24.76,
-        "fee": 7.0,
-        "checked_at": "2026-11-18T07:48:18Z",
+        "checked_at": "2026-11-18T20:55:09Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -83,7 +76,7 @@
       "wu": {
         "rate": 24.63,
         "fee": 16.1,
-        "checked_at": "2026-11-18T20:21:06Z",
+        "checked_at": "2026-11-18T20:55:09Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -111,7 +104,7 @@
       "tiqmo": {
         "rate": 24.66,
         "fee": 0.0,
-        "checked_at": "2026-11-19T16:16:43Z",
+        "checked_at": "2026-11-19T16:55:09Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       }
