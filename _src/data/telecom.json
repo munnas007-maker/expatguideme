@@ -1,6 +1,6 @@
 {
  "_help": "SIM and internet offers shown on sim-internet.html. Updated weekly by a scheduled Claude task that reads each company's official website. Every plan must come from the company's own site: name, price (number, as shown by the company), currency, data, calls, validity, kind (prepaid|postpaid|data|home|esim), url (the official page it was read from), note (e.g. 'incl. VAT'). checked_at: UTC time the company's site was last checked. Never estimate a price. affiliate_url: only a real referral link the Manager has received from that company's programme.",
- "updated_at": "2026-11-15T00:20:19Z",
+ "updated_at": "2026-11-22T00:21:52Z",
  "countries": {
   "sa": [
    {
@@ -15,7 +15,7 @@
      "home",
      "esim"
     ],
-    "checked_at": "2026-11-15T00:18:39Z",
+    "checked_at": "2026-11-22T00:21:29Z",
     "offer": {
      "text": "baity fiber prepaid 6/12-month packages: 1-2 extra months free, free modem and installation",
      "url": "https://www.stc.com.sa/en/personal/homepackages/baity-fiber-packages.html"
@@ -102,7 +102,7 @@
      "home",
      "esim"
     ],
-    "checked_at": "2026-11-15T00:14:00Z",
+    "checked_at": "2026-11-22T00:21:29Z",
     "offer": {
      "text": "Home Fiber Postpaid 400: SAR 207/month for the first 3 months for new subscribers (then SAR 345), until 11 Dec 2026",
      "url": "https://mobily.com.sa/web/en/personal/home/fiber-postpaid/fiber-postpaid-400"
@@ -129,7 +129,7 @@
       "validity": "4 weeks",
       "kind": "prepaid",
       "url": "https://mobily.com.sa/web/en/personal/mobile/prepaid/voice-prepaid-plans/prepaid-75/prepaid-75",
-      "note": "incl. VAT"
+      "note": "incl. VAT; until 25 Dec 2026 includes free 15GB local data + 35GB social"
      },
      {
       "name": "Prepaid 150",
@@ -143,14 +143,14 @@
       "note": "incl. VAT"
      },
      {
-      "name": "Postpaid 100",
-      "price": 115,
+      "name": "Postpaid 200",
+      "price": 230,
       "currency": "SAR",
-      "data": "30GB + 30GB social",
-      "calls": "1500 national minutes, 100 SMS",
+      "data": "97GB + unlimited social",
+      "calls": "Unlimited minutes, 200 SMS",
       "validity": "monthly",
       "kind": "postpaid",
-      "url": "https://mobily.com.sa/web/en/personal/mobile/postpaid/postpaid-100",
+      "url": "https://mobily.com.sa/web/en/personal/mobile/postpaid/postpaid-plan",
       "note": "incl. VAT; one-time setup fee SAR 57.5"
      },
      {
@@ -170,33 +170,159 @@
     "id": "zain-sa",
     "name": "Zain KSA",
     "website": "https://sa.zain.com/",
-    "offers_url": "https://sa.zain.com/",
+    "offers_url": "https://shop.sa.zain.com/en/mobile-plans",
     "kinds": [
      "prepaid",
      "postpaid",
      "data",
      "home"
     ],
-    "checked_at": null,
-    "offer": null,
+    "checked_at": "2026-11-22T00:21:29Z",
+    "offer": {
+     "text": "Postpaid 250 discounted to SAR 225/month (was SAR 250)",
+     "url": "https://shop.sa.zain.com/en/mobile-plans/voice/postpaid-voice-plans/postpaid"
+    },
     "affiliate_url": null,
-    "plans": []
+    "plans": [
+     {
+      "name": "Shabab 49",
+      "price": 49,
+      "currency": "SAR",
+      "data": "2GB + 2GB social",
+      "calls": "100+150 local minutes",
+      "validity": "4 weeks",
+      "kind": "prepaid",
+      "url": "https://shop.sa.zain.com/en/product/prepaid-voice-shabab-digital",
+      "note": "15% VAT included"
+     },
+     {
+      "name": "Shabab 79",
+      "price": 79,
+      "currency": "SAR",
+      "data": "15GB + 15GB social",
+      "calls": "500 local minutes",
+      "validity": "4 weeks",
+      "kind": "prepaid",
+      "url": "https://shop.sa.zain.com/en/product/prepaid-voice-shabab-digital",
+      "note": "15% VAT included"
+     },
+     {
+      "name": "Flex 69",
+      "price": 79.35,
+      "currency": "SAR",
+      "data": "10GB + 15GB social",
+      "calls": "300 + 300 Flex minutes (on-time renewal), local + international",
+      "validity": "4 weeks",
+      "kind": "prepaid",
+      "url": "https://shop.sa.zain.com/en/product/zain-line",
+      "note": "15% VAT included"
+     },
+     {
+      "name": "Flex 109",
+      "price": 125.35,
+      "currency": "SAR",
+      "data": "35GB + unlimited social",
+      "calls": "800 + 800 Flex minutes (on-time renewal), local + international",
+      "validity": "4 weeks",
+      "kind": "prepaid",
+      "url": "https://shop.sa.zain.com/en/product/zain-line",
+      "note": "15% VAT included"
+     },
+     {
+      "name": "Postpaid 80",
+      "price": 80,
+      "currency": "SAR",
+      "data": "10GB + 15GB social",
+      "calls": "400 local minutes",
+      "validity": "monthly",
+      "kind": "postpaid",
+      "url": "https://shop.sa.zain.com/en/mobile-plans/voice/postpaid-voice-plans/postpaid",
+      "note": "15% VAT included"
+     },
+     {
+      "name": "5G+ Home Basic",
+      "price": 239,
+      "currency": "SAR",
+      "data": "Unlimited, up to 100Mbps",
+      "calls": "",
+      "validity": "monthly",
+      "kind": "home",
+      "url": "https://shop.sa.zain.com/en/home-plans/5g/postpaid-5g-home-plans",
+      "note": "15% VAT included; free 5G router; postpaid"
+     }
+    ]
    },
    {
     "id": "salam",
     "name": "Salam",
     "website": "https://salam.sa/",
-    "offers_url": "https://salam.sa/",
+    "offers_url": "https://salam.sa/dxp/en/consumer/mobile/prepaid/",
     "kinds": [
      "prepaid",
      "postpaid",
      "data",
      "home"
     ],
-    "checked_at": null,
+    "checked_at": "2026-11-22T00:21:29Z",
     "offer": null,
     "affiliate_url": null,
-    "plans": []
+    "plans": [
+     {
+      "name": "SIMPAL 34",
+      "price": 39.1,
+      "currency": "SAR",
+      "data": "1GB + 2GB social",
+      "calls": "200 local minutes",
+      "validity": "28 days",
+      "kind": "prepaid",
+      "url": "https://salam.sa/dxp/en/consumer/mobile/prepaid/simpal-plans/",
+      "note": "VAT inclusive"
+     },
+     {
+      "name": "SIMPAL Flex 34",
+      "price": 39.1,
+      "currency": "SAR",
+      "data": "1GB + 2GB social",
+      "calls": "50 Flex minutes (local + international)",
+      "validity": "28 days",
+      "kind": "prepaid",
+      "url": "https://salam.sa/dxp/en/consumer/mobile/prepaid/simpal-plans/",
+      "note": "VAT inclusive"
+     },
+     {
+      "name": "Solo 74",
+      "price": 85.68,
+      "currency": "SAR",
+      "data": "20GB + 20GB social",
+      "calls": "450 local minutes, 450 SMS",
+      "validity": "30 days",
+      "kind": "prepaid",
+      "url": "https://salam.sa/dxp/en/consumer/mobile/prepaid/solo-plans/",
+      "note": "VAT inclusive; 20GB data rollover"
+     },
+     {
+      "name": "Solo 99",
+      "price": 113.85,
+      "currency": "SAR",
+      "data": "35GB + unlimited social",
+      "calls": "1000 local minutes, 450 SMS",
+      "validity": "30 days",
+      "kind": "prepaid",
+      "url": "https://salam.sa/dxp/en/consumer/mobile/prepaid/solo-plans/",
+      "note": "VAT inclusive; 20GB data rollover"
+     },
+     {
+      "name": "300 Salam Fiber",
+      "price": 290,
+      "currency": "SAR",
+      "data": "Fiber up to 300Mbps",
+      "calls": "",
+      "validity": "monthly",
+      "kind": "home",
+      "url": "https://salam.sa/en/personal/fiber-postpaid",
+      "note": "VAT inclusive; postpaid"
+     }
+    ]
    },
    {
     "id": "virgin-sa",
@@ -208,20 +334,20 @@
      "postpaid",
      "data"
     ],
-    "checked_at": "2026-11-15T00:16:00Z",
+    "checked_at": "2026-11-22T00:21:29Z",
     "offer": null,
     "affiliate_url": null,
     "plans": [
      {
-      "name": "Bundle 1GB + 60 min (*112#)",
-      "price": 14.94,
+      "name": "Bundle 1GB + 120 min (*112#)",
+      "price": 19.55,
       "currency": "SAR",
       "data": "1GB",
-      "calls": "60 local minutes",
-      "validity": "7 days",
+      "calls": "120 local minutes",
+      "validity": "14 days",
       "kind": "prepaid",
-      "url": "https://virginmobile.sa/en/friendi-package-offers/",
-      "note": "incl. 15% VAT (SAR 12.99 excl. VAT)"
+      "url": "https://friendi.sa/en/",
+      "note": "incl. 15% VAT"
      },
      {
       "name": "Bundle 40GB + unlimited social + 700 min (*112#)",
@@ -231,30 +357,30 @@
       "calls": "700 local minutes",
       "validity": "28 days",
       "kind": "prepaid",
-      "url": "https://virginmobile.sa/en/friendi-package-offers/",
-      "note": "incl. 15% VAT (SAR 99 excl. VAT)"
+      "url": "https://friendi.sa/en/",
+      "note": "incl. 15% VAT"
      },
      {
-      "name": "Data 13GB 30 days (*108#)",
+      "name": "Data 13GB 30 days",
       "price": 63.25,
       "currency": "SAR",
       "data": "13GB",
       "calls": "",
       "validity": "30 days",
       "kind": "data",
-      "url": "https://virginmobile.sa/en/friendi-package-offers/",
-      "note": "incl. 15% VAT (SAR 55 excl. VAT)"
+      "url": "https://friendi.sa/en/",
+      "note": "incl. 15% VAT"
      },
      {
-      "name": "International bundle 6GB + 300 min (*119#)",
+      "name": "Flexi bundle 6GB + 300 min",
       "price": 69,
       "currency": "SAR",
-      "data": "6GB",
-      "calls": "300 minutes incl. international (17 listed countries)",
+      "data": "6GB + 6GB social",
+      "calls": "300 Flexi minutes (incl. international)",
       "validity": "28 days",
       "kind": "prepaid",
-      "url": "https://virginmobile.sa/en/friendi-package-offers/",
-      "note": "incl. 15% VAT (SAR 60 excl. VAT)"
+      "url": "https://friendi.sa/en/",
+      "note": "incl. 15% VAT"
      },
      {
       "name": "Switch 120",
@@ -284,10 +410,95 @@
     "id": "lebara-sa",
     "name": "Lebara KSA",
     "website": "https://www.lebara.sa/",
-    "offers_url": "https://www.lebara.sa/",
+    "offers_url": "https://lebara.sa/en/bundle_category/latest-bundle",
     "kinds": [
      "prepaid",
-     "data"
+     "postpaid",
+     "data",
+     "esim"
+    ],
+    "checked_at": "2026-11-22T00:21:29Z",
+    "offer": null,
+    "affiliate_url": null,
+    "plans": [
+     {
+      "name": "Flex 40",
+      "price": 46.0,
+      "currency": "SAR",
+      "data": "5GB + 5GB social",
+      "calls": "200 Flex minutes: local + Yemen, Sudan, Egypt, India, Bangladesh, Pakistan, Philippines, Indonesia, USA & Canada",
+      "validity": "14 days",
+      "kind": "prepaid",
+      "url": "https://lebara.sa/en/bundle_category/latest-bundle",
+      "note": "incl. VAT (SAR 40 excl. VAT)"
+     },
+     {
+      "name": "Yalla 70",
+      "price": 80.5,
+      "currency": "SAR",
+      "data": "15GB + 20GB social",
+      "calls": "350 local minutes",
+      "validity": "30 days",
+      "kind": "prepaid",
+      "url": "https://lebara.sa/en/bundle_category/latest-bundle",
+      "note": "incl. VAT (SAR 70 excl. VAT)"
+     },
+     {
+      "name": "Yalla 90",
+      "price": 103.5,
+      "currency": "SAR",
+      "data": "35GB + 55GB social",
+      "calls": "600 local minutes",
+      "validity": "30 days",
+      "kind": "prepaid",
+      "url": "https://lebara.sa/en/bundle_category/latest-bundle",
+      "note": "incl. VAT (SAR 90 excl. VAT)"
+     },
+     {
+      "name": "60GB - 1 Month",
+      "price": 109.25,
+      "currency": "SAR",
+      "data": "60GB",
+      "calls": "",
+      "validity": "30 days",
+      "kind": "data",
+      "url": "https://lebara.sa/en/bundle_category/latest-bundle",
+      "note": "incl. VAT (SAR 95 excl. VAT)"
+     },
+     {
+      "name": "Flex 100",
+      "price": 115.0,
+      "currency": "SAR",
+      "data": "35GB + 35GB social",
+      "calls": "900 Flex minutes: local + Yemen, Sudan, Egypt, India, Bangladesh, Pakistan, Philippines, Indonesia, USA & Canada",
+      "validity": "28 days",
+      "kind": "prepaid",
+      "url": "https://lebara.sa/en/bundle_category/latest-bundle",
+      "note": "incl. VAT (SAR 100 excl. VAT)"
+     },
+     {
+      "name": "eze 60",
+      "price": 69,
+      "currency": "SAR",
+      "data": "6GB + 6GB social",
+      "calls": "400 local minutes",
+      "validity": "monthly",
+      "kind": "postpaid",
+      "url": "https://lebara.sa/en/number-booking-new/voice-plans?category=postpaid",
+      "note": "incl. 15% VAT (SAR 60 excl. VAT); deposit of one month's fee required"
+     }
+    ]
+   },
+   {
+    "id": "redbull-sa",
+    "name": "Red Bull MOBILE KSA",
+    "website": "https://redbullmobile.sa/",
+    "offers_url": "https://redbullmobile.sa/en",
+    "kinds": [
+     "prepaid",
+     "postpaid",
+     "data",
+     "esim"
     ],
     "checked_at": null,
     "offer": null,
@@ -299,34 +510,176 @@
    {
     "id": "eand",
     "name": "e& (Etisalat)",
-    "website": "https://www.etisalat.ae/",
-    "offers_url": "https://www.etisalat.ae/",
+    "website": "https://www.eand.ae/",
+    "offers_url": "https://www.eand.ae/en/c/mobile/plans/prepaid-plans.html",
     "kinds": [
      "prepaid",
      "postpaid",
      "data",
-     "home"
+     "home",
+     "esim"
     ],
-    "checked_at": null,
-    "offer": null,
+    "checked_at": "2026-11-22T00:12:19Z",
+    "offer": {
+     "text": "Prepaid SIM for AED 40 (was AED 55) with AED 40 credit included; up to 50% off for 6 months on selected Freedom postpaid plans",
+     "url": "https://www.eand.ae/en/c/mobile/plans/prepaid-plans.html"
+    },
     "affiliate_url": null,
-    "plans": []
+    "plans": [
+     {
+      "name": "Wasel Prepaid Line",
+      "price": 40,
+      "currency": "AED",
+      "data": "Pay as you go (add data packs)",
+      "calls": "Pay as you go",
+      "validity": "SIM purchase; AED 40 credit included",
+      "kind": "prepaid",
+      "url": "https://www.eand.ae/en/c/mobile/plans/prepaid-plans.html",
+      "note": "5% VAT incl; was AED 55; online offer"
+     },
+     {
+      "name": "Wasel Flexi (1GB + 30 Flexi Mins)",
+      "price": 33.33,
+      "currency": "AED",
+      "data": "1GB (+1GB bonus)",
+      "calls": "30 Flexi mins (local & intl) + unlimited calls to 1 e& preferred number",
+      "validity": "per month (starting from)",
+      "kind": "prepaid",
+      "url": "https://www.eand.ae/en/c/mobile/plans/wasel-flexi.html",
+      "note": "+5% VAT; 'starting from' price; 50% off yearly plans; free SIM online"
+     },
+     {
+      "name": "Wasel Data SIM",
+      "price": 40,
+      "currency": "AED",
+      "data": "Data only, top up with data packs",
+      "calls": "No calls",
+      "validity": "pay as you go",
+      "kind": "data",
+      "url": "https://www.eand.ae/en/c/mobile/plans/wasel-data-sim.html",
+      "note": "5% VAT incl; was AED 55; requires an active e& mobile plan in your name"
+     },
+     {
+      "name": "Freedom Plan 125 Flexi",
+      "price": 125,
+      "currency": "AED",
+      "data": "2GB",
+      "calls": "200 local mins or 100 Flexi mins",
+      "validity": "monthly, no commitment",
+      "kind": "postpaid",
+      "url": "https://www.eand.ae/eshop/mobile-plans/postpaid/plans/postpaid-plans?subCategory=cat1970015&category=cat1970020&lang=en",
+      "note": "+5% VAT"
+     },
+     {
+      "name": "New Freedom 150 Flexi minutes",
+      "price": 150,
+      "currency": "AED",
+      "data": "4GB",
+      "calls": "200 local mins or 100 Flexi mins",
+      "validity": "monthly, no commitment",
+      "kind": "postpaid",
+      "url": "https://www.eand.ae/eshop/mobile-plans/postpaid/plans/postpaid-plans?subCategory=cat1970015&category=cat1970020&lang=en",
+      "note": "+5% VAT"
+     },
+     {
+      "name": "eLife Family",
+      "price": 287,
+      "currency": "AED",
+      "data": "Unlimited, 429 Mbps",
+      "calls": "",
+      "validity": "monthly, 24-month commitment",
+      "kind": "home",
+      "url": "https://www.eand.ae/eshop/elife/?category=homePlans&subCategory=cat1100023&catName=eLife_plan&listVal=eLife_plan&locale=EN",
+      "note": "+5% VAT; 20% off for 3 months (was AED 359)"
+     }
+    ]
    },
    {
     "id": "du",
     "name": "du",
     "website": "https://www.du.ae/",
-    "offers_url": "https://www.du.ae/",
+    "offers_url": "https://shop.du.ae/en/personal/s-du-postpaid-plans",
     "kinds": [
      "prepaid",
      "postpaid",
      "data",
-     "home"
+     "home",
+     "esim"
     ],
-    "checked_at": null,
-    "offer": null,
+    "checked_at": "2026-11-22T00:12:19Z",
+    "offer": {
+     "text": "Up to 50% off Power Plans for 6 months; 50% off yearly Prepaid Flexi plans plus a free special number",
+     "url": "https://shop.du.ae/en/personal/s-du-postpaid-plans"
+    },
     "affiliate_url": null,
-    "plans": []
+    "plans": [
+     {
+      "name": "Power Plan 125",
+      "price": 125,
+      "currency": "AED",
+      "data": "4 GB national data",
+      "calls": "100 Flexi minutes",
+      "validity": "monthly, 12-month contract",
+      "kind": "postpaid",
+      "url": "https://shop.du.ae/en/personal/s-du-postpaid-plans",
+      "note": "VAT exclusive"
+     },
+     {
+      "name": "Power Plan 200",
+      "price": 200,
+      "currency": "AED",
+      "data": "13 GB national data",
+      "calls": "400 Flexi minutes",
+      "validity": "monthly, 12-month contract",
+      "kind": "postpaid",
+      "url": "https://shop.du.ae/en/personal/s-du-postpaid-plans",
+      "note": "VAT exclusive; Disney+ for 12 months"
+     },
+     {
+      "name": "Power Plan 300 Data",
+      "price": 210,
+      "currency": "AED",
+      "data": "Non-stop national data, up to 10 Mbps",
+      "calls": "800 Flexi minutes",
+      "validity": "monthly, 12-month contract",
+      "kind": "postpaid",
+      "url": "https://shop.du.ae/en/personal/s-du-postpaid-plans",
+      "note": "VAT exclusive; 30% off for 6 months (was AED 300)"
+     },
+     {
+      "name": "Data-Only Plans",
+      "price": 279,
+      "currency": "AED",
+      "data": "50 GB",
+      "calls": "No calls",
+      "validity": "monthly, 12-month contract",
+      "kind": "data",
+      "url": "https://shop.du.ae/en/personal/s-du-datasim-plans",
+      "note": "+ VAT"
+     },
+     {
+      "name": "du Home Starter",
+      "price": 311,
+      "currency": "AED",
+      "data": "Unlimited, 250 Mbps",
+      "calls": "",
+      "validity": "monthly; AED 311 for 3 months, then AED 389",
+      "kind": "home",
+      "url": "https://www.du.ae/home-internet",
+      "note": "VAT Excl.; 20% off, new plan subscriptions only"
+     },
+     {
+      "name": "du Home Basic",
+      "price": 343,
+      "currency": "AED",
+      "data": "Unlimited, 1 Gbps",
+      "calls": "",
+      "validity": "monthly; AED 343 for 3 months, then AED 429",
+      "kind": "home",
+      "url": "https://www.du.ae/home-internet",
+      "note": "VAT Excl.; 20% off, new plan subscriptions only"
+     }
+    ]
    },
    {
     "id": "virgin-ae",
@@ -340,7 +693,7 @@
      "home",
      "esim"
     ],
-    "checked_at": "2026-11-15T00:14:00Z",
+    "checked_at": "2026-11-22T00:12:19Z",
     "offer": {
      "text": "Save 50% on 12-month mobile plans (30% on 6-month); free data upgrade when you buy online",
      "url": "https://www.virginmobile.ae/monthly-plans"
@@ -428,10 +781,10 @@
      "data",
      "home"
     ],
-    "checked_at": "2026-11-15T00:15:00Z",
+    "checked_at": "2026-11-22T00:19:15Z",
     "offer": {
-     "text": "Home+ promotional prices for new customers who subscribe by 20 November 2026 (e.g. Home+ Go 1 Gbps QR 304/month)",
-     "url": "https://www.ooredoo.qa/web/en/home-plus/"
+     "text": "Shahry+ exclusive online offer for new lines and prepaid-to-postpaid migrations: save up to QR40/month for the first 4 months (e.g. Shahry+ Go QR130 instead of QR140)",
+     "url": "https://www.ooredoo.qa/web/en/postpaid-plans/shahry/"
     },
     "affiliate_url": null,
     "plans": [
@@ -441,7 +794,7 @@
       "currency": "QAR",
       "data": "1.5 GB",
       "calls": "60 local minutes",
-      "validity": "10 days (line 30 days)",
+      "validity": "7 days",
       "kind": "prepaid",
       "url": "https://www.ooredoo.qa/web/en/prepaid-plans/recharge/",
       "note": ""
@@ -461,12 +814,12 @@
       "name": "Hala Super Recharge 100",
       "price": 100,
       "currency": "QAR",
-      "data": "16 GB +2.4 GB, then endless data @256 Kbps",
-      "calls": "400 +60 local minutes + 20 international minutes",
+      "data": "16 GB, then endless data @256 Kbps",
+      "calls": "400 local minutes + 20 international minutes",
       "validity": "28 days",
       "kind": "prepaid",
       "url": "https://www.ooredoo.qa/web/en/prepaid-plans/recharge/",
-      "note": ""
+      "note": "15% bonus with online recharges"
      },
      {
       "name": "Data Recharge 50",
@@ -488,18 +841,18 @@
       "validity": "monthly",
       "kind": "postpaid",
       "url": "https://www.ooredoo.qa/web/en/postpaid-plans/shahry/",
-      "note": "QR130 for first 4 months, then QR140; minimum 3-month service period"
+      "note": "Exclusive online offer: QR130 for first 4 months, then QR140; new lines and prepaid-to-postpaid migrations; minimum 3-month service period"
      },
      {
       "name": "Home+ Go",
-      "price": 304,
+      "price": 365,
       "currency": "QAR",
       "data": "Unlimited, up to 1 Gbps",
       "calls": "",
       "validity": "monthly",
       "kind": "home",
       "url": "https://www.ooredoo.qa/web/en/home-plus/",
-      "note": "Promotional price for new customers subscribing by 20 Nov 2026; 12-month liability period"
+      "note": "Standard price; promotional QR304 (online) was for new customers subscribing until 20 Nov 2026; 12-month liability period (QR300 early termination fee)"
      }
     ]
    },
@@ -514,9 +867,9 @@
      "data",
      "home"
     ],
-    "checked_at": "2026-11-15T00:18:00Z",
+    "checked_at": "2026-11-22T00:19:15Z",
     "offer": {
-     "text": "Vodafone Home 1 Gbps fibre at a special rate of QR 290/month (was QR 350) for new customers, promo until 20 Nov 2026",
+     "text": "Vodafone Home 1 Gbps fibre: buy online for QR 290/month (was QR 350)",
      "url": "https://www.vodafone.qa/en/services/home/gigahome"
     },
     "affiliate_url": null,
@@ -536,23 +889,23 @@
       "name": "Postpaid 40GB data & Unlimited local minutes",
       "price": 150,
       "currency": "QAR",
-      "data": "40GB",
-      "calls": "Unlimited local minutes",
+      "data": "40GB full speed local data + 15 GB social media data",
+      "calls": "Unlimited local minutes, 300 SMS, up to 300 international minutes",
       "validity": "monthly",
       "kind": "postpaid",
-      "url": "https://www.vodafone.qa/en/essentialandextra",
-      "note": "T&C's apply"
+      "url": "https://www.vodafone.qa/Unlimited-Plus-Plans",
+      "note": "Buy online: QR 150/month for 4 months (was QR 180); T&C's apply"
      },
      {
-      "name": "Unlimited",
+      "name": "New Unlimited+",
       "price": 225,
       "currency": "QAR",
-      "data": "Unlimited 5G Data",
-      "calls": "Unlimited",
+      "data": "Unlimited local data",
+      "calls": "Unlimited local minutes & SMS, 200 international minutes",
       "validity": "monthly",
       "kind": "postpaid",
-      "url": "https://www.vodafone.qa/en/essentialandextra",
-      "note": "T&C's apply"
+      "url": "https://www.vodafone.qa/Unlimited-Plus-Plans",
+      "note": "Online exclusive: QR 225/month for 6 months (was QR 300); T&C's apply"
      },
      {
       "name": "Vodafone Home 1 Gbps",
@@ -563,7 +916,7 @@
       "validity": "monthly",
       "kind": "home",
       "url": "https://www.vodafone.qa/en/services/home/gigahome",
-      "note": "Special rate (was QR 350) for new customers; promo 20 Aug - 20 Nov 2026; includes WiFi 6 router and OSN+ Lite"
+      "note": "Buy online price (was QR 350); includes WiFi 6 router, free installation and OSN+ Lite"
      }
     ]
    }
@@ -580,75 +933,75 @@
      "data",
      "home"
     ],
-    "checked_at": "2026-11-15T00:12:17Z",
+    "checked_at": "2026-11-22T00:12:20Z",
     "offer": null,
     "affiliate_url": null,
     "plans": [
      {
-      "name": "4G Internet 30GB & More",
+      "name": "eeZee 5",
       "price": 5,
       "currency": "KWD",
-      "data": "30GB & more",
-      "calls": "",
+      "data": "30GB",
+      "calls": "100 local minutes",
       "validity": "30 days",
-      "kind": "data",
+      "kind": "prepaid",
       "url": "https://www.kw.zain.com/en/shop/eezee-plans",
-      "note": "auto-renews every 30 days; VAT not stated"
+      "note": "activate by sending 51 to 999; VAT not stated"
      },
      {
-      "name": "4G Internet 60GB & More",
-      "price": 7,
+      "name": "eeZee 6",
+      "price": 6,
       "currency": "KWD",
-      "data": "60GB & more",
-      "calls": "",
+      "data": "60GB",
+      "calls": "100 local minutes + unlimited Zain to Zain calls",
       "validity": "30 days",
-      "kind": "data",
+      "kind": "prepaid",
       "url": "https://www.kw.zain.com/en/shop/eezee-plans",
-      "note": "auto-renews every 30 days; VAT not stated"
+      "note": "activate by sending 61 to 999; VAT not stated"
      },
      {
-      "name": "5G Internet 90GB & More",
+      "name": "eeZee 9",
       "price": 9,
       "currency": "KWD",
-      "data": "90GB & more",
-      "calls": "",
+      "data": "100GB + unlimited social media + unlimited night internet (11PM-5AM)",
+      "calls": "500 local minutes + unlimited Zain to Zain calls",
       "validity": "30 days",
-      "kind": "data",
+      "kind": "prepaid",
       "url": "https://www.kw.zain.com/en/shop/eezee-plans",
-      "note": "auto-renews every 30 days; VAT not stated"
+      "note": "activate by sending 91 to 999; VAT not stated"
      },
      {
-      "name": "5G Internet 150GB & More",
+      "name": "eeZee 12",
       "price": 12,
       "currency": "KWD",
-      "data": "150GB & more",
-      "calls": "",
+      "data": "150GB + unlimited social media + unlimited night internet (11PM-5AM)",
+      "calls": "1000 local minutes + unlimited Zain to Zain calls",
       "validity": "30 days",
-      "kind": "data",
+      "kind": "prepaid",
       "url": "https://www.kw.zain.com/en/shop/eezee-plans",
-      "note": "auto-renews every 30 days; VAT not stated"
+      "note": "activate by sending 121 to 999; VAT not stated"
      },
      {
-      "name": "5G Internet 250GB & More",
-      "price": 18,
+      "name": "eeZee 20",
+      "price": 20,
       "currency": "KWD",
-      "data": "250GB & more",
-      "calls": "",
+      "data": "Unlimited 5G Advanced internet + unlimited social media",
+      "calls": "Unlimited local minutes + unlimited Zain to Zain calls",
       "validity": "30 days",
-      "kind": "data",
+      "kind": "prepaid",
       "url": "https://www.kw.zain.com/en/shop/eezee-plans",
-      "note": "auto-renews every 30 days; VAT not stated"
+      "note": "Fair Usage Policy applies; VAT not stated"
      },
      {
-      "name": "5G Internet UNLIMITED",
-      "price": 21,
+      "name": "Wiyana 5G KD10",
+      "price": 10,
       "currency": "KWD",
-      "data": "Unlimited",
-      "calls": "",
-      "validity": "30 days",
-      "kind": "data",
-      "url": "https://www.kw.zain.com/en/shop/eezee-plans",
-      "note": "auto-renews every 30 days; VAT not stated"
+      "data": "25 GB 5G Internet + unlimited social media",
+      "calls": "150 local minutes",
+      "validity": "monthly",
+      "kind": "postpaid",
+      "url": "https://www.kw.zain.com/en/shop/postpaid-plans",
+      "note": "includes limited-time free streaming trials; commitment not stated; VAT not stated"
      }
     ]
    },
@@ -656,46 +1009,196 @@
     "id": "ooredoo-kw",
     "name": "Ooredoo Kuwait",
     "website": "https://www.ooredoo.com.kw/",
-    "offers_url": "https://www.ooredoo.com.kw/",
+    "offers_url": "https://www.ooredoo.com.kw/en/prepaid-mobile",
     "kinds": [
      "prepaid",
      "postpaid",
      "data",
-     "home"
+     "home",
+     "esim"
     ],
-    "checked_at": null,
-    "offer": null,
+    "checked_at": "2026-11-22T00:12:20Z",
+    "offer": {
+     "text": "Limited-time offer: unlimited 5G Advanced home internet (5G Outdoor) from KD 12.5/month on 24-month commitment",
+     "url": "https://www.ooredoo.com.kw/en/homeinternet-5g"
+    },
     "affiliate_url": null,
-    "plans": []
+    "plans": [
+     {
+      "name": "ANA GO",
+      "price": 5,
+      "currency": "KWD",
+      "data": "30GB 5G Internet",
+      "calls": "100 local minutes",
+      "validity": "30 days",
+      "kind": "prepaid",
+      "url": "https://www.ooredoo.com.kw/en/prepaid-mobile",
+      "note": "VAT not stated"
+     },
+     {
+      "name": "ANA BOOST",
+      "price": 6,
+      "currency": "KWD",
+      "data": "60GB 5G Internet",
+      "calls": "100 local minutes + unlimited Ooredoo minutes",
+      "validity": "30 days",
+      "kind": "prepaid",
+      "url": "https://www.ooredoo.com.kw/en/prepaid-mobile",
+      "note": "unlimited Ooredoo minutes FUP 43,200 minutes; VAT not stated"
+     },
+     {
+      "name": "ANA SOCIAL",
+      "price": 9,
+      "currency": "KWD",
+      "data": "100GB 5G Internet + unlimited social media + unlimited night internet (12 AM to 6 AM)",
+      "calls": "500 local minutes + unlimited Ooredoo minutes",
+      "validity": "30 days",
+      "kind": "prepaid",
+      "url": "https://www.ooredoo.com.kw/en/prepaid-mobile",
+      "note": "unlimited social media FUP 150GB; VAT not stated"
+     },
+     {
+      "name": "ANA BOOST PLUS",
+      "price": 15.3,
+      "currency": "KWD",
+      "data": "180GB 5G Internet",
+      "calls": "300 local minutes + unlimited Ooredoo minutes",
+      "validity": "90 days",
+      "kind": "prepaid",
+      "url": "https://www.ooredoo.com.kw/en/prepaid-mobile",
+      "note": "3-month plan; VAT not stated"
+     },
+     {
+      "name": "SHAMEL 10",
+      "price": 10,
+      "currency": "KWD",
+      "data": "25GB Internet",
+      "calls": "250 local minutes + unlimited Ooredoo minutes",
+      "validity": "monthly",
+      "kind": "postpaid",
+      "url": "https://www.ooredoo.com.kw/en/postpaid-mobile",
+      "note": "commitment not stated; VAT not stated"
+     },
+     {
+      "name": "5G Outdoor - Unlimited 5G Advanced",
+      "price": 12.5,
+      "currency": "KWD",
+      "data": "Unlimited 5G Advanced",
+      "calls": "",
+      "validity": "monthly",
+      "kind": "home",
+      "url": "https://www.ooredoo.com.kw/en/homeinternet-5g",
+      "note": "Limited Time Offer; 24 months commitment; Huawei outdoor CPE + up to 4 Wi-Fi Mesh units; free delivery & installation; VAT not stated"
+     }
+    ]
    },
    {
     "id": "stc-kw",
     "name": "stc Kuwait",
     "website": "https://www.stc.com.kw/",
-    "offers_url": "https://www.stc.com.kw/",
+    "offers_url": "https://www.stc.com.kw/en/get-go",
     "kinds": [
      "prepaid",
      "postpaid",
      "data",
      "home"
     ],
-    "checked_at": null,
+    "checked_at": "2026-11-22T00:12:20Z",
     "offer": null,
     "affiliate_url": null,
-    "plans": []
+    "plans": [
+     {
+      "name": "go 5",
+      "price": 5,
+      "currency": "KWD",
+      "data": "30GB",
+      "calls": "100 local minutes",
+      "validity": "1 month",
+      "kind": "prepaid",
+      "url": "https://www.stc.com.kw/en/get-go",
+      "note": "VAT not stated"
+     },
+     {
+      "name": "go 6",
+      "price": 6,
+      "currency": "KWD",
+      "data": "60GB",
+      "calls": "100 local minutes",
+      "validity": "1 month",
+      "kind": "prepaid",
+      "url": "https://www.stc.com.kw/en/get-go",
+      "note": "marked Most Popular; VAT not stated"
+     },
+     {
+      "name": "go 9",
+      "price": 9,
+      "currency": "KWD",
+      "data": "100GB",
+      "calls": "500 local minutes",
+      "validity": "1 month",
+      "kind": "prepaid",
+      "url": "https://www.stc.com.kw/en/get-go",
+      "note": "VAT not stated"
+     },
+     {
+      "name": "go 12",
+      "price": 12,
+      "currency": "KWD",
+      "data": "200GB",
+      "calls": "1000 local minutes",
+      "validity": "1 month",
+      "kind": "prepaid",
+      "url": "https://www.stc.com.kw/en/get-go",
+      "note": "VAT not stated"
+     },
+     {
+      "name": "go 20",
+      "price": 20,
+      "currency": "KWD",
+      "data": "Unlimited* (5G/5G Advanced)",
+      "calls": "Unlimited* local minutes",
+      "validity": "1 month",
+      "kind": "prepaid",
+      "url": "https://www.stc.com.kw/en/get-go",
+      "note": "fair usage applies; VAT not stated"
+     },
+     {
+      "name": "Always ON KD 10",
+      "price": 10,
+      "currency": "KWD",
+      "data": "25 GB (4G/5G)",
+      "calls": "KD 8 credit for local minutes; 100 local SMS",
+      "validity": "monthly",
+      "kind": "postpaid",
+      "url": "https://www.stc.com.kw/en/postpaid-plans",
+      "note": "commitment not stated; VAT not stated"
+     }
+    ]
    },
    {
     "id": "virgin-kw",
     "name": "Virgin Mobile Kuwait",
     "website": "https://www.virginmobile.com.kw/",
-    "offers_url": "https://www.virginmobile.com.kw/",
+    "offers_url": "https://www.virginmobile.com.kw/en/",
     "kinds": [
      "prepaid"
     ],
-    "checked_at": null,
+    "checked_at": "2026-11-22T00:12:20Z",
     "offer": null,
     "affiliate_url": null,
-    "plans": []
+    "plans": [
+     {
+      "name": "Social Media Plan",
+      "price": 9,
+      "currency": "KWD",
+      "data": "110 GB",
+      "calls": "550 national minutes",
+      "validity": "not stated",
+      "kind": "prepaid",
+      "url": "https://www.virginmobile.com.kw/en/",
+      "note": "no contracts per site; validity not stated on page; VAT not stated"
+     }
+    ]
    }
   ],
   "om": [
@@ -711,7 +1214,7 @@
      "home",
      "esim"
     ],
-    "checked_at": "2026-11-15T00:20:00Z",
+    "checked_at": "2026-11-22T00:12:20Z",
     "offer": {
      "text": "Talk more add-on: pay OMR 3 and get OMR 9 in talk time",
      "url": "https://www.omantel.om/en/personal/mobile-prepaid"
@@ -728,6 +1231,28 @@
       "kind": "prepaid",
       "url": "https://www.omantel.om/en/personal/mobile-prepaid",
       "note": "Hayyak add-on; all plans 5% VAT inclusive"
+     },
+     {
+      "name": "Hayyak's mobile Internet 5 GB (Monthly Plan)",
+      "price": 5,
+      "currency": "OMR",
+      "data": "5 GB",
+      "calls": "",
+      "validity": "Monthly",
+      "kind": "data",
+      "url": "https://www.omantel.om/en/personal/mobile-prepaid/plan-new-hayyak/mobile-internet",
+      "note": "prepaid data add-on; page states prices exclusive of VAT, 5% VAT added upon purchase"
+     },
+     {
+      "name": "Hayyak's mobile Internet 10 GB Night Data (Weekly Plan)",
+      "price": 2,
+      "currency": "OMR",
+      "data": "10 GB (Night Data, 9PM to 8AM)",
+      "calls": "",
+      "validity": "Weekly",
+      "kind": "data",
+      "url": "https://www.omantel.om/en/personal/mobile-prepaid/plan-new-hayyak/mobile-internet",
+      "note": "prepaid add-on; page states prices exclusive of VAT, 5% VAT added upon purchase"
      },
      {
       "name": "Data-only Baqati 100GB",
@@ -775,7 +1300,7 @@
      "data",
      "home"
     ],
-    "checked_at": "2026-11-15T00:14:00Z",
+    "checked_at": "2026-11-22T00:12:20Z",
     "offer": null,
     "affiliate_url": null,
     "plans": [
@@ -813,37 +1338,37 @@
       "note": "price shown on page as \"10\" without currency"
      },
      {
-      "name": "Shahry Endless 10",
+      "name": "O Plan 10",
       "price": 10,
       "currency": "OMR",
-      "data": "16GB (15GB Roam Like Home + 1GB World Roaming)",
-      "calls": "1000 minutes (Local, India, Pakistan, Bangladesh)",
+      "data": "15 GB Flexi Internet + 1 GB Roaming",
+      "calls": "1000 MIN voice (500 Min to Ind, Pak, Ban)",
       "validity": "Monthly",
       "kind": "postpaid",
-      "url": "https://ooredoo.om/en/personal/mobile/shahry-postpaid/shahry-endless",
-      "note": "excl. VAT (+5% VAT); no contract"
+      "url": "https://www.ooredoo.om/en/personal/mobile/o-plus/",
+      "note": "+ 5% VAT; non-contract plan"
      },
      {
-      "name": "Shahry Endless 15",
+      "name": "O Plan 15",
       "price": 15,
       "currency": "OMR",
-      "data": "35GB (24GB + 10GB bonus + 1GB World Roaming)",
-      "calls": "Unlimited local, India, Pakistan, Bangladesh; 50 international minutes",
+      "data": "27 GB Flexi Internet + 1 GB Roaming",
+      "calls": "Unlimited local voice; 50 International Minutes",
       "validity": "Monthly",
       "kind": "postpaid",
-      "url": "https://ooredoo.om/en/personal/mobile/shahry-postpaid/shahry-endless",
-      "note": "excl. VAT (+5% VAT); no contract; bonus data for new/upgrading customers"
+      "url": "https://www.ooredoo.om/en/personal/mobile/o-plus/",
+      "note": "+ 5% VAT; non-contract plan"
      },
      {
-      "name": "Shahry Endless 20",
-      "price": 20,
+      "name": "O Plus AI 12",
+      "price": 12,
       "currency": "OMR",
-      "data": "55GB (40GB + 10GB bonus + 5GB World Roaming)",
-      "calls": "Unlimited local, India, Pakistan, Bangladesh; 75 international minutes",
-      "validity": "Monthly",
+      "data": "25 GB (24 GB Flexi Data + 1 GB Roaming Data)",
+      "calls": "1000 Local Minutes (500 Min to Ind, Pak, Ban); 20 International Minutes",
+      "validity": "Monthly, 12-month contract",
       "kind": "postpaid",
-      "url": "https://ooredoo.om/en/personal/mobile/shahry-postpaid/shahry-endless",
-      "note": "excl. VAT (+5% VAT); no contract; bonus data for new/upgrading customers"
+      "url": "https://www.ooredoo.om/en/personal/mobile/o-plus/",
+      "note": "+ 5% VAT; 12 month commitment contract"
      }
     ]
    },
@@ -858,7 +1383,7 @@
      "data",
      "home"
     ],
-    "checked_at": "2026-11-15T00:17:00Z",
+    "checked_at": "2026-11-22T00:12:20Z",
     "offer": null,
     "affiliate_url": null,
     "plans": [
@@ -933,16 +1458,86 @@
    {
     "id": "friendi-om",
     "name": "FRiENDi mobile",
-    "website": "https://www.friendimobile.com/en-om",
-    "offers_url": "https://www.friendimobile.com/en-om/section/offers-for-you",
+    "website": "https://friendi.om/en/",
+    "offers_url": "https://friendi.om/en/plans/",
     "kinds": [
      "prepaid",
      "data"
     ],
-    "checked_at": null,
-    "offer": null,
+    "checked_at": "2026-11-22T00:12:20Z",
+    "offer": {
+     "text": "5% bonus credit every time you recharge on the Friendi Mobile App",
+     "url": "https://friendi.om/en/offers/"
+    },
     "affiliate_url": null,
-    "plans": []
+    "plans": [
+     {
+      "name": "Smart Flexi 4.000",
+      "price": 4,
+      "currency": "OMR",
+      "data": "5 GB",
+      "calls": "30 min Flexi (Oman, India, Pakistan, Bangladesh)",
+      "validity": "28 days",
+      "kind": "prepaid",
+      "url": "https://friendi.om/en/plans/",
+      "note": "homepage states all prices include 5% VAT"
+     },
+     {
+      "name": "Local Flexi 5.000",
+      "price": 5,
+      "currency": "OMR",
+      "data": "7 GB",
+      "calls": "150 min Local",
+      "validity": "28 days",
+      "kind": "prepaid",
+      "url": "https://friendi.om/en/plans/",
+      "note": "homepage states all prices include 5% VAT"
+     },
+     {
+      "name": "Tamaiuz Flexi 8.000",
+      "price": 8,
+      "currency": "OMR",
+      "data": "14 GB",
+      "calls": "300 min Flexi GCC (Oman and the GCC)",
+      "validity": "28 days",
+      "kind": "prepaid",
+      "url": "https://friendi.om/en/plans/",
+      "note": "homepage states all prices include 5% VAT"
+     },
+     {
+      "name": "Smart Flexi 10.000",
+      "price": 10,
+      "currency": "OMR",
+      "data": "18 GB",
+      "calls": "180 min Flexi (Oman, India, Pakistan, Bangladesh)",
+      "validity": "28 days",
+      "kind": "prepaid",
+      "url": "https://friendi.om/en/plans/",
+      "note": "homepage states all prices include 5% VAT"
+     },
+     {
+      "name": "Data 5.000",
+      "price": 5,
+      "currency": "OMR",
+      "data": "9 GB",
+      "calls": "",
+      "validity": "28 days",
+      "kind": "data",
+      "url": "https://friendi.om/en/plans/",
+      "note": "homepage states all prices include 5% VAT"
+     },
+     {
+      "name": "Data 10.000",
+      "price": 10,
+      "currency": "OMR",
+      "data": "24 GB",
+      "calls": "",
+      "validity": "28 days",
+      "kind": "data",
+      "url": "https://friendi.om/en/plans/",
+      "note": "homepage states all prices include 5% VAT"
+     }
+    ]
    },
    {
     "id": "redbull-om",
@@ -953,10 +1548,80 @@
      "prepaid",
      "esim"
     ],
-    "checked_at": null,
-    "offer": null,
+    "checked_at": "2026-11-22T00:12:20Z",
+    "offer": {
+     "text": "15 OMR: unlimited GB + 50 mins for 2 weeks (limited time)",
+     "url": "https://www.redbullmobile.om/en/plans"
+    },
     "affiliate_url": null,
-    "plans": []
+    "plans": [
+     {
+      "name": "3 OMR plan",
+      "price": 3,
+      "currency": "OMR",
+      "data": "10 GB",
+      "calls": "",
+      "validity": "1 Weeks",
+      "kind": "prepaid",
+      "url": "https://www.redbullmobile.om/en/plans",
+      "note": "Tax Inclusive (as stated); plans have no names on page, named by price"
+     },
+     {
+      "name": "4 OMR plan",
+      "price": 4,
+      "currency": "OMR",
+      "data": "6 GB",
+      "calls": "",
+      "validity": "4 Weeks",
+      "kind": "prepaid",
+      "url": "https://www.redbullmobile.om/en/plans",
+      "note": "Tax Inclusive (as stated); plans have no names on page, named by price"
+     },
+     {
+      "name": "5 OMR plan",
+      "price": 5,
+      "currency": "OMR",
+      "data": "14 GB",
+      "calls": "150 Mins",
+      "validity": "4 Weeks",
+      "kind": "prepaid",
+      "url": "https://www.redbullmobile.om/en/plans",
+      "note": "Tax Inclusive (as stated); plans have no names on page, named by price"
+     },
+     {
+      "name": "7 OMR plan",
+      "price": 7,
+      "currency": "OMR",
+      "data": "24 GB",
+      "calls": "150 Mins",
+      "validity": "4 Weeks",
+      "kind": "prepaid",
+      "url": "https://www.redbullmobile.om/en/plans",
+      "note": "Tax Inclusive (as stated); plans have no names on page, named by price"
+     },
+     {
+      "name": "9 OMR plan",
+      "price": 9,
+      "currency": "OMR",
+      "data": "36 GB",
+      "calls": "150 Mins",
+      "validity": "4 Weeks",
+      "kind": "prepaid",
+      "url": "https://www.redbullmobile.om/en/plans",
+      "note": "Tax Inclusive (as stated); plans have no names on page, named by price"
+     },
+     {
+      "name": "16 OMR plan",
+      "price": 16,
+      "currency": "OMR",
+      "data": "46 GB",
+      "calls": "Unlimited Mins",
+      "validity": "4 Weeks",
+      "kind": "prepaid",
+      "url": "https://www.redbullmobile.om/en/plans",
+      "note": "Tax Inclusive (as stated); plans have no names on page, named by price"
+     }
+    ]
    }
   ],
   "bh": [
@@ -972,7 +1637,7 @@
      "home",
      "esim"
     ],
-    "checked_at": "2026-11-15T00:19:20Z",
+    "checked_at": "2026-11-22T00:12:20Z",
     "offer": {
      "text": "Free Red Box Premium Wi-Fi with new Ultra Home fiber activations/upgrades of 300 Mbps+ (orders 1 Oct - 31 Dec 2026)",
      "url": "https://www.batelco.com/ultra-home/"
@@ -1051,17 +1716,62 @@
     "id": "zain-bh",
     "name": "Zain Bahrain",
     "website": "https://www.bh.zain.com/",
-    "offers_url": "https://www.bh.zain.com/",
+    "offers_url": "https://www.bh.zain.com/instant-activation",
     "kinds": [
      "prepaid",
      "postpaid",
      "data",
      "home"
     ],
-    "checked_at": null,
+    "checked_at": "2026-11-22T00:12:20Z",
     "offer": null,
     "affiliate_url": null,
-    "plans": []
+    "plans": [
+     {
+      "name": "Wiyana Intl",
+      "price": 11,
+      "currency": "BHD",
+      "data": "30GB + Additional Data 30GB",
+      "calls": "500 local min + up to 250 intl min",
+      "validity": "Monthly, 12 months commitment",
+      "kind": "postpaid",
+      "url": "https://www.bh.zain.com/instant-activation/mobile/postpaid/wiyana-plans?utm_ref=app",
+      "note": "VAT not stated on plan card; hotspot sharing BD2.2/month"
+     },
+     {
+      "name": "Wiyana Basic",
+      "price": 11,
+      "currency": "BHD",
+      "data": "35GB + Additional Data 35GB",
+      "calls": "600 local min",
+      "validity": "Monthly, 12 months commitment",
+      "kind": "postpaid",
+      "url": "https://www.bh.zain.com/instant-activation/mobile/postpaid/wiyana-plans?utm_ref=app",
+      "note": "VAT not stated on plan card; hotspot sharing BD2.2/month"
+     },
+     {
+      "name": "Fiber Plus",
+      "price": 16,
+      "currency": "BHD",
+      "data": "1500GB",
+      "calls": "",
+      "validity": "Monthly",
+      "kind": "home",
+      "url": "https://www.bh.zain.com/instant-activation/broadband/fiber/fiber-plans?utm_ref=broadband",
+      "note": "page states 10% VAT inclusive; 300/60 Mbps; connection BD11 with commitment / BD22 without"
+     },
+     {
+      "name": "Fiber Basic",
+      "price": 17.5,
+      "currency": "BHD",
+      "data": "Unlimited",
+      "calls": "",
+      "validity": "Monthly",
+      "kind": "home",
+      "url": "https://www.bh.zain.com/instant-activation/broadband/fiber/fiber-plans?utm_ref=broadband",
+      "note": "page states 10% VAT inclusive; 300/60 Mbps; 3 mesh routers free; connection BD11 with commitment / BD22 without"
+     }
+    ]
    },
    {
     "id": "stc-bh",
@@ -1074,7 +1784,7 @@
      "data",
      "home"
     ],
-    "checked_at": "2026-11-15T00:19:20Z",
+    "checked_at": "2026-11-22T00:12:20Z",
     "offer": null,
     "affiliate_url": null,
     "plans": [
@@ -1112,15 +1822,15 @@
       "note": "incl. 10% VAT; requires active monthly or weekly add-on; limited period offer"
      },
      {
-      "name": "Postpaid BD10.5 Plan",
-      "price": 10.5,
+      "name": "postpaid BD11 international",
+      "price": 11,
       "currency": "BHD",
-      "data": "25GB",
-      "calls": "500 local + up to 60 intl min",
-      "validity": "Monthly (12-month or no contract)",
+      "data": "30GB",
+      "calls": "500 local min + 250 intl min",
+      "validity": "Monthly, 12-month contract",
       "kind": "postpaid",
       "url": "https://shop.stc.com.bh/index.php?route=product%2Fcategory&path=65",
-      "note": "page says VAT inclusive; BD5.5 one-time connection fee"
+      "note": "page says VAT inclusive; BD5.5 one-time connection fee (waived on digital channels during promo); hotspot add-on BD2/month"
      },
      {
       "name": "fiber 17.5",
