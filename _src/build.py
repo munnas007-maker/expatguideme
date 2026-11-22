@@ -19,6 +19,7 @@ import shutil
 import sys
 import subprocess
 import re
+from html import escape as html_escape
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "_src", "pages")
@@ -671,11 +672,10 @@ CUR = {
     "NPR": ("Nepali rupee", "Nepali rupees", "np", "Nepal"),
     "LKR": ("Sri Lankan rupee", "Sri Lankan rupees", "lk", "Sri Lanka"),
 }
-CONVERSIONS = [
-    ("SAR", "INR"), ("SAR", "PKR"), ("SAR", "BDT"), ("SAR", "PHP"), ("SAR", "NPR"), ("SAR", "LKR"),
-    ("AED", "INR"), ("AED", "PKR"), ("AED", "BDT"), ("AED", "PHP"),
-    ("KWD", "INR"), ("QAR", "INR"), ("OMR", "INR"), ("BHD", "INR"),
-]
+GULF = ("SAR", "AED", "KWD", "QAR", "OMR", "BHD")
+HOME = ("INR", "PKR", "BDT", "PHP", "NPR", "LKR")
+# Every Gulf currency to every home currency (36 pages).
+CONVERSIONS = [(a, b) for a in GULF for b in HOME]
 AMOUNT = 1000
 
 
@@ -817,6 +817,42 @@ def conv_path(a, b, amount=AMOUNT):
     return f"/{amount}-{a.lower()}-to-{b.lower()}.html"
 
 
+def rate_history(a, b, rates, when, days=7):
+    """Last closing rate per day from _src/data/history.json plus today's rate, newest first.
+    Returns [(date, rate)] with at most days+1 rows (today first)."""
+    path = os.path.join(ROOT, "_src", "data", "history.json")
+    by_day = {}
+    if os.path.exists(path):
+        with open(path, encoding="utf-8") as f:
+            pts = json.load(f).get("points", [])
+        for pt in pts:
+            r, at = pt.get("r") or {}, _parse_ts(pt.get("gt", ""))
+            if at and r.get(a) and r.get(b):
+                d = at.date()
+                if d not in by_day or at > by_day[d][0]:
+                    by_day[d] = (at, r[b] / r[a])
+    by_day[when.date()] = (when, cross(rates, a, b))
+    out = [(d, v[1]) for d, v in sorted(by_day.items(), reverse=True)]
+    return out[: days + 1]
+
+
+def provider_rows(a, b):
+    """Checked provider rates for this route, best first: (name, url, rate, fee, at, src, src_url)."""
+    route = cross_route = f"{a}-{b}"
+    got = checked_provider_rates().get(cross_route) or {}
+    if not got:
+        return []
+    cc = CUR[a][2]
+    names = {p["id"]: (p["name"], p.get("url", "")) for p in remit_providers().get(cc, [])}
+    rows = []
+    for pid, v in got.items():
+        if pid not in names:
+            continue
+        rows.append((names[pid][0], names[pid][1], v["rate"], v.get("fee"), v["at"], v.get("src", ""), v.get("src_url", "")))
+    rows.sort(key=lambda x: -x[2])
+    return rows
+
+
 def conversion_page(a, b, rates, when):
     r = cross(rates, a, b)
     inv = 1 / r
@@ -844,13 +880,91 @@ def conversion_page(a, b, rates, when):
     q3 = f"Where can I get the best {a} to {b} rate?"
     a3 = (f"Open our send money comparison for {actry} to {bctry}. It lists banks, exchanges and wallets "
           "with each provider's own rate once it has been checked in its app, sorted by what your family receives.")
+    # Rate over the last days (history.json + today).
+    hist = rate_history(a, b, rates, when)
+    trend_html, qa_extra = "", []
+    if len(hist) >= 3:
+        trows = []
+        for i, (d, v) in enumerate(hist):
+            prev = hist[i + 1][1] if i + 1 < len(hist) else None
+            if prev:
+                ch = (v - prev) / prev * 100
+                arrow = "▲" if ch > 0.005 else ("▼" if ch < -0.005 else "•")
+                chs = f'<span class="chg {"up" if ch > 0.005 else ("down" if ch < -0.005 else "")}">{arrow} {ch:+.2f}%</span>'
+            else:
+                chs = "–"
+            label = d.strftime("%a %-d %b") + (" (latest)" if i == 0 else "")
+            trows.append(f"<tr><td>{label}</td><td>{fmt(v, rdig)}</td><td>{fmt(AMOUNT * v)}</td><td>{chs}</td></tr>")
+        oldest_d, oldest = hist[-1]
+        hi_d, hi = max(hist, key=lambda x: x[1])
+        lo_d, lo = min(hist, key=lambda x: x[1])
+        span = (hist[0][0] - oldest_d).days
+        diff = (r - oldest) / oldest * 100
+        moved = "higher" if diff > 0 else "lower"
+        q4 = f"Is the {a} to {b} rate going up or down?"
+        a4 = (f"At the latest update 1 {a} = {fmt(r, rdig)} {b}. That is {abs(diff):.2f}% {moved} than {span} days ago "
+              f"({oldest_d.strftime('%-d %B')}: {fmt(oldest, rdig)} {b}). In this period the best rate was {fmt(hi, rdig)} {b} "
+              f"on {hi_d.strftime('%-d %B')} and the lowest was {fmt(lo, rdig)} {b} on {lo_d.strftime('%-d %B')}. "
+              "Forex markets close at the weekend, so Saturday and Sunday usually repeat Friday's rate. "
+              "Past rates do not tell you where the rate will go next.")
+        qa_extra.append((q4, a4))
+        trend_html = f"""
+    <section aria-labelledby="trendTitle">
+      <h2 id="trendTitle">{a} to {b} in the last {span} days</h2>
+      <p>{a4}</p>
+      <div class="table-scroll"><table class="summary-table trend-table">
+        <thead><tr><th scope="col">Day</th><th scope="col">1 {a} in {b}</th><th scope="col">{AMOUNT:,} {a} in {b}</th><th scope="col">Change</th></tr></thead>
+        <tbody>{"".join(trows)}</tbody>
+      </table></div>
+      <p class="disclaimer-note">Market closing rate for each day (UTC).</p>
+    </section>"""
+
+    # What your family receives with providers whose rate was checked in their app.
+    prov = provider_rows(a, b)
+    prov_html = ""
+    if prov:
+        best = prov[0]
+        prow = []
+        for name, url, pr, fee, at, src, src_url in prov[:8]:
+            feet = "not checked" if fee is None else ("free" if float(fee) == 0 else f"{fmt(float(fee))} {a}")
+            atd = _parse_ts(at)
+            prow.append(f'<tr><td>{html_escape(name)}<br><small>1 {a} = {fmt(pr, rdig)} {b}'
+                        f"{(' · ' + atd.strftime('%-d %b %H:%M UTC')) if atd else ''}</small></td>"
+                        f"<td><strong>{fmt(AMOUNT * pr, 0)}</strong></td><td>{feet}</td></tr>")
+        srcs = sorted({(s1, u1) for *_, s1, u1 in prov if s1})
+        src_txt = ", ".join(f'<a href="{u1}" rel="nofollow noopener" target="_blank">{html_escape(s1)}</a>' if u1 else html_escape(s1) for s1, u1 in srcs)
+        q5 = f"Which provider gives the most {b} for {AMOUNT:,} {a}?"
+        a5 = (f"Of the providers whose rate was checked recently, {best[0]} paid the most: {fmt(best[2], rdig)} {b} for 1 {a}, "
+              f"so {fmt(AMOUNT * best[2])} {b} for {AMOUNT:,} {a}"
+              + ("" if best[3] is None else (" with no fee" if float(best[3]) == 0 else f", with a fee of {fmt(float(best[3]))} {a}"))
+              + ". A provider with a slightly lower rate but no fee can cost you less in total. Rates change during the day, so check the app before you send.")
+        qa_extra.append((q5, a5))
+        prov_html = f"""
+    <section aria-labelledby="provTitle">
+      <h2 id="provTitle">What your family receives for {AMOUNT:,} {a}</h2>
+      <p>{a5}</p>
+      <div class="table-scroll"><table class="summary-table prov-table">
+        <thead><tr><th scope="col">Provider</th><th scope="col">Family receives ({b})</th><th scope="col">Fee</th></tr></thead>
+        <tbody>{"".join(prow)}</tbody>
+      </table></div>
+      <p class="disclaimer-note">Rates checked in each provider's app{(" (reported by " + src_txt + ")") if src_txt else ""}, at most {48} hours old. Any fee is usually added on top of the amount you send. <a href="/send-money.html#{acc}-{bcc}">See all providers</a>.</p>
+    </section>"""
+
+    all_qa = ((q1, a1), (q2, a2), (q3, a3), *qa_extra)
     faq = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
-        {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": t}} for q, t in ((q1, a1), (q2, a2), (q3, a3))]}
-    others = "".join(
-        f'<li><a href="{conv_path(x, y)}">{AMOUNT:,} {x} to {y}</a></li>' for x, y in CONVERSIONS if (x, y) != (a, b)
-    )
+        {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": t}} for q, t in all_qa]}
+    crumbs_ld = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL + "/"},
+        {"@type": "ListItem", "position": 2, "name": "Exchange rates", "item": SITE_URL + "/exchange-rate.html"},
+        {"@type": "ListItem", "position": 3, "name": f"{a} to {b}", "item": SITE_URL + conv_path(a, b)}]}
+    faq_details = "".join(f'<details><summary>{q}</summary><div class="answer"><p>{t}</p></div></details>' for q, t in all_qa)
+    related = [(a, y) for y in HOME if y != b] + [(x, b) for x in GULF if x != a]
+    others = "".join(f'<li><a href="{conv_path(x, y)}">{AMOUNT:,} {x} to {y}</a></li>' for x, y in related)
+    style = ("\n  <style>.chg.up{color:#0a7a3d}.chg.down{color:#b42318}.table-scroll{overflow-x:auto}"
+             ".prov-table small{color:var(--muted)}.prov-table td:nth-child(2){white-space:nowrap}</style>")
     meta = {"title": title, "description": desc, "path": conv_path(a, b), "active": "exchange", "en_only": True,
-            "style": f'<script type="application/ld+json">{json.dumps(faq, ensure_ascii=False)}</script>'}
+            "style": (f'<script type="application/ld+json">{json.dumps(faq, ensure_ascii=False)}</script>'
+                      f'\n  <script type="application/ld+json">{json.dumps(crumbs_ld, ensure_ascii=False)}</script>' + style)}
     body = f"""
   <main id="main" tabindex="-1">
    <div class="wrap conv-page" data-updated="{iso}">
@@ -872,6 +986,7 @@ def conversion_page(a, b, rates, when):
         <a class="btn" href="/exchange-rate.html">Live converter</a>
       </div>
     </section>
+{prov_html}{trend_html}
     <section aria-labelledby="backTitle">
       <h2 id="backTitle">{b} to {a}</h2>
       <table class="summary-table">
@@ -881,12 +996,10 @@ def conversion_page(a, b, rates, when):
     </section>
     <section class="faq" id="faq" aria-labelledby="faqTitle">
       <h2 id="faqTitle">Frequently asked questions</h2>
-      <details><summary>{q1}</summary><div class="answer"><p>{a1}</p></div></details>
-      <details><summary>{q2}</summary><div class="answer"><p>{a2}</p></div></details>
-      <details><summary>{q3}</summary><div class="answer"><p>{a3}</p></div></details>
+      {faq_details}
     </section>
     <section aria-labelledby="moreTitle">
-      <h2 id="moreTitle">Other popular conversions</h2>
+      <h2 id="moreTitle">Related conversions</h2>
       <ul class="conv-links">{others}</ul>
     </section>
     <p class="disclaimer-note">Market rate from {_rates_file().get("source", "open.er-api.com")}, for information only. It is not an offer from any bank or exchange company.</p>
