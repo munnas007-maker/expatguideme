@@ -626,7 +626,7 @@ def build():
         check=True,
         env=dict(os.environ, TZ="UTC"),  # baked timestamps in UTC; visitors' browsers show their own time zone
     )
-    sitemap(public, conversion_pages())
+    sitemap(public, conversion_pages() + eos_country_pages())
     provider_list()
     latest_json()
     service_worker()
@@ -1019,6 +1019,196 @@ def conversion_pages():
             f.write(static_forms(html))
         out.append({"path": meta["path"], "lastmod": when.strftime("%Y-%m-%d")})
     print("built", len(out), "conversion pages")
+    return out
+
+
+# ---------------------------------------------------------------------------
+# End-of-service country pages: /end-of-service-saudi-arabia.html and friends (English only).
+# The rules match the calculator on /end-of-service.html; the button opens it for that country.
+# ---------------------------------------------------------------------------
+EOS = {
+    "sa": dict(slug="saudi-arabia", name="Saudi Arabia", adj="Saudi", cur="SAR", wage=5000,
+               law="Articles 84 and 85 of the Saudi Labor Law",
+               basis="your last full monthly wage, including fixed allowances such as housing and transport",
+               rule="Half a month's wage for each of the first five years, then one full month's wage for each year after that. Part years count in proportion.",
+               resign=[("Less than 2 years", "Nothing"), ("2 to less than 5 years", "One third"), ("5 to less than 10 years", "Two thirds"), ("10 years or more", "The full award")],
+               resign_note="If your employer ends the contract or the contract simply expires, you get the full award. If you resign, Article 85 reduces it as shown.",
+               pay="Within one week after the job ends, or within two weeks if you resigned.",
+               official="https://www.hrsd.gov.sa/en/knowledge-centre/articles/317", official_name="Ministry of Human Resources (HRSD)",
+               extra="The Ministry of Justice also has an official labour calculator, and you can check your contract and wage in Qiwa."),
+    "ae": dict(slug="uae", name="the UAE", adj="UAE", cur="AED", wage=4000,
+               law="Article 51 of the UAE Labour Law",
+               basis="your basic salary only (not housing or other allowances)",
+               rule="After at least one year of service: 21 days' basic salary for each of the first five years, then 30 days' basic salary for each year after that. Part years count in proportion. The total cannot be more than two years' wage.",
+               resign=None, resign_note="Resigning does not reduce the gratuity in the UAE, as long as you have at least one year of service.",
+               pay="Within 14 days after the contract ends.",
+               official="https://www.mohre.gov.ae", official_name="Ministry of Human Resources and Emiratisation (MOHRE)", extra=""),
+    "kw": dict(slug="kuwait", name="Kuwait", adj="Kuwait", cur="KWD", wage=400,
+               law="Articles 51 and 53 of Kuwait Labour Law No. 6 of 2010",
+               basis="your last full wage",
+               rule="For monthly-paid workers: 15 days' wage for each of the first five years, then one month's wage for each year after that, up to 18 months' wage in total.",
+               resign=[("Less than 3 years", "Nothing"), ("3 to less than 5 years", "Half"), ("5 to less than 10 years", "Two thirds"), ("10 years or more", "The full amount")],
+               resign_note="If your employer ends the contract, you get the full amount. If you resign, Article 53 reduces it as shown.",
+               pay="With your final settlement when the job ends.",
+               official="https://www.manpower.gov.kw", official_name="Public Authority for Manpower (PAM)", extra=""),
+    "qa": dict(slug="qatar", name="Qatar", adj="Qatar", cur="QAR", wage=3000,
+               law="Article 54 of the Qatar Labour Law",
+               basis="your basic wage",
+               rule="After at least one year of service: at least three weeks' basic wage for each year, with part years paid in proportion. Your contract may give you more. There is no upper limit.",
+               resign=None, resign_note="Resigning does not reduce the gratuity in Qatar.",
+               pay="By the next working day after the job ends, with your final settlement.",
+               official="https://www.mol.gov.qa", official_name="Ministry of Labour", extra=""),
+    "om": dict(slug="oman", name="Oman", adj="Oman", cur="OMR", wage=400,
+               law="Article 61 of the Oman Labour Law (2023)",
+               basis="your basic wage",
+               rule="At least one month's basic wage for each year of service. Service before 31 July 2023 is counted under the old law: 15 days' wage for each of the first three years, then one month for each year after. A savings fund for expats will replace gratuity by 19 July 2027 at the latest.",
+               resign=None, resign_note="Resigning does not reduce the gratuity in Oman.",
+               pay="With your final settlement when the job ends.",
+               official="https://www.mol.gov.om", official_name="Ministry of Labour", extra=""),
+    "bh": dict(slug="bahrain", name="Bahrain", adj="Bahrain", cur="BHD", wage=400,
+               law="Article 116 of the Bahrain Labour Law",
+               basis="your wage",
+               rule="After at least one year of service: 15 days' wage for each of the first three years, then one month's wage for each year after that. Since 1 March 2024, the part earned from that date is paid to you by the Social Insurance Organization (SIO) instead of your employer.",
+               resign=None, resign_note="Resigning does not reduce the gratuity in Bahrain.",
+               pay="Your employer pays the part earned before 1 March 2024; you claim the part earned after that from the SIO.",
+               official="https://www.sio.gov.bh", official_name="Social Insurance Organization (SIO)", extra=""),
+}
+
+
+def eos_amount(cc, w, y, resigned=False):
+    """Award for whole years y on monthly wage w, using the same rules as the calculator."""
+    if cc == "sa":
+        full = 0.5 * w * min(y, 5) + w * max(y - 5, 0)
+        if resigned:
+            full *= 0 if y < 2 else (1 / 3 if y < 5 else (2 / 3 if y < 10 else 1))
+        return full
+    if cc == "ae":
+        return 0 if y < 1 else min(21 / 30 * w * min(y, 5) + w * max(y - 5, 0), 24 * w)
+    if cc == "kw":
+        full = min(0.5 * w * min(y, 5) + w * max(y - 5, 0), 18 * w)
+        if resigned:
+            full *= 0 if y < 3 else (0.5 if y < 5 else (2 / 3 if y < 10 else 1))
+        return full
+    if cc == "qa":
+        return 0 if y < 1 else 21 / 30 * w * y
+    if cc == "om":
+        return w * y  # service from 31 July 2023 onwards
+    if cc == "bh":
+        return 0 if y < 1 else 0.5 * w * min(y, 3) + w * max(y - 3, 0)
+    return 0
+
+
+def eos_country_page(cc, year):
+    c = EOS[cc]
+    path = f"/end-of-service-{c['slug']}.html"
+    nm, cur, w = c["name"], c["cur"], c["wage"]
+    disp = nm[0].upper() + nm[1:]
+    title = f"End of Service Calculator {disp.replace('The UAE', 'UAE')} {year}: How Much Gratuity You Get | ExpatGuideME"
+    desc = (f"Free end-of-service (gratuity) calculator and rules for {nm} in {year}: {c['rule'].split('.')[0].lower()}. "
+            "Worked examples, resignation rules and when you must be paid.")[:300]
+    has_res = bool(c["resign"])
+    years = (3, 7, 12)
+    ex_rows = []
+    for y in years:
+        cells = f"<td>{y} years</td><td>{fmt(eos_amount(cc, w, y))} {cur}</td>"
+        if has_res:
+            cells += f"<td>{fmt(eos_amount(cc, w, y, True))} {cur}</td>"
+        ex_rows.append(f"<tr>{cells}</tr>")
+    ex_head = "<th scope=\"col\">Service</th><th scope=\"col\">" + ("Contract ended by employer" if has_res else "Gratuity") + "</th>" + ("<th scope=\"col\">You resigned</th>" if has_res else "")
+    y7 = eos_amount(cc, w, 7)
+    if cc == "sa":
+        walk = (f"For 7 years on a wage of {fmt(w, 0)} {cur}: the first 5 years give 5 × half a month = {fmt(2.5 * w, 0)} {cur}, "
+                f"and the next 2 years give 2 × one month = {fmt(2 * w, 0)} {cur}. Total {fmt(y7, 0)} {cur}. "
+                f"If you resigned, you would get two thirds of that: {fmt(eos_amount(cc, w, 7, True))} {cur}.")
+    elif cc == "ae":
+        walk = (f"For 7 years on a basic salary of {fmt(w, 0)} {cur}: the first 5 years give 5 × 21 days = 105 days, and the next 2 years give 2 × 30 days = 60 days. "
+                f"165 days × ({fmt(w, 0)} ÷ 30) = {fmt(y7)} {cur}.")
+    elif cc == "kw":
+        walk = (f"For 7 years on a wage of {fmt(w, 0)} {cur}: 5 × 15 days = 2.5 months, plus 2 × one month = 2 months. "
+                f"4.5 months × {fmt(w, 0)} = {fmt(y7)} {cur}. If you resigned, you would get two thirds: {fmt(eos_amount(cc, w, 7, True))} {cur}.")
+    elif cc == "qa":
+        walk = f"For 7 years on a basic wage of {fmt(w, 0)} {cur}: 7 × 21 days = 147 days × ({fmt(w, 0)} ÷ 30) = {fmt(y7)} {cur}, unless your contract gives more."
+    elif cc == "om":
+        walk = (f"For 7 years, all after 31 July 2023, on a basic wage of {fmt(w, 0)} {cur}: 7 × one month = {fmt(y7)} {cur}. "
+                "If part of your service is before 31 July 2023, that part uses the old rate, so use the calculator.")
+    else:
+        walk = (f"For 7 years on a wage of {fmt(w, 0)} {cur}: 3 × 15 days = 1.5 months, plus 4 × one month = 4 months. "
+                f"5.5 months × {fmt(w, 0)} = {fmt(y7)} {cur}. Part of it may be paid by the SIO.")
+    res_html = ""
+    if has_res:
+        rr = "".join(f"<tr><td>{a}</td><td>{b}</td></tr>" for a, b in c["resign"])
+        res_html = f"""
+    <section aria-labelledby="resT">
+      <h2 id="resT">What if I resign?</h2>
+      <p>{c['resign_note']}</p>
+      <div class="table-scroll"><table class="summary-table"><thead><tr><th scope="col">Years of service when you resign</th><th scope="col">You get</th></tr></thead><tbody>{rr}</tbody></table></div>
+    </section>"""
+    qa = [
+        (f"How is end of service calculated in {nm}?", f"Under {c['law']}: {c['rule']} It is worked out on {c['basis']}."),
+        (f"Do I lose my gratuity if I resign in {nm}?", c["resign_note"] + (" " + "; ".join(f"{a}: {b.lower()}" for a, b in c["resign"]) + "." if has_res else "")),
+        (f"How much gratuity for 7 years in {nm}?", walk),
+        (f"When must my employer pay end of service in {nm}?", c["pay"]),
+    ]
+    faq = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+        {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in qa]}
+    crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL + "/"},
+        {"@type": "ListItem", "position": 2, "name": "End of service", "item": SITE_URL + "/end-of-service.html"},
+        {"@type": "ListItem", "position": 3, "name": disp, "item": SITE_URL + path}]}
+    others = "".join(f'<li><a href="/end-of-service-{v["slug"]}.html">End of service in {v["name"]}</a></li>' for k, v in EOS.items() if k != cc)
+    meta = {"title": title, "description": desc, "path": path, "active": "eos", "en_only": True,
+            "style": (f'<script type="application/ld+json">{json.dumps(faq, ensure_ascii=False)}</script>'
+                      f'\n  <script type="application/ld+json">{json.dumps(crumbs, ensure_ascii=False)}</script>'
+                      "\n  <style>.table-scroll{overflow-x:auto}.eos-cta{margin:18px 0}</style>")}
+    faq_html = "".join(f'<details><summary>{q}</summary><div class="answer"><p>{a}</p></div></details>' for q, a in qa)
+    body = f"""
+  <main id="main" tabindex="-1">
+   <div class="wrap conv-page" data-updated="{datetime.date.today().isoformat()}">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/end-of-service.html">End of service</a> › {disp}</nav>
+    <h1>End of service calculator for {nm} ({year})</h1>
+    <p class="lead">How much gratuity (end-of-service award) you get in {nm}, with worked examples and the official rules.</p>
+    <section class="answer-box" aria-labelledby="ruleT">
+      <h2 id="ruleT">The rule in one sentence</h2>
+      <p><strong>{c['rule']}</strong></p>
+      <p>It is worked out on {c['basis']}. Source: {c['law']}.</p>
+      <div class="cta-row eos-cta"><a class="btn btn-primary" href="/end-of-service.html?cc={cc}">Calculate my end of service for {nm}</a></div>
+    </section>
+    <section aria-labelledby="exT">
+      <h2 id="exT">Examples on a monthly wage of {fmt(w, 0)} {cur}</h2>
+      <div class="table-scroll"><table class="summary-table"><thead><tr>{ex_head}</tr></thead><tbody>{"".join(ex_rows)}</tbody></table></div>
+      <p>{walk}</p>
+    </section>{res_html}
+    <section aria-labelledby="payT">
+      <h2 id="payT">When you must be paid</h2>
+      <p>{c['pay']} If your employer does not pay, you can complain to the {c['official_name']}. {c['extra']}</p>
+      <p><a href="{c['official']}" rel="noopener" target="_blank">Official information from the {c['official_name']}</a></p>
+    </section>
+    <section class="faq" id="faq" aria-labelledby="faqTitle">
+      <h2 id="faqTitle">Frequently asked questions</h2>
+      {faq_html}
+    </section>
+    <section aria-labelledby="moreTitle">
+      <h2 id="moreTitle">Other Gulf countries</h2>
+      <ul class="conv-links">{others}</ul>
+      <p><a href="/legal-consult.html">Not sure your employer calculated it right? Ask an expert</a> · <a href="/vacation-calculator.html">Unused leave calculator</a></p>
+    </section>
+    <p class="disclaimer-note">An estimate for information only, not legal advice. Your contract, unpaid leave and court decisions can change the amount.</p>
+   </div>
+  </main>"""
+    return meta, body
+
+
+def eos_country_pages():
+    year = datetime.datetime.now(datetime.timezone.utc).year
+    out = []
+    for cc in EOS:
+        meta, body = eos_country_page(cc, year)
+        html = (head(meta) + "\n" + header(meta["active"]) + "\n" + body + "\n" + footer(True)
+                + '\n  <script src="/assets/site.js"></script>\n</body>\n</html>\n')
+        with open(os.path.join(ROOT, "site", meta["path"].lstrip("/")), "w", encoding="utf-8") as f:
+            f.write(static_forms(html))
+        out.append({"path": meta["path"], "lastmod": datetime.date.today().isoformat()})
+    print("built", len(out), "end-of-service country pages")
     return out
 
 

@@ -396,6 +396,8 @@
   function storeSet(key, val) { try { localStorage.setItem(key, val); } catch (e) {} }
   function prefs() { try { return JSON.parse(storeGet(PREF_KEY)) || {}; } catch (e) { return {}; } }
   function savePref(k, v) { var p = prefs(); p[k] = v; storeSet(PREF_KEY, JSON.stringify(p)); }
+  // A link like /end-of-service.html?cc=ae opens the page for that country (runs before page scripts read it).
+  try { (function () { var q = (new URLSearchParams(location.search).get("cc") || "").toLowerCase(); if (/^(sa|ae|qa|kw|om|bh)$/.test(q)) savePref("country", q); })(); } catch (e) {}
   function reducedMotion() {
     return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   }
