@@ -1,6 +1,6 @@
 {
  "_help": "SIM and internet offers shown on sim-internet.html. Updated weekly by a scheduled Claude task that reads each company's official website. Every plan must come from the company's own site: name, price (number, as shown by the company), currency, data, calls, validity, kind (prepaid|postpaid|data|home|esim), url (the official page it was read from), note (e.g. 'incl. VAT'). checked_at: UTC time the company's site was last checked. Never estimate a price. affiliate_url: only a real referral link the Manager has received from that company's programme.",
- "updated_at": "2026-11-22T00:21:52Z",
+ "updated_at": "2026-11-22T13:40:27Z",
  "countries": {
   "sa": [
    {
@@ -1183,7 +1183,7 @@
     "kinds": [
      "prepaid"
     ],
-    "checked_at": "2026-11-22T00:12:20Z",
+    "checked_at": "2026-11-22T13:40:27Z",
     "offer": null,
     "affiliate_url": null,
     "plans": [
