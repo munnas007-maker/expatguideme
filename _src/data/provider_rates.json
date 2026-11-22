@@ -6,14 +6,14 @@
       "d360": {
         "rate": 24.59,
         "fee": 0.0,
-        "checked_at": "2026-11-22T00:38:44Z",
+        "checked_at": "2026-11-22T00:41:03Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
       "enbdksa": {
         "rate": 24.521,
         "fee": null,
-        "checked_at": "2026-11-21T06:38:44Z",
+        "checked_at": "2026-11-21T06:41:03Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -69,7 +69,7 @@
       "alinmapay": {
         "rate": 24.58,
         "fee": null,
-        "checked_at": "2026-11-21T06:38:44Z",
+        "checked_at": "2026-11-21T06:41:03Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -93,6 +93,36 @@
         "checked_at": "2026-11-21T10:57:29Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
+      }
+    },
+    "AED-INR": {
+      "lulu": {
+        "rate": 25.25,
+        "fee": null,
+        "checked_at": "2026-11-22T15:41:03Z",
+        "src": "aedtoinr.online",
+        "src_url": "https://aedtoinr.online/"
+      },
+      "alansari": {
+        "rate": 25.13,
+        "fee": null,
+        "checked_at": "2026-11-22T15:41:03Z",
+        "src": "aedtoinr.online",
+        "src_url": "https://aedtoinr.online/"
+      },
+      "orient": {
+        "rate": 25.09,
+        "fee": null,
+        "checked_at": "2026-11-22T16:41:03Z",
+        "src": "aedtoinr.online",
+        "src_url": "https://aedtoinr.online/"
+      },
+      "alfardan": {
+        "rate": 25.0,
+        "fee": null,
+        "checked_at": "2026-11-22T16:41:03Z",
+        "src": "aedtoinr.online",
+        "src_url": "https://aedtoinr.online/"
       }
     }
   }
