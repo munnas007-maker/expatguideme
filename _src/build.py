@@ -118,7 +118,7 @@ def head(meta):
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{meta["title"]}</title>
-  <meta name="description" content="{meta["description"]}">{robots}{ads}
+  <meta name="description" content="{meta["description"]}">{robots}{ads}{tracking_meta(meta)}
   <link rel="canonical" href="{canonical}">{alternates(meta)}
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="ExpatGuideME">
@@ -538,10 +538,35 @@ ESSENTIALS = ""
 def load_site_config():
     with open(os.path.join(ROOT, "_src", "data", "site.json"), encoding="utf-8") as f:
         cfg = json.load(f)
-    return {"form_endpoint": _url(cfg.get("form_endpoint"), "form_endpoint"), "rates_api": _url(cfg.get("rates_api"), "rates_api")}
+    ga4 = (cfg.get("ga4_id") or "").strip()
+    if ga4 and not GA4_RE.match(ga4):
+        print("WARNING: ga4_id ignored (must look like G-XXXXXXXXXX)")
+        ga4 = ""
+    gsc = (cfg.get("gsc_verification") or "").strip()
+    if gsc and not GSC_RE.match(gsc):
+        print("WARNING: gsc_verification ignored (paste only the content=\"...\" code)")
+        gsc = ""
+    return {"form_endpoint": _url(cfg.get("form_endpoint"), "form_endpoint"), "rates_api": _url(cfg.get("rates_api"), "rates_api"),
+            "ga4_id": ga4, "gsc_verification": gsc}
 
 
-SITE_CFG = {"form_endpoint": "", "rates_api": ""}
+GA4_RE = re.compile(r"^G-[A-Z0-9]{4,14}$")
+GSC_RE = re.compile(r"^[A-Za-z0-9_-]{20,80}$")
+SITE_CFG = {"form_endpoint": "", "rates_api": "", "ga4_id": "", "gsc_verification": ""}
+
+
+def tracking_meta(meta):
+    """Google Search Console verification tag and Google Analytics 4 tag, from site.json."""
+    out = ""
+    gsc = SITE_CFG.get("gsc_verification")
+    if gsc and meta["path"] == "/":
+        out += f'\n  <meta name="google-site-verification" content="{gsc}">'
+    ga4 = SITE_CFG.get("ga4_id")
+    if ga4 and not meta.get("noindex"):
+        out += (f'\n  <script async src="https://www.googletagmanager.com/gtag/js?id={ga4}"></script>'
+                f"\n  <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}"
+                f"gtag('js',new Date());gtag('config','{ga4}');</script>")
+    return out
 
 
 def build():

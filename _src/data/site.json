@@ -1,6 +1,8 @@
 {
-  "_help": "form_endpoint: where all site forms are sent (FormSubmit AJAX endpoint). After you confirm FormSubmit's activation email, you may replace the email address with the random string FormSubmit sends you. rates_api: full URL of a community-rates API (for example a Cloudflare Worker); leave empty to switch community rate sharing off on send-money.html. provider_rates_csv: link of a Google Sheet published as CSV (File > Share > Publish to web > CSV) with columns from, to, provider, rate, fee, checked_at; the robot reads it every 2 hours. Leave empty to use provider_rates.json only.",
+  "_help": "form_endpoint: where all site forms are sent (FormSubmit AJAX endpoint). After you confirm FormSubmit's activation email, you may replace the email address with the random string FormSubmit sends you. rates_api: full URL of a community-rates API (for example a Cloudflare Worker); leave empty to switch community rate sharing off on send-money.html. provider_rates_csv: link of a Google Sheet published as CSV (File > Share > Publish to web > CSV) with columns from, to, provider, rate, fee, checked_at; the robot reads it every 2 hours. Leave empty to use provider_rates.json only. ga4_id: Google Analytics 4 Measurement ID (G-XXXXXXXXXX); leave empty for no analytics. gsc_verification: the code from Google Search Console's 'HTML tag' verification method (only the content value); added to the home page.",
   "form_endpoint": "https://formsubmit.co/ajax/support@expatguideme.com",
   "rates_api": "",
-  "provider_rates_csv": ""
+  "provider_rates_csv": "",
+  "ga4_id": "",
+  "gsc_verification": ""
 }
