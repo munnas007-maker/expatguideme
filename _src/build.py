@@ -934,7 +934,7 @@ def conversion_page(a, b, rates, when):
         srcs = sorted({(s1, u1) for *_, s1, u1 in prov if s1})
         src_txt = ", ".join(f'<a href="{u1}" rel="nofollow noopener" target="_blank">{html_escape(s1)}</a>' if u1 else html_escape(s1) for s1, u1 in srcs)
         q5 = f"Which provider gives the most {b} for {AMOUNT:,} {a}?"
-        a5 = (f"Of the providers whose rate was checked recently, {best[0]} paid the most: {fmt(best[2], rdig)} {b} for 1 {a}, "
+        a5 = (f"Of the providers with a recent rate, {best[0]} paid the most: {fmt(best[2], rdig)} {b} for 1 {a}, "
               f"so {fmt(AMOUNT * best[2])} {b} for {AMOUNT:,} {a}"
               + ("" if best[3] is None else (" with no fee" if float(best[3]) == 0 else f", with a fee of {fmt(float(best[3]))} {a}"))
               + ". A provider with a slightly lower rate but no fee can cost you less in total. Rates change during the day, so check the app before you send.")
@@ -947,7 +947,7 @@ def conversion_page(a, b, rates, when):
         <thead><tr><th scope="col">Provider</th><th scope="col">Family receives ({b})</th><th scope="col">Fee</th></tr></thead>
         <tbody>{"".join(prow)}</tbody>
       </table></div>
-      <p class="disclaimer-note">Rates checked in each provider's app{(" (reported by " + src_txt + ")") if src_txt else ""}, at most {48} hours old. Any fee is usually added on top of the amount you send. <a href="/send-money.html#{acc}-{bcc}">See all providers</a>.</p>
+      <p class="disclaimer-note">Provider rates{(" as reported by " + src_txt) if src_txt else " checked in each provider's app"}, with the time each was last updated; older rates are removed automatically. Any fee is usually added on top of the amount you send. <a href="/send-money.html#{acc}-{bcc}">See all providers</a>.</p>
     </section>"""
 
     all_qa = ((q1, a1), (q2, a2), (q3, a3), *qa_extra)

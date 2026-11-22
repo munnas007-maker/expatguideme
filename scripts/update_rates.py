@@ -215,6 +215,54 @@ def fetch_iisa(now):
     return out
 
 
+# ---- Rates reported on aedtoinr.online (AED -> INR, UAE exchange houses) ----
+# Each house rate shows its own "updated ... ago" time; houses marked stale or older
+# than AEDTOINR_MAX_AGE are skipped. Credited to the site on our page.
+AEDTOINR_URL = "https://aedtoinr.online/"
+AEDTOINR_SRC = "aedtoinr.online"
+AEDTOINR_MAX_AGE = datetime.timedelta(hours=3)
+AEDTOINR_IDS = {  # their house name -> our provider id (houses we do not list are skipped)
+    "al ansari exchange": "alansari", "lulu exchange": "lulu", "al fardan exchange": "alfardan",
+    "gcc exchange": "gccexchange", "al rostamani international exchange": "alrostamani",
+    "joyalukkas exchange": "joyalukkas", "orient exchange": "orient", "sharaf exchange": "sharaf",
+    "wall street exchange": "wallstreet",
+}
+
+
+def parse_aedtoinr(page, now):
+    out = []
+    for row in re.findall(r"<tr[^>]*>(.*?)</tr>", page, re.S):
+        nm = re.search(r'<td class="name">([^<]*)</td>', row)
+        rt = re.search(r'<td class="num">\s*(?:₹|&#8377;)?\s*([\d.,]+)\s*</td>', row)
+        fr = re.search(r'<td class="fresh">([^<]*)</td>', row)
+        if not (nm and rt and fr):
+            continue
+        pid = AEDTOINR_IDS.get(re.sub(r"\s+", " ", nm.group(1)).strip().lower())
+        upd = fr.group(1).strip().lower()
+        if not pid or "stale" in upd:
+            continue
+        age = iisa_age(upd.split("·")[0].strip())
+        if age is None or age > AEDTOINR_MAX_AGE:
+            continue
+        out.append({"from": "AED", "to": "INR", "provider": pid, "rate": rt.group(1).replace(",", ""), "fee": "",
+                    "checked_at": (now - age).strftime("%Y-%m-%dT%H:%M:%SZ"), "src": AEDTOINR_SRC, "src_url": AEDTOINR_URL})
+    return out
+
+
+def fetch_aedtoinr(now):
+    """AED->INR exchange house rates from aedtoinr.online as provider-rate entries."""
+    try:
+        req = urllib.request.Request(AEDTOINR_URL, headers={"User-Agent": "Mozilla/5.0 (compatible; ExpatGuideME-rates; +https://expatguideme.com)"})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            page = r.read().decode("utf-8", "replace")
+    except Exception as e:
+        print("aedtoinr.online not reachable:", e)
+        return []
+    out = parse_aedtoinr(page, now)
+    print("aedtoinr.online rates read:", len(out))
+    return out
+
+
 def update_provider_rates(usd_rates):
     now = datetime.datetime.now(datetime.timezone.utc)
     current = {"rates": {}}
@@ -237,7 +285,7 @@ def update_provider_rates(usd_rates):
             print("provider sheet rows:", len(rows))
         except Exception as e:
             print("provider sheet not reachable, keeping the previous checked rates:", e)
-    entries = entries + fetch_iisa(now)
+    entries = entries + fetch_iisa(now) + fetch_aedtoinr(now)
     current["rates"] = clean_provider_rates(entries, usd_rates, now)
     current["max_age_hours"] = MAX_AGE_HOURS
     with open(PROVIDER_OUT, "w", encoding="utf-8") as f:
