@@ -6,14 +6,14 @@
       "d360": {
         "rate": 24.59,
         "fee": 0.0,
-        "checked_at": "2026-11-23T01:15:42Z",
+        "checked_at": "2026-11-23T02:55:25Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
       "snbquickpay": {
         "rate": 24.4,
         "fee": 5.0,
-        "checked_at": "2026-11-22T20:15:42Z",
+        "checked_at": "2026-11-22T21:55:25Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -27,28 +27,28 @@
       "enjaz": {
         "rate": 24.63,
         "fee": 14.0,
-        "checked_at": "2026-11-22T23:15:42Z",
+        "checked_at": "2026-11-23T00:55:25Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
       "alinmapay": {
         "rate": 24.51,
         "fee": null,
-        "checked_at": "2026-11-22T19:15:42Z",
+        "checked_at": "2026-11-22T20:55:25Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
       "alinma": {
         "rate": 24.51,
         "fee": 0.0,
-        "checked_at": "2026-11-22T19:15:42Z",
+        "checked_at": "2026-11-22T20:55:25Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
       "wu": {
         "rate": 24.34,
         "fee": 16.1,
-        "checked_at": "2026-11-22T22:15:42Z",
+        "checked_at": "2026-11-22T23:55:25Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       }
@@ -57,28 +57,28 @@
       "lulu": {
         "rate": 25.21,
         "fee": null,
-        "checked_at": "2026-11-23T14:10:07Z",
+        "checked_at": "2026-11-23T16:10:25Z",
         "src": "aedtoinr.online",
         "src_url": "https://aedtoinr.online/"
       },
       "alansari": {
         "rate": 25.22,
         "fee": null,
-        "checked_at": "2026-11-23T14:00:07Z",
+        "checked_at": "2026-11-23T16:00:25Z",
         "src": "aedtoinr.online",
         "src_url": "https://aedtoinr.online/"
       },
       "orient": {
         "rate": 25.18,
         "fee": null,
-        "checked_at": "2026-11-23T14:25:07Z",
+        "checked_at": "2026-11-23T16:25:25Z",
         "src": "aedtoinr.online",
         "src_url": "https://aedtoinr.online/"
       },
       "alfardan": {
         "rate": 25.0,
         "fee": null,
-        "checked_at": "2026-11-23T14:15:07Z",
+        "checked_at": "2026-11-23T16:15:25Z",
         "src": "aedtoinr.online",
         "src_url": "https://aedtoinr.online/"
       }
