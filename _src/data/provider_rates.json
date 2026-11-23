@@ -6,21 +6,21 @@
       "d360": {
         "rate": 24.59,
         "fee": 0.0,
-        "checked_at": "2026-11-22T04:38:17Z",
+        "checked_at": "2026-11-22T06:53:27Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
       "enbdksa": {
         "rate": 24.521,
         "fee": null,
-        "checked_at": "2026-11-21T10:38:17Z",
+        "checked_at": "2026-11-21T12:53:27Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
       "snbquickpay": {
         "rate": 24.55,
         "fee": 0.0,
-        "checked_at": "2026-11-21T10:57:29Z",
+        "checked_at": "2026-11-21T12:53:27Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -34,7 +34,7 @@
       "mobilypay": {
         "rate": 24.4896,
         "fee": 9.0,
-        "checked_at": "2026-11-21T12:42:06Z",
+        "checked_at": "2026-11-21T12:53:27Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -69,7 +69,7 @@
       "alinmapay": {
         "rate": 24.58,
         "fee": null,
-        "checked_at": "2026-11-21T10:38:17Z",
+        "checked_at": "2026-11-21T12:53:27Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -90,7 +90,7 @@
       "tahweel": {
         "rate": 24.24,
         "fee": 13.0,
-        "checked_at": "2026-11-21T10:57:29Z",
+        "checked_at": "2026-11-21T12:53:27Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       }
