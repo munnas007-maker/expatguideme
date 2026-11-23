@@ -99,28 +99,28 @@
       "lulu": {
         "rate": 25.21,
         "fee": null,
-        "checked_at": "2026-11-23T10:10:06Z",
+        "checked_at": "2026-11-23T12:10:32Z",
         "src": "aedtoinr.online",
         "src_url": "https://aedtoinr.online/"
       },
       "alansari": {
         "rate": 25.22,
         "fee": null,
-        "checked_at": "2026-11-23T10:00:06Z",
+        "checked_at": "2026-11-23T12:04:32Z",
         "src": "aedtoinr.online",
         "src_url": "https://aedtoinr.online/"
       },
       "orient": {
         "rate": 25.18,
         "fee": null,
-        "checked_at": "2026-11-23T10:25:06Z",
+        "checked_at": "2026-11-23T12:24:32Z",
         "src": "aedtoinr.online",
         "src_url": "https://aedtoinr.online/"
       },
       "alfardan": {
         "rate": 25.0,
         "fee": null,
-        "checked_at": "2026-11-23T10:15:06Z",
+        "checked_at": "2026-11-23T12:14:32Z",
         "src": "aedtoinr.online",
         "src_url": "https://aedtoinr.online/"
       }
