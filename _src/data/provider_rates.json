@@ -10,13 +10,6 @@
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
-      "enbdksa": {
-        "rate": 24.521,
-        "fee": null,
-        "checked_at": "2026-11-21T14:52:11Z",
-        "src": "indianinsaudiarabia.com",
-        "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
-      },
       "snbquickpay": {
         "rate": 24.4,
         "fee": 5.0,
@@ -31,31 +24,10 @@
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
-      "barq": {
-        "rate": 24.47,
-        "fee": 0.0,
-        "checked_at": "2026-11-21T14:52:11Z",
-        "src": "indianinsaudiarabia.com",
-        "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
-      },
-      "tiqmo": {
-        "rate": 24.51,
-        "fee": 0.0,
-        "checked_at": "2026-11-21T14:52:11Z",
-        "src": "indianinsaudiarabia.com",
-        "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
-      },
       "enjaz": {
         "rate": 24.63,
         "fee": 14.0,
         "checked_at": "2026-11-22T23:15:42Z",
-        "src": "indianinsaudiarabia.com",
-        "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
-      },
-      "fawri": {
-        "rate": 24.591,
-        "fee": 7.0,
-        "checked_at": "2026-11-21T14:52:11Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -73,20 +45,6 @@
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
-      "friendipay": {
-        "rate": 24.464,
-        "fee": 0.0,
-        "checked_at": "2026-11-21T14:52:11Z",
-        "src": "indianinsaudiarabia.com",
-        "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
-      },
-      "tahweel": {
-        "rate": 24.24,
-        "fee": 13.0,
-        "checked_at": "2026-11-21T14:52:11Z",
-        "src": "indianinsaudiarabia.com",
-        "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
-      },
       "wu": {
         "rate": 24.34,
         "fee": 16.1,
@@ -99,28 +57,28 @@
       "lulu": {
         "rate": 25.21,
         "fee": null,
-        "checked_at": "2026-11-23T12:10:32Z",
+        "checked_at": "2026-11-23T14:10:07Z",
         "src": "aedtoinr.online",
         "src_url": "https://aedtoinr.online/"
       },
       "alansari": {
         "rate": 25.22,
         "fee": null,
-        "checked_at": "2026-11-23T12:04:32Z",
+        "checked_at": "2026-11-23T14:00:07Z",
         "src": "aedtoinr.online",
         "src_url": "https://aedtoinr.online/"
       },
       "orient": {
         "rate": 25.18,
         "fee": null,
-        "checked_at": "2026-11-23T12:24:32Z",
+        "checked_at": "2026-11-23T14:25:07Z",
         "src": "aedtoinr.online",
         "src_url": "https://aedtoinr.online/"
       },
       "alfardan": {
         "rate": 25.0,
         "fee": null,
-        "checked_at": "2026-11-23T12:14:32Z",
+        "checked_at": "2026-11-23T14:15:07Z",
         "src": "aedtoinr.online",
         "src_url": "https://aedtoinr.online/"
       }
