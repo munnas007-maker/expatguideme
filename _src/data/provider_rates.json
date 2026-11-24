@@ -6,14 +6,14 @@
       "d360": {
         "rate": 24.58,
         "fee": 0.0,
-        "checked_at": "2026-11-23T21:57:14Z",
+        "checked_at": "2026-11-24T12:58:18Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
       "snbquickpay": {
         "rate": 24.61,
         "fee": 0.0,
-        "checked_at": "2026-11-23T19:57:14Z",
+        "checked_at": "2026-11-24T07:58:18Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -25,9 +25,9 @@
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
       "enjaz": {
-        "rate": 24.6357,
+        "rate": 24.631,
         "fee": 14.0,
-        "checked_at": "2026-11-23T20:04:08Z",
+        "checked_at": "2026-11-24T12:58:18Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -62,14 +62,7 @@
       "tiqmo": {
         "rate": 24.549,
         "fee": 0.0,
-        "checked_at": "2026-11-23T21:57:14Z",
-        "src": "indianinsaudiarabia.com",
-        "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
-      },
-      "barq": {
-        "rate": 24.47,
-        "fee": 0.0,
-        "checked_at": "2026-11-22T15:04:08Z",
+        "checked_at": "2026-11-24T07:58:18Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -97,7 +90,14 @@
       "fawri": {
         "rate": 24.437,
         "fee": 7.0,
-        "checked_at": "2026-11-23T21:57:14Z",
+        "checked_at": "2026-11-24T08:58:18Z",
+        "src": "indianinsaudiarabia.com",
+        "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
+      },
+      "enbdksa": {
+        "rate": 24.588,
+        "fee": null,
+        "checked_at": "2026-11-23T20:58:18Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       }
@@ -106,28 +106,28 @@
       "lulu": {
         "rate": 25.28,
         "fee": null,
-        "checked_at": "2026-11-24T14:10:07Z",
+        "checked_at": "2026-11-24T16:10:18Z",
         "src": "aedtoinr.online",
         "src_url": "https://aedtoinr.online/"
       },
       "alansari": {
         "rate": 25.19,
         "fee": null,
-        "checked_at": "2026-11-24T14:00:07Z",
+        "checked_at": "2026-11-24T16:00:18Z",
         "src": "aedtoinr.online",
         "src_url": "https://aedtoinr.online/"
       },
       "orient": {
         "rate": 25.16,
         "fee": null,
-        "checked_at": "2026-11-24T14:25:07Z",
+        "checked_at": "2026-11-24T16:25:18Z",
         "src": "aedtoinr.online",
         "src_url": "https://aedtoinr.online/"
       },
       "alfardan": {
         "rate": 25.0,
         "fee": null,
-        "checked_at": "2026-11-24T14:15:07Z",
+        "checked_at": "2026-11-24T16:15:18Z",
         "src": "aedtoinr.online",
         "src_url": "https://aedtoinr.online/"
       }
