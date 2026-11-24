@@ -6,14 +6,14 @@
       "d360": {
         "rate": 24.58,
         "fee": 0.0,
-        "checked_at": "2026-11-23T20:03:43Z",
+        "checked_at": "2026-11-23T21:57:14Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
       "snbquickpay": {
         "rate": 24.61,
         "fee": 0.0,
-        "checked_at": "2026-11-23T18:03:43Z",
+        "checked_at": "2026-11-23T19:57:14Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -34,35 +34,35 @@
       "alinmapay": {
         "rate": 24.57,
         "fee": null,
-        "checked_at": "2026-11-23T20:03:43Z",
+        "checked_at": "2026-11-23T21:57:14Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
       "alinma": {
         "rate": 24.57,
         "fee": 0.0,
-        "checked_at": "2026-11-23T20:03:43Z",
+        "checked_at": "2026-11-23T21:57:14Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
       "wu": {
         "rate": 24.553,
         "fee": 16.1,
-        "checked_at": "2026-11-23T20:03:43Z",
+        "checked_at": "2026-11-23T21:57:14Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
       "urpay": {
         "rate": 24.509,
         "fee": 0.0,
-        "checked_at": "2026-11-23T20:03:43Z",
+        "checked_at": "2026-11-23T21:57:14Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
       "tiqmo": {
         "rate": 24.549,
         "fee": 0.0,
-        "checked_at": "2026-11-23T20:03:43Z",
+        "checked_at": "2026-11-23T21:57:14Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -76,28 +76,28 @@
       "binyalla": {
         "rate": 24.58,
         "fee": null,
-        "checked_at": "2026-11-23T20:03:43Z",
+        "checked_at": "2026-11-23T21:57:14Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
       "stcbank": {
         "rate": 24.556,
         "fee": 15.0,
-        "checked_at": "2026-11-23T20:03:43Z",
+        "checked_at": "2026-11-23T21:57:14Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
       "tahweel": {
         "rate": 24.499,
         "fee": 13.0,
-        "checked_at": "2026-11-23T20:03:43Z",
+        "checked_at": "2026-11-23T21:57:14Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
       "fawri": {
         "rate": 24.437,
         "fee": 7.0,
-        "checked_at": "2026-11-23T20:03:43Z",
+        "checked_at": "2026-11-23T21:57:14Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       }
@@ -106,28 +106,28 @@
       "lulu": {
         "rate": 25.28,
         "fee": null,
-        "checked_at": "2026-11-24T06:09:43Z",
+        "checked_at": "2026-11-24T08:10:14Z",
         "src": "aedtoinr.online",
         "src_url": "https://aedtoinr.online/"
       },
       "alansari": {
         "rate": 25.19,
         "fee": null,
-        "checked_at": "2026-11-24T06:03:43Z",
+        "checked_at": "2026-11-24T08:00:14Z",
         "src": "aedtoinr.online",
         "src_url": "https://aedtoinr.online/"
       },
       "orient": {
         "rate": 25.16,
         "fee": null,
-        "checked_at": "2026-11-24T06:24:43Z",
+        "checked_at": "2026-11-24T08:25:14Z",
         "src": "aedtoinr.online",
         "src_url": "https://aedtoinr.online/"
       },
       "alfardan": {
         "rate": 25.0,
         "fee": null,
-        "checked_at": "2026-11-24T06:14:43Z",
+        "checked_at": "2026-11-24T08:15:14Z",
         "src": "aedtoinr.online",
         "src_url": "https://aedtoinr.online/"
       }
