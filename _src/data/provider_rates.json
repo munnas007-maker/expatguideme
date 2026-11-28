@@ -20,7 +20,7 @@
       "alinmapay": {
         "rate": 24.48,
         "fee": null,
-        "checked_at": "2026-11-26T22:46:36Z",
+        "checked_at": "2026-11-27T00:51:31Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -48,7 +48,7 @@
       "fawri": {
         "rate": 24.34,
         "fee": 7.0,
-        "checked_at": "2026-11-27T23:45:54Z",
+        "checked_at": "2026-11-27T23:51:31Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -76,7 +76,7 @@
       "friendipay": {
         "rate": 24.55,
         "fee": 0.0,
-        "checked_at": "2026-11-27T15:45:54Z",
+        "checked_at": "2026-11-27T15:51:31Z",
         "src": "indianinsaudiarabia.com",
         "src_url": "https://indianinsaudiarabia.com/sar-to-inr/"
       },
@@ -134,7 +134,7 @@
       "orient": {
         "rate": 25.18,
         "fee": null,
-        "checked_at": "2026-11-28T10:24:36Z",
+        "checked_at": "2026-11-28T12:25:31Z",
         "src": "aedtoinr.online",
         "src_url": "https://aedtoinr.online/"
       },
